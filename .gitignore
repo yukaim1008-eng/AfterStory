@@ -1,0 +1,35 @@
+# 私密环境配置：保留可提交的示例
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# 本地数据、音频和凭证
+/data/
+secrets/
+*.pem
+*.key
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# 前端与构建产物
+node_modules/
+dist/
+build/
+.vite/
+coverage/
+
+# 临时文件
+*.log
+.DS_Store
+Thumbs.db
