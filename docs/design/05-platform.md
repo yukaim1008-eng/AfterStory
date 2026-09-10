@@ -8,6 +8,8 @@ FastAPI、PostgreSQL、普通 Python 工作流；Provider、Repository 和接口
 
 ## 当前阶段需要整批解决
 
+已整理为 [M1 最小后端文字链路草案](07-first-text-milestone.md)，包含模块契约、数据归属、请求重试与验收条件；产品取舍待整批判断。
+
 - 本地 PostgreSQL 启动方式、依赖与迁移方式。
 - 用户身份来源与隔离检查，最小 API 和持久化契约。
 - 文本 Provider 的首次真实接入方式、配置及错误处理。
