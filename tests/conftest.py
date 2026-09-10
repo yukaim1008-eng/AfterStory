@@ -22,7 +22,7 @@ def database(monkeypatch):
     separator = "&" if "?" in url else "?"
     test_url = url + separator + "options=-csearch_path%3D" + schema
     monkeypatch.setenv("DATABASE_URL", test_url)
-    monkeypatch.setenv("LLM_PROVIDER", "fake")
+    monkeypatch.setenv("LLM_ACTIVE_MODEL", "fake")
     try:
         command.upgrade(Config("alembic.ini"), "head")
         cfg = Settings(_env_file=None, dev_user_id="alice")

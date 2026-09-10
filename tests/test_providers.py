@@ -9,7 +9,7 @@ from afterstory.providers import ChatCompletionsProvider
 
 
 def config():
-    return Settings(_env_file=None, llm_api_key="test-only-not-real")
+    return Settings(_env_file=None, llm_models={"deepseek": {"api_key": "test-only-not-real"}})
 
 
 def test_deepseek_request_and_no_reasoning_in_reply():

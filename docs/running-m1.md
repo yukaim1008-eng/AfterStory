@@ -16,9 +16,29 @@ docker compose up -d --wait postgres
 
 浏览器打开 <http://127.0.0.1:8000/docs>。`/health` 检查数据库连通性，不测试模型密钥或余额。
 
-在本地 `.env` 填入 `LLM_API_KEY`，保持 `LLM_PROVIDER=deepseek`、`LLM_BASE_URL=https://api.deepseek.com`、`LLM_MODEL=deepseek-v4-flash`。修改配置后重启后端。密钥不会提交 Git。若暂时只测试工程，可在当前 PowerShell 设置 `$env:LLM_PROVIDER='fake'`，结束后 `Remove-Item Env:LLM_PROVIDER`；fake 回复有明确标记，不代表模型效果。
+`.env` 按命名模型分组，每组绑定自己的供应商、API 地址、密钥、model 和参数；`LLM_ACTIVE_MODEL` 只负责选择当前组：
 
-M1 默认关闭 DeepSeek thinking，以降低文字链路延迟；该参数可在后续模型表达对比阶段调整。兼容其他 Chat Completions 服务时使用 `LLM_PROVIDER=openai_compatible`，再替换地址、密钥和模型，适配器不会发送 DeepSeek 专用参数。
+```dotenv
+LLM_ACTIVE_MODEL=deepseek
+DEEPSEEK_PROVIDER=deepseek
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+DEEPSEEK_API_KEY=
+DEEPSEEK_MODEL=deepseek-v4-flash
+DEEPSEEK_TIMEOUT_SECONDS=60
+DEEPSEEK_MAX_TOKENS=1024
+
+# 填入另一个供应商的真实配置后，切换 LLM_ACTIVE_MODEL=other_chat
+# OTHER_CHAT_PROVIDER=openai_compatible
+# OTHER_CHAT_BASE_URL=https://your-provider.example/v1
+# OTHER_CHAT_API_KEY=
+# OTHER_CHAT_MODEL=your-model-id
+```
+
+组名使用小写字母、数字和下划线；同一供应商的多个模型也可以分别建组。修改激活组后重启后端，其他组的信息会保留。密钥只填写本地配置。当前仍每次选择一个对话模型，尚未实现角色级路由或并行模型对比。
+
+工程测试使用内置 `fake` 组：在当前 PowerShell 设置 `$env:LLM_ACTIVE_MODEL='fake'`，结束后 `Remove-Item Env:LLM_ACTIVE_MODEL`。fake 不会在真实调用失败时自动启用。
+
+M1 对 DeepSeek 默认关闭 thinking；其他 Chat Completions 兼容模型组使用 `PROVIDER=openai_compatible`，不发送 DeepSeek 专用参数。可同时保存多个供应商配置，其他原生协议适配器尚未实现。
 
 官方协议依据：[Chat Completions](https://api-docs.deepseek.com/api/create-chat-completion/)，核实日期 2026-09-10。适配器只接收完整 `content`，不保存 `reasoning_content`；空白、截断或异常响应作为失败处理。
 
@@ -34,7 +54,7 @@ M1 默认关闭 DeepSeek thinking，以降低文字链路延迟；该参数可�
 
 每个会话同时只处理一轮，冲突返回 409 `conversation_busy`。超过 `TURN_LEASE_SECONDS` 的遗留处理状态由下次发送请求恢复；旧调用不能覆盖新的重试结果。真实供应商超时后重试可能重复计费，本地不会重复提交成功消息。
 
-默认上下文包含最近 12 个成功轮次、角色定义和当前消息。每条输入最多 8000 字符，输出上限由 `LLM_MAX_TOKENS` 设置。M1 只保留当前会话历史，不冒充跨会话长期记忆。
+默认上下文包含最近 12 个成功轮次、角色定义和当前消息。每条输入最多 8000 字符，输出上限由 `DEEPSEEK_MAX_TOKENS` 设置。M1 只保留当前会话历史，不冒充跨会话长期记忆。
 
 用户身份由服务端 `DEV_USER_ID` 提供，请求不能指定 `user_id`。更改本地用户配置后需再次运行 seed；M1 仅本机开发使用，正式登录与共享部署属于后续设计。
 
@@ -44,9 +64,9 @@ M1 默认关闭 DeepSeek thinking，以降低文字链路延迟；该参数可�
 .venv\Scripts\pytest -q
 .venv\Scripts\ruff check .
 .venv\Scripts\alembic check
-.venv\Scripts\python -m scripts.smoke --provider fake
+.venv\Scripts\python -m scripts.smoke --profile fake
 # 配置真实密钥后：该命令进行八次模型调用，使用工程测试对话
-.venv\Scripts\python -m scripts.smoke --provider deepseek
+.venv\Scripts\python -m scripts.smoke --profile deepseek
 ```
 
 pytest 在 PostgreSQL 中创建随机 `test_...` schema，迁移后测试并删除该 schema，不清空现有业务表。可用 `TEST_DATABASE_URL` 指定独立测试库，测试账号需要创建 schema 的权限。
@@ -61,4 +81,4 @@ smoke 启动两个先后独立的后端进程，检查两个角色各三轮文�
 
 依赖有两条来自 Starlette/httpx/AnyIO 的弃用提示，不影响本次测试通过；锁文件保留当前已验证依赖组合。
 
-本地 `LLM_API_KEY` 为空，尚未执行真实 DeepSeek 请求，不能认定模型连通性或表达效果已通过。DeepSeek 适配器的请求字段、超时、异常和回复校验已通过模拟 HTTP 测试。
+本地 `DEEPSEEK_API_KEY` 为空，尚未执行真实 DeepSeek 请求，不能认定模型连通性或表达效果已通过。DeepSeek 适配器的请求字段、超时、异常和回复校验已通过模拟 HTTP 测试。

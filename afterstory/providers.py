@@ -16,22 +16,22 @@ class ChatCompletionsProvider:
         self.transport = transport
 
     def generate(self, messages: list[ChatMessage]) -> str:
-        cfg = self.settings
-        key = cfg.llm_api_key.get_secret_value()
+        cfg = self.settings.active_model
+        key = cfg.api_key.get_secret_value()
         if not key:
             raise ProviderError("llm_key_missing")
         payload = {
-            "model": cfg.llm_model,
+            "model": cfg.model,
             "messages": [{"role": m.role, "content": m.content} for m in messages],
             "stream": False,
-            "max_tokens": cfg.llm_max_tokens,
+            "max_tokens": cfg.max_tokens,
         }
-        if cfg.llm_provider == "deepseek":
+        if cfg.provider == "deepseek":
             payload["thinking"] = {"type": "disabled"}
         try:
-            with httpx.Client(timeout=cfg.llm_timeout_seconds, transport=self.transport) as client:
+            with httpx.Client(timeout=cfg.timeout_seconds, transport=self.transport) as client:
                 response = client.post(
-                    cfg.llm_base_url.rstrip("/") + "/chat/completions",
+                    cfg.base_url.rstrip("/") + "/chat/completions",
                     headers={"Authorization": f"Bearer {key}"},
                     json=payload,
                 )

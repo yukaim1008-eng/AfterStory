@@ -42,7 +42,9 @@ def create_app(settings=None, provider=None):
     engine, sessions = make_sessions(settings)
     repository = Repository(sessions, settings.turn_lease_seconds, settings.history_turns)
     provider = provider or (
-        FakeProvider() if settings.llm_provider == "fake" else ChatCompletionsProvider(settings)
+        FakeProvider()
+        if settings.active_model.provider == "fake"
+        else ChatCompletionsProvider(settings)
     )
     service = ConversationService(repository, provider)
 
@@ -70,7 +72,12 @@ def create_app(settings=None, provider=None):
     def health():
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
-        return {"status": "ok", "provider": settings.llm_provider, "model": settings.llm_model}
+        return {
+            "status": "ok",
+            "model_profile": settings.llm_active_model,
+            "provider": settings.active_model.provider,
+            "model": settings.active_model.model,
+        }
 
     @app.get("/characters")
     def characters():

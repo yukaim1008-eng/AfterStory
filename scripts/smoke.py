@@ -22,7 +22,7 @@ def server(provider):
     with socket.socket() as sock:
         sock.bind(("127.0.0.1", 0))
         port = sock.getsockname()[1]
-    env = dict(os.environ, LLM_PROVIDER=provider)
+    env = dict(os.environ, LLM_ACTIVE_MODEL=provider)
     with tempfile.TemporaryFile() as log:
         process = subprocess.Popen(
             [
@@ -77,14 +77,17 @@ def post(client, path, body):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--provider", choices=["fake", "deepseek", "openai_compatible"], required=True
-    )
+    parser.add_argument("--profile", required=True)
     args = parser.parse_args()
-    if args.provider != "fake" and not Settings().llm_api_key.get_secret_value():
-        parser.error("Set LLM_API_KEY in local .env first; do not paste it into chat.")
+    if (
+        args.profile != "fake"
+        and not Settings(llm_active_model=args.profile).active_model.api_key.get_secret_value()
+    ):
+        parser.error(
+            "Set the selected profile API_KEY in local .env first; do not paste it into chat."
+        )
     paths = []
-    with server(args.provider) as client:
+    with server(args.profile) as client:
         for version in ("test-lan-v1", "test-xiao-v1"):
             instance = post(client, "/instances", {"version_id": version})
             conversation = post(client, "/conversations", {"instance_id": instance["instance_id"]})
@@ -96,13 +99,13 @@ def main():
                 reply = post(client, path, {"request_id": f"smoke-{index}", "text": message})
                 assert reply["text"] and reply["audio_status"] == "not_requested"
             assert client.get(path).json()["total"] == 3
-    with server(args.provider) as client:
+    with server(args.profile) as client:
         for path in paths:
             assert client.get(path).json()["total"] == 3
             post(client, path, {"request_id": "smoke-restart", "text": "我们接着聊。"})
             assert client.get(path).json()["total"] == 4
-    print(f"PASS: {args.provider}; two characters, eight turns, real process restart persisted.")
-    if args.provider == "fake":
+    print(f"PASS: {args.profile}; two characters, eight turns, real process restart persisted.")
+    if args.profile == "fake":
         print("Engineering verification only; real model expression has not been evaluated.")
 
 

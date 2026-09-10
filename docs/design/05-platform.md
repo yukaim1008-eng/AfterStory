@@ -17,6 +17,8 @@ FastAPI、PostgreSQL、普通 Python 工作流；Provider、Repository 和接口
 
 ## 后续设计
 
+模型配置使用简短的 `组名_字段`，例如 `DEEPSEEK_API_KEY`、`DEEPSEEK_BASE_URL`、`DEEPSEEK_MODEL`；每组独立绑定供应商、地址、密钥、model、超时和输出上限。`LLM_ACTIVE_MODEL=deepseek` 选择当前对话模型。其他模型采用相同格式，支持多个供应商和同供应商多个模型配置共存。运行示例见 [M1 运行说明](../running-m1.md)。
+
 Embedding/TTS 接入、日志及部署。M1 已实现数据库行锁、每轮请求标识、失败重试及过期处理恢复；`.env.example` 的 SQLite 遗留配置已修正，Compose 数据库已启动并通过验证。
 
 ## 验收方向
