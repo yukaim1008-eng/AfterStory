@@ -154,9 +154,9 @@ Voice Layer 不决定角色人设、长期记忆和关系变化。更换 TTS Pro
 - 向量检索：优先在 PostgreSQL 中使用 pgvector，最终接入方式仍需在 Memory 设计阶段验证。
 - 数据访问与迁移：倾向使用 SQLAlchemy 和 Alembic，具体配置待工程骨架阶段确定。
 - V1 编排：普通 Python 工作流。
-- LLM、Embedding 和 TTS 必须通过独立 Provider 边界接入，具体供应商与模型仍待确认。
+- LLM、Embedding 和 TTS 必须通过独立 Provider 边界接入。首次文本模型已于 2026-09-10 确定为 DeepSeek V4 Flash（`deepseek-v4-flash`），后续再比较其他模型的表达效果；Embedding 和 TTS 供应商仍待确认。
 - 音频 V1 可以先使用本地存储，但必须通过存储边界隔离，方便未来更换对象存储。
-- 当前 `.env.example` 中的 SQLite 配置只是早期草案，与已经确认的 PostgreSQL 决策不一致，搭建后端骨架时需要修正。
+- `.env.example` 已于 2026-09-10 将早期 SQLite 草案更新为 PostgreSQL 本地连接配置。
 
 ## 8. 前后端实施顺序
 
@@ -187,7 +187,7 @@ Voice Layer 不决定角色人设、长期记忆和关系变化。更换 TTS Pro
 - 娜娜莉与鉴定师伙伴关系在 V1 中对应的具体初始状态和关系强度。
 - 测试角色的选择和差异维度。
 - Character Definition、Character Response、State 和 Memory 的具体字段。
-- LLM、Embedding、TTS 的首选供应商、模型与降级策略。
+- Embedding、TTS 的首选供应商与模型，以及各 Provider 的具体降级策略；首次 LLM 已选 DeepSeek V4 Flash。
 - PostgreSQL 与 pgvector 的本地启动和部署方式。
 - 用户认证方式。
 - 音频文件的生命周期和清理规则。
