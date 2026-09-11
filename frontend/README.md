@@ -6,12 +6,17 @@
 
 ## 当前设计：03 版
 
+- [本轮封面操作细稿（待反馈）](../data/design-preview/cover-refinement-v02.png) / [设计说明](design/cover-refinement.md)：裁切三种预览、保存成功、恢复默认确认与失败。
+
+- 主角色为娜娜莉、伊洛伊、薄荷三位并列。[三人角色选择效果（已认可）](../data/design-preview/three-main-characters-selection-v01.png) / [设计说明](design/three-main-characters.md)；用户于 2026-09-11 认可整体效果，它替代下方旧总览里的测试角色卡片，其余页面视觉沿用。
+
 - 聊天采用左角色、右对话的构图；主题根据角色人设设计，辅助页面跟随当前角色配色。
 - 娜娜莉采用粉白底与粉黑点缀，清爽的中文字体与留白；第一版深蓝色方案已被替代。
 - 角色选择采用悬停展开，去掉小箭头；封面需方便独立替换。
 - [当前设计基准](../docs/design/06-frontend.md) / [角色主题与封面说明](design/character-theme-v03.md)
 - [聊天与角色选择效果图](../data/design-preview/nanally-chat-selection-v03.png)
 - [资料、历史、外观设置与记忆效果图](../data/design-preview/nanally-supporting-v03.png)
+- [角色选择与封面状态稿 · 2026-09-11 两项核心交互已确认](../data/design-preview/character-selection-cover-states-v01.png) / [交互说明](design/character-selection-cover.md)：悬停预览、点击切换；分别裁切，保存失败保留调整。补充原有两张基准图。
 
 用户指定以 `data/design-preview/` 中两张效果图为准，其他旧版效果图、提示词和讨论归档已删除。最新图片位于 Git 忽略的目录，仅保存在本地工作区，不会随 Git 同步。`design/` 只保留当前方案说明与对应提示词。图片里的生成形象和示例内容不是正式角色资产或 Canon。
 
