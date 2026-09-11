@@ -1,0 +1,8 @@
+Edit this FOUR-PANEL UI board with three precise fixes, preserve everything else including all three correct character portraits, individual theme colors, white backgrounds, chat sample messages, 2x2 arrangement, fonts and spacing.
+Reference1 EDIT TARGET is newly generated three-theme board.
+Reference2 is the APPROVED three-role horizontal accordion selection page.
+Reference3 is approved Nanally chat.
+FIX 1: In all three chat panels replace top-right 返回聊天 with plain text links 历史 and 设置. Replace date-only top chat header with respective proper name 娜娜莉 / 伊洛伊 / 薄荷, and put date as tiny centered secondary text below.
+FIX 2: Under character name at bottom-left remove all invented slogan sentences (“我会一直在这里，陪你聊任何事。” and equivalent other two). Replace each with only the simple plain UI text 角色资料. Do not invent character dialogue or promises in profile cover. Replace all composer placeholders with neutral 想说什么，都可以慢慢说… .
+FIX 3: Bottom-right character selection MUST MATCH reference2: three tall fullbleed adjacent cover pictures, all SAME HEIGHT, fixed left 伊洛伊 / center 娜娜莉 / right 薄荷. Center expanded52%, side24% each. Names overlaid at bottom on image, NOT white card footers. Only center has text button 继续对话 over cover. No buttons on collapsed cards. No reordering, no separate floating card elevation, no current wrong product/catalog card arrangement. Top right 返回聊天, title 继续我们的故事, small 当前角色：娜娜莉. All full color not gray. Draw pointer on center. No arrows or chevrons.
+All names exact. No browser controls. No extra revisions or slogans. Static proposal only.

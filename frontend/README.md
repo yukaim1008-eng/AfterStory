@@ -6,7 +6,11 @@
 
 ## 当前设计：03 版
 
-- [本轮封面操作细稿（待反馈）](../data/design-preview/cover-refinement-v02.png) / [设计说明](design/cover-refinement.md)：裁切三种预览、保存成功、恢复默认确认与失败。
+最新修订：[控件形态与剧情信息层级](../data/design-preview/full-desktop-review/09-controls-refinement.png) / [说明](design/full-review/09-controls-refinement.md)。发送个性化待角色性格补全；全套按钮样式进入统一修订，旧图仅作布局对照。
+
+**当前评审入口：[全部桌面效果图](../data/design-preview/full-desktop-review/README.md) / [页面清单与分区说明](design/full-desktop-review.md)。** 六组新稿、24 个主要画面，另附已认可的三人选择和封面操作。按用户要求集中反馈后统一修改，不逐页确认，仍只做静态设计。
+
+- [封面操作细稿（整体已认可）](../data/design-preview/cover-refinement-v02.png) / [设计说明](design/cover-refinement.md)：裁切三种预览、保存成功、恢复默认确认与失败。
 
 - 主角色为娜娜莉、伊洛伊、薄荷三位并列。[三人角色选择效果（已认可）](../data/design-preview/three-main-characters-selection-v01.png) / [设计说明](design/three-main-characters.md)；用户于 2026-09-11 认可整体效果，它替代下方旧总览里的测试角色卡片，其余页面视觉沿用。
 
@@ -18,7 +22,7 @@
 - [资料、历史、外观设置与记忆效果图](../data/design-preview/nanally-supporting-v03.png)
 - [角色选择与封面状态稿 · 2026-09-11 两项核心交互已确认](../data/design-preview/character-selection-cover-states-v01.png) / [交互说明](design/character-selection-cover.md)：悬停预览、点击切换；分别裁切，保存失败保留调整。补充原有两张基准图。
 
-用户指定以 `data/design-preview/` 中两张效果图为准，其他旧版效果图、提示词和讨论归档已删除。最新图片位于 Git 忽略的目录，仅保存在本地工作区，不会随 Git 同步。`design/` 只保留当前方案说明与对应提示词。图片里的生成形象和示例内容不是正式角色资产或 Canon。
+用户指定以 `data/design-preview/` 中认可的效果为基础，现补充整套桌面评审稿；已删除的早期探索不恢复。图片位于 Git 忽略的目录，仅保存在本地工作区，不会随 Git 同步。`design/` 保存方案说明与对应提示词。生成形象和示例内容不是正式角色资产或 Canon。
 
 ## 新窗口从这里开始
 
