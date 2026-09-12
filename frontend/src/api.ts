@@ -27,6 +27,7 @@ export function errorText(error: unknown) {
         llm_http_error:
           "模型服务暂时无法回复，请检查模型配置与可用额度后重试。",
         stale_turn_retry: "这条消息之后已有新对话，请重新输入发送。",
+        context_changed: "个人记忆刚刚发生变化，请重试以使用最新内容。",
         character_version_not_found:
           "角色联调资料尚未导入，请先运行角色导入命令。",
         provider_unavailable: "暂时没有收到回复。消息已保留，可以重试。",

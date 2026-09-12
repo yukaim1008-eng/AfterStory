@@ -92,6 +92,8 @@ class Settings(BaseSettings):
 
     turn_lease_seconds: int = Field(default=120, ge=1)
     history_turns: int = Field(default=12, ge=1, le=50)
+    memory_context_items: int = Field(default=20, ge=0, le=100)
+    memory_context_chars: int = Field(default=6000, ge=0, le=50000)
 
     @model_validator(mode="after")
     def validate_runtime(self):

@@ -3,7 +3,8 @@ from uuid import uuid4
 
 from sqlalchemy import func, select
 
-from afterstory.domain import CharacterResponse, ChatMessage, DomainError
+from afterstory.context import ContextAssembler
+from afterstory.domain import CharacterResponse, DomainError
 from afterstory.models import (
     Character,
     CharacterInstance,
@@ -16,10 +17,11 @@ from afterstory.models import (
 
 
 class Repository:
-    def __init__(self, sessions, lease_seconds=120, history_turns=12):
+    def __init__(self, sessions, lease_seconds=120, history_turns=12, context=None):
         self.sessions = sessions
         self.lease_seconds = lease_seconds
         self.history_turns = history_turns
+        self.context = context or ContextAssembler(history_turns=history_turns)
 
     @staticmethod
     def owned_conversation(session, user, conversation_id, lock=False):
@@ -201,6 +203,12 @@ class Repository:
                 raise DomainError(409, "conversation_busy")
             if turn and turns[-1].id != turn.id:
                 raise DomainError(409, "stale_turn_retry")
+            instance = session.scalar(
+                select(CharacterInstance)
+                .where(CharacterInstance.id == conversation.instance_id)
+                .with_for_update()
+            )
+            version = session.get(CharacterVersion, instance.version_id)
             attempt = str(uuid4())
             if not turn:
                 turn = Turn(
@@ -210,6 +218,7 @@ class Repository:
                     status="processing",
                     attempt=attempt,
                     lease_until=now + timedelta(seconds=self.lease_seconds),
+                    context_revision=instance.context_revision,
                 )
                 session.add(turn)
                 session.flush()
@@ -219,23 +228,17 @@ class Repository:
             turn.attempt = attempt
             turn.error_code = None
             turn.lease_until = now + timedelta(seconds=self.lease_seconds)
-            instance = session.get(CharacterInstance, conversation.instance_id)
-            version = session.get(CharacterVersion, instance.version_id)
-            history_ids = [t.id for t in turns if t.status == "completed"][-self.history_turns :]
-            history = session.execute(
-                select(Message, Turn.sequence)
-                .join(Turn)
-                .where(Message.turn_id.in_(history_ids))
-                .order_by(Turn.sequence, Message.role.desc())
-            ).all()
-            messages = [ChatMessage("system", version.system_prompt)]
-            messages.extend(ChatMessage(m.role, m.text) for m, _ in history)
-            messages.append(ChatMessage("user", text))
+            turn.context_revision = instance.context_revision
+            messages = self.context.build(
+                session, conversation_id, instance, version.system_prompt, text
+            )
             return turn.id, attempt, messages
 
     def finish_turn(self, user, conversation_id, turn_id, attempt, text=None, error=None):
+        context_changed = False
+        response = None
         with self.sessions.begin() as session:
-            self.owned_conversation(session, user, conversation_id, lock=True)
+            conversation = self.owned_conversation(session, user, conversation_id, lock=True)
             turn = session.get(Turn, turn_id)
             if (
                 not turn
@@ -249,12 +252,26 @@ class Repository:
                 turn.status = "failed"
                 turn.error_code = error
                 return None
-            message = Message(turn_id=turn.id, role="assistant", text=text)
-            turn.updated_at = datetime.now(timezone.utc)
-            session.add(message)
-            turn.status = "completed"
-            session.flush()
-            return CharacterResponse(message.id, turn.id, message.text)
+            instance = session.scalar(
+                select(CharacterInstance)
+                .where(CharacterInstance.id == conversation.instance_id)
+                .with_for_update()
+            )
+            if turn.context_revision != instance.context_revision:
+                turn.updated_at = datetime.now(timezone.utc)
+                turn.status = "failed"
+                turn.error_code = "context_changed"
+                context_changed = True
+            else:
+                message = Message(turn_id=turn.id, role="assistant", text=text)
+                turn.updated_at = datetime.now(timezone.utc)
+                session.add(message)
+                turn.status = "completed"
+                session.flush()
+                response = CharacterResponse(message.id, turn.id, message.text)
+        if context_changed:
+            raise DomainError(409, "context_changed")
+        return response
 
     def history(self, user, conversation_id, offset, limit, around_turn_id=None):
         with self.sessions() as session:

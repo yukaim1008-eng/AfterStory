@@ -8,6 +8,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 from afterstory.config import Settings
+from afterstory.context import ContextAssembler
 from afterstory.conversation import ConversationService
 from afterstory.database import make_sessions
 from afterstory.domain import DomainError
@@ -52,7 +53,14 @@ def current_user(request: Request):
 def create_app(settings=None, provider=None):
     settings = settings or Settings()
     engine, sessions = make_sessions(settings)
-    repository = Repository(sessions, settings.turn_lease_seconds, settings.history_turns)
+    context = ContextAssembler(
+        settings.history_turns,
+        settings.memory_context_items,
+        settings.memory_context_chars,
+    )
+    repository = Repository(
+        sessions, settings.turn_lease_seconds, settings.history_turns, context
+    )
     provider = provider or (
         FakeProvider()
         if settings.active_model.provider == "fake"

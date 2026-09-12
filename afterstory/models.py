@@ -79,6 +79,7 @@ class Turn(Base):
     updated_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
+    context_revision: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
 
 
 class Message(Base):
