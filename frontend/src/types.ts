@@ -43,3 +43,25 @@ export type SessionPage = {
   offset: number;
   limit: number;
 };
+export type Memory = {
+  memory_id: string;
+  instance_id: string;
+  kind: "fact" | "inference";
+  content: string;
+  status: "active";
+  revision: number;
+  created_at: string;
+  updated_at: string;
+  source: null | {
+    message_id: string;
+    turn_id: string;
+    conversation_id: string;
+    role: "user";
+  };
+};
+export type MemoryPage = {
+  items: Memory[];
+  total: number;
+  offset: number;
+  limit: number;
+};

@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import type { Page } from "@playwright/test";
-import type { Session, Turn } from "../src/types";
+import type { Memory, Session, Turn } from "../src/types";
 
 type ApiOptions = {
   sessions?: Session[];
@@ -8,6 +8,7 @@ type ApiOptions = {
   failHistoryPage?: boolean;
   delayConversation?: string;
   failConversationOnce?: string;
+  memory?: boolean;
 };
 const timestamp = "2026-09-12T12:30:00Z";
 function session(id: string, version = id): Session {
@@ -50,6 +51,7 @@ async function fakeApi(
   let failed = false;
   let historyFailed = false;
   let conversationFailed = false;
+  const memories: Memory[] = [];
   const requests: any[] = [];
   await page.route("**/api/**", async (route) => {
     const url = new URL(route.request().url());
@@ -58,7 +60,7 @@ async function fakeApi(
     if (path === "/health")
       body = {
         user_id: "browser-test",
-        capabilities: { voice: false, memory: false },
+        capabilities: { voice: false, memory: !!options.memory },
       };
     else if (path === "/sessions/open") {
       const id = route.request().postDataJSON().version_id;
@@ -113,6 +115,76 @@ async function fakeApi(
           json: { error: "conversation_not_found" },
         });
         return;
+      }
+    } else if (/^\/instances\/[^/]+\/memories$/.test(path)) {
+      const instanceId = decodeURIComponent(path.split("/")[2]!);
+      if (route.request().method() === "POST") {
+        const input = route.request().postDataJSON();
+        const existing = memories.find(
+          (item) =>
+            item.instance_id === instanceId &&
+            item.source?.message_id === input.source_message_id,
+        );
+        if (existing) {
+          await route.fulfill({
+            status: 409,
+            json: { error: "memory_source_already_saved" },
+          });
+          return;
+        }
+        let source: Memory["source"] = null;
+        for (const [conversationId, items] of Object.entries(turns)) {
+          for (const item of items) {
+            if (
+              item.messages.some(
+                (message) => message.message_id === input.source_message_id,
+              )
+            )
+              source = {
+                message_id: input.source_message_id,
+                turn_id: item.turn_id,
+                conversation_id: conversationId,
+                role: "user",
+              };
+          }
+        }
+        const memory: Memory = {
+          memory_id: `memory-${memories.length + 1}`,
+          instance_id: instanceId,
+          kind: "fact",
+          content: input.content,
+          status: "active",
+          revision: 1,
+          created_at: timestamp,
+          updated_at: timestamp,
+          source,
+        };
+        memories.unshift(memory);
+        body = memory;
+      } else {
+        body = {
+          items: memories.filter((item) => item.instance_id === instanceId),
+          total: memories.filter((item) => item.instance_id === instanceId)
+            .length,
+          offset: 0,
+          limit: 100,
+        };
+      }
+    } else if (/^\/memories\/[^/]+$/.test(path)) {
+      const memoryId = decodeURIComponent(path.split("/")[2]!);
+      const index = memories.findIndex((item) => item.memory_id === memoryId);
+      const item = memories[index]!;
+      if (route.request().method() === "PATCH") {
+        const input = route.request().postDataJSON();
+        memories[index] = {
+          ...item,
+          content: input.content,
+          revision: item.revision + 1,
+        };
+        body = memories[index];
+      } else {
+        memories.splice(index, 1);
+        body = { ...item, content: null, status: "deleted" };
       }
     } else if (path.endsWith("/messages")) {
       const id = path.split("/")[2]!;
@@ -292,6 +364,42 @@ test("offline backend shows an honest retry state", async ({ page }) => {
     page.getByRole("button", { name: "发送", exact: true }),
   ).toBeDisabled();
   await expect(page.locator(".message.assistant")).toHaveCount(0);
+});
+
+test("personal memories are explicitly saved, corrected, linked, and deleted", async ({
+  page,
+}) => {
+  await fakeApi(page, false, { memory: true });
+  await page.goto("/");
+  const input = page.getByRole("textbox", { name: "消息" });
+  await input.fill("我喜欢在雨天散步");
+  await page.getByRole("button", { name: "发送", exact: true }).click();
+  await page.getByRole("button", { name: "记住这件事" }).click();
+  await expect(page).toHaveURL(/#\/memory\/nanally/);
+  await expect(page.getByLabel("希望她记住什么？")).toHaveValue(
+    "我喜欢在雨天散步",
+  );
+  await page.getByRole("button", { name: "保存", exact: true }).click();
+  await expect(
+    page.getByText("我喜欢在雨天散步", { exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "更正" }).click();
+  await page.getByLabel("更正记忆内容").fill("我喜欢在小雨的夜晚散步");
+  await page.getByRole("button", { name: "保存更正" }).click();
+  await expect(
+    page.getByText("我喜欢在小雨的夜晚散步", { exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "查看来源" }).click();
+  await expect(page.locator(".source-turn")).toContainText("我喜欢在雨天散步");
+  await page.goto("/#/memory/nanally");
+  await page.getByRole("button", { name: "删除" }).click();
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "确认删除" })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "还没有保存的记忆" }),
+  ).toBeVisible();
 });
 
 test("legacy versions restore their metadata and keep drafts and outbox in their own conversation", async ({

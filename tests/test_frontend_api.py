@@ -20,7 +20,9 @@ def test_resume_is_atomic_and_user_scoped(database):
     with TestClient(app) as client:
         result = client.post("/api/sessions/open", json={"version_id": "test-lan-v1"})
         assert result.json() == results[0]
-        assert client.get("/api/health").json()["capabilities"]["memory"] is False
+        capabilities = client.get("/api/health").json()["capabilities"]
+        assert capabilities["memory"] is True
+        assert capabilities["memory_extraction"] is False
         path = f"/api/conversations/{result.json()['conversation_id']}/messages"
         assert client.post(path, json={"request_id": "one", "text": "Hello"}).status_code == 200
         listing = client.get("/api/conversations").json()

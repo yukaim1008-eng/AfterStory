@@ -18,9 +18,12 @@ import {
   ImagePlus,
   LoaderCircle,
   MessageCircle,
+  Pencil,
+  Plus,
   RotateCcw,
   Settings,
   Sparkles,
+  Trash2,
   Volume2,
 } from "lucide-vue-next";
 import { api, errorText } from "./api";
@@ -29,6 +32,8 @@ import type {
   Character,
   Cover,
   History,
+  Memory as PersonalMemory,
+  MemoryPage,
   Session,
   SessionPage,
   Turn,
@@ -43,6 +48,7 @@ const section = ref("general");
 const hovered = ref("nanally");
 const user = ref("");
 const connected = ref(false);
+const capabilities = reactive({ voice: false, memory: false });
 const busy = ref(false);
 const notice = ref("");
 const fatal = ref("");
@@ -56,6 +62,18 @@ const historyTotal = ref(0);
 const historyOffset = ref(0);
 const historyAppendFailed = ref(false);
 let historyRequest = 0;
+const memories = ref<PersonalMemory[]>([]);
+const memoryTotal = ref(0);
+const memoryLoading = ref(false);
+const memoryError = ref("");
+const memoryForm = ref(false);
+const memoryDraft = ref("");
+const memorySource = ref<string>();
+const memoryCreateRequest = ref("");
+const memoryEditing = ref<string>();
+const memorySaving = ref(false);
+const memoryDelete = ref<PersonalMemory>();
+let memoryRequest = 0;
 const targetTurn = ref("");
 const scrollArea = ref<HTMLElement>();
 const preferences = reactive({
@@ -177,8 +195,12 @@ async function connect() {
   busy.value = true;
   fatal.value = "";
   try {
-    const result = await api<{ user_id: string }>("/health");
+    const result = await api<{
+      user_id: string;
+      capabilities?: { voice?: boolean; memory?: boolean };
+    }>("/health");
     user.value = result.user_id;
+    Object.assign(capabilities, result.capabilities || {});
     Object.assign(preferences, read("preferences", preferences));
     if (!location.hash) selected.value = read("selected", selected.value);
     for (const c of characters.value) {
@@ -327,6 +349,8 @@ async function openChat(
     conversations[state.id] = state;
     saveChat(id, state);
     await refresh(id, false, state, aroundTurnId);
+    if (page.value === "memory" && capabilities.memory)
+      await loadMemories(session.instance_id);
   } catch (error) {
     if (opening[id] === request && chats[id] === state)
       state.error = errorText(error);
@@ -451,6 +475,113 @@ async function loadSessions(append = false) {
     if (request === historyRequest) historyLoading.value = false;
   }
 }
+async function loadMemories(instanceId = chat.value?.session?.instance_id) {
+  if (!instanceId || !capabilities.memory) return;
+  const request = ++memoryRequest;
+  memoryLoading.value = true;
+  memoryError.value = "";
+  try {
+    const result = await api<MemoryPage>(
+      `/instances/${encodeURIComponent(instanceId)}/memories?limit=100`,
+    );
+    if (
+      request !== memoryRequest ||
+      instanceId !== chat.value?.session?.instance_id
+    )
+      return;
+    memories.value = result.items;
+    memoryTotal.value = result.total;
+  } catch (error) {
+    if (request === memoryRequest) memoryError.value = errorText(error);
+  } finally {
+    if (request === memoryRequest) memoryLoading.value = false;
+  }
+}
+function beginMemory(content = "", sourceMessageId?: string) {
+  memoryEditing.value = undefined;
+  memoryDraft.value = content;
+  memorySource.value = sourceMessageId;
+  memoryCreateRequest.value = crypto.randomUUID();
+  memoryForm.value = true;
+  if (page.value !== "memory") route("memory");
+}
+function cancelMemoryForm() {
+  memoryForm.value = false;
+  memoryDraft.value = "";
+  memorySource.value = undefined;
+  memoryCreateRequest.value = "";
+}
+async function createMemory() {
+  const instanceId = chat.value?.session?.instance_id;
+  const content = memoryDraft.value.trim();
+  if (!instanceId || !content || memorySaving.value) return;
+  memorySaving.value = true;
+  memoryError.value = "";
+  try {
+    await api(
+      `/instances/${encodeURIComponent(instanceId)}/memories`,
+      {
+        request_id: memoryCreateRequest.value || crypto.randomUUID(),
+        content,
+        source_message_id: memorySource.value,
+      },
+      "POST",
+    );
+    cancelMemoryForm();
+    notice.value = "已加入个人记忆。";
+    await loadMemories(instanceId);
+  } catch (error) {
+    memoryError.value = errorText(error);
+  } finally {
+    memorySaving.value = false;
+  }
+}
+function editMemory(memory: PersonalMemory) {
+  memoryForm.value = false;
+  memoryEditing.value = memory.memory_id;
+  memoryDraft.value = memory.content;
+}
+async function saveMemory(memory: PersonalMemory) {
+  const content = memoryDraft.value.trim();
+  if (!content || memorySaving.value) return;
+  memorySaving.value = true;
+  memoryError.value = "";
+  try {
+    await api(
+      `/memories/${encodeURIComponent(memory.memory_id)}`,
+      { expected_revision: memory.revision, content },
+      "PATCH",
+    );
+    memoryEditing.value = undefined;
+    memoryDraft.value = "";
+    notice.value = "记忆已更正。";
+    await loadMemories();
+  } catch (error) {
+    memoryError.value = errorText(error);
+  } finally {
+    memorySaving.value = false;
+  }
+}
+async function confirmDeleteMemory() {
+  const target = memoryDelete.value;
+  if (!target || memorySaving.value) return;
+  memorySaving.value = true;
+  memoryError.value = "";
+  try {
+    await api(
+      `/memories/${encodeURIComponent(target.memory_id)}?expected_revision=${target.revision}`,
+      undefined,
+      "DELETE",
+    );
+    memoryDelete.value = undefined;
+    notice.value = "这条记忆已删除，原聊天仍会保留。";
+    await loadMemories();
+  } catch (error) {
+    memoryError.value = errorText(error);
+  } finally {
+    memorySaving.value = false;
+  }
+}
 function resume(item: Session, turnId?: string) {
   const c = characters.value.find((c) => c.id === item.character_id);
   if (!c) return;
@@ -485,7 +616,7 @@ watch(preferences, () => {
 });
 let previousFocus: HTMLElement | null = null;
 watch(
-  () => editing.value || resetConfirm.value,
+  () => editing.value || resetConfirm.value || !!memoryDelete.value,
   async (open) => {
     if (open) previousFocus = document.activeElement as HTMLElement;
     await nextTick();
@@ -499,10 +630,11 @@ watch(
   },
 );
 function modalKeys(event: KeyboardEvent) {
-  if (!editing.value && !resetConfirm.value) return;
+  if (!editing.value && !resetConfirm.value && !memoryDelete.value) return;
   if (event.key === "Escape") {
     editing.value = false;
     resetConfirm.value = false;
+    memoryDelete.value = undefined;
     return;
   }
   if (event.key !== "Tab") return;
@@ -732,6 +864,17 @@ onUnmounted(() => {
                   message.role === "user" ? "你" : character.name
                 }}</span>
                 <div class="bubble">{{ message.text }}</div>
+                <button
+                  v-if="
+                    message.role === 'user' &&
+                    turn.status === 'completed' &&
+                    capabilities.memory
+                  "
+                  class="remember-message"
+                  @click="beginMemory(message.text, message.message_id)"
+                >
+                  <Plus :size="13" />记住这件事
+                </button>
               </div>
               <div v-if="turn.status !== 'completed'" class="turn-status">
                 {{
@@ -1094,7 +1237,7 @@ onUnmounted(() => {
                   <button class="setting-row link-row" @click="route('memory')">
                     <div>
                       <strong>个人记忆</strong>
-                      <p>查看记忆功能的当前状态。</p>
+                      <p>查看、更正或删除你主动保存的信息。</p>
                     </div>
                     <BookOpen :size="20" />
                   </button>
@@ -1113,17 +1256,137 @@ onUnmounted(() => {
             </div></template
           >
           <template v-if="page === 'memory'"
-            ><small class="eyebrow">WHAT SHE REMEMBERS</small>
-            <h1>个人记忆</h1>
-            <p class="muted">关于你的事，由你掌握。</p>
-            <div class="empty memory-empty">
+            ><div class="memory-heading">
+              <div>
+                <small class="eyebrow">WHAT SHE REMEMBERS</small>
+                <h1>个人记忆</h1>
+                <p class="muted">
+                  只保存你主动选择的内容，并且随时可以更正或删除。
+                </p>
+              </div>
+              <button
+                v-if="capabilities.memory"
+                class="primary"
+                @click="beginMemory()"
+              >
+                <Plus :size="16" />添加一条
+              </button>
+            </div>
+            <div v-if="!capabilities.memory" class="empty memory-empty">
               <Sparkles :size="32" />
               <h2>个人记忆还未启用</h2>
               <p>
                 聊天记录仍会正常保存。<br />记忆服务接入后，你可以在这里查看、纠正或删除保存的个人信息。
               </p>
               <button class="primary" @click="route('chat')">继续聊天</button>
-            </div></template
+            </div>
+            <template v-else>
+              <form
+                v-if="memoryForm"
+                class="memory-form"
+                @submit.prevent="createMemory"
+              >
+                <label for="new-memory">希望她记住什么？</label>
+                <textarea
+                  id="new-memory"
+                  v-model="memoryDraft"
+                  maxlength="2000"
+                  rows="4"
+                  placeholder="例如：我习惯在晚上散步。"
+                ></textarea>
+                <small v-if="memorySource"
+                  >这段内容来自你选择的一条聊天消息。</small
+                >
+                <footer>
+                  <button type="button" @click="cancelMemoryForm">取消</button>
+                  <button
+                    class="primary"
+                    :disabled="memorySaving || !memoryDraft.trim()"
+                  >
+                    {{ memorySaving ? "保存中…" : "保存" }}
+                  </button>
+                </footer>
+              </form>
+              <div v-if="memoryError" class="memory-error" role="alert">
+                {{ memoryError }}
+                <button @click="loadMemories()">刷新</button>
+              </div>
+              <div v-if="memoryLoading && !memories.length" class="empty">
+                <LoaderCircle class="spin" :size="24" />
+                <p>正在读取个人记忆…</p>
+              </div>
+              <div
+                v-else-if="!memories.length && !memoryForm"
+                class="empty memory-empty"
+              >
+                <Sparkles :size="30" />
+                <h2>还没有保存的记忆</h2>
+                <p>你可以手动添加，也可以从一条已完成的聊天消息中保存。</p>
+                <button class="primary" @click="beginMemory()">
+                  添加第一条
+                </button>
+              </div>
+              <div v-else class="memory-list">
+                <article v-for="item in memories" :key="item.memory_id">
+                  <template v-if="memoryEditing === item.memory_id">
+                    <textarea
+                      v-model="memoryDraft"
+                      maxlength="2000"
+                      rows="4"
+                      aria-label="更正记忆内容"
+                    ></textarea>
+                    <footer>
+                      <button
+                        @click="
+                          memoryEditing = undefined;
+                          memoryDraft = '';
+                        "
+                      >
+                        取消
+                      </button>
+                      <button
+                        class="primary"
+                        :disabled="memorySaving || !memoryDraft.trim()"
+                        @click="saveMemory(item)"
+                      >
+                        保存更正
+                      </button>
+                    </footer>
+                  </template>
+                  <template v-else>
+                    <header>
+                      <span>你确认的事实</span>
+                      <time :datetime="item.updated_at">{{
+                        displayTime(item.updated_at)
+                      }}</time>
+                    </header>
+                    <p>{{ item.content }}</p>
+                    <footer>
+                      <button
+                        v-if="item.source"
+                        @click="
+                          route(
+                            'chat',
+                            item.source.conversation_id,
+                            item.source.turn_id,
+                          )
+                        "
+                      >
+                        查看来源
+                      </button>
+                      <span></span>
+                      <button @click="editMemory(item)">
+                        <Pencil :size="14" />更正
+                      </button>
+                      <button @click="memoryDelete = item">
+                        <Trash2 :size="14" />删除
+                      </button>
+                    </footer>
+                  </template>
+                </article>
+                <small class="memory-count">共 {{ memoryTotal }} 条</small>
+              </div>
+            </template></template
           >
         </section>
       </main>
@@ -1153,6 +1416,33 @@ onUnmounted(() => {
             <button @click="resetConfirm = false">取消</button
             ><button class="primary" @click="resetCover">
               <Check :size="16" />恢复默认
+            </button>
+          </footer>
+        </section>
+      </div>
+      <div
+        v-if="memoryDelete"
+        class="modal-shade"
+        @keydown.esc="memoryDelete = undefined"
+      >
+        <section
+          class="modal small-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="memory-delete-title"
+        >
+          <h2 id="memory-delete-title">删除这条个人记忆？</h2>
+          <p class="muted">
+            她之后不会再把这条内容作为个人记忆使用。原始聊天记录仍会保留。
+          </p>
+          <footer>
+            <button @click="memoryDelete = undefined">取消</button>
+            <button
+              class="primary"
+              :disabled="memorySaving"
+              @click="confirmDeleteMemory"
+            >
+              <Trash2 :size="16" />确认删除
             </button>
           </footer>
         </section>

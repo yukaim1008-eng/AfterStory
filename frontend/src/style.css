@@ -295,6 +295,15 @@ small,
   border: 0;
   border-radius: 17px 3px 17px 17px;
 }
+.remember-message {
+  padding: 0 5px;
+  color: var(--muted);
+  font-size: 11px;
+  gap: 4px;
+}
+.remember-message:hover {
+  color: var(--accent);
+}
 .font-small .bubble {
   font-size: 13px;
 }
@@ -703,6 +712,95 @@ select {
 }
 .memory-empty p {
   font-size: 13px;
+}
+.memory-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+}
+.memory-heading h1,
+.memory-heading p {
+  margin-bottom: 0;
+}
+.memory-form,
+.memory-list article {
+  margin-top: 34px;
+  border-top: 1px solid var(--soft);
+  border-bottom: 1px solid var(--soft);
+  padding: 24px 0;
+}
+.memory-form label {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.memory-form textarea,
+.memory-list textarea {
+  display: block;
+  width: 100%;
+  resize: vertical;
+  border: 1px solid var(--soft);
+  border-radius: 12px;
+  padding: 14px 16px;
+  background: var(--background);
+  color: var(--ink);
+  line-height: 1.8;
+}
+.memory-form small {
+  display: block;
+  color: var(--muted);
+  margin-top: 10px;
+}
+.memory-form footer,
+.memory-list article footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+.memory-list {
+  max-width: 720px;
+  margin-top: 34px;
+}
+.memory-list article {
+  margin-top: -1px;
+}
+.memory-list article header {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+.memory-list article > p {
+  margin: 18px 0;
+  font-size: 14px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+}
+.memory-list article footer span {
+  flex: 1;
+}
+.memory-list article footer button {
+  color: var(--muted);
+  font-size: 12px;
+  padding: 0;
+}
+.memory-list article footer button:hover {
+  color: var(--accent);
+}
+.memory-count {
+  display: block;
+  margin-top: 20px;
+  color: var(--muted);
+}
+.memory-error {
+  margin-top: 24px;
+  color: var(--accent);
+  font-size: 12px;
 }
 .selection-page {
   max-width: 1400px;

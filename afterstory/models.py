@@ -1,7 +1,16 @@
 from datetime import datetime
 from uuid import uuid4
 
-from sqlalchemy import DateTime, ForeignKey, Integer, String, Text, UniqueConstraint, func
+from sqlalchemy import (
+    CheckConstraint,
+    DateTime,
+    ForeignKey,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+    func,
+)
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -37,6 +46,8 @@ class CharacterInstance(Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
     user_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
     version_id: Mapped[str] = mapped_column(ForeignKey("character_versions.id"))
+    context_revision: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    history_floor_revision: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
 
 
 class Conversation(Base):
@@ -77,3 +88,33 @@ class Message(Base):
     turn_id: Mapped[str] = mapped_column(ForeignKey("turns.id"), index=True)
     role: Mapped[str] = mapped_column(String(12))
     text: Mapped[str] = mapped_column(Text)
+
+
+class PersonalMemory(Base):
+    __tablename__ = "personal_memories"
+    __table_args__ = (
+        UniqueConstraint("instance_id", "create_request_id"),
+        UniqueConstraint("instance_id", "source_message_id"),
+        CheckConstraint("kind IN ('fact', 'inference')"),
+        CheckConstraint("status IN ('active', 'deleted')"),
+    )
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    create_request_id: Mapped[str] = mapped_column(String(100))
+    original_content_hash: Mapped[str] = mapped_column(String(64))
+    source_message_id: Mapped[str | None] = mapped_column(
+        ForeignKey("messages.id"), nullable=True
+    )
+    kind: Mapped[str] = mapped_column(String(20), default="fact")
+    content: Mapped[str | None] = mapped_column(Text, nullable=True)
+    status: Mapped[str] = mapped_column(String(20), default="active")
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    deleted_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
