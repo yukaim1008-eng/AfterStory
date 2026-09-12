@@ -5,6 +5,7 @@ from sqlalchemy import func, select
 
 from afterstory.domain import DomainError
 from afterstory.models import CharacterInstance, Conversation, Message, PersonalMemory, Turn
+from afterstory.state import StateService
 
 
 class MemoryService:
@@ -163,6 +164,7 @@ class MemoryService:
                 raise DomainError(409, "memory_revision_conflict")
             instance.context_revision += 1
             instance.history_floor_revision = instance.context_revision
+            StateService.invalidate_for_memory_change(session, instance)
             memory.content = content
             memory.revision += 1
             memory.updated_at = datetime.now(timezone.utc)
@@ -181,6 +183,7 @@ class MemoryService:
             now = datetime.now(timezone.utc)
             instance.context_revision += 1
             instance.history_floor_revision = instance.context_revision
+            StateService.invalidate_for_memory_change(session, instance, now)
             memory.content = None
             memory.status = "deleted"
             memory.revision += 1
