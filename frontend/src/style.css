@@ -512,6 +512,29 @@ small,
 .history-row small {
   font-size: 10px;
 }
+.history-version {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+}
+.history-error {
+  padding: 18px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.turn-time {
+  display: block;
+  text-align: center;
+  margin: 16px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.source-turn {
+  border-radius: 12px;
+  outline: 1px solid var(--accent);
+  outline-offset: 8px;
+  scroll-margin: 20px;
+}
 .history-initial {
   height: 44px;
   width: 44px;

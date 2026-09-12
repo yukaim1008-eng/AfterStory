@@ -102,6 +102,18 @@ def create_app(settings=None, provider=None):
     def list_conversations(user=Depends(current_user)):
         return repository.conversations(user)
 
+    @router.get("/history")
+    def conversation_catalog(
+        offset: int = Query(0, ge=0),
+        limit: int = Query(20, ge=1, le=100),
+        user=Depends(current_user),
+    ):
+        return repository.conversation_catalog(user, offset, limit)
+
+    @router.get("/conversations/{conversation_id}")
+    def conversation_info(conversation_id: str, user=Depends(current_user)):
+        return repository.conversation_info(user, conversation_id)
+
     @router.post("/conversations/{conversation_id}/messages")
     def send(conversation_id: str, body: MessageInput, user=Depends(current_user)):
         return service.send(user, conversation_id, body.request_id, body.text)
@@ -111,9 +123,10 @@ def create_app(settings=None, provider=None):
         conversation_id: str,
         offset: int = Query(0, ge=0),
         limit: int = Query(20, ge=1, le=100),
+        around_turn_id: str | None = Query(None, min_length=1, max_length=36),
         user=Depends(current_user),
     ):
-        return repository.history(user, conversation_id, offset, limit)
+        return repository.history(user, conversation_id, offset, limit, around_turn_id)
 
     app.include_router(router)
     app.include_router(router, prefix="/api")

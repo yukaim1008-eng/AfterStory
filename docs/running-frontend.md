@@ -39,7 +39,7 @@ npm run dev
 
 ## 数据与接口
 
-seed 导入原工程 fixtures 和 fixtures/companions.integration.json 的三位联调资料。已导入版本不可覆盖；完善资料时新增 version_id，同步前端 versionId，再导入。旧会话定义保留；正式 Canon 迁移与旧版本 UI 入口后续完善。
+seed 导入原工程 fixtures 和 fixtures/companions.integration.json 的三位联调资料。已导入版本不可覆盖；完善资料时新增 version_id，同步前端 versionId，再导入。历史可继续打开当前角色的旧版本会话，使用原绑定版本；正式 Canon 更新仍未实现。
 
 默认封面来自 data/character-assets/{id}.png，prepare:media 复制到 public/media。缺失时回退官方宣传参考图。自定义封面存当前浏览器 IndexedDB，以后端用户与角色为键；清除站点数据会移除封面和偏好，不会删除数据库聊天。
 
@@ -49,11 +49,13 @@ seed 导入原工程 fixtures 和 fixtures/companions.integration.json 的三位
 | --- | --- |
 | GET /api/health | 健康信息、user_id、capabilities；voice/memory/canon_update 当前 false |
 | POST /api/sessions/open | 输入 version_id，返回 conversation_id、instance_id；当前用户该版本存在则复用，无则创建；用户行锁防并发重复 |
-| GET /api/conversations | 当前用户非空列表：conversation_id、version_id、turns、preview；当前无日期 |
-| GET /api/conversations/{id}/messages | 原历史结构，offset/limit 按轮数，前端每次30轮 |
+| GET /api/conversations | 兼容旧列表调用，返回当前用户非空会话 |
+| GET /api/history | offset/limit 分页，返回 items、total、offset、limit；条目包含角色/实例/版本/剧情节点、预览、轮数和时间 |
+| GET /api/conversations/{id} | 当前用户的单会话元信息，空会话也可读取 |
+| GET /api/conversations/{id}/messages | offset/limit 按轮数；around_turn_id 可定位来源轮次；条目新增 created_at |
 | POST /api/conversations/{id}/messages | request_id、text，返回完整回复；重试复用 ID |
 
-当前会话列表未提供大规模分页，不编造日期。所有会话所属用户由后端检查。
+新会话和轮次保存 UTC 创建时间，列表按最近活动和稳定 ID 排序。迁移前的记录保留未知时间，页面不编造日期。跨用户或不属于本会话的来源轮次返回404；所有会话所属用户由后端检查。
 
 ## 验证
 

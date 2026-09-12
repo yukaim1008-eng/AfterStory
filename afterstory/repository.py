@@ -91,37 +91,69 @@ class Repository:
             return dict(conversation_id=conversation.id, instance_id=conversation.instance_id)
 
     def conversations(self, user):
+        # Compatibility endpoint. New clients use paginated conversation_catalog.
+        return self.conversation_catalog(user, 0, None)["items"]
+
+    def conversation_catalog(self, user, offset=0, limit=20, conversation_id=None):
         with self.sessions() as session:
-            rows = session.execute(
-                select(Conversation, CharacterInstance)
-                .join(CharacterInstance)
+            activity = (
+                select(
+                    Turn.conversation_id.label("conversation_id"),
+                    func.count().label("turns"),
+                    func.max(func.coalesce(Turn.updated_at, Turn.created_at)).label(
+                        "last_activity_at"
+                    ),
+                )
+                .group_by(Turn.conversation_id)
+                .subquery()
+            )
+            preview = (
+                select(Message.text)
+                .join(Turn)
+                .where(Turn.conversation_id == Conversation.id)
+                .order_by(Turn.sequence.desc(), Message.role)
+                .limit(1)
+                .correlate(Conversation)
+                .scalar_subquery()
+            )
+            last_activity = func.coalesce(activity.c.last_activity_at, Conversation.created_at)
+            query = (
+                select(
+                    Conversation.id.label("conversation_id"),
+                    Conversation.instance_id,
+                    CharacterVersion.character_id,
+                    Character.name,
+                    CharacterInstance.version_id,
+                    CharacterVersion.checkpoint,
+                    Conversation.created_at,
+                    last_activity.label("last_activity_at"),
+                    func.coalesce(activity.c.turns, 0).label("turns"),
+                    preview.label("preview"),
+                )
+                .join(CharacterInstance, CharacterInstance.id == Conversation.instance_id)
+                .join(CharacterVersion, CharacterVersion.id == CharacterInstance.version_id)
+                .join(Character, Character.id == CharacterVersion.character_id)
+                .outerjoin(activity, activity.c.conversation_id == Conversation.id)
                 .where(CharacterInstance.user_id == user)
-                .order_by(Conversation.id)
-            ).all()
-            result = []
-            for conversation, instance in rows:
-                latest = session.scalar(
-                    select(Message)
-                    .join(Turn)
-                    .where(Turn.conversation_id == conversation.id)
-                    .order_by(Turn.sequence.desc(), Message.role)
-                    .limit(1)
-                )
-                count = session.scalar(
-                    select(func.count())
-                    .select_from(Turn)
-                    .where(Turn.conversation_id == conversation.id)
-                )
-                if count:
-                    result.append(
-                        dict(
-                            conversation_id=conversation.id,
-                            version_id=instance.version_id,
-                            turns=count,
-                            preview=latest.text[:160] if latest else "",
-                        )
-                    )
-            return result
+            )
+            if conversation_id is not None:
+                query = query.where(Conversation.id == conversation_id)
+            else:
+                query = query.where(activity.c.turns > 0)
+            total = session.scalar(select(func.count()).select_from(query.subquery()))
+            rows = session.execute(
+                query.order_by(last_activity.desc().nulls_last(), Conversation.id)
+                .offset(offset)
+                .limit(limit)
+            ).mappings()
+            items = [dict(row, preview=(row["preview"] or "")[:160]) for row in rows]
+            return dict(items=items, total=total, offset=offset, limit=limit)
+
+    def conversation_info(self, user, conversation_id):
+        result = self.conversation_catalog(user, conversation_id=conversation_id)
+        if not result["items"]:
+            raise DomainError(404, "conversation_not_found")
+        return result["items"][0]
 
     def create_conversation(self, user, instance_id):
         with self.sessions.begin() as session:
@@ -183,6 +215,7 @@ class Repository:
                 session.flush()
                 session.add(Message(turn_id=turn.id, role="user", text=text))
             turn.status = "processing"
+            turn.updated_at = now
             turn.attempt = attempt
             turn.error_code = None
             turn.lease_until = now + timedelta(seconds=self.lease_seconds)
@@ -212,18 +245,25 @@ class Repository:
             ):
                 raise DomainError(409, "turn_attempt_superseded")
             if error:
+                turn.updated_at = datetime.now(timezone.utc)
                 turn.status = "failed"
                 turn.error_code = error
                 return None
             message = Message(turn_id=turn.id, role="assistant", text=text)
+            turn.updated_at = datetime.now(timezone.utc)
             session.add(message)
             turn.status = "completed"
             session.flush()
             return CharacterResponse(message.id, turn.id, message.text)
 
-    def history(self, user, conversation_id, offset, limit):
+    def history(self, user, conversation_id, offset, limit, around_turn_id=None):
         with self.sessions() as session:
             self.owned_conversation(session, user, conversation_id)
+            if around_turn_id:
+                source = session.get(Turn, around_turn_id)
+                if not source or source.conversation_id != conversation_id:
+                    raise DomainError(404, "turn_not_found")
+                offset = max(0, source.sequence - 1 - limit // 2)
             total = session.scalar(
                 select(func.count())
                 .select_from(Turn)
@@ -256,6 +296,7 @@ class Repository:
                         sequence=t.sequence,
                         status=t.status,
                         error_code=t.error_code,
+                        created_at=t.created_at,
                         messages=[
                             dict(message_id=m.id, role=m.role, text=m.text)
                             for m in messages

@@ -25,7 +25,14 @@ import {
 } from "lucide-vue-next";
 import { api, errorText } from "./api";
 import { coverStorage } from "./storage";
-import type { Character, Cover, History, Session, Turn } from "./types";
+import type {
+  Character,
+  Cover,
+  History,
+  Session,
+  SessionPage,
+  Turn,
+} from "./types";
 import Portrait from "./Portrait.vue";
 import CoverEditor from "./CoverEditor.vue";
 
@@ -45,6 +52,11 @@ const covers = reactive<Record<string, Cover>>({});
 const sessions = ref<Session[]>([]);
 const historyLoading = ref(false);
 const historyError = ref("");
+const historyTotal = ref(0);
+const historyOffset = ref(0);
+const historyAppendFailed = ref(false);
+let historyRequest = 0;
+const targetTurn = ref("");
 const scrollArea = ref<HTMLElement>();
 const preferences = reactive({
   font: "standard",
@@ -54,6 +66,7 @@ const preferences = reactive({
 });
 type Chat = {
   id: string;
+  session?: Session;
   turns: Turn[];
   total: number;
   offset: number;
@@ -61,15 +74,30 @@ type Chat = {
   loading: boolean;
   sending: boolean;
   error: string;
+  revision: number;
   pending?: { request_id: string; text: string };
 };
 const chats = reactive<Record<string, Chat>>({});
+const conversations = reactive<Record<string, Chat>>({});
+const opening: Record<string, number> = {};
 const character = computed(
   () =>
     characters.value.find((c) => c.id === selected.value) ||
     characters.value[0],
 );
 const chat = computed(() => chats[selected.value]);
+const legacyVersion = computed(
+  () =>
+    !!chat.value?.session &&
+    chat.value.session.version_id !== character.value?.versionId,
+);
+function displayTime(value: string | null | undefined) {
+  if (!value || Number.isNaN(Date.parse(value))) return "未记录时间";
+  return new Intl.DateTimeFormat("zh-CN", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(new Date(value));
+}
 const theme = computed(() =>
   Object.fromEntries(
     Object.entries(character.value?.theme || {}).map(([key, value]) => [
@@ -95,20 +123,31 @@ function read<T>(name: string, fallback: T): T {
     return fallback;
   }
 }
-function saveChat(id: string) {
-  const state = chats[id];
-  if (state)
-    store(`draft:${id}`, {
+function saveChat(id: string, state = chats[id]) {
+  if (state) {
+    const saved = {
       id: state.id,
+      session: state.session,
       draft: state.draft,
       pending: state.pending,
-    });
+    };
+    if (state.id) store(`conversation:${state.id}`, saved);
+    if (chats[id] === state) store(`draft:${id}`, saved);
+  }
 }
-function route(next: string) {
-  location.hash = `/${next}/${selected.value}`;
+function route(next: string, conversationId?: string, turnId?: string) {
+  const params = new URLSearchParams();
+  if (next === "chat" && (conversationId || chat.value?.id))
+    params.set("conversation", conversationId || chat.value!.id);
+  if (next === "chat" && turnId) params.set("turn", turnId);
+  const hash = `#/${next}/${selected.value}${params.size ? `?${params}` : ""}`;
+  if (location.hash === hash) routeChanged();
+  else location.hash = hash;
 }
 function routeChanged() {
-  const [, next, id] = location.hash.split("/");
+  const [path, query] = location.hash.split("?");
+  const [, next, id] = (path || "").split("/");
+  const params = new URLSearchParams(query);
   page.value = [
     "chat",
     "characters",
@@ -120,7 +159,13 @@ function routeChanged() {
     ? next!
     : "chat";
   if (characters.value.some((c) => c.id === id)) selected.value = id!;
-  if (connected.value && page.value === "chat") void openChat(selected.value);
+  targetTurn.value = page.value === "chat" ? params.get("turn") || "" : "";
+  if (connected.value && ["chat", "profile", "memory"].includes(page.value))
+    void openChat(
+      selected.value,
+      params.get("conversation") || undefined,
+      targetTurn.value || undefined,
+    );
   if (connected.value && page.value === "history") void loadSessions();
 }
 function choose(c: Character) {
@@ -141,6 +186,7 @@ async function connect() {
         id?: string;
         draft: string;
         pending?: Chat["pending"];
+        session?: Session;
       }>(`draft:${c.id}`, { draft: "" });
       chats[c.id] = {
         id: saved.id || "",
@@ -149,10 +195,13 @@ async function connect() {
         offset: 0,
         draft: saved.draft,
         pending: saved.pending,
+        session: saved.session,
         loading: false,
         sending: false,
         error: "",
+        revision: 0,
       };
+      if (saved.id) conversations[saved.id] = chats[c.id]!;
       try {
         const savedCover = await coverStorage(key(`cover:${c.id}`));
         if (savedCover) covers[c.id] = savedCover;
@@ -169,19 +218,29 @@ async function connect() {
     busy.value = false;
   }
 }
-async function refresh(id: string, older = false) {
-  const state = chats[id]!;
+async function refresh(
+  id: string,
+  older = false,
+  state = chats[id]!,
+  aroundTurnId?: string,
+) {
   if (!state.id) return;
+  const revision = ++state.revision;
+  const conversationId = state.id;
   let offset = older ? Math.max(0, state.offset - 30) : 0;
-  if (!older) {
+  if (!older && !aroundTurnId) {
     const count = await api<History>(
-      `/conversations/${state.id}/messages?limit=1`,
+      `/conversations/${encodeURIComponent(conversationId)}/messages?limit=1`,
     );
+    if (revision !== state.revision) return;
     offset = Math.max(0, count.total - 30);
   }
+  const params = new URLSearchParams({ offset: String(offset), limit: "30" });
+  if (aroundTurnId) params.set("around_turn_id", aroundTurnId);
   const result = await api<History>(
-    `/conversations/${state.id}/messages?offset=${offset}&limit=30`,
+    `/conversations/${encodeURIComponent(conversationId)}/messages?${params}`,
   );
+  if (revision !== state.revision || conversationId !== state.id) return;
   state.turns = older
     ? [
         ...result.turns.filter(
@@ -191,7 +250,7 @@ async function refresh(id: string, older = false) {
       ]
     : result.turns;
   state.total = result.total;
-  state.offset = offset;
+  state.offset = result.offset;
   if (
     state.pending &&
     state.turns.some(
@@ -200,35 +259,79 @@ async function refresh(id: string, older = false) {
     )
   ) {
     state.pending = undefined;
-    saveChat(id);
+    saveChat(id, state);
   }
   if (state.pending && !state.sending)
     state.error = "有一条尚未完成的消息，点击重试继续发送。";
   if (!older) {
     await nextTick();
-    if (id === selected.value)
-      scrollArea.value?.scrollTo({ top: scrollArea.value.scrollHeight });
+    if (id === selected.value && chats[id] === state && page.value === "chat") {
+      if (aroundTurnId) {
+        document
+          .getElementById(`turn-${aroundTurnId}`)
+          ?.scrollIntoView({ block: "center" });
+      } else scrollArea.value?.scrollTo({ top: scrollArea.value.scrollHeight });
+    }
   }
 }
-async function openChat(id: string, conversationId?: string) {
-  const state = chats[id];
+async function openChat(
+  id: string,
+  conversationId?: string,
+  aroundTurnId?: string,
+) {
+  let state = chats[id];
   const c = characters.value.find((item) => item.id === id);
-  if (!state || !c || state.loading || state.sending) return;
+  if (!state || !c) return;
+  if (conversationId && conversationId !== state.id) {
+    saveChat(id, state);
+    const saved = read<Partial<Chat>>(`conversation:${conversationId}`, {});
+    state =
+      conversations[conversationId] ||
+      reactive<Chat>({
+        id: conversationId,
+        session: saved.session,
+        draft: saved.id === conversationId ? saved.draft || "" : "",
+        pending: saved.id === conversationId ? saved.pending : undefined,
+        turns: [],
+        total: 0,
+        offset: 0,
+        loading: false,
+        sending: false,
+        error: "",
+        revision: 0,
+      });
+    conversations[conversationId] = state;
+    chats[id] = state;
+  }
+  const request = (opening[id] || 0) + 1;
+  opening[id] = request;
+  if (state.sending) return;
   state.loading = true;
   state.error = "";
+  state.session = undefined;
   try {
-    if (conversationId) state.id = conversationId;
-    else if (!state.id)
+    if (!state.id)
       state.id = (
         await api<{ conversation_id: string }>("/sessions/open", {
           version_id: c.versionId,
         })
       ).conversation_id;
-    await refresh(id);
+    if (opening[id] !== request || chats[id] !== state) return;
+    const session = await api<Session>(
+      `/conversations/${encodeURIComponent(state.id)}`,
+    );
+    if (opening[id] !== request || chats[id] !== state) return;
+    if (session.character_id !== id || session.conversation_id !== state.id)
+      throw new Error("conversation_identity_mismatch");
+    state.session = session;
+    conversations[state.id] = state;
+    saveChat(id, state);
+    await refresh(id, false, state, aroundTurnId);
   } catch (error) {
-    state.error = errorText(error);
+    if (opening[id] === request && chats[id] === state)
+      state.error = errorText(error);
   } finally {
-    state.loading = false;
+    if (opening[id] === request) state.loading = false;
   }
 }
 async function send(retry?: { request_id: string; text: string }) {
@@ -239,6 +342,7 @@ async function send(retry?: { request_id: string; text: string }) {
     state.sending ||
     state.loading ||
     !state.id ||
+    !state.session ||
     (!retry && (!state.draft.trim() || state.pending))
   )
     return;
@@ -248,24 +352,41 @@ async function send(retry?: { request_id: string; text: string }) {
   };
   state.pending = pending;
   if (!retry) state.draft = "";
-  saveChat(id);
+  saveChat(id, state);
   state.sending = true;
   state.error = "";
   try {
-    await api(`/conversations/${state.id}/messages`, pending);
+    await api(
+      `/conversations/${encodeURIComponent(state.id)}/messages`,
+      pending,
+    );
     state.pending = undefined;
-    saveChat(id);
-    await refresh(id);
+    saveChat(id, state);
+    await refresh(id, false, state);
   } catch (error) {
     state.error = errorText(error);
     try {
-      await refresh(id);
+      await refresh(id, false, state);
     } catch {
       /* Keep the durable outbox when offline. */
     }
   } finally {
     state.sending = false;
   }
+}
+async function retryChat() {
+  const id = selected.value;
+  const state = chats[id];
+  if (!state || state.sending || state.loading) return;
+  if (!state.session) {
+    const pending = state.pending;
+    await openChat(id, state.id || undefined, targetTurn.value || undefined);
+    if (chats[id] === state && state.session && pending === state.pending)
+      await send(pending);
+    return;
+  }
+  if (state.pending) await send(state.pending);
+  else await openChat(id, state.id || undefined, targetTurn.value || undefined);
 }
 function inputKey(event: KeyboardEvent) {
   if (event.isComposing || event.keyCode === 229) return;
@@ -293,34 +414,49 @@ async function loadOlder() {
   if (!state || state.loading) return;
   state.loading = true;
   try {
-    await refresh(selected.value, true);
+    await refresh(selected.value, true, state);
   } catch (error) {
     state.error = errorText(error);
   } finally {
     state.loading = false;
   }
 }
-async function loadSessions() {
+async function loadSessions(append = false) {
+  if (append && historyLoading.value) return;
+  const request = ++historyRequest;
   historyLoading.value = true;
   historyError.value = "";
+  historyAppendFailed.value = append;
   try {
-    sessions.value = await api<Session[]>("/conversations");
+    const result = await api<SessionPage>(
+      `/history?offset=${append ? historyOffset.value : 0}&limit=20`,
+    );
+    if (request !== historyRequest) return;
+    sessions.value = append
+      ? [
+          ...sessions.value,
+          ...result.items.filter(
+            (item) =>
+              !sessions.value.some(
+                (existing) => existing.conversation_id === item.conversation_id,
+              ),
+          ),
+        ]
+      : result.items;
+    historyTotal.value = result.total;
+    historyOffset.value = result.offset + result.items.length;
   } catch (error) {
-    historyError.value = errorText(error);
+    if (request === historyRequest) historyError.value = errorText(error);
   } finally {
-    historyLoading.value = false;
+    if (request === historyRequest) historyLoading.value = false;
   }
 }
-async function resume(item: Session) {
-  const c = characters.value.find((c) => c.versionId === item.version_id);
+function resume(item: Session, turnId?: string) {
+  const c = characters.value.find((c) => c.id === item.character_id);
   if (!c) return;
-  if (chats[c.id]?.pending && chats[c.id]?.id !== item.conversation_id) {
-    notice.value = "请先回到当前聊天，处理尚未完成的消息。";
-    return;
-  }
   selected.value = c.id;
-  await openChat(c.id, item.conversation_id);
-  route("chat");
+  store("selected", c.id);
+  route("chat", item.conversation_id, turnId);
 }
 async function saveCover(value: Cover) {
   const id = selected.value;
@@ -535,7 +671,13 @@ onUnmounted(() => {
                 >{{ connected ? "文字交流已连接" : "等待连接" }}</span
               >
             </div>
-            <span class="data-badge">{{ character.dataStatus }}</span>
+            <span class="data-badge" :title="chat?.session?.checkpoint">
+              {{
+                chat?.session
+                  ? `${legacyVersion ? "历史版本 · " : ""}${chat.session.version_id}`
+                  : character.dataStatus
+              }}
+            </span>
           </header>
           <div
             ref="scrollArea"
@@ -567,7 +709,19 @@ onUnmounted(() => {
                 >当前使用联调角色资料，正式性格与剧情将逐步补全。</span
               >
             </div>
-            <div v-for="turn in chat?.turns" :key="turn.turn_id" class="turn">
+            <div
+              v-for="turn in chat?.turns"
+              :id="`turn-${turn.turn_id}`"
+              :key="turn.turn_id"
+              class="turn"
+              :class="{ 'source-turn': targetTurn === turn.turn_id }"
+              :data-turn-id="turn.turn_id"
+            >
+              <time
+                class="turn-time"
+                :datetime="turn.created_at || undefined"
+                >{{ displayTime(turn.created_at) }}</time
+              >
               <div
                 v-for="message in turn.messages"
                 :key="message.message_id"
@@ -605,6 +759,16 @@ onUnmounted(() => {
                 </button>
               </div>
             </div>
+            <button
+              v-if="
+                chat?.turns.length && chat.turns.at(-1)!.sequence < chat.total
+              "
+              class="load-older"
+              :disabled="chat.loading"
+              @click="route('chat')"
+            >
+              返回最新对话
+            </button>
             <div
               v-if="
                 chat?.pending &&
@@ -627,7 +791,7 @@ onUnmounted(() => {
               }}<button
                 type="button"
                 :disabled="chat.sending"
-                @click="chat.pending ? send(chat.pending) : openChat(selected)"
+                @click="retryChat"
               >
                 重试
               </button>
@@ -663,6 +827,7 @@ onUnmounted(() => {
                 :disabled="
                   !connected ||
                   !chat?.id ||
+                  !chat?.session ||
                   chat.sending ||
                   chat.loading ||
                   !chat.draft.trim() ||
@@ -704,15 +869,30 @@ onUnmounted(() => {
             </p>
             <section class="prose">
               <h2>关于她</h2>
-              <p>{{ character.description }}</p>
+              <p v-if="!legacyVersion">{{ character.description }}</p>
+              <p v-else>
+                这段历史会话继续使用创建时绑定的角色版本。当前封面与主题来自已安装的角色资料。
+              </p>
               <p class="muted">
                 当前资料用于验证交流流程，不代表完整正式角色设定。后续资料会以独立版本补全。
               </p>
             </section>
             <div class="metadata-row">
               <strong>剧情进度</strong
-              ><span>{{ character.checkpointLabel }}</span
+              ><span>{{
+                chat?.session?.checkpoint || character.checkpointLabel
+              }}</span
               ><button disabled title="剧情更新接口尚未实现">查看更新</button>
+            </div>
+            <div v-if="chat?.session" class="metadata-row">
+              <strong>会话版本</strong
+              ><span>{{ chat.session.version_id }}</span>
+            </div>
+            <div v-if="chat?.session" class="metadata-row">
+              <strong>开始时间</strong
+              ><time :datetime="chat.session.created_at || undefined">{{
+                displayTime(chat.session.created_at)
+              }}</time>
             </div></template
           >
           <template v-if="page === 'history'"
@@ -720,43 +900,73 @@ onUnmounted(() => {
             <h1>聊过的那些事</h1>
             <p class="muted">从一句话，回到熟悉的交流。</p>
             <div class="filter-row">
-              <button class="active" @click="loadSessions">全部角色</button
-              ><span>{{ sessions.length }} 段对话</span>
+              <button
+                class="active"
+                :disabled="historyLoading"
+                @click="loadSessions()"
+              >
+                全部角色</button
+              ><span>{{ historyTotal }} 段对话</span>
             </div>
-            <div v-if="historyLoading" class="empty">正在读取对话…</div>
-            <div v-else-if="historyError" class="empty error">
-              {{ historyError }}<button @click="loadSessions">重新加载</button>
+            <div v-if="historyLoading && !sessions.length" class="empty">
+              正在读取对话…
             </div>
-            <div v-else-if="!sessions.length" class="empty">
+            <div v-if="historyError" class="history-error" role="alert">
+              {{ historyError
+              }}<button
+                :disabled="historyLoading"
+                @click="loadSessions(historyAppendFailed)"
+              >
+                重新加载
+              </button>
+            </div>
+            <div
+              v-if="!historyLoading && !historyError && !sessions.length"
+              class="empty"
+            >
               <MessageCircle :size="30" />
               <h2>这里会留住你们的对话</h2>
               <p>发送第一条消息后，再回来看看。</p>
             </div>
             <button
               v-for="item in sessions"
-              v-else
               :key="item.conversation_id"
               class="history-row"
-              :disabled="
-                !characters.some((c) => c.versionId === item.version_id)
-              "
+              :disabled="!characters.some((c) => c.id === item.character_id)"
               @click="resume(item)"
             >
               <span class="history-initial">{{
                 characters
-                  .find((c) => c.versionId === item.version_id)
+                  .find((c) => c.id === item.character_id)
                   ?.name.slice(0, 1) || "旧"
               }}</span>
               <div>
                 <strong>{{
-                  characters.find((c) => c.versionId === item.version_id)
-                    ?.name || "旧版测试角色"
+                  characters.find((c) => c.id === item.character_id)?.name ||
+                  item.name
                 }}</strong>
-                <p>{{ item.preview }}</p>
-                <small>{{ item.turns }} 轮对话</small>
+                <p>{{ item.preview || "还没有消息" }}</p>
+                <small
+                  >{{ item.turns }} 轮对话 ·
+                  <time :datetime="item.last_activity_at || undefined">{{
+                    displayTime(item.last_activity_at)
+                  }}</time></small
+                >
+                <small class="history-version"
+                  >{{ item.version_id }} · {{ item.checkpoint }}</small
+                >
               </div>
-              <MessageCircle :size="17" /></button
-          ></template>
+              <MessageCircle :size="17" />
+            </button>
+            <button
+              v-if="historyOffset < historyTotal"
+              class="load-older"
+              :disabled="historyLoading"
+              @click="loadSessions(true)"
+            >
+              {{ historyLoading ? "正在读取…" : "加载更多对话" }}
+            </button>
+          </template>
           <template v-if="page === 'settings'"
             ><small class="eyebrow">MAKE YOURSELF AT HOME</small>
             <h1>按你的习惯来</h1>

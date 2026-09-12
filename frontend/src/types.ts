@@ -21,12 +21,25 @@ export type Turn = {
   sequence: number;
   status: string;
   error_code: string | null;
+  created_at: string | null;
   messages: { message_id: string; role: string; text: string }[];
 };
 export type History = { total: number; offset: number; turns: Turn[] };
 export type Session = {
   conversation_id: string;
+  instance_id: string;
+  character_id: string;
+  name: string;
   version_id: string;
+  checkpoint: string;
+  created_at: string | null;
+  last_activity_at: string | null;
   preview: string;
   turns: number;
+};
+export type SessionPage = {
+  items: Session[];
+  total: number;
+  offset: number;
+  limit: number;
 };
