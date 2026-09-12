@@ -60,7 +60,7 @@ Python 后端在本机运行，PostgreSQL 通过 Docker Compose 启动；依赖�
 
 官方接口已核实：`https://api.deepseek.com`，模型标识 `deepseek-v4-flash`，使用兼容的 Chat Completions 接口。来源：[DeepSeek 首次调用文档](https://api-docs.deepseek.com/)，核实日期 2026-09-10。密钥在本地 `.env` 配置，不写入仓库或聊天。
 
-环境与验证：Python 3.13.9、uv 0.11.20、Docker Engine 29.5.2 可用；PostgreSQL 容器已健康运行，迁移与角色导入通过。12 项自动测试、Ruff、Alembic 一致性检查通过；fake Provider 实际进程 smoke 完成两个角色共八轮对话及重启恢复。真实 DeepSeek 调用待本地配置密钥，详见 [运行说明](../running-m1.md)。
+M1 交付时的环境与验证记录：Python 3.13.9、uv 0.11.20、Docker Engine 29.5.2；PostgreSQL 启动、迁移与导入通过。彼时 12 项自动测试、Ruff、Alembic 检查通过；fake Provider 进程 smoke 完成两个角色共八轮对话及重启恢复。后续 F1 已完成真实 DeepSeek 浏览器回复与刷新恢复，最新验证记录见 [当前状态](../current-status.md)。这些是历史验证结果，不表示服务持续运行。
 
 ## 实现细节与当前限制
 
