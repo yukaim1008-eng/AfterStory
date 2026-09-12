@@ -1,4 +1,8 @@
+import logging
+import re
 from contextlib import asynccontextmanager
+from time import perf_counter
+from uuid import uuid4
 
 from fastapi import APIRouter, Depends, FastAPI, Query, Request
 from fastapi.responses import JSONResponse
@@ -15,6 +19,9 @@ from afterstory.domain import DomainError
 from afterstory.memory import MemoryService
 from afterstory.providers import ChatCompletionsProvider, FakeProvider
 from afterstory.repository import Repository
+
+http_log = logging.getLogger("afterstory.http")
+request_id_pattern = re.compile(r"[A-Za-z0-9._-]{1,64}")
 
 
 class Input(BaseModel):
@@ -82,12 +89,46 @@ def create_app(settings=None, provider=None):
     app.state.repository = repository
     router = APIRouter()
 
+    @app.middleware("http")
+    async def correlate_request(request, call_next):
+        supplied = request.headers.get("x-request-id", "")
+        request_id = supplied if request_id_pattern.fullmatch(supplied) else str(uuid4())
+        request.state.request_id = request_id
+        started = perf_counter()
+        status = 500
+        try:
+            response = await call_next(request)
+            status = response.status_code
+            response.headers["X-Request-ID"] = request_id
+            return response
+        finally:
+            route = request.scope.get("route")
+            route_path = getattr(route, "path", "unmatched")
+            http_log.info(
+                "request_complete request_id=%s method=%s path=%s status=%s duration_ms=%s",
+                request_id,
+                request.method,
+                route_path,
+                status,
+                round((perf_counter() - started) * 1000),
+            )
+
     @app.exception_handler(DomainError)
     async def domain_error(request, exc):
+        http_log.info(
+            "request_domain_error request_id=%s status=%s error=%s",
+            request.state.request_id,
+            exc.status,
+            exc.code,
+        )
         return JSONResponse(status_code=exc.status, content={"error": exc.code})
 
     @app.exception_handler(SQLAlchemyError)
     async def database_error(request, exc):
+        http_log.warning(
+            "request_database_error request_id=%s error=database_unavailable",
+            request.state.request_id,
+        )
         return JSONResponse(status_code=503, content={"error": "database_unavailable"})
 
     @router.get("/health")

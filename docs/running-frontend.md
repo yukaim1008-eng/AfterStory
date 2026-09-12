@@ -1,6 +1,6 @@
 # 运行 F1 前端与文字链路
 
-当前为本地联调版：页面与真实文字链路可测试；长期记忆、语音、剧情更新及正式角色资料仍未完成。
+当前为本地联调版：页面、真实文字链路和用户主动管理的个人记忆可测试；自动记忆/状态策略、语音、剧情更新及正式角色资料仍未完成。
 
 ## 启动（PowerShell）
 
@@ -33,7 +33,7 @@ npm run dev
 2. 悬停角色只展开，点击切换主题；三位分别聊天，检查隔离。
 3. 历史恢复对话，设置调整字体、快捷键。
 4. 更换封面，分别调两处位置，检查取消/保存/刷新/恢复默认。
-5. 声音、记忆与剧情信息明确显示尚未启用或待补全。
+5. 从成功的用户消息选择“记住这件事”，检查保存、更正、来源跳转和删除；声音与剧情信息仍明确显示尚未启用或待补全。
 
 失败消息可复用请求 ID 重试，也可取回输入框修改后重新发送。模型配置见 [M1](running-m1.md)。健康检查只验证服务与数据库，不保证模型可用。
 
@@ -47,13 +47,15 @@ seed 导入原工程 fixtures 和 fixtures/companions.integration.json 的三位
 
 | 接口 | 契约 |
 | --- | --- |
-| GET /api/health | 健康信息、user_id、capabilities；voice/memory/canon_update 当前 false |
+| GET /api/health | 健康信息、user_id、capabilities；memory 表示手动管理可用，memory_extraction/voice/canon_update 为 false |
 | POST /api/sessions/open | 输入 version_id，返回 conversation_id、instance_id；当前用户该版本存在则复用，无则创建；用户行锁防并发重复 |
 | GET /api/conversations | 兼容旧列表调用，返回当前用户非空会话 |
 | GET /api/history | offset/limit 分页，返回 items、total、offset、limit；条目包含角色/实例/版本/剧情节点、预览、轮数和时间 |
 | GET /api/conversations/{id} | 当前用户的单会话元信息，空会话也可读取 |
 | GET /api/conversations/{id}/messages | offset/limit 按轮数；around_turn_id 可定位来源轮次；条目新增 created_at |
 | POST /api/conversations/{id}/messages | request_id、text，返回完整回复；重试复用 ID |
+| GET/POST /api/instances/{id}/memories | 分页读取或主动新增当前角色实例的个人记忆；新增使用 request_id，可选成功用户消息来源 |
+| PATCH/DELETE /api/memories/{id} | 使用 expected_revision 更正或删除；删除不改变原始聊天 |
 
 新会话和轮次保存 UTC 创建时间，列表按最近活动和稳定 ID 排序。迁移前的记录保留未知时间，页面不编造日期。跨用户或不属于本会话的来源轮次返回404；所有会话所属用户由后端检查。
 
@@ -67,6 +69,8 @@ npm run build
 npx playwright install chromium
 npm run test:e2e
 ```
+
+仓库根目录也可运行 `powershell -ExecutionPolicy Bypass -File scripts/verify.ps1`。该脚本使用 fake Provider，不产生模型费用，并按“只停止自己启动的服务”规则清理 PostgreSQL。
 
 自动浏览器测试模拟 API；后端测试使用独立临时 schema，不清空用户数据库。
 

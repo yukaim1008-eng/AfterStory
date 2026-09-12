@@ -1,6 +1,6 @@
 # 运行 M1 后端
 
-本阶段提供本机文字 API，保留两个原创工程测试角色。F1 已补充三位联调角色与可运行前端，见 [前端运行说明](running-frontend.md)。长期记忆、关系变化和语音尚未实现。接口契约可在服务启动后的 `/docs` 查看。
+本阶段提供本机文字 API，保留两个原创工程测试角色。F1 已补充三位联调角色与可运行前端，F2 已补充个人记忆、受限上下文与内部状态存储边界，见 [前端运行说明](running-frontend.md)。自动记忆/状态策略和语音尚未实现。接口契约可在服务启动后的 `/docs` 查看。
 
 ## 安装与启动（仓库根目录，PowerShell）
 
@@ -54,7 +54,7 @@ M1 对 DeepSeek 默认关闭 thinking；其他 Chat Completions 兼容模型组�
 
 每个会话同时只处理一轮，冲突返回 409 `conversation_busy`。超过 `TURN_LEASE_SECONDS` 的遗留处理状态由下次发送请求恢复；旧调用不能覆盖新的重试结果。真实供应商超时后重试可能重复计费，本地不会重复提交成功消息。
 
-默认上下文包含最近 12 个成功轮次、角色定义和当前消息。每条输入最多 8000 字符，输出上限由 `DEEPSEEK_MAX_TOKENS` 设置。M1 只保留当前会话历史，不冒充跨会话长期记忆。
+默认上下文包含角色定义、当前实例最多 20 条/6000 字符的有效个人记忆、可选内部状态、当前会话最近 12 个成功轮次和当前消息。`HISTORY_TURNS`、`MEMORY_CONTEXT_ITEMS`、`MEMORY_CONTEXT_CHARS` 可调整容量。每条输入最多 8000 字符，输出上限由 `DEEPSEEK_MAX_TOKENS` 设置。个人记忆由用户主动保存，不自动从聊天提取。
 
 用户身份由服务端 `DEV_USER_ID` 提供，请求不能指定 `user_id`。更改本地用户配置后需再次运行 seed；M1 仅本机开发使用，正式登录与共享部署属于后续设计。
 
@@ -64,10 +64,13 @@ M1 对 DeepSeek 默认关闭 thinking；其他 Chat Completions 兼容模型组�
 .venv\Scripts\pytest -q
 .venv\Scripts\ruff check .
 .venv\Scripts\alembic check
+.venv\Scripts\python -m scripts.doctor
 .venv\Scripts\python -m scripts.smoke --profile fake
 # 配置真实密钥后：该命令进行八次模型调用，使用工程测试对话
 .venv\Scripts\python -m scripts.smoke --profile deepseek
 ```
+
+也可执行 `powershell -ExecutionPolicy Bypass -File scripts/verify.ps1` 完成迁移、脱敏诊断、后端测试、前端构建和浏览器测试。脚本固定使用 fake Provider；若 PostgreSQL 原本未运行，结束或失败时会停止自己启动的容器，原本已运行则不会关闭。
 
 pytest 在 PostgreSQL 中创建随机 `test_...` schema，迁移后测试并删除该 schema，不清空现有业务表。可用 `TEST_DATABASE_URL` 指定独立测试库，测试账号需要创建 schema 的权限。
 
