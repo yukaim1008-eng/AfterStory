@@ -11,6 +11,7 @@ from afterstory.models import (
     Conversation,
     Message,
     Turn,
+    User,
 )
 
 
@@ -53,6 +54,74 @@ class Repository:
             session.add(instance)
             session.flush()
             return dict(instance_id=instance.id, version_id=instance.version_id)
+
+    def open_session(self, user, version_id):
+        with self.sessions.begin() as session:
+            if not session.scalar(select(User).where(User.id == user).with_for_update()):
+                raise DomainError(404, "user_not_found")
+            if not session.get(CharacterVersion, version_id):
+                raise DomainError(404, "character_version_not_found")
+            conversation = session.scalar(
+                select(Conversation)
+                .join(CharacterInstance)
+                .where(
+                    CharacterInstance.user_id == user,
+                    CharacterInstance.version_id == version_id,
+                )
+                .order_by(Conversation.id)
+                .limit(1)
+            )
+            if not conversation:
+                instance = session.scalar(
+                    select(CharacterInstance)
+                    .where(
+                        CharacterInstance.user_id == user,
+                        CharacterInstance.version_id == version_id,
+                    )
+                    .order_by(CharacterInstance.id)
+                    .limit(1)
+                )
+                if not instance:
+                    instance = CharacterInstance(user_id=user, version_id=version_id)
+                    session.add(instance)
+                    session.flush()
+                conversation = Conversation(instance_id=instance.id)
+                session.add(conversation)
+                session.flush()
+            return dict(conversation_id=conversation.id, instance_id=conversation.instance_id)
+
+    def conversations(self, user):
+        with self.sessions() as session:
+            rows = session.execute(
+                select(Conversation, CharacterInstance)
+                .join(CharacterInstance)
+                .where(CharacterInstance.user_id == user)
+                .order_by(Conversation.id)
+            ).all()
+            result = []
+            for conversation, instance in rows:
+                latest = session.scalar(
+                    select(Message)
+                    .join(Turn)
+                    .where(Turn.conversation_id == conversation.id)
+                    .order_by(Turn.sequence.desc(), Message.role)
+                    .limit(1)
+                )
+                count = session.scalar(
+                    select(func.count())
+                    .select_from(Turn)
+                    .where(Turn.conversation_id == conversation.id)
+                )
+                if count:
+                    result.append(
+                        dict(
+                            conversation_id=conversation.id,
+                            version_id=instance.version_id,
+                            turns=count,
+                            preview=latest.text[:160] if latest else "",
+                        )
+                    )
+            return result
 
     def create_conversation(self, user, instance_id):
         with self.sessions.begin() as session:

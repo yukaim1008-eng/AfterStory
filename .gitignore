@@ -28,6 +28,10 @@ dist/
 build/
 .vite/
 coverage/
+frontend/public/media/
+frontend/test-results/
+frontend/playwright-report/
+.local-run/
 
 # 临时文件
 *.log

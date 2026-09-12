@@ -9,8 +9,10 @@ from afterstory.database import make_sessions
 from afterstory.models import Character, CharacterVersion, User
 
 
-def seed(sessions, user_id: str):
+def seed(sessions, user_id: str, companion_file=None):
     fixtures = json.loads((ROOT / "fixtures/characters.json").read_text(encoding="utf-8"))
+    if companion_file:
+        fixtures.extend(json.loads(companion_file.read_text(encoding="utf-8")))
     with sessions.begin() as session:
         session.execute(insert(User).values(id=user_id).on_conflict_do_nothing())
         for item in fixtures:
@@ -35,7 +37,7 @@ if __name__ == "__main__":
     cfg = Settings()
     engine, sessions = make_sessions(cfg)
     try:
-        seed(sessions, cfg.dev_user_id)
+        seed(sessions, cfg.dev_user_id, ROOT / "fixtures/companions.integration.json")
         print("Engineering characters and local user seeded.")
     finally:
         engine.dispose()

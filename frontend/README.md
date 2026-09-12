@@ -1,45 +1,45 @@
 # AfterStory 前端
 
-当前为静态设计阶段，**03 版角色主题视觉方向已获用户认可，尚未授权开发**。技术栈为 Vue 3 + TypeScript + Vite，尚未初始化工程。
+当前为 F1 可运行前端。用户已认可设计并授权开发，先跑通页面与文字链路，再收集角色数据、优化效果；完整 V1 尚未验收。
 
-用户已于 2026-09-10 允许提前开展前端设计，并认可参考官方娜娜莉形象制作的粉色新版。此安排不代表后端完整 V1 已验收，也不代表立即实现业务页面。
+## 启动
 
-## 当前设计：03 版
+按 [运行说明](../docs/running-frontend.md) 启动数据库和后端，再在本目录执行：
 
-最新修订：[控件形态与剧情信息层级](../data/design-preview/full-desktop-review/09-controls-refinement.png) / [说明](design/full-review/09-controls-refinement.md)。发送个性化待角色性格补全；全套按钮样式进入统一修订，旧图仅作布局对照。
+```powershell
+npm ci
+npm run dev
+```
 
-**当前评审入口：[全部桌面效果图](../data/design-preview/full-desktop-review/README.md) / [页面清单与分区说明](design/full-desktop-review.md)。** 六组新稿、24 个主要画面，另附已认可的三人选择和封面操作。按用户要求集中反馈后统一修改，不逐页确认，仍只做静态设计。
+打开 http://127.0.0.1:5173 。默认代理后端 http://127.0.0.1:8000 ，均仅监听本机。
 
-- [封面操作细稿（整体已认可）](../data/design-preview/cover-refinement-v02.png) / [设计说明](design/cover-refinement.md)：裁切三种预览、保存成功、恢复默认确认与失败。
+## 当前可测试
 
-- 主角色为娜娜莉、伊洛伊、薄荷三位并列。[三人角色选择效果（已认可）](../data/design-preview/three-main-characters-selection-v01.png) / [设计说明](design/three-main-characters.md)；用户于 2026-09-11 认可整体效果，它替代下方旧总览里的测试角色卡片，其余页面视觉沿用。
+- 三位主角色主题、悬停展开选择、聊天、资料、历史和四类设置。
+- 真实文字发送、失败重试、草稿保留、刷新恢复与历史分页加载。
+- 字体、发送快捷键、动效偏好；封面上传、两处独立裁切、取消、保存与恢复默认。
+- 语音、个人记忆显示尚未启用；剧情进度待补全，不模拟接口成功。
 
-- 聊天采用左角色、右对话的构图；主题根据角色人设设计，辅助页面跟随当前角色配色。
-- 娜娜莉采用粉白底与粉黑点缀，清爽的中文字体与留白；第一版深蓝色方案已被替代。
-- 角色选择采用悬停展开，去掉小箭头；封面需方便独立替换。
-- [当前设计基准](../docs/design/06-frontend.md) / [角色主题与封面说明](design/character-theme-v03.md)
-- [聊天与角色选择效果图](../data/design-preview/nanally-chat-selection-v03.png)
-- [资料、历史、外观设置与记忆效果图](../data/design-preview/nanally-supporting-v03.png)
-- [角色选择与封面状态稿 · 2026-09-11 两项核心交互已确认](../data/design-preview/character-selection-cover-states-v01.png) / [交互说明](design/character-selection-cover.md)：悬停预览、点击切换；分别裁切，保存失败保留调整。补充原有两张基准图。
+## 可更改数据
 
-用户指定以 `data/design-preview/` 中认可的效果为基础，现补充整套桌面评审稿；已删除的早期探索不恢复。图片位于 Git 忽略的目录，仅保存在本地工作区，不会随 Git 同步。`design/` 保存方案说明与对应提示词。生成形象和示例内容不是正式角色资产或 Canon。
+| 内容 | 位置 |
+| --- | --- |
+| 角色名称、介绍、主题、封面、裁切、发送按钮图片与文案 | [public/characters.json](public/characters.json) |
+| 默认封面 | data/character-assets/{id}.png；更改后运行 npm run prepare:media |
+| 当前用户封面 | 浏览器 IndexedDB，按后端用户与角色隔离 |
+| 偏好与草稿 | 浏览器 localStorage，按后端用户隔离 |
+| 联调性格提示词 | [companions.integration.json](../fixtures/companions.integration.json)；新增版本后导入，不覆盖旧版本 |
 
-## 新窗口从这里开始
+三张默认插画为官方形象的生成式参考，不是正式角色资产。当前介绍和提示词是联调资料，不是完整 Canon。个性化发送按钮待性格补全后再设计。
 
-建议以整个 AfterStory 仓库为工作区打开，前端文件放在本目录，保留对后端契约和项目文档的访问。
+## 设计依据与验证
 
-先阅读：
+沿用 [data 中认可的效果](../data/design-preview/full-desktop-review/README.md)，控件以 [09 修订](../data/design-preview/full-desktop-review/09-controls-refinement.png) 为准。当前范围见 [06 前端](../docs/design/06-frontend.md)，不恢复早期深蓝色设计。
 
-- [项目协作规则](../AGENTS.md)
-- [当前状态](../docs/current-status.md)
-- [分区设计入口](../docs/design/README.md)
-- [前端设计文档](../docs/design/06-frontend.md)
-- [M1 后端接口与运行说明](../docs/running-m1.md)
+```powershell
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
 
-前端设计结论集中更新到 `docs/design/06-frontend.md`；原型和视觉素材可以放在本目录。相关产品取舍整批讨论，先设计后实现，不一次生成完整项目。
-
-## 当前设计边界
-
-前端技术栈已确定为 Vue 3、TypeScript、Vite。用户通过角色表达感受关系，不展示好感度、关系进度或内部分析。个人记忆的数据管理、语音播放和剧情进度更新属于 V1 设计范围，但相应后端能力尚未完成，设计稿需要区分当前可用与未来规划。
-
-当前后端可用能力为角色列表、创建角色实例、创建会话、发送文字和读取历史。详细契约以运行说明与后端 `/docs` 为准；真实模型验证、长期记忆、关系变化和语音尚未完成。
+自动浏览器测试模拟 API；手动真实链路脚本 scripts/smoke-real.mjs 使用独立后端身份，详见运行说明。

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "characters": [
+    {
+      "id": "iroi",
+      "name": "伊洛伊",
+      "romanized": "IROI",
+      "world": "异环",
+      "versionId": "iroi-integration-v1",
+      "cover": "/media/iroi.image",
+      "description": "来自异象管理局收容二组。她的故事，等待我们慢慢补全。",
+      "dataStatus": "联调资料",
+      "checkpointLabel": "原作剧情资料待补全",
+      "theme": {
+        "accent": "#507c68",
+        "soft": "#e6efe7",
+        "background": "#f7faf7",
+        "ink": "#253d33",
+        "muted": "#74847b"
+      },
+      "crop": {
+        "chat": { "x": 50, "y": 35, "zoom": 1 },
+        "selection": { "x": 50, "y": 35, "zoom": 1 }
+      },
+      "sendControl": { "label": "发送", "image": null }
+    },
+    {
+      "id": "nanally",
+      "name": "娜娜莉",
+      "romanized": "NANALLY",
+      "world": "异环",
+      "versionId": "nanally-integration-v1",
+      "cover": "/media/nanally.image",
+      "description": "曾经并肩行动的伙伴，如今通过 AfterStory 继续交流。故事之外，还有想和你说的话。",
+      "dataStatus": "联调资料",
+      "checkpointLabel": "原作剧情资料待补全",
+      "theme": {
+        "accent": "#cf3979",
+        "soft": "#f8e4ed",
+        "background": "#fdf8fb",
+        "ink": "#352733",
+        "muted": "#927e8d"
+      },
+      "crop": {
+        "chat": { "x": 48, "y": 25, "zoom": 1 },
+        "selection": { "x": 48, "y": 25, "zoom": 1 }
+      },
+      "sendControl": { "label": "发送", "image": null },
+      "default": true
+    },
+    {
+      "id": "mint",
+      "name": "薄荷",
+      "romanized": "MINT",
+      "world": "异环",
+      "versionId": "mint-integration-v1",
+      "cover": "/media/mint.image",
+      "description": "来自异象管理局收容二组。把今天的小事，留给下一次相见。",
+      "dataStatus": "联调资料",
+      "checkpointLabel": "原作剧情资料待补全",
+      "theme": {
+        "accent": "#167e88",
+        "soft": "#def1f1",
+        "background": "#f6fbfa",
+        "ink": "#24424a",
+        "muted": "#70878a"
+      },
+      "crop": {
+        "chat": { "x": 48, "y": 20, "zoom": 1 },
+        "selection": { "x": 48, "y": 20, "zoom": 1 }
+      },
+      "sendControl": { "label": "发送", "image": null }
+    }
+  ]
+}

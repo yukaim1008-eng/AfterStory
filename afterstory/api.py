@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 
-from fastapi import Depends, FastAPI, Query, Request
+from fastapi import APIRouter, Depends, FastAPI, Query, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import text
@@ -59,6 +59,7 @@ def create_app(settings=None, provider=None):
     )
     app.state.settings = settings
     app.state.repository = repository
+    router = APIRouter()
 
     @app.exception_handler(DomainError)
     async def domain_error(request, exc):
@@ -68,7 +69,7 @@ def create_app(settings=None, provider=None):
     async def database_error(request, exc):
         return JSONResponse(status_code=503, content={"error": "database_unavailable"})
 
-    @app.get("/health")
+    @router.get("/health")
     def health():
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
@@ -77,25 +78,35 @@ def create_app(settings=None, provider=None):
             "model_profile": settings.llm_active_model,
             "provider": settings.active_model.provider,
             "model": settings.active_model.model,
+            "user_id": settings.dev_user_id,
+            "capabilities": {"voice": False, "memory": False, "canon_update": False},
         }
 
-    @app.get("/characters")
+    @router.get("/characters")
     def characters():
         return repository.characters()
 
-    @app.post("/instances", status_code=201)
+    @router.post("/instances", status_code=201)
     def instances(body: InstanceInput, user=Depends(current_user)):
         return repository.create_instance(user, body.version_id)
 
-    @app.post("/conversations", status_code=201)
+    @router.post("/conversations", status_code=201)
     def conversations(body: ConversationInput, user=Depends(current_user)):
         return repository.create_conversation(user, body.instance_id)
 
-    @app.post("/conversations/{conversation_id}/messages")
+    @router.post("/sessions/open")
+    def open_session(body: InstanceInput, user=Depends(current_user)):
+        return repository.open_session(user, body.version_id)
+
+    @router.get("/conversations")
+    def list_conversations(user=Depends(current_user)):
+        return repository.conversations(user)
+
+    @router.post("/conversations/{conversation_id}/messages")
     def send(conversation_id: str, body: MessageInput, user=Depends(current_user)):
         return service.send(user, conversation_id, body.request_id, body.text)
 
-    @app.get("/conversations/{conversation_id}/messages")
+    @router.get("/conversations/{conversation_id}/messages")
     def history(
         conversation_id: str,
         offset: int = Query(0, ge=0),
@@ -104,4 +115,6 @@ def create_app(settings=None, provider=None):
     ):
         return repository.history(user, conversation_id, offset, limit)
 
+    app.include_router(router)
+    app.include_router(router, prefix="/api")
     return app
