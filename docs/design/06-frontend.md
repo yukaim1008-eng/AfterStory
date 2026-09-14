@@ -23,7 +23,7 @@
 
 ## 视觉依据
 
-[整套稿](../../data/design-preview/full-desktop-review/README.md)、[09 控件修订](../../data/design-preview/full-desktop-review/09-controls-refinement.png)、[三人选择](../../data/design-preview/three-main-characters-selection-v01.png)、[封面操作](../../data/design-preview/cover-refinement-v02.png) 保留作为依据；旧大矩形按钮不再作为目标。
+本次改版逐张参考 `frontend/design/GPT设计图稿/` 的首页、角色、回忆和设置四张图；聊天页按用户指定的沉浸式角色空间实现。最终采用统一的角色主题、半透明玻璃层、留白和柔光，而非将参考截图用作背景。早期 [整套稿](../../data/design-preview/full-desktop-review/README.md)、[09 控件修订](../../data/design-preview/full-desktop-review/09-controls-refinement.png)、[三人选择](../../data/design-preview/three-main-characters-selection-v01.png)、[封面操作](../../data/design-preview/cover-refinement-v02.png) 仅保留为历史实现记录。
 
 默认图位于 data/character-assets，是参考官方图片生成的独立插画，不是正式资产或 Canon。data 当前未被整体 Git 忽略，不删除已认可图片。字体为随工程打包的 Noto Sans SC，不依赖运行时 Google Fonts。聊天文字默认 15px，可调 13/18px。
 

@@ -400,7 +400,9 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   await page.getByRole("button", { name: "回忆", exact: true }).click();
   await page.locator(".history-row").click();
   await expect(
-    page.getByText("收到：今天下雨了", { exact: true }),
+    page.locator(".chat-workspace").getByText("收到：今天下雨了", {
+      exact: true,
+    }),
   ).toBeVisible();
   expect(errors).toEqual([]);
   await page.screenshot({ path: "test-results/chat-desktop.png" });
@@ -834,6 +836,8 @@ test("memory filters load later pages and keep facts separate from conversation 
     "aria-selected",
     "true",
   );
+  await page.getByRole("button", { name: "加载更多记忆" }).click();
+  await expect(page.locator(".memory-list article")).toHaveCount(101);
   await page.getByRole("searchbox", { name: "搜索回忆" }).fill("最后一页");
   await expect(page.locator(".memory-list article")).toHaveCount(1);
   await expect(page.locator(".memory-list article")).toContainText(

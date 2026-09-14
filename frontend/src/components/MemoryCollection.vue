@@ -34,14 +34,6 @@ const {
 const query = ref("");
 const timeFilter = ref("all");
 const typeFilter = ref("all");
-let filterToken = 0;
-
-const filtersActive = computed(
-  () =>
-    timeFilter.value !== "all" ||
-    typeFilter.value !== "all" ||
-    !!query.value.trim(),
-);
 
 const matchesTime = (value: string) => {
   if (timeFilter.value === "all") return true;
@@ -87,20 +79,6 @@ function loadMore() {
     loadMemories as (instanceId?: string, append?: boolean) => Promise<void>
   )(undefined, true);
 }
-
-watch(
-  [timeFilter, typeFilter, query],
-  async () => {
-    const token = ++filterToken;
-    if (!filtersActive.value) return;
-    while (memoryOffset.value < memoryTotal.value && !memoryError.value) {
-      const before = memoryOffset.value;
-      await loadMore();
-      if (token !== filterToken || memoryOffset.value <= before) return;
-    }
-  },
-  { flush: "post" },
-);
 
 watch(selected, () => {
   timeFilter.value = "all";
