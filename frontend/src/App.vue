@@ -19,6 +19,7 @@ import {
 } from "lucide-vue-next";
 import Portrait from "./Portrait.vue";
 import CoverEditor from "./CoverEditor.vue";
+import CharactersPage from "./pages/CharactersPage.vue";
 import HomePage from "./pages/HomePage.vue";
 import AppShell from "./components/AppShell.vue";
 import {
@@ -123,49 +124,7 @@ const {
     </div>
     <template v-if="character">
       <HomePage v-if="page === 'home'" />
-      <main
-        v-else-if="page === 'characters'"
-        id="main-content"
-        tabindex="-1"
-        class="selection-page"
-      >
-        <div class="page-heading">
-          <div>
-            <small>ACROSS WORLDS</small>
-            <h1>今天，想和谁说说话？</h1>
-          </div>
-          <p>不同的世界，同一份期待。</p>
-        </div>
-        <div class="character-accordion" @mouseleave="hovered = selected">
-          <button
-            v-for="c in characters"
-            :key="c.id"
-            class="character-panel"
-            :class="{ expanded: hovered === c.id }"
-            @mouseenter="hovered = c.id"
-            @focus="hovered = c.id"
-            @click="choose(c)"
-          >
-            <Portrait
-              :source="cover(c).source"
-              :crop="cover(c).crop.selection"
-              :name="c.name"
-            />
-            <div class="character-caption">
-              <small>{{ c.romanized }}</small>
-              <h2>{{ c.name }}</h2>
-              <span
-                >{{ c.world }}
-                <span v-if="c.id === selected">· 当前角色</span></span
-              >
-            </div>
-          </button>
-        </div>
-        <p class="selection-note">
-          悬停看看她 · 点击继续聊天
-          <span>角色形象为参考素材，可在设置中替换</span>
-        </p>
-      </main>
+      <CharactersPage v-else-if="page === 'characters'" />
       <main
         v-else
         id="main-content"

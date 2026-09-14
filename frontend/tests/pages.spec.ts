@@ -717,3 +717,44 @@ test("pending message reloads failed conversation metadata before retrying", asy
     requests.filter((request) => request.request_id === "pending-request"),
   ).toHaveLength(1);
 });
+
+test("character selection expands beyond the initial cast without overflow or hover switching", async ({
+  page,
+}) => {
+  await fakeApi(page);
+  await page.route("**/characters.json", async (route) => {
+    const response = await route.fetch();
+    const data = await response.json();
+    for (let i = 0; i < 5; i++)
+      data.characters.push({
+        ...data.characters[0],
+        id: `guest-${i}`,
+        name: `访客${i}`,
+        default: false,
+      });
+    await route.fulfill({ json: data });
+  });
+  await page.goto("/#/characters/nanally");
+  await expect(page.locator(".character-panel")).toHaveCount(8);
+  const featured = page.locator(".character-panel.featured");
+  const featuredBox = await featured.boundingBox();
+  const actionBox = await featured.locator(".visit-action").boundingBox();
+  expect(actionBox!.y + actionBox!.height).toBeLessThan(
+    featuredBox!.y + featuredBox!.height,
+  );
+  await page.locator(".character-panel").filter({ hasText: "伊洛伊" }).hover();
+  await expect(page.locator(".application")).toHaveCSS("--accent", "#cf3979");
+  for (const width of [1440, 900]) {
+    await page.setViewportSize({ width, height: 1000 });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.screenshot({
+    path: "test-results/characters-expanded.png",
+    fullPage: true,
+  });
+});
