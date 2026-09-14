@@ -2,22 +2,22 @@
 
 当前为本地联调版：页面、真实文字链路和用户主动管理的个人记忆可测试；自动记忆/状态策略、语音、剧情更新及正式角色资料仍未完成。
 
-## 启动（PowerShell）
+## 启动
 
-启动 Docker Desktop，在仓库根目录执行：
+macOS 与 Windows 命令相同，平台差异见 [平台差异](running-m1.md#平台差异)。启动 Docker Desktop，在仓库根目录执行：
 
-```powershell
+```bash
 uv sync --locked
-if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+cp -n .env.example .env          # 仅在没有 .env 时执行；已有文件不要覆盖
 docker compose up -d --wait postgres
-.venv/Scripts/alembic upgrade head
-.venv/Scripts/python -m afterstory.seed
-.venv/Scripts/python -m uvicorn afterstory.api:create_app --factory --host 127.0.0.1 --port 8000
+uv run alembic upgrade head
+uv run python -m afterstory.seed
+uv run python -m uvicorn afterstory.api:create_app --factory --host 127.0.0.1 --port 8000
 ```
 
 已有 .env 不覆盖，密钥仅保存在本地。另开终端：
 
-```powershell
+```bash
 cd frontend
 npm ci
 npm run dev
@@ -61,19 +61,19 @@ seed 导入原工程 fixtures 和 fixtures/companions.integration.json 的三位
 
 ## 验证
 
-```powershell
-.venv/Scripts/python -m pytest -q
-.venv/Scripts/ruff check afterstory tests
+```bash
+uv run python -m pytest -q
+uv run ruff check afterstory tests
 cd frontend
 npm run build
 npx playwright install chromium
 npm run test:e2e
 ```
 
-仓库根目录也可运行 `powershell -ExecutionPolicy Bypass -File scripts/verify.ps1`。该脚本使用 fake Provider，不产生模型费用，并按“只停止自己启动的服务”规则清理 PostgreSQL。
+仓库根目录也可运行 `uv run python -m scripts.verify`（Windows 可用 `powershell -ExecutionPolicy Bypass -File scripts/verify.ps1`，两者等价）。该脚本使用 fake Provider，不产生模型费用，并按“只停止自己启动的服务”规则清理 PostgreSQL。
 
 自动浏览器测试模拟 API；后端测试使用独立临时 schema，不清空用户数据库。
 
-真实检查需单独终端设置 $env:DEV_USER_ID='frontend-smoke'，执行 seed，再将后端启动于8001。前端目录执行 node scripts/smoke-real.mjs。它手动调用一次当前模型，产生少量费用，使用独立身份，不写入默认用户。
+真实检查需单独终端把 `DEV_USER_ID` 设为 `frontend-smoke`（macOS `export DEV_USER_ID=frontend-smoke`，Windows `$env:DEV_USER_ID='frontend-smoke'`），执行 seed，再将后端启动于8001。前端目录执行 node scripts/smoke-real.mjs。它手动调用一次当前模型，产生少量费用，使用独立身份，不写入默认用户。
 
 测试结束后，Agent 停止自己启动的测试后端、前端及项目依赖，不继续后台运行供预览；用户需要查看效果时自行启动。仅关闭能确认由 Agent 启动的服务，不关闭用户自行启动的服务，不删除数据库或卷。该规则也适用于自动测试复用的服务：复用了用户服务不代表可以将其停止。

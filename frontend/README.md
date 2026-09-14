@@ -6,7 +6,7 @@
 
 按 [运行说明](../docs/running-frontend.md) 启动数据库和后端，再在本目录执行：
 
-```powershell
+```bash
 npm ci
 npm run dev
 ```
@@ -37,7 +37,7 @@ npm run dev
 
 沿用 [data 中认可的效果](../data/design-preview/full-desktop-review/README.md)，控件以 [09 修订](../data/design-preview/full-desktop-review/09-controls-refinement.png) 为准。当前范围见 [06 前端](../docs/design/06-frontend.md)，不恢复早期深蓝色设计。
 
-```powershell
+```bash
 npm run build
 npx playwright install chromium
 npm run test:e2e

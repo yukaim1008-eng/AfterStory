@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AfterStory 聊天页 · 明亮沉浸方向 V01</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #2e272c;
+      background: #f3ecef;
+      font-synthesis: none;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      padding: 28px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(255, 178, 202, .32), transparent 30%),
+        linear-gradient(135deg, #faf5f7, #f2e9ed);
+    }
+
+    button,
+    input { font: inherit; }
+
+    button { cursor: pointer; }
+
+    .afterstory-window {
+      position: relative;
+      width: min(1480px, 100%);
+      min-height: min(860px, calc(100vh - 56px));
+      overflow: hidden;
+      border: 1px solid rgba(98, 70, 82, .12);
+      border-radius: 26px;
+      background: #fffafb;
+      box-shadow: 0 28px 80px rgba(80, 48, 62, .18);
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 5;
+      height: 70px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(92, 62, 75, .1);
+      background: rgba(255, 252, 253, .84);
+      backdrop-filter: blur(22px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff4f86;
+      box-shadow: 0 0 18px rgba(255, 79, 134, .48);
+    }
+
+    .brand strong {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -.03em;
+    }
+
+    .brand small {
+      margin-left: 8px;
+      color: #97878f;
+      font-size: 11px;
+      letter-spacing: .12em;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-button,
+    .quiet-button {
+      border: 1px solid rgba(100, 70, 83, .12);
+      color: #51464d;
+      background: rgba(255, 255, 255, .72);
+      transition: background-color .18s ease, transform .18s ease;
+    }
+
+    .icon-button:hover,
+    .quiet-button:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    .icon-button {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+    }
+
+    .quiet-button {
+      padding: 9px 13px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    .workspace {
+      position: relative;
+      min-height: calc(min(860px, 100vh - 56px) - 70px);
+      display: grid;
+      grid-template-columns: minmax(360px, 42%) minmax(520px, 58%);
+      isolation: isolate;
+    }
+
+    .portrait-stage {
+      position: relative;
+      min-height: 720px;
+      overflow: hidden;
+      background: #f6bed0;
+    }
+
+    .portrait-stage > img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 48% 15%;
+      filter: saturate(.93) contrast(1.01);
+    }
+
+    .portrait-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0 76%, rgba(255, 250, 252, .18) 88%, rgba(255, 250, 252, .72) 100%),
+        linear-gradient(0deg, rgba(74, 39, 54, .56), transparent 42%);
+      pointer-events: none;
+    }
+
+    .character-summary {
+      position: absolute;
+      z-index: 2;
+      left: 26px;
+      right: 30px;
+      bottom: 25px;
+      color: #fff;
+      text-shadow: 0 2px 18px rgba(58, 25, 40, .36);
+    }
+
+    .character-summary .eyebrow {
+      font-size: 11px;
+      letter-spacing: .18em;
+      opacity: .8;
+    }
+
+    .character-summary h1 {
+      margin: 8px 0 9px;
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+
+    .connection {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .84);
+    }
+
+    .connection-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #9ce3b7;
+      box-shadow: 0 0 10px #9ce3b7;
+    }
+
+    .character-actions {
+      display: flex;
+      gap: 9px;
+      margin-top: 17px;
+    }
+
+    .character-actions .quiet-button {
+      color: #fff;
+      border-color: rgba(255, 255, 255, .26);
+      background: rgba(73, 40, 54, .28);
+      backdrop-filter: blur(12px);
+    }
+
+    .chat-stage {
+      position: relative;
+      min-width: 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 24px 28px 20px 34px;
+      background:
+        radial-gradient(circle at 8% 52%, rgba(255, 158, 190, .13), transparent 27%),
+        linear-gradient(90deg, rgba(255, 250, 252, .76), #fffafb 12%, #fffafb);
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(103, 72, 85, .1);
+    }
+
+    .character-identity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mini-portrait {
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, .9);
+      border-radius: 14px;
+      box-shadow: 0 5px 18px rgba(123, 67, 89, .16);
+    }
+
+    .mini-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 12%;
+    }
+
+    .character-identity strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .character-identity span {
+      display: block;
+      margin-top: 2px;
+      color: #918189;
+      font-size: 12px;
+    }
+
+    .world-state {
+      padding: 8px 11px;
+      border: 1px solid rgba(114, 77, 93, .1);
+      border-radius: 11px;
+      color: #85757d;
+      background: rgba(255, 255, 255, .68);
+      font-size: 12px;
+    }
+
+    .messages {
+      width: min(760px, 100%);
+      padding: 34px 0 27px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 18px;
+    }
+
+    .day-mark {
+      align-self: center;
+      color: #a2929a;
+      font-size: 11px;
+    }
+
+    .message-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 9px;
+      max-width: 76%;
+    }
+
+    .message-row.mine {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .message-avatar {
+      width: 30px;
+      height: 30px;
+      flex: 0 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 3px 12px rgba(110, 66, 83, .12);
+    }
+
+    .message-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 12%;
+    }
+
+    .message-content { min-width: 0; }
+
+    .bubble {
+      padding: 13px 15px;
+      border: 1px solid rgba(105, 72, 86, .1);
+      border-radius: 17px 17px 17px 5px;
+      color: #41373d;
+      background: rgba(255, 255, 255, .88);
+      box-shadow: 0 7px 22px rgba(91, 57, 71, .07);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .message-row.mine .bubble {
+      color: #fff;
+      border-color: transparent;
+      border-radius: 17px 17px 5px 17px;
+      background: #ff5c8f;
+      box-shadow: 0 8px 22px rgba(255, 92, 143, .21);
+    }
+
+    .message-meta {
+      margin-top: 5px;
+      padding-left: 3px;
+      color: #a3939b;
+      font-size: 10px;
+    }
+
+    .message-row.mine .message-meta {
+      padding-right: 3px;
+      text-align: right;
+    }
+
+    .composer-wrap { width: min(800px, 100%); }
+
+    .composer {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 9px 8px 13px;
+      border: 1px solid rgba(105, 72, 86, .12);
+      border-radius: 19px;
+      background: rgba(255, 255, 255, .9);
+      box-shadow: 0 12px 30px rgba(90, 55, 69, .08);
+    }
+
+    .composer input {
+      min-width: 0;
+      flex: 1;
+      border: 0;
+      outline: 0;
+      color: #40353b;
+      background: transparent;
+      font-size: 14px;
+    }
+
+    .composer input::placeholder { color: #ad9ea5; }
+
+    .send-button {
+      width: 41px;
+      height: 41px;
+      border: 0;
+      border-radius: 13px;
+      color: #fff;
+      background: #ff5c8f;
+      box-shadow: 0 7px 20px rgba(255, 92, 143, .24);
+    }
+
+    .composer-hint {
+      padding: 7px 4px 0;
+      display: flex;
+      justify-content: space-between;
+      color: #a99aa2;
+      font-size: 10px;
+    }
+
+    @media (max-width: 900px) {
+      body { padding: 0; }
+      .afterstory-window { min-height: 100vh; border: 0; border-radius: 0; }
+      .brand small { display: none; }
+      .workspace { grid-template-columns: 1fr; }
+      .portrait-stage { min-height: 360px; }
+      .portrait-stage::after {
+        background: linear-gradient(0deg, rgba(255, 250, 252, .92), transparent 44%), linear-gradient(0deg, rgba(74, 39, 54, .3), transparent 70%);
+      }
+      .chat-stage { padding: 20px; }
+      .world-state { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="afterstory-window">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <strong>AfterStory</strong>
+        <small>故事之外，与你相见</small>
+      </div>
+      <nav class="top-actions" aria-label="全局操作">
+        <button class="icon-button" aria-label="历史">↶</button>
+        <button class="icon-button" aria-label="设置">⚙</button>
+      </nav>
+    </header>
+
+    <div class="workspace">
+      <aside class="portrait-stage">
+        <img src="../../../data/character-assets/nanally.png" alt="娜娜莉">
+        <div class="character-summary">
+          <div class="eyebrow">HETEROVERSE / NANALLY</div>
+          <h1>娜娜莉</h1>
+          <div class="connection"><span class="connection-dot"></span>故事链接稳定 · 新赫兰夜晚</div>
+          <div class="character-actions">
+            <button class="quiet-button">角色资料</button>
+            <button class="quiet-button">切换角色</button>
+          </div>
+        </div>
+      </aside>
+
+      <main class="chat-stage">
+        <header class="chat-header">
+          <div class="character-identity">
+            <div class="mini-portrait"><img src="../../../data/character-assets/nanally.png" alt=""></div>
+            <div><strong>娜娜莉</strong><span>正在另一边等你</span></div>
+          </div>
+          <div class="world-state">新赫兰 · 20:41</div>
+        </header>
+
+        <section class="messages" aria-label="聊天记录">
+          <div class="day-mark">今天</div>
+          <div class="message-row">
+            <div class="message-avatar"><img src="../../../data/character-assets/nanally.png" alt=""></div>
+            <div class="message-content">
+              <div class="bubble">鉴定师，你总算来了。今天的新赫兰很安静……你那边怎么样？</div>
+              <div class="message-meta">娜娜莉 · 刚刚</div>
+            </div>
+          </div>
+          <div class="message-row mine">
+            <div class="message-content">
+              <div class="bubble">刚下班，想先来看看你。</div>
+              <div class="message-meta">已送达</div>
+            </div>
+          </div>
+          <div class="message-row">
+            <div class="message-avatar"><img src="../../../data/character-assets/nanally.png" alt=""></div>
+            <div class="message-content">
+              <div class="bubble">哼，这还差不多。那就先陪我坐一会儿吧——我今天也有几件事想告诉你。</div>
+              <div class="message-meta">娜娜莉 · 正在输入</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="composer-wrap">
+          <div class="composer">
+            <button class="icon-button" aria-label="更多">＋</button>
+            <input aria-label="消息" placeholder="和娜娜莉说点什么……">
+            <button class="icon-button" aria-label="语音">◉</button>
+            <button class="send-button" aria-label="发送">↑</button>
+          </div>
+          <div class="composer-hint"><span>Enter 发送 · Shift + Enter 换行</span><span>聊天记录保存在本机</span></div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
