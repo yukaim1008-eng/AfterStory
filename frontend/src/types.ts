@@ -7,6 +7,8 @@ export type Character = {
   versionId: string;
   cover: string;
   description: string;
+  tagline?: string;
+  tags?: string[];
   dataStatus: string;
   checkpointLabel: string;
   theme: Record<string, string>;

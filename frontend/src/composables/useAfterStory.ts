@@ -92,6 +92,27 @@ export function createAfterStory() {
       !!chat.value?.session &&
       chat.value.session.version_id !== character.value?.versionId,
   );
+  // Never display the previous instance's memories while switching or recovering metadata.
+  watch(
+    () => [selected.value, chat.value?.session?.instance_id],
+    () => {
+      ++memoryRequest;
+      memories.value = [];
+      memoryTotal.value = 0;
+      memoryError.value = "";
+      memoryLoading.value = false;
+    },
+    { flush: "sync" },
+  );
+  watch(
+    () => [selected.value, chat.value?.id],
+    () => {
+      cancelMemoryForm();
+      memoryEditing.value = undefined;
+      memoryDelete.value = undefined;
+    },
+    { flush: "sync" },
+  );
   function displayTime(value: string | null | undefined) {
     if (!value || Number.isNaN(Date.parse(value))) return "未记录时间";
     return new Intl.DateTimeFormat("zh-CN", {
@@ -162,7 +183,10 @@ export function createAfterStory() {
       : "home";
     if (characters.value.some((c) => c.id === id)) selected.value = id!;
     targetTurn.value = page.value === "chat" ? params.get("turn") || "" : "";
-    if (connected.value && ["chat", "profile", "memory"].includes(page.value))
+    if (
+      connected.value &&
+      ["home", "chat", "profile", "memory"].includes(page.value)
+    )
       void openChat(
         selected.value,
         params.get("conversation") || undefined,
@@ -339,7 +363,12 @@ export function createAfterStory() {
       conversations[state.id] = state;
       saveChat(id, state);
       await refresh(id, false, state, aroundTurnId);
-      if (page.value === "memory" && capabilities.memory)
+      if (
+        ["home", "memory"].includes(page.value) &&
+        capabilities.memory &&
+        chats[id] === state &&
+        id === selected.value
+      )
         await loadMemories(session.instance_id);
     } catch (error) {
       if (opening[id] === request && chats[id] === state)

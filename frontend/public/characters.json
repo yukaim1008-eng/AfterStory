@@ -37,7 +37,9 @@
       "sendControl": {
         "label": "发送",
         "image": null
-      }
+      },
+      "tagline": "把每一次相见，留在故事里。",
+      "tags": ["异象管理局", "慢慢相识"]
     },
     {
       "id": "nanally",
@@ -76,7 +78,9 @@
         "label": "发送",
         "image": null
       },
-      "default": true
+      "default": true,
+      "tagline": "故事之外，还有想和你说的话。",
+      "tags": ["并肩的伙伴", "日常相伴"]
     },
     {
       "id": "mint",
@@ -114,7 +118,9 @@
       "sendControl": {
         "label": "发送",
         "image": null
-      }
+      },
+      "tagline": "今天的小事，也想说给你听。",
+      "tags": ["异象管理局", "分享日常"]
     }
   ]
 }

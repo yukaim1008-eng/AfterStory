@@ -5,9 +5,12 @@ import type { Memory, Session, Turn } from "../src/types";
 type ApiOptions = {
   sessions?: Session[];
   turns?: Record<string, Turn[]>;
+  memories?: Memory[];
   failHistoryPage?: boolean;
   delayConversation?: string;
   failConversationOnce?: string;
+  delayMemoryInstance?: string;
+  failMemoryInstance?: string;
   memory?: boolean;
 };
 const timestamp = "2026-09-12T12:30:00Z";
@@ -51,7 +54,7 @@ async function fakeApi(
   let failed = false;
   let historyFailed = false;
   let conversationFailed = false;
-  const memories: Memory[] = [];
+  const memories: Memory[] = [...(options.memories || [])];
   const requests: any[] = [];
   await page.route("**/api/**", async (route) => {
     const url = new URL(route.request().url());
@@ -162,6 +165,15 @@ async function fakeApi(
         memories.unshift(memory);
         body = memory;
       } else {
+        if (instanceId === options.delayMemoryInstance)
+          await new Promise((resolve) => setTimeout(resolve, 500));
+        if (instanceId === options.failMemoryInstance) {
+          await route.fulfill({
+            status: 503,
+            json: { error: "database_unavailable" },
+          });
+          return;
+        }
         body = {
           items: memories.filter((item) => item.instance_id === instanceId),
           total: memories.filter((item) => item.instance_id === instanceId)
@@ -246,6 +258,120 @@ async function fakeApi(
   });
   return requests;
 }
+
+function memory(
+  id: string,
+  instanceId: string,
+  content: string,
+  updatedAt = timestamp,
+): Memory {
+  return {
+    memory_id: id,
+    instance_id: instanceId,
+    kind: "fact",
+    content,
+    status: "active",
+    revision: 1,
+    created_at: updatedAt,
+    updated_at: updatedAt,
+    source: null,
+  };
+}
+
+test("home is the default destination with four primary routes and continues into chat", async ({
+  page,
+}) => {
+  await fakeApi(page);
+  await page.goto("/");
+
+  await expect(
+    page.getByRole("heading", { name: "今天，想和你相见。" }),
+  ).toBeVisible();
+  for (const name of ["首页", "角色", "回忆", "设置"])
+    await expect(page.getByRole("button", { name, exact: true })).toBeVisible();
+  await expect(page.locator(".last-meeting")).toContainText("娜娜莉");
+
+  await page.getByRole("button", { name: "继续和 娜娜莉 聊天" }).click();
+  await expect(page).toHaveURL(/#\/chat\/nanally/);
+  await expect(page.getByRole("textbox", { name: "消息" })).toBeEnabled();
+});
+
+test("home recent cards use only the current conversation instance", async ({
+  page,
+}) => {
+  const current = "nanally-integration-v1";
+  await fakeApi(page, false, {
+    memory: true,
+    sessions: [session(current)],
+    turns: { [current]: [turn("home-turn", 1, "今天一起看了雨")] },
+    memories: [
+      memory("current-memory", `instance-${current}`, "当前实例记得夜晚散步"),
+      memory(
+        "other-memory",
+        "instance-iroi-integration-v1",
+        "伊洛伊实例的秘密",
+      ),
+    ],
+  });
+  await page.goto("/");
+
+  await expect(page.locator(".last-meeting")).toContainText("上次相见");
+  await expect(page.locator(".recent-card")).toContainText([
+    "当前实例记得夜晚散步",
+    "今天一起看了雨",
+  ]);
+  await expect(page.getByText("伊洛伊实例的秘密", { exact: true })).toHaveCount(
+    0,
+  );
+});
+
+test("home clears old memories when a legacy instance or failed character instance is selected", async ({
+  page,
+}) => {
+  const current = "nanally-integration-v1";
+  const legacy = "legacy-chat";
+  const legacySession = session(legacy, "nanally-legacy-v0");
+  await fakeApi(page, false, {
+    memory: true,
+    sessions: [session(current), legacySession],
+    turns: {
+      [current]: [turn("current-home-turn", 1, "当前会话")],
+      [legacy]: [turn("legacy-home-turn", 1, "旧实例会话")],
+    },
+    memories: [
+      memory("current-memory", `instance-${current}`, "当前实例记忆"),
+      memory("legacy-memory", legacySession.instance_id, "旧版本实例记忆"),
+      memory(
+        "iroi-memory",
+        "instance-iroi-integration-v1",
+        "不应泄露的伊洛伊记忆",
+      ),
+    ],
+    failMemoryInstance: "instance-iroi-integration-v1",
+  });
+  await page.goto("/");
+  await expect(page.getByText("当前实例记忆", { exact: true })).toBeVisible();
+
+  await page.getByRole("button", { name: "回忆", exact: true }).click();
+  await page
+    .locator(".history-row")
+    .filter({ hasText: "nanally-legacy-v0" })
+    .click();
+  await page.getByRole("button", { name: "首页", exact: true }).click();
+  await expect(page.getByText("旧版本实例记忆", { exact: true })).toBeVisible();
+  await expect(page.getByText("当前实例记忆", { exact: true })).toHaveCount(0);
+
+  await page.goto("/#/home/iroi");
+  await expect(page.locator(".home-state[role=alert]")).toContainText(
+    "本地数据库",
+  );
+  await expect(page.getByText("旧版本实例记忆", { exact: true })).toHaveCount(
+    0,
+  );
+  await expect(
+    page.getByText("不应泄露的伊洛伊记忆", { exact: true }),
+  ).toHaveCount(0);
+});
 
 test("chat survives refresh, isolates roles and resumes from history", async ({
   page,

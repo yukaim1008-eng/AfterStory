@@ -19,6 +19,7 @@ import {
 } from "lucide-vue-next";
 import Portrait from "./Portrait.vue";
 import CoverEditor from "./CoverEditor.vue";
+import HomePage from "./pages/HomePage.vue";
 import AppShell from "./components/AppShell.vue";
 import {
   createAfterStory,
@@ -121,26 +122,7 @@ const {
       {{ notice }}<button aria-label="关闭提示" @click="notice = ''">×</button>
     </div>
     <template v-if="character">
-      <main
-        v-if="page === 'home'"
-        id="main-content"
-        tabindex="-1"
-        class="workspace secondary-workspace"
-      >
-        <Portrait
-          :source="cover(character).source"
-          :crop="cover(character).crop.chat"
-          :name="character.name"
-        />
-        <section class="content-area">
-          <small class="eyebrow">WELCOME BACK</small>
-          <h1>今天，想和谁相见？</h1>
-          <p>故事之外，总有人在这里等你。</p>
-          <button class="primary" @click="route('chat')">
-            继续和 {{ character.name }} 聊天
-          </button>
-        </section>
-      </main>
+      <HomePage v-if="page === 'home'" />
       <main
         v-else-if="page === 'characters'"
         id="main-content"

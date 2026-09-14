@@ -201,3 +201,11 @@ main:focus {
     flex-wrap: wrap;
   }
 }
+
+.secondary {
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  background: #ffffff96;
+  border-radius: var(--radius-control);
+  padding: 12px 24px;
+  color: var(--accent);
+}
