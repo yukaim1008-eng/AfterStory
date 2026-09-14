@@ -456,15 +456,29 @@ export function createAfterStory() {
   async function loadOlder() {
     const state = chat.value;
     if (!state || state.loading) return;
+    const area = scrollArea.value;
+    const oldHeight = area?.scrollHeight || 0;
+    const oldTop = area?.scrollTop || 0;
     state.loading = true;
     try {
       await refresh(selected.value, true, state);
+      await nextTick();
+      if (area && area === scrollArea.value && chat.value === state)
+        area.scrollTop = oldTop + area.scrollHeight - oldHeight;
     } catch (error) {
       state.error = errorText(error);
     } finally {
       state.loading = false;
     }
   }
+  watch(
+    () => chat.value?.pending?.request_id,
+    async (pending) => {
+      if (!pending || page.value !== "chat") return;
+      await nextTick();
+      scrollArea.value?.scrollTo({ top: scrollArea.value.scrollHeight });
+    },
+  );
   async function loadSessions(append = false) {
     if (append && historyLoading.value) return;
     const request = ++historyRequest;

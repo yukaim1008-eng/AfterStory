@@ -380,7 +380,7 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   page.on("pageerror", (e) => errors.push(e.message));
   await fakeApi(page);
   await page.goto("/#/chat/nanally");
-  await expect(page.getByText("文字交流已连接")).toBeVisible();
+  await expect(page.getByText("在这里", { exact: true })).toBeVisible();
   await page.getByRole("textbox", { name: "消息" }).fill("今天下雨了");
   await page.getByRole("button", { name: "发送", exact: true }).click();
   await expect(
@@ -565,21 +565,25 @@ test("legacy versions restore their metadata and keep drafts and outbox in their
   await expect(
     page.getByText("只属于当前会话的待发消息", { exact: true }),
   ).toHaveCount(0);
-  await expect(page.locator(".data-badge")).toContainText(
-    "历史版本 · nanally-legacy-v0",
+  await expect(page.locator(".chat-workspace")).toHaveAttribute(
+    "data-version",
+    "nanally-legacy-v0",
   );
   await expect(page.locator(".turn-time")).toHaveText("未记录时间");
   await expect(page.locator(".application")).toHaveCSS("--accent", "#cf3979");
   await input.fill("旧版本草稿");
   await page.reload();
   await expect(input).toHaveValue("旧版本草稿");
-  await expect(page.locator(".data-badge")).toContainText("nanally-legacy-v0");
+  await expect(page.locator(".chat-workspace")).toHaveAttribute(
+    "data-version",
+    "nanally-legacy-v0",
+  );
   await page.getByRole("button", { name: "发送", exact: true }).click();
   await expect(
     page.getByText("收到：旧版本草稿", { exact: true }),
   ).toBeVisible();
   expect(requests[1].conversation_id).toBe("legacy-chat");
-  await page.getByRole("button", { name: "角色资料" }).click();
+  await page.getByRole("button", { name: "角色资料", exact: true }).click();
   await expect(
     page.locator(".metadata-row").filter({ hasText: "剧情进度" }),
   ).toContainText("旧剧情第二章");
@@ -683,7 +687,10 @@ test("late legacy history responses cannot replace the newly selected conversati
       response.url().includes("limit=30"),
   );
   await expect(page.getByText("较慢的旧会话", { exact: true })).toHaveCount(0);
-  await expect(page.locator(".data-badge")).toContainText(current);
+  await expect(page.locator(".chat-workspace")).toHaveAttribute(
+    "data-version",
+    current,
+  );
 });
 
 test("pending message reloads failed conversation metadata before retrying", async ({
@@ -757,4 +764,51 @@ test("character selection expands beyond the initial cast without overflow or ho
     path: "test-results/characters-expanded.png",
     fullPage: true,
   });
+});
+
+test("immersive chat keeps send preferences, multiline text and older-message reading position", async ({
+  page,
+}) => {
+  const id = "nanally-integration-v1";
+  const requests = await fakeApi(page, false, {
+    sessions: [session(id)],
+    turns: {
+      [id]: Array.from({ length: 65 }, (_, i) =>
+        turn(`read-${i + 1}`, i + 1, `读过的片段 ${i + 1}`),
+      ),
+    },
+  });
+  await page.goto("/#/chat/nanally");
+  const chat = page.locator(".chat-workspace");
+  await expect(chat).not.toContainText("integration-v1");
+  await expect(chat).not.toContainText("文字交流已连接");
+  await expect(chat).not.toContainText("联调");
+  const input = page.getByRole("textbox", { name: "消息" });
+  await expect(input).toHaveAttribute("placeholder", "想和娜娜莉说些什么……");
+  await page.locator(".messages").evaluate((el) => {
+    el.scrollTop = 0;
+  });
+  await page.getByRole("button", { name: "查看更早的对话" }).click();
+  await expect(page.getByText("读过的片段 6", { exact: true })).toBeAttached();
+  expect(
+    await page.locator(".messages").evaluate((el) => el.scrollTop),
+  ).toBeGreaterThan(0);
+  await page.getByRole("button", { name: "设置", exact: true }).click();
+  await page.getByLabel("发送方式").selectOption("ctrl");
+  await page.getByRole("button", { name: "返回聊天", exact: true }).click();
+  await input.fill("第一行");
+  await input.press("Shift+Enter");
+  await input.press("a");
+  expect(requests).toHaveLength(0);
+  await input.press("Enter");
+  expect(requests).toHaveLength(0);
+  await input.press("Control+Enter");
+  await expect.poll(() => requests.length).toBe(1);
+  expect(requests[0].text).toContain("第一行\na");
+  await expect(page.locator(".messages")).toContainText("收到：第一行");
+  expect(
+    await page
+      .locator(".messages")
+      .evaluate((el) => el.scrollHeight - el.clientHeight - el.scrollTop),
+  ).toBeLessThan(30);
 });
