@@ -24,6 +24,7 @@ import CharacterSidebar from "./components/CharacterSidebar.vue";
 import CharactersPage from "./pages/CharactersPage.vue";
 import HomePage from "./pages/HomePage.vue";
 import MemoriesPage from "./pages/MemoriesPage.vue";
+import SettingsPage from "./pages/SettingsPage.vue";
 import AppShell from "./components/AppShell.vue";
 import {
   createAfterStory,
@@ -130,6 +131,7 @@ const {
       <CharactersPage v-else-if="page === 'characters'" />
       <ChatPage v-else-if="page === 'chat'" />
       <MemoriesPage v-else-if="page === 'history' || page === 'memory'" />
+      <SettingsPage v-else-if="page === 'settings'" />
       <main
         v-else
         id="main-content"
