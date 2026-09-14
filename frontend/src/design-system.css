@@ -164,6 +164,23 @@ button svg {
 main:focus {
   outline: none;
 }
+.application:not(.reduce-motion) .home-page,
+.application:not(.reduce-motion) .selection-page,
+.application:not(.reduce-motion) .chat-workspace,
+.application:not(.reduce-motion) .memories-workspace,
+.application:not(.reduce-motion) .settings-workspace {
+  animation: page-arrival 0.32s ease-out both;
+}
+@keyframes page-arrival {
+  from {
+    opacity: 0.45;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @media (max-width: 900px) {
   .tagline,
   .topbar-line {

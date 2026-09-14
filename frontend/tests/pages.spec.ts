@@ -893,3 +893,36 @@ test("history filters find a matching role on later pages while retaining unknow
     "integration-v1",
   );
 });
+
+test("every primary page stays usable across supported desktop widths", async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  await fakeApi(page, false, { memory: true });
+
+  for (const width of [900, 1440, 1600, 1920]) {
+    await page.setViewportSize({ width, height: 1000 });
+    for (const route of [
+      "home",
+      "characters",
+      "chat",
+      "history",
+      "memory",
+      "settings",
+    ]) {
+      await page.goto(`/#/${route}/nanally`);
+      await expect(page.locator("#main-content")).toBeVisible();
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= window.innerWidth,
+        ),
+        `${route} at ${width}px should not create horizontal overflow`,
+      ).toBe(true);
+    }
+  }
+  expect(errors).toEqual([]);
+});
