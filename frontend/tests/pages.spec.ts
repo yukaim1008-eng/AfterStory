@@ -253,7 +253,7 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await fakeApi(page);
-  await page.goto("/");
+  await page.goto("/#/chat/nanally");
   await expect(page.getByText("文字交流已连接")).toBeVisible();
   await page.getByRole("textbox", { name: "消息" }).fill("今天下雨了");
   await page.getByRole("button", { name: "发送", exact: true }).click();
@@ -270,7 +270,7 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   await page.locator(".character-panel").filter({ hasText: "伊洛伊" }).click();
   await expect(page.locator(".application")).toHaveCSS("--accent", "#507c68");
   await expect(page.getByText("今天下雨了", { exact: true })).toHaveCount(0);
-  await page.getByRole("button", { name: "历史", exact: true }).click();
+  await page.getByRole("button", { name: "回忆", exact: true }).click();
   await page.locator(".history-row").click();
   await expect(
     page.getByText("收到：今天下雨了", { exact: true }),
@@ -283,7 +283,7 @@ test("IME does not send, failed outbox retries same request after refresh", asyn
   page,
 }) => {
   const requests = await fakeApi(page, true);
-  await page.goto("/");
+  await page.goto("/#/chat/nanally");
   const input = page.getByRole("textbox", { name: "消息" });
   await expect(input).toBeEnabled();
   await input.fill("你好");
@@ -357,7 +357,7 @@ test("offline backend shows an honest retry state", async ({ page }) => {
   await page.route("**/api/**", (route) =>
     route.fulfill({ status: 503, json: { error: "database_unavailable" } }),
   );
-  await page.goto("/");
+  await page.goto("/#/chat/nanally");
   await expect(page.getByRole("alert")).toContainText("本地数据库");
   await expect(page.getByRole("textbox", { name: "消息" })).toBeDisabled();
   await expect(
@@ -370,7 +370,7 @@ test("personal memories are explicitly saved, corrected, linked, and deleted", a
   page,
 }) => {
   await fakeApi(page, false, { memory: true });
-  await page.goto("/");
+  await page.goto("/#/chat/nanally");
   const input = page.getByRole("textbox", { name: "消息" });
   await input.fill("我喜欢在雨天散步");
   await page.getByRole("button", { name: "发送", exact: true }).click();
@@ -423,13 +423,13 @@ test("legacy versions restore their metadata and keep drafts and outbox in their
       "legacy-chat": [legacyTurn],
     },
   });
-  await page.goto("/");
+  await page.goto("/#/chat/nanally");
   const input = page.getByRole("textbox", { name: "消息" });
   await input.fill("只属于当前会话的待发消息");
   await page.getByRole("button", { name: "发送", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("暂时没有收到回复");
   await input.fill("当前草稿也要保留");
-  await page.getByRole("button", { name: "历史", exact: true }).click();
+  await page.getByRole("button", { name: "回忆", exact: true }).click();
   await page
     .locator(".history-row")
     .filter({ hasText: "nanally-legacy-v0" })
@@ -460,7 +460,7 @@ test("legacy versions restore their metadata and keep drafts and outbox in their
   await expect(
     page.locator(".metadata-row").filter({ hasText: "会话版本" }),
   ).toContainText("nanally-legacy-v0");
-  await page.getByRole("button", { name: "历史", exact: true }).click();
+  await page.getByRole("button", { name: "回忆", exact: true }).click();
   await page.locator(".history-row").filter({ hasText: current }).click();
   await expect(input).toHaveValue("当前草稿也要保留");
   await expect(page.getByRole("alert")).toContainText("尚未完成");
@@ -546,7 +546,7 @@ test("late legacy history responses cannot replace the newly selected conversati
   await page.waitForRequest((request) =>
     request.url().includes("slow-chat/messages"),
   );
-  await page.getByRole("button", { name: "历史", exact: true }).click();
+  await page.getByRole("button", { name: "回忆", exact: true }).click();
   await page.locator(".history-row").filter({ hasText: current }).click();
   await expect(
     page.getByText("当前会话保持不变", { exact: true }),

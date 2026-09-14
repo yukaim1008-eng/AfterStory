@@ -1,0 +1,203 @@
+/* Shared visual language. Character palettes are injected by AppShell. */
+.application {
+  --radius-panel: 24px;
+  --radius-control: 99px;
+  --shadow-panel: 0 16px 60px color-mix(in srgb, var(--text) 7%, transparent);
+  --border-glass: 1px solid #ffffffb8;
+  --space-page: clamp(20px, 3vw, 56px);
+  position: relative;
+  isolation: isolate;
+  padding: 0 var(--space-page) 24px;
+  overflow-wrap: anywhere;
+}
+.page-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--background);
+}
+.page-background > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.17;
+  filter: blur(28px);
+  transform: scale(1.08);
+}
+.ambient-light {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 10%, #fff9, transparent 55%),
+    linear-gradient(
+      125deg,
+      transparent,
+      color-mix(in srgb, var(--secondary) 50%, transparent)
+    ),
+    linear-gradient(0deg, var(--background), transparent 90%);
+}
+.glass-panel {
+  background: var(--surface);
+  border: var(--border-glass);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(20px);
+}
+.topbar {
+  max-width: 1800px;
+  height: 88px;
+  gap: 24px;
+}
+.topbar nav {
+  gap: clamp(8px, 2vw, 30px);
+}
+.topbar nav button {
+  position: relative;
+  padding: 14px 4px;
+  border-radius: 0;
+  font-size: 14px;
+  gap: 9px;
+}
+.topbar nav button.active::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  left: 0;
+  right: 0;
+}
+.topbar nav button:hover {
+  background: transparent;
+}
+.brand {
+  font-size: 32px;
+}
+.tagline {
+  letter-spacing: 2px;
+}
+.topbar-line {
+  background: color-mix(in srgb, var(--muted) 25%, transparent);
+}
+.character-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid #fffc;
+}
+.character-avatar img {
+  object-position: 50% 25%;
+}
+.workspace {
+  max-width: 1800px;
+  background: var(--surface);
+  border: var(--border-glass);
+  box-shadow: var(--shadow-panel);
+  border-radius: var(--radius-panel);
+}
+.content-area {
+  background: #ffffff35;
+}
+.primary {
+  border-radius: var(--radius-control);
+  background: linear-gradient(125deg, var(--primary), var(--accent));
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 15%, transparent);
+  padding: 13px 26px;
+}
+button {
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+button svg {
+  flex-shrink: 0;
+}
+.primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+.pill {
+  padding: 5px 12px;
+  border-radius: 99px;
+  background: #ffffffa6;
+  color: var(--muted);
+  font-size: 11px;
+}
+.scene-enter-active,
+.scene-leave-active {
+  transition: opacity 0.6s;
+}
+.scene-leave-active {
+  position: absolute;
+  inset: 0;
+}
+.scene-enter-from,
+.scene-leave-to {
+  opacity: 0;
+}
+.page-footer {
+  max-width: 1800px;
+  margin: 25px auto 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.skip-link {
+  position: fixed;
+  left: 20px;
+  top: -100px;
+  z-index: 60;
+  padding: 12px;
+  background: var(--background);
+  border-radius: 8px;
+}
+.skip-link:focus {
+  top: 12px;
+}
+main:focus {
+  outline: none;
+}
+@media (max-width: 900px) {
+  .tagline,
+  .topbar-line {
+    display: none;
+  }
+  .topbar {
+    gap: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .application {
+    --space-page: 14px;
+  }
+  .topbar {
+    height: auto;
+    min-height: 90px;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 12px 0;
+  }
+  .brand {
+    font-size: 25px;
+  }
+  .topbar nav {
+    gap: 14px;
+  }
+  .topbar nav button {
+    font-size: 12px;
+    gap: 4px;
+  }
+  .topbar nav svg {
+    width: 15px;
+  }
+  .page-footer {
+    flex-wrap: wrap;
+  }
+}

@@ -16,13 +16,28 @@
         "soft": "#e6efe7",
         "background": "#f7faf7",
         "ink": "#253d33",
-        "muted": "#74847b"
+        "muted": "#5d7267",
+        "primary": "#507c68",
+        "secondary": "#e5dfef",
+        "surface": "#ffffffb8",
+        "text": "#253d33"
       },
       "crop": {
-        "chat": { "x": 50, "y": 35, "zoom": 1 },
-        "selection": { "x": 50, "y": 35, "zoom": 1 }
+        "chat": {
+          "x": 50,
+          "y": 35,
+          "zoom": 1
+        },
+        "selection": {
+          "x": 50,
+          "y": 35,
+          "zoom": 1
+        }
       },
-      "sendControl": { "label": "发送", "image": null }
+      "sendControl": {
+        "label": "发送",
+        "image": null
+      }
     },
     {
       "id": "nanally",
@@ -39,13 +54,28 @@
         "soft": "#f8e4ed",
         "background": "#fdf8fb",
         "ink": "#352733",
-        "muted": "#927e8d"
+        "muted": "#7e6878",
+        "primary": "#cf3979",
+        "secondary": "#f8dce8",
+        "surface": "#ffffffb8",
+        "text": "#352733"
       },
       "crop": {
-        "chat": { "x": 48, "y": 25, "zoom": 1 },
-        "selection": { "x": 48, "y": 25, "zoom": 1 }
+        "chat": {
+          "x": 48,
+          "y": 25,
+          "zoom": 1
+        },
+        "selection": {
+          "x": 48,
+          "y": 25,
+          "zoom": 1
+        }
       },
-      "sendControl": { "label": "发送", "image": null },
+      "sendControl": {
+        "label": "发送",
+        "image": null
+      },
       "default": true
     },
     {
@@ -63,13 +93,28 @@
         "soft": "#def1f1",
         "background": "#f6fbfa",
         "ink": "#24424a",
-        "muted": "#70878a"
+        "muted": "#55747a",
+        "primary": "#167e88",
+        "secondary": "#f9edbd",
+        "surface": "#ffffffb8",
+        "text": "#24424a"
       },
       "crop": {
-        "chat": { "x": 48, "y": 20, "zoom": 1 },
-        "selection": { "x": 48, "y": 20, "zoom": 1 }
+        "chat": {
+          "x": 48,
+          "y": 20,
+          "zoom": 1
+        },
+        "selection": {
+          "x": 48,
+          "y": 20,
+          "zoom": 1
+        }
       },
-      "sendControl": { "label": "发送", "image": null }
+      "sendControl": {
+        "label": "发送",
+        "image": null
+      }
     }
   ]
 }
