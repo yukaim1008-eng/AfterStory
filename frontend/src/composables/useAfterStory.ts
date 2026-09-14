@@ -47,6 +47,8 @@ export function createAfterStory() {
   let historyRequest = 0;
   const memories = ref<PersonalMemory[]>([]);
   const memoryTotal = ref(0);
+  const memoryOffset = ref(0);
+  const memoryAppendFailed = ref(false);
   const memoryLoading = ref(false);
   const memoryError = ref("");
   const memoryForm = ref(false);
@@ -99,6 +101,8 @@ export function createAfterStory() {
       ++memoryRequest;
       memories.value = [];
       memoryTotal.value = 0;
+      memoryOffset.value = 0;
+      memoryAppendFailed.value = false;
       memoryError.value = "";
       memoryLoading.value = false;
     },
@@ -510,22 +514,41 @@ export function createAfterStory() {
       if (request === historyRequest) historyLoading.value = false;
     }
   }
-  async function loadMemories(instanceId = chat.value?.session?.instance_id) {
-    if (!instanceId || !capabilities.memory) return;
+  async function loadMemories(
+    instanceId = chat.value?.session?.instance_id,
+    append = false,
+  ) {
+    if (
+      !instanceId ||
+      !capabilities.memory ||
+      instanceId !== chat.value?.session?.instance_id ||
+      (append && memoryLoading.value)
+    )
+      return;
     const request = ++memoryRequest;
     memoryLoading.value = true;
     memoryError.value = "";
+    memoryAppendFailed.value = append;
     try {
       const result = await api<MemoryPage>(
-        `/instances/${encodeURIComponent(instanceId)}/memories?limit=100`,
+        `/instances/${encodeURIComponent(instanceId)}/memories?offset=${append ? memoryOffset.value : 0}&limit=100`,
       );
       if (
         request !== memoryRequest ||
         instanceId !== chat.value?.session?.instance_id
       )
         return;
-      memories.value = result.items;
+      memories.value = append
+        ? [
+            ...memories.value,
+            ...result.items.filter(
+              (item) =>
+                !memories.value.some((old) => old.memory_id === item.memory_id),
+            ),
+          ]
+        : result.items;
       memoryTotal.value = result.total;
+      memoryOffset.value = result.offset + result.items.length;
     } catch (error) {
       if (request === memoryRequest) memoryError.value = errorText(error);
     } finally {
@@ -533,6 +556,7 @@ export function createAfterStory() {
     }
   }
   function beginMemory(content = "", sourceMessageId?: string) {
+    if (memorySaving.value) return;
     memoryEditing.value = undefined;
     memoryDraft.value = content;
     memorySource.value = sourceMessageId;
@@ -562,21 +586,30 @@ export function createAfterStory() {
         },
         "POST",
       );
+      if (instanceId !== chat.value?.session?.instance_id) return;
       cancelMemoryForm();
       notice.value = "已加入个人记忆。";
       await loadMemories(instanceId);
     } catch (error) {
-      memoryError.value = errorText(error);
+      if (instanceId === chat.value?.session?.instance_id)
+        memoryError.value = errorText(error);
     } finally {
       memorySaving.value = false;
     }
   }
   function editMemory(memory: PersonalMemory) {
+    if (
+      memorySaving.value ||
+      memory.instance_id !== chat.value?.session?.instance_id
+    )
+      return;
     memoryForm.value = false;
     memoryEditing.value = memory.memory_id;
     memoryDraft.value = memory.content;
   }
   async function saveMemory(memory: PersonalMemory) {
+    const instanceId = memory.instance_id;
+    if (instanceId !== chat.value?.session?.instance_id) return;
     const content = memoryDraft.value.trim();
     if (!content || memorySaving.value) return;
     memorySaving.value = true;
@@ -587,19 +620,27 @@ export function createAfterStory() {
         { expected_revision: memory.revision, content },
         "PATCH",
       );
+      if (instanceId !== chat.value?.session?.instance_id) return;
       memoryEditing.value = undefined;
       memoryDraft.value = "";
       notice.value = "记忆已更正。";
       await loadMemories();
     } catch (error) {
-      memoryError.value = errorText(error);
+      if (instanceId === chat.value?.session?.instance_id)
+        memoryError.value = errorText(error);
     } finally {
       memorySaving.value = false;
     }
   }
   async function confirmDeleteMemory() {
     const target = memoryDelete.value;
-    if (!target || memorySaving.value) return;
+    if (
+      !target ||
+      memorySaving.value ||
+      target.instance_id !== chat.value?.session?.instance_id
+    )
+      return;
+    const instanceId = target.instance_id;
     memorySaving.value = true;
     memoryError.value = "";
     try {
@@ -608,11 +649,13 @@ export function createAfterStory() {
         undefined,
         "DELETE",
       );
+      if (instanceId !== chat.value?.session?.instance_id) return;
       memoryDelete.value = undefined;
       notice.value = "这条记忆已删除，原聊天仍会保留。";
       await loadMemories();
     } catch (error) {
-      memoryError.value = errorText(error);
+      if (instanceId === chat.value?.session?.instance_id)
+        memoryError.value = errorText(error);
     } finally {
       memorySaving.value = false;
     }
@@ -732,6 +775,8 @@ export function createAfterStory() {
     historyRequest,
     memories,
     memoryTotal,
+    memoryOffset,
+    memoryAppendFailed,
     memoryLoading,
     memoryError,
     memoryForm,

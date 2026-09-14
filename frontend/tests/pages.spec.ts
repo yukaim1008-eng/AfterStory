@@ -174,12 +174,16 @@ async function fakeApi(
           });
           return;
         }
+        const offset = Number(url.searchParams.get("offset") || 0);
+        const limit = Number(url.searchParams.get("limit") || 100);
+        const matching = memories.filter(
+          (item) => item.instance_id === instanceId,
+        );
         body = {
-          items: memories.filter((item) => item.instance_id === instanceId),
-          total: memories.filter((item) => item.instance_id === instanceId)
-            .length,
-          offset: 0,
-          limit: 100,
+          items: matching.slice(offset, offset + limit),
+          total: matching.length,
+          offset,
+          limit,
         };
       }
     } else if (/^\/memories\/[^/]+$/.test(path)) {
@@ -353,10 +357,7 @@ test("home clears old memories when a legacy instance or failed character instan
   await expect(page.getByText("当前实例记忆", { exact: true })).toBeVisible();
 
   await page.getByRole("button", { name: "回忆", exact: true }).click();
-  await page
-    .locator(".history-row")
-    .filter({ hasText: "nanally-legacy-v0" })
-    .click();
+  await page.locator('.history-row[data-version="nanally-legacy-v0"]').click();
   await page.getByRole("button", { name: "首页", exact: true }).click();
   await expect(page.getByText("旧版本实例记忆", { exact: true })).toBeVisible();
   await expect(page.getByText("当前实例记忆", { exact: true })).toHaveCount(0);
@@ -556,10 +557,7 @@ test("legacy versions restore their metadata and keep drafts and outbox in their
   await expect(page.getByRole("alert")).toContainText("暂时没有收到回复");
   await input.fill("当前草稿也要保留");
   await page.getByRole("button", { name: "回忆", exact: true }).click();
-  await page
-    .locator(".history-row")
-    .filter({ hasText: "nanally-legacy-v0" })
-    .click();
+  await page.locator('.history-row[data-version="nanally-legacy-v0"]').click();
   await expect(page.getByText("旧版本里的问候", { exact: true })).toBeVisible();
   await expect(input).toHaveValue("");
   await expect(
@@ -591,7 +589,7 @@ test("legacy versions restore their metadata and keep drafts and outbox in their
     page.locator(".metadata-row").filter({ hasText: "会话版本" }),
   ).toContainText("nanally-legacy-v0");
   await page.getByRole("button", { name: "回忆", exact: true }).click();
-  await page.locator(".history-row").filter({ hasText: current }).click();
+  await page.locator(`.history-row[data-version="${current}"]`).click();
   await expect(input).toHaveValue("当前草稿也要保留");
   await expect(page.getByRole("alert")).toContainText("尚未完成");
   await page.getByRole("button", { name: "重试", exact: true }).click();
@@ -677,7 +675,7 @@ test("late legacy history responses cannot replace the newly selected conversati
     request.url().includes("slow-chat/messages"),
   );
   await page.getByRole("button", { name: "回忆", exact: true }).click();
-  await page.locator(".history-row").filter({ hasText: current }).click();
+  await page.locator(`.history-row[data-version="${current}"]`).click();
   await expect(
     page.getByText("当前会话保持不变", { exact: true }),
   ).toBeVisible();
@@ -811,4 +809,87 @@ test("immersive chat keeps send preferences, multiline text and older-message re
       .locator(".messages")
       .evaluate((el) => el.scrollHeight - el.clientHeight - el.scrollTop),
   ).toBeLessThan(30);
+});
+
+test("memory filters load later pages and keep facts separate from conversation excerpts", async ({
+  page,
+}) => {
+  const id = "nanally-integration-v1";
+  await fakeApi(page, false, {
+    memory: true,
+    sessions: [session(id)],
+    memories: Array.from({ length: 101 }, (_, i) =>
+      memory(
+        `memory-${i}`,
+        `instance-${id}`,
+        i === 100 ? "最后一页的特别记忆" : `平常的记忆 ${i}`,
+      ),
+    ),
+  });
+  await page.goto("/#/memory/nanally");
+  await expect(
+    page.getByRole("heading", { name: "与你的回忆", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByRole("tab", { name: /她记得的事/ })).toHaveAttribute(
+    "aria-selected",
+    "true",
+  );
+  await page.getByRole("searchbox", { name: "搜索回忆" }).fill("最后一页");
+  await expect(page.locator(".memory-list article")).toHaveCount(1);
+  await expect(page.locator(".memory-list article")).toContainText(
+    "最后一页的特别记忆",
+  );
+});
+
+test("memory requests that finish after a role switch cannot populate the new role", async ({
+  page,
+}) => {
+  await fakeApi(page, false, {
+    memory: true,
+    delayMemoryInstance: "instance-nanally-integration-v1",
+    memories: [
+      memory(
+        "slow",
+        "instance-nanally-integration-v1",
+        "不能出现在伊洛伊的内容",
+      ),
+      memory("fast", "instance-iroi-integration-v1", "伊洛伊记得的内容"),
+    ],
+  });
+  await page.goto("/#/memory/nanally");
+  await page.waitForRequest((request) =>
+    request.url().includes("instance-nanally-integration-v1/memories"),
+  );
+  await page.evaluate(() => {
+    location.hash = "#/memory/iroi";
+  });
+  await expect(page.locator(".memory-list")).toContainText("伊洛伊记得的内容");
+  await page.waitForTimeout(650);
+  await expect(page.locator(".memory-list")).not.toContainText(
+    "不能出现在伊洛伊的内容",
+  );
+});
+
+test("history filters find a matching role on later pages while retaining unknown dates", async ({
+  page,
+}) => {
+  const sessions = Array.from({ length: 21 }, (_, i) => ({
+    ...session(
+      `filter-${i}`,
+      i === 20 ? "iroi-integration-v1" : "nanally-integration-v1",
+    ),
+    turns: 1,
+    preview: i === 20 ? "伊洛伊的雨天" : "娜娜莉的日常",
+    last_activity_at: null,
+  }));
+  await fakeApi(page, false, { sessions });
+  await page.goto("/#/history/nanally");
+  await expect(page.locator(".history-row")).toHaveCount(20);
+  await page.getByLabel("筛选角色").selectOption("iroi");
+  await expect(page.locator(".history-row")).toHaveCount(1);
+  await expect(page.locator(".history-row")).toContainText("伊洛伊的雨天");
+  await expect(page.locator(".history-row")).toContainText("未记录时间");
+  await expect(page.locator(".history-row")).not.toContainText(
+    "integration-v1",
+  );
 });
