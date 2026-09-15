@@ -26,6 +26,13 @@ const { character, cover, connected, editing } = useAfterStory();
         :name="character.name"
       />
     </div>
+    <div class="scene-interlock" aria-hidden="true">
+      <Portrait
+        :source="cover(character).source"
+        :crop="cover(character).crop.chat"
+        :name="character.name"
+      />
+    </div>
     <div class="scene-color" aria-hidden="true"></div>
     <div class="scene-light" aria-hidden="true"></div>
     <div class="scene-vignette" aria-hidden="true"></div>
@@ -62,7 +69,9 @@ const { character, cover, connected, editing } = useAfterStory();
 .scene-backdrop,
 .scene-backdrop :deep(.portrait),
 .scene-portrait,
-.scene-portrait :deep(.portrait) {
+.scene-portrait :deep(.portrait),
+.scene-interlock,
+.scene-interlock :deep(.portrait) {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -70,8 +79,9 @@ const { character, cover, connected, editing } = useAfterStory();
 }
 
 .scene-backdrop {
+  z-index: 0;
   inset: -4%;
-  opacity: 0.5;
+  opacity: 0.54;
 }
 
 .scene-backdrop :deep(img) {
@@ -81,14 +91,15 @@ const { character, cover, connected, editing } = useAfterStory();
 }
 
 .scene-portrait {
+  z-index: 2;
   right: auto;
-  width: min(82%, 1180px);
-  mask-image: linear-gradient(90deg, #000 0 62%, #000d 74%, transparent 96%);
+  width: min(90%, 1420px);
+  mask-image: linear-gradient(90deg, #000 0 64%, #000e 76%, transparent 100%);
   -webkit-mask-image: linear-gradient(
     90deg,
-    #000 0 62%,
-    #000d 74%,
-    transparent 96%
+    #000 0 64%,
+    #000e 76%,
+    transparent 100%
   );
 }
 
@@ -97,6 +108,36 @@ const { character, cover, connected, editing } = useAfterStory();
 }
 
 .scene-portrait :deep(img) {
+  object-fit: cover;
+  filter: saturate(1.04) contrast(1.02);
+  transform: scale(1.02) !important;
+}
+
+.scene-interlock {
+  z-index: 5;
+  right: auto;
+  width: min(90%, 1420px);
+  pointer-events: none;
+  opacity: 0.94;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0 42%,
+    #000 47% 55%,
+    transparent 64% 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0 42%,
+    #000 47% 55%,
+    transparent 64% 100%
+  );
+}
+
+.scene-interlock :deep(.portrait) {
+  background: transparent;
+}
+
+.scene-interlock :deep(img) {
   object-fit: cover;
   filter: saturate(1.04) contrast(1.02);
   transform: scale(1.02) !important;
@@ -111,6 +152,7 @@ const { character, cover, connected, editing } = useAfterStory();
 }
 
 .scene-color {
+  z-index: 1;
   background:
     linear-gradient(
       90deg,
@@ -123,6 +165,7 @@ const { character, cover, connected, editing } = useAfterStory();
 }
 
 .scene-light {
+  z-index: 3;
   inset: -15% 30% 20% -15%;
   border-radius: 50%;
   background: #fff7;
@@ -131,6 +174,7 @@ const { character, cover, connected, editing } = useAfterStory();
 }
 
 .scene-vignette {
+  z-index: 3;
   background:
     radial-gradient(circle at 28% 27%, transparent 0 24%, #2b172316 67%),
     linear-gradient(0deg, #181019a8, transparent 39%);
@@ -138,7 +182,7 @@ const { character, cover, connected, editing } = useAfterStory();
 
 .scene-identity {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   bottom: clamp(30px, 5vh, 58px);
   left: clamp(28px, 4vw, 64px);
   width: min(35vw, 430px);
@@ -190,7 +234,23 @@ const { character, cover, connected, editing } = useAfterStory();
 
 @media (max-width: 1050px) {
   .scene-portrait {
-    width: 88%;
+    width: 100%;
+  }
+
+  .scene-interlock {
+    width: 100%;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0 34%,
+      #000 41% 57%,
+      transparent 69% 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0 34%,
+      #000 41% 57%,
+      transparent 69% 100%
+    );
   }
 
   .scene-identity {
@@ -204,6 +264,10 @@ const { character, cover, connected, editing } = useAfterStory();
     opacity: 0.78;
     mask-image: linear-gradient(180deg, #000 0 42%, transparent 82%);
     -webkit-mask-image: linear-gradient(180deg, #000 0 42%, transparent 82%);
+  }
+
+  .scene-interlock {
+    display: none;
   }
 
   .scene-identity {

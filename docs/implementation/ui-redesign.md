@@ -6,15 +6,17 @@
 
 - 本阶段只重构 ChatPage，没有提前改 Home、Characters、Memories 或 Settings；业务发送、失败重试、草稿、旧版本会话、历史/资料入口、记忆入口、封面调整和深链均保留。
 - 删除 `style.css` 中旧 `.workspace` 的 40:60 Grid 和聊天专属骨架样式，删除 `design-system.css` 对 `.workspace` 的重复视觉接管；旧资料页所需结构改由明确的 `.secondary-workspace` 承担，页面布局不再由三个样式层共同竞争。
-- 新增 `ChatCharacterScene`：同一封面拆成低强度局部模糊环境层与清晰人物层，再组合主题色、渐变遮罩、局部光和底部暗部；ChatPage 使用绝对定位 Chat Glass Layer 覆盖在场景上，玻璃基准透明度为 0.52–0.61，并保留 backdrop-filter。
+- 新增 `ChatCharacterScene`：同一封面拆成低强度局部模糊环境层、清晰人物层和局部穿入层，再组合主题色、渐变遮罩、局部光和底部暗部。人物层不属于左右任何一列：主肖像延伸到玻璃下方，穿入层通过水平 mask 跨越玻璃左缘；玻璃材质、人物穿入层、聊天内容分别使用 z-index 4/5/6，人物可进入聊天区域而不遮住文字与控件。
+- ChatPage 根层覆盖 `100dvh` 并禁止页面级 overflow/overscroll；Chat Glass 在页头下方绝对定位，消息容器以 `flex: 1; min-height: 0; overflow: auto` 承担唯一的纵向滚动。玻璃使用 0.45–0.61 的横向透明度渐变和 7px 局部背景模糊，不再把进入面板的人物处理成无法识别的色块。
 - typography 继续只使用工程内 Noto Sans SC，新增 Brand、Display、Character、Section、Body、Caption、Eyebrow 和 Handwriting Accent 的语义 token；本阶段在聊天页实际使用角色名、标题、正文、说明文字和轻量手写感引文层级。
 - 空对话保留原文案但缩为轻量状态；存在消息时该状态不渲染，消息列表直接成为聊天层主体。
-- 浏览器截图 `frontend/test-results/chat-desktop.png` 在固定娜娜莉主题和真实组件渲染下复查通过：角色场景覆盖整个主画框，聊天层四周留出悬浮间距，人物延伸到玻璃下方，未出现“左角色区 + 右巨大白色区”。截图为模拟 API 的视觉/交互验收，不代表真实 Provider 调用。
-- 验证：`npm run build`、Prettier 检查、19 项 Playwright 回归全部通过；浏览器回归新增结构断言，确认根节点不再是 Grid、场景覆盖完整画框、聊天层为绝对定位且启用 backdrop-filter。回归复用了本轮开始前已存在的 5173 Vite 服务，该用户进程未被停止；本轮没有遗留自己启动的服务。
+- 浏览器截图 `frontend/test-results/chat-desktop.png` 在固定娜娜莉主题和真实组件渲染下复查通过：角色场景覆盖完整 viewport，人物眼睛、脸部与身体轮廓清晰跨过玻璃左缘并在聊天内容下方消隐，未出现“左角色区 + 右巨大白色区”。截图为模拟 API 的视觉/交互验收，不代表真实 Provider 调用。
+- 浏览器回归新增结构与滚动边界断言：场景覆盖完整 viewport、Chat Glass 绝对浮动、主肖像进入玻璃范围、穿入层具备独立 z-index 与 mask、玻璃伪元素保留 backdrop-filter；在 1440×620 短视口及各支持宽度下页面不产生纵向滚动，长消息只在 `.messages` 内滚动。
+- 最终验证：`npm run build`、`npx prettier --check src tests` 和 19 项 Playwright 回归全部通过；测试自行启动并关闭 Vite，结束后 5173 端口无监听。本阶段没有真实 Provider 调用、数据库写入或服务器部署。
 
 ## 检查结论与视觉依据
 
-- 已逐张查看 `frontend/design/GPT设计图稿/` 全部四张图片：`image.png` 设置、`image copy.png` 角色、`image copy 2.png` 首页、`image copy 3.png` 回忆。目录没有单独聊天稿，按用户文字指定的左角色场景、右透明对话区实施。
+- 已逐张查看 `frontend/design/GPT设计图稿/` 的设置、角色、首页和回忆参考；后续结合用户补充的聊天参考重新校正构图，明确采用“完整场景 + 独立人物层 + 玻璃材质层 + 聊天内容层”，不再使用左角色场景、右透明对话区的并列解释。
 - Vue 3 + TypeScript + Vite；Hash 路由、Vue reactive/ref；原生 CSS、Lucide 图标、本地 Noto Sans SC；无 Tailwind / Pinia / Vue Router。
 - 原始 `App.vue` 同时承载状态与所有页面；`Portrait.vue` 和 `CoverEditor.vue` 可复用。`api.ts`、`storage.ts` 封装请求、IndexedDB；偏好与草稿按后端身份写 localStorage。
 - `public/characters.json` 定义角色、版本、主题、封面、裁切与发送控件。默认图片由 `data/character-assets` 准备到 `public/media`；头像可复用封面裁切。
@@ -53,7 +55,7 @@ Phase 2：首页使用独立 HomePage、GlassPanel、CharacterAvatar。Hero 显�
 
 Phase 3：CharactersPage 与 CharacterCard 完成，当前角色为横向主卡，其余角色响应式网格；每张卡片主题独立，hover/focus 只产生轻微位移与缩放。复查截图发现主卡按钮底部受旧选择器优先级影响，已修复并增加按钮在卡片内部的断言。
 
-Phase 4：ChatPage 与 CharacterSidebar 拆出；左角色右玻璃对话区，头像/角色名/轻状态，浮动输入与浅色消息。技术版本只保留内部属性及资料页，聊天不显示连接诊断。新增“加载更早消息后保留阅读位置”和 Ctrl+Enter/Shift+Enter/自动滚动回归；既有真实发送函数、request_id、会话深链、草稿和重试继续沿用。
+Phase 4：ChatPage 与 CharacterSidebar 的初版曾采用左角色、右玻璃对话区，已被 2026-09-15 的视觉技术债清理取代；当前为完整 viewport 场景、独立人物穿入层和浮动聊天玻璃。技术版本只保留内部属性及资料页，聊天不显示连接诊断；“加载更早消息后保留阅读位置”、Ctrl+Enter/Shift+Enter/自动滚动、真实发送函数、request_id、会话深链、草稿和重试继续沿用。
 
 Phase 5：MemoriesPage 合并聊天片段与她记得的事，保持历史/记忆旧链接可用。历史卡片只使用真实预览、角色、轮数和时间；记忆只展示用户主动保存的内容。历史与记忆均保留清楚的“加载更多”分页，已载入记录可按角色、时间、类型和关键词筛选；角色或实例切换立刻清空旧记忆，并丢弃迟到响应。未安装角色、空记录、能力未启用与接口失败都有各自状态，不使用虚构数据补位。
 

@@ -389,11 +389,16 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   ).toBeVisible();
   const composition = await page.locator(".chat-workspace").evaluate((root) => {
     const scene = root.querySelector(".chat-character-scene")!;
+    const portrait = root.querySelector(".scene-portrait")!;
+    const interlock = root.querySelector(".scene-interlock")!;
     const glass = root.querySelector(".chat-glass")!;
     const rootBox = root.getBoundingClientRect();
     const sceneBox = scene.getBoundingClientRect();
+    const portraitBox = portrait.getBoundingClientRect();
     const glassBox = glass.getBoundingClientRect();
     const glassStyle = getComputedStyle(glass);
+    const glassMaterialStyle = getComputedStyle(glass, "::before");
+    const interlockStyle = getComputedStyle(interlock);
     return {
       display: getComputedStyle(root).display,
       sceneCoversFrame:
@@ -405,14 +410,26 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
         glassStyle.position === "absolute" &&
         glassBox.left > rootBox.left + rootBox.width * 0.35 &&
         glassBox.right < rootBox.right,
-      glassUsesBackdrop: glassStyle.backdropFilter !== "none",
+      portraitCrossesIntoGlass:
+        portraitBox.right > glassBox.left + glassBox.width * 0.35,
+      interlockCreatesBridge:
+        interlockStyle.display === "block" &&
+        interlockStyle.zIndex === "5" &&
+        interlockStyle.maskImage !== "none",
+      glassUsesBackdrop: glassMaterialStyle.backdropFilter !== "none",
+      viewportDoesNotScroll:
+        document.documentElement.scrollHeight <= window.innerHeight &&
+        document.body.scrollHeight <= window.innerHeight,
     };
   });
   expect(composition).toEqual({
     display: "block",
     sceneCoversFrame: true,
     glassFloatsOverScene: true,
+    portraitCrossesIntoGlass: true,
+    interlockCreatesBridge: true,
     glassUsesBackdrop: true,
+    viewportDoesNotScroll: true,
   });
   await page.screenshot({ path: "test-results/chat-desktop.png" });
   await page.reload();
@@ -812,6 +829,20 @@ test("immersive chat keeps send preferences, multiline text and older-message re
   await expect(chat).not.toContainText("联调");
   const input = page.getByRole("textbox", { name: "消息" });
   await expect(input).toHaveAttribute("placeholder", "想和娜娜莉说些什么……");
+  await page.setViewportSize({ width: 1440, height: 620 });
+  const scrollBoundaries = await page
+    .locator(".messages")
+    .evaluate((messages) => ({
+      viewportLocked:
+        document.documentElement.scrollHeight <= window.innerHeight &&
+        document.body.scrollHeight <= window.innerHeight,
+      messagesCanScroll: messages.scrollHeight > messages.clientHeight,
+    }));
+  expect(scrollBoundaries).toEqual({
+    viewportLocked: true,
+    messagesCanScroll: true,
+  });
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.locator(".messages").evaluate((el) => {
     el.scrollTop = 0;
   });
@@ -953,6 +984,14 @@ test("every primary page stays usable across supported desktop widths", async ({
         ),
         `${route} at ${width}px should not create horizontal overflow`,
       ).toBe(true);
+      if (route === "chat") {
+        expect(
+          await page.evaluate(
+            () => document.documentElement.scrollHeight <= window.innerHeight,
+          ),
+          `chat at ${width}px should not create page-level vertical overflow`,
+        ).toBe(true);
+      }
     }
   }
   expect(errors).toEqual([]);

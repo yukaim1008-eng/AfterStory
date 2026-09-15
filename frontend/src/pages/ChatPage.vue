@@ -242,46 +242,60 @@ const presence = computed(() => {
 
 <style scoped>
 .chat-workspace {
-  position: relative;
-  width: 100%;
-  max-width: 1800px;
-  height: min(900px, calc(100dvh - 116px));
-  min-height: 570px;
-  margin: auto;
+  position: absolute;
+  inset: 0;
+  width: auto;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
   overflow: hidden;
-  border: 1px solid #ffffff9e;
-  border-radius: clamp(22px, 2vw, 32px);
+  border: 0;
+  border-radius: 0;
   background: var(--background);
-  box-shadow:
-    0 26px 80px color-mix(in srgb, var(--text) 13%, transparent),
-    inset 0 1px #ffffffb8;
+  box-shadow: none;
 }
 
 .chat-glass {
   position: absolute;
-  z-index: 4;
-  top: clamp(18px, 3vh, 32px);
-  right: clamp(18px, 2.4vw, 38px);
-  bottom: clamp(18px, 3vh, 32px);
-  width: clamp(540px, 53%, 780px);
+  top: calc(var(--chat-header-height) + clamp(10px, 1.5vh, 16px));
+  right: var(--space-page);
+  bottom: clamp(26px, 5vh, 52px);
+  width: clamp(520px, 50vw, 880px);
   min-width: 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid #ffffffc2;
+  border-radius: clamp(20px, 2vw, 30px);
+}
+
+.chat-glass::before {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border: 1px solid #ffffffb8;
   border-radius: clamp(20px, 2vw, 30px);
   background: linear-gradient(
-    145deg,
-    var(--glass-surface-strong),
-    var(--glass-surface) 52%,
-    color-mix(in srgb, var(--soft) 16%, rgba(255, 255, 255, 0.5))
+    90deg,
+    rgba(255, 255, 255, 0.45),
+    var(--glass-surface) 18%,
+    var(--glass-surface-strong) 100%
   );
   box-shadow:
     0 24px 70px color-mix(in srgb, var(--text) 14%, transparent),
     inset 0 1px #ffffffc7;
-  backdrop-filter: blur(18px) saturate(1.12);
-  -webkit-backdrop-filter: blur(18px) saturate(1.12);
+  backdrop-filter: blur(7px) saturate(1.08);
+  -webkit-backdrop-filter: blur(7px) saturate(1.08);
+  content: "";
+  pointer-events: none;
+}
+
+.chat-header,
+.messages,
+.composer {
+  position: relative;
+  z-index: 6;
 }
 
 .chat-header {
@@ -599,7 +613,8 @@ const presence = computed(() => {
 
 @media (max-width: 900px) {
   .chat-glass {
-    width: min(63%, 620px);
+    right: 18px;
+    width: min(64%, 620px);
   }
 
   .chat-header {
@@ -616,14 +631,11 @@ const presence = computed(() => {
 }
 
 @media (max-width: 700px) {
-  .chat-workspace {
-    height: calc(100dvh - 78px);
-    min-height: 500px;
-    border-radius: 18px;
-  }
-
   .chat-glass {
-    inset: 10px;
+    top: calc(var(--chat-header-height) + 6px);
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
     width: auto;
     border-radius: 18px;
   }
