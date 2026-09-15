@@ -48,6 +48,8 @@
       "world": "异环",
       "versionId": "nanally-integration-v1",
       "cover": "/media/nanally.image",
+      "sceneBackground": "/media/nanally-scene.png",
+      "sceneBackgroundPosition": "center center",
       "description": "曾经并肩行动的伙伴，如今通过 AfterStory 继续交流。故事之外，还有想和你说的话。",
       "dataStatus": "联调资料",
       "checkpointLabel": "原作剧情资料待补全",

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import type { Crop } from "./types";
-defineProps<{ source: string; crop: Crop; name: string }>();
+defineProps<{
+  source: string;
+  crop: Crop;
+  name: string;
+  position?: string;
+}>();
 </script>
 <template>
   <div class="portrait">
@@ -8,9 +13,9 @@ defineProps<{ source: string; crop: Crop; name: string }>();
       :src="source"
       :alt="name"
       :style="{
-        objectPosition: `${crop.x}% ${crop.y}%`,
+        objectPosition: position || `${crop.x}% ${crop.y}%`,
         transform: `scale(${crop.zoom})`,
-        transformOrigin: `${crop.x}% ${crop.y}%`,
+        transformOrigin: position || `${crop.x}% ${crop.y}%`,
       }"
     />
   </div>

@@ -2,6 +2,8 @@
 
 2026-09-15 更新：聊天页旧的“左角色 Card + 右聊天 Card”与 40:60 Grid 规则已废止。当前 ChatPage 是覆盖单个 viewport 的完整 Character Scene，人物不是某一列的内容，而是由绝对定位的环境层、主肖像层和穿入层共同组成；穿入层通过局部 mask 越过 Chat Glass 左缘，玻璃材质位于其下、聊天内容位于其上。页面根层禁止纵向滚动，只有消息列表内部滚动；布局不能再由全局 `.workspace` 或 `style.css` 的聊天选择器决定。本轮只完成聊天页，其他一级页面按后续阶段分别清理。
 
+2026-09-15 补充：ChatPage 场景图来源由 `frontend/public/characters.json` 的可选 `sceneBackground` 和 `sceneBackgroundPosition` 配置；场景层统一使用 `cover`，可按角色独立定位。未配置时回退到当前角色封面及既有聊天裁切。该机制不改变既有三层人物场景、Chat Glass 或聊天 Layout；娜娜莉本地场景素材副本位于 `frontend/public/media/nanally-scene.png`，未纳入上传范围。
+
 2026-09-14 更新：用户授权完整 UI 改版，最新视觉依据为 `frontend/design/GPT设计图稿/` 四张参考图及用户聊天空间描述，取代旧稿的页面与控件布局。信息架构调整为首页、角色、回忆、设置；聊天与资料为角色空间的二级入口。实施与验收见 [UI 改版记录](../implementation/ui-redesign.md)。以下 F1/F2 记录保留历史上下文，冲突的旧视觉规则以本次授权为准。
 
 更新日期：2026-09-12。用户已认可设计并授权完成 F1 页面与文字链路，现反馈整体流程跑通。当前先整理文档再决定下一阶段，性格和资料库暂缓；本地联调版不代表完整 V1 或正式角色效果已验收。

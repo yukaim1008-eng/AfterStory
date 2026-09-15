@@ -391,6 +391,7 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
     const scene = root.querySelector(".chat-character-scene")!;
     const portrait = root.querySelector(".scene-portrait")!;
     const interlock = root.querySelector(".scene-interlock")!;
+    const sceneImage = portrait.querySelector("img")!;
     const glass = root.querySelector(".chat-glass")!;
     const rootBox = root.getBoundingClientRect();
     const sceneBox = scene.getBoundingClientRect();
@@ -399,6 +400,7 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
     const glassStyle = getComputedStyle(glass);
     const glassMaterialStyle = getComputedStyle(glass, "::before");
     const interlockStyle = getComputedStyle(interlock);
+    const sceneImageStyle = getComputedStyle(sceneImage);
     return {
       display: getComputedStyle(root).display,
       sceneCoversFrame:
@@ -416,6 +418,10 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
         interlockStyle.display === "block" &&
         interlockStyle.zIndex === "5" &&
         interlockStyle.maskImage !== "none",
+      sceneUsesCharacterBackground:
+        sceneImage.getAttribute("src") === "/media/nanally-scene.png" &&
+        sceneImageStyle.objectFit === "cover" &&
+        sceneImageStyle.objectPosition === "50% 50%",
       glassUsesBackdrop: glassMaterialStyle.backdropFilter !== "none",
       viewportDoesNotScroll:
         document.documentElement.scrollHeight <= window.innerHeight &&
@@ -428,6 +434,7 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
     glassFloatsOverScene: true,
     portraitCrossesIntoGlass: true,
     interlockCreatesBridge: true,
+    sceneUsesCharacterBackground: true,
     glassUsesBackdrop: true,
     viewportDoesNotScroll: true,
   });

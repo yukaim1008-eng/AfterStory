@@ -6,6 +6,8 @@ export type Character = {
   world: string;
   versionId: string;
   cover: string;
+  sceneBackground?: string;
+  sceneBackgroundPosition?: string;
   description: string;
   tagline?: string;
   tags?: string[];

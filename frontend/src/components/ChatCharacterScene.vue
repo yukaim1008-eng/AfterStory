@@ -1,9 +1,21 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { ImagePlus } from "lucide-vue-next";
 import Portrait from "../Portrait.vue";
 import { useAfterStory } from "../composables/useAfterStory";
 
 const { character, cover, connected, editing } = useAfterStory();
+const sceneSource = computed(() => {
+  if (!character.value) return "";
+  return character.value.sceneBackground || cover(character.value).source;
+});
+const sceneCrop = computed(() => {
+  if (!character.value) return { x: 50, y: 50, zoom: 1 };
+  return character.value.sceneBackground
+    ? { x: 50, y: 50, zoom: 1 }
+    : cover(character.value).crop.chat;
+});
+const scenePosition = computed(() => character.value?.sceneBackgroundPosition);
 </script>
 
 <template>
@@ -14,22 +26,25 @@ const { character, cover, connected, editing } = useAfterStory();
   >
     <div class="scene-backdrop" aria-hidden="true">
       <Portrait
-        :source="cover(character).source"
-        :crop="cover(character).crop.chat"
+        :source="sceneSource"
+        :crop="sceneCrop"
+        :position="scenePosition"
         :name="character.name"
       />
     </div>
     <div class="scene-portrait" aria-hidden="true">
       <Portrait
-        :source="cover(character).source"
-        :crop="cover(character).crop.chat"
+        :source="sceneSource"
+        :crop="sceneCrop"
+        :position="scenePosition"
         :name="character.name"
       />
     </div>
     <div class="scene-interlock" aria-hidden="true">
       <Portrait
-        :source="cover(character).source"
-        :crop="cover(character).crop.chat"
+        :source="sceneSource"
+        :crop="sceneCrop"
+        :position="scenePosition"
         :name="character.name"
       />
     </div>
