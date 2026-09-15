@@ -35,6 +35,21 @@
   z-index: 20;
   height: var(--chat-header-height);
 }
+.page-chat .topbar-quiet {
+  opacity: 0.78;
+}
+.page-chat .topbar-quiet:hover,
+.page-chat .topbar-quiet:focus-within {
+  opacity: 1;
+}
+.page-chat .topbar-quiet .brand {
+  font-size: 29px;
+  font-weight: 740;
+}
+.page-chat .topbar-quiet .tagline,
+.page-chat .topbar-quiet nav button {
+  color: color-mix(in srgb, var(--text) 64%, transparent);
+}
 .page-background {
   position: fixed;
   inset: 0;

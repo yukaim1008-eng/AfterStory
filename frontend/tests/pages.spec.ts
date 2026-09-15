@@ -459,6 +459,114 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   expect(errors).toEqual([]);
 });
 
+test("chat visual density keeps simulated dialogue readable without page scrolling", async ({
+  page,
+}) => {
+  const id = "visual-chat";
+  const visualTurn: Turn = {
+    turn_id: "visual-turn",
+    request_id: "visual-request",
+    sequence: 1,
+    status: "completed",
+    error_code: null,
+    created_at: timestamp,
+    messages: [
+      { message_id: "visual-1", role: "assistant", text: "你回来啦。" },
+      {
+        message_id: "visual-2",
+        role: "assistant",
+        text: "今天看起来有点累，发生什么了吗？",
+      },
+      { message_id: "visual-3", role: "user", text: "今天上班有点累。" },
+      {
+        message_id: "visual-4",
+        role: "user",
+        text: "最近事情有点多，感觉脑子都转不动了。还好现在终于能慢下来一会儿。",
+      },
+      {
+        message_id: "visual-5",
+        role: "assistant",
+        text: "那先别想工作的事了。",
+      },
+      { message_id: "visual-6", role: "assistant", text: "陪我待一会儿吧？" },
+      { message_id: "visual-7", role: "user", text: "好。" },
+      {
+        message_id: "visual-8",
+        role: "assistant",
+        text: "嗯，那今天什么都不用急。",
+      },
+      {
+        message_id: "visual-9",
+        role: "assistant",
+        text: "慢一点也没关系，我在这里。",
+      },
+    ],
+  };
+  await fakeApi(page, false, {
+    sessions: [session(id, "nanally-integration-v1")],
+    turns: { [id]: [visualTurn] },
+  });
+  await page.goto(`/#/chat/nanally?conversation=${id}`);
+  await expect(page.locator(".message")).toHaveCount(9);
+  const visualCheck = await page.locator(".chat-workspace").evaluate((root) => {
+    const messages = root.querySelector(".messages")!;
+    const assistant = root.querySelector(".message.assistant .bubble")!;
+    const user = root.querySelector(".message.user .bubble")!;
+    const repeatedAuthor = root.querySelector(
+      ".message.assistant + .message.assistant .message-author",
+    )!;
+    const userBox = user.getBoundingClientRect();
+    const messagesBox = messages.getBoundingClientRect();
+    return {
+      viewportLocked:
+        document.documentElement.scrollHeight <= window.innerHeight &&
+        document.body.scrollHeight <= window.innerHeight,
+      userWidthIsRestrained: userBox.width <= messagesBox.width * 0.7 + 1,
+      assistantUsesLightTreatment:
+        getComputedStyle(assistant).borderLeftWidth === "2px",
+      repeatedAssistantMetadataIsQuiet:
+        getComputedStyle(repeatedAuthor).display === "none",
+    };
+  });
+  expect(visualCheck).toEqual({
+    viewportLocked: true,
+    userWidthIsRestrained: true,
+    assistantUsesLightTreatment: true,
+    repeatedAssistantMetadataIsQuiet: true,
+  });
+  const input = page.getByRole("textbox", { name: "消息" });
+  await input.focus();
+  await expect(input).toBeFocused();
+  await page.screenshot({ path: "test-results/chat-visual-density.png" });
+});
+
+test("chat empty state remains secondary to the character scene", async ({
+  page,
+}) => {
+  await fakeApi(page);
+  await page.goto("/#/chat/nanally");
+  await expect(page.locator(".welcome")).toBeVisible();
+  const emptyCheck = await page.locator(".chat-workspace").evaluate((root) => {
+    const welcome = root.querySelector(".welcome")!;
+    const messages = root.querySelector(".messages")!;
+    return {
+      noMessages: root.querySelectorAll(".message").length === 0,
+      viewportLocked:
+        document.documentElement.scrollHeight <= window.innerHeight &&
+        document.body.scrollHeight <= window.innerHeight,
+      welcomeIsSubdued: Number(getComputedStyle(welcome).opacity) < 0.8,
+      messageAreaOwnsScrolling: getComputedStyle(messages).overflowY === "auto",
+    };
+  });
+  expect(emptyCheck).toEqual({
+    noMessages: true,
+    viewportLocked: true,
+    welcomeIsSubdued: true,
+    messageAreaOwnsScrolling: true,
+  });
+  await page.screenshot({ path: "test-results/chat-empty-state.png" });
+});
+
 test("IME does not send, failed outbox retries same request after refresh", async ({
   page,
 }) => {

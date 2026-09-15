@@ -274,19 +274,19 @@ const presence = computed(() => {
   position: absolute;
   inset: 0;
   z-index: 4;
-  border: 1px solid #ffffffb8;
+  border: 1px solid #ffffffa8;
   border-radius: clamp(20px, 2vw, 30px);
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.45),
-    var(--glass-surface) 18%,
-    var(--glass-surface-strong) 100%
+    rgba(255, 255, 255, 0.3),
+    color-mix(in srgb, var(--glass-surface) 82%, transparent) 20%,
+    color-mix(in srgb, var(--glass-surface-strong) 84%, transparent) 100%
   );
   box-shadow:
-    0 24px 70px color-mix(in srgb, var(--text) 14%, transparent),
-    inset 0 1px #ffffffc7;
-  backdrop-filter: blur(7px) saturate(1.08);
-  -webkit-backdrop-filter: blur(7px) saturate(1.08);
+    0 20px 58px color-mix(in srgb, var(--text) 11%, transparent),
+    inset 0 1px #ffffffb8;
+  backdrop-filter: blur(10px) saturate(1.03);
+  -webkit-backdrop-filter: blur(10px) saturate(1.03);
   content: "";
   pointer-events: none;
 }
@@ -303,8 +303,8 @@ const presence = computed(() => {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
-  min-height: 82px;
+  gap: 11px;
+  min-height: 78px;
   margin: 0 clamp(22px, 3vw, 38px);
   border-bottom: 1px solid #ffffff8f;
 }
@@ -316,15 +316,15 @@ const presence = computed(() => {
 }
 
 .chat-header h2 {
-  margin: 0 0 4px;
-  font-size: var(--type-section-size);
-  font-weight: 650;
-  line-height: 1.2;
-  letter-spacing: 0.05em;
+  margin: 0 0 3px;
+  font-size: 16px;
+  font-weight: 620;
+  line-height: 1.25;
+  letter-spacing: 0.07em;
 }
 
 .chat-header span {
-  color: var(--muted);
+  color: color-mix(in srgb, var(--muted) 82%, transparent);
   font-size: var(--type-caption-size);
   letter-spacing: 0.04em;
 }
@@ -353,7 +353,7 @@ const presence = computed(() => {
   gap: 5px;
   padding: 7px 10px;
   border-radius: 99px;
-  color: color-mix(in srgb, var(--text) 72%, transparent);
+  color: color-mix(in srgb, var(--text) 62%, transparent);
   font-size: var(--type-caption-size);
   letter-spacing: 0.03em;
 }
@@ -368,7 +368,7 @@ const presence = computed(() => {
   min-height: 0;
   overflow: auto;
   overscroll-behavior: contain;
-  padding: 24px clamp(24px, 3vw, 40px) 16px;
+  padding: 20px clamp(24px, 3vw, 40px) 14px;
   scrollbar-width: thin;
   scrollbar-color: var(--soft) transparent;
 }
@@ -377,8 +377,8 @@ const presence = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 7px;
-  margin: 0 0 19px;
+  gap: 4px;
+  margin: 0 0 18px;
 }
 
 .message.user {
@@ -387,31 +387,43 @@ const presence = computed(() => {
 
 .message-author {
   margin: 0 6px;
-  color: var(--muted);
-  font-size: var(--type-caption-size);
-  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--muted) 82%, transparent);
+  font-size: 9px;
+  font-weight: 560;
+  letter-spacing: 0.08em;
 }
 
 .bubble {
-  max-width: min(86%, 640px);
-  padding: 11px 16px;
-  border: 1px solid #ffffffb0;
-  border-radius: 5px 18px 18px;
-  background: #ffffff8f;
-  box-shadow: 0 7px 22px #34232d0b;
+  max-width: min(76%, 560px);
+  padding: 2px 4px 3px 13px;
+  border: 0;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 44%, transparent);
+  border-radius: 0 10px 10px 0;
+  background: linear-gradient(90deg, #ffffff3d, #ffffff08);
+  box-shadow: none;
   color: var(--text);
   font-size: var(--type-body-size);
-  font-weight: 430;
-  line-height: 1.82;
+  font-weight: 420;
+  line-height: 1.78;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
 
 .message.user .bubble {
-  border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
-  border-radius: 18px 5px 18px 18px;
-  background: color-mix(in srgb, var(--soft) 68%, #ffffffad);
-  box-shadow: none;
+  max-width: min(70%, 500px);
+  padding: 9px 13px;
+  border: 1px solid color-mix(in srgb, var(--accent) 14%, transparent);
+  border-radius: 17px 5px 17px 17px;
+  background: color-mix(in srgb, var(--soft) 58%, #ffffff82);
+  box-shadow: 0 5px 16px color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.message.assistant + .message.assistant {
+  margin-top: -8px;
+}
+
+.message.assistant + .message.assistant .message-author {
+  display: none;
 }
 
 .remember-message {
@@ -451,13 +463,13 @@ const presence = computed(() => {
 
 .welcome {
   min-height: 100%;
-  gap: 9px;
-  opacity: 0.88;
+  gap: 8px;
+  opacity: 0.72;
 }
 
 .welcome-mark {
   color: var(--accent);
-  font-size: 20px;
+  font-size: 17px;
   line-height: 1;
 }
 
@@ -469,10 +481,10 @@ const presence = computed(() => {
 
 .welcome h2 {
   color: var(--text);
-  font-size: 20px;
-  font-weight: 580;
-  line-height: 1.6;
-  letter-spacing: 0.04em;
+  font-size: 18px;
+  font-weight: 540;
+  line-height: 1.65;
+  letter-spacing: 0.05em;
 }
 
 .welcome p {
@@ -481,9 +493,10 @@ const presence = computed(() => {
 
 .turn-time {
   display: block;
-  margin: 13px 0 17px;
-  color: var(--muted);
-  font-size: var(--type-caption-size);
+  margin: 10px 0 13px;
+  color: color-mix(in srgb, var(--muted) 70%, transparent);
+  font-size: 9px;
+  letter-spacing: 0.03em;
   text-align: center;
 }
 
@@ -541,7 +554,7 @@ const presence = computed(() => {
 
 .composer {
   flex-shrink: 0;
-  padding: 11px clamp(22px, 3vw, 38px) 20px;
+  padding: 10px clamp(22px, 3vw, 38px) 18px;
 }
 
 .chat-error {
@@ -551,13 +564,24 @@ const presence = computed(() => {
 .input-shell {
   display: flex;
   align-items: flex-end;
-  gap: 10px;
-  padding: 11px 11px 11px 19px;
-  border: 1px solid #ffffffd1;
-  border-radius: 26px;
-  background: #ffffffa8;
-  box-shadow: 0 12px 34px color-mix(in srgb, var(--text) 9%, transparent);
-  backdrop-filter: blur(14px);
+  gap: 9px;
+  min-height: 58px;
+  padding: 9px 9px 9px 18px;
+  border: 1px solid #ffffffbd;
+  border-radius: 25px;
+  background: #ffffff78;
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--text) 8%, transparent);
+  backdrop-filter: blur(10px) saturate(1.04);
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.input-shell:focus-within {
+  border-color: color-mix(in srgb, var(--accent) 36%, #fff);
+  background: #ffffff8f;
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 14%, transparent);
 }
 
 .input-shell textarea {
@@ -570,20 +594,24 @@ const presence = computed(() => {
   resize: none;
   background: none;
   color: var(--text);
-  line-height: 1.8;
+  line-height: 1.7;
   font-size: var(--type-body-size);
 }
 
 .input-shell textarea::placeholder {
-  color: var(--muted);
+  color: color-mix(in srgb, var(--muted) 78%, transparent);
 }
 
 .send-button {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--primary) 88%, #fff),
+    color-mix(in srgb, var(--accent) 82%, #fff)
+  );
   color: white;
   box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 22%, transparent);
 }
@@ -604,9 +632,9 @@ const presence = computed(() => {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  padding: 10px 5px 0;
-  color: color-mix(in srgb, var(--text) 70%, transparent);
-  font-size: var(--type-caption-size);
+  padding: 8px 5px 0;
+  color: color-mix(in srgb, var(--text) 60%, transparent);
+  font-size: 9px;
   letter-spacing: 0.02em;
   text-shadow: 0 1px 8px #fff;
 }
