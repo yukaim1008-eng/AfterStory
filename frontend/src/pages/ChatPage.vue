@@ -3,7 +3,7 @@ import { computed } from "vue";
 import { ArrowUp, BookOpen, LoaderCircle, Plus } from "lucide-vue-next";
 import { useAfterStory } from "../composables/useAfterStory";
 import CharacterAvatar from "../components/CharacterAvatar.vue";
-import CharacterSidebar from "../components/CharacterSidebar.vue";
+import ChatCharacterScene from "../components/ChatCharacterScene.vue";
 
 const {
   character,
@@ -40,13 +40,13 @@ const presence = computed(() => {
     v-if="character"
     id="main-content"
     tabindex="-1"
-    class="workspace chat-workspace"
+    class="chat-workspace"
     :data-version="chat?.session?.version_id"
   >
-    <CharacterSidebar />
+    <ChatCharacterScene />
 
-    <section class="chat-area">
-      <header class="chat-heading">
+    <section class="chat-glass">
+      <header class="chat-header">
         <CharacterAvatar :character="character" :cover="cover(character)" />
         <div>
           <h2>{{ character.name }}</h2>
@@ -56,7 +56,7 @@ const presence = computed(() => {
           <button aria-label="查看角色回忆" @click="route('history')">
             回忆
           </button>
-          <button aria-label="查看角色资料" @click="route('profile')">
+          <button aria-label="角色资料" @click="route('profile')">
             角色资料<BookOpen :size="15" />
           </button>
         </nav>
@@ -241,57 +241,81 @@ const presence = computed(() => {
 </template>
 
 <style scoped>
-.workspace.chat-workspace {
-  display: grid;
-  grid-template-columns: minmax(360px, 46%) minmax(0, 54%);
+.chat-workspace {
+  position: relative;
   width: 100%;
   max-width: 1800px;
   height: min(900px, calc(100dvh - 116px));
   min-height: 570px;
   margin: auto;
   overflow: hidden;
-  border: 1px solid #ffffffba;
-  border-radius: var(--radius-panel);
-  background: color-mix(in srgb, var(--surface) 90%, transparent);
-  box-shadow: var(--shadow-panel);
+  border: 1px solid #ffffff9e;
+  border-radius: clamp(22px, 2vw, 32px);
+  background: var(--background);
+  box-shadow:
+    0 26px 80px color-mix(in srgb, var(--text) 13%, transparent),
+    inset 0 1px #ffffffb8;
 }
 
-.chat-area {
+.chat-glass {
+  position: absolute;
+  z-index: 4;
+  top: clamp(18px, 3vh, 32px);
+  right: clamp(18px, 2.4vw, 38px);
+  bottom: clamp(18px, 3vh, 32px);
+  width: clamp(540px, 53%, 780px);
   min-width: 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
-  background: color-mix(in srgb, var(--surface) 80%, transparent);
-  backdrop-filter: blur(22px);
+  overflow: hidden;
+  border: 1px solid #ffffffc2;
+  border-radius: clamp(20px, 2vw, 30px);
+  background: linear-gradient(
+    145deg,
+    var(--glass-surface-strong),
+    var(--glass-surface) 52%,
+    color-mix(in srgb, var(--soft) 16%, rgba(255, 255, 255, 0.5))
+  );
+  box-shadow:
+    0 24px 70px color-mix(in srgb, var(--text) 14%, transparent),
+    inset 0 1px #ffffffc7;
+  backdrop-filter: blur(18px) saturate(1.12);
+  -webkit-backdrop-filter: blur(18px) saturate(1.12);
 }
 
-.chat-heading {
+.chat-header {
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
-  height: 84px;
-  margin: 0 clamp(22px, 3vw, 42px);
-  border-bottom: 1px solid color-mix(in srgb, var(--soft) 72%, transparent);
+  min-height: 82px;
+  margin: 0 clamp(22px, 3vw, 38px);
+  border-bottom: 1px solid #ffffff8f;
 }
 
-.chat-heading .character-avatar {
+.chat-header .character-avatar {
   width: 42px;
   height: 42px;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 16%, transparent);
 }
 
-.chat-heading h2 {
+.chat-header h2 {
   margin: 0 0 4px;
-  font-size: 16px;
+  font-size: var(--type-section-size);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
 }
 
-.chat-heading span {
+.chat-header span {
   color: var(--muted);
-  font-size: 10px;
+  font-size: var(--type-caption-size);
+  letter-spacing: 0.04em;
 }
 
-.chat-heading i {
+.chat-header i {
   display: inline-block;
   width: 6px;
   height: 6px;
@@ -300,27 +324,28 @@ const presence = computed(() => {
   background: #baaeb5;
 }
 
-.chat-heading i.online {
+.chat-header i.online {
   background: #76a98b;
   box-shadow: 0 0 0 3px #76a98b1c;
 }
 
-.chat-heading nav {
+.chat-header nav {
   display: flex;
   gap: 8px;
   margin-left: auto;
 }
 
-.chat-heading nav button {
+.chat-header nav button {
   gap: 5px;
   padding: 7px 10px;
   border-radius: 99px;
-  color: var(--muted);
-  font-size: 10px;
+  color: color-mix(in srgb, var(--text) 72%, transparent);
+  font-size: var(--type-caption-size);
+  letter-spacing: 0.03em;
 }
 
-.chat-heading nav button:hover {
-  background: color-mix(in srgb, var(--soft) 45%, transparent);
+.chat-header nav button:hover {
+  background: #ffffff52;
   color: var(--accent);
 }
 
@@ -329,7 +354,7 @@ const presence = computed(() => {
   min-height: 0;
   overflow: auto;
   overscroll-behavior: contain;
-  padding: 28px clamp(24px, 3vw, 46px) 18px;
+  padding: 24px clamp(24px, 3vw, 40px) 16px;
   scrollbar-width: thin;
   scrollbar-color: var(--soft) transparent;
 }
@@ -339,7 +364,7 @@ const presence = computed(() => {
   flex-direction: column;
   align-items: flex-start;
   gap: 7px;
-  margin: 0 0 22px;
+  margin: 0 0 19px;
 }
 
 .message.user {
@@ -349,18 +374,21 @@ const presence = computed(() => {
 .message-author {
   margin: 0 6px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: var(--type-caption-size);
+  letter-spacing: 0.04em;
 }
 
 .bubble {
-  max-width: min(88%, 720px);
-  padding: 12px 17px;
-  border: 1px solid color-mix(in srgb, var(--soft) 82%, white);
+  max-width: min(86%, 640px);
+  padding: 11px 16px;
+  border: 1px solid #ffffffb0;
   border-radius: 5px 18px 18px;
-  background: #ffffff7d;
-  box-shadow: 0 5px 16px #34232d08;
-  font-size: 15px;
-  line-height: 1.9;
+  background: #ffffff8f;
+  box-shadow: 0 7px 22px #34232d0b;
+  color: var(--text);
+  font-size: var(--type-body-size);
+  font-weight: 430;
+  line-height: 1.82;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
@@ -368,7 +396,7 @@ const presence = computed(() => {
 .message.user .bubble {
   border: 1px solid color-mix(in srgb, var(--accent) 8%, transparent);
   border-radius: 18px 5px 18px 18px;
-  background: color-mix(in srgb, var(--soft) 62%, white);
+  background: color-mix(in srgb, var(--soft) 68%, #ffffffad);
   box-shadow: none;
 }
 
@@ -383,9 +411,127 @@ const presence = computed(() => {
   color: var(--accent);
 }
 
+:global(.font-small) .bubble {
+  font-size: 13px;
+}
+
+:global(.font-large) .bubble {
+  font-size: 18px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  padding: 24px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.empty h2,
+.empty p {
+  margin: 0;
+}
+
+.welcome {
+  min-height: 100%;
+  gap: 9px;
+  opacity: 0.88;
+}
+
+.welcome-mark {
+  color: var(--accent);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.welcome small {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: var(--type-eyebrow-tracking);
+}
+
+.welcome h2 {
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 580;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}
+
+.welcome p {
+  font-size: 12px;
+}
+
+.turn-time {
+  display: block;
+  margin: 13px 0 17px;
+  color: var(--muted);
+  font-size: var(--type-caption-size);
+  text-align: center;
+}
+
+.source-turn {
+  border-radius: 12px;
+  outline: 1px solid var(--accent);
+  outline-offset: 8px;
+  scroll-margin: 20px;
+}
+
+.load-older {
+  display: flex;
+  margin: 0 auto 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.turn-status,
+.chat-error {
+  color: var(--accent);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.turn-status {
+  margin-bottom: 20px;
+}
+
+.reply-wait {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+}
+
+.reply-wait > span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1s infinite alternate;
+}
+
+.reply-wait > span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.reply-wait > span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.reply-wait small {
+  margin-left: 6px;
+}
+
 .composer {
   flex-shrink: 0;
-  padding: 12px clamp(22px, 3vw, 42px) 22px;
+  padding: 11px clamp(22px, 3vw, 38px) 20px;
+}
+
+.chat-error {
+  padding-bottom: 9px;
 }
 
 .input-shell {
@@ -393,11 +539,11 @@ const presence = computed(() => {
   align-items: flex-end;
   gap: 10px;
   padding: 11px 11px 11px 19px;
-  border: 1px solid color-mix(in srgb, var(--soft) 85%, white);
+  border: 1px solid #ffffffd1;
   border-radius: 26px;
-  background: #ffffffe0;
-  box-shadow: 0 12px 36px color-mix(in srgb, var(--text) 8%, transparent);
-  backdrop-filter: blur(18px);
+  background: #ffffffa8;
+  box-shadow: 0 12px 34px color-mix(in srgb, var(--text) 9%, transparent);
+  backdrop-filter: blur(14px);
 }
 
 .input-shell textarea {
@@ -411,6 +557,7 @@ const presence = computed(() => {
   background: none;
   color: var(--text);
   line-height: 1.8;
+  font-size: var(--type-body-size);
 }
 
 .input-shell textarea::placeholder {
@@ -444,16 +591,18 @@ const presence = computed(() => {
   justify-content: space-between;
   gap: 10px;
   padding: 10px 5px 0;
-  color: var(--muted);
-  font-size: 10px;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+  font-size: var(--type-caption-size);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 8px #fff;
 }
 
 @media (max-width: 900px) {
-  .workspace.chat-workspace {
-    grid-template-columns: minmax(250px, 38%) minmax(0, 62%);
+  .chat-glass {
+    width: min(63%, 620px);
   }
 
-  .chat-heading {
+  .chat-header {
     margin-inline: 22px;
   }
 
@@ -467,19 +616,24 @@ const presence = computed(() => {
 }
 
 @media (max-width: 700px) {
-  .workspace.chat-workspace {
-    grid-template-columns: 1fr;
+  .chat-workspace {
     height: calc(100dvh - 78px);
     min-height: 500px;
     border-radius: 18px;
   }
 
-  .chat-heading {
+  .chat-glass {
+    inset: 10px;
+    width: auto;
+    border-radius: 18px;
+  }
+
+  .chat-header {
     height: 72px;
     margin-inline: 18px;
   }
 
-  .chat-heading nav button:first-child {
+  .chat-header nav button:first-child {
     display: none;
   }
 

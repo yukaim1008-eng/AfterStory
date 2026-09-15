@@ -387,6 +387,34 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   await expect(
     page.getByText("收到：今天下雨了", { exact: true }),
   ).toBeVisible();
+  const composition = await page.locator(".chat-workspace").evaluate((root) => {
+    const scene = root.querySelector(".chat-character-scene")!;
+    const glass = root.querySelector(".chat-glass")!;
+    const rootBox = root.getBoundingClientRect();
+    const sceneBox = scene.getBoundingClientRect();
+    const glassBox = glass.getBoundingClientRect();
+    const glassStyle = getComputedStyle(glass);
+    return {
+      display: getComputedStyle(root).display,
+      sceneCoversFrame:
+        Math.abs(sceneBox.left - rootBox.left) <= 1.5 &&
+        Math.abs(sceneBox.right - rootBox.right) <= 1.5 &&
+        Math.abs(sceneBox.top - rootBox.top) <= 1.5 &&
+        Math.abs(sceneBox.bottom - rootBox.bottom) <= 1.5,
+      glassFloatsOverScene:
+        glassStyle.position === "absolute" &&
+        glassBox.left > rootBox.left + rootBox.width * 0.35 &&
+        glassBox.right < rootBox.right,
+      glassUsesBackdrop: glassStyle.backdropFilter !== "none",
+    };
+  });
+  expect(composition).toEqual({
+    display: "block",
+    sceneCoversFrame: true,
+    glassFloatsOverScene: true,
+    glassUsesBackdrop: true,
+  });
+  await page.screenshot({ path: "test-results/chat-desktop.png" });
   await page.reload();
   await expect(
     page.getByText("收到：今天下雨了", { exact: true }),
@@ -405,7 +433,6 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
     }),
   ).toBeVisible();
   expect(errors).toEqual([]);
-  await page.screenshot({ path: "test-results/chat-desktop.png" });
 });
 
 test("IME does not send, failed outbox retries same request after refresh", async ({

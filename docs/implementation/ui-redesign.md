@@ -2,6 +2,16 @@
 
 范围：2026-09-14 用户授权连续执行 Phase 1–8，基于现有 F1/F2 前端改版，不修改后端、数据库或角色提示词。
 
+## 2026-09-15 ChatPage 视觉技术债清理
+
+- 本阶段只重构 ChatPage，没有提前改 Home、Characters、Memories 或 Settings；业务发送、失败重试、草稿、旧版本会话、历史/资料入口、记忆入口、封面调整和深链均保留。
+- 删除 `style.css` 中旧 `.workspace` 的 40:60 Grid 和聊天专属骨架样式，删除 `design-system.css` 对 `.workspace` 的重复视觉接管；旧资料页所需结构改由明确的 `.secondary-workspace` 承担，页面布局不再由三个样式层共同竞争。
+- 新增 `ChatCharacterScene`：同一封面拆成低强度局部模糊环境层与清晰人物层，再组合主题色、渐变遮罩、局部光和底部暗部；ChatPage 使用绝对定位 Chat Glass Layer 覆盖在场景上，玻璃基准透明度为 0.52–0.61，并保留 backdrop-filter。
+- typography 继续只使用工程内 Noto Sans SC，新增 Brand、Display、Character、Section、Body、Caption、Eyebrow 和 Handwriting Accent 的语义 token；本阶段在聊天页实际使用角色名、标题、正文、说明文字和轻量手写感引文层级。
+- 空对话保留原文案但缩为轻量状态；存在消息时该状态不渲染，消息列表直接成为聊天层主体。
+- 浏览器截图 `frontend/test-results/chat-desktop.png` 在固定娜娜莉主题和真实组件渲染下复查通过：角色场景覆盖整个主画框，聊天层四周留出悬浮间距，人物延伸到玻璃下方，未出现“左角色区 + 右巨大白色区”。截图为模拟 API 的视觉/交互验收，不代表真实 Provider 调用。
+- 验证：`npm run build`、Prettier 检查、19 项 Playwright 回归全部通过；浏览器回归新增结构断言，确认根节点不再是 Grid、场景覆盖完整画框、聊天层为绝对定位且启用 backdrop-filter。回归复用了本轮开始前已存在的 5173 Vite 服务，该用户进程未被停止；本轮没有遗留自己启动的服务。
+
 ## 检查结论与视觉依据
 
 - 已逐张查看 `frontend/design/GPT设计图稿/` 全部四张图片：`image.png` 设置、`image copy.png` 角色、`image copy 2.png` 首页、`image copy 3.png` 回忆。目录没有单独聊天稿，按用户文字指定的左角色场景、右透明对话区实施。

@@ -5,6 +5,17 @@
   --shadow-panel: 0 16px 60px color-mix(in srgb, var(--text) 7%, transparent);
   --border-glass: 1px solid #ffffffb8;
   --space-page: clamp(20px, 3vw, 56px);
+  --type-brand-size: 32px;
+  --type-display-size: clamp(34px, 4vw, 58px);
+  --type-character-size: clamp(38px, 4vw, 60px);
+  --type-section-size: 17px;
+  --type-body-size: 15px;
+  --type-caption-size: 10px;
+  --type-eyebrow-size: 9px;
+  --type-eyebrow-tracking: 0.3em;
+  --type-handwriting-size: 14px;
+  --type-handwriting-weight: 470;
+  --type-handwriting-tracking: 0.08em;
   position: relative;
   isolation: isolate;
   padding: 0 var(--space-page) 24px;
@@ -25,6 +36,19 @@
   opacity: 0.17;
   filter: blur(28px);
   transform: scale(1.08);
+}
+.page-chat .page-background > img {
+  opacity: 0.32;
+  filter: saturate(0.88) brightness(1.04);
+  transform: scale(1.02);
+}
+.page-chat .page-background::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 18% 26%, #fff0 0 20%, #fff8 74%),
+    linear-gradient(110deg, transparent, var(--background) 92%);
 }
 .ambient-light {
   position: absolute;
@@ -74,7 +98,11 @@
   background: transparent;
 }
 .brand {
-  font-size: 32px;
+  font-family: inherit;
+  font-size: var(--type-brand-size);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.055em;
 }
 .tagline {
   letter-spacing: 2px;
@@ -91,13 +119,6 @@
 }
 .character-avatar img {
   object-position: 50% 25%;
-}
-.workspace {
-  max-width: 1800px;
-  background: var(--surface);
-  border: var(--border-glass);
-  box-shadow: var(--shadow-panel);
-  border-radius: var(--radius-panel);
 }
 .content-area {
   background: #ffffff35;

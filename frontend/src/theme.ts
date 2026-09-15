@@ -16,6 +16,8 @@ export function themeStyle(character?: Character) {
     "--soft": source.soft || secondary,
     "--background": source.background || "#faf8f5",
     "--surface": source.surface || "#ffffffb8",
+    "--glass-surface": "rgba(255, 255, 255, 0.52)",
+    "--glass-surface-strong": "rgba(255, 255, 255, 0.61)",
     "--text": text,
     "--ink": text,
     "--muted": source.muted || "#746b75",
