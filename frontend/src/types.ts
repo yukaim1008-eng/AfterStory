@@ -23,6 +23,7 @@ export type SceneSpaceEntry = {
   dividerWidth?: number;
 };
 export type SceneDecorations = {
+  homeGreeting?: string;
   avatarNote?: { text: string; opacity?: number; color?: string };
   spaceColor?: string;
   leftMenu?: SceneSpaceEntry[];

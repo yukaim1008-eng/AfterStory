@@ -329,6 +329,239 @@ test("home recent cards use only the current conversation instance", async ({
   );
 });
 
+test("home encounter hero follows three characters across desktop viewports and retains actions", async ({
+  page,
+}) => {
+  test.setTimeout(60000);
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const id = "nanally-integration-v1";
+  await fakeApi(page, false, {
+    memory: true,
+    sessions: [session(id)],
+    turns: {
+      [id]: [
+        turn("home-encounter-turn", 1, "最近工作有点多，脑子都转不动了。"),
+      ],
+    },
+    memories: [
+      memory(
+        "home-encounter-memory",
+        `instance-${id}`,
+        "你最近正在忙一个自己的项目。",
+      ),
+    ],
+  });
+  const characters = [
+    {
+      id: "nanally",
+      name: "娜娜莉",
+      greeting: "哼，今天也回来啦。",
+      accent: "#cf3979",
+    },
+    {
+      id: "iroi",
+      name: "伊洛伊",
+      greeting: "你来了呀……今天也一起待一会儿吧。",
+      accent: "#507c68",
+    },
+    {
+      id: "mint",
+      name: "薄荷",
+      greeting: "抓到你啦！今天有什么新鲜事？",
+      accent: "#167e88",
+    },
+  ];
+  for (const [width, height] of [
+    [1920, 1080],
+    [1600, 900],
+    [1440, 900],
+    [1366, 768],
+  ]) {
+    await page.setViewportSize({ width, height });
+    for (const c of characters) {
+      await page.goto(`/#/home/${c.id}`);
+      await expect(page.locator(".home-greeting")).toHaveText(c.greeting);
+      await expect(page.locator(".application")).toHaveCSS(
+        "--accent",
+        c.accent,
+      );
+      await expect(page.locator(".home-art img")).toHaveAttribute(
+        "src",
+        `/media/${c.id}-scene.png`,
+      );
+      await expect(page.locator(".home-art img")).toHaveJSProperty(
+        "naturalWidth",
+        1672,
+      );
+      await expect(page.locator(".home-page .glass-panel")).toHaveCount(0);
+      const composition = await page.locator(".home-page").evaluate((root) => {
+        const hero = root.querySelector(".home-hero")!.getBoundingClientRect();
+        const secondary = root
+          .querySelector(".home-middle")!
+          .getBoundingClientRect();
+        const greeting = root
+          .querySelector(".home-greeting")!
+          .getBoundingClientRect();
+        const welcome = root
+          .querySelector(".home-welcome")!
+          .getBoundingClientRect();
+        return {
+          viewportLocked:
+            document.documentElement.scrollHeight <= innerHeight &&
+            document.documentElement.scrollWidth <= innerWidth,
+          heroDominates: hero.height > secondary.height * 1.3,
+          greetingFits:
+            greeting.top >= welcome.top &&
+            greeting.bottom <= welcome.bottom + 1 &&
+            welcome.top >= hero.top &&
+            welcome.bottom <= hero.bottom + 1,
+          header: document.querySelector(".topbar")!.getBoundingClientRect()
+            .height,
+        };
+      });
+      expect(composition).toEqual({
+        viewportLocked: true,
+        heroDominates: true,
+        greetingFits: true,
+        header: 72,
+      });
+      if (c.id !== "nanally") {
+        await expect(
+          page.getByText("第一段回忆，还在等你们写下。", { exact: true }),
+        ).toBeVisible();
+        await expect(
+          page.getByRole("button", { name: "去开始聊天" }),
+        ).toBeVisible();
+        const emptyHeight = await page
+          .locator(".home-empty")
+          .evaluate((node) => Math.ceil(node.getBoundingClientRect().height));
+        expect(emptyHeight).toBeLessThan(88);
+      }
+      await page.screenshot({
+        path: `test-results/home-encounter-${c.id}-${width}x${height}.png`,
+      });
+    }
+  }
+  await page.goto("/#/home/nanally");
+  await expect(page.locator(".recent-card")).toHaveCount(2);
+  await page
+    .locator(".recent-card")
+    .filter({ hasText: "你最近正在忙" })
+    .click();
+  await expect(page).toHaveURL(/#\/memory\/nanally/);
+  await page.goto("/#/home/nanally");
+  await page
+    .locator(".recent-card")
+    .filter({ hasText: "最近工作有点多" })
+    .click();
+  await expect(page).toHaveURL(/turn=home-encounter-turn/);
+  for (const [label, route] of [
+    ["继续上次对话", "chat"],
+    ["查看回忆", "history"],
+    ["切换角色", "characters"],
+    ["管理记忆", "memory"],
+  ]) {
+    await page.goto("/#/home/nanally");
+    await page
+      .locator(".quick-grid")
+      .getByRole("button", { name: new RegExp(label) })
+      .click();
+    await expect(page).toHaveURL(new RegExp(`#/${route}/nanally`));
+  }
+  await page.goto("/#/home/nanally");
+  await page
+    .getByRole("button", { name: "看看她记得什么", exact: true })
+    .click();
+  await expect(page).toHaveURL(/#\/memory\/nanally/);
+  await page.goto("/#/home/nanally");
+  await page.getByRole("button", { name: "查看全部角色", exact: true }).click();
+  await expect(page).toHaveURL(/#\/characters\/nanally/);
+  await page.goto("/#/home/nanally");
+  await page.locator(".companion-link").filter({ hasText: "伊洛伊" }).click();
+  await expect(page).toHaveURL(/#\/chat\/iroi/);
+  await page.getByRole("button", { name: "首页", exact: true }).click();
+  await expect(page.locator(".home-greeting")).toHaveText(
+    characters[1]!.greeting,
+  );
+  expect(errors).toEqual([]);
+});
+
+test("home keeps custom cover precedence and safely falls back without a greeting or scene", async ({
+  page,
+}) => {
+  await fakeApi(page);
+  await page.route("**/characters.json", async (route) => {
+    const response = await route.fetch();
+    const data = await response.json();
+    const guest = JSON.parse(JSON.stringify(data.characters[0]));
+    guest.id = "guest";
+    guest.name = "访客";
+    guest.versionId = "guest-integration-v1";
+    delete guest.sceneDecorations.homeGreeting;
+    delete guest.sceneBackground;
+    data.characters.push(guest);
+    await route.fulfill({ json: data });
+  });
+  await page.goto("/#/home/guest");
+  await expect(page.locator(".home-greeting")).toHaveText("欢迎回来。");
+  await expect(page.locator(".home-art img")).toHaveAttribute(
+    "src",
+    "/media/iroi.image",
+  );
+  await page.goto("/#/settings/nanally");
+  await page.getByRole("button", { name: "外观", exact: true }).click();
+  await page
+    .locator(".appearance-actions")
+    .getByRole("button", { name: "更换封面", exact: true })
+    .click();
+  const dialog = page.getByRole("dialog");
+  await dialog
+    .locator("input[type=file]")
+    .setInputFiles("../data/character-assets/iroi.png");
+  await expect(dialog.locator(".portrait img").first()).toHaveAttribute(
+    "src",
+    /^data:image\/png;base64,/,
+  );
+  await dialog.getByLabel("左右位置").fill("80");
+  await dialog.getByRole("button", { name: "保存封面", exact: true }).click();
+  await page.getByRole("button", { name: "首页", exact: true }).click();
+  await expect(page.locator(".home-art img")).toHaveAttribute(
+    "src",
+    /^data:image\/png;base64,/,
+  );
+  await expect(page.locator(".home-art img")).toHaveCSS(
+    "object-position",
+    "80% 25%",
+  );
+  await page.reload();
+  await expect(page.locator(".home-art img")).toHaveAttribute(
+    "src",
+    /^data:image\/png;base64,/,
+  );
+  await page.goto("/#/home/iroi");
+  await expect(page.locator(".home-art img")).toHaveAttribute(
+    "src",
+    "/media/iroi-scene.png",
+  );
+  await page.goto("/#/settings/nanally");
+  await page.getByRole("button", { name: "外观", exact: true }).click();
+  await page.getByRole("button", { name: "恢复默认", exact: true }).click();
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "恢复默认", exact: true })
+    .click();
+  await page.getByRole("button", { name: "首页", exact: true }).click();
+  await expect(page.locator(".home-art img")).toHaveAttribute(
+    "src",
+    "/media/nanally-scene.png",
+  );
+});
+
 test("home clears old memories when a legacy instance or failed character instance is selected", async ({
   page,
 }) => {

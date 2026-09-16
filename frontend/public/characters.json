@@ -41,6 +41,7 @@
         "image": null
       },
       "sceneDecorations": {
+        "homeGreeting": "你来了呀……今天也一起待一会儿吧。",
         "avatarNote": {
           "text": "今天也想做个好孩子，陪你一会儿。",
           "opacity": 0.58,
@@ -148,6 +149,7 @@
         "image": null
       },
       "sceneDecorations": {
+        "homeGreeting": "哼，今天也回来啦。",
         "avatarNote": {
           "text": "一直在这里，和你💗",
           "opacity": 0.64
@@ -252,6 +254,7 @@
         "image": null
       },
       "sceneDecorations": {
+        "homeGreeting": "抓到你啦！今天有什么新鲜事？",
         "avatarNote": {
           "text": "闻到啦，你今天也来找我了！",
           "opacity": 0.72,
