@@ -115,7 +115,7 @@ small,
   gap: 5px;
   color: #22212b;
 }
-.brand span {
+.brand-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;

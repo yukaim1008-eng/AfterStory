@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { ImagePlus } from "lucide-vue-next";
+import { computed, type Component, type CSSProperties } from "vue";
+import { Heart, ImagePlus, Images, Sparkles } from "lucide-vue-next";
 import Portrait from "../Portrait.vue";
 import { useAfterStory } from "../composables/useAfterStory";
+import type { SceneDecorationNote, SceneSpaceEntry } from "../types";
 
-const { character, cover, connected, editing } = useAfterStory();
+const { character, cover, connected, editing, route } = useAfterStory();
 const sceneSource = computed(() => {
   if (!character.value) return "";
   return character.value.sceneBackground || cover(character.value).source;
@@ -16,6 +17,38 @@ const sceneCrop = computed(() => {
     : cover(character.value).crop.chat;
 });
 const scenePosition = computed(() => character.value?.sceneBackgroundPosition);
+const decorations = computed(() => character.value?.sceneDecorations);
+const entryIcons: Record<SceneSpaceEntry["icon"], Component> = {
+  Images,
+  Heart,
+  Sparkles,
+};
+
+function openSpaceEntry(entry: SceneSpaceEntry) {
+  if (entry.action === "album") editing.value = true;
+  else route(entry.action);
+}
+
+function entryStyle(entry: SceneSpaceEntry): CSSProperties {
+  return {
+    "--entry-offset": `${entry.offsetX || 0}px`,
+    "--divider-width": `${entry.dividerWidth || 76}%`,
+  } as CSSProperties;
+}
+
+function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
+  if (!note) return undefined;
+  return {
+    marginLeft: `${note.indent || 0}px`,
+    opacity: note.opacity,
+    color: note.color,
+    transform: `rotate(${note.rotate || 0}deg)`,
+    fontFamily:
+      note.fontStyle === "ui"
+        ? undefined
+        : '"Kaiti SC", "STKaiti", "KaiTi", serif',
+  };
+}
 </script>
 
 <template>
@@ -64,6 +97,33 @@ const scenePosition = computed(() => character.value?.sceneBackgroundPosition);
       >
         <ImagePlus :size="15" />调整场景
       </button>
+    </div>
+
+    <div v-if="decorations" class="scene-space">
+      <nav aria-label="角色空间入口">
+        <button
+          v-for="entry in decorations.leftMenu"
+          :key="`${entry.action}-${entry.text}`"
+          type="button"
+          :class="`icon-${entry.iconPosition || 'start'}`"
+          :style="entryStyle(entry)"
+          @click="openSpaceEntry(entry)"
+        >
+          <component
+            :is="entryIcons[entry.icon]"
+            class="entry-icon"
+            :size="17"
+          />
+          <span>{{ entry.text }}</span>
+        </button>
+      </nav>
+      <p
+        v-if="decorations.signature"
+        class="scene-signature"
+        :style="signatureStyle(decorations.signature)"
+      >
+        {{ decorations.signature.text }}
+      </p>
     </div>
   </aside>
 </template>
@@ -198,11 +258,104 @@ const scenePosition = computed(() => character.value?.sceneBackgroundPosition);
 .scene-identity {
   position: absolute;
   z-index: 4;
-  bottom: clamp(30px, 5vh, 58px);
+  bottom: clamp(236px, 31vh, 326px);
   left: clamp(28px, 4vw, 64px);
   width: min(35vw, 430px);
   color: #fff;
   text-shadow: 0 2px 20px #1d111c70;
+}
+
+.scene-space {
+  position: absolute;
+  z-index: 6;
+  bottom: clamp(26px, 4vh, 46px);
+  left: clamp(28px, 4vw, 64px);
+  width: clamp(190px, 16vw, 226px);
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(29, 17, 28, 0.32);
+}
+
+.scene-space nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.scene-space button {
+  position: relative;
+  min-height: 37px;
+  gap: 10px;
+  padding: 6px 7px 10px;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.035em;
+  text-shadow: 0 2px 14px rgba(29, 17, 28, 0.28);
+  transform: translateX(var(--entry-offset));
+  transition:
+    color 190ms ease,
+    transform 190ms ease;
+}
+
+.scene-space button::after {
+  position: absolute;
+  bottom: 3px;
+  left: 4px;
+  width: var(--divider-width);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.56), transparent);
+  content: "";
+  opacity: 0.72;
+  transition:
+    width 190ms ease,
+    opacity 190ms ease;
+}
+
+.scene-space button.icon-end {
+  justify-content: space-between;
+}
+
+.scene-space button.icon-end .entry-icon {
+  order: 2;
+}
+
+.scene-space button.icon-end::after {
+  right: 4px;
+  left: auto;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.56), transparent);
+}
+
+.scene-space button .entry-icon {
+  flex: 0 0 auto;
+  color: rgba(255, 255, 255, 0.76);
+  filter: drop-shadow(0 1px 5px rgba(29, 17, 28, 0.22));
+}
+
+.scene-space button:hover:not(:disabled) {
+  background: transparent;
+  color: #fff;
+  transform: translateX(calc(var(--entry-offset) + 2px));
+}
+
+.scene-space button:hover:not(:disabled)::after {
+  width: calc(var(--divider-width) + 4%);
+  opacity: 1;
+}
+
+.scene-signature {
+  width: max-content;
+  max-width: calc(100% - 16px);
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(17px, 1.3vw, 19px);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  transform-origin: left center;
+  text-wrap: balance;
 }
 
 .scene-identity small {
@@ -271,6 +424,29 @@ const scenePosition = computed(() => character.value?.sceneBackgroundPosition);
   .scene-identity {
     width: 31vw;
   }
+
+  .scene-space {
+    width: 210px;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 701px) {
+  .scene-identity {
+    bottom: 218px;
+  }
+
+  .scene-identity p,
+  .scene-cover-action {
+    display: none;
+  }
+
+  .scene-space {
+    bottom: 22px;
+  }
+
+  .scene-signature {
+    margin-top: 18px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -286,6 +462,10 @@ const scenePosition = computed(() => character.value?.sceneBackgroundPosition);
   }
 
   .scene-identity {
+    display: none;
+  }
+
+  .scene-space {
     display: none;
   }
 }

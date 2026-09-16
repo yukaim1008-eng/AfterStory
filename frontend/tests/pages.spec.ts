@@ -382,6 +382,21 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   await fakeApi(page);
   await page.goto("/#/chat/nanally");
   await expect(page.getByText("在这里", { exact: true })).toBeVisible();
+  await expect(page.locator(".topbar .brand")).toContainText("AfterStory");
+  await expect(page.locator(".topbar .brand-heart")).toHaveText("♡");
+  await expect(page.locator(".topbar .tagline")).toHaveCount(0);
+  for (const label of ["相册", "与娜娜莉的回忆", "一代目的秘密基地"])
+    await expect(page.getByRole("button", { name: label })).toBeVisible();
+  await expect(page.getByText("哼，回来就好。", { exact: true })).toBeVisible();
+  await expect(
+    page.getByText("一直在这里，和你💗", { exact: true }),
+  ).toBeVisible();
+  await expect(page.locator(".atmosphere-copy-top")).toContainText(
+    "今天又发生什么了？",
+  );
+  await expect(page.locator(".atmosphere-copy-bottom")).toContainText(
+    "有本一代目在",
+  );
   await page.getByRole("textbox", { name: "消息" }).fill("今天下雨了");
   await page.getByRole("button", { name: "发送", exact: true }).click();
   await expect(
@@ -399,6 +414,11 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
     const glassBox = glass.getBoundingClientRect();
     const glassStyle = getComputedStyle(glass);
     const glassMaterialStyle = getComputedStyle(glass, "::before");
+    const inputShell = root.querySelector(".input-shell")!;
+    const menuItems = [...root.querySelectorAll(".scene-space button")];
+    const signature = root.querySelector(".scene-signature")!;
+    const topNote = root.querySelector(".atmosphere-copy-top")!;
+    const bottomNote = root.querySelector(".atmosphere-copy-bottom")!;
     const interlockStyle = getComputedStyle(interlock);
     const sceneImageStyle = getComputedStyle(sceneImage);
     return {
@@ -423,6 +443,26 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
         sceneImageStyle.objectFit === "cover" &&
         sceneImageStyle.objectPosition === "50% 50%",
       glassUsesBackdrop: glassMaterialStyle.backdropFilter !== "none",
+      glassUsesLayeredGradient:
+        glassMaterialStyle.backgroundImage.includes("radial-gradient") &&
+        glassMaterialStyle.backgroundImage.includes("linear-gradient"),
+      inputRemainsTranslucent:
+        parseFloat(
+          getComputedStyle(inputShell).backgroundColor.split(",")[3] || "1",
+        ) < 1,
+      menuHasDesignedIrregularity:
+        menuItems.some((item) => item.classList.contains("icon-start")) &&
+        menuItems.some((item) => item.classList.contains("icon-end")) &&
+        new Set(
+          menuItems.map((item) => getComputedStyle(item, "::after").width),
+        ).size > 1,
+      signatureLooksHandwritten:
+        getComputedStyle(signature).fontFamily.includes("Kaiti") &&
+        getComputedStyle(signature).transform !== "none",
+      notesUseDifferentAngles:
+        getComputedStyle(topNote).fontFamily.includes("Kaiti") &&
+        getComputedStyle(topNote).transform !==
+          getComputedStyle(bottomNote).transform,
       viewportDoesNotScroll:
         document.documentElement.scrollHeight <= window.innerHeight &&
         document.body.scrollHeight <= window.innerHeight,
@@ -436,6 +476,11 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
     interlockCreatesBridge: true,
     sceneUsesCharacterBackground: true,
     glassUsesBackdrop: true,
+    glassUsesLayeredGradient: true,
+    inputRemainsTranslucent: true,
+    menuHasDesignedIrregularity: true,
+    signatureLooksHandwritten: true,
+    notesUseDifferentAngles: true,
     viewportDoesNotScroll: true,
   });
   await page.screenshot({ path: "test-results/chat-desktop.png" });
@@ -449,6 +494,15 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   await page.locator(".character-panel").filter({ hasText: "伊洛伊" }).click();
   await expect(page.locator(".application")).toHaveCSS("--accent", "#507c68");
   await expect(page.getByText("今天下雨了", { exact: true })).toHaveCount(0);
+  await expect(
+    page.getByText("慢一点也没关系，我会听。", { exact: true }),
+  ).toBeVisible();
+  await expect(page.locator(".atmosphere-copy-top")).toContainText(
+    "今天也有想聊的事吗？",
+  );
+  await expect(
+    page.getByRole("button", { name: "收容二组的休息角" }),
+  ).toBeVisible();
   await page.getByRole("button", { name: "回忆", exact: true }).click();
   await page.locator(".history-row").click();
   await expect(
@@ -545,10 +599,12 @@ test("chat empty state remains secondary to the character scene", async ({
 }) => {
   await fakeApi(page);
   await page.goto("/#/chat/nanally");
-  await expect(page.locator(".welcome")).toBeVisible();
-  const emptyCheck = await page.locator(".chat-workspace").evaluate((root) => {
-    const welcome = root.querySelector(".welcome")!;
-    const messages = root.querySelector(".messages")!;
+  const welcome = page.locator(".chat-workspace .welcome");
+  await expect(welcome).toBeVisible();
+  await expect(page.getByRole("textbox", { name: "消息" })).toBeEnabled();
+  const emptyCheck = await welcome.evaluate((welcome) => {
+    const root = welcome.closest(".chat-workspace")!;
+    const messages = welcome.closest(".messages")!;
     return {
       noMessages: root.querySelectorAll(".message").length === 0,
       viewportLocked:

@@ -36,19 +36,35 @@
   height: var(--chat-header-height);
 }
 .page-chat .topbar-quiet {
-  opacity: 0.78;
-}
-.page-chat .topbar-quiet:hover,
-.page-chat .topbar-quiet:focus-within {
   opacity: 1;
 }
 .page-chat .topbar-quiet .brand {
-  font-size: 29px;
-  font-weight: 740;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: clamp(26px, 2.1vw, 31px);
+  font-weight: 760;
+  text-shadow: 0 2px 18px rgba(31, 16, 28, 0.22);
 }
-.page-chat .topbar-quiet .tagline,
 .page-chat .topbar-quiet nav button {
-  color: color-mix(in srgb, var(--text) 64%, transparent);
+  color: rgba(255, 255, 255, 0.78);
+  text-shadow: 0 1px 12px rgba(31, 16, 28, 0.18);
+}
+.page-chat .topbar-quiet nav button:hover,
+.page-chat .topbar-quiet nav button.active {
+  color: rgba(255, 255, 255, 1) !important;
+}
+.page-chat .topbar-quiet nav button.active::after {
+  height: 1px;
+  background: color-mix(in srgb, var(--accent) 78%, white);
+  box-shadow: 0 1px 8px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.brand-heart {
+  margin: 0 0 7px 1px;
+  color: color-mix(in srgb, var(--accent) 78%, white);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-shadow: 0 1px 10px color-mix(in srgb, var(--accent) 32%, transparent);
 }
 .page-background {
   position: fixed;

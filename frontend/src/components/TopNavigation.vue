@@ -11,11 +11,17 @@ const links = [
 </script>
 <template>
   <header class="topbar" :class="{ 'topbar-quiet': page === 'chat' }">
-    <a class="brand" href="#/home" @click.prevent="emit('navigate', 'home')"
-      >AfterStory<span></span
-    ></a>
-    <div class="topbar-line"></div>
-    <span class="tagline">故事之外，与你相见。</span>
+    <a class="brand" href="#/home" @click.prevent="emit('navigate', 'home')">
+      AfterStory
+      <span v-if="page === 'chat'" class="brand-heart" aria-hidden="true"
+        >♡</span
+      >
+      <span v-else class="brand-dot" aria-hidden="true"></span>
+    </a>
+    <template v-if="page !== 'chat'">
+      <div class="topbar-line"></div>
+      <span class="tagline">故事之外，与你相见。</span>
+    </template>
     <nav aria-label="主导航">
       <button
         v-for="link in links"

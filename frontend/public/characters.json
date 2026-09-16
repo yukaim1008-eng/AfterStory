@@ -38,6 +38,67 @@
         "label": "发送",
         "image": null
       },
+      "sceneDecorations": {
+        "avatarNote": {
+          "text": "慢一点也没关系，我会听。",
+          "opacity": 0.58
+        },
+        "leftMenu": [
+          {
+            "text": "相册",
+            "icon": "Images",
+            "iconPosition": "end",
+            "action": "album",
+            "offsetX": 0,
+            "dividerWidth": 58
+          },
+          {
+            "text": "与伊洛伊的回忆",
+            "icon": "Heart",
+            "iconPosition": "start",
+            "action": "history",
+            "offsetX": 3,
+            "dividerWidth": 88
+          },
+          {
+            "text": "收容二组的休息角",
+            "icon": "Sparkles",
+            "iconPosition": "end",
+            "action": "profile",
+            "offsetX": -1,
+            "dividerWidth": 76
+          }
+        ],
+        "signature": {
+          "text": "别急，慢慢说。",
+          "rotate": -2.4,
+          "opacity": 0.78,
+          "fontStyle": "handwritten",
+          "indent": 18
+        },
+        "topNote": {
+          "text": "今天也有想聊的事吗？\n我在听。",
+          "rotate": -4.5,
+          "opacity": 0.5,
+          "fontStyle": "handwritten",
+          "maxWidth": "210px",
+          "position": {
+            "top": "clamp(98px, 12vh, 116px)",
+            "right": "clamp(34px, 3vw, 50px)"
+          }
+        },
+        "bottomNote": {
+          "text": "先休息一下，也可以。",
+          "rotate": 3.2,
+          "opacity": 0.4,
+          "fontStyle": "handwritten",
+          "maxWidth": "200px",
+          "position": {
+            "right": "clamp(38px, 3.2vw, 54px)",
+            "bottom": "clamp(134px, 17vh, 164px)"
+          }
+        }
+      },
       "tagline": "把每一次相见，留在故事里。",
       "tags": ["异象管理局", "慢慢相识"]
     },
@@ -80,6 +141,67 @@
         "label": "发送",
         "image": null
       },
+      "sceneDecorations": {
+        "avatarNote": {
+          "text": "一直在这里，和你💗",
+          "opacity": 0.64
+        },
+        "leftMenu": [
+          {
+            "text": "相册",
+            "icon": "Images",
+            "iconPosition": "end",
+            "action": "album",
+            "offsetX": 1,
+            "dividerWidth": 54
+          },
+          {
+            "text": "与娜娜莉的回忆",
+            "icon": "Heart",
+            "iconPosition": "start",
+            "action": "history",
+            "offsetX": -2,
+            "dividerWidth": 91
+          },
+          {
+            "text": "一代目的秘密基地",
+            "icon": "Sparkles",
+            "iconPosition": "end",
+            "action": "profile",
+            "offsetX": 2,
+            "dividerWidth": 79
+          }
+        ],
+        "signature": {
+          "text": "哼，回来就好。",
+          "rotate": -3.2,
+          "opacity": 0.82,
+          "fontStyle": "handwritten",
+          "indent": 16
+        },
+        "topNote": {
+          "text": "今天又发生什么了？\n说来听听。",
+          "rotate": -5.5,
+          "opacity": 0.55,
+          "fontStyle": "handwritten",
+          "maxWidth": "220px",
+          "position": {
+            "top": "clamp(98px, 12vh, 116px)",
+            "right": "clamp(36px, 3.2vw, 52px)"
+          }
+        },
+        "bottomNote": {
+          "text": "有本一代目在，\n问题不大。",
+          "rotate": 4.2,
+          "opacity": 0.44,
+          "fontStyle": "handwritten",
+          "maxWidth": "205px",
+          "position": {
+            "right": "clamp(38px, 3vw, 50px)",
+            "bottom": "clamp(136px, 17vh, 166px)"
+          }
+        }
+      },
       "default": true,
       "tagline": "故事之外，还有想和你说的话。",
       "tags": ["并肩的伙伴", "日常相伴"]
@@ -120,6 +242,67 @@
       "sendControl": {
         "label": "发送",
         "image": null
+      },
+      "sceneDecorations": {
+        "avatarNote": {
+          "text": "今天的小事，也分我一点。",
+          "opacity": 0.58
+        },
+        "leftMenu": [
+          {
+            "text": "相册",
+            "icon": "Images",
+            "iconPosition": "start",
+            "action": "album",
+            "offsetX": -1,
+            "dividerWidth": 62
+          },
+          {
+            "text": "与薄荷的回忆",
+            "icon": "Heart",
+            "iconPosition": "end",
+            "action": "history",
+            "offsetX": 2,
+            "dividerWidth": 84
+          },
+          {
+            "text": "今天的小事收藏夹",
+            "icon": "Sparkles",
+            "iconPosition": "start",
+            "action": "profile",
+            "offsetX": 0,
+            "dividerWidth": 73
+          }
+        ],
+        "signature": {
+          "text": "今天也要记得呼吸。",
+          "rotate": -2.8,
+          "opacity": 0.78,
+          "fontStyle": "handwritten",
+          "indent": 20
+        },
+        "topNote": {
+          "text": "今天有什么小发现？\n说给我听吧。",
+          "rotate": -4.2,
+          "opacity": 0.5,
+          "fontStyle": "handwritten",
+          "maxWidth": "215px",
+          "position": {
+            "top": "clamp(100px, 12.5vh, 118px)",
+            "right": "clamp(35px, 3vw, 50px)"
+          }
+        },
+        "bottomNote": {
+          "text": "慢一点，今天还很长。",
+          "rotate": 3.8,
+          "opacity": 0.41,
+          "fontStyle": "handwritten",
+          "maxWidth": "205px",
+          "position": {
+            "right": "clamp(40px, 3.2vw, 54px)",
+            "bottom": "clamp(136px, 17vh, 166px)"
+          }
+        }
       },
       "tagline": "今天的小事，也想说给你听。",
       "tags": ["异象管理局", "分享日常"]

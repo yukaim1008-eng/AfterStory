@@ -1,4 +1,34 @@
 export type Crop = { x: number; y: number; zoom: number };
+export type SceneDecorationPosition = {
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
+};
+export type SceneDecorationNote = {
+  text: string;
+  rotate?: number;
+  position?: SceneDecorationPosition;
+  opacity?: number;
+  color?: string;
+  fontStyle?: "ui" | "handwritten";
+  maxWidth?: string;
+};
+export type SceneSpaceEntry = {
+  text: string;
+  icon: "Images" | "Heart" | "Sparkles";
+  iconPosition?: "start" | "end";
+  action: "album" | "history" | "profile";
+  offsetX?: number;
+  dividerWidth?: number;
+};
+export type SceneDecorations = {
+  avatarNote?: { text: string; opacity?: number; color?: string };
+  leftMenu: SceneSpaceEntry[];
+  signature?: SceneDecorationNote & { indent?: number };
+  topNote?: SceneDecorationNote;
+  bottomNote?: SceneDecorationNote;
+};
 export type Character = {
   id: string;
   name: string;
@@ -8,6 +38,7 @@ export type Character = {
   cover: string;
   sceneBackground?: string;
   sceneBackgroundPosition?: string;
+  sceneDecorations?: SceneDecorations;
   description: string;
   tagline?: string;
   tags?: string[];

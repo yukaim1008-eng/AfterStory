@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, type CSSProperties } from "vue";
 import { ArrowUp, BookOpen, LoaderCircle, Plus } from "lucide-vue-next";
 import { useAfterStory } from "../composables/useAfterStory";
 import CharacterAvatar from "../components/CharacterAvatar.vue";
 import ChatCharacterScene from "../components/ChatCharacterScene.vue";
+import type { SceneDecorationNote } from "../types";
 
 const {
   character,
@@ -33,6 +34,22 @@ const presence = computed(() => {
   if (chat.value?.loading) return "正在翻开我们的对话…";
   return "在这里";
 });
+const decorations = computed(() => character.value?.sceneDecorations);
+
+function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
+  if (!note) return undefined;
+  return {
+    ...note.position,
+    maxWidth: note.maxWidth,
+    opacity: note.opacity,
+    color: note.color,
+    transform: `rotate(${note.rotate || 0}deg)`,
+    fontFamily:
+      note.fontStyle === "ui"
+        ? undefined
+        : '"Kaiti SC", "STKaiti", "KaiTi", serif',
+  };
+}
 </script>
 
 <template>
@@ -46,11 +63,40 @@ const presence = computed(() => {
     <ChatCharacterScene />
 
     <section class="chat-glass">
+      <p
+        v-if="decorations?.topNote"
+        class="atmosphere-copy atmosphere-copy-top"
+        :style="noteStyle(decorations.topNote)"
+        aria-hidden="true"
+      >
+        {{ decorations.topNote.text }}
+      </p>
+      <p
+        v-if="decorations?.bottomNote"
+        class="atmosphere-copy atmosphere-copy-bottom"
+        :style="noteStyle(decorations.bottomNote)"
+        aria-hidden="true"
+      >
+        {{ decorations.bottomNote.text }}
+      </p>
       <header class="chat-header">
         <CharacterAvatar :character="character" :cover="cover(character)" />
-        <div>
+        <div class="chat-identity">
           <h2>{{ character.name }}</h2>
-          <span><i :class="{ online: connected }"></i>{{ presence }}</span>
+          <div class="presence-line">
+            <span class="presence-status"
+              ><i :class="{ online: connected }"></i>{{ presence }}</span
+            >
+            <small
+              v-if="decorations?.avatarNote"
+              class="avatar-note"
+              :style="{
+                opacity: decorations.avatarNote.opacity,
+                color: decorations.avatarNote.color,
+              }"
+              >{{ decorations.avatarNote.text }}</small
+            >
+          </div>
         </div>
         <nav aria-label="当前角色快捷入口">
           <button aria-label="查看角色回忆" @click="route('history')">
@@ -276,17 +322,39 @@ const presence = computed(() => {
   z-index: 4;
   border: 1px solid #ffffffa8;
   border-radius: clamp(20px, 2vw, 30px);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.3),
-    color-mix(in srgb, var(--glass-surface) 82%, transparent) 20%,
-    color-mix(in srgb, var(--glass-surface-strong) 84%, transparent) 100%
-  );
+  background:
+    radial-gradient(
+      ellipse at 54% 44%,
+      rgba(255, 255, 255, 0.23) 0%,
+      rgba(255, 255, 255, 0.1) 44%,
+      transparent 72%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.42) 0%,
+      color-mix(in srgb, var(--glass-surface) 44%, transparent) 46%,
+      rgba(255, 255, 255, 0.22) 100%
+    );
   box-shadow:
-    0 20px 58px color-mix(in srgb, var(--text) 11%, transparent),
-    inset 0 1px #ffffffb8;
-  backdrop-filter: blur(10px) saturate(1.03);
-  -webkit-backdrop-filter: blur(10px) saturate(1.03);
+    0 20px 58px color-mix(in srgb, var(--text) 9%, transparent),
+    inset 0 1px rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(8px) saturate(1.08);
+  -webkit-backdrop-filter: blur(8px) saturate(1.08);
+  content: "";
+  pointer-events: none;
+}
+
+.chat-glass::after {
+  position: absolute;
+  inset: 1px;
+  z-index: 5;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.17) 48%,
+    transparent 78%
+  );
   content: "";
   pointer-events: none;
 }
@@ -295,7 +363,33 @@ const presence = computed(() => {
 .messages,
 .composer {
   position: relative;
+  z-index: 7;
+}
+
+.atmosphere-copy {
+  position: absolute;
   z-index: 6;
+  max-width: 230px;
+  margin: 0;
+  color: color-mix(in srgb, var(--accent) 48%, transparent);
+  font-size: clamp(15px, 1.08vw, 18px);
+  font-weight: 400;
+  line-height: 1.72;
+  letter-spacing: 0.09em;
+  text-align: right;
+  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.34);
+  transform-origin: center;
+  white-space: pre-line;
+  pointer-events: none;
+}
+
+.atmosphere-copy-top {
+  text-align: left;
+}
+
+.atmosphere-copy-bottom {
+  color: color-mix(in srgb, var(--accent) 42%, transparent);
+  font-size: clamp(14px, 0.96vw, 16px);
 }
 
 .chat-header {
@@ -323,10 +417,32 @@ const presence = computed(() => {
   letter-spacing: 0.07em;
 }
 
-.chat-header span {
+.presence-status {
   color: color-mix(in srgb, var(--muted) 82%, transparent);
   font-size: var(--type-caption-size);
   letter-spacing: 0.04em;
+}
+
+.presence-line {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  min-width: 0;
+}
+
+.avatar-note {
+  color: color-mix(in srgb, var(--accent) 64%, var(--muted));
+  font-size: 11px;
+  font-weight: 420;
+  line-height: 1.4;
+  letter-spacing: 0.045em;
+  white-space: nowrap;
+}
+
+.avatar-note::before {
+  margin-right: 8px;
+  color: color-mix(in srgb, var(--accent) 36%, transparent);
+  content: "／";
 }
 
 .chat-header i {
@@ -567,11 +683,11 @@ const presence = computed(() => {
   gap: 9px;
   min-height: 58px;
   padding: 9px 9px 9px 18px;
-  border: 1px solid #ffffffbd;
+  border: 1px solid rgba(255, 255, 255, 0.56);
   border-radius: 25px;
-  background: #ffffff78;
+  background: rgba(255, 255, 255, 0.68);
   box-shadow: 0 10px 28px color-mix(in srgb, var(--text) 8%, transparent);
-  backdrop-filter: blur(10px) saturate(1.04);
+  backdrop-filter: blur(8px) saturate(1.06);
   transition:
     border-color 0.2s,
     background 0.2s,
@@ -656,6 +772,12 @@ const presence = computed(() => {
   .composer {
     padding-inline: 22px;
   }
+
+  .avatar-note {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 @media (max-width: 700px) {
@@ -686,6 +808,10 @@ const presence = computed(() => {
   }
 
   .composer-caption span:last-child {
+    display: none;
+  }
+
+  .atmosphere-copy {
     display: none;
   }
 }
