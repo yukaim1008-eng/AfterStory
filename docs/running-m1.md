@@ -17,6 +17,8 @@ uv run python -m afterstory.seed
 uv run python -m uvicorn afterstory.api:create_app --factory --host 127.0.0.1 --port 8000
 ```
 
+默认端口为 `54329`。如 Windows 因系统保留端口而无法绑定，可只在本机 `.env` 中把 `POSTGRES_PORT` 和 `DATABASE_URL` 中的端口一起改为未被占用的值；未修改的 macOS/Linux 环境仍使用 `54329`。
+
 浏览器打开 <http://127.0.0.1:8000/docs>。`/health` 检查数据库连通性，不测试模型密钥或余额。
 
 `.env` 按命名模型分组，每组绑定自己的供应商、API 地址、密钥、model 和参数；`LLM_ACTIVE_MODEL` 只负责选择当前组：
