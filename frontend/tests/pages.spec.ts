@@ -1768,6 +1768,43 @@ test("every primary page stays usable across supported desktop widths", async ({
   expect(errors).toEqual([]);
 });
 
+test("settings keeps every preference category in one quiet workspace", async ({
+  page,
+}) => {
+  await fakeApi(page, false, { memory: true });
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/#/settings/nanally");
+  await expect(
+    page.getByRole("heading", { name: "按你的习惯来" }),
+  ).toBeVisible();
+  await expect(page.locator(".settings-companion")).toContainText("娜娜莉");
+
+  for (const [label, panel] of [
+    ["通用", "阅读与交流"],
+    ["外观", "角色主题与封面"],
+    ["声音", "声音"],
+    ["数据管理", "数据管理"],
+  ]) {
+    await page
+      .getByRole("navigation", { name: "设置类别" })
+      .getByRole("button", { name: label, exact: true })
+      .click();
+    await expect(page.locator(".settings-panel")).toContainText(panel);
+    await expect(page.locator(".settings-panel")).toHaveCSS(
+      "overflow-y",
+      "auto",
+    );
+    await page.screenshot({
+      path: `test-results/settings-${label}.png`,
+    });
+  }
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollHeight <= window.innerHeight,
+    ),
+  ).toBe(true);
+});
+
 test("desktop viewport sizes keep core pages and controls inside the screen", async ({
   page,
 }) => {

@@ -13,7 +13,7 @@ import {
   Volume2,
 } from "lucide-vue-next";
 import { useAfterStory } from "../composables/useAfterStory";
-import CharacterSidebar from "../components/CharacterSidebar.vue";
+import CharacterAvatar from "../components/CharacterAvatar.vue";
 import Portrait from "../Portrait.vue";
 
 const {
@@ -42,7 +42,6 @@ const sections = [
     tabindex="-1"
     class="workspace settings-workspace"
   >
-    <CharacterSidebar compact />
     <section class="settings-content">
       <header class="settings-hero">
         <button class="back-to-chat" @click="route('chat')">
@@ -55,14 +54,24 @@ const sections = [
 
       <div class="settings-layout">
         <nav class="settings-nav" aria-label="设置类别">
-          <button
-            v-for="item in sections"
-            :key="item.id"
-            :class="{ active: section === item.id }"
-            @click="section = item.id"
-          >
-            <component :is="item.icon" :size="18" />{{ item.label }}
-          </button>
+          <div class="settings-nav-list">
+            <button
+              v-for="item in sections"
+              :key="item.id"
+              :class="{ active: section === item.id }"
+              @click="section = item.id"
+            >
+              <component :is="item.icon" :size="18" />{{ item.label }}
+            </button>
+          </div>
+          <div class="settings-companion">
+            <CharacterAvatar :character="character" :cover="cover(character)" />
+            <div>
+              <small>当前陪伴角色</small>
+              <strong>{{ character.name }}</strong>
+              <span>按你的习惯来吧。</span>
+            </div>
+          </div>
         </nav>
 
         <div class="settings-panel">
@@ -135,33 +144,48 @@ const sections = [
                 <p>当前角色的主题和封面只保存在这个浏览器。</p>
               </div>
             </header>
-            <div class="appearance-card">
-              <Portrait
-                :source="cover(character).source"
-                :crop="cover(character).crop.chat"
-                :name="character.name"
+            <section class="appearance-section theme-row">
+              <CharacterAvatar
+                :character="character"
+                :cover="cover(character)"
               />
               <div>
                 <span class="pill">当前使用中</span>
                 <h3>{{ character.name }}</h3>
-                <p>页面的主题色、背景和装饰会随她一起变化。</p>
-                <div class="appearance-actions">
-                  <button
-                    class="primary"
-                    :disabled="!connected"
-                    @click="editing = true"
-                  >
-                    <ImagePlus :size="16" />更换封面
-                  </button>
-                  <button :disabled="!connected" @click="editing = true">
-                    调整位置
-                  </button>
-                  <button :disabled="!connected" @click="resetConfirm = true">
-                    <RotateCcw :size="15" />恢复默认
-                  </button>
+                <p>当前主题会跟随她的色彩、背景和装饰一起变化。</p>
+              </div>
+            </section>
+            <section class="appearance-section cover-section">
+              <header class="section-label">
+                <h3>角色封面</h3>
+                <p>只影响当前角色在这个浏览器中的展示。</p>
+              </header>
+              <div class="appearance-card">
+                <Portrait
+                  :source="cover(character).source"
+                  :crop="cover(character).crop.chat"
+                  :name="character.name"
+                />
+                <div>
+                  <p>更换、调整或恢复默认封面，不会影响聊天记录和角色记忆。</p>
+                  <div class="appearance-actions">
+                    <button
+                      class="primary"
+                      :disabled="!connected"
+                      @click="editing = true"
+                    >
+                      <ImagePlus :size="16" />更换封面
+                    </button>
+                    <button :disabled="!connected" @click="editing = true">
+                      调整位置
+                    </button>
+                    <button :disabled="!connected" @click="resetConfirm = true">
+                      <RotateCcw :size="15" />恢复默认
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </section>
             <p class="fine-print">
               封面和裁切按当前用户、当前角色分别保存；聊天记录与角色记忆不会被修改。
             </p>
@@ -234,10 +258,9 @@ const sections = [
 
 <style scoped>
 .workspace.settings-workspace {
-  display: grid;
-  grid-template-columns: 230px minmax(0, 1fr);
+  display: block;
   width: 100%;
-  max-width: 1800px;
+  max-width: 1500px;
   height: calc(
     100dvh - var(--desktop-header-height) - 2 * var(--page-padding-y)
   );
@@ -246,20 +269,22 @@ const sections = [
   overflow: hidden;
   border: 1px solid #ffffffba;
   border-radius: var(--radius-panel);
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
-  box-shadow: var(--shadow-panel);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  box-shadow: 0 14px 40px #36232d0a;
 }
 .settings-content {
   min-width: 0;
   min-height: 0;
+  height: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 20px 24px;
+  padding: 16px 28px 22px;
   background: linear-gradient(
     145deg,
-    color-mix(in srgb, var(--soft) 38%, transparent),
-    #ffffff88 46%
+    color-mix(in srgb, var(--soft) 20%, transparent),
+    #ffffff72 46%
   );
 }
 .settings-hero > span {
@@ -271,7 +296,7 @@ const sections = [
   flex-shrink: 0;
 }
 .back-to-chat {
-  margin: -8px 0 13px -10px;
+  margin: 0 0 7px -10px;
   padding: 6px 10px;
   color: var(--muted);
   font-size: 11px;
@@ -280,9 +305,9 @@ const sections = [
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 10px 0 8px;
+  margin: 5px 0 5px;
   color: var(--text);
-  font-size: clamp(32px, 2.6vw, 42px);
+  font-size: clamp(30px, 2.2vw, 38px);
 }
 .settings-hero h1 svg {
   color: var(--accent);
@@ -295,52 +320,95 @@ const sections = [
 }
 .settings-layout {
   display: grid;
-  grid-template-columns: 160px minmax(0, 720px);
+  grid-template-columns: 200px minmax(0, 1fr);
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  gap: 24px;
-  margin-top: 20px;
+  gap: 32px;
+  margin-top: 14px;
 }
 .settings-nav {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  align-self: start;
-  padding: 8px;
-  border: 1px solid #ffffffd8;
-  border-radius: 18px;
-  background: #ffffff8a;
+  min-height: 0;
+  padding: 8px 18px 14px 0;
+  border-right: 1px solid color-mix(in srgb, var(--soft) 55%, transparent);
+}
+.settings-nav-list {
+  display: grid;
+  gap: 4px;
 }
 .settings-nav button {
+  position: relative;
   justify-content: flex-start;
-  padding: 12px;
-  border-radius: 12px;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: 10px;
   color: var(--muted);
   font-size: 13px;
 }
 .settings-nav button.active {
-  background: color-mix(in srgb, var(--soft) 74%, white);
+  background: color-mix(in srgb, var(--soft) 48%, white);
   color: var(--accent) !important;
+}
+.settings-nav button.active::before {
+  position: absolute;
+  left: -1px;
+  width: 3px;
+  height: 18px;
+  border-radius: 99px;
+  background: var(--accent);
+  content: "";
+}
+.settings-companion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 18px;
+  color: var(--muted);
+}
+.settings-companion .character-avatar {
+  width: 36px;
+  height: 36px;
+}
+.settings-companion > div {
+  display: grid;
+  gap: 1px;
+}
+.settings-companion small {
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.settings-companion strong {
+  color: var(--text);
+  font-size: 12px;
+}
+.settings-companion span {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-size: 11px;
 }
 .settings-panel {
   min-width: 0;
   min-height: 0;
+  width: min(100%, 1060px);
+  height: 100%;
+  box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 20px;
-  align-self: start;
+  padding: clamp(20px, 2.4vw, 32px);
+  align-self: stretch;
   max-height: 100%;
-  border: 1px solid #ffffffd7;
-  border-radius: 22px;
-  background: #ffffff8f;
-  box-shadow: 0 12px 42px #36232d08;
+  border: 1px solid #ffffffc7;
+  border-radius: 18px;
+  background: #ffffff7a;
+  box-shadow: none;
 }
 .panel-title {
   display: flex;
   align-items: flex-start;
   gap: 13px;
-  padding-bottom: 16px;
+  padding-bottom: 14px;
   border-bottom: 1px solid color-mix(in srgb, var(--soft) 72%, transparent);
 }
 .panel-title > svg {
@@ -350,7 +418,7 @@ const sections = [
 .panel-title h2 {
   margin: 0 0 5px;
   color: var(--text);
-  font-size: 19px;
+  font-size: 20px;
 }
 .panel-title p,
 .setting-row p {
@@ -364,8 +432,8 @@ const sections = [
   align-items: center;
   justify-content: space-between;
   gap: 22px;
-  min-height: 76px;
-  padding: 14px 0;
+  min-height: 66px;
+  padding: 13px 0;
   border-bottom: 1px solid color-mix(in srgb, var(--soft) 72%, transparent);
 }
 .setting-row strong,
@@ -410,18 +478,18 @@ const sections = [
 }
 .appearance-card {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 25px;
+  grid-template-columns: 116px minmax(0, 1fr);
+  gap: 20px;
   align-items: center;
-  padding: 20px 0;
+  padding: 16px 0 0;
 }
 .appearance-card > .portrait {
-  height: 180px;
-  border-radius: 16px;
-  box-shadow: 0 12px 28px #36232d20;
+  height: 132px;
+  border-radius: 12px;
+  box-shadow: none;
 }
 .appearance-card h3 {
-  margin: 13px 0 8px;
+  margin: 0 0 8px;
   color: var(--text);
   font-size: 20px;
 }
@@ -435,7 +503,7 @@ const sections = [
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 18px;
+  margin-top: 14px;
 }
 .appearance-actions button:not(.primary) {
   color: var(--muted);
@@ -447,14 +515,44 @@ const sections = [
   font-size: 11px;
   line-height: 1.8;
 }
+.appearance-section {
+  padding: 18px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--soft) 72%, transparent);
+}
+.theme-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.theme-row .character-avatar {
+  width: 46px;
+  height: 46px;
+}
+.theme-row h3,
+.section-label h3 {
+  margin: 0 0 4px;
+  color: var(--text);
+  font-size: 15px;
+}
+.theme-row p,
+.section-label p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.section-label {
+  display: block;
+}
 .voice-note {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-top: 22px;
-  padding: 20px;
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--soft) 58%, white);
+  margin-top: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--soft) 72%, transparent);
+  border-radius: 0;
+  background: transparent;
 }
 .voice-note > svg {
   color: var(--accent);
@@ -470,7 +568,7 @@ const sections = [
   width: 100%;
   gap: 14px;
   align-items: center;
-  padding: 19px 0;
+  padding: 16px 0;
   border-bottom: 1px solid color-mix(in srgb, var(--soft) 72%, transparent);
   text-align: left;
 }
@@ -496,11 +594,8 @@ const sections = [
   margin-top: 22px;
 }
 @media (max-width: 900px) {
-  .workspace.settings-workspace {
-    grid-template-columns: 190px minmax(0, 1fr);
-  }
   .settings-layout {
-    grid-template-columns: 130px minmax(0, 1fr);
+    grid-template-columns: 170px minmax(0, 1fr);
     gap: 20px;
   }
   .setting-row {
@@ -522,8 +617,14 @@ const sections = [
     margin-top: 25px;
   }
   .settings-nav {
-    display: grid;
+    border-right: 0;
+    padding: 0;
+  }
+  .settings-nav-list {
     grid-template-columns: 1fr 1fr;
+  }
+  .settings-companion {
+    display: none;
   }
   .appearance-card {
     grid-template-columns: 110px minmax(0, 1fr);
