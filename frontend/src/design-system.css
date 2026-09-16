@@ -4,6 +4,8 @@
   --radius-control: 99px;
   --shadow-panel: 0 16px 60px color-mix(in srgb, var(--text) 7%, transparent);
   --border-glass: 1px solid #ffffffb8;
+  --focus-ring: 2px solid var(--accent);
+  --focus-ring-offset: 3px;
   --space-page: clamp(32px, 3vw, 48px);
   --desktop-header-height: 72px;
   --page-padding-y: 20px;
@@ -140,12 +142,12 @@
 .topbar nav button.active::after {
   content: "";
   position: absolute;
+  left: calc(50% - 10px);
+  width: 20px;
   bottom: 3px;
   height: 2px;
   border-radius: 2px;
   background: var(--accent);
-  left: 0;
-  right: 0;
 }
 .topbar nav button:hover {
   background: transparent;

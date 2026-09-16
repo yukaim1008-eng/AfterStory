@@ -1,8 +1,8 @@
 # AfterStory 当前项目状态
 
 - 更新日期：2026-09-16。
-- 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
-- 最新授权：SettingsPage 已完成正式视觉优化；只调整其 Desktop 偏好工作区，不修改全局 viewport/Header 高度、Home/Chat/角色/回忆或业务链路，完成后停止。
+- 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
+- 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。
 - F2 已交付历史与旧版本恢复、个人记忆管理、上下文契约、状态与关系内部存储边界，以及脱敏诊断和整体验证入口。
 - F1 开发授权及结果保留；用户已确定后续优先级为：对话理解与角色表达、正式角色内容、聊天效果验收、自动记忆与关系变化、语音、正式使用环境。完整 V1 尚未验收。
@@ -34,6 +34,7 @@
 - 本机开发身份由后端注入；无正式登录和跨设备同步。封面、偏好保存在浏览器，聊天保存在 PostgreSQL。
 - 当前是完整文字回复，不是流式输出。历史不编造数据库尚未提供的日期。
 - 页面视觉重设计已推进 ChatPage、HomePage、CharactersPage、MemoriesPage 与 SettingsPage；MemoriesPage 保留确认布局，以居中的 1060px 单栏回忆流、紧凑统一的筛选工具栏、角色上下文、主面板内日记式条目、轻量连接提示及空/有数据状态完成第三轮精修。SettingsPage 已改为窄分类导航加宽主内容的单栏偏好工作区，当前角色仅在导航底部轻量呈现，通用/外观/声音/数据管理均使用统一 Section + Row 结构，右侧内容独立滚动；其中外观页已进一步拆分角色主题与角色封面，封面以较完整预览和宽松操作区呈现。
+- 全站最终视觉审查已覆盖三位角色、Home/Characters/Chat/Memories/Settings、空/有数据/错误状态及四档 Desktop 尺寸；确认所有非 Chat Header 高度为 72px，统一为 20px 居中 active underline，focus ring 改由全局 token 提供。没有页面级纵向或横向 overflow；Home/Characters/Chat 维持单屏，Memories 与 Settings 分别只在列表/右侧面板内部滚动。未发现需要重构的视觉问题。
 - 模型上下文默认使用最近 12 轮成功对话，可配置；前端每次加载 30 轮历史。这两者都不等于长期记忆，也不代表模型能读取全部保存记录。
 
 ## 运行与上下文

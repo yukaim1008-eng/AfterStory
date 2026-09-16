@@ -1768,6 +1768,45 @@ test("every primary page stays usable across supported desktop widths", async ({
   expect(errors).toEqual([]);
 });
 
+test("non-chat headers share the same active marker", async ({ page }) => {
+  await fakeApi(page, false, { memory: true });
+  await page.setViewportSize({ width: 1440, height: 900 });
+
+  for (const route of ["home", "characters", "history", "settings"]) {
+    await page.goto(`/#/${route}/nanally`);
+    const marker = await page.locator(".topbar nav button.active").evaluate((el) => {
+      const after = getComputedStyle(el, "::after");
+      return { height: after.height, width: after.width };
+    });
+    expect(marker).toEqual({ height: "2px", width: "20px" });
+  }
+});
+
+test("character themes follow every core page without retaining the prior accent", async ({
+  page,
+}) => {
+  await fakeApi(page, false, { memory: true });
+  await page.setViewportSize({ width: 1440, height: 900 });
+
+  for (const [character, accent] of [
+    ["nanally", "#cf3979"],
+    ["iroi", "#507c68"],
+    ["mint", "#167e88"],
+  ]) {
+    for (const route of [
+      "home",
+      "characters",
+      "chat",
+      "history",
+      "settings",
+    ]) {
+      await page.goto(`/#/${route}/${character}`);
+      await expect(page.locator("#main-content")).toBeVisible();
+      await expect(page.locator(".application")).toHaveCSS("--accent", accent);
+    }
+  }
+});
+
 test("settings keeps every preference category in one quiet workspace", async ({
   page,
 }) => {

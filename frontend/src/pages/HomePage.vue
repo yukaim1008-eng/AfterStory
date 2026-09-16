@@ -256,12 +256,6 @@ const recent = computed(() => {
 :global(.page-home .ambient-light) {
   background: radial-gradient(ellipse at 25% 0%, #fff9, transparent 65%);
 }
-:global(.page-home .topbar nav button.active::after) {
-  width: 20px;
-  left: calc(50% - 10px);
-  right: auto;
-  height: 1px;
-}
 .home-page {
   max-width: 1800px;
   margin: 0 auto;

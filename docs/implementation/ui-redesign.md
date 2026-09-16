@@ -2,6 +2,13 @@
 
 范围：2026-09-14 用户授权连续执行 Phase 1–8，基于现有 F1/F2 前端改版，不修改后端、数据库或角色提示词。
 
+## 2026-09-16 全站最终视觉审查与收尾
+
+- 范围只限 HomePage、CharactersPage、ChatPage、MemoriesPage、SettingsPage 的既有视觉系统、状态和响应式检查；不改变任何页面构图、角色文案/场景、业务、API、Memory/History 或角色切换逻辑。
+- 复查中唯一需要安全自动修正的系统差异是非 Chat Header 的 active 标记：首页原为 20px、1px 短线，其他页面为全宽、2px 线。现将共享 Header 统一为 20px 居中、2px 的主题色短 underline，并删除首页局部覆盖；键盘 focus outline 同时改为共享 `--focus-ring` 与 `--focus-ring-offset` token，保持可见但不产生突兀差异。
+- 浏览器回归覆盖娜娜莉、伊洛伊、薄荷在全部五个核心页面的主题 accent，不允许切换后残留上一角色颜色；已有场景装饰回归继续覆盖背景、头像短句、签名、上下批注及左下入口的角色同步。四个 Desktop 视口（1920×1080、1600×900、1440×900、1366×768）下 Header 均为 72px，body/document 不超过视口、无横向溢出；Home/Characters/Chat 单屏，Memories/Settings 只在指定内部容器滚动。
+- 最终 `npm run build`、31 项 Playwright 回归与 `git diff --check` 均通过，测试捕获的 console error/pageerror 为空。项目没有 ESLint 或 `lint` 脚本；Prettier 对 `design-system.css`、`style.css`、`HomePage.vue` 的完整文件检查在本轮开始前已失败，未为通过检查进行无关整文件重排。
+
 ## 2026-09-16 HomePage 相见入口重设计
 
 - 本轮只正式设计首页，保留上一阶段一屏 Desktop Grid 与统一 Header 高度；`design-system.css`、`style.css` 和其他页面源码不修改。首页局部使用带 page-home 限定的 Header/背景选择器，不影响其他页面。
