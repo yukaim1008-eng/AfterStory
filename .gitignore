@@ -37,3 +37,5 @@ frontend/playwright-report/
 *.log
 .DS_Store
 Thumbs.db
+
+.workbuddy
