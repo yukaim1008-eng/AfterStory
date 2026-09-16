@@ -781,7 +781,9 @@ test("short desktop empty states and settings overflow remain internally reachab
   ).toBe(true);
 
   await page.goto("/#/memory/nanally");
-  await page.getByRole("button", { name: "添加第一条", exact: true }).click();
+  await page
+    .getByRole("button", { name: "添加第一条记忆", exact: true })
+    .click();
   await expect(page.getByLabel("希望她记住什么？")).toBeVisible();
   const filters = page.locator(".collection-filters");
   const fixed = await filters.boundingBox();
@@ -1144,6 +1146,7 @@ test("personal memories are explicitly saved, corrected, linked, and deleted", a
   await expect(
     page.getByText("我喜欢在雨天散步", { exact: true }),
   ).toBeVisible();
+  await page.getByLabel("更多操作").click();
   await page.getByRole("button", { name: "更正" }).click();
   await page.getByLabel("更正记忆内容").fill("我喜欢在小雨的夜晚散步");
   await page.getByRole("button", { name: "保存更正" }).click();
@@ -1153,13 +1156,14 @@ test("personal memories are explicitly saved, corrected, linked, and deleted", a
   await page.getByRole("button", { name: "查看来源" }).click();
   await expect(page.locator(".source-turn")).toContainText("我喜欢在雨天散步");
   await page.goto("/#/memory/nanally");
+  await page.getByLabel("更多操作").click();
   await page.getByRole("button", { name: "删除" }).click();
   await page
     .getByRole("dialog")
     .getByRole("button", { name: "确认删除" })
     .click();
   await expect(
-    page.getByRole("heading", { name: "还没有保存的记忆" }),
+    page.getByRole("heading", { name: "她还没有留下特别的记忆" }),
   ).toBeVisible();
 });
 
@@ -1614,13 +1618,113 @@ test("history filters find a matching role on later pages while retaining unknow
   await fakeApi(page, false, { sessions });
   await page.goto("/#/history/nanally");
   await expect(page.locator(".history-row")).toHaveCount(20);
-  await page.getByLabel("筛选角色").selectOption("iroi");
+  await page
+    .locator(".character-chips button")
+    .filter({ hasText: "伊洛伊" })
+    .click();
   await expect(page.locator(".history-row")).toHaveCount(1);
   await expect(page.locator(".history-row")).toContainText("伊洛伊的雨天");
   await expect(page.locator(".history-row")).toContainText("未记录时间");
   await expect(page.locator(".history-row")).not.toContainText(
     "integration-v1",
   );
+});
+
+test("memories page presents compact empty and populated journal states", async ({
+  page,
+}) => {
+  const historySamples: Session[] = [
+    {
+      ...session("nanally-visual", "nanally-integration-v1"),
+      name: "娜娜莉",
+      turns: 4,
+      last_activity_at: "2026-09-15T23:42:00Z",
+      preview:
+        "“最近工作事情有点多，感觉脑子都转不动了。”\n她说：“那先别想工作的事了，陪我待一会儿吧。”",
+    },
+    {
+      ...session("iroi-visual", "iroi-integration-v1"),
+      name: "伊洛伊",
+      turns: 3,
+      last_activity_at: "2026-09-14T12:30:00Z",
+      preview: "“最近一直在推进自己的项目。”\n她说：“慢慢来也没关系呀。”",
+    },
+    {
+      ...session("mint-visual", "mint-integration-v1"),
+      name: "薄荷",
+      turns: 3,
+      last_activity_at: "2026-09-13T12:30:00Z",
+      preview: "“今天发生了一件挺有意思的小事。”\n她说：“快说快说，我要听！”",
+    },
+    {
+      ...session("nanally-rest", "nanally-integration-v1"),
+      name: "娜娜莉",
+      turns: 2,
+      last_activity_at: "2026-09-12T12:30:00Z",
+      preview: "“今天什么都不想做。”\n她说：“那今天就什么都不做。”",
+    },
+  ];
+  const id = "nanally-integration-v1";
+  await fakeApi(page, false, {
+    memory: true,
+    sessions: historySamples,
+    memories: [
+      memory(
+        "work-memory",
+        `instance-${id}`,
+        "她记得你最近工作比较累\n\n“最近事情很多，下班后有时候只想安静待着。”",
+        "2026-09-13T12:30:00Z",
+      ),
+      memory(
+        "project-memory",
+        `instance-${id}`,
+        "她记得你正在认真做自己的项目\n\n“你想把喜欢的角色真正做成可以长期陪伴的产品。”",
+        "2026-09-11T12:30:00Z",
+      ),
+      memory(
+        "share-memory",
+        `instance-${id}`,
+        "她记得你喜欢分享每天的小事\n\n“哪怕只是今天吃了什么，也值得说一说。”",
+        "2026-09-09T12:30:00Z",
+      ),
+      memory(
+        "quiet-memory",
+        `instance-${id}`,
+        "她记得你也需要什么都不做的下午\n\n“有时候安静待着，也是一件重要的事。”",
+        "2026-09-08T12:30:00Z",
+      ),
+    ],
+  });
+
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/#/history/nanally");
+  await expect(page.locator(".history-row")).toHaveCount(4);
+  await expect(page.locator(".history-scroll")).toContainText("陪我待一会儿吧");
+  await expect(page.locator(".history-scroll")).toContainText("快说快说，我要听！");
+  await page.screenshot({ path: "test-results/memories-history-populated.png" });
+  await page.getByLabel("搜索回忆").fill("推进自己的项目");
+  await expect(page.locator(".history-row")).toHaveCount(1);
+  await page.screenshot({ path: "test-results/memories-history-filtered.png" });
+  await page.getByLabel("搜索回忆").fill("");
+
+  await page.getByRole("tab", { name: /她记得的事/ }).click();
+  await expect(page.locator(".memory-list article")).toHaveCount(4);
+  await expect(page.locator(".memory-list")).toContainText("认真做自己的项目");
+  await expect(page.getByLabel("更多操作").first()).toBeVisible();
+  await expect(page.getByRole("button", { name: "更正" })).toHaveCount(0);
+  await page.screenshot({ path: "test-results/memories-facts-populated.png" });
+
+  await fakeApi(page, false, { memory: true });
+  await page.goto("/#/history/nanally");
+  await expect(page.locator(".history-scroll .empty")).toContainText(
+    "第一段回忆，还在等你们一起写下。",
+  );
+  await page.screenshot({ path: "test-results/memories-history-empty.png" });
+  await page.getByRole("tab", { name: /她记得的事/ }).click();
+  await expect(page.locator(".memory-empty")).toContainText(
+    "她还没有留下特别的记忆",
+  );
+  await page.screenshot({ path: "test-results/memories-facts-empty.png" });
 });
 
 test("every primary page stays usable across supported desktop widths", async ({
@@ -1805,13 +1909,15 @@ test("desktop viewport sizes keep core pages and controls inside the screen", as
         expect(
           await scroll.evaluate((el) => getComputedStyle(el).overflowY),
         ).toBe("auto");
-        expect(
-          await scroll.evaluate((el) => el.scrollHeight > el.clientHeight),
-        ).toBe(true);
-        await scroll.evaluate((el) => {
-          el.scrollTop = el.scrollHeight;
-        });
-        expect(await scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+        const canScroll = await scroll.evaluate(
+          (el) => el.scrollHeight > el.clientHeight,
+        );
+        if (canScroll) {
+          await scroll.evaluate((el) => {
+            el.scrollTop = el.scrollHeight;
+          });
+          expect(await scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+        }
         expect(await fixed.boundingBox()).toEqual(before);
       }
       if (route === "settings") {

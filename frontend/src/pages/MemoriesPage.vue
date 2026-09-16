@@ -78,6 +78,22 @@ function isLegacy(item: (typeof sessions.value)[number]) {
   return !!installed && installed.versionId !== item.version_id;
 }
 
+function dialogueFor(preview: string) {
+  const lines = preview
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  if (lines.length < 2) return { user: "", reply: preview };
+  return {
+    user: lines[0]!,
+    reply: lines
+      .slice(1)
+      .join(" ")
+      .replace(/^她说\s*[：:]/, "")
+      .trim(),
+  };
+}
+
 watch(
   [characterFilter, timeFilter, query],
   async () => {
@@ -107,9 +123,13 @@ watch(
           <h1>与你的回忆 <BookHeart :size="31" /></h1>
           <p>那些聊过的瞬间，和你主动留下的珍贵小事。</p>
         </div>
-        <div class="hero-aside">
-          <span>有些话说完了，<br />但不会真的消失。</span>
+        <div class="hero-aside" aria-label="当前查看角色">
           <CharacterAvatar :character="character" :cover="cover(character)" />
+          <div>
+            <small>当前查看</small>
+            <strong>{{ character.name }}</strong>
+            <span>有些话说完了，但不会真的消失。</span>
+          </div>
         </div>
       </header>
 
@@ -220,21 +240,31 @@ watch(
                 :cover="cover(installedCharacter(item.character_id)!)"
               />
               <span v-else class="missing-avatar">?</span>
-              <div>
+              <div class="history-entry">
                 <span class="card-meta">
                   <time :datetime="item.last_activity_at || undefined">{{
                     displayTime(item.last_activity_at)
                   }}</time>
-                  <span>聊天片段</span>
                 </span>
-                <h2>{{ excerpt(item.preview || "还没有消息", 34) }}</h2>
-                <p>{{ item.preview || "这段相见还没有留下文字。" }}</p>
+                <h2>
+                  {{ installedCharacter(item.character_id)?.name || item.name }}
+                </h2>
+                <p
+                  v-if="dialogueFor(item.preview).user"
+                  class="conversation-user"
+                >
+                  {{ dialogueFor(item.preview).user }}
+                </p>
+                <p class="conversation-reply">
+                  <span v-if="dialogueFor(item.preview).user">她说</span>
+                  {{
+                    dialogueFor(item.preview).reply ||
+                    "这段相见还没有留下文字。"
+                  }}
+                </p>
                 <footer>
-                  <strong>{{
-                    installedCharacter(item.character_id)?.name || item.name
-                  }}</strong>
-                  <span>{{ item.turns }} 轮对话</span
-                  ><span class="continue-reading">看看那天聊了什么 →</span>
+                  <span>{{ item.turns }} 轮对话</span>
+                  <span class="continue-reading">查看 →</span>
                   <span v-if="isLegacy(item)">早些时候的相见</span>
                   <span v-if="!installedCharacter(item.character_id)"
                     >角色暂不可用</span
@@ -272,8 +302,8 @@ watch(
   border-radius: var(--radius-panel);
   background: linear-gradient(
     145deg,
-    #ffffffaa,
-    color-mix(in srgb, var(--soft) 26%, #ffffff75)
+    #ffffffd9,
+    color-mix(in srgb, var(--soft) 15%, #ffffffc7)
   );
   box-shadow: var(--shadow-panel);
 }
@@ -284,7 +314,7 @@ watch(
   flex-direction: column;
   overflow: hidden;
   padding: 0 26px 20px;
-  background: transparent;
+  background: linear-gradient(180deg, transparent, #ffffff24);
 }
 .memories-hero {
   display: flex;
@@ -296,8 +326,8 @@ watch(
   padding: 12px 26px;
   background: linear-gradient(
     100deg,
-    #ffffff72,
-    color-mix(in srgb, var(--soft) 42%, transparent)
+    #ffffff6b,
+    color-mix(in srgb, var(--soft) 26%, transparent)
   );
 }
 .memories-hero small {
@@ -326,11 +356,21 @@ watch(
   display: flex;
   align-items: center;
   gap: 14px;
+  min-width: 230px;
   color: var(--muted);
+}
+.hero-aside > div { display: grid; gap: 2px; }
+.hero-aside small {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.hero-aside strong { color: var(--text); font-size: 14px; }
+.hero-aside span {
+  margin-top: 2px;
   font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
-  font-size: 13px;
-  text-align: right;
-  transform: rotate(-2deg);
+  font-size: 12px;
+  transform: rotate(-1deg);
 }
 .memories-hero .character-avatar {
   width: 48px;
@@ -361,8 +401,8 @@ watch(
 }
 .history-controls {
   flex-shrink: 0;
-  display: grid;
-  grid-template-columns: minmax(260px, auto) auto minmax(190px, 1fr) auto;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
@@ -371,6 +411,9 @@ watch(
   display: flex;
   flex-direction: column;
   flex: 1;
+  width: 100%;
+  max-width: 1060px;
+  margin-inline: auto;
   min-height: 0;
   overflow: hidden;
 }
@@ -382,12 +425,21 @@ watch(
   padding: 4px 4px 8px;
   overscroll-behavior: contain;
 }
+.history-scroll > .empty {
+  min-height: 170px;
+  max-width: 360px;
+  margin: 24px auto;
+  padding: 18px;
+  gap: 9px;
+}
+.history-scroll > .empty h2 { font-size: 18px; }
+.history-scroll > .empty p { font-size: 12px; line-height: 1.7; }
 .character-chips {
   display: flex;
   align-items: center;
   gap: 4px;
-  min-width: 0;
-  overflow: hidden;
+  min-width: min(260px, 100%);
+  overflow-x: auto;
 }
 .character-chips button {
   padding: 5px 8px;
@@ -408,6 +460,8 @@ watch(
 .history-controls select,
 .search-control {
   min-width: 0;
+  height: 38px;
+  box-sizing: border-box;
   padding: 8px 11px;
   border: 1px solid var(--soft);
   border-radius: 99px;
@@ -416,6 +470,8 @@ watch(
 }
 .search-control {
   display: flex;
+  flex: 1 1 280px;
+  max-width: 430px;
   align-items: center;
   gap: 8px;
 }
@@ -427,6 +483,7 @@ watch(
   background: transparent;
 }
 .history-controls > span {
+  margin-left: auto;
   color: var(--muted);
   font-size: 11px;
 }
@@ -434,9 +491,10 @@ watch(
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  margin: 12px 0;
-  padding: 12px 16px;
-  border-radius: 12px;
+  margin: 4px 0 8px;
+  padding: 8px 12px;
+  border-left: 2px solid var(--accent);
+  border-radius: 0 10px 10px 0;
   background: color-mix(in srgb, var(--soft) 60%, white);
   color: var(--accent);
 }
@@ -453,7 +511,8 @@ watch(
   width: 100%;
   min-width: 0;
   margin: 0;
-  padding: 13px 10px;
+  position: relative;
+  padding: 17px 14px;
   border: 0;
   border-bottom: 1px solid color-mix(in srgb, var(--soft) 55%, transparent);
   border-radius: 0;
@@ -462,11 +521,17 @@ watch(
   text-align: left;
 }
 .history-row::after {
-  content: none;
+  position: absolute;
+  top: 46px;
+  bottom: -1px;
+  left: 27px;
+  width: 1px;
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  content: "";
 }
 .history-row:hover:not(:disabled) {
   transform: none;
-  background: color-mix(in srgb, var(--soft) 24%, transparent);
+  background: color-mix(in srgb, var(--soft) 30%, transparent);
 }
 .history-row .character-avatar,
 .missing-avatar {
@@ -491,29 +556,24 @@ watch(
   align-items: center;
   gap: 8px;
   color: var(--muted);
-  font-size: 10px;
-}
-.card-meta > span {
-  padding: 3px 8px;
-  border-radius: 99px;
-  background: var(--soft);
-  color: var(--accent);
+  font-size: 11px;
 }
 .history-row h2 {
-  margin: 9px 0 6px;
+  margin: 4px 0 6px;
   color: var(--text);
-  font-size: 14px;
+  font-size: 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .history-row p {
   display: -webkit-box;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   overflow: hidden;
-  color: var(--muted);
-  font-size: 11px;
+  color: color-mix(in srgb, var(--text) 72%, var(--muted));
+  font-size: 12px;
   line-height: 1.7;
+  white-space: pre-line;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -524,6 +584,21 @@ watch(
   margin-left: auto;
   color: var(--accent);
 }
+.history-row .conversation-user { margin-bottom: 3px; }
+.history-row .conversation-reply {
+  margin-bottom: 11px;
+  color: var(--muted);
+}
+.conversation-reply span {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--soft) 62%, white);
+  color: var(--accent);
+  font-size: 10px;
+}
+.history-row:last-child::after { display: none; }
 .empty-action {
   margin-top: 8px;
   color: var(--accent);
@@ -537,17 +612,12 @@ watch(
   border-radius: 99px;
   color: var(--accent);
 }
-@media (min-width: 1750px) {
-  .history-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
 @media (max-width: 900px) {
   .workspace.memories-workspace {
     grid-template-columns: 190px minmax(0, 1fr);
   }
   .history-controls {
-    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
   }
   .history-grid {
     grid-template-columns: 1fr;
@@ -569,8 +639,11 @@ watch(
   .memories-hero .character-avatar {
     display: none;
   }
+  .hero-aside { min-width: 0; }
   .history-controls {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
   }
+  .history-controls > span { margin-left: 0; }
 }
 </style>
