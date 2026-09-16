@@ -89,14 +89,14 @@ watch(selected, () => {
 <template>
   <section class="memory-collection" aria-label="她记得的事">
     <header class="collection-intro">
-      <p>只保存你主动选择的内容，随时可以更正或删除。</p>
+      <p>她认真留下的事，也可以随时更正或删除。</p>
       <button
         v-if="capabilities.memory"
         class="primary"
         :disabled="memorySaving || !chat?.session"
         @click="beginMemory()"
       >
-        <Plus :size="16" />添加一条
+        <Plus :size="16" />添加一条记忆
       </button>
     </header>
 
@@ -185,14 +185,14 @@ watch(selected, () => {
           class="empty memory-empty"
         >
           <Sparkles :size="30" />
-          <h2>还没有保存的记忆</h2>
-          <p>你可以手动添加，也可以从一条已完成的聊天消息中保存。</p>
+          <h2>她还没有留下特别的记忆</h2>
+          <p>聊得久一点，有些事情会慢慢留在这里。</p>
           <button
             class="primary"
             :disabled="memorySaving || !chat?.session"
             @click="beginMemory()"
           >
-            添加第一条
+            添加第一条记忆
           </button>
         </div>
 
@@ -227,14 +227,12 @@ watch(selected, () => {
               </template>
               <template v-else>
                 <header>
-                  <span>{{
-                    item.kind === "fact" ? "你确认的事实" : "待确认的理解"
-                  }}</span>
+                  <span>她记得</span>
                   <time :datetime="item.updated_at">{{
                     displayTime(item.updated_at)
                   }}</time>
                 </header>
-                <h3>她记得 · {{ excerpt(item.content, 24) }}</h3>
+                <h3>{{ excerpt(item.content, 28) }}</h3>
                 <p>{{ item.content }}</p>
                 <footer>
                   <button
@@ -298,7 +296,7 @@ watch(selected, () => {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .collection-intro p {
   margin: 0;
@@ -310,7 +308,7 @@ watch(selected, () => {
   display: grid;
   grid-template-columns: repeat(3, minmax(120px, auto)) minmax(180px, 1fr);
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .collection-filters select,
 .collection-filters input {
@@ -368,18 +366,23 @@ watch(selected, () => {
 .memory-list {
   display: grid;
   margin: 0;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 0;
 }
 .memory-list article {
   box-sizing: border-box;
   min-width: 0;
   margin: 0;
-  padding: 18px;
-  border: 1px solid #ffffffcf;
-  border-radius: 18px;
-  background: #ffffffa8;
-  box-shadow: 0 8px 28px #36232d09;
+  padding: 14px 12px;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--soft) 58%, transparent);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: background 0.2s ease;
+}
+.memory-list article:hover {
+  background: color-mix(in srgb, var(--soft) 24%, transparent);
 }
 .memory-list article > header {
   display: flex;
@@ -389,7 +392,7 @@ watch(selected, () => {
   font-size: 10px;
 }
 .memory-list h3 {
-  margin: 14px 0 8px;
+  margin: 8px 0 5px;
   color: var(--text);
   font-size: 14px;
 }
@@ -407,6 +410,14 @@ watch(selected, () => {
   gap: 4px;
   color: var(--muted);
   font-size: 11px;
+}
+.memory-list footer {
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.memory-list article:hover footer,
+.memory-list article:focus-within footer {
+  opacity: 1;
 }
 .load-more {
   display: flex;

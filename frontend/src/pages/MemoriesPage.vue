@@ -8,7 +8,6 @@ import {
 } from "lucide-vue-next";
 import { useAfterStory } from "../composables/useAfterStory";
 import CharacterAvatar from "../components/CharacterAvatar.vue";
-import CharacterSidebar from "../components/CharacterSidebar.vue";
 import MemoryCollection from "../components/MemoryCollection.vue";
 import { displayTime, excerpt } from "../presentation";
 
@@ -99,9 +98,8 @@ watch(
     v-if="character"
     id="main-content"
     tabindex="-1"
-    class="workspace memories-workspace"
+    class="memories-workspace"
   >
-    <CharacterSidebar compact />
     <section class="memories-content">
       <header class="memories-hero">
         <div>
@@ -109,7 +107,10 @@ watch(
           <h1>与你的回忆 <BookHeart :size="31" /></h1>
           <p>那些聊过的瞬间，和你主动留下的珍贵小事。</p>
         </div>
-        <CharacterAvatar :character="character" :cover="cover(character)" />
+        <div class="hero-aside">
+          <span>有些话说完了，<br />但不会真的消失。</span>
+          <CharacterAvatar :character="character" :cover="cover(character)" />
+        </div>
       </header>
 
       <div class="memory-tabs" role="tablist" aria-label="回忆类别">
@@ -134,12 +135,24 @@ watch(
       <MemoryCollection v-if="page === 'memory'" />
       <section v-else class="history-collection" aria-label="聊天片段">
         <div class="history-controls">
-          <select v-model="characterFilter" aria-label="筛选角色">
-            <option value="all">全部角色</option>
-            <option v-for="item in characters" :key="item.id" :value="item.id">
-              {{ item.name }}
-            </option>
-          </select>
+          <div class="character-chips" aria-label="筛选角色">
+            <button
+              :class="{ active: characterFilter === 'all' }"
+              @click="characterFilter = 'all'"
+            >
+              全部
+            </button>
+            <button
+              v-for="item in characters"
+              :key="item.id"
+              :class="{ active: characterFilter === item.id }"
+              @click="characterFilter = item.id"
+            >
+              <CharacterAvatar :character="item" :cover="cover(item)" />{{
+                item.name
+              }}
+            </button>
+          </div>
           <select v-model="timeFilter" aria-label="筛选时间">
             <option value="all">全部时间</option>
             <option value="week">最近一周</option>
@@ -177,7 +190,10 @@ watch(
           >
             <MessageCircle :size="30" />
             <h2>这里会留住你们的对话</h2>
-            <p>发送第一条消息后，再回来看看。</p>
+            <p>第一段回忆，还在等你们一起写下。</p>
+            <button class="empty-action" @click="route('chat')">
+              去开始聊天
+            </button>
           </div>
           <div
             v-else-if="sessions.length && !filteredSessions.length"
@@ -211,13 +227,14 @@ watch(
                   }}</time>
                   <span>聊天片段</span>
                 </span>
-                <h2>{{ excerpt(item.preview || "还没有消息", 28) }}</h2>
+                <h2>{{ excerpt(item.preview || "还没有消息", 34) }}</h2>
                 <p>{{ item.preview || "这段相见还没有留下文字。" }}</p>
                 <footer>
                   <strong>{{
                     installedCharacter(item.character_id)?.name || item.name
                   }}</strong>
-                  <span>{{ item.turns }} 轮对话</span>
+                  <span>{{ item.turns }} 轮对话</span
+                  ><span class="continue-reading">看看那天聊了什么 →</span>
                   <span v-if="isLegacy(item)">早些时候的相见</span>
                   <span v-if="!installedCharacter(item.character_id)"
                     >角色暂不可用</span
@@ -242,11 +259,9 @@ watch(
 </template>
 
 <style scoped>
-.workspace.memories-workspace {
-  display: grid;
-  grid-template-columns: 230px minmax(0, 1fr);
+.memories-workspace {
   width: 100%;
-  max-width: 1800px;
+  max-width: 1500px;
   height: calc(
     100dvh - var(--desktop-header-height) - 2 * var(--page-padding-y)
   );
@@ -255,7 +270,11 @@ watch(
   overflow: hidden;
   border: 1px solid #ffffffba;
   border-radius: var(--radius-panel);
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  background: linear-gradient(
+    145deg,
+    #ffffffaa,
+    color-mix(in srgb, var(--soft) 26%, #ffffff75)
+  );
   box-shadow: var(--shadow-panel);
 }
 .memories-content {
@@ -264,25 +283,21 @@ watch(
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 0 24px 20px;
-  background: linear-gradient(
-    155deg,
-    color-mix(in srgb, var(--soft) 34%, transparent),
-    #ffffff75 42%
-  );
+  padding: 0 26px 20px;
+  background: transparent;
 }
 .memories-hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
-  min-height: 124px;
-  margin: 0 -24px;
-  padding: 16px 24px;
+  min-height: 90px;
+  margin: 0 -26px;
+  padding: 12px 26px;
   background: linear-gradient(
     100deg,
-    #ffffffc9,
-    color-mix(in srgb, var(--soft) 72%, transparent)
+    #ffffff72,
+    color-mix(in srgb, var(--soft) 42%, transparent)
   );
 }
 .memories-hero small {
@@ -294,7 +309,7 @@ watch(
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 9px 0;
+  margin: 5px 0;
   color: var(--text);
   font-size: clamp(32px, 2.6vw, 42px);
 }
@@ -307,27 +322,37 @@ watch(
   color: var(--muted);
   font-size: 13px;
 }
+.hero-aside {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--muted);
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-size: 13px;
+  text-align: right;
+  transform: rotate(-2deg);
+}
 .memories-hero .character-avatar {
-  width: 72px;
-  height: 72px;
+  width: 48px;
+  height: 48px;
   box-shadow: 0 12px 34px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 .memory-tabs {
   flex-shrink: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 620px;
-  margin: 16px 0;
-  padding: 5px;
-  border: 1px solid #ffffffd2;
-  border-radius: 18px;
-  background: #ffffff96;
+  max-width: 420px;
+  margin: 12px 0;
+  padding: 3px;
+  border: 1px solid #ffffffb5;
+  border-radius: 14px;
+  background: #ffffff72;
 }
 .memory-tabs button {
   justify-content: center;
   gap: 8px;
-  padding: 11px 20px;
-  border-radius: 14px;
+  padding: 8px 16px;
+  border-radius: 11px;
   color: var(--muted);
 }
 .memory-tabs button.active {
@@ -337,10 +362,10 @@ watch(
 .history-controls {
   flex-shrink: 0;
   display: grid;
-  grid-template-columns: auto auto minmax(190px, 1fr) auto;
+  grid-template-columns: minmax(260px, auto) auto minmax(190px, 1fr) auto;
   align-items: center;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .history-collection {
   display: flex;
@@ -357,10 +382,33 @@ watch(
   padding: 4px 4px 8px;
   overscroll-behavior: contain;
 }
+.character-chips {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+}
+.character-chips button {
+  padding: 5px 8px;
+  border-radius: 99px;
+  color: var(--muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+.character-chips button.active {
+  background: color-mix(in srgb, var(--soft) 72%, white);
+  color: var(--accent);
+}
+.character-chips .character-avatar {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
 .history-controls select,
 .search-control {
   min-width: 0;
-  padding: 10px 13px;
+  padding: 8px 11px;
   border: 1px solid var(--soft);
   border-radius: 99px;
   background: #ffffffa8;
@@ -394,37 +442,38 @@ watch(
 }
 .history-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 0;
 }
 .history-row {
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
+  grid-template-columns: 46px minmax(0, 1fr);
   align-items: stretch;
   width: 100%;
   min-width: 0;
   margin: 0;
-  padding: 13px;
-  border: 1px solid #ffffffd4;
-  border-radius: 18px;
-  background: #ffffffa6;
-  box-shadow: 0 8px 28px #35232d08;
+  padding: 13px 10px;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--soft) 55%, transparent);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   text-align: left;
 }
 .history-row::after {
   content: none;
 }
 .history-row:hover:not(:disabled) {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--accent) 24%, white);
+  transform: none;
+  background: color-mix(in srgb, var(--soft) 24%, transparent);
 }
 .history-row .character-avatar,
 .missing-avatar {
-  width: 62px;
-  height: 100%;
-  min-height: 112px;
-  border-radius: 12px;
+  width: 34px;
+  height: 34px;
+  min-height: 34px;
+  border-radius: 50%;
 }
 .missing-avatar {
   display: grid;
@@ -470,6 +519,15 @@ watch(
 }
 .history-row footer strong {
   color: var(--text);
+}
+.continue-reading {
+  margin-left: auto;
+  color: var(--accent);
+}
+.empty-action {
+  margin-top: 8px;
+  color: var(--accent);
+  font-size: 12px;
 }
 .load-older {
   display: flex;
