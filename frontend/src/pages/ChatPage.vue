@@ -4,6 +4,10 @@ import { ArrowUp, BookOpen, LoaderCircle, Plus } from "lucide-vue-next";
 import { useAfterStory } from "../composables/useAfterStory";
 import CharacterAvatar from "../components/CharacterAvatar.vue";
 import ChatCharacterScene from "../components/ChatCharacterScene.vue";
+import {
+  formatSceneDecorationText,
+  resolveSceneDecorations,
+} from "../sceneDecorations";
 import type { SceneDecorationNote } from "../types";
 
 const {
@@ -33,7 +37,15 @@ const presence = computed(() => {
   if (chat.value?.loading) return "正在翻开我们的对话…";
   return "在这里";
 });
-const decorations = computed(() => character.value?.sceneDecorations);
+const decorations = computed(() =>
+  character.value ? resolveSceneDecorations(character.value) : undefined,
+);
+
+function decorationText(text: string) {
+  return character.value
+    ? formatSceneDecorationText(text, character.value)
+    : text;
+}
 
 function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   if (!note) return undefined;
@@ -64,19 +76,21 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
     <section class="chat-glass">
       <p
         v-if="decorations?.topNote"
+        :key="`${character.id}-top-note`"
         class="atmosphere-copy atmosphere-copy-top"
         :style="noteStyle(decorations.topNote)"
         aria-hidden="true"
       >
-        {{ decorations.topNote.text }}
+        {{ decorationText(decorations.topNote.text) }}
       </p>
       <p
         v-if="decorations?.bottomNote"
+        :key="`${character.id}-bottom-note`"
         class="atmosphere-copy atmosphere-copy-bottom"
         :style="noteStyle(decorations.bottomNote)"
         aria-hidden="true"
       >
-        {{ decorations.bottomNote.text }}
+        {{ decorationText(decorations.bottomNote.text) }}
       </p>
       <header class="chat-header">
         <CharacterAvatar :character="character" :cover="cover(character)" />
@@ -88,12 +102,13 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
             >
             <small
               v-if="decorations?.avatarNote"
+              :key="`${character.id}-avatar-note`"
               class="avatar-note"
               :style="{
                 opacity: decorations.avatarNote.opacity,
                 color: decorations.avatarNote.color,
               }"
-              >{{ decorations.avatarNote.text }}</small
+              >{{ decorationText(decorations.avatarNote.text) }}</small
             >
           </div>
         </div>
@@ -372,6 +387,7 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   transform-origin: center;
   white-space: pre-line;
   pointer-events: none;
+  animation: decoration-copy-enter 220ms ease-out both;
 }
 
 .atmosphere-copy-top {
@@ -428,12 +444,24 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   line-height: 1.4;
   letter-spacing: 0.045em;
   white-space: nowrap;
+  animation: decoration-copy-enter 180ms ease-out both;
 }
 
 .avatar-note::before {
   margin-right: 8px;
   color: color-mix(in srgb, var(--accent) 36%, transparent);
   content: "／";
+}
+
+@keyframes decoration-copy-enter {
+  from {
+    filter: opacity(0);
+    translate: 0 3px;
+  }
+  to {
+    filter: opacity(1);
+    translate: 0 0;
+  }
 }
 
 .chat-header i {
@@ -789,6 +817,13 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
 
   .atmosphere-copy {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere-copy,
+  .avatar-note {
+    animation: none;
   }
 }
 </style>

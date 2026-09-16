@@ -497,13 +497,13 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   await expect(page.locator(".application")).toHaveCSS("--accent", "#507c68");
   await expect(page.getByText("今天下雨了", { exact: true })).toHaveCount(0);
   await expect(
-    page.getByText("慢一点也没关系，我会听。", { exact: true }),
+    page.getByText("今天也想做个好孩子，陪你一会儿。", { exact: true }),
   ).toBeVisible();
   await expect(page.locator(".atmosphere-copy-top")).toContainText(
-    "今天也有想聊的事吗？",
+    "今天发生的事",
   );
   await expect(
-    page.getByRole("button", { name: "收容二组的休息角" }),
+    page.getByRole("button", { name: "伊洛伊的白日梦" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "回忆", exact: true }).click();
   await page.locator(".history-row").click();
@@ -512,6 +512,137 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
       exact: true,
     }),
   ).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("scene decorations follow every character and fall back safely", async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await fakeApi(page);
+  await page.route("**/characters.json", async (route) => {
+    const response = await route.fetch();
+    const data = await response.json();
+    const guest = {
+      ...data.characters[0],
+      id: "guest",
+      name: "访客",
+      versionId: "guest-integration-v1",
+      default: false,
+    };
+    delete guest.sceneDecorations;
+    data.characters.push(guest);
+    await route.fulfill({ json: data });
+  });
+
+  const cases = [
+    {
+      id: "nanally",
+      accent: "#cf3979",
+      background: "/media/nanally-scene.png",
+      avatar: "一直在这里，和你💗",
+      memory: "与娜娜莉的回忆",
+      third: "一代目的秘密基地",
+      signature: "哼，回来就好。",
+      top: "今天又发生什么了？",
+      bottom: "有本一代目在",
+      topRotate: "rotate(-5.5deg)",
+      bottomRotate: "rotate(4.2deg)",
+    },
+    {
+      id: "iroi",
+      accent: "#507c68",
+      background: "/media/iroi.image",
+      avatar: "今天也想做个好孩子，陪你一会儿。",
+      memory: "与伊洛伊的回忆",
+      third: "伊洛伊的白日梦",
+      signature: "你来了呀……",
+      top: "今天发生的事",
+      bottom: "如果累了",
+      topRotate: "rotate(-3deg)",
+      bottomRotate: "rotate(2deg)",
+    },
+    {
+      id: "mint",
+      accent: "#167e88",
+      background: "/media/mint.image",
+      avatar: "闻到啦，你今天也来找我了！",
+      memory: "与薄荷的回忆",
+      third: "薄荷的小基地",
+      signature: "嘿嘿，被我抓到啦。",
+      top: "今天有什么新鲜事？",
+      bottom: "放心放心",
+      topRotate: "rotate(-6deg)",
+      bottomRotate: "rotate(4deg)",
+    },
+  ];
+  const noteColors: string[] = [];
+
+  for (const item of cases) {
+    await page.goto(`/#/chat/${item.id}`);
+    await expect(page.locator(".application")).toHaveCSS(
+      "--accent",
+      item.accent,
+    );
+    await expect(page.locator(".scene-portrait img")).toHaveAttribute(
+      "src",
+      item.background,
+    );
+    await expect(page.getByText(item.avatar, { exact: true })).toBeVisible();
+    await expect(page.getByRole("button", { name: item.memory })).toBeVisible();
+    await expect(page.getByRole("button", { name: item.third })).toBeVisible();
+    await expect(page.locator(".scene-signature")).toContainText(
+      item.signature,
+    );
+    const topNote = page.locator(".atmosphere-copy-top");
+    const bottomNote = page.locator(".atmosphere-copy-bottom");
+    await expect(topNote).toContainText(item.top);
+    await expect(bottomNote).toContainText(item.bottom);
+    await expect(topNote).toHaveCSS("transform", /matrix/);
+    const inlineStyles = await page
+      .locator(".chat-workspace")
+      .evaluate((root) => {
+        const top = root.querySelector<HTMLElement>(".atmosphere-copy-top")!;
+        const bottom = root.querySelector<HTMLElement>(
+          ".atmosphere-copy-bottom",
+        )!;
+        return {
+          topTransform: top.style.transform,
+          bottomTransform: bottom.style.transform,
+          topPosition: `${top.style.top}|${top.style.right}`,
+          bottomPosition: `${bottom.style.bottom}|${bottom.style.right}`,
+          topColor: getComputedStyle(top).color,
+          sceneAnimation: getComputedStyle(root.querySelector(".scene-space")!)
+            .animationName,
+          viewportLocked:
+            document.documentElement.scrollHeight <= innerHeight &&
+            document.body.scrollHeight <= innerHeight,
+        };
+      });
+    expect(inlineStyles.topTransform).toBe(item.topRotate);
+    expect(inlineStyles.bottomTransform).toBe(item.bottomRotate);
+    expect(inlineStyles.topPosition).not.toBe("|");
+    expect(inlineStyles.bottomPosition).not.toBe("|");
+    expect(inlineStyles.sceneAnimation).toContain("decoration-enter");
+    expect(inlineStyles.viewportLocked).toBe(true);
+    noteColors.push(inlineStyles.topColor);
+    await page.screenshot({
+      path: `test-results/chat-${item.id}-decorations.png`,
+    });
+  }
+
+  expect(new Set(noteColors).size).toBe(3);
+  await expect(
+    page.getByText("一直在这里，和你💗", { exact: true }),
+  ).toHaveCount(0);
+
+  await page.goto("/#/chat/guest");
+  await expect(page.getByText("一直在这里。", { exact: true })).toBeVisible();
+  for (const label of ["相册", "与访客的回忆", "她的小世界"])
+    await expect(page.getByRole("button", { name: label })).toBeVisible();
+  await expect(page.getByText("欢迎回来。", { exact: true })).toBeVisible();
+  await expect(page.locator(".atmosphere-copy")).toHaveCount(0);
   expect(errors).toEqual([]);
 });
 

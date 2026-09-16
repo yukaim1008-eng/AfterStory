@@ -40,8 +40,9 @@
       },
       "sceneDecorations": {
         "avatarNote": {
-          "text": "慢一点也没关系，我会听。",
-          "opacity": 0.58
+          "text": "今天也想做个好孩子，陪你一会儿。",
+          "opacity": 0.58,
+          "color": "color-mix(in srgb, var(--accent) 82%, var(--secondary))"
         },
         "leftMenu": [
           {
@@ -53,7 +54,7 @@
             "dividerWidth": 58
           },
           {
-            "text": "与伊洛伊的回忆",
+            "text": "与{name}的回忆",
             "icon": "Heart",
             "iconPosition": "start",
             "action": "history",
@@ -61,7 +62,7 @@
             "dividerWidth": 88
           },
           {
-            "text": "收容二组的休息角",
+            "text": "伊洛伊的白日梦",
             "icon": "Sparkles",
             "iconPosition": "end",
             "action": "profile",
@@ -70,32 +71,35 @@
           }
         ],
         "signature": {
-          "text": "别急，慢慢说。",
-          "rotate": -2.4,
-          "opacity": 0.78,
+          "text": "你来了呀……\n那就一起待一会儿吧。",
+          "rotate": -2,
+          "opacity": 0.72,
+          "color": "color-mix(in srgb, var(--secondary) 70%, white)",
           "fontStyle": "handwritten",
           "indent": 18
         },
         "topNote": {
-          "text": "今天也有想聊的事吗？\n我在听。",
-          "rotate": -4.5,
+          "text": "今天发生的事，\n也可以慢慢告诉我哦。",
+          "rotate": -3,
           "opacity": 0.5,
+          "color": "color-mix(in srgb, var(--accent) 64%, var(--secondary))",
           "fontStyle": "handwritten",
-          "maxWidth": "210px",
+          "maxWidth": "220px",
           "position": {
-            "top": "clamp(98px, 12vh, 116px)",
-            "right": "clamp(34px, 3vw, 50px)"
+            "top": "clamp(104px, 12.5vh, 122px)",
+            "right": "clamp(42px, 3.4vw, 56px)"
           }
         },
         "bottomNote": {
-          "text": "先休息一下，也可以。",
-          "rotate": 3.2,
-          "opacity": 0.4,
+          "text": "如果累了，\n就在这里做一会儿梦吧。",
+          "rotate": 2,
+          "opacity": 0.44,
+          "color": "color-mix(in srgb, var(--accent) 76%, var(--secondary))",
           "fontStyle": "handwritten",
-          "maxWidth": "200px",
+          "maxWidth": "220px",
           "position": {
-            "right": "clamp(38px, 3.2vw, 54px)",
-            "bottom": "clamp(134px, 17vh, 164px)"
+            "right": "clamp(40px, 3.2vw, 54px)",
+            "bottom": "clamp(142px, 17.5vh, 172px)"
           }
         }
       },
@@ -156,7 +160,7 @@
             "dividerWidth": 54
           },
           {
-            "text": "与娜娜莉的回忆",
+            "text": "与{name}的回忆",
             "icon": "Heart",
             "iconPosition": "start",
             "action": "history",
@@ -245,9 +249,11 @@
       },
       "sceneDecorations": {
         "avatarNote": {
-          "text": "今天的小事，也分我一点。",
-          "opacity": 0.58
+          "text": "闻到啦，你今天也来找我了！",
+          "opacity": 0.72,
+          "color": "color-mix(in srgb, var(--accent) 88%, var(--soft))"
         },
+        "spaceColor": "color-mix(in srgb, var(--accent) 72%, var(--text))",
         "leftMenu": [
           {
             "text": "相册",
@@ -258,7 +264,7 @@
             "dividerWidth": 62
           },
           {
-            "text": "与薄荷的回忆",
+            "text": "与{name}的回忆",
             "icon": "Heart",
             "iconPosition": "end",
             "action": "history",
@@ -266,7 +272,7 @@
             "dividerWidth": 84
           },
           {
-            "text": "今天的小事收藏夹",
+            "text": "薄荷的小基地",
             "icon": "Sparkles",
             "iconPosition": "start",
             "action": "profile",
@@ -275,32 +281,35 @@
           }
         ],
         "signature": {
-          "text": "今天也要记得呼吸。",
-          "rotate": -2.8,
-          "opacity": 0.78,
+          "text": "嘿嘿，被我抓到啦。",
+          "rotate": -4,
+          "opacity": 0.88,
+          "color": "color-mix(in srgb, var(--accent) 68%, var(--text))",
           "fontStyle": "handwritten",
-          "indent": 20
+          "indent": 13
         },
         "topNote": {
-          "text": "今天有什么小发现？\n说给我听吧。",
-          "rotate": -4.2,
-          "opacity": 0.5,
-          "fontStyle": "handwritten",
-          "maxWidth": "215px",
-          "position": {
-            "top": "clamp(100px, 12.5vh, 118px)",
-            "right": "clamp(35px, 3vw, 50px)"
-          }
-        },
-        "bottomNote": {
-          "text": "慢一点，今天还很长。",
-          "rotate": 3.8,
-          "opacity": 0.41,
+          "text": "今天有什么新鲜事？\n快说给我听！",
+          "rotate": -6,
+          "opacity": 0.68,
+          "color": "color-mix(in srgb, var(--accent) 88%, var(--soft))",
           "fontStyle": "handwritten",
           "maxWidth": "205px",
           "position": {
-            "right": "clamp(40px, 3.2vw, 54px)",
-            "bottom": "clamp(136px, 17vh, 166px)"
+            "top": "clamp(94px, 11.5vh, 112px)",
+            "right": "clamp(30px, 2.7vw, 44px)"
+          }
+        },
+        "bottomNote": {
+          "text": "放心放心，\n有薄荷在呢！♡",
+          "rotate": 4,
+          "opacity": 0.6,
+          "color": "color-mix(in srgb, var(--accent) 84%, var(--soft))",
+          "fontStyle": "handwritten",
+          "maxWidth": "195px",
+          "position": {
+            "right": "clamp(26px, 2.3vw, 38px)",
+            "bottom": "clamp(132px, 16.5vh, 160px)"
           }
         }
       },

@@ -24,7 +24,8 @@ export type SceneSpaceEntry = {
 };
 export type SceneDecorations = {
   avatarNote?: { text: string; opacity?: number; color?: string };
-  leftMenu: SceneSpaceEntry[];
+  spaceColor?: string;
+  leftMenu?: SceneSpaceEntry[];
   signature?: SceneDecorationNote & { indent?: number };
   topNote?: SceneDecorationNote;
   bottomNote?: SceneDecorationNote;

@@ -3,6 +3,10 @@ import { computed, type Component, type CSSProperties } from "vue";
 import { Heart, ImagePlus, Images, Sparkles } from "lucide-vue-next";
 import Portrait from "../Portrait.vue";
 import { useAfterStory } from "../composables/useAfterStory";
+import {
+  formatSceneDecorationText,
+  resolveSceneDecorations,
+} from "../sceneDecorations";
 import type { SceneDecorationNote, SceneSpaceEntry } from "../types";
 
 const { character, cover, connected, editing, route } = useAfterStory();
@@ -17,7 +21,9 @@ const sceneCrop = computed(() => {
     : cover(character.value).crop.chat;
 });
 const scenePosition = computed(() => character.value?.sceneBackgroundPosition);
-const decorations = computed(() => character.value?.sceneDecorations);
+const decorations = computed(() =>
+  character.value ? resolveSceneDecorations(character.value) : undefined,
+);
 const entryIcons: Record<SceneSpaceEntry["icon"], Component> = {
   Images,
   Heart,
@@ -29,10 +35,23 @@ function openSpaceEntry(entry: SceneSpaceEntry) {
   else route(entry.action);
 }
 
+function decorationText(text: string) {
+  return character.value
+    ? formatSceneDecorationText(text, character.value)
+    : text;
+}
+
 function entryStyle(entry: SceneSpaceEntry): CSSProperties {
   return {
     "--entry-offset": `${entry.offsetX || 0}px`,
     "--divider-width": `${entry.dividerWidth || 76}%`,
+  } as CSSProperties;
+}
+
+function sceneSpaceStyle(): CSSProperties {
+  return {
+    "--scene-space-color":
+      decorations.value?.spaceColor || "rgba(255, 255, 255, 0.84)",
   } as CSSProperties;
 }
 
@@ -99,7 +118,12 @@ function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
       </button>
     </div>
 
-    <div v-if="decorations" class="scene-space">
+    <div
+      v-if="decorations"
+      :key="character.id"
+      class="scene-space decoration-enter"
+      :style="sceneSpaceStyle()"
+    >
       <nav aria-label="角色空间入口">
         <button
           v-for="entry in decorations.leftMenu"
@@ -114,7 +138,7 @@ function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
             class="entry-icon"
             :size="17"
           />
-          <span>{{ entry.text }}</span>
+          <span>{{ decorationText(entry.text) }}</span>
         </button>
       </nav>
       <p
@@ -122,7 +146,7 @@ function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
         class="scene-signature"
         :style="signatureStyle(decorations.signature)"
       >
-        {{ decorations.signature.text }}
+        {{ decorationText(decorations.signature.text) }}
       </p>
     </div>
   </aside>
@@ -288,7 +312,7 @@ function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
   padding: 6px 7px 10px;
   border-radius: 0;
   background: transparent;
-  color: rgba(255, 255, 255, 0.84);
+  color: var(--scene-space-color);
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.035em;
@@ -329,13 +353,13 @@ function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
 
 .scene-space button .entry-icon {
   flex: 0 0 auto;
-  color: rgba(255, 255, 255, 0.76);
+  color: color-mix(in srgb, var(--scene-space-color) 86%, transparent);
   filter: drop-shadow(0 1px 5px rgba(29, 17, 28, 0.22));
 }
 
 .scene-space button:hover:not(:disabled) {
   background: transparent;
-  color: #fff;
+  color: color-mix(in srgb, var(--scene-space-color) 88%, white);
   transform: translateX(calc(var(--entry-offset) + 2px));
 }
 
@@ -356,6 +380,22 @@ function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
   letter-spacing: 0.08em;
   transform-origin: left center;
   text-wrap: balance;
+  white-space: pre-line;
+}
+
+.decoration-enter {
+  animation: decoration-enter 220ms ease-out both;
+}
+
+@keyframes decoration-enter {
+  from {
+    filter: opacity(0);
+    translate: 0 3px;
+  }
+  to {
+    filter: opacity(1);
+    translate: 0 0;
+  }
 }
 
 .scene-identity small {
@@ -467,6 +507,12 @@ function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
 
   .scene-space {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decoration-enter {
+    animation: none;
   }
 }
 </style>
