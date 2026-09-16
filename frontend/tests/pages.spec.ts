@@ -1398,6 +1398,85 @@ test("character selection expands beyond the initial cast without overflow or ho
   });
 });
 
+test("characters make the current world prominent while keeping the other two visible", async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await fakeApi(page);
+
+  for (const [width, height] of [
+    [1920, 1080],
+    [1600, 900],
+    [1440, 900],
+    [1366, 768],
+  ]) {
+    await page.setViewportSize({ width, height });
+    await page.goto("/#/characters/nanally");
+    await expect(page.locator(".character-panel")).toHaveCount(3);
+    await expect(page.locator(".character-panel.featured")).toContainText(
+      "当前角色",
+    );
+    await expect(page.locator(".character-panel.featured")).toContainText(
+      "哼，回来就好。",
+    );
+    await expect(page.locator(".other-characters")).toContainText("伊洛伊");
+    await expect(page.locator(".other-characters")).toContainText("薄荷");
+    const composition = await page
+      .locator(".selection-page")
+      .evaluate((root) => {
+        const featured = root
+          .querySelector(".character-panel.featured")!
+          .getBoundingClientRect();
+        const secondary = root
+          .querySelector(".other-characters .character-panel")!
+          .getBoundingClientRect();
+        const others = root.querySelector(".other-characters")!;
+        return {
+          viewportLocked:
+            document.documentElement.scrollHeight <= innerHeight &&
+            document.documentElement.scrollWidth <= innerWidth,
+          featuredDominates: featured.width > secondary.width * 1.35,
+          otherRolesFitWithoutScrolling:
+            others.scrollHeight <= others.clientHeight + 1,
+        };
+      });
+    expect(composition).toEqual({
+      viewportLocked: true,
+      featuredDominates: true,
+      otherRolesFitWithoutScrolling: true,
+    });
+    if (width === 1366)
+      await page.screenshot({
+        path: `test-results/characters-stage-${width}x${height}.png`,
+      });
+  }
+
+  for (const [id, name, signature, accent] of [
+    ["iroi", "伊洛伊", "你来了呀……", "#507c68"],
+    ["mint", "薄荷", "嘿嘿，被我抓到啦。", "#167e88"],
+  ]) {
+    await page.goto(`/#/characters/${id}`);
+    await expect(page.locator(".application")).toHaveCSS("--accent", accent);
+    await expect(page.locator(".character-panel.featured")).toContainText(name);
+    await expect(page.locator(".character-panel.featured")).toContainText(
+      signature,
+    );
+  }
+
+  await page.goto("/#/characters/nanally");
+  await page.getByRole("button", { name: "继续和娜娜莉" }).click();
+  await expect(page).toHaveURL(/#\/chat\/nanally/);
+  await page.getByRole("button", { name: "角色", exact: true }).click();
+  await page.getByRole("button", { name: "去见伊洛伊" }).click();
+  await expect(page).toHaveURL(/#\/chat\/iroi/);
+  expect(errors).toEqual([]);
+});
+
 test("immersive chat keeps send preferences, multiline text and older-message reading position", async ({
   page,
 }) => {

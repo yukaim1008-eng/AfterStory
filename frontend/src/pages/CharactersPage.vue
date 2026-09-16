@@ -17,33 +17,39 @@ const others = computed(() =>
       <div>
         <small>ACROSS WORLDS</small>
         <h1>今天，想和谁说说话？<Heart :size="35" /></h1>
-        <p>在这里，总有一个特别的她，正等着与你相遇。</p>
+        <p>每一个角色，都在自己的故事里等你。</p>
       </div>
-      <span>不同的世界，<br />同一份期待。 ♡</span>
+      <span>选择今天想靠近的那一个。<br />♡</span>
     </header>
 
-    <section class="current-character" aria-label="当前角色">
-      <CharacterCard
-        :character="character"
-        :cover="cover(character)"
-        current
-        featured
-        @select="choose(character)"
-      />
-    </section>
+    <section class="characters-stage" aria-label="选择今天想相见的角色">
+      <section class="current-character" aria-label="当前陪伴角色">
+        <CharacterCard
+          :character="character"
+          :cover="cover(character)"
+          current
+          featured
+          @select="choose(character)"
+        />
+      </section>
 
-    <section
-      v-if="others.length"
-      class="other-characters"
-      aria-label="其他角色"
-    >
-      <CharacterCard
-        v-for="item in others"
-        :key="item.id"
-        :character="item"
-        :cover="cover(item)"
-        @select="choose(item)"
-      />
+      <aside
+        v-if="others.length"
+        class="other-characters"
+        aria-label="也可以去见"
+      >
+        <div class="other-characters-heading">
+          <span>ALSO WAITING</span>
+          <p>也有两段故事，正在等你推开门。</p>
+        </div>
+        <CharacterCard
+          v-for="item in others"
+          :key="item.id"
+          :character="item"
+          :cover="cover(item)"
+          @select="choose(item)"
+        />
+      </aside>
     </section>
 
     <footer class="characters-footer">
@@ -65,7 +71,7 @@ const others = computed(() =>
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
   margin-bottom: 0;
   padding: 0 clamp(2px, 1vw, 14px);
 }
@@ -80,7 +86,7 @@ const others = computed(() =>
   display: flex;
   align-items: center;
   gap: 14px;
-  margin: 11px 0 8px;
+  margin: 8px 0 6px;
   color: var(--text);
   font-size: clamp(32px, 2.6vw, 42px);
   letter-spacing: -1px;
@@ -101,24 +107,57 @@ const others = computed(() =>
 }
 
 .characters-heading > span {
-  padding-bottom: 7px;
+  padding-bottom: 4px;
   color: var(--accent);
   text-align: right;
   transform: rotate(-3deg);
 }
 
-.current-character {
-  width: 100%;
+.characters-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.58fr) minmax(350px, 0.92fr);
+  gap: 20px;
+  min-height: 0;
 }
 
+.current-character {
+  min-width: 0;
+  min-height: 0;
+}
 .other-characters {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  width: 100%;
+  grid-template-rows: auto repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  min-width: 0;
   min-height: 0;
   overflow-y: auto;
+  padding: 0 2px 0 0;
   align-content: stretch;
+}
+
+.other-characters-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 17px;
+  padding: 0 5px;
+}
+
+.other-characters-heading span {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+}
+
+.other-characters-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-size: 12px;
+  opacity: 0.8;
+  text-align: right;
+  transform: rotate(-1.5deg);
 }
 
 .characters-footer {
@@ -136,15 +175,8 @@ const others = computed(() =>
     height: calc(100dvh - var(--desktop-header-height));
     padding-block: var(--page-padding-y);
     display: grid;
-    grid-template-rows: auto minmax(0, 1.2fr) minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr) auto;
     gap: var(--page-gap);
-  }
-  .current-character {
-    min-height: 0;
-  }
-  .other-characters {
-    gap: var(--page-gap);
-    grid-auto-rows: minmax(220px, 1fr);
   }
 }
 
@@ -155,14 +187,43 @@ const others = computed(() =>
 }
 
 @media (max-width: 1100px) {
-  .other-characters {
-    grid-template-columns: 1fr;
+  .characters-stage {
+    grid-template-columns: minmax(0, 1.35fr) minmax(315px, 0.9fr);
+  }
+}
+
+@media (min-width: 761px) and (max-height: 800px) {
+  .characters-heading h1 {
+    margin: 6px 0 4px;
+    font-size: 32px;
+  }
+
+  .characters-heading p,
+  .characters-heading > span {
+    font-size: 12px;
+  }
+
+  .other-characters-heading p {
+    font-size: 11px;
   }
 }
 
 @media (max-width: 900px) {
   .selection-page {
     margin-top: 18px;
+  }
+
+  .characters-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .other-characters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .other-characters-heading {
+    grid-column: 1 / -1;
   }
 
   .characters-heading {

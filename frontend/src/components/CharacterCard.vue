@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { ArrowRight, Crown, Heart } from "lucide-vue-next";
 import type { Character, Cover } from "../types";
 import { themeStyle } from "../theme";
 import Portrait from "../Portrait.vue";
 
-defineProps<{
+const props = defineProps<{
   character: Character;
   cover: Cover;
   current?: boolean;
@@ -12,6 +13,13 @@ defineProps<{
 }>();
 
 const emit = defineEmits<{ select: [] }>();
+
+const signature = computed(
+  () =>
+    props.character.sceneDecorations?.signature?.text ||
+    props.character.tagline ||
+    props.character.description,
+);
 </script>
 
 <template>
@@ -38,13 +46,13 @@ const emit = defineEmits<{ select: [] }>();
       <small class="romanized">{{ character.romanized }}</small>
       <h2>{{ character.name }}</h2>
       <p class="tagline">
-        {{ character.tagline || character.description }}
+        {{ current ? signature : character.tagline || character.description }}
       </p>
-      <div v-if="character.tags?.length" class="tag-list">
+      <div v-if="!featured && character.tags?.length" class="tag-list">
         <span v-for="tag in character.tags" :key="tag">{{ tag }}</span>
       </div>
       <span class="visit-action"
-        >{{ current ? "继续相见" : "去见她" }}<ArrowRight :size="17"
+        >{{ current ? "继续和她聊天" : "去见她的故事" }}<ArrowRight :size="17"
       /></span>
     </div>
   </button>
@@ -52,7 +60,7 @@ const emit = defineEmits<{ select: [] }>();
 
 <style scoped>
 .character-panel.character-card {
-  --card-tint: color-mix(in srgb, var(--secondary) 58%, white);
+  --card-tint: color-mix(in srgb, var(--secondary) 50%, white);
   box-sizing: border-box;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
@@ -66,9 +74,9 @@ const emit = defineEmits<{ select: [] }>();
   padding: 0;
   overflow: hidden;
   border: 1px solid #ffffffd9;
-  border-radius: 24px;
-  background: linear-gradient(130deg, var(--card-tint), #fffffff0 72%);
-  box-shadow: 0 14px 46px color-mix(in srgb, var(--text) 8%, transparent);
+  border-radius: 22px 25px 21px 24px;
+  background: linear-gradient(124deg, var(--card-tint), #fffffff0 72%);
+  box-shadow: 0 14px 42px color-mix(in srgb, var(--text) 7%, transparent);
   color: var(--text);
   text-align: left;
   transition:
@@ -108,7 +116,13 @@ const emit = defineEmits<{ select: [] }>();
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent 64%, var(--card-tint));
+  background:
+    linear-gradient(90deg, transparent 48%, var(--card-tint) 92%),
+    linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--text) 15%, transparent),
+      transparent 45%
+    );
   pointer-events: none;
 }
 
@@ -137,7 +151,7 @@ const emit = defineEmits<{ select: [] }>();
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 16px 24px 16px 12px;
+  padding: 16px 24px 16px 16px;
   color: var(--text);
 }
 
@@ -145,8 +159,8 @@ const emit = defineEmits<{ select: [] }>();
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
-  margin-bottom: 10px;
+  padding: 5px 10px;
+  margin-bottom: 9px;
   border-radius: 99px;
   background: linear-gradient(125deg, var(--primary), var(--accent));
   color: white;
@@ -170,9 +184,9 @@ const emit = defineEmits<{ select: [] }>();
 }
 
 .card-content h2 {
-  margin: 8px 0 10px;
+  margin: 7px 0 9px;
   color: var(--text);
-  font-size: clamp(26px, 2.2vw, 34px);
+  font-size: clamp(24px, 2vw, 31px);
   letter-spacing: 2px;
   writing-mode: horizontal-tb;
 }
@@ -209,32 +223,41 @@ const emit = defineEmits<{ select: [] }>();
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 100%;
-  margin-top: 12px;
-  padding: 9px 18px;
-  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
-  border-radius: 99px;
-  background: #ffffff8f;
+  width: auto;
+  margin-top: 13px;
+  padding: 8px 3px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--accent);
   font-size: 13px;
   font-weight: 700;
 }
 
 .character-panel.character-card.featured {
-  grid-template-columns: minmax(0, 1.65fr) minmax(330px, 0.75fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(290px, 0.8fr);
 }
 
 .featured .card-content {
-  padding: 20px clamp(24px, 3vw, 48px) 20px 18px;
+  padding: 20px clamp(24px, 3vw, 46px) 20px 18px;
 }
 
 .featured .tagline {
-  font-size: 15px;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  max-width: 26ch;
+  color: color-mix(in srgb, var(--accent) 72%, var(--text));
+  font-size: 18px;
+  line-height: 1.65;
+  transform: rotate(-1.5deg);
 }
 
 .featured .visit-action {
-  padding-block: 13px;
+  margin-top: 17px;
+  padding: 10px 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: 99px;
   background: linear-gradient(125deg, var(--primary), var(--accent));
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--accent) 20%, transparent);
   color: white;
 }
 
