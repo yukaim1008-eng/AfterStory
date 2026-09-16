@@ -2,7 +2,7 @@
 
 2026-09-15 更新：聊天页旧的“左角色 Card + 右聊天 Card”与 40:60 Grid 规则已废止。当前 ChatPage 是覆盖单个 viewport 的完整 Character Scene，人物不是某一列的内容，而是由绝对定位的环境层、主肖像层和穿入层共同组成；穿入层通过局部 mask 越过 Chat Glass 左缘，玻璃材质位于其下、聊天内容位于其上。页面根层禁止纵向滚动，只有消息列表内部滚动；布局不能再由全局 `.workspace` 或 `style.css` 的聊天选择器决定。本轮只完成聊天页，其他一级页面按后续阶段分别清理。
 
-2026-09-15 补充：ChatPage 场景图来源由 `frontend/public/characters.json` 的可选 `sceneBackground` 和 `sceneBackgroundPosition` 配置；场景层统一使用 `cover`，可按角色独立定位。未配置时回退到当前角色封面及既有聊天裁切。该机制不改变既有三层人物场景、Chat Glass 或聊天 Layout；娜娜莉本地场景素材副本位于 `frontend/public/media/nanally-scene.png`，未纳入上传范围。
+2026-09-16 补充：ChatPage 场景图来源由 `frontend/public/characters.json` 的可选 `sceneBackground` 和 `sceneBackgroundPosition` 配置，可按角色独立定位；未配置时回退到当前角色封面及既有聊天裁切。娜娜莉、伊洛伊、薄荷的默认场景素材分别维护在仓库根目录 `背景/娜娜莉1.png`、`背景/伊洛伊1.png`、`背景/薄荷1.png`；`npm run dev` 和 `npm run build` 都会先由 `frontend/scripts/prepare-media.mjs` 复制为 `frontend/public/media/*-scene.png`。该机制不改变既有三层场景、Chat Glass 或聊天 Layout。
 
 2026-09-15 聊天页视觉收尾：在不改变场景、玻璃层位置、消息滚动边界或业务链路的前提下，Chat Glass 调整为更轻的透明渐变、10px 局部模糊与低饱和度；角色消息改为署名与轻量引线正文，连续角色消息收拢重复署名，用户消息保留右对齐的低饱和主题色软气泡并限制宽度。输入框保持底部悬浮，使用半透明材质、焦点边框与柔和阴影；空态降低为次级视觉层。浏览器回归以九条模拟消息和空态分别验证单屏、内部滚动、连续角色消息、长用户消息、输入焦点与背景可读性；未向真实业务数据写入测试消息。
 

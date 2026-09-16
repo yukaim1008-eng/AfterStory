@@ -553,7 +553,7 @@ test("scene decorations follow every character and fall back safely", async ({
     {
       id: "iroi",
       accent: "#507c68",
-      background: "/media/iroi.image",
+      background: "/media/iroi-scene.png",
       avatar: "今天也想做个好孩子，陪你一会儿。",
       memory: "与伊洛伊的回忆",
       third: "伊洛伊的白日梦",
@@ -566,7 +566,7 @@ test("scene decorations follow every character and fall back safely", async ({
     {
       id: "mint",
       accent: "#167e88",
-      background: "/media/mint.image",
+      background: "/media/mint-scene.png",
       avatar: "闻到啦，你今天也来找我了！",
       memory: "与薄荷的回忆",
       third: "薄荷的小基地",
