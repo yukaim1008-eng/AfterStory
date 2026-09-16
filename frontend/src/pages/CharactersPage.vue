@@ -78,15 +78,15 @@ const others = computed(() =>
 
 .characters-heading small {
   color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 5px;
+  font-size: 9px;
+  letter-spacing: 4px;
 }
 
 .characters-heading h1 {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin: 8px 0 6px;
+  margin: 5px 0 4px;
   color: var(--text);
   font-size: clamp(32px, 2.6vw, 42px);
   letter-spacing: -1px;
@@ -103,11 +103,11 @@ const others = computed(() =>
   margin: 0;
   color: var(--muted);
   font-size: 13px;
-  line-height: 1.8;
+  line-height: 1.5;
 }
 
 .characters-heading > span {
-  padding-bottom: 4px;
+  padding-bottom: 2px;
   color: var(--accent);
   text-align: right;
   transform: rotate(-3deg);

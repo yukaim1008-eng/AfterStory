@@ -25,7 +25,7 @@ const signature = computed(
 <template>
   <button
     class="character-panel character-card"
-    :class="{ featured, current }"
+    :class="[{ featured, current }, `character-${character.id}`]"
     :style="themeStyle(character)"
     :aria-label="`${current ? '继续和' : '去见'}${character.name}`"
     @click="emit('select')"
@@ -45,9 +45,7 @@ const signature = computed(
       <Heart v-else class="card-heart" :size="18" />
       <small class="romanized">{{ character.romanized }}</small>
       <h2>{{ character.name }}</h2>
-      <p class="tagline">
-        {{ current ? signature : character.tagline || character.description }}
-      </p>
+      <p class="tagline">{{ signature }}</p>
       <div v-if="!featured && character.tags?.length" class="tag-list">
         <span v-for="tag in character.tags" :key="tag">{{ tag }}</span>
       </div>
@@ -62,8 +60,7 @@ const signature = computed(
 .character-panel.character-card {
   --card-tint: color-mix(in srgb, var(--secondary) 50%, white);
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  display: block;
   width: 100%;
   min-width: 0;
   height: 100%;
@@ -75,7 +72,7 @@ const signature = computed(
   overflow: hidden;
   border: 1px solid #ffffffd9;
   border-radius: 22px 25px 21px 24px;
-  background: linear-gradient(124deg, var(--card-tint), #fffffff0 72%);
+  background: var(--card-tint);
   box-shadow: 0 14px 42px color-mix(in srgb, var(--text) 7%, transparent);
   color: var(--text);
   text-align: left;
@@ -95,9 +92,27 @@ const signature = computed(
 .character-panel.character-card:hover,
 .character-panel.character-card:focus-visible {
   flex: none;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--accent) 30%, white);
-  box-shadow: 0 20px 58px color-mix(in srgb, var(--accent) 16%, transparent);
+  box-shadow: 0 18px 48px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.character-nanally:hover,
+.character-nanally:focus-visible {
+  transform: translateY(-3px) rotate(-0.15deg);
+  box-shadow: 0 20px 54px #cf397938;
+}
+
+.character-iroi:hover,
+.character-iroi:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 42px #507c6820;
+}
+
+.character-mint:hover,
+.character-mint:focus-visible {
+  transform: translateY(-4px) rotate(0.15deg);
+  box-shadow: 0 21px 52px #167e8830;
 }
 
 .character-panel.character-card:focus-visible {
@@ -106,10 +121,9 @@ const signature = computed(
 }
 
 .card-art {
-  min-width: 0;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   overflow: hidden;
-  position: relative;
 }
 
 .card-art::after {
@@ -117,7 +131,13 @@ const signature = computed(
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, transparent 48%, var(--card-tint) 92%),
+    linear-gradient(
+      90deg,
+      transparent 22%,
+      color-mix(in srgb, var(--card-tint) 48%, transparent) 53%,
+      color-mix(in srgb, var(--card-tint) 86%, #ffffffaa) 76%,
+      #ffffffcc 100%
+    ),
     linear-gradient(
       0deg,
       color-mix(in srgb, var(--text) 15%, transparent),
@@ -143,15 +163,17 @@ const signature = computed(
 }
 
 .card-content {
-  position: relative;
-  inset: auto;
+  position: absolute;
+  inset: 0 0 0 45%;
   z-index: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 16px 24px 16px 16px;
+  padding: 16px 24px 16px clamp(20px, 2vw, 32px);
+  background: linear-gradient(90deg, #fff0, #ffffff1a 26%, #ffffff3d);
+  backdrop-filter: blur(1px);
   color: var(--text);
 }
 
@@ -171,12 +193,13 @@ const signature = computed(
   position: absolute;
   top: 24px;
   right: 26px;
-  color: color-mix(in srgb, var(--accent) 72%, transparent);
-  transform: rotate(-12deg);
+  color: color-mix(in srgb, var(--accent) 80%, white);
+  opacity: 0.8;
+  transform: rotate(-10deg);
 }
 
 .romanized {
-  color: var(--muted);
+  color: color-mix(in srgb, var(--text) 68%, var(--muted));
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 4px;
@@ -184,7 +207,7 @@ const signature = computed(
 }
 
 .card-content h2 {
-  margin: 7px 0 9px;
+  margin: 7px 0 7px;
   color: var(--text);
   font-size: clamp(24px, 2vw, 31px);
   letter-spacing: 2px;
@@ -196,9 +219,12 @@ const signature = computed(
   max-width: 36ch;
   margin: 0;
   overflow: hidden;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
+  color: color-mix(in srgb, var(--text) 72%, var(--muted));
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-size: 14px;
+  line-height: 1.65;
+  letter-spacing: 0.02em;
+  transform: rotate(-1.2deg);
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -213,7 +239,7 @@ const signature = computed(
 .tag-list span {
   padding: 5px 10px;
   border-radius: 99px;
-  background: #ffffffb8;
+  background: #ffffff8a;
   color: var(--muted);
   font-size: 10px;
 }
@@ -224,7 +250,7 @@ const signature = computed(
   justify-content: center;
   gap: 10px;
   width: auto;
-  margin-top: 13px;
+  margin-top: 11px;
   padding: 8px 3px;
   border: 0;
   border-radius: 0;
@@ -235,24 +261,27 @@ const signature = computed(
 }
 
 .character-panel.character-card.featured {
-  grid-template-columns: minmax(0, 1.5fr) minmax(290px, 0.8fr);
+  background: color-mix(in srgb, var(--secondary) 42%, white);
 }
 
 .featured .card-content {
-  padding: 20px clamp(24px, 3vw, 46px) 20px 18px;
+  inset: 0 0 0 57%;
+  padding: 20px clamp(24px, 3vw, 46px) 20px clamp(20px, 2.6vw, 36px);
+  background: linear-gradient(90deg, #fff0, #ffffff15 22%, #ffffff40 100%);
+  backdrop-filter: blur(1.5px);
 }
 
 .featured .tagline {
   font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
   max-width: 26ch;
-  color: color-mix(in srgb, var(--accent) 72%, var(--text));
+  color: color-mix(in srgb, var(--accent) 74%, var(--text));
   font-size: 18px;
   line-height: 1.65;
-  transform: rotate(-1.5deg);
+  transform: rotate(-2.2deg);
 }
 
 .featured .visit-action {
-  margin-top: 17px;
+  margin-top: 15px;
   padding: 10px 18px;
   border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
   border-radius: 99px;
@@ -262,9 +291,13 @@ const signature = computed(
 }
 
 @media (max-width: 1100px) {
-  .character-panel.character-card,
-  .character-panel.character-card.featured {
-    grid-template-columns: minmax(0, 1fr) minmax(235px, 0.8fr);
+  .card-content {
+    left: 42%;
+    padding-left: 20px;
+  }
+
+  .featured .card-content {
+    left: 54%;
   }
 
   .character-panel.character-card.featured {
@@ -273,24 +306,16 @@ const signature = computed(
 }
 
 @media (max-width: 700px) {
-  .character-panel.character-card,
-  .character-panel.character-card.featured {
-    grid-template-columns: 1fr;
-    height: auto;
-  }
-
-  .card-art {
-    height: 230px;
-  }
-
   .card-art::after {
-    background: linear-gradient(0deg, var(--card-tint), transparent 58%);
+    background: linear-gradient(0deg, var(--card-tint), transparent 60%);
   }
 
   .card-content,
   .featured .card-content {
-    margin-top: -18px;
+    inset: auto 0 0;
+    min-height: 48%;
     padding: 20px 22px 22px;
+    background: linear-gradient(0deg, #ffffffc9, #ffffff4f 72%, transparent);
   }
 }
 </style>
