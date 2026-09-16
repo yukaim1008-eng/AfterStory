@@ -140,34 +140,61 @@ const sections = [
             <header class="panel-title">
               <Palette :size="23" />
               <div>
-                <h2>角色主题与封面</h2>
-                <p>当前角色的主题和封面只保存在这个浏览器。</p>
+                <h2>外观</h2>
+                <p>整理当前角色在这个浏览器中的主题与封面。</p>
               </div>
             </header>
-            <section class="appearance-section theme-row">
-              <CharacterAvatar
-                :character="character"
-                :cover="cover(character)"
-              />
-              <div>
-                <span class="pill">当前使用中</span>
-                <h3>{{ character.name }}</h3>
-                <p>当前主题会跟随她的色彩、背景和装饰一起变化。</p>
+            <section class="appearance-section">
+              <header class="section-header">
+                <h3>角色主题</h3>
+                <p>页面色彩会随着当前角色轻轻变化。</p>
+              </header>
+              <div class="setting-row appearance-row">
+                <div>
+                  <strong>当前角色</strong>
+                  <p>正在使用她的主题、背景与装饰。</p>
+                </div>
+                <div class="appearance-character-value">
+                  <CharacterAvatar
+                    :character="character"
+                    :cover="cover(character)"
+                  />
+                  <strong>{{ character.name }}</strong>
+                </div>
+              </div>
+              <div class="setting-row appearance-row">
+                <div>
+                  <strong>主题色</strong>
+                  <p>当前角色的主题强调色。</p>
+                </div>
+                <div class="theme-color-value">
+                  <span
+                    class="theme-swatch"
+                    :style="{ background: character.theme.accent }"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    >{{ character.romanized }} ·
+                    {{ character.theme.accent }}</span
+                  >
+                </div>
               </div>
             </section>
             <section class="appearance-section cover-section">
-              <header class="section-label">
+              <header class="section-header">
                 <h3>角色封面</h3>
                 <p>只影响当前角色在这个浏览器中的展示。</p>
               </header>
-              <div class="appearance-card">
+              <div class="cover-layout">
                 <Portrait
                   :source="cover(character).source"
                   :crop="cover(character).crop.chat"
                   :name="character.name"
                 />
-                <div>
-                  <p>更换、调整或恢复默认封面，不会影响聊天记录和角色记忆。</p>
+                <div class="cover-controls">
+                  <p class="cover-copy">
+                    更换、调整或恢复默认封面，不会影响聊天记录和角色记忆。
+                  </p>
                   <div class="appearance-actions">
                     <button
                       class="primary"
@@ -183,12 +210,12 @@ const sections = [
                       <RotateCcw :size="15" />恢复默认
                     </button>
                   </div>
+                  <p class="fine-print">
+                    封面和裁切按当前用户、当前角色分别保存。
+                  </p>
                 </div>
               </div>
             </section>
-            <p class="fine-print">
-              封面和裁切按当前用户、当前角色分别保存；聊天记录与角色记忆不会被修改。
-            </p>
           </template>
 
           <template v-if="section === 'voice'">
@@ -476,29 +503,6 @@ const sections = [
   color: var(--text);
   font-size: 12px;
 }
-.appearance-card {
-  display: grid;
-  grid-template-columns: 116px minmax(0, 1fr);
-  gap: 20px;
-  align-items: center;
-  padding: 16px 0 0;
-}
-.appearance-card > .portrait {
-  height: 132px;
-  border-radius: 12px;
-  box-shadow: none;
-}
-.appearance-card h3 {
-  margin: 0 0 8px;
-  color: var(--text);
-  font-size: 20px;
-}
-.appearance-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
-}
 .appearance-actions {
   display: flex;
   flex-wrap: wrap;
@@ -516,33 +520,72 @@ const sections = [
   line-height: 1.8;
 }
 .appearance-section {
-  padding: 18px 0;
+  padding: 22px 0;
   border-bottom: 1px solid color-mix(in srgb, var(--soft) 72%, transparent);
 }
-.theme-row {
-  display: flex;
-  align-items: center;
-  gap: 13px;
+.section-header {
+  display: block;
+  padding-bottom: 8px;
 }
-.theme-row .character-avatar {
-  width: 46px;
-  height: 46px;
-}
-.theme-row h3,
-.section-label h3 {
-  margin: 0 0 4px;
+.section-header h3 {
+  margin: 0 0 5px;
   color: var(--text);
-  font-size: 15px;
+  font-size: 16px;
 }
-.theme-row p,
-.section-label p {
+.section-header p {
   margin: 0;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.7;
 }
-.section-label {
-  display: block;
+.appearance-row {
+  min-height: 70px;
+}
+.appearance-character-value,
+.theme-color-value {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  color: var(--text);
+  font-size: 13px;
+}
+.appearance-character-value .character-avatar {
+  width: 34px;
+  height: 34px;
+}
+.theme-swatch {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #ffffffb8;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.cover-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+  padding-top: 16px;
+}
+.cover-layout > .portrait {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border: 1px solid #ffffffc7;
+  border-radius: 14px;
+  box-shadow: none;
+}
+.cover-controls {
+  padding-top: 4px;
+}
+.cover-copy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.cover-controls .fine-print {
+  margin-top: 16px;
 }
 .voice-note {
   display: flex;
@@ -626,12 +669,9 @@ const sections = [
   .settings-companion {
     display: none;
   }
-  .appearance-card {
-    grid-template-columns: 110px minmax(0, 1fr);
-    gap: 16px;
-  }
-  .appearance-card > .portrait {
-    height: 176px;
+  .cover-layout {
+    grid-template-columns: minmax(210px, 280px) minmax(0, 1fr);
+    gap: 22px;
   }
 }
 </style>

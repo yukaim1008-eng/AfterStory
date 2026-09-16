@@ -1781,7 +1781,7 @@ test("settings keeps every preference category in one quiet workspace", async ({
 
   for (const [label, panel] of [
     ["通用", "阅读与交流"],
-    ["外观", "角色主题与封面"],
+    ["外观", "角色主题"],
     ["声音", "声音"],
     ["数据管理", "数据管理"],
   ]) {
@@ -1794,6 +1794,18 @@ test("settings keeps every preference category in one quiet workspace", async ({
       "overflow-y",
       "auto",
     );
+    if (label === "外观") {
+      await expect(page.locator(".appearance-row")).toHaveCount(2);
+      await expect(page.locator(".cover-layout .portrait")).toBeVisible();
+      await expect(
+        page.locator(".appearance-actions").getByRole("button", {
+          name: "更换封面",
+          exact: true,
+        }),
+      ).toBeVisible();
+      const preview = await page.locator(".cover-layout .portrait").boundingBox();
+      expect(preview?.width).toBeGreaterThanOrEqual(260);
+    }
     await page.screenshot({
       path: `test-results/settings-${label}.png`,
     });
