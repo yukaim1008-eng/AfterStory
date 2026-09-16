@@ -2,6 +2,16 @@
 
 范围：2026-09-14 用户授权连续执行 Phase 1–8，基于现有 F1/F2 前端改版，不修改后端、数据库或角色提示词。
 
+## 2026-09-16 核心页面 Desktop 尺寸收口
+
+- 本轮只修尺寸与滚动边界，暂停视觉重设计；保留首页/角色/回忆/设置模块结构、文案、主题、背景与业务逻辑，ChatPage 仅兼容统一 Header，保留场景/玻璃/消息/输入结构与角色名尺寸。
+- 修改前实测：1600×900 首页 body 高 962px、角色页 960px；1440×900 分别为 962px/952px；1366×768 分别为 962px/941px。1920×1080 外框可容纳，但尺寸规则不统一。回忆/设置外框已在一屏内，滚动却同时带走标题、筛选或设置导航。旧规则包括首页 435px 最低 Hero、角色 290px/310–390px 卡片、88px Header，以及宽屏 App 额外顶部 padding。
+- 统一尺寸 token 由 `design-system.css` 持有：Header 72px、页面横向 32–48px、纵向留白和区块 gap 20px，`max-height: 800px` 收紧为 16px；删除 `style.css` 中旧 App 最低高度/padding 和宽屏额外顶部 padding 的竞争规则。
+- Home/Characters 按 `100dvh - Header` 分配剩余空间，去除固定 Hero/卡片最低高度，收紧卡片 padding、按钮 margin、标题字号；图片继续 `object-fit: cover` 合理裁切。三个主角色无需滚动即可看到，扩展角色数量时只在其他角色区域滚动。
+- Memories 新增最小列表滚动容器 `.history-scroll` / `.collection-scroll`，标题、Tabs、Filter 不参与滚动，长文本/编辑表单/加载更多保持可达；Settings 让 `.settings-content` 不滚、`.settings-layout` 可收缩，导航固定，右侧 `.settings-panel` 独立滚动。
+- 四档目标视口检查：1920×1080、1600×900、1440×900、1366×768；五个核心页面（回忆含 History/Memory 两种内容）body/document 均与视口同高，没有横向超屏，主要按钮和输入框在可见边界内。使用 40 轮长对话、25 段会话与 30 条长记忆验证真实组件内部滚动，截图及接口均为模拟数据，不代表真实 Provider 调用或数据库写入。
+- 最终验证：`npm run build`（含 vue-tsc）、`npx prettier --check src tests`、`git diff --check` 和 24 项 Playwright 回归全部通过，捕获的 console error / pageerror 均为空；未配置 ESLint 或独立 lint 脚本，不将格式检查称为 lint。截图保存为 `frontend/test-results/desktop-<width>x<height>-<page>.png`。测试复用了本轮之前已启动的 Vite（PID 74824，15:00:56 启动），没有启动后端/数据库或遗留本轮新服务；不关闭该已有服务。
+
 ## 2026-09-16 ChatPage 角色氛围文案精修
 
 - 保留已完成的完整场景、Chat Glass 位置与尺寸、单屏和消息区独立滚动契约，只精修聊天态品牌、左下角色空间目录、角色签名、头像短句和玻璃内氛围批注。

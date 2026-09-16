@@ -125,159 +125,175 @@ watch(selected, () => {
       />
     </div>
 
-    <div v-if="!capabilities.memory" class="empty memory-empty">
-      <Sparkles :size="32" />
-      <h2>个人记忆还未启用</h2>
-      <p>
-        聊天记录仍会正常保存。<br />记忆服务接入后，你可以在这里查看、纠正或删除保存的个人信息。
-      </p>
-      <button class="primary" @click="route('chat')">继续聊天</button>
-    </div>
-
-    <template v-else>
-      <form
-        v-if="memoryForm"
-        class="memory-form"
-        @submit.prevent="createMemory"
-      >
-        <label for="new-memory">希望她记住什么？</label>
-        <textarea
-          id="new-memory"
-          v-model="memoryDraft"
-          maxlength="2000"
-          rows="4"
-          placeholder="例如：我习惯在晚上散步。"
-        ></textarea>
-        <small v-if="memorySource">这段内容来自你选择的一条聊天消息。</small>
-        <footer>
-          <button
-            type="button"
-            :disabled="memorySaving"
-            @click="cancelMemoryForm"
-          >
-            取消
-          </button>
-          <button
-            class="primary"
-            :disabled="memorySaving || !chat?.session || !memoryDraft.trim()"
-          >
-            {{ memorySaving ? "保存中…" : "保存" }}
-          </button>
-        </footer>
-      </form>
-
-      <div v-if="memoryError" class="memory-error" role="alert">
-        {{ memoryError }}
-        <button
-          :disabled="memoryLoading"
-          @click="memories.length < memoryTotal ? loadMore() : loadMemories()"
-        >
-          刷新
-        </button>
-      </div>
-      <div v-if="memoryLoading && !memories.length" class="empty">
-        <LoaderCircle class="spin" :size="24" />
-        <p>正在读取个人记忆…</p>
-      </div>
-      <div
-        v-else-if="!memories.length && !memoryForm"
-        class="empty memory-empty"
-      >
-        <Sparkles :size="30" />
-        <h2>还没有保存的记忆</h2>
-        <p>你可以手动添加，也可以从一条已完成的聊天消息中保存。</p>
-        <button
-          class="primary"
-          :disabled="memorySaving || !chat?.session"
-          @click="beginMemory()"
-        >
-          添加第一条
-        </button>
+    <div class="collection-scroll">
+      <div v-if="!capabilities.memory" class="empty memory-empty">
+        <Sparkles :size="32" />
+        <h2>个人记忆还未启用</h2>
+        <p>
+          聊天记录仍会正常保存。<br />记忆服务接入后，你可以在这里查看、纠正或删除保存的个人信息。
+        </p>
+        <button class="primary" @click="route('chat')">继续聊天</button>
       </div>
 
       <template v-else>
-        <p class="match-count">
-          显示 {{ filtered.length }} 条，共 {{ memoryTotal }} 条
-        </p>
-        <div class="memory-list">
-          <article v-for="item in filtered" :key="item.memory_id">
-            <template v-if="memoryEditing === item.memory_id">
-              <textarea
-                v-model="memoryDraft"
-                maxlength="2000"
-                rows="4"
-                aria-label="更正记忆内容"
-                :disabled="memorySaving"
-              ></textarea>
-              <footer>
-                <button :disabled="memorySaving" @click="cancelEdit">
-                  取消
-                </button>
-                <button
-                  class="primary"
-                  :disabled="
-                    memorySaving || !chat?.session || !memoryDraft.trim()
-                  "
-                  @click="saveMemory(item)"
-                >
-                  保存更正
-                </button>
-              </footer>
-            </template>
-            <template v-else>
-              <header>
-                <span>{{
-                  item.kind === "fact" ? "你确认的事实" : "待确认的理解"
-                }}</span>
-                <time :datetime="item.updated_at">{{
-                  displayTime(item.updated_at)
-                }}</time>
-              </header>
-              <h3>她记得 · {{ excerpt(item.content, 24) }}</h3>
-              <p>{{ item.content }}</p>
-              <footer>
-                <button
-                  v-if="item.source"
-                  :disabled="memorySaving"
-                  @click="
-                    route(
-                      'chat',
-                      item.source.conversation_id,
-                      item.source.turn_id,
-                    )
-                  "
-                >
-                  查看来源
-                </button>
-                <span></span>
-                <button :disabled="memorySaving" @click="editMemory(item)">
-                  <Pencil :size="14" />更正
-                </button>
-                <button :disabled="memorySaving" @click="memoryDelete = item">
-                  <Trash2 :size="14" />删除
-                </button>
-              </footer>
-            </template>
-          </article>
-        </div>
-        <button
-          v-if="memories.length < memoryTotal"
-          class="load-more"
-          :disabled="memoryLoading"
-          @click="loadMore"
+        <form
+          v-if="memoryForm"
+          class="memory-form"
+          @submit.prevent="createMemory"
         >
-          {{ memoryLoading ? "正在读取…" : "加载更多记忆" }}
-        </button>
+          <label for="new-memory">希望她记住什么？</label>
+          <textarea
+            id="new-memory"
+            v-model="memoryDraft"
+            maxlength="2000"
+            rows="4"
+            placeholder="例如：我习惯在晚上散步。"
+          ></textarea>
+          <small v-if="memorySource">这段内容来自你选择的一条聊天消息。</small>
+          <footer>
+            <button
+              type="button"
+              :disabled="memorySaving"
+              @click="cancelMemoryForm"
+            >
+              取消
+            </button>
+            <button
+              class="primary"
+              :disabled="memorySaving || !chat?.session || !memoryDraft.trim()"
+            >
+              {{ memorySaving ? "保存中…" : "保存" }}
+            </button>
+          </footer>
+        </form>
+
+        <div v-if="memoryError" class="memory-error" role="alert">
+          {{ memoryError }}
+          <button
+            :disabled="memoryLoading"
+            @click="memories.length < memoryTotal ? loadMore() : loadMemories()"
+          >
+            刷新
+          </button>
+        </div>
+        <div v-if="memoryLoading && !memories.length" class="empty">
+          <LoaderCircle class="spin" :size="24" />
+          <p>正在读取个人记忆…</p>
+        </div>
+        <div
+          v-else-if="!memories.length && !memoryForm"
+          class="empty memory-empty"
+        >
+          <Sparkles :size="30" />
+          <h2>还没有保存的记忆</h2>
+          <p>你可以手动添加，也可以从一条已完成的聊天消息中保存。</p>
+          <button
+            class="primary"
+            :disabled="memorySaving || !chat?.session"
+            @click="beginMemory()"
+          >
+            添加第一条
+          </button>
+        </div>
+
+        <template v-else>
+          <p class="match-count">
+            显示 {{ filtered.length }} 条，共 {{ memoryTotal }} 条
+          </p>
+          <div class="memory-list">
+            <article v-for="item in filtered" :key="item.memory_id">
+              <template v-if="memoryEditing === item.memory_id">
+                <textarea
+                  v-model="memoryDraft"
+                  maxlength="2000"
+                  rows="4"
+                  aria-label="更正记忆内容"
+                  :disabled="memorySaving"
+                ></textarea>
+                <footer>
+                  <button :disabled="memorySaving" @click="cancelEdit">
+                    取消
+                  </button>
+                  <button
+                    class="primary"
+                    :disabled="
+                      memorySaving || !chat?.session || !memoryDraft.trim()
+                    "
+                    @click="saveMemory(item)"
+                  >
+                    保存更正
+                  </button>
+                </footer>
+              </template>
+              <template v-else>
+                <header>
+                  <span>{{
+                    item.kind === "fact" ? "你确认的事实" : "待确认的理解"
+                  }}</span>
+                  <time :datetime="item.updated_at">{{
+                    displayTime(item.updated_at)
+                  }}</time>
+                </header>
+                <h3>她记得 · {{ excerpt(item.content, 24) }}</h3>
+                <p>{{ item.content }}</p>
+                <footer>
+                  <button
+                    v-if="item.source"
+                    :disabled="memorySaving"
+                    @click="
+                      route(
+                        'chat',
+                        item.source.conversation_id,
+                        item.source.turn_id,
+                      )
+                    "
+                  >
+                    查看来源
+                  </button>
+                  <span></span>
+                  <button :disabled="memorySaving" @click="editMemory(item)">
+                    <Pencil :size="14" />更正
+                  </button>
+                  <button :disabled="memorySaving" @click="memoryDelete = item">
+                    <Trash2 :size="14" />删除
+                  </button>
+                </footer>
+              </template>
+            </article>
+          </div>
+          <button
+            v-if="memories.length < memoryTotal"
+            class="load-more"
+            :disabled="memoryLoading"
+            @click="loadMore"
+          >
+            {{ memoryLoading ? "正在读取…" : "加载更多记忆" }}
+          </button>
+        </template>
       </template>
-    </template>
+    </div>
   </section>
 </template>
 
 <style scoped>
 .memory-collection {
   min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+.collection-scroll {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 4px 8px;
+  overscroll-behavior: contain;
 }
 .collection-intro {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -290,10 +306,11 @@ watch(selected, () => {
   font-size: 12px;
 }
 .collection-filters {
+  flex-shrink: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(120px, auto)) minmax(180px, 1fr);
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .collection-filters select,
 .collection-filters input {
@@ -350,6 +367,7 @@ watch(selected, () => {
 }
 .memory-list {
   display: grid;
+  margin: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }

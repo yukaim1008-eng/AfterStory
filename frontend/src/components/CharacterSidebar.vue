@@ -179,6 +179,15 @@ const { character, cover, route, connected, editing, page } = useAfterStory();
 .compact .sidebar-content nav button span {
   display: none;
 }
+.compact .sidebar-content {
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+}
+.compact .sidebar-content h1 {
+  font-size: 34px;
+  white-space: nowrap;
+}
 
 @media (max-width: 900px) {
   .sidebar-content {

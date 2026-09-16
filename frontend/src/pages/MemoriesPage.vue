@@ -158,82 +158,84 @@ watch(
           <span>匹配 {{ filteredSessions.length }} 段</span>
         </div>
 
-        <div v-if="historyLoading && !sessions.length" class="empty">
-          <LoaderCircle class="spin" :size="24" />正在读取对话…
-        </div>
-        <div v-if="historyError" class="history-error" role="alert">
-          {{ historyError }}
+        <div class="history-scroll">
+          <div v-if="historyLoading && !sessions.length" class="empty">
+            <LoaderCircle class="spin" :size="24" />正在读取对话…
+          </div>
+          <div v-if="historyError" class="history-error" role="alert">
+            {{ historyError }}
+            <button
+              :disabled="historyLoading"
+              @click="loadSessions(historyAppendFailed)"
+            >
+              重新加载
+            </button>
+          </div>
+          <div
+            v-if="!historyLoading && !historyError && !sessions.length"
+            class="empty"
+          >
+            <MessageCircle :size="30" />
+            <h2>这里会留住你们的对话</h2>
+            <p>发送第一条消息后，再回来看看。</p>
+          </div>
+          <div
+            v-else-if="sessions.length && !filteredSessions.length"
+            class="empty"
+          >
+            <Search :size="28" />
+            <h2>没有找到匹配的回忆</h2>
+            <p>换一个角色、时间或关键词试试。</p>
+          </div>
+
+          <div v-else class="history-grid">
+            <button
+              v-for="item in filteredSessions"
+              :key="item.conversation_id"
+              class="history-row"
+              :data-version="item.version_id"
+              :data-conversation="item.conversation_id"
+              :disabled="!installedCharacter(item.character_id)"
+              @click="resume(item)"
+            >
+              <CharacterAvatar
+                v-if="installedCharacter(item.character_id)"
+                :character="installedCharacter(item.character_id)!"
+                :cover="cover(installedCharacter(item.character_id)!)"
+              />
+              <span v-else class="missing-avatar">?</span>
+              <div>
+                <span class="card-meta">
+                  <time :datetime="item.last_activity_at || undefined">{{
+                    displayTime(item.last_activity_at)
+                  }}</time>
+                  <span>聊天片段</span>
+                </span>
+                <h2>{{ excerpt(item.preview || "还没有消息", 28) }}</h2>
+                <p>{{ item.preview || "这段相见还没有留下文字。" }}</p>
+                <footer>
+                  <strong>{{
+                    installedCharacter(item.character_id)?.name || item.name
+                  }}</strong>
+                  <span>{{ item.turns }} 轮对话</span>
+                  <span v-if="isLegacy(item)">早些时候的相见</span>
+                  <span v-if="!installedCharacter(item.character_id)"
+                    >角色暂不可用</span
+                  >
+                </footer>
+              </div>
+            </button>
+          </div>
+
           <button
+            v-if="!filtersActive && historyOffset < historyTotal"
+            class="load-older"
             :disabled="historyLoading"
-            @click="loadSessions(historyAppendFailed)"
+            @click="loadSessions(true)"
           >
-            重新加载
+            {{ historyLoading ? "正在读取…" : "加载更多对话" }}
           </button>
         </div>
-        <div
-          v-if="!historyLoading && !historyError && !sessions.length"
-          class="empty"
-        >
-          <MessageCircle :size="30" />
-          <h2>这里会留住你们的对话</h2>
-          <p>发送第一条消息后，再回来看看。</p>
-        </div>
-        <div
-          v-else-if="sessions.length && !filteredSessions.length"
-          class="empty"
-        >
-          <Search :size="28" />
-          <h2>没有找到匹配的回忆</h2>
-          <p>换一个角色、时间或关键词试试。</p>
-        </div>
-
-        <div v-else class="history-grid">
-          <button
-            v-for="item in filteredSessions"
-            :key="item.conversation_id"
-            class="history-row"
-            :data-version="item.version_id"
-            :data-conversation="item.conversation_id"
-            :disabled="!installedCharacter(item.character_id)"
-            @click="resume(item)"
-          >
-            <CharacterAvatar
-              v-if="installedCharacter(item.character_id)"
-              :character="installedCharacter(item.character_id)!"
-              :cover="cover(installedCharacter(item.character_id)!)"
-            />
-            <span v-else class="missing-avatar">?</span>
-            <div>
-              <span class="card-meta">
-                <time :datetime="item.last_activity_at || undefined">{{
-                  displayTime(item.last_activity_at)
-                }}</time>
-                <span>聊天片段</span>
-              </span>
-              <h2>{{ excerpt(item.preview || "还没有消息", 28) }}</h2>
-              <p>{{ item.preview || "这段相见还没有留下文字。" }}</p>
-              <footer>
-                <strong>{{
-                  installedCharacter(item.character_id)?.name || item.name
-                }}</strong>
-                <span>{{ item.turns }} 轮对话</span>
-                <span v-if="isLegacy(item)">早些时候的相见</span>
-                <span v-if="!installedCharacter(item.character_id)"
-                  >角色暂不可用</span
-                >
-              </footer>
-            </div>
-          </button>
-        </div>
-
-        <button
-          v-if="!filtersActive && historyOffset < historyTotal"
-          class="load-older"
-          :disabled="historyLoading"
-          @click="loadSessions(true)"
-        >
-          {{ historyLoading ? "正在读取…" : "加载更多对话" }}
-        </button>
       </section>
     </section>
   </main>
@@ -245,9 +247,11 @@ watch(
   grid-template-columns: 230px minmax(0, 1fr);
   width: 100%;
   max-width: 1800px;
-  height: min(900px, calc(100dvh - 116px));
-  min-height: 570px;
-  margin: auto;
+  height: calc(
+    100dvh - var(--desktop-header-height) - 2 * var(--page-padding-y)
+  );
+  min-height: 0;
+  margin: var(--page-padding-y) auto;
   overflow: hidden;
   border: 1px solid #ffffffba;
   border-radius: var(--radius-panel);
@@ -256,8 +260,11 @@ watch(
 }
 .memories-content {
   min-width: 0;
-  overflow: auto;
-  padding: 0 clamp(24px, 3vw, 52px) 36px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0 24px 20px;
   background: linear-gradient(
     155deg,
     color-mix(in srgb, var(--soft) 34%, transparent),
@@ -268,9 +275,10 @@ watch(
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 170px;
-  margin: 0 calc(clamp(24px, 3vw, 52px) * -1) 0;
-  padding: 20px clamp(24px, 3vw, 52px);
+  flex-shrink: 0;
+  min-height: 124px;
+  margin: 0 -24px;
+  padding: 16px 24px;
   background: linear-gradient(
     100deg,
     #ffffffc9,
@@ -288,7 +296,7 @@ watch(
   gap: 12px;
   margin: 9px 0;
   color: var(--text);
-  font-size: clamp(30px, 3vw, 46px);
+  font-size: clamp(32px, 2.6vw, 42px);
 }
 .memories-hero h1 svg {
   color: var(--accent);
@@ -300,15 +308,16 @@ watch(
   font-size: 13px;
 }
 .memories-hero .character-avatar {
-  width: 92px;
-  height: 92px;
+  width: 72px;
+  height: 72px;
   box-shadow: 0 12px 34px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 .memory-tabs {
+  flex-shrink: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 620px;
-  margin: 18px 0;
+  margin: 16px 0;
   padding: 5px;
   border: 1px solid #ffffffd2;
   border-radius: 18px;
@@ -326,11 +335,27 @@ watch(
   color: var(--accent) !important;
 }
 .history-controls {
+  flex-shrink: 0;
   display: grid;
   grid-template-columns: auto auto minmax(190px, 1fr) auto;
   align-items: center;
   gap: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+}
+.history-collection {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.history-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 4px 8px;
+  overscroll-behavior: contain;
 }
 .history-controls select,
 .search-control {

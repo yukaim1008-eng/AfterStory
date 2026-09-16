@@ -1,5 +1,7 @@
 # 前端：当前设计与实现基准
 
+2026-09-16 Desktop 尺寸收口：暂停所有页面视觉重设计。Home、Characters、Chat、Memories（History/Memory）和 Settings 在桌面窗口统一按 `100dvh` 布局，Header 固定 72px；横向页面留白为 32–48px，纵向留白/区块间距为 20px，视口高度不超过 800px 时收紧为 16px。首页 Hero 和角色卡从固定最低高度改为剩余空间分配，保留模块结构与内容；主要标题控制在 32–42px。消息在 `.messages` 内滚动；回忆的标题、Tabs、筛选固定，分别由 `.history-scroll` 和 `.collection-scroll` 承接内容滚动；设置导航固定，只有 `.settings-panel` 滚动。新增两个无业务逻辑的列表滚动容器，不修改 API、会话、记忆、角色配置、背景、颜色或字体风格。此阶段不代表页面视觉重新设计已完成。
+
 2026-09-15 更新：聊天页旧的“左角色 Card + 右聊天 Card”与 40:60 Grid 规则已废止。当前 ChatPage 是覆盖单个 viewport 的完整 Character Scene，人物不是某一列的内容，而是由绝对定位的环境层、主肖像层和穿入层共同组成；穿入层通过局部 mask 越过 Chat Glass 左缘，玻璃材质位于其下、聊天内容位于其上。页面根层禁止纵向滚动，只有消息列表内部滚动；布局不能再由全局 `.workspace` 或 `style.css` 的聊天选择器决定。本轮只完成聊天页，其他一级页面按后续阶段分别清理。
 
 2026-09-16 补充：ChatPage 场景图来源由 `frontend/public/characters.json` 的可选 `sceneBackground` 和 `sceneBackgroundPosition` 配置，可按角色独立定位；未配置时回退到当前角色封面及既有聊天裁切。娜娜莉、伊洛伊、薄荷的默认场景素材分别维护在仓库根目录 `背景/娜娜莉1.png`、`背景/伊洛伊1.png`、`背景/薄荷1.png`；`npm run dev` 和 `npm run build` 都会先由 `frontend/scripts/prepare-media.mjs` 复制为 `frontend/public/media/*-scene.png`。该机制不改变既有三层场景、Chat Glass 或聊天 Layout。

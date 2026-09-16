@@ -4,10 +4,13 @@
   --radius-control: 99px;
   --shadow-panel: 0 16px 60px color-mix(in srgb, var(--text) 7%, transparent);
   --border-glass: 1px solid #ffffffb8;
-  --space-page: clamp(20px, 3vw, 56px);
+  --space-page: clamp(32px, 3vw, 48px);
+  --desktop-header-height: 72px;
+  --page-padding-y: 20px;
+  --page-gap: 20px;
   --type-brand-size: 32px;
-  --type-display-size: clamp(34px, 4vw, 58px);
-  --type-character-size: clamp(38px, 4vw, 60px);
+  --type-display-size: clamp(32px, 2.6vw, 42px);
+  --type-character-size: clamp(32px, 2.6vw, 42px);
   --type-section-size: 17px;
   --type-body-size: 15px;
   --type-caption-size: 10px;
@@ -18,11 +21,13 @@
   --type-handwriting-tracking: 0.08em;
   position: relative;
   isolation: isolate;
+  min-height: 100dvh;
   padding: 0 var(--space-page) 24px;
   overflow-wrap: anywhere;
 }
 .application.page-chat {
-  --chat-header-height: clamp(72px, 8.8vh, 88px);
+  --chat-header-height: var(--desktop-header-height);
+  --type-character-size: clamp(38px, 4vw, 60px);
   width: 100%;
   height: 100dvh;
   min-height: 0;
@@ -116,7 +121,10 @@
 }
 .topbar {
   max-width: 1800px;
-  height: 88px;
+  margin: 0 auto;
+  height: var(--desktop-header-height);
+  flex-shrink: 0;
+  width: 100%;
   gap: 24px;
 }
 .topbar nav {
@@ -295,4 +303,41 @@ main:focus {
   border-radius: var(--radius-control);
   padding: 12px 24px;
   color: var(--accent);
+}
+
+@media (min-width: 761px) {
+  .application:is(
+    .page-home,
+    .page-characters,
+    .page-chat,
+    .page-history,
+    .page-memory,
+    .page-settings
+  ) {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    padding: 0 var(--space-page);
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  .application:is(
+      .page-home,
+      .page-characters,
+      .page-history,
+      .page-memory,
+      .page-settings
+    )
+    > main {
+    flex-shrink: 0;
+    min-height: 0;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 761px) and (max-height: 800px) {
+  .application {
+    --page-padding-y: 16px;
+    --page-gap: 16px;
+  }
 }

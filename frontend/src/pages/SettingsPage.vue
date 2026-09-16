@@ -238,9 +238,11 @@ const sections = [
   grid-template-columns: 230px minmax(0, 1fr);
   width: 100%;
   max-width: 1800px;
-  height: min(900px, calc(100dvh - 116px));
-  min-height: 570px;
-  margin: auto;
+  height: calc(
+    100dvh - var(--desktop-header-height) - 2 * var(--page-padding-y)
+  );
+  min-height: 0;
+  margin: var(--page-padding-y) auto;
   overflow: hidden;
   border: 1px solid #ffffffba;
   border-radius: var(--radius-panel);
@@ -249,8 +251,11 @@ const sections = [
 }
 .settings-content {
   min-width: 0;
-  overflow: auto;
-  padding: clamp(28px, 4vw, 60px);
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px 24px;
   background: linear-gradient(
     145deg,
     color-mix(in srgb, var(--soft) 38%, transparent),
@@ -261,6 +266,9 @@ const sections = [
   color: var(--muted);
   font-size: 10px;
   letter-spacing: 5px;
+}
+.settings-hero {
+  flex-shrink: 0;
 }
 .back-to-chat {
   margin: -8px 0 13px -10px;
@@ -274,7 +282,7 @@ const sections = [
   gap: 12px;
   margin: 10px 0 8px;
   color: var(--text);
-  font-size: clamp(30px, 3vw, 45px);
+  font-size: clamp(32px, 2.6vw, 42px);
 }
 .settings-hero h1 svg {
   color: var(--accent);
@@ -288,8 +296,11 @@ const sections = [
 .settings-layout {
   display: grid;
   grid-template-columns: 160px minmax(0, 720px);
-  gap: clamp(24px, 4vw, 62px);
-  margin-top: 42px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  gap: 24px;
+  margin-top: 20px;
 }
 .settings-nav {
   display: flex;
@@ -314,7 +325,12 @@ const sections = [
 }
 .settings-panel {
   min-width: 0;
-  padding: clamp(20px, 3vw, 34px);
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 20px;
+  align-self: start;
+  max-height: 100%;
   border: 1px solid #ffffffd7;
   border-radius: 22px;
   background: #ffffff8f;
@@ -324,7 +340,7 @@ const sections = [
   display: flex;
   align-items: flex-start;
   gap: 13px;
-  padding-bottom: 22px;
+  padding-bottom: 16px;
   border-bottom: 1px solid color-mix(in srgb, var(--soft) 72%, transparent);
 }
 .panel-title > svg {
@@ -348,8 +364,8 @@ const sections = [
   align-items: center;
   justify-content: space-between;
   gap: 22px;
-  min-height: 92px;
-  padding: 18px 0;
+  min-height: 76px;
+  padding: 14px 0;
   border-bottom: 1px solid color-mix(in srgb, var(--soft) 72%, transparent);
 }
 .setting-row strong,
@@ -397,10 +413,10 @@ const sections = [
   grid-template-columns: 150px minmax(0, 1fr);
   gap: 25px;
   align-items: center;
-  padding: 26px 0;
+  padding: 20px 0;
 }
 .appearance-card > .portrait {
-  height: 216px;
+  height: 180px;
   border-radius: 16px;
   box-shadow: 0 12px 28px #36232d20;
 }

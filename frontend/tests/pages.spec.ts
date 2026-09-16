@@ -515,6 +515,57 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   expect(errors).toEqual([]);
 });
 
+test("short desktop empty states and settings overflow remain internally reachable", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await fakeApi(page, false, { memory: true });
+  for (const route of ["home", "chat", "history", "memory", "settings"]) {
+    await page.goto(`/#/${route}/nanally`);
+    await expect(page.locator("#main-content")).toBeVisible();
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollHeight <= innerHeight,
+      ),
+    ).toBe(true);
+  }
+  // A taller future settings category must scroll without moving its navigation.
+  const nav = page.locator(".settings-nav");
+  const before = await nav.boundingBox();
+  const panel = page.locator(".settings-panel");
+  await panel.evaluate((element) => {
+    const row = element.querySelector(".setting-row")!;
+    for (let i = 0; i < 12; i++) element.append(row.cloneNode(true));
+    element.scrollTop = element.scrollHeight;
+  });
+  expect(await panel.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+  expect(await nav.boundingBox()).toEqual(before);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollHeight <= innerHeight,
+    ),
+  ).toBe(true);
+
+  await page.goto("/#/memory/nanally");
+  await page.getByRole("button", { name: "添加第一条", exact: true }).click();
+  await expect(page.getByLabel("希望她记住什么？")).toBeVisible();
+  const filters = page.locator(".collection-filters");
+  const fixed = await filters.boundingBox();
+  await page.locator(".collection-scroll").evaluate((el) => {
+    el.scrollTop = el.scrollHeight;
+  });
+  await expect(
+    page.getByRole("button", { name: "保存", exact: true }),
+  ).toBeVisible();
+  expect(await filters.boundingBox()).toEqual(fixed);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollHeight <= innerHeight,
+    ),
+  ).toBe(true);
+});
+
 test("scene decorations follow every character and fall back safely", async ({
   page,
 }) => {
@@ -1296,6 +1347,186 @@ test("every primary page stays usable across supported desktop widths", async ({
           `chat at ${width}px should not create page-level vertical overflow`,
         ).toBe(true);
       }
+    }
+  }
+  expect(errors).toEqual([]);
+});
+
+test("desktop viewport sizes keep core pages and controls inside the screen", async ({
+  page,
+}) => {
+  test.setTimeout(60000);
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const id = "nanally-integration-v1";
+  await fakeApi(page, false, {
+    memory: true,
+    sessions: [
+      session(id),
+      ...Array.from({ length: 24 }, (_, i) => ({
+        ...session(`desktop-history-${i}`, id),
+        turns: 3,
+        preview: `已保存的回忆 ${i}`,
+      })),
+    ],
+    turns: {
+      [id]: Array.from({ length: 40 }, (_, i) =>
+        turn(
+          `desktop-turn-${i}`,
+          i + 1,
+          "今天想聊聊最近发生的事情。".repeat(5),
+        ),
+      ),
+    },
+    memories: Array.from({ length: 30 }, (_, i) =>
+      memory(
+        `desktop-memory-${i}`,
+        `instance-${id}`,
+        `主动保存的个人记忆 ${i}：` +
+          "这是一条需要完整阅读的记忆内容。".repeat(10),
+      ),
+    ),
+  });
+  for (const [width, height] of [
+    [1920, 1080],
+    [1600, 900],
+    [1440, 900],
+    [1366, 768],
+  ]) {
+    await page.setViewportSize({ width, height });
+    for (const route of [
+      "home",
+      "characters",
+      "chat",
+      "history",
+      "memory",
+      "settings",
+    ]) {
+      await page.goto(`/#/${route}/nanally`);
+      await expect(page.locator("#main-content")).toBeVisible();
+      if (route === "home")
+        await expect(page.locator(".recent-card")).toHaveCount(3);
+      if (route === "chat")
+        await expect(page.getByRole("textbox", { name: "消息" })).toBeEnabled();
+      if (route === "history")
+        await expect(page.locator(".history-row").first()).toBeVisible();
+      if (route === "memory")
+        await expect(page.locator(".memory-list article")).toHaveCount(30);
+      const sizes = await page.evaluate(() => {
+        const main = document.querySelector<HTMLElement>("#main-content")!;
+        const header = document.querySelector<HTMLElement>(".topbar")!;
+        const rect = main.getBoundingClientRect();
+        return {
+          body: document.body.scrollHeight,
+          document: document.documentElement.scrollHeight,
+          main: Math.round(rect.height),
+          bottom: Math.round(rect.bottom),
+          header: Math.round(header.getBoundingClientRect().height),
+          headerTop: Math.round(header.getBoundingClientRect().top),
+          horizontal: document.documentElement.scrollWidth,
+          pageOverflow: getComputedStyle(main).overflowY,
+        };
+      });
+      console.log(`${width}x${height} ${route}: ${JSON.stringify(sizes)}`);
+      expect(sizes.body, `${route} body`).toBeLessThanOrEqual(height);
+      expect(sizes.document, `${route} document`).toBeLessThanOrEqual(height);
+      expect(sizes.bottom, `${route} main bottom`).toBeLessThanOrEqual(height);
+      expect(sizes.horizontal, `${route} horizontal`).toBeLessThanOrEqual(
+        width,
+      );
+      expect(sizes.header).toBe(72);
+      expect(sizes.headerTop).toBe(0);
+      expect(sizes.pageOverflow).toBe("hidden");
+
+      const controls =
+        route === "home"
+          ? ".hero-action, .welcome-footnote, .quick-grid button, .companion-link, .recent-card"
+          : route === "characters"
+            ? ".character-card .visit-action"
+            : route === "chat"
+              ? ".chat-header, .composer-field"
+              : route === "settings"
+                ? ".settings-nav button"
+                : ".memory-tabs, .history-controls, .collection-filters";
+      expect(
+        await page.locator(controls).evaluateAll((elements) =>
+          elements.every((element) => {
+            const rect = element.getBoundingClientRect();
+            const card = element
+              .closest(
+                ".character-card, .home-welcome, .home-middle, .other-companions",
+              )
+              ?.getBoundingClientRect();
+            return (
+              rect.top >= 0 &&
+              rect.bottom <= innerHeight + 1 &&
+              rect.left >= 0 &&
+              rect.right <= innerWidth + 1 &&
+              (!card ||
+                (rect.top >= card.top && rect.bottom <= card.bottom + 1))
+            );
+          }),
+        ),
+        `${route} controls must not be clipped`,
+      ).toBe(true);
+
+      if (["chat", "history", "memory"].includes(route)) {
+        const scroll = page.locator(
+          route === "chat"
+            ? ".messages"
+            : route === "history"
+              ? ".history-scroll"
+              : ".collection-scroll",
+        );
+        const fixed = page.locator(
+          route === "chat"
+            ? ".chat-header"
+            : route === "history"
+              ? ".history-controls"
+              : ".collection-filters",
+        );
+        const before = await fixed.boundingBox();
+        expect(
+          await scroll.evaluate((el) => getComputedStyle(el).overflowY),
+        ).toBe("auto");
+        expect(
+          await scroll.evaluate((el) => el.scrollHeight > el.clientHeight),
+        ).toBe(true);
+        await scroll.evaluate((el) => {
+          el.scrollTop = el.scrollHeight;
+        });
+        expect(await scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+        expect(await fixed.boundingBox()).toEqual(before);
+      }
+      if (route === "settings") {
+        for (const label of ["通用", "外观", "声音", "数据管理"]) {
+          await page
+            .getByRole("navigation", { name: "设置类别" })
+            .getByRole("button", { name: label, exact: true })
+            .click();
+          await expect(page.locator(".settings-panel")).toHaveCSS(
+            "overflow-y",
+            "auto",
+          );
+          const box = await page.locator(".settings-panel").boundingBox();
+          expect(box!.y + box!.height).toBeLessThanOrEqual(height);
+          if (
+            (width === 1440 || width === 1366) &&
+            ["通用", "外观"].includes(label)
+          ) {
+            await page.screenshot({
+              path: `test-results/desktop-${width}x${height}-settings-${label === "通用" ? "general" : "appearance"}.png`,
+            });
+          }
+        }
+      }
+      await page.screenshot({
+        path: `test-results/desktop-${width}x${height}-${route}.png`,
+      });
     }
   }
   expect(errors).toEqual([]);

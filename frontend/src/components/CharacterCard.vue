@@ -58,7 +58,8 @@ const emit = defineEmits<{ select: [] }>();
   grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
   width: 100%;
   min-width: 0;
-  height: 290px;
+  height: 100%;
+  min-height: 0;
   flex: none;
   position: relative;
   isolation: isolate;
@@ -136,7 +137,7 @@ const emit = defineEmits<{ select: [] }>();
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 28px 30px 24px 12px;
+  padding: 16px 24px 16px 12px;
   color: var(--text);
 }
 
@@ -145,7 +146,7 @@ const emit = defineEmits<{ select: [] }>();
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   border-radius: 99px;
   background: linear-gradient(125deg, var(--primary), var(--accent));
   color: white;
@@ -171,7 +172,7 @@ const emit = defineEmits<{ select: [] }>();
 .card-content h2 {
   margin: 8px 0 10px;
   color: var(--text);
-  font-size: clamp(26px, 2.2vw, 38px);
+  font-size: clamp(26px, 2.2vw, 34px);
   letter-spacing: 2px;
   writing-mode: horizontal-tb;
 }
@@ -192,7 +193,7 @@ const emit = defineEmits<{ select: [] }>();
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 .tag-list span {
@@ -209,8 +210,8 @@ const emit = defineEmits<{ select: [] }>();
   justify-content: center;
   gap: 10px;
   width: 100%;
-  margin-top: 17px;
-  padding: 11px 18px;
+  margin-top: 12px;
+  padding: 9px 18px;
   border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
   border-radius: 99px;
   background: #ffffff8f;
@@ -221,11 +222,10 @@ const emit = defineEmits<{ select: [] }>();
 
 .character-panel.character-card.featured {
   grid-template-columns: minmax(0, 1.65fr) minmax(330px, 0.75fr);
-  height: clamp(310px, 35vh, 390px);
 }
 
 .featured .card-content {
-  padding: 34px clamp(34px, 4vw, 64px) 30px 18px;
+  padding: 20px clamp(24px, 3vw, 48px) 20px 18px;
 }
 
 .featured .tagline {
@@ -245,7 +245,7 @@ const emit = defineEmits<{ select: [] }>();
   }
 
   .character-panel.character-card.featured {
-    height: 330px;
+    min-height: 240px;
   }
 }
 

@@ -229,13 +229,12 @@ const recent = computed(() => {
   margin: 0 auto;
 }
 .home-hero {
-  min-height: 435px;
-  height: clamp(435px, 48vh, 590px);
+  min-height: 0;
+  height: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(390px, 1fr);
   align-items: center;
   position: relative;
-  margin-bottom: 24px;
 }
 .home-art {
   position: absolute;
@@ -271,11 +270,11 @@ const recent = computed(() => {
 }
 .home-welcome {
   grid-column: 2;
-  padding: clamp(25px, 3vw, 48px);
+  padding: 20px 24px;
   background: color-mix(in srgb, var(--surface) 88%, transparent);
 }
 .home-welcome h1 {
-  font-size: clamp(26px, 2.4vw, 42px);
+  font-size: clamp(32px, 2.2vw, 42px);
   display: flex;
   align-items: center;
   gap: 14px;
@@ -290,7 +289,7 @@ const recent = computed(() => {
   display: flex;
   gap: 14px;
   align-items: center;
-  margin: 28px 0 24px;
+  margin: 16px 0;
 }
 .last-meeting strong {
   display: block;
@@ -312,7 +311,7 @@ const recent = computed(() => {
   display: block;
   color: var(--muted);
   font-size: 11px;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .home-middle {
   display: grid;
@@ -321,13 +320,13 @@ const recent = computed(() => {
 }
 .recent-panel,
 .quick-panel {
-  padding: 20px;
+  padding: 16px;
 }
 .panel-heading {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 .panel-heading h2,
 .other-heading h2 {
@@ -370,7 +369,7 @@ const recent = computed(() => {
 .recent-card > .portrait {
   width: 66px;
   height: auto;
-  min-height: 110px;
+  min-height: 90px;
   border-radius: 10px;
   flex-shrink: 0;
 }
@@ -401,7 +400,7 @@ const recent = computed(() => {
   color: var(--accent);
 }
 .home-state {
-  min-height: 136px;
+  min-height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -445,8 +444,8 @@ const recent = computed(() => {
   margin-top: 5px;
 }
 .other-companions {
-  margin-top: 20px;
-  padding: 18px 24px;
+  margin-top: 0;
+  padding: 14px 20px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -477,6 +476,64 @@ const recent = computed(() => {
 .all-characters {
   white-space: nowrap;
   flex-shrink: 0;
+}
+@media (min-width: 761px) {
+  .home-page {
+    width: 100%;
+    height: calc(100dvh - var(--desktop-header-height));
+    padding-block: var(--page-padding-y);
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto auto auto;
+    gap: var(--page-gap);
+  }
+  .home-welcome {
+    max-height: 100%;
+    min-height: 0;
+  }
+  .hero-action {
+    padding-block: 10px;
+  }
+  .page-footer {
+    width: 100%;
+    margin: 0;
+  }
+}
+@media (min-width: 1151px) and (max-height: 800px) {
+  .home-welcome {
+    padding: 12px 20px;
+  }
+  .home-welcome .eyebrow {
+    margin-bottom: 10px;
+  }
+  .home-welcome h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  .home-welcome > .muted {
+    margin-bottom: 8px;
+  }
+  .last-meeting {
+    margin: 12px 0;
+  }
+  .hero-action {
+    margin-bottom: 6px;
+    padding-block: 8px;
+  }
+  .welcome-footnote {
+    margin-top: 4px;
+  }
+  .recent-card > .portrait {
+    min-height: 80px;
+  }
+  .recent-card p {
+    margin-bottom: 6px;
+  }
+  .quick-grid button {
+    padding: 10px;
+  }
+  .other-companions {
+    padding-block: 10px;
+  }
 }
 @media (min-width: 1600px) {
   .recent-card > .portrait {

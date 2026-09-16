@@ -94,11 +94,8 @@ small,
   --muted: #927e8d;
   background: var(--background);
   color: var(--ink);
-  min-height: 100vh;
-  padding: 0 38px 30px;
 }
 .topbar {
-  height: 86px;
   display: flex;
   align-items: center;
   gap: 22px;
@@ -745,9 +742,6 @@ select {
 @media (min-width: 1700px) {
   .secondary-workspace {
     height: min(900px, calc(100dvh - 150px));
-  }
-  .application {
-    padding-top: 16px;
   }
 }
 @media (max-width: 1050px) {
