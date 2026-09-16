@@ -15,7 +15,6 @@ const {
   capabilities,
   targetTurn,
   scrollArea,
-  preferences,
   displayTime,
   route,
   openChat,
@@ -272,14 +271,6 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
             />
             <ArrowUp v-else :size="21" />
           </button>
-        </div>
-        <div class="composer-caption">
-          <span>{{
-            preferences.send === "enter"
-              ? "Enter 发送 · Shift + Enter 换行"
-              : "Ctrl / ⌘ + Enter 发送"
-          }}</span>
-          <span>聊天记录保存在本机</span>
         </div>
       </form>
     </section>
@@ -744,17 +735,6 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   object-fit: contain;
 }
 
-.composer-caption {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 8px 5px 0;
-  color: color-mix(in srgb, var(--text) 60%, transparent);
-  font-size: 9px;
-  letter-spacing: 0.02em;
-  text-shadow: 0 1px 8px #fff;
-}
-
 @media (max-width: 900px) {
   .chat-glass {
     right: 18px;
@@ -805,10 +785,6 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
 
   .composer {
     padding: 10px 14px 16px;
-  }
-
-  .composer-caption span:last-child {
-    display: none;
   }
 
   .atmosphere-copy {

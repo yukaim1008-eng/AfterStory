@@ -385,6 +385,8 @@ test("chat survives refresh, isolates roles and resumes from history", async ({
   await expect(page.locator(".topbar .brand")).toContainText("AfterStory");
   await expect(page.locator(".topbar .brand-heart")).toHaveText("♡");
   await expect(page.locator(".topbar .tagline")).toHaveCount(0);
+  await expect(page.locator(".composer-caption")).toHaveCount(0);
+  await expect(page.getByText("聊天记录保存在本机")).toHaveCount(0);
   for (const label of ["相册", "与娜娜莉的回忆", "一代目的秘密基地"])
     await expect(page.getByRole("button", { name: label })).toBeVisible();
   await expect(page.getByText("哼，回来就好。", { exact: true })).toBeVisible();
