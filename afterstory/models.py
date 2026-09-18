@@ -11,6 +11,7 @@ from sqlalchemy import (
     UniqueConstraint,
     func,
 )
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -38,6 +39,7 @@ class CharacterVersion(Base):
     id: Mapped[str] = mapped_column(String(64), primary_key=True)
     character_id: Mapped[str] = mapped_column(ForeignKey("characters.id"))
     checkpoint: Mapped[str] = mapped_column(String(120))
+    definition: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
     system_prompt: Mapped[str] = mapped_column(Text)
 
 

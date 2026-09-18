@@ -1,6 +1,6 @@
 # 角色与原作资料
 
-状态：身份/版本/实例基础已实现；2026-09-18 用户确定先设计最小 Character Schema（约 30%–40%），随后重点设计 Memory 系统。下方字段为讨论草稿，尚未修改模型、迁移或数据库。
+状态：身份/版本/实例基础与 Minimal Character Schema v1 已实现并验证；2026-09-18 用户确认先按六部分拆分，等 Memory System 完成后再据此优化。
 
 ## 职责与已确认约束
 
@@ -12,9 +12,9 @@
 
 此前暂缓角色设计的阶段安排已由本次最小 Schema 设计调整；当前先明确字段与数据归属，保留现有联调内容。正式资料采集、完整性格细化和角色资料库建设仍未开展。
 
-## 最小 Character Schema：字段讨论草稿（2026-09-18）
+## 最小 Character Schema：暂定六部分与字段草稿（2026-09-18）
 
-已确认的是推进顺序与最小范围；以下字段名称、JSONB 存储和 Prompt 编译方式为建议，尚未定稿。“30%–40%”指先覆盖角色正常运行所需信息，不按字段数量计算。
+已确认的是推进顺序、最小范围，以及暂按身份、性格、说话方式、行为、世界观、初始关系六部分拆分。先保持这一最小结构，等 Memory System 完成后，再根据实际接口与数据边界优化，不在当前阶段展开完整角色 Schema。以下具体字段名称、必填规则、JSONB 存储和 Prompt 编译方式仍为建议，尚未定稿；六部分暂定不等于整份字段草稿已获采纳或实现已获授权。“30%–40%”指先覆盖角色正常运行所需信息，不按字段数量计算。
 
 ### 1. characters：稳定身份与目录信息
 
@@ -31,16 +31,16 @@
 
 ### 2. character_versions：版本化角色定义
 
-保留已有 `id`、`character_id`、`checkpoint`、`system_prompt`；建议增加 `definition` JSONB，以 `schema_version` 标识结构版本。Schema 版本描述字段格式，角色版本 ID 描述某一份具体设定，两者不同。
+保留已有 `id`、`character_id`、`checkpoint`、`system_prompt`；本阶段增加可空 `definition` JSONB。结构化定义固定含 `schema_version: "1.0"` 和六个文本字段；Schema 版本描述字段格式，角色版本 ID 描述某一份具体设定，两者不同。Prompt Builder Version 固定为 `1.0`，新结构角色在导入时编译并冻结 `system_prompt`。
 
-| definition 分区 | 最小字段建议 | 保存什么 |
+| definition 字段 | 当前最小格式 | 保存什么 |
 | --- | --- | --- |
-| `identity` | `summary`、`roles` | 身份背景和原作中的角色身份 |
-| `personality` | `core_traits`、`values` | 核心性格和价值观；自主立场沿用 V1 基线 |
-| `speaking_style` | `tone`、`address_rules`、`avoid` | 语气、初始称呼规则和不符合人设的表达 |
-| `behavior` | `conversation_style`、`boundaries` | 基本交流方式和角色特有边界 |
-| `worldview` | `world`、`cross_world_rule` | 原作世界及跨世界交流前提 |
-| `relationship_premise` | `user_role`、`initial_relationship` | 用户身份映射与原作关系起点，不保存后来形成的亲近程度 |
+| `identity` | 必填 string | 身份背景和原作中的角色身份 |
+| `personality` | 可空 string | 核心性格和价值观；自主立场沿用 V1 基线 |
+| `speaking_style` | 可空 string | 语气、初始称呼规则和稳定表达方式 |
+| `behavior` | 可空 string | 基本交流方式和角色特有边界 |
+| `worldview` | 可空 string | 原作世界及跨世界交流前提 |
+| `relationship_premise` | 可空 string | 用户身份映射与原作关系起点，不保存后来形成的亲近程度 |
 
 字段先采用短文本、文本数组和简单称呼映射；不展开情绪分支、评分算法或完整 Canon 资料树。已知资料才填写；未确认内容不以猜测填充，资料不完整的版本继续标注为联调版本。
 
@@ -65,7 +65,7 @@
 
 ### 5. 本轮完成与下一步
 
-本轮完成现状核查和字段草稿；未改代码、API、角色内容或数据库。下一步细化并确定最小字段及旧版本兼容方式，随后转入 Memory 系统设计；本轮不设计自动提取、Embedding 或召回算法。
+Minimal Character Schema v1 的实现与验证范围见 [实施记录](../implementation/character-schema-minimal.md)。新角色包校验 `definition` 的全部七个固定键（含 `schema_version`），导入时按固定顺序编译并冻结 `system_prompt`；旧的纯提示词包保持兼容。实现不修改 API、前端、正式角色资料或实例运行数据。下一步在数据库验证完成后转入 Memory System 设计；完整角色结构与内容优化等 Memory System 完成后再开展。
 
 ## 待设计
 
