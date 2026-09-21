@@ -1,6 +1,8 @@
 # AfterStory 当前项目状态
 
 - 更新日期：2026-09-18。
+- 最新设计讨论：进入 Memory System 设计，目标为长期持续聊天和上下文压缩。用户确认先做线上提醒，未打开 AfterStory 时的主动通知留到后续工具编排阶段；触发机制和记忆详细方案尚未定稿，未开始开发。见 [记忆、状态和关系](design/03-memory-state.md)。
+- 当前选定设计分区：[长会话连续性与上下文压缩](design/memory/01-conversation-continuity.md)。已形成讨论稿：分段摘要、连续性笔记、token 预算与按需原文回读；方案与参数待评审，未修改代码。现有删改记忆会排除旧历史，摘要必须继承此边界；细粒度重建留待记忆生命周期设计。
 - 当前阶段：Minimal Character Schema v1 已完成。CharacterVersion 新增可空 `definition` JSONB；结构化定义使用 Schema Version `1.0`、身份/性格/说话方式/行为/世界观/初始关系六个文本字段，并由 Prompt Builder Version `1.0` 编译冻结 `system_prompt`。旧提示词角色保持兼容；Memory、State、Relationship、Conversation 仍归实例运行数据。隔离 schema 迁移升级/回滚与 41 项后端测试均通过，实施记录见 [最小 Character Schema 实施计划](implementation/character-schema-minimal.md)。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
@@ -47,7 +49,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1 已完成并验证；本阶段到此停止。下一步可由用户开始 Memory System 设计，不先扩展 Character Schema v2、角色内容或其他运行能力。
+Minimal Character Schema v1 已完成并验证。现进入 Memory System 的长会话连续性与上下文压缩设计，先集中评审上述讨论稿；不先扩展 Character Schema v2、角色内容或其他运行能力，也未开始 Memory 开发。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 
