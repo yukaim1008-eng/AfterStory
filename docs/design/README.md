@@ -31,6 +31,7 @@
 - [持续事项与线上提醒](memory/04-ongoing-matters-and-online-reminders.md) 已形成完整待审稿，覆盖事项状态、提醒时间、线上触发、补发及防重复；离线通知继续暂缓到 Tools 阶段。
 - [记忆召回与上下文选择](memory/05-retrieval-and-context-selection.md) 已形成完整待审稿，采用确定性、结构化/全文和语义候选的混合路径，并定义上下文预算、原文回读与失败降级。
 - [纠正、删除与重建](memory/06-lifecycle-correction-deletion-and-rebuild.md) 已形成完整待审稿，定义同步可见性屏障、来源依赖、派生内容重建及现有粗粒度历史保护的渐进演进。
+- [State 与 Relationship 演进](memory/07-state-and-relationship-evolution.md) 已形成完整待审稿，定义短期状态的形成/缓和、三个关系方面的证据与慢速变化，并保持无分值、无自动恋爱升级。
 - F1 页面与文字链路及 F2 基础能力属于已完成的阶段结果；正式角色效果、自动记忆/状态策略、语音和完整 V1 仍未验收。
 
 实际开工前只补齐当前阶段必要的取舍；不要求用户一次确定所有模块的全部细节。长期运行的 Agent 循环适合执行有边界的阶段任务，不能替代模块设计与效果验收。

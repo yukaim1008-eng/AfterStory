@@ -7,6 +7,7 @@
 - 持续事项与线上提醒已形成 [完整待审稿](design/memory/04-ongoing-matters-and-online-reminders.md)：推荐单次提醒、服务端投递记录、应用上线补发、改期取消和多入口幂等领取；关闭应用后的通知仍留到 Tools 阶段。
 - 记忆召回与上下文选择已形成 [完整待审稿](design/memory/05-retrieval-and-context-selection.md)：推荐确定性读取、PostgreSQL 全文/结构化过滤和 pgvector 混合候选，复杂问题才使用第二阶段模型重排；检索准备不进入现有持锁路径。
 - 纠正、删除与重建已形成 [完整待审稿](design/memory/06-lifecycle-correction-deletion-and-rebuild.md)：显式操作同步建立可见性屏障，派生摘要/索引/状态异步受控重建；来源不完整时继续使用现有 `history_floor_revision` 保守保护。
+- State 与 Relationship 演进已形成 [完整待审稿](design/memory/07-state-and-relationship-evolution.md)：短期状态可随回复提出并按时间缓和，长期关系由有效事件慢速评估；普通轮数、缺席和单方面关系声明均不自动升级关系。
 - 长会话设计进度：[连续性与压缩](design/memory/01-conversation-continuity.md) 的保留原文、分段摘要配合连续性笔记、压缩赶不上时等待或重试三项方向已确认；[摘要组织、原文选择与离开后续聊](design/memory/02-summary-and-resumption.md) 的具体方案与参数仍为讨论稿。细粒度失效与重建留待记忆生命周期设计。
 - 当前阶段：Minimal Character Schema v1 已完成。CharacterVersion 新增可空 `definition` JSONB；结构化定义使用 Schema Version `1.0`、身份/性格/说话方式/行为/世界观/初始关系六个文本字段，并由 Prompt Builder Version `1.0` 编译冻结 `system_prompt`。旧提示词角色保持兼容；Memory、State、Relationship、Conversation 仍归实例运行数据。隔离 schema 迁移升级/回滚与 41 项后端测试均通过，实施记录见 [最小 Character Schema 实施计划](implementation/character-schema-minimal.md)。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
