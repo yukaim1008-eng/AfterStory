@@ -12,6 +12,8 @@
 
 记忆召回与上下文选择已经形成 [完整待审稿](memory/05-retrieval-and-context-selection.md)：推荐实例内确定性读取、结构化/全文与 pgvector 混合候选，复杂问题才做模型重排；ContextAssembler 只组装有界且通过修订核验的材料。
 
+记忆生命周期已经形成 [完整待审稿](memory/06-lifecycle-correction-deletion-and-rebuild.md)：纠正/删除同步建立可见性屏障，摘要、事件、状态和索引异步受控重建；现有 `history_floor_revision` 在细粒度依赖覆盖完成前继续作为安全回退。
+
 最新讨论细化事件时间与精度、后台增量整理、同事件补充与重复执行去重，以及压缩任务共享候选的边界。用户接受日/月级回忆精度；具体时间表达、触发阈值及去重方案仍为建议，不把每轮角色回复都当作新事件纪要。
 
 当前数据库已有实例级 Personal Memory、Character State 与 Relationship。有效个人记忆会受条数与字符上限约束进入模型上下文，消息持久化、最近对话和长期记忆仍是不同的数据范围。
