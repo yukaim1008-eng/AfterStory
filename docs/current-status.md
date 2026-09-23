@@ -2,7 +2,7 @@
 
 - 更新日期：2026-09-21。
 - 最新设计讨论：进入 Memory System 设计，目标为长期持续聊天和上下文压缩。用户确认先做线上提醒，未打开 AfterStory 时的主动通知留到后续工具编排阶段；触发机制和记忆详细方案尚未定稿，未开始开发。见 [记忆、状态和关系](design/03-memory-state.md)。
-- 当前选定设计分区：[长期事实、经历与写入更新规则](design/memory/03-long-term-memory-writing.md)。2026-09-21 用户确认事实/偏好、共同经历、写入依据、更新规则四项必须覆盖；已提出条目组织、来源、自动写入和冲突处理建议，具体行为待评审，未修改代码。实施前需对齐当前单消息单记忆约束及删改记忆时的历史隔离边界。
+- 长期事实、经历与写入更新规则已形成 [完整待审稿](design/memory/03-long-term-memory-writing.md)。推荐基线覆盖自动保存、推测边界、稳定事件身份、时间精度、后台增量整理、两层去重和冲突更新；用户审核前不视为产品决策，未修改业务代码。
 - 最新细化：用户提出事件保留日/月级时间即可，久远回忆可以较粗略；讨论稿补充告知时间与发生时间、精度、后台分批提取、稳定事件身份、两层去重和压缩协作。提取/压缩共用写入入口但分别记录处理进度；这些具体方案仍待评审，未开始实施。
 - 长会话设计进度：[连续性与压缩](design/memory/01-conversation-continuity.md) 的保留原文、分段摘要配合连续性笔记、压缩赶不上时等待或重试三项方向已确认；[摘要组织、原文选择与离开后续聊](design/memory/02-summary-and-resumption.md) 的具体方案与参数仍为讨论稿。细粒度失效与重建留待记忆生命周期设计。
 - 当前阶段：Minimal Character Schema v1 已完成。CharacterVersion 新增可空 `definition` JSONB；结构化定义使用 Schema Version `1.0`、身份/性格/说话方式/行为/世界观/初始关系六个文本字段，并由 Prompt Builder Version `1.0` 编译冻结 `system_prompt`。旧提示词角色保持兼容；Memory、State、Relationship、Conversation 仍归实例运行数据。隔离 schema 迁移升级/回滚与 41 项后端测试均通过，实施记录见 [最小 Character Schema 实施计划](implementation/character-schema-minimal.md)。
