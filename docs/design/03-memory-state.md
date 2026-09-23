@@ -4,7 +4,7 @@
 
 当前进入 Memory System 设计讨论，尚未授权实现。用户要求支持长期持续聊天与上下文压缩；提醒的分阶段范围已确认，见下方记录。
 
-已讨论 [长会话连续性与上下文压缩](memory/01-conversation-continuity.md) 及 [摘要组织、原文选择与离开后续聊](memory/02-summary-and-resumption.md)。2026-09-21 用户确认连续性的三项方向共同采用，规则引用基线 5.3；具体组织和参数仍为讨论稿。
+[长会话连续性与上下文压缩](memory/01-conversation-continuity.md) 及 [摘要组织、原文选择与离开后续聊](memory/02-summary-and-resumption.md) 已形成完整待审稿。2026-09-21 用户确认连续性的三项方向共同采用，规则引用基线 5.3；数值预算和阈值在实施回放中确定。
 
 长期事实、经历与写入更新规则已经形成 [完整待审稿](memory/03-long-term-memory-writing.md)：推荐明确且有长期价值的信息自动保存，V1 不自动固化人格推测，事件使用稳定身份并保留来源支持的最高时间精度；尚未授权实现。
 
@@ -15,6 +15,8 @@
 记忆生命周期已经形成 [完整待审稿](memory/06-lifecycle-correction-deletion-and-rebuild.md)：纠正/删除同步建立可见性屏障，摘要、事件、状态和索引异步受控重建；现有 `history_floor_revision` 在细粒度依赖覆盖完成前继续作为安全回退。
 
 State 与 Relationship 演进已经形成 [完整待审稿](memory/07-state-and-relationship-evolution.md)：State 随本轮回复提出可选更新并按时间生成有效视图，Relationship 从有来源的关系事件慢速评估；不使用轮数升级、数值好感度或自动恋爱迁移。
+
+统一 [数据契约与实施阶段](memory/08-data-contract-and-implementation-plan.md) 已将上述分区收拢为权威/派生数据、表职责、Provider、持久化任务、兼容 migration、Runtime 接入和 M0–M8 实施顺序。Memory System 设计包现已完整，等待用户集中审核；尚未授权开发。
 
 最新讨论细化事件时间与精度、后台增量整理、同事件补充与重复执行去重，以及压缩任务共享候选的边界。用户接受日/月级回忆精度；具体时间表达、触发阈值及去重方案仍为建议，不把每轮角色回复都当作新事件纪要。
 
@@ -48,7 +50,7 @@ State 与 Relationship 演进已经形成 [完整待审稿](memory/07-state-and-
 
 这次只确认提醒的阶段范围，不表示前一轮提出的全部记忆分类、压缩、召回或自动写入方案已被采纳。
 
-## 后续设计
+## 已有基础与实施前边界
 
 阶段 C 已接通个人记忆的有限上下文读取；阶段 D 已建立以下内部边界：
 
@@ -62,10 +64,9 @@ State 与 Relationship 演进已经形成 [完整待审稿](memory/07-state-and-
 
 2026-09-18 用户确认 Character Schema 暂按身份、性格、说话方式、行为、世界观、初始关系六部分拆分，见 [角色系统](01-character-system.md)。Memory System 设计沿用稳定定义与实例运行数据的隔离边界；等 Memory System 完成后再根据实际接口优化角色结构与内容，不要求当前先补全完整角色定义。
 
-- 提取、检索、纠正、删除及来源关联的数据契约。
-- 三个关系方面的自动变化检查和情绪缓和机制。
-- 重试幂等、跨实例隔离，以及删除后避免旧上下文重新引入信息的处理。
-- Embedding Provider 与 pgvector 接入方式。
+- 详细提取、检索、纠正、删除、提醒、状态和关系方案均已进入独立待审文档。
+- 实施前需要用户集中审核 [数据契约与实施阶段](memory/08-data-contract-and-implementation-plan.md) 的九项清单。
+- 用户审核通过不自动授权编码；开发仍按 M0–M8 中明确选定的阶段执行。
 
 ## 验收方向
 
