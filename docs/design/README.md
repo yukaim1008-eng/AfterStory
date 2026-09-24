@@ -33,6 +33,7 @@
 - [纠正、删除与重建](memory/06-lifecycle-correction-deletion-and-rebuild.md) 已形成完整待审稿，定义同步可见性屏障、来源依赖、派生内容重建及现有粗粒度历史保护的渐进演进。
 - [State 与 Relationship 演进](memory/07-state-and-relationship-evolution.md) 已形成完整待审稿，定义短期状态的形成/缓和、三个关系方面的证据与慢速变化，并保持无分值、无自动恋爱升级。
 - [Memory 数据契约与实施阶段](memory/08-data-contract-and-implementation-plan.md) 已收拢权威/派生数据、表职责、Provider/任务边界、兼容 migration 和 M0–M8 实施顺序；整套 Memory System 设计等待集中审核，尚未授权开发。
+- 2026-09-24 审查后已补齐最小原文/事件查找的阶段前置、显式操作回执、双修订边界、有界删除屏障和消息时间来源；具体设计仍为待审稿，未开始实现。
 - F1 页面与文字链路及 F2 基础能力属于已完成的阶段结果；正式角色效果、自动记忆/状态策略、语音和完整 V1 仍未验收。
 
 实际开工前只补齐当前阶段必要的取舍；不要求用户一次确定所有模块的全部细节。长期运行的 Agent 循环适合执行有边界的阶段任务，不能替代模块设计与效果验收。

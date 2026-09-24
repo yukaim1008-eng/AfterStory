@@ -1,6 +1,6 @@
 # AfterStory 当前项目状态
 
-- 更新日期：2026-09-23。
+- 更新日期：2026-09-24。
 - 最新设计进度：Memory System 已按长期连续性、长期记忆、持续事项/提醒、召回、生命周期、State/Relationship 和统一数据契约分区形成完整待审稿；未打开 AfterStory 时的主动通知仍留到后续 Tools 编排。当前等待用户集中审核，未开始开发。见 [记忆、状态和关系](design/03-memory-state.md)。
 - 长期事实、经历与写入更新规则已形成 [完整待审稿](design/memory/03-long-term-memory-writing.md)。推荐基线覆盖自动保存、推测边界、稳定事件身份、时间精度、后台增量整理、两层去重和冲突更新；用户审核前不视为产品决策，未修改业务代码。
 - 最新细化：用户提出事件保留日/月级时间即可，久远回忆可以较粗略；讨论稿补充告知时间与发生时间、精度、后台分批提取、稳定事件身份、两层去重和压缩协作。提取/压缩共用写入入口但分别记录处理进度；这些具体方案仍待评审，未开始实施。
@@ -9,6 +9,7 @@
 - 纠正、删除与重建已形成 [完整待审稿](design/memory/06-lifecycle-correction-deletion-and-rebuild.md)：显式操作同步建立可见性屏障，派生摘要/索引/状态异步受控重建；来源不完整时继续使用现有 `history_floor_revision` 保守保护。
 - State 与 Relationship 演进已形成 [完整待审稿](design/memory/07-state-and-relationship-evolution.md)：短期状态可随回复提出并按时间缓和，长期关系由有效事件慢速评估；普通轮数、缺席和单方面关系声明均不自动升级关系。
 - [数据契约与实施阶段](design/memory/08-data-contract-and-implementation-plan.md) 已定义权威/派生数据、版本/来源/任务边界、兼容 migration、Runtime 接入和 M0–M8 分阶段验收。整套设计包现等待用户集中审核，不构成开发授权。
+- 2026-09-24 只优化 Memory 待审设计稿：M2 提前承担最小原文查找与跨会话未覆盖原文补查，M3 在现有候选上做事件去重并暂缓会高频触发全实例历史排除的自动替代；补上对话内显式操作回执、后台写入与回复安全修订分工、有界删除屏障，以及新消息的接收时间/时区来源。业务代码、数据库及运行数据均未改动，以上仍待集中审核。
 - 长会话设计进度：[连续性与压缩](design/memory/01-conversation-continuity.md) 的保留原文、分段摘要配合连续性笔记、压缩赶不上时等待或重试三项方向已确认；[摘要组织、原文选择与离开后续聊](design/memory/02-summary-and-resumption.md) 已形成完整待审稿。数值预算和阈值由实施回放确定。
 - 当前阶段：Minimal Character Schema v1 已完成。CharacterVersion 新增可空 `definition` JSONB；结构化定义使用 Schema Version `1.0`、身份/性格/说话方式/行为/世界观/初始关系六个文本字段，并由 Prompt Builder Version `1.0` 编译冻结 `system_prompt`。旧提示词角色保持兼容；Memory、State、Relationship、Conversation 仍归实例运行数据。隔离 schema 迁移升级/回滚与 41 项后端测试均通过，实施记录见 [最小 Character Schema 实施计划](implementation/character-schema-minimal.md)。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
