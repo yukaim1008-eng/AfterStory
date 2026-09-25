@@ -1,5 +1,6 @@
 from pathlib import Path
 from typing import Literal
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from pydantic import BaseModel, ConfigDict, Field, SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -94,6 +95,7 @@ class Settings(BaseSettings):
     history_turns: int = Field(default=12, ge=1, le=50)
     memory_context_items: int = Field(default=20, ge=0, le=100)
     memory_context_chars: int = Field(default=6000, ge=0, le=50000)
+    user_timezone: str = "Asia/Shanghai"
 
     @model_validator(mode="after")
     def validate_runtime(self):
@@ -103,4 +105,8 @@ class Settings(BaseSettings):
             raise ValueError("LLM_ACTIVE_MODEL must reference a configured model profile")
         if self.turn_lease_seconds <= self.active_model.timeout_seconds + 10:
             raise ValueError("TURN_LEASE_SECONDS must exceed the active model timeout by >10s")
+        try:
+            ZoneInfo(self.user_timezone)
+        except ZoneInfoNotFoundError as exc:
+            raise ValueError("USER_TIMEZONE must be an IANA timezone") from exc
         return self

@@ -7,8 +7,31 @@ class ConversationService:
         self.repository = repository
         self.provider = provider
 
-    def send(self, user, conversation_id, request_id, text):
-        reservation = self.repository.begin_turn(user, conversation_id, request_id, text)
+    def send(
+        self,
+        user,
+        conversation_id,
+        request_id,
+        text,
+        timezone_name="UTC",
+        timezone_source="server_default",
+    ):
+        for attempt_index in range(2):
+            prepared = self.repository.prepare_context(user, conversation_id, text)
+            try:
+                reservation = self.repository.reserve_turn(
+                    user,
+                    conversation_id,
+                    request_id,
+                    text,
+                    prepared,
+                    timezone_name=timezone_name,
+                    timezone_source=timezone_source,
+                )
+                break
+            except DomainError as exc:
+                if exc.code != "context_changed_during_prepare" or attempt_index:
+                    raise
         if isinstance(reservation, CharacterResponse):
             return reservation
         turn_id, attempt, messages = reservation

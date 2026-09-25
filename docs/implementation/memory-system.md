@@ -14,3 +14,13 @@
 | 上下文预算预估 | 无外部 tokenizer 时提供稳定保守计量接口 | 空文本为 0 | 同上 |
 
 实现结果：新增 `memory_contracts.py`、10 组多会话评测样本和 6 项契约测试；目标 Ruff 与测试通过。生产聊天链路未改变。
+
+## M1：来源、版本、任务与可见性基础
+
+- `personal_memories` 保持兼容投影，新增不可变 `personal_memory_versions` 和多来源链接。
+- 新增依赖、抑制和 PostgreSQL job/lease 基础表；job key 保证幂等，过期 lease 可恢复。
+- `CharacterInstance.data_revision` 用于数据/索引变化；`context_revision` 继续保护在途回复。
+- 新消息保存服务端记录时间、解释相对日期所用时区及其来源；旧消息不猜测时区。
+- 显式记忆 CRUD 双写版本链，删除投影立即不可见，旧 API 保持兼容。
+
+验证：M1 定向 Ruff 通过；基础、现有记忆与会话测试共 17 项通过（与 M2 边界测试同批运行）。

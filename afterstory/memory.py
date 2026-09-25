@@ -4,13 +4,68 @@ from hashlib import sha256
 from sqlalchemy import func, select
 
 from afterstory.domain import DomainError
-from afterstory.models import CharacterInstance, Conversation, Message, PersonalMemory, Turn
+from afterstory.models import (
+    CharacterInstance,
+    Conversation,
+    MemorySourceLink,
+    Message,
+    PersonalMemory,
+    PersonalMemoryVersion,
+    Turn,
+)
 from afterstory.state import StateService
 
 
 class MemoryService:
     def __init__(self, sessions):
         self.sessions = sessions
+
+    @staticmethod
+    def _append_version(session, memory, operation, evidence_kind="manual", source=None):
+        previous = session.scalar(
+            select(PersonalMemoryVersion)
+            .where(PersonalMemoryVersion.memory_id == memory.id)
+            .order_by(PersonalMemoryVersion.revision.desc())
+            .limit(1)
+        )
+        version = PersonalMemoryVersion(
+            memory_id=memory.id,
+            revision=memory.revision,
+            schema_version="1.0",
+            memory_type=memory.memory_type,
+            evidence_kind=evidence_kind,
+            payload={"content": memory.content},
+            content=memory.content,
+            status=memory.status,
+            operation=operation,
+            previous_version_id=previous.id if previous else None,
+        )
+        session.add(version)
+        session.flush()
+        if source:
+            message, turn, conversation = source
+            session.add(
+                MemorySourceLink(
+                    memory_version_id=version.id,
+                    source_key=f"message:{message.id}",
+                    source_kind="message",
+                    message_id=message.id,
+                    turn_id=turn.id,
+                    conversation_id=conversation.id,
+                    role=message.role,
+                    quote=message.text,
+                    content_hash=sha256(message.text.encode()).hexdigest(),
+                )
+            )
+        else:
+            session.add(
+                MemorySourceLink(
+                    memory_version_id=version.id,
+                    source_key=f"manual:{memory.create_request_id}:{memory.revision}",
+                    source_kind="manual",
+                )
+            )
+        return version
 
     @staticmethod
     def _owned_instance(session, user, instance_id, lock=False):
@@ -78,6 +133,7 @@ class MemoryService:
             memory_id=memory.id,
             instance_id=memory.instance_id,
             kind=memory.kind,
+            memory_type=memory.memory_type,
             content=memory.content,
             status=memory.status,
             revision=memory.revision,
@@ -131,8 +187,9 @@ class MemoryService:
                 if existing.status == "deleted":
                     raise DomainError(409, "memory_deleted")
                 return self._view(session, existing)
+            source = None
             if source_message_id:
-                self._source(session, instance_id, source_message_id)
+                source = self._source(session, instance_id, source_message_id)
                 if session.scalar(
                     select(PersonalMemory).where(
                         PersonalMemory.instance_id == instance_id,
@@ -146,13 +203,16 @@ class MemoryService:
                 original_content_hash=digest,
                 source_message_id=source_message_id,
                 kind="fact",
+                memory_type="fact",
                 content=content,
                 status="active",
                 revision=1,
             )
             session.add(memory)
+            instance.data_revision += 1
             instance.context_revision += 1
             session.flush()
+            self._append_version(session, memory, "create", source=source)
             return self._view(session, memory)
 
     def update(self, user, memory_id, expected_revision, content):
@@ -163,12 +223,14 @@ class MemoryService:
             if memory.revision != expected_revision:
                 raise DomainError(409, "memory_revision_conflict")
             instance.context_revision += 1
+            instance.data_revision += 1
             instance.history_floor_revision = instance.context_revision
             StateService.invalidate_for_memory_change(session, instance)
             memory.content = content
             memory.revision += 1
             memory.updated_at = datetime.now(timezone.utc)
             session.flush()
+            self._append_version(session, memory, "update")
             return self._view(session, memory)
 
     def delete(self, user, memory_id, expected_revision):
@@ -182,6 +244,7 @@ class MemoryService:
                 raise DomainError(409, "memory_revision_conflict")
             now = datetime.now(timezone.utc)
             instance.context_revision += 1
+            instance.data_revision += 1
             instance.history_floor_revision = instance.context_revision
             StateService.invalidate_for_memory_change(session, instance, now)
             memory.content = None
@@ -190,4 +253,5 @@ class MemoryService:
             memory.updated_at = now
             memory.deleted_at = now
             session.flush()
+            self._append_version(session, memory, "delete")
             return self._view(session, memory)

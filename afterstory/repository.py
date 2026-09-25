@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from uuid import uuid4
 
@@ -14,6 +15,14 @@ from afterstory.models import (
     Turn,
     User,
 )
+
+
+@dataclass(frozen=True)
+class PreparedTurn:
+    conversation_id: str
+    instance_id: str
+    context_revision: int
+    messages: list
 
 
 class Repository:
@@ -174,7 +183,30 @@ class Repository:
         )
         return CharacterResponse(message.id, turn.id, message.text)
 
-    def begin_turn(self, user, conversation_id, request_id, text):
+    def prepare_context(self, user, conversation_id, text):
+        with self.sessions() as session:
+            conversation = self.owned_conversation(session, user, conversation_id)
+            instance = session.get(CharacterInstance, conversation.instance_id)
+            version = session.get(CharacterVersion, instance.version_id)
+            return PreparedTurn(
+                conversation_id=conversation_id,
+                instance_id=instance.id,
+                context_revision=instance.context_revision,
+                messages=self.context.build(
+                    session, conversation_id, instance, version.system_prompt, text
+                ),
+            )
+
+    def reserve_turn(
+        self,
+        user,
+        conversation_id,
+        request_id,
+        text,
+        prepared,
+        timezone_name="UTC",
+        timezone_source="server_default",
+    ):
         now = datetime.now(timezone.utc)
         with self.sessions.begin() as session:
             conversation = self.owned_conversation(session, user, conversation_id, lock=True)
@@ -208,7 +240,12 @@ class Repository:
                 .where(CharacterInstance.id == conversation.instance_id)
                 .with_for_update()
             )
-            version = session.get(CharacterVersion, instance.version_id)
+            if (
+                prepared.conversation_id != conversation_id
+                or prepared.instance_id != instance.id
+                or prepared.context_revision != instance.context_revision
+            ):
+                raise DomainError(409, "context_changed_during_prepare")
             attempt = str(uuid4())
             if not turn:
                 turn = Turn(
@@ -222,17 +259,43 @@ class Repository:
                 )
                 session.add(turn)
                 session.flush()
-                session.add(Message(turn_id=turn.id, role="user", text=text))
+                session.add(
+                    Message(
+                        turn_id=turn.id,
+                        role="user",
+                        text=text,
+                        recorded_at=now,
+                        timezone_name=timezone_name,
+                        timezone_source=timezone_source,
+                    )
+                )
             turn.status = "processing"
             turn.updated_at = now
             turn.attempt = attempt
             turn.error_code = None
             turn.lease_until = now + timedelta(seconds=self.lease_seconds)
             turn.context_revision = instance.context_revision
-            messages = self.context.build(
-                session, conversation_id, instance, version.system_prompt, text
-            )
-            return turn.id, attempt, messages
+            return turn.id, attempt, prepared.messages
+
+    def begin_turn(
+        self,
+        user,
+        conversation_id,
+        request_id,
+        text,
+        timezone_name="UTC",
+        timezone_source="server_default",
+    ):
+        prepared = self.prepare_context(user, conversation_id, text)
+        return self.reserve_turn(
+            user,
+            conversation_id,
+            request_id,
+            text,
+            prepared,
+            timezone_name,
+            timezone_source,
+        )
 
     def finish_turn(self, user, conversation_id, turn_id, attempt, text=None, error=None):
         context_changed = False
@@ -263,7 +326,14 @@ class Repository:
                 turn.error_code = "context_changed"
                 context_changed = True
             else:
-                message = Message(turn_id=turn.id, role="assistant", text=text)
+                message = Message(
+                    turn_id=turn.id,
+                    role="assistant",
+                    text=text,
+                    recorded_at=datetime.now(timezone.utc),
+                    timezone_name="UTC",
+                    timezone_source="server",
+                )
                 turn.updated_at = datetime.now(timezone.utc)
                 session.add(message)
                 turn.status = "completed"

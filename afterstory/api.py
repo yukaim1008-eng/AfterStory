@@ -39,6 +39,7 @@ class ConversationInput(Input):
 class MessageInput(Input):
     request_id: str = Field(min_length=1, max_length=100)
     text: str = Field(min_length=1, max_length=8000)
+    timezone: str | None = Field(default=None, min_length=1, max_length=64)
 
 
 class MemoryCreateInput(Input):
@@ -183,7 +184,14 @@ def create_app(settings=None, provider=None):
 
     @router.post("/conversations/{conversation_id}/messages")
     def send(conversation_id: str, body: MessageInput, user=Depends(current_user)):
-        return service.send(user, conversation_id, body.request_id, body.text)
+        return service.send(
+            user,
+            conversation_id,
+            body.request_id,
+            body.text,
+            timezone_name=body.timezone or settings.user_timezone,
+            timezone_source="client_reported" if body.timezone else "server_default",
+        )
 
     @router.get("/conversations/{conversation_id}/messages")
     def history(

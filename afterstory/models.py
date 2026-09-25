@@ -49,6 +49,7 @@ class CharacterInstance(Base):
     user_id: Mapped[str] = mapped_column(ForeignKey("users.id"), index=True)
     version_id: Mapped[str] = mapped_column(ForeignKey("character_versions.id"))
     context_revision: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    data_revision: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
     history_floor_revision: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
     dynamics_revision: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
 
@@ -92,6 +93,11 @@ class Message(Base):
     turn_id: Mapped[str] = mapped_column(ForeignKey("turns.id"), index=True)
     role: Mapped[str] = mapped_column(String(12))
     text: Mapped[str] = mapped_column(Text)
+    recorded_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=True
+    )
+    timezone_name: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    timezone_source: Mapped[str | None] = mapped_column(String(24), nullable=True)
 
 
 class PersonalMemory(Base):
@@ -110,6 +116,7 @@ class PersonalMemory(Base):
         ForeignKey("messages.id"), nullable=True
     )
     kind: Mapped[str] = mapped_column(String(20), default="fact")
+    memory_type: Mapped[str] = mapped_column(String(20), default="fact", server_default="fact")
     content: Mapped[str | None] = mapped_column(Text, nullable=True)
     status: Mapped[str] = mapped_column(String(20), default="active")
     revision: Mapped[int] = mapped_column(Integer, default=1)
@@ -121,6 +128,157 @@ class PersonalMemory(Base):
     )
     deleted_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
+    )
+
+
+class PersonalMemoryVersion(Base):
+    __tablename__ = "personal_memory_versions"
+    __table_args__ = (UniqueConstraint("memory_id", "revision"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    memory_id: Mapped[str] = mapped_column(ForeignKey("personal_memories.id"), index=True)
+    revision: Mapped[int] = mapped_column(Integer)
+    schema_version: Mapped[str] = mapped_column(String(16), default="1.0")
+    memory_type: Mapped[str] = mapped_column(String(20))
+    evidence_kind: Mapped[str] = mapped_column(String(24))
+    payload: Mapped[dict] = mapped_column(JSONB)
+    content: Mapped[str | None] = mapped_column(Text, nullable=True)
+    status: Mapped[str] = mapped_column(String(20))
+    operation: Mapped[str] = mapped_column(String(20))
+    previous_version_id: Mapped[str | None] = mapped_column(
+        ForeignKey("personal_memory_versions.id"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class MemorySourceLink(Base):
+    __tablename__ = "memory_source_links"
+    __table_args__ = (UniqueConstraint("memory_version_id", "source_key"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    memory_version_id: Mapped[str] = mapped_column(
+        ForeignKey("personal_memory_versions.id"), index=True
+    )
+    source_key: Mapped[str] = mapped_column(String(120))
+    source_kind: Mapped[str] = mapped_column(String(24))
+    message_id: Mapped[str | None] = mapped_column(ForeignKey("messages.id"), nullable=True)
+    turn_id: Mapped[str | None] = mapped_column(ForeignKey("turns.id"), nullable=True)
+    conversation_id: Mapped[str | None] = mapped_column(
+        ForeignKey("conversations.id"), nullable=True
+    )
+    role: Mapped[str | None] = mapped_column(String(12), nullable=True)
+    quote: Mapped[str | None] = mapped_column(Text, nullable=True)
+    content_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class MemoryDependency(Base):
+    __tablename__ = "memory_dependencies"
+    __table_args__ = (
+        UniqueConstraint(
+            "instance_id", "dependent_type", "dependent_id", "source_type", "source_id"
+        ),
+    )
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    dependent_type: Mapped[str] = mapped_column(String(32))
+    dependent_id: Mapped[str] = mapped_column(String(64))
+    source_type: Mapped[str] = mapped_column(String(32))
+    source_id: Mapped[str] = mapped_column(String(64))
+    source_revision: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    status: Mapped[str] = mapped_column(String(20), default="active")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    invalidated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class MemorySuppression(Base):
+    __tablename__ = "memory_suppressions"
+    __table_args__ = (UniqueConstraint("instance_id", "request_id"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    request_id: Mapped[str] = mapped_column(String(100))
+    target_type: Mapped[str] = mapped_column(String(24))
+    target_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    fingerprint: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    status: Mapped[str] = mapped_column(String(20), default="active")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class MemoryJob(Base):
+    __tablename__ = "memory_jobs"
+    __table_args__ = (UniqueConstraint("instance_id", "job_key"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    job_key: Mapped[str] = mapped_column(String(160))
+    job_type: Mapped[str] = mapped_column(String(32))
+    status: Mapped[str] = mapped_column(String(20), default="pending")
+    payload: Mapped[dict] = mapped_column(JSONB)
+    target_data_revision: Mapped[int] = mapped_column(Integer)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    lease_token: Mapped[str | None] = mapped_column(String(36), nullable=True)
+    lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class ConversationSegment(Base):
+    __tablename__ = "conversation_segments"
+    __table_args__ = (UniqueConstraint("conversation_id", "start_sequence", "end_sequence"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    conversation_id: Mapped[str] = mapped_column(ForeignKey("conversations.id"), index=True)
+    start_sequence: Mapped[int] = mapped_column(Integer)
+    end_sequence: Mapped[int] = mapped_column(Integer)
+    turn_ids: Mapped[list] = mapped_column(JSONB)
+    source_hash: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(20), default="pending")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class SegmentSummary(Base):
+    __tablename__ = "segment_summaries"
+    __table_args__ = (UniqueConstraint("segment_id", "revision"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    segment_id: Mapped[str] = mapped_column(ForeignKey("conversation_segments.id"), index=True)
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    schema_version: Mapped[str] = mapped_column(String(16), default="1.0")
+    generator_version: Mapped[str] = mapped_column(String(32))
+    payload: Mapped[dict] = mapped_column(JSONB)
+    text: Mapped[str] = mapped_column(Text)
+    source_hash: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(20), default="active")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class ContinuityNote(Base):
+    __tablename__ = "continuity_notes"
+    __table_args__ = (UniqueConstraint("instance_id", "topic_key"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    topic_key: Mapped[str] = mapped_column(String(120))
+    status: Mapped[str] = mapped_column(String(20), default="open")
+    current_progress: Mapped[str] = mapped_column(Text)
+    open_question: Mapped[str | None] = mapped_column(Text, nullable=True)
+    mention_policy: Mapped[str] = mapped_column(String(24), default="when_relevant")
+    last_turn_id: Mapped[str | None] = mapped_column(ForeignKey("turns.id"), nullable=True)
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
     )
 
 
