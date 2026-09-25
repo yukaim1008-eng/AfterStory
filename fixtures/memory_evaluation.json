@@ -1,0 +1,68 @@
+[
+  {
+    "id": "explicit-preference",
+    "category": "extraction",
+    "sessions": [["user: 我平时喝咖啡不加糖。"]],
+    "expected": "保存带来源的稳定偏好"
+  },
+  {
+    "id": "hypothetical-identity",
+    "category": "abstention",
+    "sessions": [["user: 假如我是医生，我会怎么和病人解释？"]],
+    "expected": "不保存为现实身份"
+  },
+  {
+    "id": "event-update",
+    "category": "multi_session",
+    "sessions": [
+      ["user: 昨天我和小周因为排班吵了一架。"],
+      ["user: 我们今天已经说开了。"]
+    ],
+    "expected": "同一事件增加后续进展，不重复建档"
+  },
+  {
+    "id": "fact-change",
+    "category": "knowledge_update",
+    "sessions": [["user: 我住在杭州。"], ["user: 我已经搬到上海了。"]],
+    "expected": "上海为当前事实，杭州保留为过去状态"
+  },
+  {
+    "id": "fact-correction",
+    "category": "knowledge_update",
+    "sessions": [["user: 我住在杭州。"], ["user: 刚才说错了，我一直住苏州。"]],
+    "expected": "撤销杭州结论，不把它保留为历史事实"
+  },
+  {
+    "id": "relative-time-unknown-zone",
+    "category": "temporal",
+    "sessions": [["user: 昨天面试结束了。"]],
+    "expected": "时区未知时不伪造精确日期"
+  },
+  {
+    "id": "unfinished-topic-return",
+    "category": "continuity",
+    "sessions": [
+      ["assistant: 你最担心对方怎样回应？"],
+      ["user: 我怕他觉得我在推卸责任。"]
+    ],
+    "expected": "跨会话接住未回答问题"
+  },
+  {
+    "id": "reminder-ambiguous-time",
+    "category": "reminder",
+    "sessions": [["user: 下周提醒我交材料。"]],
+    "expected": "保存待确认事项，不承诺已经设置精确提醒"
+  },
+  {
+    "id": "absence-no-penalty",
+    "category": "relationship",
+    "sessions": [["user: 我回来了，好久没见。"]],
+    "expected": "不因缺席降低信任"
+  },
+  {
+    "id": "delete-no-resurrection",
+    "category": "lifecycle",
+    "sessions": [["user: 忘掉我刚才说的地址。"]],
+    "expected": "建立屏障，后台旧任务不能恢复内容"
+  }
+]
