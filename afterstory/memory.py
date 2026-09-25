@@ -7,6 +7,7 @@ from afterstory.domain import DomainError
 from afterstory.models import (
     CharacterInstance,
     Conversation,
+    MemoryIndexDocument,
     MemorySourceLink,
     Message,
     PersonalMemory,
@@ -19,6 +20,38 @@ from afterstory.state import StateService
 class MemoryService:
     def __init__(self, sessions):
         self.sessions = sessions
+
+    @staticmethod
+    def _sync_index(session, memory):
+        for document in session.scalars(
+            select(MemoryIndexDocument).where(
+                MemoryIndexDocument.memory_id == memory.id,
+                MemoryIndexDocument.status == "active",
+            )
+        ):
+            document.status = "stale"
+        if memory.status != "active" or not memory.content:
+            return
+        existing = session.scalar(
+            select(MemoryIndexDocument).where(
+                MemoryIndexDocument.memory_id == memory.id,
+                MemoryIndexDocument.memory_revision == memory.revision,
+            )
+        )
+        if existing:
+            existing.status = "active"
+            return
+        session.add(
+            MemoryIndexDocument(
+                instance_id=memory.instance_id,
+                memory_id=memory.id,
+                memory_revision=memory.revision,
+                document_type="memory",
+                content=memory.content,
+                search_vector=func.to_tsvector("simple", memory.content),
+                status="active",
+            )
+        )
 
     @staticmethod
     def _append_version(session, memory, operation, evidence_kind="manual", source=None):
@@ -213,6 +246,7 @@ class MemoryService:
             instance.context_revision += 1
             session.flush()
             self._append_version(session, memory, "create", source=source)
+            self._sync_index(session, memory)
             return self._view(session, memory)
 
     def update(self, user, memory_id, expected_revision, content):
@@ -231,6 +265,7 @@ class MemoryService:
             memory.updated_at = datetime.now(timezone.utc)
             session.flush()
             self._append_version(session, memory, "update")
+            self._sync_index(session, memory)
             return self._view(session, memory)
 
     def delete(self, user, memory_id, expected_revision):
@@ -254,4 +289,5 @@ class MemoryService:
             memory.deleted_at = now
             session.flush()
             self._append_version(session, memory, "delete")
+            self._sync_index(session, memory)
             return self._view(session, memory)

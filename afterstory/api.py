@@ -17,6 +17,7 @@ from afterstory.conversation import ConversationService
 from afterstory.database import make_sessions
 from afterstory.domain import DomainError
 from afterstory.memory import MemoryService
+from afterstory.memory_automation import ExplicitMemoryOperationService
 from afterstory.providers import ChatCompletionsProvider, FakeProvider
 from afterstory.repository import Repository
 
@@ -53,6 +54,14 @@ class MemoryUpdateInput(Input):
     content: str = Field(min_length=1, max_length=2000)
 
 
+class MemoryOperationInput(Input):
+    operation_id: str = Field(min_length=1, max_length=100)
+    action: str = Field(pattern="^(remember|correct|forget)$")
+    content: str | None = Field(default=None, min_length=1, max_length=2000)
+    memory_id: str | None = Field(default=None, min_length=1, max_length=36)
+    expected_revision: int | None = Field(default=None, ge=1)
+
+
 def current_user(request: Request):
     # Local-only M1 identity, never a user-controlled header or JSON field.
     return request.app.state.settings.dev_user_id
@@ -76,6 +85,7 @@ def create_app(settings=None, provider=None):
     )
     service = ConversationService(repository, provider)
     memory_service = MemoryService(sessions)
+    operation_service = ExplicitMemoryOperationService(sessions)
 
     @asynccontextmanager
     async def lifespan(app):
@@ -243,6 +253,28 @@ def create_app(settings=None, provider=None):
         user=Depends(current_user),
     ):
         return memory_service.delete(user, memory_id, expected_revision)
+
+    @router.post("/instances/{instance_id}/memory-operations")
+    def memory_operation(
+        instance_id: str,
+        body: MemoryOperationInput,
+        user=Depends(current_user),
+    ):
+        if body.action == "remember" and not body.content:
+            raise DomainError(422, "memory_content_required")
+        if body.action in {"correct", "forget"} and (
+            not body.memory_id or body.expected_revision is None
+        ):
+            raise DomainError(422, "memory_target_required")
+        return operation_service.execute(
+            user,
+            instance_id,
+            body.operation_id,
+            body.action,
+            body.content,
+            body.memory_id,
+            body.expected_revision,
+        )
 
     app.include_router(router)
     app.include_router(router, prefix="/api")

@@ -11,10 +11,12 @@ from afterstory.models import (
     CharacterInstance,
     CharacterVersion,
     Conversation,
+    MemoryJob,
     Message,
     Turn,
     User,
 )
+from afterstory.retrieval import RetrievalService
 
 
 @dataclass(frozen=True)
@@ -26,11 +28,19 @@ class PreparedTurn:
 
 
 class Repository:
-    def __init__(self, sessions, lease_seconds=120, history_turns=12, context=None):
+    def __init__(
+        self,
+        sessions,
+        lease_seconds=120,
+        history_turns=12,
+        context=None,
+        retrieval=None,
+    ):
         self.sessions = sessions
         self.lease_seconds = lease_seconds
         self.history_turns = history_turns
         self.context = context or ContextAssembler(history_turns=history_turns)
+        self.retrieval = retrieval or RetrievalService(sessions)
 
     @staticmethod
     def owned_conversation(session, user, conversation_id, lock=False):
@@ -184,16 +194,29 @@ class Repository:
         return CharacterResponse(message.id, turn.id, message.text)
 
     def prepare_context(self, user, conversation_id, text):
+        runtime_context = None
         with self.sessions() as session:
             conversation = self.owned_conversation(session, user, conversation_id)
             instance = session.get(CharacterInstance, conversation.instance_id)
             version = session.get(CharacterVersion, instance.version_id)
+            instance_id = instance.id
+            context_revision = instance.context_revision
+            system_prompt = version.system_prompt
+        runtime_context = self.retrieval.prepare(instance_id, text)
+        with self.sessions() as session:
+            conversation = self.owned_conversation(session, user, conversation_id)
+            instance = session.get(CharacterInstance, conversation.instance_id)
             return PreparedTurn(
                 conversation_id=conversation_id,
                 instance_id=instance.id,
-                context_revision=instance.context_revision,
+                context_revision=context_revision,
                 messages=self.context.build(
-                    session, conversation_id, instance, version.system_prompt, text
+                    session,
+                    conversation_id,
+                    instance,
+                    system_prompt,
+                    text,
+                    runtime_context,
                 ),
             )
 
@@ -338,6 +361,18 @@ class Repository:
                 session.add(message)
                 turn.status = "completed"
                 session.flush()
+                for job_type in ("extract", "summarize"):
+                    session.add(
+                        MemoryJob(
+                            instance_id=instance.id,
+                            job_key=f"turn:{turn.id}:{job_type}",
+                            job_type=job_type,
+                            status="pending",
+                            payload={"turn_id": turn.id, "conversation_id": conversation_id},
+                            target_data_revision=instance.data_revision,
+                            attempts=0,
+                        )
+                    )
                 response = CharacterResponse(message.id, turn.id, message.text)
         if context_changed:
             raise DomainError(409, "context_changed")

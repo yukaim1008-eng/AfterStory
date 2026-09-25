@@ -11,7 +11,7 @@ from sqlalchemy import (
     UniqueConstraint,
     func,
 )
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.dialects.postgresql import JSONB, TSVECTOR
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -117,6 +117,7 @@ class PersonalMemory(Base):
     )
     kind: Mapped[str] = mapped_column(String(20), default="fact")
     memory_type: Mapped[str] = mapped_column(String(20), default="fact", server_default="fact")
+    memory_key: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
     content: Mapped[str | None] = mapped_column(Text, nullable=True)
     status: Mapped[str] = mapped_column(String(20), default="active")
     revision: Mapped[int] = mapped_column(Integer, default=1)
@@ -278,6 +279,42 @@ class ContinuityNote(Base):
     last_turn_id: Mapped[str | None] = mapped_column(ForeignKey("turns.id"), nullable=True)
     revision: Mapped[int] = mapped_column(Integer, default=1)
     updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class MemoryOperationReceipt(Base):
+    __tablename__ = "memory_operation_receipts"
+    __table_args__ = (UniqueConstraint("instance_id", "operation_id"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    operation_id: Mapped[str] = mapped_column(String(100))
+    action: Mapped[str] = mapped_column(String(20))
+    status: Mapped[str] = mapped_column(String(20))
+    target_memory_id: Mapped[str | None] = mapped_column(
+        ForeignKey("personal_memories.id"), nullable=True
+    )
+    result_revision: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class MemoryIndexDocument(Base):
+    __tablename__ = "memory_index_documents"
+    __table_args__ = (UniqueConstraint("memory_id", "memory_revision"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    memory_id: Mapped[str] = mapped_column(ForeignKey("personal_memories.id"), index=True)
+    memory_revision: Mapped[int] = mapped_column(Integer)
+    document_type: Mapped[str] = mapped_column(String(20), default="memory")
+    content: Mapped[str] = mapped_column(Text)
+    search_vector: Mapped[object | None] = mapped_column(TSVECTOR, nullable=True)
+    embedding: Mapped[list | None] = mapped_column(JSONB, nullable=True)
+    embedding_version: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    status: Mapped[str] = mapped_column(String(20), default="active")
+    created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
 
