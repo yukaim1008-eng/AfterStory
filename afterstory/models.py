@@ -170,6 +170,8 @@ class MemorySourceLink(Base):
     )
     role: Mapped[str | None] = mapped_column(String(12), nullable=True)
     quote: Mapped[str | None] = mapped_column(Text, nullable=True)
+    span_start: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    span_end: Mapped[int | None] = mapped_column(Integer, nullable=True)
     content_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()

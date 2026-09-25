@@ -4,11 +4,14 @@ from hashlib import sha256
 from sqlalchemy import func, select
 
 from afterstory.domain import DomainError
+from afterstory.lifecycle import MemoryLifecycleService
 from afterstory.models import (
     CharacterInstance,
     Conversation,
+    MemoryDependency,
     MemoryIndexDocument,
     MemorySourceLink,
+    MemorySuppression,
     Message,
     PersonalMemory,
     PersonalMemoryVersion,
@@ -40,15 +43,47 @@ class MemoryService:
         )
         if existing:
             existing.status = "active"
+            dependency = session.scalar(
+                select(MemoryDependency).where(
+                    MemoryDependency.instance_id == memory.instance_id,
+                    MemoryDependency.dependent_type == "memory_index",
+                    MemoryDependency.dependent_id == existing.id,
+                    MemoryDependency.source_type == "memory",
+                    MemoryDependency.source_id == memory.id,
+                )
+            )
+            if not dependency:
+                session.add(
+                    MemoryDependency(
+                        instance_id=memory.instance_id,
+                        dependent_type="memory_index",
+                        dependent_id=existing.id,
+                        source_type="memory",
+                        source_id=memory.id,
+                        source_revision=memory.revision,
+                        status="active",
+                    )
+                )
             return
+        document = MemoryIndexDocument(
+            instance_id=memory.instance_id,
+            memory_id=memory.id,
+            memory_revision=memory.revision,
+            document_type="memory",
+            content=memory.content,
+            search_vector=func.to_tsvector("simple", memory.content),
+            status="active",
+        )
+        session.add(document)
+        session.flush()
         session.add(
-            MemoryIndexDocument(
+            MemoryDependency(
                 instance_id=memory.instance_id,
-                memory_id=memory.id,
-                memory_revision=memory.revision,
-                document_type="memory",
-                content=memory.content,
-                search_vector=func.to_tsvector("simple", memory.content),
+                dependent_type="memory_index",
+                dependent_id=document.id,
+                source_type="memory",
+                source_id=memory.id,
+                source_revision=memory.revision,
                 status="active",
             )
         )
@@ -266,6 +301,7 @@ class MemoryService:
             session.flush()
             self._append_version(session, memory, "update")
             self._sync_index(session, memory)
+            MemoryLifecycleService.invalidate_dependents(session, instance, memory)
             return self._view(session, memory)
 
     def delete(self, user, memory_id, expected_revision):
@@ -290,4 +326,16 @@ class MemoryService:
             session.flush()
             self._append_version(session, memory, "delete")
             self._sync_index(session, memory)
+            if memory.memory_key:
+                session.add(
+                    MemorySuppression(
+                        instance_id=memory.instance_id,
+                        request_id=f"delete:{memory.id}:{memory.revision}",
+                        target_type="fingerprint",
+                        target_id=memory.id,
+                        fingerprint=memory.memory_key,
+                        status="active",
+                    )
+                )
+            MemoryLifecycleService.invalidate_dependents(session, instance, memory)
             return self._view(session, memory)

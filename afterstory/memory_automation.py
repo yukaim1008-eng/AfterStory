@@ -4,12 +4,14 @@ from hashlib import sha256
 from sqlalchemy import select
 
 from afterstory.domain import DomainError
+from afterstory.lifecycle import MemoryLifecycleService
 from afterstory.memory import MemoryService
 from afterstory.memory_contracts import MemoryOperationCandidate
 from afterstory.models import (
     CharacterInstance,
     Conversation,
     MemoryOperationReceipt,
+    MemorySuppression,
     Message,
     PersonalMemory,
     Turn,
@@ -80,13 +82,16 @@ class MemoryAutomationService:
             if operation.action in {"no_change", "defer"} or operation.memory is None:
                 results.append({"index": index, "status": operation.action})
                 continue
-            if operation.action == "correct":
-                results.append(
-                    {"index": index, "status": "deferred_requires_explicit_confirmation"}
-                )
-                continue
             if any(source.message_id not in allowed_sources for source in operation.memory.sources):
                 raise ValueError("memory_source_outside_extraction_input")
+            if operation.action == "correct":
+                if operation.memory.evidence != "user_explicit":
+                    results.append(
+                        {"index": index, "status": "deferred_requires_explicit_confirmation"}
+                    )
+                else:
+                    results.append(self._correct(instance_id, index, operation))
+                continue
             results.append(self._commit(instance_id, turn_id, index, operation))
         return results
 
@@ -109,6 +114,14 @@ class MemoryAutomationService:
             )
             if existing:
                 return {"index": index, "status": "deduplicated", "memory_id": existing.id}
+            if session.scalar(
+                select(MemorySuppression).where(
+                    MemorySuppression.instance_id == instance_id,
+                    MemorySuppression.fingerprint == key,
+                    MemorySuppression.status == "active",
+                )
+            ):
+                return {"index": index, "status": "suppressed"}
             request_id = f"auto:{turn_id}:{index}"
             memory = session.scalar(
                 select(PersonalMemory).where(
@@ -148,6 +161,60 @@ class MemoryAutomationService:
             )
             MemoryService._sync_index(session, memory)
             return {"index": index, "status": "created", "memory_id": memory.id}
+
+    def _correct(self, instance_id, index, operation):
+        if not operation.target_memory_id:
+            return {"index": index, "status": "deferred_missing_target"}
+        candidate = operation.memory
+        content = memory_content(candidate.payload)
+        with self.sessions.begin() as session:
+            instance = session.scalar(
+                select(CharacterInstance)
+                .where(CharacterInstance.id == instance_id)
+                .with_for_update()
+            )
+            memory = session.scalar(
+                select(PersonalMemory)
+                .where(
+                    PersonalMemory.id == operation.target_memory_id,
+                    PersonalMemory.instance_id == instance_id,
+                    PersonalMemory.status == "active",
+                )
+                .with_for_update()
+            )
+            if not memory:
+                return {"index": index, "status": "deferred_target_unavailable"}
+            memory.content = content
+            memory.memory_type = candidate.payload.kind
+            memory.memory_key = memory_key(candidate.payload)
+            memory.kind = "fact"
+            memory.revision += 1
+            instance.data_revision += 1
+            instance.context_revision += 1
+            instance.history_floor_revision = instance.context_revision
+            session.flush()
+            source = candidate.sources[0]
+            row = session.execute(
+                select(Message, Turn, Conversation)
+                .join(Turn, Turn.id == Message.turn_id)
+                .join(Conversation, Conversation.id == Turn.conversation_id)
+                .where(Message.id == source.message_id)
+            ).first()
+            MemoryService._append_version(
+                session,
+                memory,
+                "correct",
+                evidence_kind=candidate.evidence,
+                source=row,
+            )
+            MemoryService._sync_index(session, memory)
+            MemoryLifecycleService.invalidate_dependents(session, instance, memory)
+            return {
+                "index": index,
+                "status": "corrected",
+                "memory_id": memory.id,
+                "revision": memory.revision,
+            }
 
 
 class ExplicitMemoryOperationService:
