@@ -1,6 +1,7 @@
 from datetime import datetime
 from uuid import uuid4
 
+from pgvector.sqlalchemy import Vector
 from sqlalchemy import (
     CheckConstraint,
     DateTime,
@@ -311,7 +312,7 @@ class MemoryIndexDocument(Base):
     document_type: Mapped[str] = mapped_column(String(20), default="memory")
     content: Mapped[str] = mapped_column(Text)
     search_vector: Mapped[object | None] = mapped_column(TSVECTOR, nullable=True)
-    embedding: Mapped[list | None] = mapped_column(JSONB, nullable=True)
+    embedding: Mapped[list | None] = mapped_column(Vector(), nullable=True)
     embedding_version: Mapped[str | None] = mapped_column(String(64), nullable=True)
     status: Mapped[str] = mapped_column(String(20), default="active")
     created_at: Mapped[datetime] = mapped_column(

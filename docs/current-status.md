@@ -4,6 +4,7 @@
 - Memory System M1 已实现：记忆不可变版本、多来源、依赖/抑制基础、持久化任务 lease、独立 data revision，以及消息时间和时区来源已落库；旧 PersonalMemory API 与数据继续兼容。
 - Memory System M2 已实现：有界分段摘要、跨会话连续性笔记、原文关键词回读，以及 prepare/reserve/finish 的短事务发送边界。
 - Memory System M3 已实现：成功轮次后台提取任务、严格候选校验、稳定事实/事件身份、跨批次去重，以及显式记住/纠正/忘记操作回执。
+- Memory System M4 已实现：PostgreSQL 全文与 pgvector 混合候选、可选重排、PreparedRuntimeContext 预算和 ContextAssembler 接入；实例与删除状态先做硬过滤。
 - 当前实施：用户已授权 Memory System M0–M8 连续开发。本轮按阶段实现、验证、复查和中文提交，全部完成后统一汇报；实施记录见 [Memory System 实施记录](implementation/memory-system.md)。
 - 最新设计进度：Memory System 已按长期连续性、长期记忆、持续事项/提醒、召回、生命周期、State/Relationship 和统一数据契约分区形成完整待审稿；未打开 AfterStory 时的主动通知仍留到后续 Tools 编排。当前等待用户集中审核，未开始开发。见 [记忆、状态和关系](design/03-memory-state.md)。
 - 长期事实、经历与写入更新规则已形成 [完整待审稿](design/memory/03-long-term-memory-writing.md)。推荐基线覆盖自动保存、推测边界、稳定事件身份、时间精度、后台增量整理、两层去重和冲突更新；用户审核前不视为产品决策，未修改业务代码。

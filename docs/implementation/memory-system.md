@@ -44,3 +44,12 @@
 - “记住/纠正/忘记”提供持久化 operation receipt，同一 operation ID 返回原结果。
 
 验证：自动新增、跨轮去重、后台 job 登记、双修订和显式回执测试通过；使用 fake extractor。
+
+## M4：混合召回与 Runtime Context
+
+- 可重建 index document 同时保存 PostgreSQL 全文向量和 pgvector Embedding；切换至 `pgvector/pgvector:pg17` 镜像。
+- 候选先执行实例、有效状态、当前修订硬过滤，再按全文、向量相似度和可选 reranker 排序。
+- `PreparedRuntimeContext` 记录选择 ID、原因和预算；ContextAssembler 只消费准备结果，不调用外部 Provider。
+- 无 Embedding 或 reranker 时降级到全文/近期候选；条数与保守 token 预算均有硬上限。
+
+验证：相关性、预算、跨实例隔离、Provider 最终输入和 pgvector 迁移均使用 fake embedding 测试通过。

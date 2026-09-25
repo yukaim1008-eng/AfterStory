@@ -136,9 +136,21 @@ class ContextAssembler:
             + json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
         )
 
-    def build(self, session, conversation_id, instance, system_prompt, user_text):
+    def build(
+        self,
+        session,
+        conversation_id,
+        instance,
+        system_prompt,
+        user_text,
+        runtime_context=None,
+    ):
         messages = [ChatMessage("system", system_prompt)]
-        memories = self._memories(session, instance.id)
+        memories = (
+            runtime_context.memory_items
+            if runtime_context and runtime_context.instance_id == instance.id
+            else self._memories(session, instance.id)
+        )
         if memories:
             payload = json.dumps(memories, ensure_ascii=False, separators=(",", ":"))
             messages.append(

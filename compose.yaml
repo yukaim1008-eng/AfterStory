@@ -1,7 +1,7 @@
 name: afterstory
 services:
   postgres:
-    image: postgres:17
+    image: pgvector/pgvector:pg17
     environment:
       POSTGRES_USER: afterstory
       POSTGRES_PASSWORD: afterstory_local
