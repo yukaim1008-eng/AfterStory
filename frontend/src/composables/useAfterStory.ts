@@ -18,6 +18,9 @@ import type {
   History,
   Memory as PersonalMemory,
   MemoryPage,
+  Matter,
+  MatterPage,
+  ReminderDelivery,
   Session,
   SessionPage,
   Turn,
@@ -58,6 +61,13 @@ export function createAfterStory() {
   const memoryEditing = ref<string>();
   const memorySaving = ref(false);
   const memoryDelete = ref<PersonalMemory>();
+  const matters = ref<Matter[]>([]);
+  const matterLoading = ref(false);
+  const matterError = ref("");
+  const matterForm = ref(false);
+  const matterContent = ref("");
+  const matterWhen = ref("");
+  const dueReminder = ref<ReminderDelivery>();
   let memoryRequest = 0;
   const targetTurn = ref("");
   const scrollArea = ref<HTMLElement>();
@@ -105,6 +115,9 @@ export function createAfterStory() {
       memoryAppendFailed.value = false;
       memoryError.value = "";
       memoryLoading.value = false;
+      matters.value = [];
+      matterError.value = "";
+      dueReminder.value = undefined;
     },
     { flush: "sync" },
   );
@@ -373,7 +386,11 @@ export function createAfterStory() {
         chats[id] === state &&
         id === selected.value
       )
-        await loadMemories(session.instance_id);
+        await Promise.all([
+          loadMemories(session.instance_id),
+          loadMatters(session.instance_id),
+          checkDueReminder(session.instance_id),
+        ]);
     } catch (error) {
       if (opening[id] === request && chats[id] === state)
         state.error = errorText(error);
@@ -553,6 +570,105 @@ export function createAfterStory() {
       if (request === memoryRequest) memoryError.value = errorText(error);
     } finally {
       if (request === memoryRequest) memoryLoading.value = false;
+    }
+  }
+  async function loadMatters(instanceId = chat.value?.session?.instance_id) {
+    if (!instanceId || instanceId !== chat.value?.session?.instance_id) return;
+    matterLoading.value = true;
+    matterError.value = "";
+    try {
+      const result = await api<MatterPage>(
+        `/instances/${encodeURIComponent(instanceId)}/matters`,
+      );
+      if (instanceId === chat.value?.session?.instance_id)
+        matters.value = result.items;
+    } catch (error) {
+      if (instanceId === chat.value?.session?.instance_id)
+        matterError.value = errorText(error);
+    } finally {
+      matterLoading.value = false;
+    }
+  }
+  async function createMatter() {
+    const instanceId = chat.value?.session?.instance_id;
+    const content = matterContent.value.trim();
+    if (!instanceId || !content || memorySaving.value) return;
+    memorySaving.value = true;
+    matterError.value = "";
+    try {
+      const scheduled = matterWhen.value
+        ? new Date(matterWhen.value).toISOString()
+        : undefined;
+      await api(
+        `/instances/${encodeURIComponent(instanceId)}/matters`,
+        {
+          request_id: crypto.randomUUID(),
+          content,
+          matter_type: "reminder",
+          time_precision: scheduled ? "instant" : "unknown",
+          scheduled_at: scheduled,
+          timezone_name: scheduled
+            ? Intl.DateTimeFormat().resolvedOptions().timeZone
+            : undefined,
+          mention_policy: scheduled ? "on_due" : "when_relevant",
+        },
+        "POST",
+      );
+      matterForm.value = false;
+      matterContent.value = "";
+      matterWhen.value = "";
+      notice.value = scheduled ? "站内提醒已设置。" : "持续事项已保存。";
+      await loadMatters(instanceId);
+    } catch (error) {
+      matterError.value = errorText(error);
+    } finally {
+      memorySaving.value = false;
+    }
+  }
+  async function closeMatter(matter: Matter, operation: "complete" | "cancel") {
+    if (memorySaving.value) return;
+    memorySaving.value = true;
+    try {
+      await api(
+        `/matters/${encodeURIComponent(matter.matter_id)}`,
+        { expected_revision: matter.revision, operation },
+        "PATCH",
+      );
+      await loadMatters();
+    } catch (error) {
+      matterError.value = errorText(error);
+    } finally {
+      memorySaving.value = false;
+    }
+  }
+  async function checkDueReminder(
+    instanceId = chat.value?.session?.instance_id,
+  ) {
+    if (!instanceId || dueReminder.value) return;
+    try {
+      const result = await api<{ delivery: ReminderDelivery | null }>(
+        `/instances/${encodeURIComponent(instanceId)}/reminder-deliveries/due`,
+      );
+      if (instanceId === chat.value?.session?.instance_id && result.delivery)
+        dueReminder.value = result.delivery;
+    } catch {
+      // Reminder polling must not block chat recovery; the next foreground load retries.
+    }
+  }
+  async function dismissDueReminder() {
+    const delivery = dueReminder.value;
+    if (!delivery) return;
+    try {
+      await api(
+        `/reminder-deliveries/${encodeURIComponent(delivery.delivery_id)}/ack`,
+        { lease_token: delivery.lease_token, delivered: true },
+        "POST",
+      );
+      dueReminder.value = undefined;
+      await loadMatters();
+      await checkDueReminder();
+    } catch (error) {
+      matterError.value = errorText(error);
     }
   }
   function beginMemory(content = "", sourceMessageId?: string) {
@@ -786,6 +902,13 @@ export function createAfterStory() {
     memoryEditing,
     memorySaving,
     memoryDelete,
+    matters,
+    matterLoading,
+    matterError,
+    matterForm,
+    matterContent,
+    matterWhen,
+    dueReminder,
     memoryRequest,
     targetTurn,
     scrollArea,
@@ -821,6 +944,11 @@ export function createAfterStory() {
     editMemory,
     saveMemory,
     confirmDeleteMemory,
+    loadMatters,
+    createMatter,
+    closeMatter,
+    checkDueReminder,
+    dismissDueReminder,
     resume,
     saveCover,
     resetCover,

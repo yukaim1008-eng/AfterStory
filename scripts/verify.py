@@ -35,7 +35,7 @@ def main():
         run([uv, "run", "alembic", "upgrade", "head"], timeout=120)
         run([uv, "run", "python", "-m", "scripts.doctor", "--profile", "fake"], timeout=30)
         run([uv, "run", "ruff", "check", "afterstory", "tests", "scripts"], timeout=120)
-        run([uv, "run", "pytest", "-q"], timeout=300)
+        run([uv, "run", "pytest", "-q", "-p", "no:cacheprovider"], timeout=300)
         run([npm, "run", "build"], cwd=FRONTEND, timeout=300)
         run([npm, "run", "test:e2e"], cwd=FRONTEND, timeout=300)
         return 0

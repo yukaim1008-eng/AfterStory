@@ -55,6 +55,7 @@ async function fakeApi(
   let historyFailed = false;
   let conversationFailed = false;
   const memories: Memory[] = [...(options.memories || [])];
+  const matters: any[] = [];
   const requests: any[] = [];
   await page.route("**/api/**", async (route) => {
     const url = new URL(route.request().url());
@@ -155,6 +156,7 @@ async function fakeApi(
           memory_id: `memory-${memories.length + 1}`,
           instance_id: instanceId,
           kind: "fact",
+          memory_type: "fact",
           content: input.content,
           status: "active",
           revision: 1,
@@ -186,6 +188,43 @@ async function fakeApi(
           limit,
         };
       }
+    } else if (/^\/instances\/[^/]+\/matters$/.test(path)) {
+      const instanceId = decodeURIComponent(path.split("/")[2]!);
+      if (route.request().method() === "POST") {
+        const input = route.request().postDataJSON();
+        const item = {
+          matter_id: `matter-${matters.length + 1}`,
+          revision: 1,
+          matter_type: input.matter_type,
+          status: "open",
+          content: input.content,
+          next_step: null,
+          time_precision: input.time_precision,
+          scheduled_at: input.scheduled_at || null,
+          timezone_name: input.timezone_name || null,
+          mention_policy: input.mention_policy,
+          instance_id: instanceId,
+        };
+        matters.unshift(item);
+        body = item;
+      } else
+        body = {
+          items: matters.filter((item) => item.instance_id === instanceId),
+        };
+    } else if (/^\/instances\/[^/]+\/reminder-deliveries\/due$/.test(path)) {
+      body = { delivery: null };
+    } else if (/^\/matters\/[^/]+$/.test(path)) {
+      const matterId = decodeURIComponent(path.split("/")[2]!);
+      const item = matters.find(
+        (candidate) => candidate.matter_id === matterId,
+      );
+      const input = route.request().postDataJSON();
+      if (item) {
+        item.status =
+          input.operation === "complete" ? "completed" : "cancelled";
+        item.revision += 1;
+      }
+      body = item;
     } else if (/^\/memories\/[^/]+$/.test(path)) {
       const memoryId = decodeURIComponent(path.split("/")[2]!);
       const index = memories.findIndex((item) => item.memory_id === memoryId);
@@ -273,6 +312,7 @@ function memory(
     memory_id: id,
     instance_id: instanceId,
     kind: "fact",
+    memory_type: "fact",
     content,
     status: "active",
     revision: 1,
@@ -1167,6 +1207,23 @@ test("personal memories are explicitly saved, corrected, linked, and deleted", a
   ).toBeVisible();
 });
 
+test("ongoing matters can be created without pretending an unknown reminder time", async ({
+  page,
+}) => {
+  await fakeApi(page, false, { memory: true });
+  await page.goto("/#/memory/nanally");
+  await page.getByRole("button", { name: "持续事项" }).click();
+  await page.getByRole("button", { name: "添加持续事项" }).click();
+  await page
+    .getByLabel("希望她之后继续记得什么？")
+    .fill("下周继续整理旅行照片");
+  await page.getByRole("button", { name: "保存事项" }).click();
+  await expect(
+    page.getByText("下周继续整理旅行照片", { exact: true }),
+  ).toBeVisible();
+  await expect(page.getByText("未记录时间", { exact: true })).toBeVisible();
+});
+
 test("legacy versions restore their metadata and keep drafts and outbox in their own conversation", async ({
   page,
 }) => {
@@ -1700,8 +1757,12 @@ test("memories page presents compact empty and populated journal states", async 
   await page.goto("/#/history/nanally");
   await expect(page.locator(".history-row")).toHaveCount(4);
   await expect(page.locator(".history-scroll")).toContainText("陪我待一会儿吧");
-  await expect(page.locator(".history-scroll")).toContainText("快说快说，我要听！");
-  await page.screenshot({ path: "test-results/memories-history-populated.png" });
+  await expect(page.locator(".history-scroll")).toContainText(
+    "快说快说，我要听！",
+  );
+  await page.screenshot({
+    path: "test-results/memories-history-populated.png",
+  });
   await page.getByLabel("搜索回忆").fill("推进自己的项目");
   await expect(page.locator(".history-row")).toHaveCount(1);
   await page.screenshot({ path: "test-results/memories-history-filtered.png" });
@@ -1774,10 +1835,12 @@ test("non-chat headers share the same active marker", async ({ page }) => {
 
   for (const route of ["home", "characters", "history", "settings"]) {
     await page.goto(`/#/${route}/nanally`);
-    const marker = await page.locator(".topbar nav button.active").evaluate((el) => {
-      const after = getComputedStyle(el, "::after");
-      return { height: after.height, width: after.width };
-    });
+    const marker = await page
+      .locator(".topbar nav button.active")
+      .evaluate((el) => {
+        const after = getComputedStyle(el, "::after");
+        return { height: after.height, width: after.width };
+      });
     expect(marker).toEqual({ height: "2px", width: "20px" });
   }
 });
@@ -1793,13 +1856,7 @@ test("character themes follow every core page without retaining the prior accent
     ["iroi", "#507c68"],
     ["mint", "#167e88"],
   ]) {
-    for (const route of [
-      "home",
-      "characters",
-      "chat",
-      "history",
-      "settings",
-    ]) {
+    for (const route of ["home", "characters", "chat", "history", "settings"]) {
       await page.goto(`/#/${route}/${character}`);
       await expect(page.locator("#main-content")).toBeVisible();
       await expect(page.locator(".application")).toHaveCSS("--accent", accent);
@@ -1842,7 +1899,9 @@ test("settings keeps every preference category in one quiet workspace", async ({
           exact: true,
         }),
       ).toBeVisible();
-      const preview = await page.locator(".cover-layout .portrait").boundingBox();
+      const preview = await page
+        .locator(".cover-layout .portrait")
+        .boundingBox();
       expect(preview?.width).toBeGreaterThanOrEqual(260);
     }
     await page.screenshot({
@@ -2004,7 +2063,9 @@ test("desktop viewport sizes keep core pages and controls inside the screen", as
           await scroll.evaluate((el) => {
             el.scrollTop = el.scrollHeight;
           });
-          expect(await scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+          expect(await scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(
+            0,
+          );
         }
         expect(await fixed.boundingBox()).toEqual(before);
       }

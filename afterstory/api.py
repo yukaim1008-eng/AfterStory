@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import re
 from contextlib import asynccontextmanager
@@ -19,6 +20,8 @@ from afterstory.database import make_sessions
 from afterstory.domain import DomainError
 from afterstory.memory import MemoryService
 from afterstory.memory_automation import ExplicitMemoryOperationService
+from afterstory.memory_provider import StructuredMemoryProvider
+from afterstory.memory_worker import MemoryRuntimeWorker
 from afterstory.providers import ChatCompletionsProvider, FakeProvider
 from afterstory.reminders import MatterService
 from afterstory.repository import Repository
@@ -112,10 +115,36 @@ def create_app(settings=None, provider=None):
     operation_service = ExplicitMemoryOperationService(sessions)
     matter_service = MatterService(sessions)
 
+    memory_worker = None
+    if settings.active_model.provider != "fake":
+        structured_provider = StructuredMemoryProvider(provider)
+        memory_worker = MemoryRuntimeWorker(
+            sessions, structured_provider, structured_provider, settings.turn_lease_seconds
+        )
+
     @asynccontextmanager
     async def lifespan(app):
-        yield
-        engine.dispose()
+        stop = asyncio.Event()
+
+        async def work():
+            while not stop.is_set():
+                worked = await asyncio.to_thread(memory_worker.run_once)
+                if not worked:
+                    try:
+                        await asyncio.wait_for(
+                            stop.wait(), timeout=settings.memory_worker_poll_seconds
+                        )
+                    except TimeoutError:
+                        pass
+
+        task = asyncio.create_task(work()) if memory_worker else None
+        try:
+            yield
+        finally:
+            stop.set()
+            if task:
+                await task
+            engine.dispose()
 
     app = FastAPI(title=settings.app_name, lifespan=lifespan)
     app.add_middleware(
@@ -180,7 +209,8 @@ def create_app(settings=None, provider=None):
             "capabilities": {
                 "voice": False,
                 "memory": True,
-                "memory_extraction": False,
+                "memory_extraction": memory_worker is not None,
+                "online_reminders": True,
                 "canon_update": False,
             },
         }

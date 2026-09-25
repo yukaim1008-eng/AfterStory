@@ -1,8 +1,8 @@
 # 记忆、状态和关系
 
-状态：F2 阶段 B–D 的个人记忆管理、受限上下文读取及状态/关系存储边界已实现；自动变化策略仍暂缓。
+状态：2026-09-25，Memory System M0–M8 已按本设计实现并进入统一验收；实施证据见 [Memory System 实施记录](../implementation/memory-system.md)。
 
-当前进入 Memory System 设计讨论，尚未授权实现。用户要求支持长期持续聊天与上下文压缩；提醒的分阶段范围已确认，见下方记录。
+系统现已支持长期持续聊天、上下文压缩、版本化长期记忆、持续事项、站内提醒、混合召回、生命周期重建及状态/关系演进。关闭应用后的系统通知继续留到 Tools/通知编排。
 
 [长会话连续性与上下文压缩](memory/01-conversation-continuity.md) 及 [摘要组织、原文选择与离开后续聊](memory/02-summary-and-resumption.md) 已形成完整待审稿。2026-09-21 用户确认连续性的三项方向共同采用，规则引用基线 5.3；数值预算和阈值在实施回放中确定。
 
@@ -16,7 +16,7 @@
 
 State 与 Relationship 演进已经形成 [完整待审稿](memory/07-state-and-relationship-evolution.md)：State 随本轮回复提出可选更新并按时间生成有效视图，Relationship 从有来源的关系事件慢速评估；不使用轮数升级、数值好感度或自动恋爱迁移。
 
-统一 [数据契约与实施阶段](memory/08-data-contract-and-implementation-plan.md) 已将上述分区收拢为权威/派生数据、表职责、Provider、持久化任务、兼容 migration、Runtime 接入和 M0–M8 实施顺序。Memory System 设计包现已完整，等待用户集中审核；尚未授权开发。
+统一 [数据契约与实施阶段](memory/08-data-contract-and-implementation-plan.md) 已将上述分区收拢为权威/派生数据、表职责、Provider、持久化任务、兼容 migration、Runtime 接入和 M0–M8 实施顺序；该顺序已经完成实现。
 
 2026-09-24 设计审查后，待审稿补齐 M2 的最小原文查找、M3 的事件候选依赖和自动替代限制、显式操作回执、后台写入与回复的修订分工、有界删除屏障，以及原消息时间/时区来源。这些是设计修订，不表示用户已确认全部具体行为或授权实现。
 

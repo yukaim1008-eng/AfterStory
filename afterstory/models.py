@@ -6,6 +6,7 @@ from sqlalchemy import (
     CheckConstraint,
     DateTime,
     ForeignKey,
+    Index,
     Integer,
     String,
     Text,
@@ -278,7 +279,14 @@ class MemoryOperationReceipt(Base):
 
 class MemoryIndexDocument(Base):
     __tablename__ = "memory_index_documents"
-    __table_args__ = (UniqueConstraint("memory_id", "memory_revision"),)
+    __table_args__ = (
+        UniqueConstraint("memory_id", "memory_revision"),
+        Index(
+            "ix_memory_index_documents_search_vector",
+            "search_vector",
+            postgresql_using="gin",
+        ),
+    )
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
     instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
     memory_id: Mapped[str] = mapped_column(ForeignKey("personal_memories.id"), index=True)

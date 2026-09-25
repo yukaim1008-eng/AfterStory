@@ -84,6 +84,7 @@ export type Memory = {
   memory_id: string;
   instance_id: string;
   kind: "fact" | "inference";
+  memory_type: "fact" | "preference" | "event";
   content: string;
   status: "active";
   revision: number;
@@ -101,4 +102,26 @@ export type MemoryPage = {
   total: number;
   offset: number;
   limit: number;
+};
+export type Matter = {
+  matter_id: string;
+  revision: number;
+  matter_type: "reminder" | "commitment" | "follow_up";
+  status: "open" | "completed" | "cancelled";
+  content: string;
+  next_step: string | null;
+  time_precision: "instant" | "day" | "month" | "unknown";
+  scheduled_at: string | null;
+  timezone_name: string | null;
+  mention_policy: "when_relevant" | "on_due" | "never";
+};
+export type MatterPage = { items: Matter[] };
+export type ReminderDelivery = {
+  delivery_id: string;
+  lease_token: string;
+  occurrence_key: string;
+  matter_id: string;
+  content: string;
+  due_at: string;
+  timezone_name: string;
 };

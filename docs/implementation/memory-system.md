@@ -83,3 +83,15 @@
 - 旧 `StateService` 兼容路径保留，迁移后旧快照标为 transient 语义，不重写历史内容。
 
 验证：状态持续时间/过期、来源校验、单证据不变化、多证据关系 revision，以及现有 State 兼容测试通过。
+
+## M8：管理界面、后台运行与统一验收
+
+- 记忆页按事实/偏好/经历筛选，并新增持续事项视图；可创建无定时事项或带绝对时间的站内提醒，可完成/取消。
+- 到期 delivery 在进入实例时领取，页面明确展示并由用户确认送达；关闭应用后的系统通知仍不在本阶段。
+- API 生命周期在非 fake 模型配置下运行轻量持久化 worker，消费 extract/summary/rebuild job；结构化适配器拒绝非 JSON 和不合契约输出。
+- fake 配置不启动自动模型 worker，测试通过注入 fake structured provider 验证整条后台链路，没有调用真实 LLM。
+- PostgreSQL 镜像切换为 PG17 + pgvector，保留原 volume；迁移继续在隔离 schema 测试。
+
+最终验收：一键验证通过；Ruff 通过，65 项后端测试通过，前端类型检查与生产构建通过，32 项 Playwright 通过。Alembic upgrade/downgrade、旧数据保留、pgvector 扩展和模型漂移检查均通过。测试只使用 fake provider，没有调用真实模型。
+
+现有架构中发现并已处理两项边界：原 `begin_turn` 在事务内组装全部上下文，现已拆为 prepare/reserve/finish；标准 PostgreSQL 镜像缺少 pgvector，现已切换兼容镜像，并让隔离测试通过限定 schema 加载公共扩展类型。Memory System 后续没有实现阻塞；进入下一模块前只需由用户审核真实角色聊天效果和记忆候选质量。

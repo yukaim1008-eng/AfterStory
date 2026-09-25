@@ -96,6 +96,7 @@ class Settings(BaseSettings):
     memory_context_items: int = Field(default=20, ge=0, le=100)
     memory_context_chars: int = Field(default=6000, ge=0, le=50000)
     user_timezone: str = "Asia/Shanghai"
+    memory_worker_poll_seconds: float = Field(default=2.0, ge=0.2, le=60)
 
     @model_validator(mode="after")
     def validate_runtime(self):

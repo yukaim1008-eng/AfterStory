@@ -8,8 +8,9 @@
 - Memory System M5 已实现：版本化持续事项、单次站内提醒、到期/错过领取、投递 lease、改期和取消；应用关闭后的外部通知仍按约定留到 Tools 阶段。
 - Memory System M6 已实现：来源 span、结构化依赖、有界删除屏障、后台重建、删除 suppression 防复活，以及有明确用户证据的自动纠正版本。
 - Memory System M7 已实现：带持续性质的 State proposal、过期视图、关系证据与慢速定性 revision；单条互动和普通轮数不会升级关系。
+- Memory System M0–M8 已完整实现并通过统一验收：65 项后端测试、Ruff、前端生产构建和 32 项 Playwright 全部通过；前端已支持长期记忆分类、持续事项与站内提醒，非 fake 运行配置启用持久化提取/摘要/rebuild worker。测试未调用真实模型；离线系统通知继续留到 Tools 编排。
 - 当前实施：用户已授权 Memory System M0–M8 连续开发。本轮按阶段实现、验证、复查和中文提交，全部完成后统一汇报；实施记录见 [Memory System 实施记录](implementation/memory-system.md)。
-- 最新设计进度：Memory System 已按长期连续性、长期记忆、持续事项/提醒、召回、生命周期、State/Relationship 和统一数据契约分区形成完整待审稿；未打开 AfterStory 时的主动通知仍留到后续 Tools 编排。当前等待用户集中审核，未开始开发。见 [记忆、状态和关系](design/03-memory-state.md)。
+- 最新设计进度：Memory System 已按 M0–M8 实现并验收长期连续性、长期记忆、持续事项/提醒、召回、生命周期及 State/Relationship；未打开 AfterStory 时的主动通知仍留到后续 Tools 编排。见 [记忆、状态和关系](design/03-memory-state.md)。
 - 长期事实、经历与写入更新规则已形成 [完整待审稿](design/memory/03-long-term-memory-writing.md)。推荐基线覆盖自动保存、推测边界、稳定事件身份、时间精度、后台增量整理、两层去重和冲突更新；用户审核前不视为产品决策，未修改业务代码。
 - 最新细化：用户提出事件保留日/月级时间即可，久远回忆可以较粗略；讨论稿补充告知时间与发生时间、精度、后台分批提取、稳定事件身份、两层去重和压缩协作。提取/压缩共用写入入口但分别记录处理进度；这些具体方案仍待评审，未开始实施。
 - 持续事项与线上提醒已形成 [完整待审稿](design/memory/04-ongoing-matters-and-online-reminders.md)：推荐单次提醒、服务端投递记录、应用上线补发、改期取消和多入口幂等领取；关闭应用后的通知仍留到 Tools 阶段。
