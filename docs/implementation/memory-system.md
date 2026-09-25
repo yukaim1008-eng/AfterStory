@@ -24,3 +24,13 @@
 - 显式记忆 CRUD 双写版本链，删除投影立即不可见，旧 API 保持兼容。
 
 验证：M1 定向 Ruff 通过；基础、现有记忆与会话测试共 17 项通过（与 M2 边界测试同批运行）。
+
+## M2：分段摘要与跨会话连续性
+
+- 成功 Turn 以固定、有界批次形成 segment，摘要严格核对 covered turn IDs 和来源 hash。
+- 摘要是可重建派生数据；未完成话题形成实例级 continuity note，可跨 Conversation 使用。
+- 最近原文仍按轮次保留；旧原话可通过同实例、有上限的关键词回读定位。
+- 会话发送改为 `prepare_context → reserve_turn → provider → finish_turn`，准备阶段与 Provider 均不占用数据库行锁；预留时复核安全修订。
+- ContextAssembler 在角色、长期资料和运行状态之后加入较早摘要/未完话题，再加入近期原文与当前消息。
+
+验证：跨会话摘要、未完话题、原文回读和准备/预留边界测试通过；无真实模型调用。
