@@ -320,6 +320,76 @@ class MemoryIndexDocument(Base):
     )
 
 
+class OngoingMatter(Base):
+    __tablename__ = "ongoing_matters"
+    __table_args__ = (UniqueConstraint("instance_id", "request_id"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    request_id: Mapped[str] = mapped_column(String(100))
+    matter_type: Mapped[str] = mapped_column(String(24))
+    status: Mapped[str] = mapped_column(String(20), default="open")
+    content: Mapped[str] = mapped_column(Text)
+    next_step: Mapped[str | None] = mapped_column(Text, nullable=True)
+    time_precision: Mapped[str] = mapped_column(String(20), default="unknown")
+    scheduled_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    timezone_name: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    mention_policy: Mapped[str] = mapped_column(String(24), default="when_relevant")
+    revision: Mapped[int] = mapped_column(Integer, default=1)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class MatterRevision(Base):
+    __tablename__ = "matter_revisions"
+    __table_args__ = (UniqueConstraint("matter_id", "revision"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    matter_id: Mapped[str] = mapped_column(ForeignKey("ongoing_matters.id"), index=True)
+    revision: Mapped[int] = mapped_column(Integer)
+    operation: Mapped[str] = mapped_column(String(20))
+    payload: Mapped[dict] = mapped_column(JSONB)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class Reminder(Base):
+    __tablename__ = "reminders"
+    __table_args__ = (UniqueConstraint("matter_id", "schedule_revision"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    instance_id: Mapped[str] = mapped_column(ForeignKey("character_instances.id"), index=True)
+    matter_id: Mapped[str] = mapped_column(ForeignKey("ongoing_matters.id"), index=True)
+    schedule_revision: Mapped[int] = mapped_column(Integer)
+    occurrence_key: Mapped[str] = mapped_column(String(120), unique=True)
+    due_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    timezone_name: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(20), default="scheduled")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class ReminderDelivery(Base):
+    __tablename__ = "reminder_deliveries"
+    __table_args__ = (UniqueConstraint("reminder_id", "channel"),)
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    reminder_id: Mapped[str] = mapped_column(ForeignKey("reminders.id"), index=True)
+    occurrence_key: Mapped[str] = mapped_column(String(120))
+    channel: Mapped[str] = mapped_column(String(24), default="in_app")
+    status: Mapped[str] = mapped_column(String(20), default="pending")
+    lease_token: Mapped[str | None] = mapped_column(String(36), nullable=True)
+    lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    delivered_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
 class CharacterState(Base):
     __tablename__ = "character_states"
     instance_id: Mapped[str] = mapped_column(

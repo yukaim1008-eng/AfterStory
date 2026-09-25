@@ -1,6 +1,7 @@
 import logging
 import re
 from contextlib import asynccontextmanager
+from datetime import datetime
 from time import perf_counter
 from uuid import uuid4
 
@@ -19,6 +20,7 @@ from afterstory.domain import DomainError
 from afterstory.memory import MemoryService
 from afterstory.memory_automation import ExplicitMemoryOperationService
 from afterstory.providers import ChatCompletionsProvider, FakeProvider
+from afterstory.reminders import MatterService
 from afterstory.repository import Repository
 
 http_log = logging.getLogger("afterstory.http")
@@ -62,6 +64,30 @@ class MemoryOperationInput(Input):
     expected_revision: int | None = Field(default=None, ge=1)
 
 
+class MatterCreateInput(Input):
+    request_id: str = Field(min_length=1, max_length=100)
+    content: str = Field(min_length=1, max_length=2000)
+    matter_type: str = Field(default="reminder", pattern="^(reminder|commitment|follow_up)$")
+    next_step: str | None = Field(default=None, max_length=2000)
+    time_precision: str = Field(default="unknown", pattern="^(instant|day|month|unknown)$")
+    scheduled_at: datetime | None = None
+    timezone_name: str | None = Field(default=None, max_length=64)
+    mention_policy: str = Field(default="when_relevant", pattern="^(when_relevant|on_due|never)$")
+
+
+class MatterReviseInput(Input):
+    expected_revision: int = Field(ge=1)
+    operation: str = Field(pattern="^(reschedule|complete|cancel)$")
+    scheduled_at: datetime | None = None
+    timezone_name: str | None = Field(default=None, max_length=64)
+
+
+class DeliveryAckInput(Input):
+    lease_token: str = Field(min_length=1, max_length=36)
+    delivered: bool
+    error_code: str | None = Field(default=None, max_length=80)
+
+
 def current_user(request: Request):
     # Local-only M1 identity, never a user-controlled header or JSON field.
     return request.app.state.settings.dev_user_id
@@ -75,9 +101,7 @@ def create_app(settings=None, provider=None):
         settings.memory_context_items,
         settings.memory_context_chars,
     )
-    repository = Repository(
-        sessions, settings.turn_lease_seconds, settings.history_turns, context
-    )
+    repository = Repository(sessions, settings.turn_lease_seconds, settings.history_turns, context)
     provider = provider or (
         FakeProvider()
         if settings.active_model.provider == "fake"
@@ -86,6 +110,7 @@ def create_app(settings=None, provider=None):
     service = ConversationService(repository, provider)
     memory_service = MemoryService(sessions)
     operation_service = ExplicitMemoryOperationService(sessions)
+    matter_service = MatterService(sessions)
 
     @asynccontextmanager
     async def lifespan(app):
@@ -242,9 +267,7 @@ def create_app(settings=None, provider=None):
         body: MemoryUpdateInput,
         user=Depends(current_user),
     ):
-        return memory_service.update(
-            user, memory_id, body.expected_revision, body.content
-        )
+        return memory_service.update(user, memory_id, body.expected_revision, body.content)
 
     @router.delete("/memories/{memory_id}")
     def delete_memory(
@@ -274,6 +297,58 @@ def create_app(settings=None, provider=None):
             body.content,
             body.memory_id,
             body.expected_revision,
+        )
+
+    @router.get("/instances/{instance_id}/matters")
+    def matters(instance_id: str, user=Depends(current_user)):
+        return matter_service.list(user, instance_id)
+
+    @router.post("/instances/{instance_id}/matters", status_code=201)
+    def create_matter(
+        instance_id: str,
+        body: MatterCreateInput,
+        user=Depends(current_user),
+    ):
+        return matter_service.create(
+            user,
+            instance_id,
+            body.request_id,
+            body.content,
+            body.matter_type,
+            body.next_step,
+            body.time_precision,
+            body.scheduled_at,
+            body.timezone_name,
+            body.mention_policy,
+        )
+
+    @router.patch("/matters/{matter_id}")
+    def revise_matter(
+        matter_id: str,
+        body: MatterReviseInput,
+        user=Depends(current_user),
+    ):
+        return matter_service.revise(
+            user,
+            matter_id,
+            body.expected_revision,
+            body.operation,
+            body.scheduled_at,
+            body.timezone_name,
+        )
+
+    @router.get("/instances/{instance_id}/reminder-deliveries/due")
+    def due_reminder(instance_id: str, user=Depends(current_user)):
+        return {"delivery": matter_service.claim_due(user, instance_id)}
+
+    @router.post("/reminder-deliveries/{delivery_id}/ack")
+    def acknowledge_reminder(
+        delivery_id: str,
+        body: DeliveryAckInput,
+        user=Depends(current_user),
+    ):
+        return matter_service.acknowledge(
+            user, delivery_id, body.lease_token, body.delivered, body.error_code
         )
 
     app.include_router(router)

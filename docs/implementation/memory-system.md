@@ -53,3 +53,13 @@
 - 无 Embedding 或 reranker 时降级到全文/近期候选；条数与保守 token 预算均有硬上限。
 
 验证：相关性、预算、跨实例隔离、Provider 最终输入和 pgvector 迁移均使用 fake embedding 测试通过。
+
+## M5：持续事项与站内提醒
+
+- 事项根记录与不可变 revision 分开；创建、改期、完成和取消使用 expected revision。
+- 只有带时区的绝对时刻建立单次 reminder；月/日等模糊时间可保存为事项，但不会虚假承诺定时投递。
+- occurrence key 随 schedule revision 固定；改期和取消使旧 occurrence 失效。
+- 站内 delivery 使用 `FOR UPDATE SKIP LOCKED` 与 lease，多入口领取同一 occurrence 只成功一次；应用下次上线可领取错过但仍有效的提醒。
+- 本阶段没有系统通知、邮件或应用关闭后的外部投递渠道。
+
+验证：到期领取、重复领取、确认送达、模糊时间拒绝投递和改期取消旧 occurrence 测试通过。
