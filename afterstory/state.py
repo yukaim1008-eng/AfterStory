@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from hashlib import sha256
 
 from sqlalchemy import select, update
@@ -138,6 +138,8 @@ class StateService:
                 session.add(state)
             state.revision = revision
             state.description = values["short_term_state"]
+            state.persistence = "transient"
+            state.valid_until = now.replace(microsecond=0) + timedelta(hours=6)
             state.source_turn_id = source_turn_id
             state.updated_at = now
             relationship = session.get(Relationship, instance_id)
@@ -157,6 +159,8 @@ class StateService:
                 source_turn_id=source_turn_id,
                 revision=revision,
                 short_term_state=values["short_term_state"],
+                persistence="transient",
+                valid_until=state.valid_until,
                 familiarity=values["familiarity"],
                 trust=values["trust"],
                 closeness=values["closeness"],
@@ -186,6 +190,7 @@ class StateService:
         if state:
             state.revision = instance.dynamics_revision
             state.description = None
+            state.valid_until = now
             state.source_turn_id = None
             state.updated_at = now
         if relationship:

@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timezone
 
 from sqlalchemy import case, select
 
@@ -78,7 +79,12 @@ class ContextAssembler:
         state = session.get(CharacterState, instance_id)
         relationship = session.get(Relationship, instance_id)
         payload = {
-            "short_term_state": state.description if state else None,
+            "short_term_state": (
+                state.description
+                if state
+                and (state.valid_until is None or state.valid_until > datetime.now(timezone.utc))
+                else None
+            ),
             "relationship": {
                 "familiarity": relationship.familiarity if relationship else None,
                 "trust": relationship.trust if relationship else None,
@@ -166,8 +172,6 @@ class ContextAssembler:
         continuity = self._continuity(session, instance.id)
         if continuity:
             messages.append(ChatMessage("system", continuity))
-        messages.extend(
-            self._history(session, conversation_id, instance.history_floor_revision)
-        )
+        messages.extend(self._history(session, conversation_id, instance.history_floor_revision))
         messages.append(ChatMessage("user", user_text))
         return messages

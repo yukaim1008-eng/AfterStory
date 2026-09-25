@@ -73,3 +73,13 @@
 - 纠正推进安全修订并保守提高历史 floor；来源不完整的旧数据仍使用原有整体保护。
 
 验证：151 条以上派生依赖的有界屏障、后台清理、删除后召回隔离、防复活和自动纠正版本测试通过。
+
+## M7：State 与 Relationship 演进
+
+- 严格 `StateProposal` 可形成带 persistence/valid-until 的 State event；过期状态不会进入新上下文。
+- Relationship evidence 按实例、来源轮次和 aspect 保存，单条证据不改变关系快照。
+- 慢速评估至少消费两个独立有效证据，才生成不可变 Relationship revision 并更新定性快照。
+- 熟悉、信任和亲近继续只用文字描述；普通轮数、缺席和用户单方面声明不会自动升级。
+- 旧 `StateService` 兼容路径保留，迁移后旧快照标为 transient 语义，不重写历史内容。
+
+验证：状态持续时间/过期、来源校验、单证据不变化、多证据关系 revision，以及现有 State 兼容测试通过。
