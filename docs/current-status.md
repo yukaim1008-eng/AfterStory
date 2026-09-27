@@ -10,6 +10,8 @@
 - Memory System M7 已实现：带持续性质的 State proposal、过期视图、关系证据与慢速定性 revision；单条互动和普通轮数不会升级关系。
 - Memory System M0–M8 已完整实现并通过统一验收：65 项后端测试、Ruff、前端生产构建和 32 项 Playwright 全部通过；前端已支持长期记忆分类、持续事项与站内提醒，非 fake 运行配置启用持久化提取/摘要/rebuild worker。测试未调用真实模型；离线系统通知继续留到 Tools 编排。
 - 2026-09-27 已用隔离 schema、工程角色和虚拟用户完成第一轮真实模型联合验收：稳定偏好、假设过滤、明确纠正、事件补充、跨用户隔离、20 轮摘要/跨会话续聊和站内提醒共 26/26 项通过。联调修复了结构化 JSON 契约、摘要输出预算、自动纠正候选及事件时间/版本问题；30 次 Provider 调用最终无重试，未改默认用户数据。详见 [真实模型评测](implementation/runtime-evaluation.md)。
+- 2026-09-27 已收敛第一版 Token 预算：聊天输入/输出为 24000/1024，Character、Memory、State/Relationship、Continuity、History、当前消息与封装余量分别为 2500/3000/500/4000/9000/4000/1000；记忆提取为 12000/2048，摘要为 24000/4096。历史按完整旧轮次淘汰，角色与当前消息不静默截断；安全日志记录估算区块用量和 Provider 实际 usage。完整说明见 [真实模型评测](implementation/runtime-evaluation.md#token-预算收敛)。
+- Token 预算优化后 83 项后端测试、Ruff、Alembic 一致性与 26/26 真实模型回放通过。开发库中“版本已到 head、既有 Memory 表缺失”的历史漂移已用单事务增量补表修复；原有 28 轮/56 条消息和 1 条个人记忆保留，并补齐该记忆的版本与检索索引。本阶段没有新增 migration，也没有修改前端。
 - 当前实施：用户已授权 Memory System M0–M8 连续开发。本轮按阶段实现、验证、复查和中文提交，全部完成后统一汇报；实施记录见 [Memory System 实施记录](implementation/memory-system.md)。
 - 最新设计进度：Memory System 已按 M0–M8 实现并验收长期连续性、长期记忆、持续事项/提醒、召回、生命周期及 State/Relationship；未打开 AfterStory 时的主动通知仍留到后续 Tools 编排。见 [记忆、状态和关系](design/03-memory-state.md)。
 - 长期事实、经历与写入更新规则已形成 [完整待审稿](design/memory/03-long-term-memory-writing.md)。推荐基线覆盖自动保存、推测边界、稳定事件身份、时间精度、后台增量整理、两层去重和冲突更新；用户审核前不视为产品决策，未修改业务代码。

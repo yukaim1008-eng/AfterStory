@@ -8,7 +8,7 @@ from afterstory.context import ContextAssembler
 from afterstory.conversation import ConversationService
 from afterstory.domain import DomainError
 from afterstory.memory import MemoryService
-from afterstory.models import Message, Turn
+from afterstory.models import CharacterInstance, Message, Turn
 from afterstory.repository import Repository
 
 
@@ -19,6 +19,11 @@ class RecordingProvider:
     def generate(self, messages):
         self.calls.append(messages)
         return "测试回复"
+
+
+class CharacterCounter:
+    def count(self, text):
+        return len(text)
 
 
 def test_context_orders_definition_memories_history_and_current_message(database):
@@ -143,3 +148,60 @@ def test_reply_from_stale_memory_context_is_not_committed(database):
     latest_context = "\n".join(message.content for message in provider.calls[-1])
     assert "最新内容" in latest_context
     assert "旧内容" not in latest_context
+
+
+def test_context_budget_keeps_current_message_and_drops_oldest_complete_turns(database):
+    _, sessions = database
+    repo = Repository(sessions)
+    instance_id = repo.create_instance("alice", "test-lan-v1")["instance_id"]
+    conversation_id = repo.create_conversation("alice", instance_id)["conversation_id"]
+    chat = ConversationService(repo, RecordingProvider())
+    chat.send("alice", conversation_id, "one", "111")
+    chat.send("alice", conversation_id, "two", "222")
+    with sessions() as session:
+        instance = session.get(CharacterInstance, instance_id)
+        built = ContextAssembler(
+            history_turns=12,
+            memory_items=0,
+            total_tokens=40,
+            overhead_tokens=0,
+            character_tokens=20,
+            memory_tokens=0,
+            continuity_tokens=0,
+            history_tokens=20,
+            current_message_tokens=20,
+            token_counter=CharacterCounter(),
+        ).build_prepared(session, conversation_id, instance, "role", "now")
+
+    assert [item.content for item in built.messages] == ["role", "222", "测试回复", "now"]
+    assert built.token_usage["history"] == 15
+    assert built.token_usage["estimated_total"] <= built.token_usage["budget"]
+
+
+@pytest.mark.parametrize(
+    "system_prompt,user_text,code",
+    [
+        ("character is too long", "ok", "character_prompt_token_budget_exceeded"),
+        ("ok", "current message is too long", "message_token_budget_exceeded"),
+    ],
+)
+def test_required_context_sections_are_rejected_instead_of_truncated(
+    database, system_prompt, user_text, code
+):
+    _, sessions = database
+    repo = Repository(sessions)
+    instance_id = repo.create_instance("alice", "test-lan-v1")["instance_id"]
+    conversation_id = repo.create_conversation("alice", instance_id)["conversation_id"]
+    with sessions() as session:
+        instance = session.get(CharacterInstance, instance_id)
+        assembler = ContextAssembler(
+            memory_items=0,
+            character_tokens=10,
+            current_message_tokens=10,
+            token_counter=CharacterCounter(),
+        )
+        with pytest.raises(DomainError) as error:
+            assembler.build_prepared(
+                session, conversation_id, instance, system_prompt, user_text
+            )
+    assert error.value.code == code

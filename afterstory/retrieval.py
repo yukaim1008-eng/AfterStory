@@ -93,7 +93,7 @@ class RetrievalService:
         reranker=None,
         max_candidates=100,
         max_items=20,
-        max_tokens=2000,
+        max_tokens=3000,
         token_counter=None,
     ):
         self.sessions = sessions

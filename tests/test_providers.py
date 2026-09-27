@@ -35,6 +35,31 @@ def test_deepseek_request_and_no_reasoning_in_reply():
     assert provider.generate([ChatMessage("user", "hi")]) == "你好"
 
 
+def test_provider_logs_only_usage_metadata(caplog):
+    def handle(request):
+        return httpx.Response(
+            200,
+            json={
+                "choices": [{"finish_reason": "stop", "message": {"content": "回复"}}],
+                "usage": {
+                    "prompt_tokens": 321,
+                    "completion_tokens": 45,
+                    "total_tokens": 366,
+                },
+            },
+        )
+
+    caplog.set_level("INFO", logger="afterstory.provider")
+    provider = ChatCompletionsProvider(config(), httpx.MockTransport(handle))
+    provider.generate([ChatMessage("user", "private-user-content")])
+    record = caplog.records[-1].getMessage()
+    assert "prompt_tokens=321" in record
+    assert "completion_tokens=45" in record
+    assert "total_tokens=366" in record
+    assert "private-user-content" not in record
+    assert "test-only-not-real" not in record
+
+
 def test_deepseek_json_mode_is_explicit():
     def handle(request):
         body = json.loads(request.content)

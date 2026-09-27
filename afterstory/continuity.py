@@ -3,7 +3,11 @@ from hashlib import sha256
 
 from sqlalchemy import case, func, select
 
-from afterstory.memory_contracts import SUMMARY_BUILDER_VERSION, SummaryCandidate
+from afterstory.memory_contracts import (
+    SUMMARY_BUILDER_VERSION,
+    ConservativeTokenCounter,
+    SummaryCandidate,
+)
 from afterstory.models import (
     ContinuityNote,
     Conversation,
@@ -17,10 +21,19 @@ from afterstory.models import (
 class ContinuityService:
     """Creates bounded, replaceable summaries while retaining authoritative messages."""
 
-    def __init__(self, sessions, summary_provider, segment_turns=20):
+    def __init__(
+        self,
+        sessions,
+        summary_provider,
+        segment_turns=20,
+        max_source_tokens=22000,
+        token_counter=None,
+    ):
         self.sessions = sessions
         self.summary_provider = summary_provider
         self.segment_turns = segment_turns
+        self.max_source_tokens = max_source_tokens
+        self.token_counter = token_counter or ConservativeTokenCounter()
 
     def summarize_next(self, instance_id, conversation_id):
         with self.sessions() as session:
@@ -48,7 +61,7 @@ class ContinuityService:
                     .limit(self.segment_turns)
                 )
             )
-            if len(turns) < self.segment_turns:
+            if not turns:
                 return None
             messages = list(
                 session.scalars(
@@ -58,15 +71,35 @@ class ContinuityService:
                     .order_by(Turn.sequence, case((Message.role == "user", 0), else_=1))
                 )
             )
-            provider_input = [
-                {
-                    "message_id": item.id,
-                    "turn_id": item.turn_id,
-                    "role": item.role,
-                    "text": item.text,
-                }
-                for item in messages
-            ]
+            by_turn = {
+                turn.id: [
+                    {
+                        "message_id": item.id,
+                        "turn_id": item.turn_id,
+                        "role": item.role,
+                        "text": item.text,
+                    }
+                    for item in messages
+                    if item.turn_id == turn.id
+                ]
+                for turn in turns
+            }
+            selected_turns = []
+            provider_input = []
+            for turn in turns:
+                candidate = provider_input + by_turn[turn.id]
+                source = json.dumps(candidate, ensure_ascii=False, separators=(",", ":"))
+                if self.token_counter.count(source) > self.max_source_tokens:
+                    break
+                selected_turns.append(turn)
+                provider_input = candidate
+            if not selected_turns:
+                raise ValueError("summary_source_turn_too_large")
+            threshold_reached = len(turns) == self.segment_turns
+            budget_reached = len(selected_turns) < len(turns)
+            if not threshold_reached and not budget_reached:
+                return None
+            turns = selected_turns
             digest = sha256(
                 json.dumps(provider_input, ensure_ascii=False, sort_keys=True).encode()
             ).hexdigest()

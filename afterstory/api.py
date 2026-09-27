@@ -25,6 +25,7 @@ from afterstory.memory_worker import MemoryRuntimeWorker
 from afterstory.providers import ChatCompletionsProvider, FakeProvider
 from afterstory.reminders import MatterService
 from afterstory.repository import Repository
+from afterstory.retrieval import RetrievalService
 
 http_log = logging.getLogger("afterstory.http")
 request_id_pattern = re.compile(r"[A-Za-z0-9._-]{1,64}")
@@ -103,8 +104,27 @@ def create_app(settings=None, provider=None):
         settings.history_turns,
         settings.memory_context_items,
         settings.memory_context_chars,
+        total_tokens=settings.chat_input_tokens,
+        overhead_tokens=settings.chat_context_overhead_tokens,
+        character_tokens=settings.character_context_tokens,
+        memory_tokens=settings.memory_context_tokens,
+        dynamics_tokens=settings.dynamics_context_tokens,
+        continuity_tokens=settings.continuity_context_tokens,
+        history_tokens=settings.history_context_tokens,
+        current_message_tokens=settings.current_message_tokens,
     )
-    repository = Repository(sessions, settings.turn_lease_seconds, settings.history_turns, context)
+    retrieval = RetrievalService(
+        sessions,
+        max_items=settings.memory_context_items,
+        max_tokens=settings.memory_context_tokens,
+    )
+    repository = Repository(
+        sessions,
+        lease_seconds=settings.turn_lease_seconds,
+        history_turns=settings.history_turns,
+        context=context,
+        retrieval=retrieval,
+    )
     provider = provider or (
         FakeProvider()
         if settings.active_model.provider == "fake"
@@ -117,9 +137,21 @@ def create_app(settings=None, provider=None):
 
     memory_worker = None
     if settings.active_model.provider != "fake":
-        structured_provider = StructuredMemoryProvider(provider)
+        structured_provider = StructuredMemoryProvider(
+            provider,
+            extraction_input_tokens=settings.memory_extraction_input_tokens,
+            extraction_candidate_items=settings.memory_extraction_candidate_items,
+            extraction_candidate_tokens=settings.memory_extraction_candidate_tokens,
+            summary_input_tokens=settings.summary_input_tokens,
+        )
         memory_worker = MemoryRuntimeWorker(
-            sessions, structured_provider, structured_provider, settings.turn_lease_seconds
+            sessions,
+            structured_provider,
+            structured_provider,
+            settings.turn_lease_seconds,
+            extraction_candidate_items=settings.memory_extraction_candidate_items,
+            summary_segment_turns=settings.summary_segment_turns,
+            summary_source_tokens=settings.summary_source_tokens,
         )
 
     @asynccontextmanager

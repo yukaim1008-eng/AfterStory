@@ -12,10 +12,23 @@ log = logging.getLogger("afterstory.memory_worker")
 
 
 class MemoryRuntimeWorker:
-    def __init__(self, sessions, extraction_provider, summary_provider, lease_seconds=120):
+    def __init__(
+        self,
+        sessions,
+        extraction_provider,
+        summary_provider,
+        lease_seconds=120,
+        *,
+        extraction_candidate_items=20,
+        summary_segment_turns=20,
+        summary_source_tokens=22000,
+    ):
         self.sessions = sessions
         self.extraction_provider = extraction_provider
         self.summary_provider = summary_provider
+        self.extraction_candidate_items = extraction_candidate_items
+        self.summary_segment_turns = summary_segment_turns
+        self.summary_source_tokens = summary_source_tokens
         self.jobs = MemoryJobService(sessions, lease_seconds)
 
     def run_once(self):
@@ -24,11 +37,20 @@ class MemoryRuntimeWorker:
             return False
         try:
             if claim["job_type"] == "extract":
-                MemoryAutomationService(self.sessions, self.extraction_provider).process_turn(
+                MemoryAutomationService(
+                    self.sessions,
+                    self.extraction_provider,
+                    self.extraction_candidate_items,
+                ).process_turn(
                     claim["payload"]["turn_id"]
                 )
             elif claim["job_type"] == "summarize":
-                ContinuityService(self.sessions, self.summary_provider).summarize_next(
+                ContinuityService(
+                    self.sessions,
+                    self.summary_provider,
+                    segment_turns=self.summary_segment_turns,
+                    max_source_tokens=self.summary_source_tokens,
+                ).summarize_next(
                     claim["instance_id"], claim["payload"]["conversation_id"]
                 )
             else:

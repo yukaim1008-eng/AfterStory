@@ -8,6 +8,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.engine import make_url
 
 from afterstory.config import Settings
+from afterstory.memory_provider import (
+    MEMORY_EXTRACTION_OUTPUT_TOKENS,
+    SUMMARY_OUTPUT_TOKENS,
+)
 
 
 def diagnose(settings=None, profile=None):
@@ -38,6 +42,22 @@ def diagnose(settings=None, profile=None):
             "provider": profile.provider,
             "model": profile.model,
             "model_credentials_configured": model_ready,
+            "token_budgets": {
+                "chat_input": settings.chat_input_tokens,
+                "chat_output": profile.max_tokens,
+                "character": settings.character_context_tokens,
+                "memory": settings.memory_context_tokens,
+                "dynamics": settings.dynamics_context_tokens,
+                "continuity": settings.continuity_context_tokens,
+                "history": settings.history_context_tokens,
+                "current_message": settings.current_message_tokens,
+                "overhead_reserve": settings.chat_context_overhead_tokens,
+                "memory_extraction_input": settings.memory_extraction_input_tokens,
+                "memory_extraction_output": MEMORY_EXTRACTION_OUTPUT_TOKENS,
+                "summary_input": settings.summary_input_tokens,
+                "summary_source": settings.summary_source_tokens,
+                "summary_output": SUMMARY_OUTPUT_TOKENS,
+            },
         },
         "database": {"reachable": False},
         "migration": {"current": False},

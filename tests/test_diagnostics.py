@@ -23,6 +23,22 @@ def test_diagnostics_are_useful_and_redacted(database):
     rendered = json.dumps(result)
     assert result["ok"] is True
     assert result["configuration"]["model_credentials_configured"] is True
+    assert result["configuration"]["token_budgets"] == {
+        "chat_input": 24000,
+        "chat_output": 1024,
+        "character": 2500,
+        "memory": 3000,
+        "dynamics": 500,
+        "continuity": 4000,
+        "history": 9000,
+        "current_message": 4000,
+        "overhead_reserve": 1000,
+        "memory_extraction_input": 12000,
+        "memory_extraction_output": 2048,
+        "summary_input": 24000,
+        "summary_source": 22000,
+        "summary_output": 4096,
+    }
     assert result["database"]["reachable"] is True
     assert result["migration"]["current"] is True
     assert secret not in rendered

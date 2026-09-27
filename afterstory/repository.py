@@ -1,3 +1,4 @@
+import logging
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from uuid import uuid4
@@ -18,6 +19,8 @@ from afterstory.models import (
 )
 from afterstory.retrieval import RetrievalService
 
+context_log = logging.getLogger("afterstory.context")
+
 
 @dataclass(frozen=True)
 class PreparedTurn:
@@ -25,6 +28,7 @@ class PreparedTurn:
     instance_id: str
     context_revision: int
     messages: list
+    context_usage: dict[str, int]
 
 
 class Repository:
@@ -206,18 +210,35 @@ class Repository:
         with self.sessions() as session:
             conversation = self.owned_conversation(session, user, conversation_id)
             instance = session.get(CharacterInstance, conversation.instance_id)
+            built = self.context.build_prepared(
+                session,
+                conversation_id,
+                instance,
+                system_prompt,
+                text,
+                runtime_context,
+            )
+            context_log.info(
+                "context_prepared character_tokens=%s memory_tokens=%s "
+                "dynamics_tokens=%s continuity_tokens=%s history_tokens=%s "
+                "current_message_tokens=%s estimated_total_tokens=%s "
+                "reserved_overhead_tokens=%s input_budget_tokens=%s",
+                built.token_usage["character"],
+                built.token_usage["memory"],
+                built.token_usage["dynamics"],
+                built.token_usage["continuity"],
+                built.token_usage["history"],
+                built.token_usage["current_message"],
+                built.token_usage["estimated_total"],
+                built.token_usage["reserved_overhead"],
+                built.token_usage["budget"],
+            )
             return PreparedTurn(
                 conversation_id=conversation_id,
                 instance_id=instance.id,
                 context_revision=context_revision,
-                messages=self.context.build(
-                    session,
-                    conversation_id,
-                    instance,
-                    system_prompt,
-                    text,
-                    runtime_context,
-                ),
+                messages=built.messages,
+                context_usage=built.token_usage,
             )
 
     def reserve_turn(

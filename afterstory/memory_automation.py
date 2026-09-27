@@ -64,9 +64,10 @@ def memory_content(payload):
 class MemoryAutomationService:
     """Commits validated extraction candidates without invalidating in-flight replies."""
 
-    def __init__(self, sessions, provider):
+    def __init__(self, sessions, provider, candidate_items=20):
         self.sessions = sessions
         self.provider = provider
+        self.candidate_items = candidate_items
 
     def process_turn(self, turn_id):
         with self.sessions() as session:
@@ -99,7 +100,7 @@ class MemoryAutomationService:
                         PersonalMemory.status == "active",
                     )
                     .order_by(PersonalMemory.updated_at.desc(), PersonalMemory.id)
-                    .limit(50)
+                    .limit(self.candidate_items)
                 )
             )
             for memory in memories:

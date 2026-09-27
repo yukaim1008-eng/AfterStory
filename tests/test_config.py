@@ -4,6 +4,7 @@ import httpx
 import pytest
 from pydantic import ValidationError
 
+from afterstory.api import create_app
 from afterstory.config import Settings
 from afterstory.domain import ChatMessage
 from afterstory.providers import ChatCompletionsProvider
@@ -58,3 +59,41 @@ def test_profile_environment_override(monkeypatch):
     cfg = Settings(_env_file=None)
     assert cfg.active_model.provider == "fake"
     assert "deepseek" in cfg.llm_models
+
+
+def test_default_token_budgets_are_consistent():
+    cfg = Settings(_env_file=None)
+    assert cfg.chat_input_tokens == 24000
+    assert cfg.active_model.max_tokens == 1024
+    assert cfg.memory_context_tokens == 3000
+    assert cfg.memory_extraction_input_tokens == 12000
+    assert cfg.memory_extraction_candidate_items == 20
+    assert cfg.memory_extraction_candidate_tokens == 8000
+    assert cfg.summary_input_tokens == 24000
+    assert cfg.summary_source_tokens == 22000
+    assert cfg.summary_segment_turns == 20
+
+
+@pytest.mark.parametrize(
+    "override",
+    [
+        {"chat_input_tokens": 23000},
+        {"summary_source_tokens": 24000},
+        {"memory_extraction_candidate_tokens": 12000},
+    ],
+)
+def test_inconsistent_token_budgets_are_rejected(override):
+    with pytest.raises(ValidationError):
+        Settings(_env_file=None, **override)
+
+
+def test_application_wires_runtime_token_budgets_into_context_and_retrieval():
+    cfg = Settings(_env_file=None, llm_active_model="fake")
+    app = create_app(cfg)
+    repository = app.state.repository
+    assert repository.context.total_tokens == cfg.chat_input_tokens
+    assert repository.context.memory_tokens == cfg.memory_context_tokens
+    assert repository.context.history_tokens == cfg.history_context_tokens
+    assert repository.context.current_message_tokens == cfg.current_message_tokens
+    assert repository.retrieval.max_items == cfg.memory_context_items
+    assert repository.retrieval.max_tokens == cfg.memory_context_tokens

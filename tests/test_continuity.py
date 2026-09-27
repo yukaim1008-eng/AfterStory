@@ -2,7 +2,13 @@ from sqlalchemy import select
 
 from afterstory.continuity import ContinuityService
 from afterstory.conversation import ConversationService
-from afterstory.models import ContinuityNote, Message, SegmentSummary, Turn
+from afterstory.models import (
+    ContinuityNote,
+    ConversationSegment,
+    Message,
+    SegmentSummary,
+    Turn,
+)
 from afterstory.repository import Repository
 
 
@@ -64,3 +70,32 @@ def test_context_preparation_happens_before_turn_reservation(database):
         )
         assert turn.status == "processing"
         assert user_message.text == "先准备"
+
+
+def test_summary_starts_when_source_token_budget_fills_before_turn_limit(database):
+    class TurnCounter:
+        def count(self, text):
+            return text.count('"turn_id"') * 10
+
+    _, sessions = database
+    repo = Repository(sessions)
+    instance_id = repo.create_instance("alice", "test-lan-v1")["instance_id"]
+    conversation_id = repo.create_conversation("alice", instance_id)["conversation_id"]
+    chat = ConversationService(repo, type("Provider", (), {"generate": lambda _, __: "回复"})())
+    chat.send("alice", conversation_id, "one", "第一轮")
+    chat.send("alice", conversation_id, "two", "第二轮")
+
+    continuity = ContinuityService(
+        sessions,
+        SummaryProvider(),
+        segment_turns=20,
+        max_source_tokens=25,
+        token_counter=TurnCounter(),
+    )
+    segment_id = continuity.summarize_next(instance_id, conversation_id)
+    assert segment_id
+    with sessions() as session:
+        segment = session.get(ConversationSegment, segment_id)
+        assert segment.start_sequence == 1
+        assert segment.end_sequence == 1
+    assert continuity.summarize_next(instance_id, conversation_id) is None

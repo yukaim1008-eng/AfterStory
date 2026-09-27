@@ -1,7 +1,15 @@
+import logging
+
 import httpx
 
 from afterstory.config import Settings
 from afterstory.domain import ChatMessage, ProviderError
+
+provider_log = logging.getLogger("afterstory.provider")
+
+
+def _usage_value(value):
+    return value if isinstance(value, int) and not isinstance(value, bool) else None
 
 
 class FakeProvider:
@@ -51,8 +59,19 @@ class ChatCompletionsProvider:
                     json=payload,
                 )
                 response.raise_for_status()
-                choice = response.json()["choices"][0]
+                data = response.json()
+                choice = data["choices"][0]
                 content = choice["message"]["content"]
+                usage = data.get("usage") or {}
+                provider_log.info(
+                    "llm_usage profile=%s json_mode=%s prompt_tokens=%s "
+                    "completion_tokens=%s total_tokens=%s",
+                    self.settings.llm_active_model,
+                    json_mode,
+                    _usage_value(usage.get("prompt_tokens")),
+                    _usage_value(usage.get("completion_tokens")),
+                    _usage_value(usage.get("total_tokens")),
+                )
                 if choice.get("finish_reason") != "stop":
                     raise ProviderError("llm_incomplete_response")
                 if not isinstance(content, str) or not content.strip():

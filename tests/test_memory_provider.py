@@ -3,6 +3,7 @@ import json
 import pytest
 from pydantic import ValidationError
 
+from afterstory.domain import ProviderError
 from afterstory.memory_provider import StructuredMemoryProvider
 
 
@@ -10,9 +11,11 @@ class JsonTextProvider:
     def __init__(self, payload):
         self.payload = payload
         self.calls = []
+        self.max_tokens = []
 
     def generate_json(self, messages, max_tokens=None):
         self.calls.append(messages)
+        self.max_tokens.append(max_tokens)
         return json.dumps(self.payload, ensure_ascii=False)
 
 
@@ -93,3 +96,36 @@ def test_structured_memory_provider_rejects_unknown_output_fields():
     )
     with pytest.raises(ValidationError):
         StructuredMemoryProvider(provider).extract([source_message()])
+
+
+def test_extraction_caps_candidate_count_and_token_budget():
+    provider = JsonTextProvider({"schema_version": "1.0", "operations": []})
+    memories = [
+        {"memory_id": f"memory-{index}", "content": "候选"}
+        for index in range(30)
+    ]
+    adapter = StructuredMemoryProvider(provider, extraction_candidate_items=20)
+    adapter.extract([source_message()], memories)
+    payload = json.loads(provider.calls[0][1].content)
+    assert len(payload["existing_memories"]) == 20
+    assert provider.max_tokens == [2048]
+
+    provider = JsonTextProvider({"schema_version": "1.0", "operations": []})
+    adapter = StructuredMemoryProvider(provider, extraction_candidate_tokens=1)
+    adapter.extract([source_message()], memories)
+    assert json.loads(provider.calls[0][1].content)["existing_memories"] == []
+
+
+def test_structured_provider_rejects_oversized_inputs_before_api_call():
+    provider = JsonTextProvider({"schema_version": "1.0", "operations": []})
+    with pytest.raises(ProviderError, match="memory_provider_input_too_large"):
+        StructuredMemoryProvider(provider, extraction_input_tokens=10).extract(
+            [source_message()]
+        )
+    assert provider.calls == []
+
+    with pytest.raises(ProviderError, match="summary_provider_input_too_large"):
+        StructuredMemoryProvider(provider, summary_input_tokens=10).summarize(
+            [source_message()]
+        )
+    assert provider.calls == []
