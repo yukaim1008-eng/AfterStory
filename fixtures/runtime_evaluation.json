@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "memory_scenarios": [
+    {
+      "id": "stable-preference",
+      "user_id": "eval-lin-yao",
+      "version_id": "test-schema-v1",
+      "timezone": "Asia/Shanghai",
+      "statements": [
+        "我叫林遥，在杭州做平面设计。",
+        "我平时喝咖啡不加糖，晚上喜欢画画。",
+        "今天临时有点困，这不是我平时的状态。"
+      ],
+      "expected_memory_contains": ["林遥", "平面设计", "不加糖", "画画"],
+      "forbidden_memory_contains": ["今天临时有点困"],
+      "recall_question": "你还记得我的工作和喝咖啡的习惯吗？",
+      "response_contains": ["平面设计", "不加糖"]
+    },
+    {
+      "id": "hypothetical-identity",
+      "user_id": "eval-qiao-an",
+      "version_id": "test-schema-v1",
+      "timezone": "Asia/Shanghai",
+      "statements": [
+        "假如我是医生，我应该怎么向病人解释手术风险？",
+        "现实里我其实是一名高中语文老师。"
+      ],
+      "expected_memory_contains": ["高中", "老师"],
+      "forbidden_memory_contains": ["用户的职业：医生", "用户的身份：医生"],
+      "recall_question": "你记得我的职业吗？",
+      "response_contains": ["老师"]
+    },
+    {
+      "id": "explicit-correction",
+      "user_id": "eval-song-chi",
+      "version_id": "test-schema-v1",
+      "timezone": "Asia/Shanghai",
+      "statements": [
+        "我住在杭州。",
+        "刚才说错了，我一直住在苏州，从没住过杭州。"
+      ],
+      "expected_memory_contains": ["苏州"],
+      "forbidden_memory_contains": ["：杭州"],
+      "recall_question": "我现在住在哪里？",
+      "response_contains": ["苏州"],
+      "response_forbidden": ["杭州"]
+    },
+    {
+      "id": "event-continuation",
+      "user_id": "eval-wen-zhou",
+      "version_id": "test-schema-v1",
+      "timezone": "Asia/Shanghai",
+      "statements": [
+        "9月20日，我和同事小周因为排班吵了一架，现在还没解决。",
+        "接着上次那件事：我和小周今天已经把排班争执说开了，问题解决了。"
+      ],
+      "expected_memory_contains": ["排班", "说开"],
+      "forbidden_memory_contains": [],
+      "expected_memory_count": 1,
+      "recall_question": "我和小周的排班争执后来怎么样了？",
+      "response_contains": ["说开"]
+    }
+  ],
+  "isolation": {
+    "source_user_id": "eval-isolation-source",
+    "other_user_id": "eval-isolation-other",
+    "version_id": "test-schema-v1",
+    "private_statement": "我的门禁暗号是蓝鲸七号。",
+    "probe_question": "你知道我的门禁暗号吗？",
+    "forbidden_context": "蓝鲸七号"
+  },
+  "long_conversation": {
+    "user_id": "eval-chen-mo",
+    "version_id": "test-schema-v1",
+    "topic_token": "银杏书签",
+    "turns": [
+      ["我最近在筹备一个社区阅读角。", "听起来是个很温暖的计划，你准备先从哪里开始？"],
+      ["地点已经借到了，在旧文化站的一楼。", "有固定地点以后，接下来可以考虑书和开放时间。"],
+      ["我想把它叫作晚风阅读角。", "这个名字很安静，也很适合傍晚开放的空间。"],
+      ["第一批书主要是小说和儿童读物。", "两类读物能照顾到不同年龄的人。"],
+      ["邻居小周答应帮我做书架。", "小周负责书架，这会省下不少布置时间。"],
+      ["我负责整理捐书清单。", "你在推进最需要耐心的一部分。"],
+      ["现在已经收到八十多本书了。", "数量已经很可观，分类规则也可以开始确定了。"],
+      ["我按文学、少儿和生活三类整理。", "三类足够清楚，之后也容易继续扩展。"],
+      ["开放日暂定十月第二个周六。", "这是暂定日期，临近时还需要再次确认。"],
+      ["我还没决定要不要办开场分享会。", "分享会是一个尚未决定的问题。"],
+      ["小周觉得应该办，能让大家认识彼此。", "他的理由是帮助参与者建立联系。"],
+      ["我担心准备时间不够。", "你顾虑的是额外准备会挤占布置时间。"],
+      ["我们商量先找一个志愿主持人。", "先确认主持人能降低是否举办的决策成本。"],
+      ["候选人是住在三楼的陈老师。", "陈老师成为目前的主持人候选。"],
+      ["但我还没有问她。", "联系陈老师仍是未完成事项。"],
+      ["如果她愿意，我们就办二十分钟分享。", "分享会取决于陈老师是否愿意主持。"],
+      ["昨天我做了一个银杏书签当作纪念品样品。", "银杏书签已经有了第一份样品。"],
+      ["小周说可以再做三十份。", "纪念品计划暂定追加三十份。"],
+      ["我答应这周末联系陈老师。", "联系陈老师的时间点定在这周末。"],
+      ["这件事还没完成，下次聊时提醒我接着处理。", "我会把联系陈老师作为尚未完成的话题保留。"]
+    ],
+    "resume_question": "我们上次聊的阅读角进展到哪里了？我做了什么纪念品，还有什么没完成？",
+    "response_contains": ["银杏", "陈老师"]
+  }
+}

@@ -99,7 +99,7 @@ def test_deleted_fingerprint_is_suppressed_and_explicit_correction_versions(data
     first_turn = chat.send("alice", conversation_id, "first", "我喜欢无糖茶")
 
     class CreateProvider:
-        def extract(self, messages):
+        def extract(self, messages, existing_memories=None):
             return [candidate(messages)]
 
     automation = MemoryAutomationService(sessions, CreateProvider())
@@ -112,7 +112,7 @@ def test_deleted_fingerprint_is_suppressed_and_explicit_correction_versions(data
     correction_turn = chat.send("alice", conversation_id, "correct", "更正，我喜欢红茶")
 
     class CorrectionProvider:
-        def extract(self, messages):
+        def extract(self, messages, existing_memories=None):
             return [candidate(messages, "correct", manual["memory_id"], "喜欢红茶")]
 
     result = MemoryAutomationService(sessions, CorrectionProvider()).process_turn(

@@ -89,7 +89,14 @@ class MemoryService:
         )
 
     @staticmethod
-    def _append_version(session, memory, operation, evidence_kind="manual", source=None):
+    def _append_version(
+        session,
+        memory,
+        operation,
+        evidence_kind="manual",
+        source=None,
+        structured_payload=None,
+    ):
         previous = session.scalar(
             select(PersonalMemoryVersion)
             .where(PersonalMemoryVersion.memory_id == memory.id)
@@ -102,7 +109,7 @@ class MemoryService:
             schema_version="1.0",
             memory_type=memory.memory_type,
             evidence_kind=evidence_kind,
-            payload={"content": memory.content},
+            payload=structured_payload or {"content": memory.content},
             content=memory.content,
             status=memory.status,
             operation=operation,

@@ -35,6 +35,27 @@ def test_deepseek_request_and_no_reasoning_in_reply():
     assert provider.generate([ChatMessage("user", "hi")]) == "你好"
 
 
+def test_deepseek_json_mode_is_explicit():
+    def handle(request):
+        body = json.loads(request.content)
+        assert body["response_format"] == {"type": "json_object"}
+        assert body["max_tokens"] == 2048
+        return httpx.Response(
+            200,
+            json={
+                "choices": [
+                    {"finish_reason": "stop", "message": {"content": '{"ok":true}'}}
+                ]
+            },
+        )
+
+    provider = ChatCompletionsProvider(config(), httpx.MockTransport(handle))
+    assert (
+        provider.generate_json([ChatMessage("system", "output json")], max_tokens=2048)
+        == '{"ok":true}'
+    )
+
+
 @pytest.mark.parametrize(
     "response,code",
     [

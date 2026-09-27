@@ -95,3 +95,7 @@
 最终验收：一键验证通过；Ruff 通过，65 项后端测试通过，前端类型检查与生产构建通过，32 项 Playwright 通过。Alembic upgrade/downgrade、旧数据保留、pgvector 扩展和模型漂移检查均通过。测试只使用 fake provider，没有调用真实模型。
 
 现有架构中发现并已处理两项边界：原 `begin_turn` 在事务内组装全部上下文，现已拆为 prepare/reserve/finish；标准 PostgreSQL 镜像缺少 pgvector，现已切换兼容镜像，并让隔离测试通过限定 schema 加载公共扩展类型。Memory System 后续没有实现阻塞；进入下一模块前只需由用户审核真实角色聊天效果和记忆候选质量。
+
+## 2026-09-27 真实模型补充验收
+
+使用独立 schema 和虚拟用户完成 26/26 项真实模型检查。修复结构化 JSON 契约、摘要独立输出预算、自动纠正缺少已有候选，以及事件时间/补充版本四类联调问题；最终 30 次 Provider 调用无重试，默认用户数据与 Docker 服务均未改动。完整记录见 [对话与记忆真实模型评测](runtime-evaluation.md)。

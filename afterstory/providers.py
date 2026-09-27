@@ -16,6 +16,19 @@ class ChatCompletionsProvider:
         self.transport = transport
 
     def generate(self, messages: list[ChatMessage]) -> str:
+        return self._generate(messages, json_mode=False)
+
+    def generate_json(self, messages: list[ChatMessage], max_tokens: int | None = None) -> str:
+        """Request a JSON object from providers that support OpenAI JSON mode."""
+        return self._generate(messages, json_mode=True, max_tokens=max_tokens)
+
+    def _generate(
+        self,
+        messages: list[ChatMessage],
+        *,
+        json_mode: bool,
+        max_tokens: int | None = None,
+    ) -> str:
         cfg = self.settings.active_model
         key = cfg.api_key.get_secret_value()
         if not key:
@@ -24,10 +37,12 @@ class ChatCompletionsProvider:
             "model": cfg.model,
             "messages": [{"role": m.role, "content": m.content} for m in messages],
             "stream": False,
-            "max_tokens": cfg.max_tokens,
+            "max_tokens": max_tokens or cfg.max_tokens,
         }
         if cfg.provider == "deepseek":
             payload["thinking"] = {"type": "disabled"}
+        if json_mode:
+            payload["response_format"] = {"type": "json_object"}
         try:
             with httpx.Client(timeout=cfg.timeout_seconds, transport=self.transport) as client:
                 response = client.post(

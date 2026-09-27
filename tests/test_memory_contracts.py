@@ -91,6 +91,17 @@ def test_time_precision_and_event_contract():
         ),
     )
     assert event.participants == ["用户", "小周"]
+    candidate = MemoryCandidate(
+        evidence="user_explicit",
+        importance_reason="仅是假设事件",
+        payload=EventPayload(
+            title="假设旅行",
+            scene="hypothetical",
+            summary="讨论假如去旅行",
+        ),
+        sources=[source()],
+    )
+    assert candidate.evidence == "inference"
 
 
 def test_summary_requires_covered_turns():
@@ -114,6 +125,22 @@ def test_evaluation_fixture_covers_required_dimensions():
         "lifecycle",
     } <= categories
     assert len({row["id"] for row in rows}) == len(rows)
+
+
+def test_runtime_evaluation_fixture_has_bounded_virtual_users_and_long_history():
+    path = Path(__file__).parents[1] / "fixtures" / "runtime_evaluation.json"
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    scenarios = payload["memory_scenarios"]
+    assert payload["schema_version"] == "1.0"
+    assert {item["id"] for item in scenarios} == {
+        "stable-preference",
+        "hypothetical-identity",
+        "explicit-correction",
+        "event-continuation",
+    }
+    assert len({item["user_id"] for item in scenarios}) == len(scenarios)
+    assert len(payload["long_conversation"]["turns"]) == 20
+    assert payload["isolation"]["source_user_id"] != payload["isolation"]["other_user_id"]
 
 
 def test_conservative_token_counter_is_stable():

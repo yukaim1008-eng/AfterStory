@@ -9,6 +9,7 @@
 - Memory System M6 已实现：来源 span、结构化依赖、有界删除屏障、后台重建、删除 suppression 防复活，以及有明确用户证据的自动纠正版本。
 - Memory System M7 已实现：带持续性质的 State proposal、过期视图、关系证据与慢速定性 revision；单条互动和普通轮数不会升级关系。
 - Memory System M0–M8 已完整实现并通过统一验收：65 项后端测试、Ruff、前端生产构建和 32 项 Playwright 全部通过；前端已支持长期记忆分类、持续事项与站内提醒，非 fake 运行配置启用持久化提取/摘要/rebuild worker。测试未调用真实模型；离线系统通知继续留到 Tools 编排。
+- 2026-09-27 已用隔离 schema、工程角色和虚拟用户完成第一轮真实模型联合验收：稳定偏好、假设过滤、明确纠正、事件补充、跨用户隔离、20 轮摘要/跨会话续聊和站内提醒共 26/26 项通过。联调修复了结构化 JSON 契约、摘要输出预算、自动纠正候选及事件时间/版本问题；30 次 Provider 调用最终无重试，未改默认用户数据。详见 [真实模型评测](implementation/runtime-evaluation.md)。
 - 当前实施：用户已授权 Memory System M0–M8 连续开发。本轮按阶段实现、验证、复查和中文提交，全部完成后统一汇报；实施记录见 [Memory System 实施记录](implementation/memory-system.md)。
 - 最新设计进度：Memory System 已按 M0–M8 实现并验收长期连续性、长期记忆、持续事项/提醒、召回、生命周期及 State/Relationship；未打开 AfterStory 时的主动通知仍留到后续 Tools 编排。见 [记忆、状态和关系](design/03-memory-state.md)。
 - 长期事实、经历与写入更新规则已形成 [完整待审稿](design/memory/03-long-term-memory-writing.md)。推荐基线覆盖自动保存、推测边界、稳定事件身份、时间精度、后台增量整理、两层去重和冲突更新；用户审核前不视为产品决策，未修改业务代码。
@@ -66,7 +67,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1 已完成并验证。Memory System 的完整待审设计包已形成，下一步由用户集中审核统一数据契约中的九项选择；审核前不开始 Memory 开发，也不扩展 Character Schema v2 或正式角色内容。
+Minimal Character Schema v1 与 Memory System M0–M8 已完成，并通过第一轮虚拟用户真实模型联合验收。下一阶段进入 Conversation Core v1：收敛对话意图与回复策略，把自然语言中的记住/纠正/忘记/设提醒接到已有操作回执，将 State/Relationship proposal 接入受控提交，并补充可诊断的上下文选择信息；之后再进入正式角色内容与用户长期体验。离线通知、Voice、完整 Canon 和 Character Schema v2 仍不在下一阶段。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 

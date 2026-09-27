@@ -6,7 +6,7 @@ from sqlalchemy import select
 from afterstory.domain import DomainError
 from afterstory.lifecycle import MemoryLifecycleService
 from afterstory.memory import MemoryService
-from afterstory.memory_contracts import MemoryOperationCandidate
+from afterstory.memory_contracts import EventPayload, MemoryOperationCandidate
 from afterstory.models import (
     CharacterInstance,
     Conversation,
@@ -14,6 +14,7 @@ from afterstory.models import (
     MemorySuppression,
     Message,
     PersonalMemory,
+    PersonalMemoryVersion,
     Turn,
 )
 
@@ -43,7 +44,21 @@ def memory_content(payload):
     if payload.kind in {"fact", "preference"}:
         suffix = f"（{payload.conditions}）" if payload.conditions else ""
         return f"{payload.subject}的{payload.attribute}：{payload.value}{suffix}"
-    return f"{payload.title}：{payload.summary}"
+    details = [payload.summary]
+    if payload.outcome:
+        details.append(f"结果：{payload.outcome}")
+    if payload.open_question:
+        details.append(f"未完：{payload.open_question}")
+    reference = payload.occurred_at
+    time_text = reference.original_text
+    if not time_text and reference.start:
+        time_text = (
+            reference.start.strftime("%Y-%m")
+            if reference.precision == "month"
+            else reference.start.date().isoformat()
+        )
+    time_suffix = f"（发生时间：{time_text}）" if time_text else ""
+    return f"{payload.title}{time_suffix}：" + "；".join(details)
 
 
 class MemoryAutomationService:
@@ -67,15 +82,47 @@ class MemoryAutomationService:
                     "conversation_id": conversation.id,
                     "role": item.role,
                     "text": item.text,
+                    "recorded_at": item.recorded_at.isoformat() if item.recorded_at else None,
+                    "timezone_name": item.timezone_name,
+                    "timezone_source": item.timezone_source,
                 }
                 for item in messages
             ]
             allowed_sources = {item["message_id"] for item in provider_input}
             instance_id = conversation.instance_id
+            existing_memories = []
+            memories = list(
+                session.scalars(
+                    select(PersonalMemory)
+                    .where(
+                        PersonalMemory.instance_id == instance_id,
+                        PersonalMemory.status == "active",
+                    )
+                    .order_by(PersonalMemory.updated_at.desc(), PersonalMemory.id)
+                    .limit(50)
+                )
+            )
+            for memory in memories:
+                version = session.scalar(
+                    select(PersonalMemoryVersion)
+                    .where(PersonalMemoryVersion.memory_id == memory.id)
+                    .order_by(PersonalMemoryVersion.revision.desc())
+                    .limit(1)
+                )
+                existing_memories.append(
+                    {
+                        "memory_id": memory.id,
+                        "revision": memory.revision,
+                        "memory_type": memory.memory_type,
+                        "content": memory.content,
+                        "payload": version.payload if version else None,
+                    }
+                )
+            allowed_targets = {item["memory_id"] for item in existing_memories}
 
         candidates = [
             MemoryOperationCandidate.model_validate(item)
-            for item in self.provider.extract(provider_input)
+            for item in self.provider.extract(provider_input, existing_memories)
         ]
         results = []
         for index, operation in enumerate(candidates):
@@ -84,13 +131,15 @@ class MemoryAutomationService:
                 continue
             if any(source.message_id not in allowed_sources for source in operation.memory.sources):
                 raise ValueError("memory_source_outside_extraction_input")
-            if operation.action == "correct":
+            if operation.target_memory_id and operation.target_memory_id not in allowed_targets:
+                raise ValueError("memory_target_outside_extraction_input")
+            if operation.action in {"correct", "supplement"}:
                 if operation.memory.evidence != "user_explicit":
                     results.append(
                         {"index": index, "status": "deferred_requires_explicit_confirmation"}
                     )
                 else:
-                    results.append(self._correct(instance_id, index, operation))
+                    results.append(self._revise(instance_id, index, operation))
                 continue
             results.append(self._commit(instance_id, turn_id, index, operation))
         return results
@@ -158,15 +207,15 @@ class MemoryAutomationService:
                 "create",
                 evidence_kind=candidate.evidence,
                 source=row,
+                structured_payload=candidate.payload.model_dump(mode="json"),
             )
             MemoryService._sync_index(session, memory)
             return {"index": index, "status": "created", "memory_id": memory.id}
 
-    def _correct(self, instance_id, index, operation):
+    def _revise(self, instance_id, index, operation):
         if not operation.target_memory_id:
             return {"index": index, "status": "deferred_missing_target"}
         candidate = operation.memory
-        content = memory_content(candidate.payload)
         with self.sessions.begin() as session:
             instance = session.scalar(
                 select(CharacterInstance)
@@ -184,14 +233,29 @@ class MemoryAutomationService:
             )
             if not memory:
                 return {"index": index, "status": "deferred_target_unavailable"}
+            payload = candidate.payload
+            if operation.action == "supplement" and payload.kind == "event":
+                previous = session.scalar(
+                    select(PersonalMemoryVersion)
+                    .where(PersonalMemoryVersion.memory_id == memory.id)
+                    .order_by(PersonalMemoryVersion.revision.desc())
+                    .limit(1)
+                )
+                if previous and previous.payload.get("kind") == "event":
+                    prior_event = EventPayload.model_validate_json(
+                        json.dumps(previous.payload, ensure_ascii=False)
+                    )
+                    payload = payload.model_copy(update={"occurred_at": prior_event.occurred_at})
+            content = memory_content(payload)
             memory.content = content
-            memory.memory_type = candidate.payload.kind
-            memory.memory_key = memory_key(candidate.payload)
+            memory.memory_type = payload.kind
+            memory.memory_key = memory_key(payload)
             memory.kind = "fact"
             memory.revision += 1
             instance.data_revision += 1
-            instance.context_revision += 1
-            instance.history_floor_revision = instance.context_revision
+            if operation.action == "correct":
+                instance.context_revision += 1
+                instance.history_floor_revision = instance.context_revision
             session.flush()
             source = candidate.sources[0]
             row = session.execute(
@@ -203,15 +267,16 @@ class MemoryAutomationService:
             MemoryService._append_version(
                 session,
                 memory,
-                "correct",
+                operation.action,
                 evidence_kind=candidate.evidence,
                 source=row,
+                structured_payload=payload.model_dump(mode="json"),
             )
             MemoryService._sync_index(session, memory)
             MemoryLifecycleService.invalidate_dependents(session, instance, memory)
             return {
                 "index": index,
-                "status": "corrected",
+                "status": "corrected" if operation.action == "correct" else "supplemented",
                 "memory_id": memory.id,
                 "revision": memory.revision,
             }

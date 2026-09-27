@@ -142,7 +142,8 @@ class MemoryCandidate(StrictContract):
 
     @model_validator(mode="after")
     def protect_hypothetical_scope(self):
-        if self.payload.scope == "hypothetical" and self.evidence == "user_explicit":
+        scope = getattr(self.payload, "scope", getattr(self.payload, "scene", None))
+        if scope == "hypothetical" and self.evidence == "user_explicit":
             self.evidence = "inference"
         return self
 
@@ -178,6 +179,11 @@ class MemoryOperationCandidate(StrictContract):
         if self.action in {"no_change", "defer"} and self.memory:
             raise ValueError("non-write operations cannot contain memory")
         return self
+
+
+class MemoryExtractionResult(StrictContract):
+    schema_version: Literal["1.0"] = MEMORY_SCHEMA_VERSION
+    operations: list[MemoryOperationCandidate] = Field(default_factory=list, max_length=50)
 
 
 class SummaryTopic(StrictContract):
@@ -245,7 +251,9 @@ class StateProposal(StrictContract):
 
 
 class MemoryExtractionProvider(Protocol):
-    def extract(self, messages: list[dict]) -> list[MemoryOperationCandidate]: ...
+    def extract(
+        self, messages: list[dict], existing_memories: list[dict] | None = None
+    ) -> list[MemoryOperationCandidate]: ...
 
 
 class SummaryProvider(Protocol):

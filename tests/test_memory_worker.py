@@ -7,7 +7,7 @@ from afterstory.repository import Repository
 
 
 class StructuredFake:
-    def extract(self, messages):
+    def extract(self, messages, existing_memories=None):
         user = next(item for item in messages if item["role"] == "user")
         return [
             {
