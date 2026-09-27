@@ -1,6 +1,6 @@
 # AfterStory 当前项目状态
 
-- 更新日期：2026-09-25。
+- 更新日期：2026-09-27。
 - Memory System M1 已实现：记忆不可变版本、多来源、依赖/抑制基础、持久化任务 lease、独立 data revision，以及消息时间和时区来源已落库；旧 PersonalMemory API 与数据继续兼容。
 - Memory System M2 已实现：有界分段摘要、跨会话连续性笔记、原文关键词回读，以及 prepare/reserve/finish 的短事务发送边界。
 - Memory System M3 已实现：成功轮次后台提取任务、严格候选校验、稳定事实/事件身份、跨批次去重，以及显式记住/纠正/忘记操作回执。
@@ -12,6 +12,8 @@
 - 2026-09-27 已用隔离 schema、工程角色和虚拟用户完成第一轮真实模型联合验收：稳定偏好、假设过滤、明确纠正、事件补充、跨用户隔离、20 轮摘要/跨会话续聊和站内提醒共 26/26 项通过。联调修复了结构化 JSON 契约、摘要输出预算、自动纠正候选及事件时间/版本问题；30 次 Provider 调用最终无重试，未改默认用户数据。详见 [真实模型评测](implementation/runtime-evaluation.md)。
 - 2026-09-27 已收敛第一版 Token 预算：聊天输入/输出为 24000/1024，Character、Memory、State/Relationship、Continuity、History、当前消息与封装余量分别为 2500/3000/500/4000/9000/4000/1000；记忆提取为 12000/2048，摘要为 24000/4096。历史按完整旧轮次淘汰，角色与当前消息不静默截断；安全日志记录估算区块用量和 Provider 实际 usage。完整说明见 [真实模型评测](implementation/runtime-evaluation.md#token-预算收敛)。
 - Token 预算优化后 83 项后端测试、Ruff、Alembic 一致性与 26/26 真实模型回放通过。开发库中“版本已到 head、既有 Memory 表缺失”的历史漂移已用单事务增量补表修复；原有 28 轮/56 条消息和 1 条个人记忆保留，并补齐该记忆的版本与检索索引。本阶段没有新增 migration，也没有修改前端。
+- Conversation Core v1 已实现：Provider 返回严格的 Conversation Decision v1，角色回复与显式记住/纠正/忘记、线上提醒、短期 State 和 Relationship evidence 在同一轮编排；assistant 消息与 effects outbox 同事务保存，现有领域服务负责最终校验与幂等提交。普通事实仍走后台提取，纠正/忘记只能引用当前可见记忆。没有新增 migration 或前端改动，详见 [Conversation Core v1 实施记录](implementation/conversation-core-v1.md)。
+- Conversation Core v1 最终验收：91 项后端测试、Ruff、Alembic 一致性、脱敏诊断、前端生产构建和 32 项 Playwright 通过；隔离 schema 的真实 DeepSeek 回放 30/30 项通过，共 37 次结构化调用，所有纳入检查的任务最终 completed。评测没有写入默认用户数据或停止用户 Docker。
 - 当前实施：用户已授权 Memory System M0–M8 连续开发。本轮按阶段实现、验证、复查和中文提交，全部完成后统一汇报；实施记录见 [Memory System 实施记录](implementation/memory-system.md)。
 - 最新设计进度：Memory System 已按 M0–M8 实现并验收长期连续性、长期记忆、持续事项/提醒、召回、生命周期及 State/Relationship；未打开 AfterStory 时的主动通知仍留到后续 Tools 编排。见 [记忆、状态和关系](design/03-memory-state.md)。
 - 长期事实、经历与写入更新规则已形成 [完整待审稿](design/memory/03-long-term-memory-writing.md)。推荐基线覆盖自动保存、推测边界、稳定事件身份、时间精度、后台增量整理、两层去重和冲突更新；用户审核前不视为产品决策，未修改业务代码。
@@ -42,7 +44,7 @@
 - 已确认三位主题、手动语音默认、封面仅当前用户当前角色、09 控件形态。性格素材、封面、主题与发送按钮配置独立于业务代码。
 - 文字发送、失败重试、草稿保留、刷新恢复、30 轮历史加载；封面上传、独立裁切、取消、保存与恢复默认。
 - 后端保留 M1 API，补充 /api 前缀、并发安全的会话发现、用户隔离的历史列表。
-- 个人记忆按角色实例隔离；只允许用户主动保存，支持手动录入或保存已完成轮次中的用户消息，使用请求 ID 幂等和修订号防止旧页面覆盖新修改。
+- 个人记忆按角色实例隔离；支持手动录入、保存已完成轮次中的用户消息、后台稳定事实/事件提取，以及 Conversation Core 中明确的记住/纠正/忘记，使用请求 ID 幂等和修订号防止旧上下文覆盖新修改。
 - 上下文由独立组装器按固定顺序构建；有效个人记忆可跨同一实例的会话使用，条数和字符数均可配置，不保存完整提示词。记忆变化使生成中的旧上下文回复失效并可重试。
 - 短期交流状态与长期关系分别保存；关系只使用熟悉、信任、亲近的文字描述。内部提交必须绑定成功轮次，事件与快照原子保存；普通聊天不会自行产生状态变化，前端也没有关系评分接口。
 - `python -m scripts.doctor` 提供脱敏诊断；HTTP 使用 `X-Request-ID` 关联安全日志；`scripts/verify.ps1` 可重复执行全套检查并只停止它自己启动的 PostgreSQL。
@@ -53,7 +55,7 @@
 
 - 三位主角色：娜娜莉、伊洛伊、薄荷。当前角色包明确标注为联调资料，正式 Canon、性格细节和 Voice Profile 尚未完成。
 - 娜娜莉承接与鉴定师的伙伴关系；另外两位的初始关系和身份映射待独立确认。
-- 个人记忆已经进入受限模型上下文，状态存储可供内部策略使用；自动记忆提取、状态变化策略、数值算法、向量检索、语音和剧情更新尚未实现。
+- 个人记忆、连续性摘要、短期 State 和定性 Relationship 已进入受限运行时上下文；后台记忆提取、混合召回和受控演进已实现。当前没有关系数值算法；Voice、完整 Canon、离线通知和剧情更新仍未实现。
 - 本机开发身份由后端注入；无正式登录和跨设备同步。封面、偏好保存在浏览器，聊天保存在 PostgreSQL。
 - 当前是完整文字回复，不是流式输出。历史不编造数据库尚未提供的日期。
 - 页面视觉重设计已推进 ChatPage、HomePage、CharactersPage、MemoriesPage 与 SettingsPage；MemoriesPage 保留确认布局，以居中的 1060px 单栏回忆流、紧凑统一的筛选工具栏、角色上下文、主面板内日记式条目、轻量连接提示及空/有数据状态完成第三轮精修。SettingsPage 已改为窄分类导航加宽主内容的单栏偏好工作区，当前角色仅在导航底部轻量呈现，通用/外观/声音/数据管理均使用统一 Section + Row 结构，右侧内容独立滚动；其中外观页已进一步拆分角色主题与角色封面，封面以较完整预览和宽松操作区呈现。
@@ -69,7 +71,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1 与 Memory System M0–M8 已完成，并通过第一轮虚拟用户真实模型联合验收。下一阶段进入 Conversation Core v1：收敛对话意图与回复策略，把自然语言中的记住/纠正/忘记/设提醒接到已有操作回执，将 State/Relationship proposal 接入受控提交，并补充可诊断的上下文选择信息；之后再进入正式角色内容与用户长期体验。离线通知、Voice、完整 Canon 和 Character Schema v2 仍不在下一阶段。
+Minimal Character Schema v1、Memory System M0–M8 和 Conversation Core v1 已完成。当前应先由用户审核本阶段结果并开始持续聊天体验；之后再单独确定正式角色内容或下一模块范围。离线通知、Voice、完整 Canon 和 Character Schema v2 均未在本阶段启动。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 

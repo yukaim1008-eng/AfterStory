@@ -191,7 +191,7 @@ class RelationshipEvolutionService:
                     .order_by(RelationshipEvidence.created_at, RelationshipEvidence.id)
                 )
             )
-            if len(evidence) < self.minimum_evidence:
+            if len({item.source_turn_id for item in evidence}) < self.minimum_evidence:
                 return None
             instance.dynamics_revision += 1
             instance.data_revision += 1

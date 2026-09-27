@@ -16,6 +16,8 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from afterstory.config import Settings
 from afterstory.context import ContextAssembler
 from afterstory.conversation import ConversationService
+from afterstory.conversation_effects import ConversationEffectService
+from afterstory.conversation_provider import ConversationDecisionProvider
 from afterstory.database import make_sessions
 from afterstory.domain import DomainError
 from afterstory.memory import MemoryService
@@ -130,7 +132,11 @@ def create_app(settings=None, provider=None):
         if settings.active_model.provider == "fake"
         else ChatCompletionsProvider(settings)
     )
-    service = ConversationService(repository, provider)
+    effect_service = ConversationEffectService(sessions, settings.turn_lease_seconds)
+    conversation_provider = ConversationDecisionProvider(
+        provider, max_tokens=settings.active_model.max_tokens
+    )
+    service = ConversationService(repository, conversation_provider, effect_service)
     memory_service = MemoryService(sessions)
     operation_service = ExplicitMemoryOperationService(sessions)
     matter_service = MatterService(sessions)
@@ -152,6 +158,7 @@ def create_app(settings=None, provider=None):
             extraction_candidate_items=settings.memory_extraction_candidate_items,
             summary_segment_turns=settings.summary_segment_turns,
             summary_source_tokens=settings.summary_source_tokens,
+            conversation_effects=effect_service,
         )
 
     @asynccontextmanager

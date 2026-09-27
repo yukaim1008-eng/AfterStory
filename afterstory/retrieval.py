@@ -171,7 +171,17 @@ class RetrievalService:
             used += cost
         return PreparedRuntimeContext(
             instance_id=instance_id,
-            memory_items=[{"kind": item["kind"], "content": item["content"]} for item in selected],
+            memory_items=[
+                {
+                    "memory_id": item["id"],
+                    "revision": next(
+                        memory.revision for _, memory, _ in rows if memory.id == item["id"]
+                    ),
+                    "kind": item["kind"],
+                    "content": item["content"],
+                }
+                for item in selected
+            ],
             selected_ids=[item["id"] for item in selected],
             reasons={item["id"]: item["reason"] for item in selected},
             estimated_tokens=used,

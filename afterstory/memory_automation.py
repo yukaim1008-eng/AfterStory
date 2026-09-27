@@ -297,6 +297,7 @@ class ExplicitMemoryOperationService:
         content=None,
         memory_id=None,
         expected_revision=None,
+        source_message_id=None,
     ):
         with self.sessions() as session:
             existing = session.scalar(
@@ -312,11 +313,21 @@ class ExplicitMemoryOperationService:
                 if memory.instance_id != instance_id:
                     raise DomainError(404, "memory_not_found")
         if action == "remember":
-            result = self.memories.create(user, instance_id, operation_id, content)
+            result = self.memories.create(
+                user, instance_id, operation_id, content, source_message_id
+            )
         elif action == "correct":
-            result = self.memories.update(user, memory_id, expected_revision, content)
+            result = self.memories.update(
+                user,
+                memory_id,
+                expected_revision,
+                content,
+                source_message_id,
+            )
         elif action == "forget":
-            result = self.memories.delete(user, memory_id, expected_revision)
+            result = self.memories.delete(
+                user, memory_id, expected_revision, source_message_id
+            )
         else:
             raise DomainError(422, "unsupported_memory_operation")
         with self.sessions.begin() as session:

@@ -291,7 +291,7 @@ class MemoryService:
             self._sync_index(session, memory)
             return self._view(session, memory)
 
-    def update(self, user, memory_id, expected_revision, content):
+    def update(self, user, memory_id, expected_revision, content, source_message_id=None):
         with self.sessions.begin() as session:
             memory, instance = self._owned_memory(session, user, memory_id, lock_instance=True)
             if memory.status == "deleted":
@@ -306,12 +306,17 @@ class MemoryService:
             memory.revision += 1
             memory.updated_at = datetime.now(timezone.utc)
             session.flush()
-            self._append_version(session, memory, "update")
+            source = (
+                self._source(session, memory.instance_id, source_message_id)
+                if source_message_id
+                else None
+            )
+            self._append_version(session, memory, "update", source=source)
             self._sync_index(session, memory)
             MemoryLifecycleService.invalidate_dependents(session, instance, memory)
             return self._view(session, memory)
 
-    def delete(self, user, memory_id, expected_revision):
+    def delete(self, user, memory_id, expected_revision, source_message_id=None):
         with self.sessions.begin() as session:
             memory, instance = self._owned_memory(session, user, memory_id, lock_instance=True)
             if memory.status == "deleted":
@@ -331,7 +336,12 @@ class MemoryService:
             memory.updated_at = now
             memory.deleted_at = now
             session.flush()
-            self._append_version(session, memory, "delete")
+            source = (
+                self._source(session, memory.instance_id, source_message_id)
+                if source_message_id
+                else None
+            )
+            self._append_version(session, memory, "delete", source=source)
             self._sync_index(session, memory)
             if memory.memory_key:
                 session.add(

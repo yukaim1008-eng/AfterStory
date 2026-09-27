@@ -50,4 +50,12 @@ uv run python -m scripts.evaluate_runtime --profile deepseek
 
 ## 当前结论与边界
 
-这次结果证明当前工程角色上的聊天、自动记忆、纠正、摘要、召回、隔离和站内提醒可以组成可用链路，但不等于长期主观体验已经完成。当前未配置 Embedding Provider，召回实际使用全文与近期候选降级；正式三位角色仍是联调资料；普通聊天中的“记住、忘记、设提醒”还没有统一的意图编排与操作回执入口；State/Relationship 的内部演进服务尚未接入普通聊天 Provider 输出。这些应进入 Conversation Core v1，而不在本评测阶段扩展 Memory Schema。
+这次结果证明当前工程角色上的聊天、自动记忆、纠正、摘要、召回、隔离和站内提醒可以组成可用链路，但不等于长期主观体验已经完成。当前未配置 Embedding Provider，召回实际使用全文与近期候选降级；正式三位角色仍是联调资料。Conversation Core v1 已在随后阶段接入普通聊天中的显式记忆/提醒回执和 State/Relationship proposal，扩展结果见下节。
+
+## Conversation Core v1 扩展验收
+
+2026-09-27 在同一套隔离评测框架中加入自然语言明确记住和精确提醒，并要求“杭州更正为苏州”产生即时 `correct` effect。最终 30/30 项通过，共 37 次结构化 Provider 调用。
+
+结构化对话输入统一为一条 system 加一条 JSON user 数据，解决多轮历史 assistant 文本干扰 JSON mode 的问题。真实回放确认三轮连续聊天无空响应降级，明确记忆关联原用户消息，提醒按上海时区生成同一 UTC 时间点，纠正通过 revision 校验建立新版本。一次抽取任务和跨用户隔离场景中的抽取曾收到不合约结果，现有 lease/retry 自动恢复；最终所有纳入检查的任务均为 completed。
+
+本轮同时通过 91 项后端测试、Ruff、Alembic 一致性、脱敏诊断、前端生产构建和 32 项 Playwright。没有新增 migration，没有写入默认用户数据，也没有停止用户自行启动的 Docker。

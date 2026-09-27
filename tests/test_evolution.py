@@ -93,3 +93,38 @@ def test_relationship_requires_multiple_evidence_and_writes_revision(database):
         revision = session.scalar(select(RelationshipRevision))
         assert relationship.trust == "形成稳定的相互尊重"
         assert len(revision.evidence_ids) == 2
+
+
+def test_relationship_requires_evidence_from_distinct_turns(database):
+    sessions, _, chat, instance_id, conversation_id = setup(database)
+    source = chat.send("alice", conversation_id, "one-source", "我尊重你的想法和边界")
+    evolution = RelationshipEvolutionService(sessions, minimum_evidence=2)
+    evolution.record(
+        "alice",
+        instance_id,
+        source.turn_id,
+        "trust",
+        "strengthen",
+        "尊重角色想法",
+        "observed_interaction",
+    )
+    evolution.record(
+        "alice",
+        instance_id,
+        source.turn_id,
+        "closeness",
+        "strengthen",
+        "尊重角色边界",
+        "observed_interaction",
+    )
+    assert (
+        evolution.evaluate(
+            "alice",
+            instance_id,
+            0,
+            trust="开始建立信任",
+            closeness="交流更自然",
+            reason="仍然只有一个来源轮次",
+        )
+        is None
+    )

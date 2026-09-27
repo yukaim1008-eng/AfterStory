@@ -1,4 +1,5 @@
 import logging
+from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from uuid import uuid4
@@ -207,6 +208,13 @@ class Repository:
             context_revision = instance.context_revision
             system_prompt = version.system_prompt
         runtime_context = self.retrieval.prepare(instance_id, text)
+        reason_counts = Counter(runtime_context.reasons.values())
+        context_log.info(
+            "context_selected_memories count=%s estimated_tokens=%s reasons=%s",
+            len(runtime_context.selected_ids),
+            runtime_context.estimated_tokens,
+            ",".join(f"{key}:{reason_counts[key]}" for key in sorted(reason_counts)) or "none",
+        )
         with self.sessions() as session:
             conversation = self.owned_conversation(session, user, conversation_id)
             instance = session.get(CharacterInstance, conversation.instance_id)
@@ -341,7 +349,16 @@ class Repository:
             timezone_source,
         )
 
-    def finish_turn(self, user, conversation_id, turn_id, attempt, text=None, error=None):
+    def finish_turn(
+        self,
+        user,
+        conversation_id,
+        turn_id,
+        attempt,
+        text=None,
+        error=None,
+        effects=None,
+    ):
         context_changed = False
         response = None
         with self.sessions.begin() as session:
@@ -394,10 +411,48 @@ class Repository:
                             attempts=0,
                         )
                     )
+                if effects:
+                    session.add(
+                        MemoryJob(
+                            instance_id=instance.id,
+                            job_key=f"turn:{turn.id}:conversation_effects",
+                            job_type="conversation_effects",
+                            status="pending",
+                            payload={
+                                "turn_id": turn.id,
+                                "effects": effects,
+                                "provisional_reply": message.text,
+                            },
+                            target_data_revision=instance.data_revision,
+                            attempts=0,
+                        )
+                    )
                 response = CharacterResponse(message.id, turn.id, message.text)
         if context_changed:
             raise DomainError(409, "context_changed")
         return response
+
+    def replace_assistant_text(self, user, conversation_id, turn_id, message_id, text):
+        with self.sessions.begin() as session:
+            message = session.scalar(
+                select(Message)
+                .join(Turn, Turn.id == Message.turn_id)
+                .join(Conversation, Conversation.id == Turn.conversation_id)
+                .join(CharacterInstance, CharacterInstance.id == Conversation.instance_id)
+                .where(
+                    Message.id == message_id,
+                    Message.turn_id == turn_id,
+                    Message.role == "assistant",
+                    Turn.status == "completed",
+                    Conversation.id == conversation_id,
+                    CharacterInstance.user_id == user,
+                )
+                .with_for_update(of=Message)
+            )
+            if not message:
+                raise DomainError(404, "message_not_found")
+            message.text = text
+            return CharacterResponse(message.id, turn_id, message.text)
 
     def history(self, user, conversation_id, offset, limit, around_turn_id=None):
         with self.sessions() as session:

@@ -17,7 +17,7 @@
 
 ## 当前阶段与选择入口
 
-当前阶段范围和实现结果见 [M1 最小后端文字链路](07-first-text-milestone.md)，启动步骤见 [运行说明](../running-m1.md)。M1 已通过工程验证，F1 已完成独立测试身份的真实模型浏览器回复与刷新恢复，正式角色效果待验收。
+当前基础链路见 [M1 最小后端文字链路](07-first-text-milestone.md)，启动步骤见 [运行说明](../running-m1.md)。在此基础上，Minimal Character Schema v1、Memory System M0–M8 和 [Conversation Core v1](../implementation/conversation-core-v1.md) 均已实现；正式角色内容与长期主观效果仍待用户体验验收。
 
 用户随后批准并完成 [F2 五阶段方案](../implementation/f2-foundations.md)。历史、个人记忆、上下文、状态存储边界和维护排障均已按阶段验证、提交。
 
@@ -25,6 +25,7 @@
 - 2026-09-18 用户调整当前起点：最小 Character Schema（约 30%–40%）→ Memory 系统设计 → 完善角色 Schema 与内容；替代此前对话理解与角色表达优先的当前安排，不代表后续所有阶段已获开发授权。
 - [角色系统](01-character-system.md) 已实现最小六字段的版本化定义与旧提示词兼容，并通过隔离 PostgreSQL 验证。随后进入记忆与关系分区设计，等 Memory System 完成后再优化角色结构与内容；语音保留既有职责和失败规则。
 - [记忆与关系](03-memory-state.md) 的 M0–M8 已实现并统一验收；当前包含线上提醒，离线主动通知继续留到后续工具编排阶段。
+- [理解与回复](02-conversation-core.md) 的 v1 已实现严格结构化决策、显式记忆/提醒编排、State/Relationship proposal 及 outbox 恢复；本阶段没有新增数据库迁移或前端功能。
 - 本轮专门设计 [长会话连续性与上下文压缩](memory/01-conversation-continuity.md)，以独立讨论稿记录压缩、来源、上下文预算和旧细节找回；不是整个 Memory System 的一次性实现计划。
 - 2026-09-21 用户确认连续性的三项总体方向共同采用；已提出 [摘要组织与离开后续聊](memory/02-summary-and-resumption.md) 具体方案，细节仍待评审。
 - [长期事实、经历与写入更新规则](memory/03-long-term-memory-writing.md) 已形成完整待审稿。用户确认事实/偏好、共同经历、写入依据、更新规则四项必须覆盖；具体数据与自动写入方案等待集中审核，未开始开发。
@@ -32,9 +33,9 @@
 - [记忆召回与上下文选择](memory/05-retrieval-and-context-selection.md) 已形成完整待审稿，采用确定性、结构化/全文和语义候选的混合路径，并定义上下文预算、原文回读与失败降级。
 - [纠正、删除与重建](memory/06-lifecycle-correction-deletion-and-rebuild.md) 已形成完整待审稿，定义同步可见性屏障、来源依赖、派生内容重建及现有粗粒度历史保护的渐进演进。
 - [State 与 Relationship 演进](memory/07-state-and-relationship-evolution.md) 已形成完整待审稿，定义短期状态的形成/缓和、三个关系方面的证据与慢速变化，并保持无分值、无自动恋爱升级。
-- [Memory 数据契约与实施阶段](memory/08-data-contract-and-implementation-plan.md) 已收拢权威/派生数据、表职责、Provider/任务边界、兼容 migration 和 M0–M8 实施顺序；整套 Memory System 设计等待集中审核，尚未授权开发。
-- 2026-09-24 审查后已补齐最小原文/事件查找的阶段前置、显式操作回执、双修订边界、有界删除屏障和消息时间来源；具体设计仍为待审稿，未开始实现。
-- F1 页面与文字链路及 F2 基础能力属于已完成的阶段结果；正式角色效果、自动记忆/状态策略、语音和完整 V1 仍未验收。
+- [Memory 数据契约与实施阶段](memory/08-data-contract-and-implementation-plan.md) 已收拢权威/派生数据、表职责、Provider/任务边界、兼容 migration 和 M0–M8 实施顺序，并已据此完成实现与统一验收。
+- 2026-09-24 审查补齐的最小原文/事件查找、显式操作回执、双修订边界、有界删除屏障和消息时间来源已经进入现有实现。
+- F1 页面与文字链路及 F2 基础能力属于已完成的阶段结果；正式角色效果、语音和完整 V1 仍未验收。
 
 实际开工前只补齐当前阶段必要的取舍；不要求用户一次确定所有模块的全部细节。长期运行的 Agent 循环适合执行有边界的阶段任务，不能替代模块设计与效果验收。
 

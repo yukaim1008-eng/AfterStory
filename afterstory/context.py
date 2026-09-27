@@ -81,7 +81,15 @@ class ContextAssembler:
                 .limit(self.memory_items)
             )
         )
-        return [{"kind": memory.kind, "content": memory.content or ""} for memory in rows]
+        return [
+            {
+                "memory_id": memory.id,
+                "revision": memory.revision,
+                "kind": memory.kind,
+                "content": memory.content or "",
+            }
+            for memory in rows
+        ]
 
     def _memory_message(self, memories):
         selected = []

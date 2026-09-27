@@ -14,6 +14,7 @@ class CharacterResponse:
     turn_id: str
     text: str
     audio_status: str = "not_requested"
+    effects: tuple[dict, ...] = ()
 
 
 class TextProvider(Protocol):

@@ -1,33 +1,61 @@
 # 理解与回复
 
-状态：F2 上下文与文字回复契约及 Memory System M0–M8 已实现。2026-09-27 使用工程角色和虚拟用户完成第一轮真实模型联合验收；详细意图编排、回复策略与角色表达仍是下一阶段。
+状态：Conversation Core v1 已于 2026-09-27 实现。当前链路把角色回复、显式记忆操作、线上提醒、短期 State proposal 和 Relationship evidence 收敛到一个严格的结构化决策，再通过现有领域服务受控提交。
 
-## 职责与已确认约束
+## 职责与边界
 
-负责组织角色资料、最近对话、相关记忆和状态，生成框架无关的 Character Response。遵循基线第 4、5、6 节，不保存或暴露完整模型思维链。
+本模块负责组织 Character Definition 的冻结提示词、Runtime Context 和当前消息，生成框架无关的 Character Response。它不保存或暴露模型思维链，也不把 Memory、State、Relationship 写回 CharacterVersion。
 
-此前对话提出的十二项“理解与回应机制”没有被用户整批确认，不作为实现要求。先设计可运行框架，后续在本分区集中研究意图识别与说话规则。
+运行时上下文继续由 `ContextAssembler` 按既有顺序提供：
 
-## 待设计
+1. CharacterVersion.system_prompt
+2. Personal Memory
+3. Character State / Relationship
+4. Continuity Summary / Open Topics
+5. Recent History
+6. Current Message
 
-Memory System 已将 [长会话连续性与上下文压缩](memory/01-conversation-continuity.md) 的上下文预算、摘要/原文选择与失效边界接入本模块。后续详细意图识别、回应策略与角色表达约束仍独立设计，不把联调资料或具体性格写死在业务流程中。
+Conversation Core 只解释这些输入并提出本轮决策。Memory、Matter、State 和 Relationship 各自由原有领域服务校验和持久化。
 
-真实模型评测确认当前链路可以提取稳定偏好、排除假设身份、纠正旧事实，并通过 20 轮摘要在新会话续聊。评测同时确认下一阶段需要集中处理：对话内“记住/纠正/忘记/设提醒”的意图到操作回执编排、State/Relationship proposal 的生成与提交边界、回复对检索资料的自然使用，以及可检查但不暴露内部思维链的诊断信息。详见 [真实模型评测](../implementation/runtime-evaluation.md)。
+## Conversation Decision v1
 
-M1 最小文字契约见 [阶段草案](07-first-text-milestone.md)，仅使用角色定义与最近历史，后续理解规则仍保持待定。
+契约版本和编排器版本均为 `1.0`。模型必须返回且只能返回：
 
-现有实现：`context.py` 按角色版本定义、有效个人记忆、可选状态、当前会话最近成功历史、当前用户输入的顺序组装上下文；`conversation.py` 编排 Provider 调用和结果保存；`domain.py` 定义框架无关的消息、回复与 Provider 协议。历史默认最近 12 轮成功对话，个人记忆默认最多 20 条/6000 字符，均可配置。前端分页和数据库全量存储与模型上下文容量相互独立。
+- `reply`：角色自然回复。
+- `intent_labels`：本轮意图标签，只用于诊断和契约检查。
+- `memory_commands`：明确记住、纠正、忘记命令。
+- `reminder_commands`：精确提醒或时间尚不完整的持续事项。
+- `state`：有真实依据、会影响后续表达的短期状态 proposal。
+- `relationship`：重大或重复互动形成的关系证据，以及证据足够时的定性快照 proposal。
 
-个人记忆以明确标注的 JSON 数据块传入，并声明用户内容属于资料而非指令；事实与推测保留 `kind` 区分。当前只顺序读取有效记录，不使用 Embedding 或相关度声称。内部状态与关系快照使用独立数据块，且不包含数值评分。记忆更正/删除建立新的上下文修订边界，旧历史仍可浏览但不再进入后续模型上下文；模型生成期间若实例修订变化，旧结果标记为失败且不写入回复，原请求可使用最新上下文重试。完整组装提示词不持久化。
+未知字段、错误类型、缺失字段和非法枚举都会被拒绝。普通“我叫……”“我喜欢……”仍交给后台稳定事实提取，不被当作用户明确要求立即记住。
 
-- 基础消息、文本 Provider 和最小 Character Response 已实现；如何扩展上下文输入及回复结果字段仍待设计。
-- 意图识别是否独立调用、上下文选择、歧义处理及回应策略。
-- 回复校验、失败处理与状态/记忆候选提交的边界。
+## Provider 输入和失败降级
 
-## 暂缓范围
+`ContextAssembler` 不因本阶段重构。进入结构化 Provider 前，所有 system 内容合并为一条系统消息，既往 user/assistant 原文序列化为 history 数据，当前输入单独标记为 `current_user_message`。这样既保留原上下文，又避免历史中的普通 assistant 回复干扰 JSON 输出格式。
 
-摘要与上下文压缩已经进入独立设计讨论，但尚未实现。完整角色资料、自动记忆写入/关系变化、向量检索具体实现与语音仍按各自分区收敛；本次讨论不构成它们的开发授权，阶段顺序以当前状态为准。
+若 Provider 不支持结构化输出，继续使用旧的纯文本回复路径。结构化输出为空或契约不合法时，系统进行一次受限的纯文本降级；降级提示禁止声称已完成记忆、纠正、删除或提醒。其他 Provider 错误继续按原有 502 边界处理。
 
-## 验收方向
+## 命令授权与受控提交
 
-先验证多轮文字回复和会话恢复，再用对话案例检查角色一致性及理解质量；不把接口跑通等同于角色理解已完成。
+模型输出不是写库权限。提交前还有确定性授权：
+
+- 记住、纠正、忘记和提醒必须能在当前用户原文中找到相应的明确表达。
+- 纠正和忘记必须引用本轮 Runtime Context 中实际可见的 `memory_id + revision`。
+- 所有目标仍由领域服务再次检查用户、实例、revision 和状态。
+- 普通轮数、长时间未聊天和用户单方面宣称关系不会升级 Relationship。
+- Relationship 至少需要来自两个不同成功轮次的有效证据。
+
+assistant 消息与待执行 effects 在同一数据库事务中落库。effects 使用现有 `memory_jobs` 作为 outbox；同步提交失败或进程中断后，worker 可以按 lease 重试。记忆 operation ID、事项 request ID、State request ID 和关系证据键都具备幂等边界。
+
+API 的 Character Response 增加 `effects` 回执，状态为 `committed`、`deferred`、`skipped`、`failed` 或任务处理中状态。模型生成的回复先作为候选保存；显式 Memory / Matter 操作全部得到 `committed` 回执后才发布候选回复。失败或仍待恢复时，消息正文会替换为不声称成功的安全说明；worker 恢复成功后，同一 request ID 会恢复原候选回复。内部 State / Relationship proposal 不影响普通回复发布。
+
+## 当前边界
+
+- 自动稳定事实/事件提取仍由 Memory worker 独立完成，不与显式命令混成同一套判定。
+- 精确提醒目前只支持站内投递；应用关闭后的系统通知留到 Tools 编排阶段。
+- 不生成或保存完整思维链。
+- 不包含 Voice、TTS、完整 Canon、Character Schema v2 或前端角色编辑器。
+- 当前是完整文本回复，不是流式输出。
+
+实现和验收记录见 [Conversation Core v1](../implementation/conversation-core-v1.md) 与 [真实模型评测](../implementation/runtime-evaluation.md)。

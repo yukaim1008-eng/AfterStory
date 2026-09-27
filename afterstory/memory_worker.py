@@ -22,6 +22,7 @@ class MemoryRuntimeWorker:
         extraction_candidate_items=20,
         summary_segment_turns=20,
         summary_source_tokens=22000,
+        conversation_effects=None,
     ):
         self.sessions = sessions
         self.extraction_provider = extraction_provider
@@ -29,10 +30,17 @@ class MemoryRuntimeWorker:
         self.extraction_candidate_items = extraction_candidate_items
         self.summary_segment_turns = summary_segment_turns
         self.summary_source_tokens = summary_source_tokens
+        self.conversation_effects = conversation_effects
         self.jobs = MemoryJobService(sessions, lease_seconds)
 
     def run_once(self):
-        claim = self.jobs.claim(["extract", "summarize", "rebuild_dependencies"])
+        claim = (
+            self.jobs.claim(["conversation_effects"])
+            if self.conversation_effects
+            else None
+        )
+        if not claim:
+            claim = self.jobs.claim(["extract", "summarize", "rebuild_dependencies"])
         if not claim:
             return False
         try:
@@ -53,6 +61,14 @@ class MemoryRuntimeWorker:
                 ).summarize_next(
                     claim["instance_id"], claim["payload"]["conversation_id"]
                 )
+            elif claim["job_type"] == "conversation_effects":
+                if not self.conversation_effects:
+                    raise ValueError("conversation_effect_service_missing")
+                payload = self.conversation_effects.apply_claim(claim)
+                self.jobs.complete_with_payload(
+                    claim["job_id"], claim["lease_token"], payload
+                )
+                return True
             else:
                 with self.sessions.begin() as session:
                     job = session.scalar(

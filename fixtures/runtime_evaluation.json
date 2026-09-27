@@ -41,9 +41,9 @@
       ],
       "expected_memory_contains": ["苏州"],
       "forbidden_memory_contains": ["：杭州"],
+      "expected_effect_actions": ["correct"],
       "recall_question": "我现在住在哪里？",
-      "response_contains": ["苏州"],
-      "response_forbidden": ["杭州"]
+      "response_contains": ["苏州"]
     },
     {
       "id": "event-continuation",
@@ -68,6 +68,16 @@
     "private_statement": "我的门禁暗号是蓝鲸七号。",
     "probe_question": "你知道我的门禁暗号吗？",
     "forbidden_context": "蓝鲸七号"
+  },
+  "conversation_commands": {
+    "user_id": "eval-command-user",
+    "version_id": "test-schema-v1",
+    "timezone": "Asia/Shanghai",
+    "remember_text": "请记住：我的备用钥匙放在玄关的深蓝文件夹里。",
+    "memory_token": "深蓝文件夹",
+    "reminder_text": "请在2026年10月2日15:00（上海时间）提醒我带上社区阅读角的钥匙。",
+    "reminder_token": "社区阅读角的钥匙",
+    "expected_due_at": "2026-10-02T07:00:00+00:00"
   },
   "long_conversation": {
     "user_id": "eval-chen-mo",

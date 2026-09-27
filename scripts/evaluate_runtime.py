@@ -15,13 +15,18 @@ from sqlalchemy import create_engine, select, text
 from afterstory.config import ROOT, Settings
 from afterstory.continuity import ContinuityService
 from afterstory.conversation import ConversationService
+from afterstory.conversation_effects import ConversationEffectService
 from afterstory.database import make_sessions
 from afterstory.memory_provider import StructuredMemoryProvider
 from afterstory.memory_worker import MemoryRuntimeWorker
 from afterstory.models import (
     MemoryJob,
+    MemorySourceLink,
     Message,
+    OngoingMatter,
     PersonalMemory,
+    PersonalMemoryVersion,
+    Reminder,
     SegmentSummary,
     Turn,
 )
@@ -119,12 +124,16 @@ def run_memory_scenario(data, sessions, measured, report):
     user = data["user_id"]
     seed(sessions, user)
     repo = Repository(sessions)
-    service = ConversationService(repo, measured)
+    effects = ConversationEffectService(sessions)
+    service = ConversationService(repo, measured, effects)
     structured = StructuredMemoryProvider(measured)
-    worker = MemoryRuntimeWorker(sessions, structured, structured)
+    worker = MemoryRuntimeWorker(
+        sessions, structured, structured, conversation_effects=effects
+    )
     instance_id = repo.create_instance(user, data["version_id"])["instance_id"]
     conversation_id = repo.create_conversation(user, instance_id)["conversation_id"]
     replies = []
+    effect_receipts = []
     for index, statement in enumerate(data["statements"]):
         reply = service.send(
             user,
@@ -135,6 +144,7 @@ def run_memory_scenario(data, sessions, measured, report):
             timezone_source="client_reported",
         )
         replies.append(reply.text)
+        effect_receipts.extend(reply.effects)
         jobs = drain_worker(worker, sessions, instance_id)
 
     memories, memory_count = memory_snapshot(sessions, instance_id)
@@ -157,6 +167,21 @@ def run_memory_scenario(data, sessions, measured, report):
             f"{data['id']}:memory-count",
             memory_count == data["expected_memory_count"],
             {"expected": data["expected_memory_count"], "actual": memory_count},
+        )
+    if "expected_effect_actions" in data:
+        committed_actions = [
+            item["action"]
+            for item in effect_receipts
+            if item.get("status") == "committed"
+        ]
+        add_check(
+            report,
+            f"{data['id']}:conversation-effects",
+            all(item in committed_actions for item in data["expected_effect_actions"]),
+            {
+                "required": data["expected_effect_actions"],
+                "committed": committed_actions,
+            },
         )
     add_check(
         report,
@@ -194,7 +219,13 @@ def run_memory_scenario(data, sessions, measured, report):
         {"required": data["response_contains"], "reply": recall},
     )
     report["scenarios"].append(
-        {"id": data["id"], "instance_id": instance_id, "replies": replies, "recall": recall}
+        {
+            "id": data["id"],
+            "instance_id": instance_id,
+            "replies": replies,
+            "effects": effect_receipts,
+            "recall": recall,
+        }
     )
 
 
@@ -202,9 +233,12 @@ def run_isolation(data, sessions, measured, report):
     for user in (data["source_user_id"], data["other_user_id"]):
         seed(sessions, user)
     repo = Repository(sessions)
-    service = ConversationService(repo, measured)
+    effects = ConversationEffectService(sessions)
+    service = ConversationService(repo, measured, effects)
     structured = StructuredMemoryProvider(measured)
-    worker = MemoryRuntimeWorker(sessions, structured, structured)
+    worker = MemoryRuntimeWorker(
+        sessions, structured, structured, conversation_effects=effects
+    )
     source = repo.create_instance(data["source_user_id"], data["version_id"])["instance_id"]
     source_conversation = repo.create_conversation(data["source_user_id"], source)[
         "conversation_id"
@@ -300,7 +334,9 @@ def run_long_conversation(data, sessions, measured, report):
         data["topic_token"] in context_text,
         {"context_has_summary": data["topic_token"] in context_text},
     )
-    reply = ConversationService(repo, measured).send(
+    reply = ConversationService(
+        repo, measured, ConversationEffectService(sessions)
+    ).send(
         user, resumed, "long-resume", data["resume_question"]
     ).text
     add_check(
@@ -342,6 +378,119 @@ def run_reminder(sessions, report):
     )
 
 
+def run_conversation_commands(data, sessions, measured, report):
+    user = data["user_id"]
+    seed(sessions, user)
+    repo = Repository(sessions)
+    effects = ConversationEffectService(sessions)
+    service = ConversationService(repo, measured, effects)
+    structured = StructuredMemoryProvider(measured)
+    worker = MemoryRuntimeWorker(
+        sessions, structured, structured, conversation_effects=effects
+    )
+    instance_id = repo.create_instance(user, data["version_id"])["instance_id"]
+    conversation_id = repo.create_conversation(user, instance_id)["conversation_id"]
+
+    remembered = service.send(
+        user,
+        conversation_id,
+        "command-remember",
+        data["remember_text"],
+        timezone_name=data["timezone"],
+        timezone_source="client_reported",
+    )
+    reminded = service.send(
+        user,
+        conversation_id,
+        "command-reminder",
+        data["reminder_text"],
+        timezone_name=data["timezone"],
+        timezone_source="client_reported",
+    )
+    jobs = drain_worker(worker, sessions, instance_id)
+
+    with sessions() as session:
+        memories = list(
+            session.scalars(
+                select(PersonalMemory).where(
+                    PersonalMemory.instance_id == instance_id,
+                    PersonalMemory.status == "active",
+                )
+            )
+        )
+        matching = [item for item in memories if data["memory_token"] in item.content]
+        source_linked = bool(
+            matching
+            and session.scalar(
+                select(MemorySourceLink)
+                .join(
+                    PersonalMemoryVersion,
+                    PersonalMemoryVersion.id == MemorySourceLink.memory_version_id,
+                )
+                .where(
+                    PersonalMemoryVersion.memory_id == matching[0].id,
+                    MemorySourceLink.message_id.is_not(None),
+                )
+            )
+        )
+        matter = session.scalar(
+            select(OngoingMatter).where(
+                OngoingMatter.instance_id == instance_id,
+                OngoingMatter.content.contains(data["reminder_token"]),
+            )
+        )
+        reminder = (
+            session.scalar(select(Reminder).where(Reminder.matter_id == matter.id))
+            if matter
+            else None
+        )
+
+    memory_effects = [item for item in remembered.effects if item["effect"] == "memory"]
+    reminder_effects = [item for item in reminded.effects if item["effect"] == "matter"]
+    add_check(
+        report,
+        "conversation-commands:remember",
+        len(memory_effects) == 1
+        and memory_effects[0]["status"] == "committed"
+        and len(matching) == 1
+        and source_linked,
+        {
+            "effects": list(remembered.effects),
+            "matching_memory_count": len(matching),
+            "source_linked": source_linked,
+        },
+    )
+    actual_due = reminder.due_at.isoformat() if reminder else None
+    expected_due = datetime.fromisoformat(data["expected_due_at"])
+    add_check(
+        report,
+        "conversation-commands:reminder",
+        len(reminder_effects) == 1
+        and reminder_effects[0]["status"] == "committed"
+        and matter is not None
+        and matter.timezone_name == data["timezone"]
+        and reminder.due_at == expected_due,
+        {
+            "effects": list(reminded.effects),
+            "scheduled_at": actual_due,
+            "timezone": matter.timezone_name if matter else None,
+        },
+    )
+    add_check(
+        report,
+        "conversation-commands:jobs",
+        all(item["status"] == "completed" for item in jobs),
+        jobs,
+    )
+    report["scenarios"].append(
+        {
+            "id": "conversation-commands",
+            "instance_id": instance_id,
+            "replies": [remembered.text, reminded.text],
+        }
+    )
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--profile", default="deepseek")
@@ -351,7 +500,10 @@ def main():
     parser.add_argument(
         "--only",
         action="append",
-        help="Run one scenario id; repeat for multiple ids. Also accepts isolation/long/reminder.",
+        help=(
+            "Run one scenario id; repeat for multiple ids. Also accepts "
+            "isolation/commands/long/reminder."
+        ),
     )
     parser.add_argument("--keep-schema", action="store_true")
     args = parser.parse_args()
@@ -391,6 +543,10 @@ def main():
                 run_memory_scenario(scenario, sessions, measured, report)
         if not selected or "isolation" in selected:
             run_isolation(fixture["isolation"], sessions, measured, report)
+        if not selected or "commands" in selected:
+            run_conversation_commands(
+                fixture["conversation_commands"], sessions, measured, report
+            )
         if not selected or "long" in selected:
             run_long_conversation(fixture["long_conversation"], sessions, measured, report)
         if not selected or "reminder" in selected:
