@@ -1,6 +1,6 @@
 # 理解与回复
 
-状态：Conversation Core v1 已于 2026-09-27 实现。当前链路把角色回复、显式记忆操作、线上提醒、短期 State proposal 和 Relationship evidence 收敛到一个严格的结构化决策，再通过现有领域服务受控提交。
+状态：Conversation Core v1 已于 2026-09-27 实现。2026-09-30 已形成 [Conversation Response Policy v1 完整待审稿](conversation/01-response-policy-v1.md)，用于把现有结构化理解收敛为可长期试聊的回复行为；尚未授权实施。
 
 ## 职责与边界
 

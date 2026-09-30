@@ -1,6 +1,6 @@
 # AfterStory 当前项目状态
 
-- 更新日期：2026-09-27。
+- 更新日期：2026-09-30。
 - Memory System M1 已实现：记忆不可变版本、多来源、依赖/抑制基础、持久化任务 lease、独立 data revision，以及消息时间和时区来源已落库；旧 PersonalMemory API 与数据继续兼容。
 - Memory System M2 已实现：有界分段摘要、跨会话连续性笔记、原文关键词回读，以及 prepare/reserve/finish 的短事务发送边界。
 - Memory System M3 已实现：成功轮次后台提取任务、严格候选校验、稳定事实/事件身份、跨批次去重，以及显式记住/纠正/忘记操作回执。
@@ -14,6 +14,7 @@
 - Token 预算优化后 83 项后端测试、Ruff、Alembic 一致性与 26/26 真实模型回放通过。开发库中“版本已到 head、既有 Memory 表缺失”的历史漂移已用单事务增量补表修复；原有 28 轮/56 条消息和 1 条个人记忆保留，并补齐该记忆的版本与检索索引。本阶段没有新增 migration，也没有修改前端。
 - Conversation Core v1 已实现：Provider 返回严格的 Conversation Decision v1，角色回复与显式记住/纠正/忘记、线上提醒、短期 State 和 Relationship evidence 在同一轮编排；assistant 消息与 effects outbox 同事务保存，现有领域服务负责最终校验与幂等提交。普通事实仍走后台提取，纠正/忘记只能引用当前可见记忆。没有新增 migration 或前端改动，详见 [Conversation Core v1 实施记录](implementation/conversation-core-v1.md)。
 - Conversation Core v1 最终验收：91 项后端测试、Ruff、Alembic 一致性、脱敏诊断、前端生产构建和 32 项 Playwright 通过；隔离 schema 的真实 DeepSeek 回放 30/30 项通过，共 37 次结构化调用，所有纳入检查的任务最终 completed。评测没有写入默认用户数据或停止用户 Docker。
+- Conversation Response Policy v1 已形成 [完整待审稿](design/conversation/01-response-policy-v1.md)：推荐在现有单次结构化调用中加入版本化回复策略，覆盖倾诉/建议/问答/续聊/操作/边界、篇幅、追问、自然记忆引用及 State/Relationship 表达；不新增数据库或第二次模型调用。待用户集中确认四项产品取舍后再决定是否实施。
 - 当前实施：用户已授权 Memory System M0–M8 连续开发。本轮按阶段实现、验证、复查和中文提交，全部完成后统一汇报；实施记录见 [Memory System 实施记录](implementation/memory-system.md)。
 - 最新设计进度：Memory System 已按 M0–M8 实现并验收长期连续性、长期记忆、持续事项/提醒、召回、生命周期及 State/Relationship；未打开 AfterStory 时的主动通知仍留到后续 Tools 编排。见 [记忆、状态和关系](design/03-memory-state.md)。
 - 长期事实、经历与写入更新规则已形成 [完整待审稿](design/memory/03-long-term-memory-writing.md)。推荐基线覆盖自动保存、推测边界、稳定事件身份、时间精度、后台增量整理、两层去重和冲突更新；用户审核前不视为产品决策，未修改业务代码。
@@ -71,7 +72,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1、Memory System M0–M8 和 Conversation Core v1 已完成。当前应先由用户审核本阶段结果并开始持续聊天体验；之后再单独确定正式角色内容或下一模块范围。离线通知、Voice、完整 Canon 和 Character Schema v2 均未在本阶段启动。
+Minimal Character Schema v1、Memory System M0–M8 和 Conversation Core v1 已完成。当前正在审核 Conversation Response Policy v1；若四项建议获确认，则实施该最小回复策略并完成工程验收，随后由用户开始持续聊天体验。离线通知、Voice、完整 Canon 和 Character Schema v2 均未在本阶段启动。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 
