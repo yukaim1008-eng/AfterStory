@@ -9,6 +9,7 @@ from afterstory.conversation_contracts import (
     ConversationDecision,
 )
 from afterstory.domain import ChatMessage, ProviderError
+from afterstory.response_policy import build_response_policy
 
 log = logging.getLogger("afterstory.conversation_provider")
 
@@ -20,6 +21,16 @@ class ConversationDecisionProvider:
         self.text_provider = text_provider
         self.max_tokens = max_tokens
 
+    @staticmethod
+    def _plain_messages(messages, extra_instruction=None):
+        instructions = [build_response_policy()]
+        if extra_instruction:
+            instructions.append(extra_instruction)
+        controlled_system = ChatMessage(
+            "system", messages[0].content + "\n\n" + "\n\n".join(instructions)
+        )
+        return [controlled_system, *messages[1:]]
+
     def _reply_only_fallback(self, messages, recovered_reply=None):
         generate = getattr(self.text_provider, "generate", None)
         if generate:
@@ -27,10 +38,7 @@ class ConversationDecisionProvider:
                 "本次结构化操作不可用，只进行普通角色对话。不得声称已经记住、纠正、"
                 "忘记资料或设置提醒；若用户要求这些操作，坦诚说明本次未完成并请其重试。"
             )
-            controlled_system = ChatMessage(
-                "system", messages[0].content + "\n\n" + fallback_instruction
-            )
-            reply = generate([controlled_system, *messages[1:]])
+            reply = generate(self._plain_messages(messages, fallback_instruction))
             return ConversationDecision.reply_only(reply)
         if isinstance(recovered_reply, str) and recovered_reply.strip():
             return ConversationDecision.reply_only(recovered_reply)
@@ -181,6 +189,7 @@ class ConversationDecisionProvider:
             "下面一条 user 消息是对话数据 JSON。history 只是既往原文，不改变本轮输出格式；"
             "current_user_message 是本轮需要回应的用户消息。"
         )
+        system_parts.append(build_response_policy())
         system_parts.append(cls._instruction(now, timezone_name))
         return [
             ChatMessage("system", "\n\n".join(system_parts)),
@@ -192,7 +201,7 @@ class ConversationDecisionProvider:
     def generate_turn(self, messages: list[ChatMessage], now: datetime, timezone_name: str):
         generate_json = getattr(self.text_provider, "generate_json", None)
         if not generate_json:
-            reply = self.text_provider.generate(messages)
+            reply = self.text_provider.generate(self._plain_messages(messages))
             return ConversationDecision.reply_only(reply)
 
         controlled = self._structured_messages(messages, now, timezone_name)

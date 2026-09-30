@@ -66,6 +66,8 @@ def test_default_token_budgets_are_consistent():
     assert cfg.chat_input_tokens == 24000
     assert cfg.active_model.max_tokens == 1024
     assert cfg.memory_context_tokens == 3000
+    assert cfg.chat_context_overhead_tokens == 1800
+    assert cfg.history_context_tokens == 8200
     assert cfg.memory_extraction_input_tokens == 12000
     assert cfg.memory_extraction_candidate_items == 20
     assert cfg.memory_extraction_candidate_tokens == 8000

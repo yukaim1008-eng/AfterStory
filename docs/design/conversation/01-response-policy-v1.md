@@ -1,6 +1,6 @@
 # Conversation Response Policy v1
 
-状态：2026-09-30 完整待审稿；只完成设计，不构成开发授权。
+状态：2026-09-30 四项产品取舍已确认，Response Policy v1 已实现并完成工程验收。
 
 ## 1. 目标
 
@@ -272,13 +272,13 @@ Response Policy 作为独立、可测试的固定提示片段，由 Conversation
 - 不重构 ContextAssembler、Provider 或现有 effects/outbox 架构。
 - 不写前端角色编辑器或关系评分界面。
 
-## 13. 待用户集中确认
+## 13. 已确认产品取舍
 
-建议作为一批确认以下四项：
+2026-09-30 用户已按建议确认以下四项：
 
 1. **回复默认分寸**：采用“先直接回应；倾诉默认不抢着建议；追问最多一个且可以没有”。影响是交流更自然，但角色不会靠连续提问强行延长每轮。
 2. **角色表达强度**：采用“清楚可感知但不过度表演”，不要求每句口癖、原作梗或世界观说明。影响是长期聊天更耐用，正式角色差异更依赖后续 Character Definition 内容质量。
 3. **调用与 Schema**：保持一次 Provider 调用和 Conversation Decision Schema 1.0，不新增 response plan 字段。影响是延迟和成本稳定，诊断主要依赖场景回放而非模型自报分类。
 4. **Token 调整**：总输入仍为 24000，把 Recent History 从 9000 调到 8200，Runtime/Policy Overhead 从 1000 调到 1800。影响是少保留约 800 token 的近期原文，换取完整且可版本化的回复规则；长期摘要和记忆预算不变。
 
-四项确认后，实施范围即可固定为：独立 Response Policy v1、接入现有单次结构化调用、场景 fixture、真实模型验收与文档同步。完成后停止，由用户开始实际聊天测试。
+实施范围已按此固定为：独立 Response Policy v1、接入现有单次结构化调用、场景 fixture、真实模型验收与文档同步。实现结果见 [Conversation Response Policy v1 实施记录](../../implementation/response-policy-v1.md)。本阶段完成后停止，由用户开始实际聊天测试。

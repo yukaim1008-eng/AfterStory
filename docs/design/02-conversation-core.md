@@ -1,6 +1,6 @@
 # 理解与回复
 
-状态：Conversation Core v1 已于 2026-09-27 实现。2026-09-30 已形成 [Conversation Response Policy v1 完整待审稿](conversation/01-response-policy-v1.md)，用于把现有结构化理解收敛为可长期试聊的回复行为；尚未授权实施。
+状态：Conversation Core v1 已于 2026-09-27 实现。[Conversation Response Policy v1](conversation/01-response-policy-v1.md) 已于 2026-09-30 确认并实现，用于把现有结构化理解收敛为可长期试聊的回复行为。
 
 ## 职责与边界
 
@@ -58,4 +58,4 @@ API 的 Character Response 增加 `effects` 回执，状态为 `committed`、`de
 - 不包含 Voice、TTS、完整 Canon、Character Schema v2 或前端角色编辑器。
 - 当前是完整文本回复，不是流式输出。
 
-实现和验收记录见 [Conversation Core v1](../implementation/conversation-core-v1.md) 与 [真实模型评测](../implementation/runtime-evaluation.md)。
+实现和验收记录见 [Conversation Core v1](../implementation/conversation-core-v1.md)、[Conversation Response Policy v1](../implementation/response-policy-v1.md) 与 [真实模型评测](../implementation/runtime-evaluation.md)。

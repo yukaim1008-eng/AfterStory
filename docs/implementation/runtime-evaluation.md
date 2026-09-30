@@ -42,7 +42,7 @@ uv run python -m scripts.evaluate_runtime --profile deepseek
 
 ## Token 预算收敛
 
-真实回放后将默认预算固定为第一版可审计基线：普通聊天输入 24000、输出 1024；输入内部分配为 Character 2500、Memory 3000、State/Relationship 500、Continuity 4000、Recent History 9000、当前用户消息 4000，并预留 1000 token 的消息封装余量。区块没有用满时不会人为填充；超过总量时只按完整轮次移除最旧 Recent History，角色提示词和当前用户消息超限会明确失败，不会静默截断。
+真实回放后将默认预算固定为第一版可审计基线；Response Policy v1 接入后，在总量不变的前提下完成一次重分配：普通聊天输入 24000、输出 1024；输入内部分配为 Character 2500、Memory 3000、State/Relationship 500、Continuity 4000、Recent History 8200、当前用户消息 4000，并预留 1800 token 给消息封装、Response Policy 与 Conversation Orchestrator。区块没有用满时不会人为填充；超过总量时只按完整轮次移除最旧 Recent History，角色提示词和当前用户消息超限会明确失败，不会静默截断。
 
 记忆提取输入上限为 12000，已有记忆候选最多 20 条且最多占 8000，输出上限为 2048。摘要输入上限为 24000，其中原消息最多占 22000；每 20 轮或原消息预算先达到时生成一个分段摘要，输出上限为 4096。配置统一位于 `Settings` 和 `.env.example`，`scripts.doctor` 输出不含内容的预算快照；运行时日志只记录各上下文区块的估算 token 和 Provider 返回的实际 usage，不记录提示词、消息正文或密钥。
 
