@@ -29,7 +29,7 @@
 - 当前阶段：Minimal Character Schema v1 已完成。CharacterVersion 新增可空 `definition` JSONB；结构化定义使用 Schema Version `1.0`、身份/性格/说话方式/行为/世界观/初始关系六个文本字段，并由 Prompt Builder Version `1.0` 编译冻结 `system_prompt`。旧提示词角色保持兼容；Memory、State、Relationship、Conversation 仍归实例运行数据。隔离 schema 迁移升级/回滚与 41 项后端测试均通过，实施记录见 [最小 Character Schema 实施计划](implementation/character-schema-minimal.md)。
 - 2026-10-01 已将娜娜莉、伊洛伊、薄荷的官网介绍与公开档案/语音整理为 [正式角色六字段候选](design/character/README.md)。候选包使用完整 Character Definition Schema v1 并可由 Prompt Builder v1.0 编译；本轮只整理公开稳定资料，不补完整剧情 Canon 或 Voice Profile。候选尚待用户集中审核，未导入数据库、未修改前端版本绑定、未切换任何现有角色实例。
 - 2026-10-01 人物资料研究库 M0 已完成：建立角色、来源、个人档案、剧情场景、人物证据和特征卡的独立 Schema，支持 MediaWiki revision 同步、严格引用校验和本地 SQLite 重建。异环信息站当前登记 24 名角色，23 名已有个人档案；本地库识别 143 个档案条目与 1955 条语音。完整页面快照和 SQLite 不提交 Git，生产 PostgreSQL、现有角色实例和前端均未修改。后续顺序见 [人物资料研究库](design/character/character-corpus.md)。
-- 人物资料研究库 M1 已登记 B 站剧情合集 `BV1kqoaBiEVZ`：21 个分 P、总长 80,387 秒，标题覆盖至 1.4。平台没有 CC 字幕或章节标记，用户确认录制的游戏画面内含字幕；当前只保存元数据和分 P 处理状态，没有下载媒体或开始 22 小时全文分析。下一步先用 3～5 分钟本地片段校准画面字幕 OCR，再验证完整分 P 的场景切分和 Token 成本。
+- 人物资料研究库 M1 已登记 B 站剧情合集 `BV1kqoaBiEVZ`：21 个分 P、总长 80,387 秒，标题覆盖至 1.4。P1 `05:00–10:00` 的本地画面字幕 OCR 试跑已完成：五分钟精确片段从桌面端缓存生成，PP-OCRv5 在 47 个有效采样帧上得到 21 个去重候选片段，清晰正文与中英混合字幕可用；逐字显示、短句召回和无姓名过场的说话者归属仍需批处理工具处理。媒体与逐字稿只保存在忽略的 `local/`，未开始 22 小时全文分析。详见 [画面字幕 OCR 试跑](implementation/character-corpus-ocr-pilot.md)。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。
@@ -75,7 +75,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库 M0 和首个 B 站合集的 M1 索引已完成；下一步对一个短分 P 做字幕提取试跑，再决定整套剧情的批处理范围。当前三位六字段候选继续保持未导入。离线通知、Voice、完整 Canon 和 Character Schema v2 均未在本阶段启动。
+Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库 M0、首个 B 站合集的 M1 索引和 P1 五分钟字幕 OCR 可行性试跑已完成；下一步若获授权，先实现可恢复的单分 P 字幕抽取与场景化工具，并用完整 P1 验证后再决定 22 小时批处理范围。当前三位六字段候选继续保持未导入。离线通知、Voice、完整 Canon 和 Character Schema v2 均未在本阶段启动。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 
