@@ -66,6 +66,9 @@ class SourceRecord(StrictModel):
     part_count: int | None = Field(default=None, ge=0)
     content_checkpoint: str = ""
     subtitle_mode: Literal["unknown", "platform_subtitles", "no_platform_subtitles"] = "unknown"
+    visual_subtitle_status: Literal[
+        "unknown", "user_confirmed_present", "verified_present", "absent"
+    ] = "unknown"
     notes: str = ""
 
 
@@ -79,6 +82,9 @@ class SourcePartRecord(StrictModel):
     duration_ms: int = Field(gt=0)
     content_type: Literal["main_story", "side_story", "unknown"]
     subtitle_mode: Literal["unknown", "platform_subtitles", "no_platform_subtitles"]
+    visual_subtitle_status: Literal[
+        "unknown", "user_confirmed_present", "verified_present", "absent"
+    ] = "unknown"
     processing_status: Literal[
         "indexed", "subtitle_extracted", "scenes_segmented", "evidence_extracted", "reviewed"
     ] = "indexed"
@@ -482,6 +488,9 @@ def sync_bilibili(root: Path, bvid: str) -> dict[str, int | str]:
                     duration_ms=page["duration"] * 1000,
                     content_type=_story_content_type(page["part"]),
                     subtitle_mode=subtitle_mode,
+                    visual_subtitle_status=(
+                        previous_part.visual_subtitle_status if previous_part else "unknown"
+                    ),
                     processing_status=processing_status,
                 )
             )
@@ -509,6 +518,9 @@ def sync_bilibili(root: Path, bvid: str) -> dict[str, int | str]:
             "platform_subtitles"
             if platform_subtitle_parts == len(parts) and parts
             else "no_platform_subtitles"
+        ),
+        visual_subtitle_status=(
+            existing_source.visual_subtitle_status if existing_source else "unknown"
         ),
         notes=data.get("desc", ""),
     )
@@ -597,13 +609,15 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                 retrieved_at TEXT NOT NULL, content_hash TEXT, status TEXT NOT NULL,
                 raw_wikitext TEXT, external_id TEXT, creator TEXT, published_at TEXT,
                 duration_ms INTEGER, part_count INTEGER, content_checkpoint TEXT,
-                subtitle_mode TEXT NOT NULL, notes TEXT NOT NULL
+                subtitle_mode TEXT NOT NULL, visual_subtitle_status TEXT NOT NULL,
+                notes TEXT NOT NULL
             );
             CREATE TABLE source_parts (
                 part_id TEXT PRIMARY KEY, source_id TEXT NOT NULL REFERENCES sources,
                 external_part_id TEXT NOT NULL, position INTEGER NOT NULL, title TEXT NOT NULL,
                 duration_ms INTEGER NOT NULL, content_type TEXT NOT NULL,
-                subtitle_mode TEXT NOT NULL, processing_status TEXT NOT NULL,
+                subtitle_mode TEXT NOT NULL, visual_subtitle_status TEXT NOT NULL,
+                processing_status TEXT NOT NULL,
                 UNIQUE (source_id, position)
             );
             CREATE TABLE profiles (
@@ -679,7 +693,7 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                     parsed_by_source[source.source_id] = parse_profile(raw)
             connection.execute(
                 "INSERT INTO sources VALUES "
-                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     source.source_id,
                     source.source_type,
@@ -701,12 +715,13 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                     source.part_count,
                     source.content_checkpoint,
                     source.subtitle_mode,
+                    source.visual_subtitle_status,
                     source.notes,
                 ),
             )
         for part in read_jsonl(root / "source_parts.jsonl", SourcePartRecord):
             connection.execute(
-                "INSERT INTO source_parts VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO source_parts VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     part.part_id,
                     part.source_id,
@@ -716,6 +731,7 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                     part.duration_ms,
                     part.content_type,
                     part.subtitle_mode,
+                    part.visual_subtitle_status,
                     part.processing_status,
                 ),
             )

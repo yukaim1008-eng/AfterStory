@@ -91,6 +91,7 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     ]
     assert sum(part["duration_ms"] for part in parts) == 80_387_000
     assert {part["subtitle_mode"] for part in parts} == {"no_platform_subtitles"}
+    assert {part["visual_subtitle_status"] for part in parts} == {"user_confirmed_present"}
 
 
 def test_sqlite_build_populates_local_profile_content(tmp_path):
