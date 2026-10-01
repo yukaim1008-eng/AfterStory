@@ -68,7 +68,8 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     stats = validate_corpus(CORPUS_ROOT)
     assert stats == {
         "characters": 24,
-        "sources": 24,
+        "sources": 25,
+        "source_parts": 21,
         "profiles": 23,
         "scenes": 0,
         "evidence": 0,
@@ -79,6 +80,17 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     assert [(item["character_id"], item["names"]["zh"]) for item in missing] == [
         ("akane-rin", "明音凛")
     ]
+    parts = [
+        json.loads(line)
+        for line in (CORPUS_ROOT / "source_parts.jsonl").read_text(encoding="utf-8").splitlines()
+        if line
+    ]
+    assert [parts[0]["title"], parts[-1]["title"]] == [
+        "第0话 不虞亦先兆",
+        "第8话 魔女 4",
+    ]
+    assert sum(part["duration_ms"] for part in parts) == 80_387_000
+    assert {part["subtitle_mode"] for part in parts} == {"no_platform_subtitles"}
 
 
 def test_sqlite_build_populates_local_profile_content(tmp_path):

@@ -59,6 +59,29 @@ class SourceRecord(StrictModel):
     content_hash: str = ""
     raw_cache_path: str = ""
     status: Literal["available", "missing", "indexed"]
+    external_id: str = ""
+    creator: str = ""
+    published_at: datetime | None = None
+    duration_ms: int | None = Field(default=None, ge=0)
+    part_count: int | None = Field(default=None, ge=0)
+    content_checkpoint: str = ""
+    subtitle_mode: Literal["unknown", "platform_subtitles", "no_platform_subtitles"] = "unknown"
+    notes: str = ""
+
+
+class SourcePartRecord(StrictModel):
+    schema_version: Literal["1.0"] = CHARACTER_RESEARCH_SCHEMA_VERSION
+    part_id: str
+    source_id: str
+    external_part_id: str
+    position: int = Field(ge=1)
+    title: str
+    duration_ms: int = Field(gt=0)
+    content_type: Literal["main_story", "side_story", "unknown"]
+    subtitle_mode: Literal["unknown", "platform_subtitles", "no_platform_subtitles"]
+    processing_status: Literal[
+        "indexed", "subtitle_extracted", "scenes_segmented", "evidence_extracted", "reviewed"
+    ] = "indexed"
 
 
 class ProfileIndexRecord(StrictModel):
@@ -403,9 +426,110 @@ def sync_ntestation(root: Path) -> dict[str, int]:
     }
 
 
+def _story_content_type(title: str) -> Literal["main_story", "side_story", "unknown"]:
+    if title.startswith("番外"):
+        return "side_story"
+    if title.startswith("第"):
+        return "main_story"
+    return "unknown"
+
+
+def sync_bilibili(root: Path, bvid: str) -> dict[str, int | str]:
+    if not re.fullmatch(r"BV[0-9A-Za-z]+", bvid):
+        raise ValueError("Invalid Bilibili BV id")
+    root.mkdir(parents=True, exist_ok=True)
+    url = f"https://www.bilibili.com/video/{bvid}/"
+    headers = {"User-Agent": "Mozilla/5.0", "Referer": url}
+    existing_parts = read_jsonl(root / "source_parts.jsonl", SourcePartRecord)
+    existing_parts_by_id = {item.part_id: item for item in existing_parts}
+    with httpx.Client(headers=headers, timeout=30, follow_redirects=True) as client:
+        response = client.get(
+            "https://api.bilibili.com/x/web-interface/view", params={"bvid": bvid}
+        )
+        response.raise_for_status()
+        payload = response.json()
+        if payload.get("code") != 0:
+            raise ValueError(f"Bilibili metadata error: {payload.get('message')}")
+        data = payload["data"]
+        parts = []
+        platform_subtitle_parts = 0
+        for page in data.get("pages", []):
+            player = client.get(
+                "https://api.bilibili.com/x/player/v2",
+                params={"bvid": bvid, "cid": page["cid"]},
+            )
+            player.raise_for_status()
+            player_data = player.json().get("data") or {}
+            subtitles = (player_data.get("subtitle") or {}).get("subtitles") or []
+            subtitle_mode = "platform_subtitles" if subtitles else "no_platform_subtitles"
+            platform_subtitle_parts += int(bool(subtitles))
+            part_id = f"bilibili-{bvid}-p{page['page']:02}"
+            previous_part = existing_parts_by_id.get(part_id)
+            processing_status = "indexed"
+            if (
+                previous_part
+                and previous_part.external_part_id == str(page["cid"])
+                and previous_part.duration_ms == page["duration"] * 1000
+            ):
+                processing_status = previous_part.processing_status
+            parts.append(
+                SourcePartRecord(
+                    part_id=part_id,
+                    source_id=f"bilibili-{bvid}",
+                    external_part_id=str(page["cid"]),
+                    position=page["page"],
+                    title=page["part"],
+                    duration_ms=page["duration"] * 1000,
+                    content_type=_story_content_type(page["part"]),
+                    subtitle_mode=subtitle_mode,
+                    processing_status=processing_status,
+                )
+            )
+
+    sources = read_jsonl(root / "sources.jsonl", SourceRecord)
+    existing_source = next((item for item in sources if item.source_id == f"bilibili-{bvid}"), None)
+    retrieved_at = datetime.now(timezone.utc)
+    published_at = datetime.fromtimestamp(data["pubdate"], timezone.utc)
+    source = SourceRecord(
+        source_id=f"bilibili-{bvid}",
+        source_type="story_video",
+        provenance="in_game_footage",
+        platform="bilibili",
+        title=data["title"],
+        url=url,
+        retrieved_at=existing_source.retrieved_at if existing_source else retrieved_at,
+        status="indexed",
+        external_id=bvid,
+        creator=(data.get("owner") or {}).get("name", ""),
+        published_at=published_at,
+        duration_ms=data["duration"] * 1000,
+        part_count=data["videos"],
+        content_checkpoint="through-1.4" if "1.4" in data["title"] else "",
+        subtitle_mode=(
+            "platform_subtitles"
+            if platform_subtitle_parts == len(parts) and parts
+            else "no_platform_subtitles"
+        ),
+        notes=data.get("desc", ""),
+    )
+    sources = [item for item in sources if item.source_id != source.source_id] + [source]
+    all_parts = [item for item in existing_parts if item.source_id != source.source_id] + parts
+    write_jsonl(root / "sources.jsonl", sources)
+    write_jsonl(root / "source_parts.jsonl", all_parts)
+    stats = validate_corpus(root)
+    return {
+        "source_id": source.source_id,
+        "parts": len(parts),
+        "duration_ms": data["duration"] * 1000,
+        "platform_subtitle_parts": platform_subtitle_parts,
+        "total_sources": stats["sources"],
+    }
+
+
 def validate_corpus(root: Path) -> dict[str, int]:
     catalog = load_catalog(root)
     sources = read_jsonl(root / "sources.jsonl", SourceRecord)
+    source_parts = read_jsonl(root / "source_parts.jsonl", SourcePartRecord)
     profiles = read_jsonl(root / "profiles.jsonl", ProfileIndexRecord)
     scenes = read_jsonl(root / "scenes.jsonl", SceneRecord)
     evidence = read_jsonl(root / "evidence.jsonl", EvidenceRecord)
@@ -419,6 +543,7 @@ def validate_corpus(root: Path) -> dict[str, int]:
 
     characters = unique(catalog, "character_id")
     source_ids = unique(sources, "source_id")
+    unique(source_parts, "part_id")
     profile_ids = unique(profiles, "profile_id")
     scene_ids = unique(scenes, "scene_id")
     evidence_ids = unique(evidence, "evidence_id")
@@ -426,6 +551,9 @@ def validate_corpus(root: Path) -> dict[str, int]:
     for profile in profiles:
         if profile.character_id not in characters or profile.source_id not in source_ids:
             raise ValueError(f"Broken profile reference: {profile.profile_id}")
+    for part in source_parts:
+        if part.source_id not in source_ids:
+            raise ValueError(f"Broken source part reference: {part.part_id}")
     for scene in scenes:
         if scene.source_id not in source_ids or not set(scene.participants) <= characters:
             raise ValueError(f"Broken scene reference: {scene.scene_id}")
@@ -440,6 +568,7 @@ def validate_corpus(root: Path) -> dict[str, int]:
     return {
         "characters": len(characters),
         "sources": len(source_ids),
+        "source_parts": len(source_parts),
         "profiles": len(profile_ids),
         "scenes": len(scene_ids),
         "evidence": len(evidence_ids),
@@ -466,7 +595,16 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                 platform TEXT NOT NULL, title TEXT NOT NULL, url TEXT NOT NULL,
                 page_title TEXT, revision_id INTEGER, revision_timestamp TEXT,
                 retrieved_at TEXT NOT NULL, content_hash TEXT, status TEXT NOT NULL,
-                raw_wikitext TEXT
+                raw_wikitext TEXT, external_id TEXT, creator TEXT, published_at TEXT,
+                duration_ms INTEGER, part_count INTEGER, content_checkpoint TEXT,
+                subtitle_mode TEXT NOT NULL, notes TEXT NOT NULL
+            );
+            CREATE TABLE source_parts (
+                part_id TEXT PRIMARY KEY, source_id TEXT NOT NULL REFERENCES sources,
+                external_part_id TEXT NOT NULL, position INTEGER NOT NULL, title TEXT NOT NULL,
+                duration_ms INTEGER NOT NULL, content_type TEXT NOT NULL,
+                subtitle_mode TEXT NOT NULL, processing_status TEXT NOT NULL,
+                UNIQUE (source_id, position)
             );
             CREATE TABLE profiles (
                 profile_id TEXT PRIMARY KEY, character_id TEXT NOT NULL REFERENCES characters,
@@ -531,7 +669,6 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                     character.research_status,
                 ),
             )
-        raw_by_source = {}
         parsed_by_source = {}
         for source in sources:
             raw = ""
@@ -540,9 +677,9 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                 if path.exists():
                     raw = path.read_text(encoding="utf-8")
                     parsed_by_source[source.source_id] = parse_profile(raw)
-            raw_by_source[source.source_id] = raw
             connection.execute(
-                "INSERT INTO sources VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO sources VALUES "
+                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     source.source_id,
                     source.source_type,
@@ -557,6 +694,29 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                     source.content_hash,
                     source.status,
                     raw,
+                    source.external_id,
+                    source.creator,
+                    source.published_at.isoformat() if source.published_at else None,
+                    source.duration_ms,
+                    source.part_count,
+                    source.content_checkpoint,
+                    source.subtitle_mode,
+                    source.notes,
+                ),
+            )
+        for part in read_jsonl(root / "source_parts.jsonl", SourcePartRecord):
+            connection.execute(
+                "INSERT INTO source_parts VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (
+                    part.part_id,
+                    part.source_id,
+                    part.external_part_id,
+                    part.position,
+                    part.title,
+                    part.duration_ms,
+                    part.content_type,
+                    part.subtitle_mode,
+                    part.processing_status,
                 ),
             )
         for profile in profiles:

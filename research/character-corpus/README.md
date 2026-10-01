@@ -8,6 +8,7 @@
 | --- | --- |
 | `catalog.json` | 有稳定 ID 的命名角色目录、多语言名称与研究状态 |
 | `sources.jsonl` | 档案页、剧情录像等来源及其版本、哈希与采集状态 |
+| `source_parts.jsonl` | 长视频的分 P、CID、时长、字幕模式与处理进度 |
 | `profiles.jsonl` | 个人档案的结构化事实、档案目录和语音覆盖统计 |
 | `scenes.jsonl` | 剧情场景、时间范围、参与角色和 Canon checkpoint |
 | `evidence.jsonl` | 某个场景对某个角色提供的人物表现证据 |
@@ -20,7 +21,8 @@
 - 目录来自异环信息站的“角色名称表”，当前登记 24 名命名角色。
 - 其中 23 名已有个人档案页面并完成同步；明音凛只有名称记录，来源页尚未建立。
 - 本地查询库当前包含 23 份页面快照、143 个档案条目和 1955 条语音索引内容。
-- `scenes`、`evidence`、`traits` 仍为空，等待 B 站剧情来源进入下一阶段。
+- 已登记 B 站剧情合集 `BV1kqoaBiEVZ`：21 个分 P，总长 80,387 秒，覆盖标题标注至 1.4；平台接口未提供 CC 字幕。
+- `scenes`、`evidence`、`traits` 仍为空，等待取得可处理的画面内字幕后进入下一阶段。
 
 异环信息站属于游戏个人档案的搬运来源，因此标记为 `in_game_archive_mirror`。它能确认游戏内档案和语音内容，但同一文本在不同搬运页面出现时不会被当作多份独立证据。
 
@@ -28,11 +30,12 @@
 
 ```powershell
 uv run python -m scripts.character_corpus sync-ntestation
+uv run python -m scripts.character_corpus sync-bilibili --bvid BV1kqoaBiEVZ
 uv run python -m scripts.character_corpus validate
 uv run python -m scripts.character_corpus build
 ```
 
-`sync-ntestation` 使用 MediaWiki API 读取角色名称表和各角色页面，并记录页面 revision 与内容哈希。`validate` 检查 Schema、唯一键和跨文件引用。`build` 从索引和本地快照重建 SQLite；没有本地快照时仍可建立目录与来源表，但档案正文和语音表需要重新同步后才会填充。
+`sync-ntestation` 使用 MediaWiki API 读取角色名称表和各角色页面，并记录页面 revision 与内容哈希。`sync-bilibili` 只读取公开视频元数据、分 P 和平台字幕状态，不下载视频或音频。`validate` 检查 Schema、唯一键和跨文件引用。`build` 从索引和本地快照重建 SQLite；没有本地快照时仍可建立目录与来源表，但档案正文和语音表需要重新同步后才会填充。
 
 ## 内容状态
 
