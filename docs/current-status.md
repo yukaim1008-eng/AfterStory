@@ -1,6 +1,6 @@
 # AfterStory 当前项目状态
 
-- 更新日期：2026-09-30。
+- 更新日期：2026-10-01。
 - Memory System M1 已实现：记忆不可变版本、多来源、依赖/抑制基础、持久化任务 lease、独立 data revision，以及消息时间和时区来源已落库；旧 PersonalMemory API 与数据继续兼容。
 - Memory System M2 已实现：有界分段摘要、跨会话连续性笔记、原文关键词回读，以及 prepare/reserve/finish 的短事务发送边界。
 - Memory System M3 已实现：成功轮次后台提取任务、严格候选校验、稳定事实/事件身份、跨批次去重，以及显式记住/纠正/忘记操作回执。
@@ -27,6 +27,7 @@
 - 2026-09-24 只优化 Memory 待审设计稿：M2 提前承担最小原文查找与跨会话未覆盖原文补查，M3 在现有候选上做事件去重并暂缓会高频触发全实例历史排除的自动替代；补上对话内显式操作回执、后台写入与回复安全修订分工、有界删除屏障，以及新消息的接收时间/时区来源。业务代码、数据库及运行数据均未改动，以上仍待集中审核。
 - 长会话设计进度：[连续性与压缩](design/memory/01-conversation-continuity.md) 的保留原文、分段摘要配合连续性笔记、压缩赶不上时等待或重试三项方向已确认；[摘要组织、原文选择与离开后续聊](design/memory/02-summary-and-resumption.md) 已形成完整待审稿。数值预算和阈值由实施回放确定。
 - 当前阶段：Minimal Character Schema v1 已完成。CharacterVersion 新增可空 `definition` JSONB；结构化定义使用 Schema Version `1.0`、身份/性格/说话方式/行为/世界观/初始关系六个文本字段，并由 Prompt Builder Version `1.0` 编译冻结 `system_prompt`。旧提示词角色保持兼容；Memory、State、Relationship、Conversation 仍归实例运行数据。隔离 schema 迁移升级/回滚与 41 项后端测试均通过，实施记录见 [最小 Character Schema 实施计划](implementation/character-schema-minimal.md)。
+- 2026-10-01 已将娜娜莉、伊洛伊、薄荷的官网介绍与公开档案/语音整理为 [正式角色六字段候选](design/character/README.md)。候选包使用完整 Character Definition Schema v1 并可由 Prompt Builder v1.0 编译；本轮只整理公开稳定资料，不补完整剧情 Canon 或 Voice Profile。候选尚待用户集中审核，未导入数据库、未修改前端版本绑定、未切换任何现有角色实例。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。
@@ -72,7 +73,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。当前可以由用户开始持续聊天体验，以具体失败轮次作为后续策略回归样本；正式角色资料仍需在独立阶段完善。离线通知、Voice、完整 Canon 和 Character Schema v2 均未在本阶段启动。
+Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。当前先由用户集中审核三位正式角色的六字段候选，确认后再建立不可变的新 `CharacterVersion` 并进行实际聊天体验。离线通知、Voice、完整 Canon 和 Character Schema v2 均未在本阶段启动。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 

@@ -1,6 +1,6 @@
 # 角色与原作资料
 
-状态：身份/版本/实例基础与 Minimal Character Schema v1 已实现并验证；2026-09-18 用户确认先按六部分拆分，等 Memory System 完成后再据此优化。
+状态：身份/版本/实例基础与 Minimal Character Schema v1 已实现并验证；Memory System 完成后，已开始整理三位正式角色的第一版公开资料候选，当前等待集中审核，尚未导入数据库。
 
 ## 职责与已确认约束
 
@@ -10,7 +10,7 @@
 
 `afterstory/models.py` 已有 Character、CharacterVersion、CharacterInstance；`seed.py` 校验已导入版本不可变，实例引用明确版本。前端的主题、素材和发送按钮使用独立配置。
 
-此前暂缓角色设计的阶段安排已由本次最小 Schema 设计调整；当前先明确字段与数据归属，保留现有联调内容。正式资料采集、完整性格细化和角色资料库建设仍未开展。
+现有三位联调版本保持不变。第一版正式资料只整理公开角色介绍与角色语音可以支持的稳定身份、性格、表达和关系起点，不建设完整角色资料库，也不补写剧情 Canon。来源和候选边界见 [正式角色资料整理入口](character/README.md)。
 
 ## 最小 Character Schema：暂定六部分与字段草稿（2026-09-18）
 
@@ -70,9 +70,15 @@ Minimal Character Schema v1 的实现与验证范围见 [实施记录](../implem
 ## 待设计
 
 - 定义与实例的扩展字段、正式 Canon Checkpoint 与更新契约；不把已有基础模型误记为尚未实现。
-- 娜娜莉的准确剧情节点、资料来源、初始关系与 Voice Profile 引用。
-- 伊洛伊、薄荷的独立角色定义、Canon 基线、用户关系映射及 Voice Profile；不直接复制娜娜莉的身份关系。
+- 娜娜莉的第一版六字段候选已整理；准确剧情节点、完整 Canon 和 Voice Profile 仍待后续阶段。
+- 伊洛伊、薄荷已有各自独立的六字段候选。伊洛伊暂按熟悉的鉴定师协作者起点，薄荷暂按“可可”/鉴定师伙伴起点，需用户集中审核后才能导入。
 - 差异化测试角色与素材的公开边界。
+
+## 2026-10-01 正式角色内容候选
+
+`fixtures/companions.profile-v1.candidate.json` 保存娜娜莉、伊洛伊、薄荷的完整 Schema v1 候选。三份数据已经过现有 `CharacterDefinition` 校验并可由 Prompt Builder v1.0 稳定编译，但文件名、版本 ID 和文档状态均明确标记为 candidate。
+
+当前没有执行 `seed()`，没有生成数据库中的新 `CharacterVersion`，也没有修改前端 `versionId` 或已有 `CharacterInstance`。用户集中审核并确认角色身份映射、称呼和表达边界后，再单独授权导入与实际聊天验收。
 
 ## 验收方向
 
