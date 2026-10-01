@@ -32,6 +32,8 @@ frontend/public/media/
 frontend/test-results/
 frontend/playwright-report/
 .local-run/
+research/character-corpus/.cache/
+research/character-corpus/local/
 
 # 临时文件
 *.log

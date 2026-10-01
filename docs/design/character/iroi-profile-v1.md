@@ -5,8 +5,8 @@
 ## 来源
 
 - A：[《异环》官方网站版本公告：伊洛伊加入可获取角色](https://nte.perfectworld.com/cn/article/news/gamenews/20260728/263298.html)
-- B：[异环信息站：伊洛伊档案与语音整理](https://www.ntestation.com/%E4%BC%8A%E6%B4%9B%E4%BC%8A)
-- B：[公开角色资料汇总：伊洛伊](https://forum.gamer.com.tw/C.php?bsn=80679&snA=3863&tnum=3)
+- 游戏档案镜像：[异环信息站：伊洛伊档案与语音整理](https://www.ntestation.com/%E4%BC%8A%E6%B4%9B%E4%BC%8A)
+- 玩家资料汇总：[伊洛伊资料整理](https://forum.gamer.com.tw/C.php?bsn=80679&snA=3863&tnum=3)
 
 ## 六字段取材
 

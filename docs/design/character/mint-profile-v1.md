@@ -6,8 +6,8 @@
 
 - A：[《异环》官方网站角色介绍：薄荷](https://nte.perfectworld.com/cn/article/news/gamenews/20240830/252522.html)
 - A：[《异环》官方网站主页面角色与世界介绍](https://nte.perfectworld.com/cn/main.html?nav=5)
-- B：[异环信息站：薄荷档案与语音整理](https://www.ntestation.com/%E8%96%84%E8%8D%B7)
-- B：[公开角色资料汇总：薄荷](https://forum.gamer.com.tw/Co.php?bsn=80679&sn=2144)
+- 游戏档案镜像：[异环信息站：薄荷档案与语音整理](https://www.ntestation.com/%E8%96%84%E8%8D%B7)
+- 玩家资料汇总：[薄荷资料整理](https://forum.gamer.com.tw/Co.php?bsn=80679&sn=2144)
 
 ## 六字段取材
 

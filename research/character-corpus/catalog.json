@@ -1,0 +1,314 @@
+[
+  {
+    "schema_version": "1.0",
+    "character_id": "akane-rin",
+    "names": {
+      "zh": "明音凛",
+      "ja": "明音凛",
+      "ko": "아카네 린",
+      "en": "Akane Rin"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "blackbird",
+    "names": {
+      "zh": "黑羽",
+      "ja": "クロバネ",
+      "ko": "레이븐",
+      "en": "Blackbird"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "linko",
+    "names": {
+      "zh": "灵可",
+      "ja": "リンコ",
+      "ko": "링코",
+      "en": "Linko"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "zankou",
+    "names": {
+      "zh": "残虹",
+      "ja": "残虹",
+      "ko": "이환",
+      "en": "Zankou"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "iroi",
+    "names": {
+      "zh": "伊洛伊",
+      "ja": "イロヒ",
+      "ko": "일로이",
+      "en": "Iroi"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "shinku",
+    "names": {
+      "zh": "真红",
+      "ja": "真紅",
+      "ko": "신쿠",
+      "en": "Shinku"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "chaos",
+    "names": {
+      "zh": "卡厄斯",
+      "ja": "カオス",
+      "ko": "카오스",
+      "en": "Chaos"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "lacrimosa",
+    "names": {
+      "zh": "安魂曲",
+      "ja": "レクイエム",
+      "ko": "라크리모사",
+      "en": "Lacrimosa"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "hotori",
+    "names": {
+      "zh": "浔",
+      "ja": "潯",
+      "ko": "호토리",
+      "en": "Hotori"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "nanally",
+    "names": {
+      "zh": "娜娜莉",
+      "ja": "ナナリ",
+      "ko": "나나리",
+      "en": "Nanally"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "chiz",
+    "names": {
+      "zh": "小吱",
+      "ja": "ちぃちゃん",
+      "ko": "치즈",
+      "en": "Chiz"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "sakiri",
+    "names": {
+      "zh": "早雾",
+      "ja": "早霧",
+      "ko": "사키리",
+      "en": "Sakiri"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "baicang",
+    "names": {
+      "zh": "白藏",
+      "ja": "白藏",
+      "ko": "백장",
+      "en": "Baicang"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "hathor",
+    "names": {
+      "zh": "哈索尔",
+      "ja": "ハソール",
+      "ko": "하토르",
+      "en": "Hathor"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "fadia",
+    "names": {
+      "zh": "法帝娅",
+      "ja": "ファルディーヤ",
+      "ko": "파디아",
+      "en": "Fadia"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "daffodill",
+    "names": {
+      "zh": "达芙蒂尔",
+      "ja": "ダフォディール",
+      "ko": "다포딜",
+      "en": "Daffodill"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "jiuyuan",
+    "names": {
+      "zh": "九原",
+      "ja": "九原",
+      "ko": "구원",
+      "en": "Jiuyuan"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "mitsuki",
+    "names": {
+      "zh": "海月",
+      "ja": "海月",
+      "ko": "우미츠키",
+      "en": "Mitsuki"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "haniel",
+    "names": {
+      "zh": "哈尼娅",
+      "ja": "ハニア",
+      "ko": "하니엘",
+      "en": "Haniel"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "edgar",
+    "names": {
+      "zh": "埃德嘉",
+      "ja": "エドガー",
+      "ko": "에드가",
+      "en": "Edgar"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "adler",
+    "names": {
+      "zh": "阿德勒",
+      "ja": "アドレー",
+      "ko": "아들러",
+      "en": "Adler"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "skia",
+    "names": {
+      "zh": "翳",
+      "ja": "翳",
+      "ko": "스키아",
+      "en": "Skia"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "mint",
+    "names": {
+      "zh": "薄荷",
+      "ja": "ミント",
+      "ko": "민트",
+      "en": "Mint"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "esper-zero",
+    "names": {
+      "zh": "异能者·零",
+      "ja": "異能者·零",
+      "ko": "이능력자·제로",
+      "en": "Esper Zero"
+    },
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "profile_collected"
+  }
+]

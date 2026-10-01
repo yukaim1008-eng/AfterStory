@@ -6,8 +6,8 @@
 
 - A：[《异环》官方网站角色介绍：娜娜莉](https://nte.perfectworld.com/cn/article/news/gamenews/20240830/252540.html)
 - A：[《异环》官方网站主页面角色与世界介绍](https://nte.perfectworld.com/cn/main.html?nav=5)
-- B：[异环信息站：娜娜莉档案与语音整理](https://www.ntestation.com/%E5%A8%9C%E5%A8%9C%E8%8E%89)
-- B：[TapTap 公开角色档案整理](https://www.taptap.cn/moment/794682557353428461)
+- 游戏档案镜像：[异环信息站：娜娜莉档案与语音整理](https://www.ntestation.com/%E5%A8%9C%E5%A8%9C%E8%8E%89)
+- 公开角色资料：[TapTap 角色档案整理](https://www.taptap.cn/moment/794682557353428461)
 
 ## 六字段取材
 

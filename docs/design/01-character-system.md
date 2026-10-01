@@ -1,6 +1,6 @@
 # 角色与原作资料
 
-状态：身份/版本/实例基础与 Minimal Character Schema v1 已实现并验证；Memory System 完成后，已开始整理三位正式角色的第一版公开资料候选，当前等待集中审核，尚未导入数据库。
+状态：身份/版本/实例基础与 Minimal Character Schema v1 已实现并验证；三位正式角色已有六字段候选，人物资料研究库 M0 已建立并同步游戏个人档案，尚未导入正式角色版本。
 
 ## 职责与已确认约束
 
@@ -79,6 +79,10 @@ Minimal Character Schema v1 的实现与验证范围见 [实施记录](../implem
 `fixtures/companions.profile-v1.candidate.json` 保存娜娜莉、伊洛伊、薄荷的完整 Schema v1 候选。三份数据已经过现有 `CharacterDefinition` 校验并可由 Prompt Builder v1.0 稳定编译，但文件名、版本 ID 和文档状态均明确标记为 candidate。
 
 当前没有执行 `seed()`，没有生成数据库中的新 `CharacterVersion`，也没有修改前端 `versionId` 或已有 `CharacterInstance`。用户集中审核并确认角色身份映射、称呼和表达边界后，再单独授权导入与实际聊天验收。
+
+## 人物资料研究库
+
+[研究库实施顺序](character/character-corpus.md) 已明确分为个人档案、剧情来源、场景、证据、特征卡和产品资料六层。M0 当前登记异环信息站角色名称表中的 24 名角色，23 名已有个人档案；本地 SQLite 可从来源索引和页面快照重建。研究库与生产 PostgreSQL 分离，不改变 Character、CharacterVersion、CharacterInstance 或运行时上下文。
 
 ## 验收方向
 
