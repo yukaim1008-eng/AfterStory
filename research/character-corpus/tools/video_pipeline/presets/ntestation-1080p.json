@@ -1,0 +1,41 @@
+{
+  "preset_version": "1.0",
+  "name": "ntestation-1080p-cn",
+  "source_width": 1920,
+  "source_height": 1080,
+  "scan_fps": 4.0,
+  "detection_crop": {
+    "x": 260,
+    "y": 875,
+    "width": 1400,
+    "height": 150
+  },
+  "ocr_crop": {
+    "x": 200,
+    "y": 780,
+    "width": 1520,
+    "height": 270
+  },
+  "white_value_threshold": 172,
+  "white_channel_spread": 58,
+  "glyph_min_width": 2,
+  "glyph_max_width": 72,
+  "glyph_min_height": 8,
+  "glyph_max_height": 46,
+  "glyph_min_area": 10,
+  "glyph_max_area": 1800,
+  "min_glyphs": 2,
+  "line_y_tolerance": 12,
+  "line_max_gap": 64,
+  "min_line_glyphs": 4,
+  "min_line_width": 82,
+  "short_line_min_glyphs": 2,
+  "short_line_min_width": 36,
+  "short_line_center_min": 0.32,
+  "short_line_center_max": 0.68,
+  "episode_similarity_threshold": 0.38,
+  "stable_similarity_threshold": 0.9,
+  "end_missing_samples": 2,
+  "jpeg_quality": 94,
+  "ocr_scale": 2.0
+}

@@ -23,7 +23,8 @@
 - 本地查询库当前包含 23 份页面快照、143 个档案条目和 1955 条语音索引内容。
 - 已登记 B 站剧情合集 `BV1kqoaBiEVZ`：21 个分 P，总长 80,387 秒，覆盖标题标注至 1.4；平台接口未提供 CC 字幕，用户已确认录制的游戏画面内含字幕。
 - P1 `05:00–10:00` 的本地 PP-OCRv5 试跑已通过：清晰正文和中英混合字幕可以抽取，逐字显示合并、短句保护和无姓名过场的说话者归属仍需由单分 P 批处理工具解决。视频、截图与试跑逐字稿只在忽略的 `local/` 中保存。
-- `scenes`、`evidence`、`traits` 仍为空；本次可行性试验不等于完整分 P 已完成转录。
+- 本地视频工具 Version `1.0` 已完成完整 P1：786 个候选帧生成 382 个有效 OCR 样本、215 段台词候选和 22 个场景草稿；78 段有明确画面姓名依据，137 段保持未知。全部结果位于忽略的 `local/video-pipeline/` 并保持 `pending`、`export_ready=false`。
+- `scenes`、`evidence`、`traits` 仍为空；完整 P1 机器暂存不等于已经审核或正式入库。
 
 异环信息站属于游戏个人档案的搬运来源，因此标记为 `in_game_archive_mirror`。它能确认游戏内档案和语音内容，但同一文本在不同搬运页面出现时不会被当作多份独立证据。
 
@@ -35,6 +36,8 @@ uv run python -m scripts.character_corpus sync-bilibili --bvid BV1kqoaBiEVZ
 uv run python -m scripts.character_corpus validate
 uv run python -m scripts.character_corpus build
 ```
+
+剧情视频处理工具及运行方式见 [`tools/video_pipeline/README.md`](tools/video_pipeline/README.md)。工具只写本地审核暂存区，不直接修改本目录的正式 JSONL 或 SQLite。
 
 `sync-ntestation` 使用 MediaWiki API 读取角色名称表和各角色页面，并记录页面 revision 与内容哈希。`sync-bilibili` 只读取公开视频元数据、分 P 和平台字幕状态，不下载视频或音频。`validate` 检查 Schema、唯一键和跨文件引用。`build` 从索引和本地快照重建 SQLite；没有本地快照时仍可建立目录与来源表，但档案正文和语音表需要重新同步后才会填充。
 
