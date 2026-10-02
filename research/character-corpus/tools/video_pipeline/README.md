@@ -52,6 +52,10 @@ B 站桌面端缓存 / 标准视频
 | `scenes.draft.jsonl` | 依据对白间隔形成的场景草稿 |
 | `review-queue.jsonl` | 未确认说话者、低置信度和短句 |
 | `report.json` | 本次处理统计 |
+| `review-full-frames/` | 按台词时间点提取的全画面审核证据 |
+| `review-decisions.jsonl` | 逐条人工或 Agent 审核决定，不覆盖原始 OCR |
+| `reviewed-transcript.jsonl` | 只包含审核通过并修订后的可读稿 |
+| `review-report.html` | 全画面、原 OCR、修订稿、说话者和结论的浏览器报告 |
 
 校验暂存包：
 
@@ -62,3 +66,17 @@ B 站桌面端缓存 / 标准视频
 ```
 
 当前工具没有“直接写数据库”命令。后续导出必须先完成台词、说话者和场景审核，并由校验结果给出 `export_ready=true`；在此之前所有结果都是可丢弃、可重跑的研究草稿。
+
+生成可视审核报告和校验审核覆盖率：
+
+```powershell
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command review-report `
+  -Output "research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p01"
+
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command review-validate `
+  -Output "research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p01"
+```
+
+`review-report` 是静态 HTML，不需要启动前后端服务。审核决定必须覆盖全部源候选，且审核通过的 ID 必须与 `reviewed-transcript.jsonl` 一致，`review-validate` 才会成功。审核完成仍不等于已经生成正式场景、人物证据或 Character Definition。

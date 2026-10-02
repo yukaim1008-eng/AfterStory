@@ -23,7 +23,7 @@
 
 - 会话/历史、记忆管理、上下文契约、状态存储和工程维护已经完成。
 - 2026-09-18 用户调整当前起点：最小 Character Schema（约 30%–40%）→ Memory 系统设计 → 完善角色 Schema 与内容；替代此前对话理解与角色表达优先的当前安排，不代表后续所有阶段已获开发授权。
-- [角色系统](01-character-system.md) 已实现最小六字段的版本化定义与旧提示词兼容，并通过隔离 PostgreSQL 验证。三位正式角色已有 [第一版六字段候选](character/README.md)；面向全部命名角色的 [人物资料研究库](character/character-corpus.md) 已完成 M0、B 站剧情合集 M1 索引，以及本地视频工具和 [完整 P1 审核暂存](../implementation/character-video-pipeline.md)。下一步先审核 P1，再用同一工具处理后续分 P。候选尚未导入或切换实例，语音保留既有职责和失败规则。
+- [角色系统](01-character-system.md) 已实现最小六字段的版本化定义与旧提示词兼容，并通过隔离 PostgreSQL 验证。三位正式角色已有 [第一版六字段候选](character/README.md)；面向全部命名角色的 [人物资料研究库](character/character-corpus.md) 已完成 M0、B 站剧情合集 M1 索引，以及本地视频工具、完整 P1 抽取和 [逐条画面复核](../implementation/character-video-pipeline.md)。下一步按单个分 P 继续处理，正式场景和人物证据仍需从审核稿生成。候选尚未导入或切换实例，语音保留既有职责和失败规则。
 - [记忆与关系](03-memory-state.md) 的 M0–M8 已实现并统一验收；当前包含线上提醒，离线主动通知继续留到后续工具编排阶段。
 - [理解与回复](02-conversation-core.md) 的 v1 已实现严格结构化决策、显式记忆/提醒编排、State/Relationship proposal 及 outbox 恢复；Response Policy v1 已加入同一次 Provider 调用，并通过真实模型场景回放。本阶段没有新增数据库迁移或前端功能。
 - 本轮专门设计 [长会话连续性与上下文压缩](memory/01-conversation-continuity.md)，以独立讨论稿记录压缩、来源、上下文预算和旧细节找回；不是整个 Memory System 的一次性实现计划。

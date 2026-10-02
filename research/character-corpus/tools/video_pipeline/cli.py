@@ -15,6 +15,7 @@ from .core import (
 )
 from .media import normalize_bilibili_cache, probe_media, scan_candidates
 from .ocr_stage import assemble_staging_bundle, rebuild_ocr_samples, run_ocr
+from .review import render_review_report, validate_review_bundle
 
 TOOL_DIR = Path(__file__).resolve().parent
 CORPUS_ROOT = TOOL_DIR.parents[1]
@@ -33,6 +34,14 @@ def _import_runtime_dependencies():
             "missing local OCR dependencies; use run.ps1 so they stay outside project dependencies"
         ) from exc
     return cv2, np, PaddleOCR
+
+
+def _import_cv2():
+    try:
+        import cv2
+    except ImportError as exc:
+        raise RuntimeError("missing OpenCV; use run.ps1") from exc
+    return cv2
 
 
 def _safe_output_dir(path: Path) -> Path:
@@ -180,6 +189,14 @@ def assemble_command(args: argparse.Namespace) -> dict:
     return {**report, "validation": validation}
 
 
+def review_report_command(args: argparse.Namespace) -> dict:
+    return render_review_report(_safe_output_dir(args.output), _import_cv2())
+
+
+def review_validate_command(args: argparse.Namespace) -> dict:
+    return validate_review_bundle(_safe_output_dir(args.output))
+
+
 def main() -> None:
     os.environ.setdefault("PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK", "True")
     parser = argparse.ArgumentParser(
@@ -210,6 +227,14 @@ def main() -> None:
     assemble_parser.add_argument("--output", type=Path, required=True)
     assemble_parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
     assemble_parser.set_defaults(handler=assemble_command)
+
+    review_report_parser = subparsers.add_parser("review-report")
+    review_report_parser.add_argument("--output", type=Path, required=True)
+    review_report_parser.set_defaults(handler=review_report_command)
+
+    review_validate_parser = subparsers.add_parser("review-validate")
+    review_validate_parser.add_argument("--output", type=Path, required=True)
+    review_validate_parser.set_defaults(handler=review_validate_command)
 
     args = parser.parse_args()
     result = args.handler(args)

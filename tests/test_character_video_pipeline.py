@@ -19,6 +19,7 @@ from video_pipeline.core import (  # noqa: E402
     write_jsonl,
 )
 from video_pipeline.media import CACHE_PREFIX, strip_cache_prefix  # noqa: E402
+from video_pipeline.review import REVIEW_SCHEMA_VERSION, validate_review_bundle  # noqa: E402
 
 
 def test_interpretation_confirms_only_known_explicit_character_label():
@@ -272,3 +273,53 @@ def test_preset_is_strict_json():
     assert preset["source_width"] == 1920
     assert preset["source_height"] == 1080
     assert preset["scan_fps"] >= 4
+
+
+def test_review_validation_requires_complete_decisions_and_matching_transcript(
+    tmp_path: Path,
+):
+    write_jsonl(
+        tmp_path / "utterances.jsonl",
+        [
+            {"utterance_id": "u00001"},
+            {"utterance_id": "u00002"},
+        ],
+    )
+    decisions = [
+        {
+            "review_schema_version": REVIEW_SCHEMA_VERSION,
+            "utterance_id": "u00001",
+            "decision": "approved",
+        },
+        {
+            "review_schema_version": REVIEW_SCHEMA_VERSION,
+            "utterance_id": "u00002",
+            "decision": "rejected",
+        },
+    ]
+    transcript = [
+        {
+            "reviewed_utterance_id": "u00001",
+            "review_status": "approved",
+            "text": "审核通过的台词。",
+            "speaker_status": "unknown",
+        }
+    ]
+    write_jsonl(tmp_path / "review-decisions.jsonl", decisions)
+    write_jsonl(tmp_path / "reviewed-transcript.jsonl", transcript)
+
+    result = validate_review_bundle(tmp_path)
+    assert result == {
+        "source_utterances": 2,
+        "approved": 1,
+        "rejected": 1,
+        "confirmed_speakers": 0,
+        "probable_speakers": 0,
+        "unknown_speakers": 1,
+        "review_complete": True,
+        "formal_promotion_ready": False,
+    }
+
+    write_jsonl(tmp_path / "review-decisions.jsonl", decisions[:1])
+    with pytest.raises(ValueError, match="coverage mismatch"):
+        validate_review_bundle(tmp_path)

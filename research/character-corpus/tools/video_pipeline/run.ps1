@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("run", "validate", "assemble")]
+    [ValidateSet("run", "validate", "assemble", "review-report", "review-validate")]
     [string]$Command = "run",
     [string]$PartId,
     [string]$Title = "",
