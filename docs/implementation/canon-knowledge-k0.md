@@ -47,7 +47,7 @@ K0 只建立人物地图、世界知识和人物关系图共用的研究库骨�
 - 正式研究目录 `validate`：24 人物、25 来源、21 分 P、23 档案；Scene 与六类 Canon 知识记录均为 0。
 - 隔离临时 SQLite 重建：24 张表，`PRAGMA integrity_check = ok`，无外键错误；临时数据库已自动清理。
 
-完整 pytest 套件中的 PostgreSQL 测试当前未完成：Docker Desktop API 不可用，默认 `127.0.0.1:54329` 连接停在 psycopg。停滞测试由本轮终止，未创建测试 schema，也未启动或停止用户容器。K0 不使用 PostgreSQL，其目标链路已由隔离 JSONL/SQLite 测试覆盖。
+Docker Desktop 恢复后已补跑完整 PostgreSQL 测试套件：113 passed、1 failed。唯一失败为既有 `test_structured_definition_reaches_provider_before_runtime_context` 的精确相等断言仍只接受 Character Prompt，而当前 Conversation Response Policy v1 已按设计追加在同一 system 内容中；K0 未修改该测试、ContextAssembler、Provider 或回复策略调用链，因此记录为本阶段外的既有测试滞后，不通过改弱断言掩盖。测试创建的隔离 schema 已全部清理，用户启动的 PostgreSQL 容器保持运行。
 
 ## 下一阶段
 
