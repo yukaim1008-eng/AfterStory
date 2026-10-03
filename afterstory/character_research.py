@@ -15,6 +15,7 @@ import httpx
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, model_validator
 
 CHARACTER_RESEARCH_SCHEMA_VERSION = "1.0"
+CHARACTER_RESEARCH_SQLITE_SCHEMA_VERSION = "1.1"
 NTESTATION_API = "https://www.ntestation.com/api.php"
 NTESTATION_BASE = "https://www.ntestation.com/"
 
@@ -34,10 +35,17 @@ class LocalizedNames(StrictModel):
     en: str = ""
 
 
+class CharacterAlias(StrictModel):
+    value: NonEmptyStr
+    language: Literal["zh", "ja", "ko", "en", "unknown"] = "unknown"
+    kind: Literal["nickname", "title", "ocr_variant", "other"] = "other"
+
+
 class CharacterCatalogEntry(StrictModel):
     schema_version: Literal["1.0"] = CHARACTER_RESEARCH_SCHEMA_VERSION
     character_id: str
     names: LocalizedNames
+    aliases: list[CharacterAlias] = Field(default_factory=list)
     source_work: str = "异环"
     role_scope: Literal["named_character"] = "named_character"
     research_status: Literal[
@@ -166,10 +174,35 @@ class CanonCheckpointRecord(StrictModel):
     source_work: NonEmptyStr
     display_name: NonEmptyStr
     sequence: int = Field(ge=0)
+    content_track: Literal[
+        "main_story", "side_story", "character_story", "event_story", "unknown"
+    ]
     game_version: str = ""
     chapter: str = ""
     predecessor_id: str = ""
     spoiler_scope: NonEmptyStr
+
+
+class ProfileFieldLocator(StrictModel):
+    kind: Literal["field"]
+    field_name: NonEmptyStr
+
+
+class ProfileArchiveLocator(StrictModel):
+    kind: Literal["archive"]
+    entry_title: NonEmptyStr
+
+
+class ProfileVoiceLocator(StrictModel):
+    kind: Literal["voice"]
+    category: NonEmptyStr
+    label: NonEmptyStr
+
+
+ProfileLocator = Annotated[
+    ProfileFieldLocator | ProfileArchiveLocator | ProfileVoiceLocator,
+    Field(discriminator="kind"),
+]
 
 
 class CanonEvidenceRecord(StrictModel):
@@ -181,9 +214,16 @@ class CanonEvidenceRecord(StrictModel):
     source_part_id: str = ""
     start_ms: int | None = Field(default=None, ge=0)
     end_ms: int | None = Field(default=None, gt=0)
-    profile_locator: str = ""
+    profile_locator: ProfileLocator | None = None
     evidence_kind: Literal[
-        "dialogue", "action", "document", "broadcast", "visual", "profile_field"
+        "dialogue",
+        "action",
+        "document",
+        "broadcast",
+        "visual",
+        "profile_field",
+        "profile_archive",
+        "profile_voice",
     ]
     actor_character_ids: list[str] = Field(default_factory=list)
     speaker_character_id: str = ""
@@ -203,21 +243,25 @@ class CanonEvidenceRecord(StrictModel):
         if self.origin_type == "scene":
             if not all(value is not None and value != "" for value in scene_fields):
                 raise ValueError("scene evidence requires scene, source part, and time range")
-            if self.profile_id.strip() or self.profile_locator.strip():
+            if self.profile_id.strip() or self.profile_locator is not None:
                 raise ValueError("scene evidence cannot include profile locator")
-            if self.evidence_kind == "profile_field":
-                raise ValueError("scene evidence cannot use profile_field kind")
+            if self.evidence_kind.startswith("profile_"):
+                raise ValueError("scene evidence cannot use profile evidence kind")
         else:
-            if not self.profile_id.strip() or not self.profile_locator.strip():
+            if not self.profile_id.strip() or self.profile_locator is None:
                 raise ValueError("profile evidence requires profile_id and profile_locator")
             if any(value is not None and value != "" for value in scene_fields):
                 raise ValueError("profile evidence cannot include scene locator")
-            if self.evidence_kind != "profile_field":
-                raise ValueError("profile evidence requires profile_field kind")
+            expected_kind = {
+                "field": "profile_field",
+                "archive": "profile_archive",
+                "voice": "profile_voice",
+            }[self.profile_locator.kind]
+            if self.evidence_kind != expected_kind:
+                raise ValueError("profile evidence kind must match profile locator")
         self.scene_id = self.scene_id.strip()
         self.profile_id = self.profile_id.strip()
         self.source_part_id = self.source_part_id.strip()
-        self.profile_locator = self.profile_locator.strip()
         return self
 
 
@@ -247,7 +291,13 @@ class CharacterFactRecord(StrictModel):
     fact_id: NonEmptyStr
     character_id: NonEmptyStr
     fact_type: Literal[
-        "identity", "occupation", "affiliation", "ability", "background", "status", "other"
+        "identity",
+        "occupation",
+        "affiliation",
+        "ability",
+        "background",
+        "canon_status",
+        "other",
     ]
     value_text: str = ""
     value_entity_id: str = ""
@@ -434,6 +484,21 @@ def parse_name_table(wikitext: str) -> list[CharacterCatalogEntry]:
     return records
 
 
+def _merge_catalog(
+    discovered: list[CharacterCatalogEntry], existing: list[CharacterCatalogEntry]
+) -> list[CharacterCatalogEntry]:
+    existing_by_id = {item.character_id: item for item in existing}
+    for entry in discovered:
+        previous = existing_by_id.get(entry.character_id)
+        if previous:
+            entry.aliases = previous.aliases
+            if previous.research_status not in {"discovered", "profile_collected"}:
+                entry.research_status = previous.research_status
+    discovered_ids = {item.character_id for item in discovered}
+    discovered.extend(item for key, item in existing_by_id.items() if key not in discovered_ids)
+    return discovered
+
+
 def _section(wikitext: str, headings: list[str]) -> str:
     for heading in headings:
         marker = re.search(heading, wikitext)
@@ -504,18 +569,9 @@ def sync_ntestation(root: Path) -> dict[str, int]:
         )
         catalog = parse_name_table(name_text)
         existing_catalog = (
-            {item.character_id: item for item in load_catalog(root)}
-            if (root / "catalog.json").exists()
-            else {}
+            load_catalog(root) if (root / "catalog.json").exists() else []
         )
-        for entry in catalog:
-            existing = existing_catalog.get(entry.character_id)
-            if existing and existing.research_status not in {"discovered", "profile_collected"}:
-                entry.research_status = existing.research_status
-        known_character_ids = {item.character_id for item in catalog}
-        catalog.extend(
-            entry for key, entry in existing_catalog.items() if key not in known_character_ids
-        )
+        catalog = _merge_catalog(catalog, existing_catalog)
         pages: dict[str, dict] = {}
         titles = [entry.names.zh for entry in catalog]
         for start in range(0, len(titles), 10):
@@ -839,6 +895,14 @@ def validate_corpus(root: Path) -> dict[str, int]:
                 seen.add(current)
                 current = parents[current]
 
+    for character in catalog:
+        reject_duplicates(
+            [
+                (alias.value.casefold(), alias.language, alias.kind)
+                for alias in character.aliases
+            ],
+            f"character alias: {character.character_id}",
+        )
     for profile in profiles:
         if profile.character_id not in characters or profile.source_id not in source_ids:
             raise ValueError(f"Broken profile reference: {profile.profile_id}")
@@ -921,6 +985,20 @@ def validate_corpus(root: Path) -> dict[str, int]:
                 and item.speaker_character_id != profile.character_id
             ):
                 raise ValueError(f"Profile evidence character mismatch: {item.canon_evidence_id}")
+            locator = item.profile_locator
+            if isinstance(locator, ProfileFieldLocator):
+                locator_exists = locator.field_name in profile.fields or (
+                    locator.field_name == "角色介绍" and profile.has_character_introduction
+                ) or (locator.field_name == "羁遇资料" and profile.has_encounter_profile)
+            elif isinstance(locator, ProfileArchiveLocator):
+                locator_exists = locator.entry_title in profile.archive_entry_titles
+            else:
+                locator_exists = (
+                    isinstance(locator, ProfileVoiceLocator)
+                    and profile.voice_category_counts.get(locator.category, 0) > 0
+                )
+            if not locator_exists:
+                raise ValueError(f"Invalid profile locator: {item.canon_evidence_id}")
     for entity in world_entities:
         require_checkpoint(entity.first_checkpoint, entity.world_entity_id)
         if checkpoint_by_id[entity.first_checkpoint].source_work != entity.source_work:
@@ -1040,6 +1118,7 @@ def validate_corpus(root: Path) -> dict[str, int]:
     )
     return {
         "characters": len(characters),
+        "character_aliases": sum(len(character.aliases) for character in catalog),
         "sources": len(source_ids),
         "source_parts": len(source_parts),
         "profiles": len(profile_ids),
@@ -1068,6 +1147,13 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
             CREATE TABLE characters (
                 character_id TEXT PRIMARY KEY, display_name TEXT NOT NULL,
                 names_json TEXT NOT NULL, source_work TEXT NOT NULL, research_status TEXT NOT NULL
+            );
+            CREATE TABLE character_aliases (
+                character_id TEXT NOT NULL REFERENCES characters,
+                position INTEGER NOT NULL, alias TEXT NOT NULL,
+                language TEXT NOT NULL, kind TEXT NOT NULL,
+                PRIMARY KEY (character_id, position),
+                UNIQUE (character_id, alias, language, kind)
             );
             CREATE TABLE sources (
                 source_id TEXT PRIMARY KEY, source_type TEXT NOT NULL, provenance TEXT NOT NULL,
@@ -1105,7 +1191,7 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
             CREATE TABLE canon_checkpoints (
                 checkpoint_id TEXT PRIMARY KEY, source_work TEXT NOT NULL,
                 display_name TEXT NOT NULL, sequence INTEGER NOT NULL,
-                game_version TEXT NOT NULL, chapter TEXT NOT NULL,
+                content_track TEXT NOT NULL, game_version TEXT NOT NULL, chapter TEXT NOT NULL,
                 predecessor_id TEXT REFERENCES canon_checkpoints,
                 spoiler_scope TEXT NOT NULL,
                 UNIQUE (source_work, sequence)
@@ -1145,7 +1231,9 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                 canon_evidence_id TEXT PRIMARY KEY, origin_type TEXT NOT NULL,
                 scene_id TEXT REFERENCES scenes, profile_id TEXT REFERENCES profiles,
                 source_part_id TEXT REFERENCES source_parts,
-                start_ms INTEGER, end_ms INTEGER, profile_locator TEXT,
+                start_ms INTEGER, end_ms INTEGER,
+                profile_locator_kind TEXT, profile_locator_key TEXT,
+                profile_locator_category TEXT,
                 evidence_kind TEXT NOT NULL,
                 speaker_character_id TEXT REFERENCES characters,
                 observation TEXT NOT NULL, review_status TEXT NOT NULL,
@@ -1153,11 +1241,21 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                 CHECK (
                     (origin_type = 'scene' AND scene_id IS NOT NULL
                         AND source_part_id IS NOT NULL AND start_ms IS NOT NULL
-                        AND end_ms IS NOT NULL AND profile_id IS NULL)
+                        AND end_ms IS NOT NULL AND profile_id IS NULL
+                        AND profile_locator_kind IS NULL AND profile_locator_key IS NULL
+                        AND profile_locator_category IS NULL)
                     OR
                     (origin_type = 'profile' AND profile_id IS NOT NULL
                         AND scene_id IS NULL AND source_part_id IS NULL
                         AND start_ms IS NULL AND end_ms IS NULL)
+                        AND profile_locator_kind IN ('field', 'archive', 'voice')
+                        AND profile_locator_key IS NOT NULL
+                ),
+                CHECK (
+                    (profile_locator_kind = 'voice' AND profile_locator_category IS NOT NULL)
+                    OR (profile_locator_kind IN ('field', 'archive')
+                        AND profile_locator_category IS NULL)
+                    OR (profile_locator_kind IS NULL AND profile_locator_category IS NULL)
                 )
             );
             CREATE TABLE canon_evidence_actors (
@@ -1236,6 +1334,11 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                 PRIMARY KEY (relation_id, canon_evidence_id)
             );
             CREATE INDEX ix_scenes_checkpoint ON scenes (canon_checkpoint);
+            CREATE INDEX ix_character_aliases_alias ON character_aliases (alias);
+            CREATE INDEX ix_canon_checkpoints_track
+                ON canon_checkpoints (source_work, content_track, sequence);
+            CREATE INDEX ix_canon_evidence_profile_locator
+                ON canon_evidence (profile_id, profile_locator_kind, profile_locator_key);
             CREATE INDEX ix_character_facts_character ON character_facts (character_id);
             CREATE INDEX ix_world_facts_subject ON world_facts (subject_entity_id);
             CREATE INDEX ix_character_relations_source ON character_relations (source_character_id);
@@ -1244,7 +1347,11 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
         )
         connection.execute(
             "INSERT INTO metadata VALUES (?, ?)",
-            ("schema_version", CHARACTER_RESEARCH_SCHEMA_VERSION),
+            ("schema_version", CHARACTER_RESEARCH_SQLITE_SCHEMA_VERSION),
+        )
+        connection.execute(
+            "INSERT INTO metadata VALUES (?, ?)",
+            ("corpus_schema_version", CHARACTER_RESEARCH_SCHEMA_VERSION),
         )
         catalog = load_catalog(root)
         sources = read_jsonl(root / "sources.jsonl", SourceRecord)
@@ -1260,6 +1367,19 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                     character.source_work,
                     character.research_status,
                 ),
+            )
+            connection.executemany(
+                "INSERT INTO character_aliases VALUES (?, ?, ?, ?, ?)",
+                [
+                    (
+                        character.character_id,
+                        position,
+                        alias.value,
+                        alias.language,
+                        alias.kind,
+                    )
+                    for position, alias in enumerate(character.aliases, 1)
+                ],
             )
         parsed_by_source = {}
         for source in sources:
@@ -1345,12 +1465,13 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                 )
         for checkpoint in checkpoints:
             connection.execute(
-                "INSERT INTO canon_checkpoints VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO canon_checkpoints VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     checkpoint.checkpoint_id,
                     checkpoint.source_work,
                     checkpoint.display_name,
                     checkpoint.sequence,
+                    checkpoint.content_track,
                     checkpoint.game_version,
                     checkpoint.chapter,
                     None,
@@ -1417,8 +1538,23 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                 [(trait.trait_id, evidence_id) for evidence_id in trait.evidence_ids],
             )
         for item in read_jsonl(root / "canon_evidence.jsonl", CanonEvidenceRecord):
+            locator = item.profile_locator
+            locator_kind = locator.kind if locator else None
+            if isinstance(locator, ProfileFieldLocator):
+                locator_key = locator.field_name
+                locator_category = None
+            elif isinstance(locator, ProfileArchiveLocator):
+                locator_key = locator.entry_title
+                locator_category = None
+            elif isinstance(locator, ProfileVoiceLocator):
+                locator_key = locator.label
+                locator_category = locator.category
+            else:
+                locator_key = None
+                locator_category = None
             connection.execute(
-                "INSERT INTO canon_evidence VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                "INSERT INTO canon_evidence VALUES "
+                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     item.canon_evidence_id,
                     item.origin_type,
@@ -1427,7 +1563,9 @@ def build_sqlite(root: Path, destination: Path) -> dict[str, int]:
                     item.source_part_id or None,
                     item.start_ms,
                     item.end_ms,
-                    item.profile_locator or None,
+                    locator_kind,
+                    locator_key,
+                    locator_category,
                     item.evidence_kind,
                     item.speaker_character_id or None,
                     item.observation,

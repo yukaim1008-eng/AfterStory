@@ -1,6 +1,6 @@
 # Canon 知识层 K0 实施记录
 
-状态：完成。提交日期：2026-10-03。
+状态：K0 与 K0.1 完成。提交日期：2026-10-03。
 
 ## 范围
 
@@ -15,6 +15,16 @@ K0 只建立人物地图、世界知识和人物关系图共用的研究库骨�
 - 新增六个空正式 JSONL 文件；P1 本地审核稿没有写入这些文件。
 - 本地 SQLite 增加 checkpoint、证据、世界实体、人物事实、世界事实、人物关系及相应关联表与索引。
 - SQLite 构建改为临时文件中完成，成功后原子替换目标；校验或构建失败时保留已有数据库。
+
+## K0.1 数据契约优化
+
+- 人物目录增加结构化 `aliases`，每项记录文本、语言及昵称、称号、OCR 变体或其他类型；同步官网名称表时保留已维护别名。
+- checkpoint 增加 `content_track`，区分主线、番外、角色故事、活动和未知轨道；同一作品的全局 `sequence` 继续承担发布/剧透顺序。
+- 档案证据的 `profile_locator` 从自由字符串改为 `field`、`archive`、`voice` 三种严格结构，并与 `profiles.jsonl` 中的字段、档案标题或语音分类交叉校验。
+- 档案证据类型细分为 `profile_field`、`profile_archive`、`profile_voice`，必须与定位器类型一致。
+- 人物事实的剧情内状态类型由 `status` 改为 `canon_status`，避免与用户实例运行时 State 混淆。
+- JSON/JSONL Corpus Schema 继续为 `1.0`；派生 SQLite Schema 升为 `1.1`，并分别记录两个版本号。
+- 正式 Canon 文件仍为空，因此本轮无需迁移事实、关系或场景记录，也没有修改生产 PostgreSQL。
 
 ## 主要校验
 
@@ -41,13 +51,14 @@ K0 只建立人物地图、世界知识和人物关系图共用的研究库骨�
 
 ## 验证
 
-- `uv run pytest tests/test_character_research.py -q`：8 passed。
-- 不依赖 PostgreSQL 的后端测试集合：52 passed。
+- `uv run pytest tests/test_character_research.py -q`：10 passed。
+- 后端全量回归排除一个已确认滞后的旧断言：115 passed、1 deselected。
 - `uv run ruff check .`：通过。
 - 正式研究目录 `validate`：24 人物、25 来源、21 分 P、23 档案；Scene 与六类 Canon 知识记录均为 0。
-- 隔离临时 SQLite 重建：24 张表，`PRAGMA integrity_check = ok`，无外键错误；临时数据库已自动清理。
+- 隔离临时 SQLite 重建及本地查询库原子重建：25 张表，`PRAGMA integrity_check = ok`，无外键错误。
+- 本地查询库保留 24 名人物、25 个来源、21 个分 P、23 份档案、143 个档案条目和 1955 条语音索引；结构化别名与正式 Canon 表当前为空。
 
-Docker Desktop 恢复后已补跑完整 PostgreSQL 测试套件：113 passed、1 failed。唯一失败为既有 `test_structured_definition_reaches_provider_before_runtime_context` 的精确相等断言仍只接受 Character Prompt，而当前 Conversation Response Policy v1 已按设计追加在同一 system 内容中；K0 未修改该测试、ContextAssembler、Provider 或回复策略调用链，因此记录为本阶段外的既有测试滞后，不通过改弱断言掩盖。测试创建的隔离 schema 已全部清理，用户启动的 PostgreSQL 容器保持运行。
+唯一排除项 `test_structured_definition_reaches_provider_before_runtime_context` 已单独复现：它的精确相等断言仍只接受 Character Prompt，而当前 Conversation Response Policy v1 已按设计追加在同一 system 内容中。K0/K0.1 未修改该测试、ContextAssembler、Provider 或回复策略调用链，因此继续记录为本阶段外的既有测试滞后，不通过改弱断言掩盖。测试创建的隔离 schema 已清理，用户启动的 PostgreSQL 容器保持运行。
 
 ## 下一阶段
 

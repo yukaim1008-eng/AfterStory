@@ -8,16 +8,21 @@ from pydantic import ValidationError
 from afterstory.character_research import (
     CanonCheckpointRecord,
     CanonEvidenceRecord,
+    CharacterAlias,
     CharacterCatalogEntry,
     CharacterFactRecord,
     CharacterRelationRecord,
     LocalizedNames,
+    ProfileArchiveLocator,
+    ProfileFieldLocator,
     ProfileIndexRecord,
+    ProfileVoiceLocator,
     SceneRecord,
     SourcePartRecord,
     SourceRecord,
     WorldEntityRecord,
     WorldFactRecord,
+    _merge_catalog,
     build_sqlite,
     parse_name_table,
     parse_profile,
@@ -87,10 +92,34 @@ def test_name_table_and_profile_parser_preserve_structure():
     assert voices == [("日常", "初次见面", "叫我伊洛伊就好~"), ("战斗", "上阵", "我会加油的！")]
 
 
+def test_source_catalog_refresh_preserves_curated_aliases_and_review_status():
+    discovered = [
+        CharacterCatalogEntry(
+            character_id="iroi",
+            names=LocalizedNames(zh="伊洛伊", en="Iroi"),
+            research_status="discovered",
+        )
+    ]
+    existing = [
+        CharacterCatalogEntry(
+            character_id="iroi",
+            names=LocalizedNames(zh="伊洛伊", en="Iroi"),
+            aliases=[CharacterAlias(value="小伊", language="zh", kind="nickname")],
+            research_status="reviewed",
+        )
+    ]
+
+    merged = _merge_catalog(discovered, existing)
+
+    assert merged[0].aliases[0].value == "小伊"
+    assert merged[0].research_status == "reviewed"
+
+
 def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     stats = validate_corpus(CORPUS_ROOT)
     assert stats == {
         "characters": 24,
+        "character_aliases": 0,
         "sources": 25,
         "source_parts": 21,
         "profiles": 23,
@@ -194,6 +223,7 @@ def write_canon_sample(root, *, evidence_status="accepted", relation_target="esp
         CharacterCatalogEntry(
             character_id="nanally",
             names=LocalizedNames(zh="娜娜莉", en="Nanally"),
+            aliases=[CharacterAlias(value="鉴定师助手", language="zh", kind="title")],
             research_status="evidence_collected",
         ),
         CharacterCatalogEntry(
@@ -236,8 +266,8 @@ def write_canon_sample(root, *, evidence_status="accepted", relation_target="esp
         fields={"所属": "异象管理局"},
         has_character_introduction=True,
         has_encounter_profile=False,
-        archive_entry_titles=[],
-        voice_category_counts={},
+        archive_entry_titles=["详细情报"],
+        voice_category_counts={"日常": 1},
     )
     part = SourcePartRecord(
         part_id="story-video-p01",
@@ -256,6 +286,7 @@ def write_canon_sample(root, *, evidence_status="accepted", relation_target="esp
         source_work="异环",
         display_name="第0话",
         sequence=0,
+        content_track="main_story",
         game_version="1.0",
         chapter="第0话",
         spoiler_scope="第0话",
@@ -290,10 +321,30 @@ def write_canon_sample(root, *, evidence_status="accepted", relation_target="esp
         canon_evidence_id="canon-evidence-profile-001",
         origin_type="profile",
         profile_id=profile.profile_id,
-        profile_locator="fields.所属",
+        profile_locator=ProfileFieldLocator(kind="field", field_name="所属"),
         evidence_kind="profile_field",
         actor_character_ids=["nanally"],
         observation="个人档案将娜娜莉的所属列为异象管理局。",
+        review_status=evidence_status,
+    )
+    archive_evidence = CanonEvidenceRecord(
+        canon_evidence_id="canon-evidence-archive-001",
+        origin_type="profile",
+        profile_id=profile.profile_id,
+        profile_locator=ProfileArchiveLocator(kind="archive", entry_title="详细情报"),
+        evidence_kind="profile_archive",
+        actor_character_ids=["nanally"],
+        observation="个人档案的详细情报记录了娜娜莉的经历。",
+        review_status=evidence_status,
+    )
+    voice_evidence = CanonEvidenceRecord(
+        canon_evidence_id="canon-evidence-voice-001",
+        origin_type="profile",
+        profile_id=profile.profile_id,
+        profile_locator=ProfileVoiceLocator(kind="voice", category="日常", label="初次见面"),
+        evidence_kind="profile_voice",
+        actor_character_ids=["nanally"],
+        observation="娜娜莉在日常初次见面语音中主动向对方问候。",
         review_status=evidence_status,
     )
     entity = WorldEntityRecord(
@@ -347,7 +398,12 @@ def write_canon_sample(root, *, evidence_status="accepted", relation_target="esp
         "profiles.jsonl": [profile],
         "canon_checkpoints.jsonl": [checkpoint],
         "scenes.jsonl": [scene],
-        "canon_evidence.jsonl": [canon_evidence, profile_evidence],
+        "canon_evidence.jsonl": [
+            canon_evidence,
+            profile_evidence,
+            archive_evidence,
+            voice_evidence,
+        ],
         "world_entities.jsonl": [entity],
         "character_facts.jsonl": [character_fact],
         "world_facts.jsonl": [world_fact],
@@ -365,7 +421,8 @@ def test_canon_knowledge_schema_validates_and_builds_sqlite(tmp_path):
 
     stats = validate_corpus(root)
     assert stats["canon_checkpoints"] == 1
-    assert stats["canon_evidence"] == 2
+    assert stats["character_aliases"] == 1
+    assert stats["canon_evidence"] == 4
     assert stats["world_entities"] == 1
     assert stats["character_facts"] == 1
     assert stats["world_facts"] == 1
@@ -375,13 +432,32 @@ def test_canon_knowledge_schema_validates_and_builds_sqlite(tmp_path):
     build_sqlite(root, database)
     connection = sqlite3.connect(database)
     try:
+        assert dict(connection.execute("SELECT key, value FROM metadata")) == {
+            "schema_version": "1.1",
+            "corpus_schema_version": "1.0",
+        }
         assert connection.execute(
             "SELECT source_part_id FROM scenes WHERE scene_id = 'scene-p01-001'"
         ).fetchone() == ("story-video-p01",)
-        assert connection.execute("SELECT COUNT(*) FROM canon_evidence").fetchone()[0] == 2
         assert connection.execute(
-            "SELECT profile_id FROM canon_evidence WHERE origin_type = 'profile'"
-        ).fetchone() == ("nanally-profile",)
+            "SELECT alias, language, kind FROM character_aliases WHERE character_id = 'nanally'"
+        ).fetchone() == ("鉴定师助手", "zh", "title")
+        assert connection.execute(
+            "SELECT content_track FROM canon_checkpoints WHERE checkpoint_id = 'nt-zero-prologue'"
+        ).fetchone() == ("main_story",)
+        assert connection.execute("SELECT COUNT(*) FROM canon_evidence").fetchone()[0] == 4
+        assert connection.execute(
+            "SELECT profile_id, profile_locator_kind, profile_locator_key "
+            "FROM canon_evidence WHERE canon_evidence_id = 'canon-evidence-profile-001'"
+        ).fetchone() == ("nanally-profile", "field", "所属")
+        assert connection.execute(
+            "SELECT profile_locator_kind, profile_locator_key, profile_locator_category "
+            "FROM canon_evidence WHERE canon_evidence_id = 'canon-evidence-archive-001'"
+        ).fetchone() == ("archive", "详细情报", None)
+        assert connection.execute(
+            "SELECT profile_locator_kind, profile_locator_key, profile_locator_category "
+            "FROM canon_evidence WHERE canon_evidence_id = 'canon-evidence-voice-001'"
+        ).fetchone() == ("voice", "初次见面", "日常")
         assert connection.execute("SELECT COUNT(*) FROM world_entities").fetchone()[0] == 1
         assert connection.execute("SELECT COUNT(*) FROM character_facts").fetchone()[0] == 1
         assert connection.execute("SELECT COUNT(*) FROM world_facts").fetchone()[0] == 1
@@ -410,7 +486,7 @@ def test_canon_fact_values_and_unknown_fields_are_strict():
         canon_evidence_id="profile-evidence-1",
         origin_type="profile",
         profile_id="nanally-profile",
-        profile_locator="fields.所属",
+        profile_locator=ProfileFieldLocator(kind="field", field_name="所属"),
         evidence_kind="profile_field",
         actor_character_ids=["nanally"],
         observation="档案将娜娜莉列为某组织成员。",
@@ -421,11 +497,43 @@ def test_canon_fact_values_and_unknown_fields_are_strict():
             canon_evidence_id="profile-evidence-2",
             origin_type="profile",
             profile_id="nanally-profile",
-            profile_locator="fields.所属",
+            profile_locator=ProfileFieldLocator(kind="field", field_name="所属"),
             scene_id="scene-1",
             evidence_kind="profile_field",
             observation="错误地混合了两种来源定位。",
         )
+
+    with pytest.raises(ValidationError, match="profile evidence kind must match"):
+        CanonEvidenceRecord(
+            canon_evidence_id="profile-evidence-3",
+            origin_type="profile",
+            profile_id="nanally-profile",
+            profile_locator=ProfileArchiveLocator(kind="archive", entry_title="详细情报"),
+            evidence_kind="profile_field",
+            observation="档案类型与证据类型不匹配。",
+        )
+
+    with pytest.raises(ValidationError):
+        CanonEvidenceRecord(
+            canon_evidence_id="profile-evidence-4",
+            origin_type="profile",
+            profile_id="nanally-profile",
+            profile_locator="fields.所属",
+            evidence_kind="profile_field",
+            observation="旧的自由字符串定位不再接受。",
+        )
+
+    voice_locator = ProfileVoiceLocator(kind="voice", category="日常", label="初次见面")
+    assert voice_locator.category == "日常"
+
+    with pytest.raises(ValidationError):
+        CharacterFactRecord(**{**common, "fact_type": "status"}, value_text="在场")
+    assert (
+        CharacterFactRecord(
+            **{**common, "fact_type": "canon_status"}, value_text="在场"
+        ).fact_type
+        == "canon_status"
+    )
 
 
 def test_scene_part_and_canon_relation_cannot_cross_namespaces(tmp_path):
@@ -441,6 +549,32 @@ def test_scene_part_and_canon_relation_cannot_cross_namespaces(tmp_path):
     write_canon_sample(user_root, relation_target="user-123")
     with pytest.raises(ValueError, match="Broken character relation reference"):
         validate_corpus(user_root)
+
+
+def test_character_aliases_and_profile_locators_are_corpus_validated(tmp_path):
+    alias_root = tmp_path / "duplicate-alias"
+    write_canon_sample(alias_root)
+    catalog_path = alias_root / "catalog.json"
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    catalog[0]["aliases"].append(catalog[0]["aliases"][0].copy())
+    catalog_path.write_text(json.dumps(catalog, ensure_ascii=False), encoding="utf-8")
+    with pytest.raises(ValueError, match="Duplicate character alias"):
+        validate_corpus(alias_root)
+
+    locator_root = tmp_path / "invalid-profile-locator"
+    write_canon_sample(locator_root)
+    evidence_path = locator_root / "canon_evidence.jsonl"
+    records = [
+        CanonEvidenceRecord.model_validate_json(line)
+        for line in evidence_path.read_text(encoding="utf-8").splitlines()
+    ]
+    records[1].profile_locator = ProfileVoiceLocator(
+        kind="voice", category="不存在的分类", label="初次见面"
+    )
+    records[1].evidence_kind = "profile_voice"
+    write_jsonl(evidence_path, records)
+    with pytest.raises(ValueError, match="Invalid profile locator"):
+        validate_corpus(locator_root)
 
 
 def test_accepted_knowledge_requires_reviewed_accepted_evidence(tmp_path):

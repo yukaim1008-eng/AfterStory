@@ -1,6 +1,6 @@
 # Canon 人物、世界与关系知识层
 
-状态：设计 v1；K0 资料库骨架已实现，P1 正式场景与知识数据尚未导入，生产数据库与聊天运行时未修改。
+状态：设计 v1；K0/K0.1 资料库骨架已实现，P1 正式场景与知识数据尚未导入，生产数据库与聊天运行时未修改。
 
 ## 1. 本轮目标
 
@@ -12,7 +12,7 @@
 
 这三项共用同一条来源与审核链，不各自重复解析剧情。它们是研究库中的 Canon 知识层，不是聊天运行时记忆，也不是直接给模型使用的一大段资料。
 
-本设计先确定边界、数据单位、证据链、时间规则和实施顺序。K0 已建立研究库模型和本地 SQLite 查询表，但仍未导入 P1，也未修改 Character Definition 或生产运行时。
+本设计先确定边界、数据单位、证据链、时间规则和实施顺序。K0/K0.1 已建立研究库模型和本地 SQLite 查询表，但仍未导入 P1，也未修改 Character Definition 或生产运行时。
 
 ## 2. 已确认规则、建议方案与暂缓内容
 
@@ -79,9 +79,11 @@ Scene → 人物表现 Evidence → Trait → Character Definition 候选
 
 - `character_id`：跨来源稳定 ID；
 - `names`：中、日、韩、英名称；
+- `aliases`：结构化别名列表，每项记录文本、语言和 `nickname` / `title` / `ocr_variant` / `other` 类型；
 - `source_work`：作品；
 - `research_status`：当前资料完成度；
-- 后续建议增加 `aliases`：剧情昵称、称号、OCR 常见写法及适用语言。
+
+别名只用于剧情称呼、人物消歧和 OCR 归一化，不替代稳定 `character_id`。当前 24 名人物暂未人工补别名，因此目录中均显式保存空数组；后续只能根据档案或已复核剧情逐项增加。
 
 玩家主角继续使用现有 `esper-zero` 节点。男主/女主或不同外观先作为来源中的 `presentation_variant`，不因为画面形象不同复制两套 Canon 人物；只有未来确认剧情事实本身发生分歧时，才增加分支规则。
 
@@ -95,7 +97,7 @@ K0 已新增 `character_facts.jsonl`，只保存已经标准化、可以引用�
 | --- | --- |
 | `fact_id` | 稳定事实 ID |
 | `character_id` | 对应人物 |
-| `fact_type` | 身份、职业、所属、能力、背景、状态或其他受控类型 |
+| `fact_type` | 身份、职业、所属、能力、背景、Canon 状态或其他受控类型；Canon 状态使用 `canon_status`，不与运行时 State 共名 |
 | `value_text` / `value_entity_id` | 文本值或指向世界实体；两者只使用一个 |
 | `canon_checkpoint` | 该事实被确认时的剧情进度 |
 | `valid_from_checkpoint` | 已知从何时成立；未知可空 |
@@ -215,8 +217,8 @@ K0 已新增 `canon_evidence.jsonl`，作为人物事实、世界事实和人物
 - `canon_evidence_id`；
 - `origin_type`：`scene` 或 `profile`；
 - Scene 来源使用 `scene_id`、`source_part_id`、`start_ms` / `end_ms`；
-- Profile 来源使用 `profile_id` 和 `profile_locator`；
-- `evidence_kind`：`dialogue`、`action`、`document`、`broadcast`、`visual` 或 `profile_field`；
+- Profile 来源使用 `profile_id` 和结构化 `profile_locator`；定位器严格分为档案字段 `field`、档案条目 `archive`、语音条目 `voice`，并分别记录字段名、条目标题或语音分类与标签；
+- `evidence_kind`：剧情来源使用 `dialogue`、`action`、`document`、`broadcast`、`visual`；档案来源使用与定位器匹配的 `profile_field`、`profile_archive` 或 `profile_voice`；
 - `actor_character_ids` 与可空的 `speaker_character_id`；
 - `observation`：画面或文本直接可观察的事实摘要；
 - `transcript_refs`：对应已复核台词 ID；
@@ -238,7 +240,7 @@ K0 已新增 `canon_evidence.jsonl`，作为人物事实、世界事实和人物
 
 ### 8.2 Checkpoint 注册表
 
-K0 已新增 `canon_checkpoints.jsonl`，统一 checkpoint ID、显示名称、作品版本、章节顺序、前置 checkpoint 和剧透范围。事实、关系、场景和 Character Version 都引用注册表中的 ID，避免各文件自由填写“1.0”“第一话”“序章”等不一致值。
+K0 已新增 `canon_checkpoints.jsonl`，统一 checkpoint ID、显示名称、作品版本、章节顺序、内容轨道、前置 checkpoint 和剧透范围。`content_track` 固定为 `main_story`、`side_story`、`character_story`、`event_story` 或 `unknown`，用于区分主线、番外、角色故事和活动；全局 `sequence` 仍表示同一作品的发布/剧透顺序。事实、关系、场景和 Character Version 都引用注册表中的 ID，避免各文件自由填写“1.0”“第一话”“序章”等不一致值。
 
 当事实被后续剧情推翻时，保留旧记录，把 `valid_to_checkpoint` 指向变化点，并由新记录通过 `supersedes_id` 连接。这样可以生成“序章时的人物地图”和“1.4 时的人物地图”，也能避免早期角色版本提前知道后期反转。
 
@@ -271,6 +273,7 @@ K0 已在正式 P1 入库前解决两个结构缺口：
 | 阶段 | 范围 | 验收停止点 |
 | --- | --- | --- |
 | K0（已完成） | 增加 checkpoint、world entity、Canon evidence、facts、relations 的严格模型、引用校验和空文件 | Schema/校验/SQLite 隔离重建测试通过，未导入 P1 |
+| K0.1（已完成） | 增加结构化人物别名与剧情轨道，收紧档案定位，区分 `canon_status` 与运行时 State | 本地 SQLite Schema 1.1 原子重建，既有档案索引保持不变 |
 | K1 | 修正 Scene 的 source part 定位；把 P1 生成正式 Scene 和 Canon Evidence | P1 每条正式证据能回到分 P、时间和审核画面 |
 | K2 | 从 P1 形成第一批人物事实、世界事实和关系边，Agent 完成审核 | 三个视图只包含 accepted 记录，未知项保持未知 |
 | K3 | 生成静态人物地图、世界知识页和关系图审核视图 | 可按 checkpoint 查看，能从节点/边回到证据 |
@@ -284,7 +287,7 @@ K0 已在正式 P1 入库前解决两个结构缺口：
 2. **主角建模**：建议继续只使用一个 `esper-zero` Canon 节点，画面性别/外观放在来源上下文。影响是关系不会重复；若未来证实路线剧情有实质差异，再增加分支。
 3. **关系词表**：建议使用“少量 category + 准确自然语言 label”，不预先建立几十种关系枚举。影响是首版易维护，后续仍可按审核结果扩充受控词表。
 4. **不确定关系显示**：建议 accepted 默认实线展示，supported 可切换为虚线，provisional 默认隐藏。影响是地图可表达证据强弱，又不会把推测伪装成 Canon。
-5. **下一实施阶段**：K0 已完成；建议继续用 P1 完成 K1–K3，验证一套完整闭环后才开始 P2。影响是能较早发现 Schema 和审核体验问题，避免把错误扩散到 22 小时资料。
+5. **下一实施阶段**：K0/K0.1 已完成；建议继续用 P1 完成 K1–K3，验证一套完整闭环后才开始 P2。影响是能较早发现 Schema 和审核体验问题，避免把错误扩散到 22 小时资料。
 
 ## 13. 后续实施验收方向
 
