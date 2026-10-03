@@ -4,7 +4,7 @@
 
 ## 职责与已确认约束
 
-负责 Character Definition、版本、Canon Checkpoint、实例引用及角色素材边界。遵循基线第 1、3、5、10 节。主角色为娜娜莉、伊洛伊、薄荷；娜娜莉承接鉴定师伙伴关系，其他两位的用户映射与初始关系待定。原作经历与个人记忆隔离，剧情进度由用户手动更新。当前三位使用联调资料，不等于正式 Canon 已完成。
+负责 Character Definition、版本、Canon Checkpoint、实例引用及角色素材边界。遵循基线第 1、3、5、10 节。主角色为娜娜莉、伊洛伊、薄荷；娜娜莉承接鉴定师伙伴关系，其他两位的用户映射与初始关系待定。原作经历与个人记忆隔离，剧情进度由用户手动更新。Canon 与现实用户之间必须经过 CharacterInstance 的显式、冻结 Canon Role Binding，不能根据称呼或模型判断自动映射。当前三位使用联调资料，不等于正式 Canon 已完成。
 
 ## 已实现与本轮边界
 
@@ -69,7 +69,7 @@ Minimal Character Schema v1 的实现与验证范围见 [实施记录](../implem
 
 ## 待设计
 
-- 定义与实例的扩展字段、正式 Canon Checkpoint 与更新契约；不把已有基础模型误记为尚未实现。
+- 定义与实例的扩展字段、正式 Canon Checkpoint、已确认的 Instance Canon Role Binding 与更新契约；身份绑定的数据结构需要在任何 Canon 资料进入聊天运行时前实现，不把已有基础模型误记为尚未实现。
 - 娜娜莉的第一版六字段候选已整理；准确剧情节点、完整 Canon 和 Voice Profile 仍待后续阶段。
 - 伊洛伊、薄荷已有各自独立的六字段候选。伊洛伊暂按熟悉的鉴定师协作者起点，薄荷暂按“可可”/鉴定师伙伴起点，需用户集中审核后才能导入。
 - 差异化测试角色与素材的公开边界。
@@ -83,6 +83,8 @@ Minimal Character Schema v1 的实现与验证范围见 [实施记录](../implem
 ## 人物资料研究库
 
 [研究库实施顺序](character/character-corpus.md) 已明确分为个人档案、剧情来源、场景、证据、特征卡和产品资料六层。M0 当前登记异环信息站角色名称表中的 24 名角色，23 名已有个人档案；本地 SQLite 可从来源索引和页面快照重建。研究库与生产 PostgreSQL 分离，不改变 Character、CharacterVersion、CharacterInstance 或运行时上下文。
+
+人物地图、世界知识、Canon 人物关系及 Instance Canon Role Binding 的设计见 [Canon 人物、世界与关系知识层](character/canon-knowledge-map.md)。
 
 ## 验收方向
 

@@ -23,6 +23,7 @@
 - 视频工具的机器结果必须经过画面复核后，才能进入正式研究数据。
 - 不要求用户直接审核大量 JSON；日常审核由 Agent 对照画面、文本和证据完成，用户只集中判断有争议的人设和产品取舍。
 - Canon 资料与 AfterStory 中用户和角色形成的 Memory、State、Relationship 严格分开。
+- Canon 原作主角与现实用户之间必须通过 CharacterInstance 的显式、冻结 Canon Role Binding 连接；缺少绑定时不得自动继承主角关系。
 
 ### 2.2 建议方案
 
@@ -56,6 +57,10 @@ Character Facts ─ World Facts ─ Character Relations
 人物地图          世界知识视图          人物关系图
         ↓ 可选、单独审核
 Traits / Character Definition / Canon Runtime Context
+
+Character Relations ──单向选择起点──→ Instance Canon Role Binding
+                                             ↓
+                              Instance Runtime Relationship
 ```
 
 现有的人物塑造链继续并行存在：
@@ -142,9 +147,41 @@ Character Definition 中的 `worldview` 仍是角色在指定版本下需要遵�
 | 原作人物 ↔ 原作玩家主角 | 本文的 Canon 关系图 | 娜娜莉与鉴定师在某 checkpoint 的伙伴关系 |
 | AfterStory 角色实例 ↔ 现实用户 | 现有运行时 `relationships` | 聊天后形成的熟悉、信任和亲近 |
 
-用户映射为鉴定师时，Character Version 可以选择承接 `esper-zero` 与该角色的 Canon 起点；此后在 AfterStory 形成的变化仍只写入 CharacterInstance 运行数据。
+用户映射为鉴定师时，Character Version 提供兼容的关系前提，CharacterInstance 再通过显式身份绑定承接 `esper-zero` 与该角色的 Canon 起点；此后在 AfterStory 形成的变化仍只写入该实例的运行数据。
 
-### 6.2 关系边
+### 6.2 Instance Canon Role Binding
+
+仅将 Canon 数据与运行时数据库分开还不够。如果模型不知道“当前用户是否就是原作主角”，仍可能把鉴定师当成第三个人、把原作经历误认为现实用户经历，或把运行时关系写回 Canon。
+
+因此 Canon 与现实用户之间只允许存在一个显式桥梁：**Instance Canon Role Binding**。它属于 CharacterInstance 的冻结身份前提，不属于运行时 Relationship。建议契约至少包含：
+
+| 字段 | 含义 |
+| --- | --- |
+| `character_instance_id` | 当前角色实例；现实用户身份由实例归属确定 |
+| `identity_mode` | `canon_role_continuation` 或 `separate_person` |
+| `canon_role_character_id` | 承接的原作角色 ID；continuation 必填，separate 必须为空 |
+| `canon_checkpoint_id` | 绑定采用的 Canon 起点 |
+| `source_relation_ids` | 创建实例时选中的 Canon 关系记录，用于来源追踪和冻结 |
+| `binding_status` | 首版只允许 `frozen` |
+
+两种模式的语义必须明确：
+
+- `canon_role_continuation`：当前用户在这个实例中承接指定原作角色身份。例如绑定 `esper-zero` 后，娜娜莉与鉴定师的适用 Canon 关系成为该实例的关系起点；组装上下文时不能再把鉴定师作为独立第三人重复注入。
+- `separate_person`：现实用户与原作主角是不同人物。原作主角仍可作为 Canon 人物被提及，但用户不能继承其经历和关系。
+
+绑定必须遵循以下不变量：
+
+1. Canon 人物、事实和关系记录中永远不出现 `user_id`；
+2. 不能根据称呼、名字、相似台词或模型推理自动创建绑定；
+3. `source_relation_ids` 只单向形成实例起点，之后的 Runtime Relationship 不得反向修改 Canon；
+4. CharacterVersion 的冻结 `relationship_premise` 必须与绑定模式兼容，冲突时拒绝启用 Canon 上下文；
+5. 身份模式、角色或 checkpoint 发生实质变化时创建新 CharacterInstance，不修改旧实例；
+6. Canon 后续更新不自动改写旧绑定，也不自动切换旧实例；
+7. 旧实例没有明确绑定时继续依靠原有冻结 `system_prompt`，不得从文本反推并补建绑定。
+
+运行时组装时，continuation 模式应形成“原作关系起点 + AfterStory 后续发展”；separate 模式应形成“原作主角关系 + 当前用户独立关系”。两部分必须使用不同标题和数据来源，运行时 Relationship 的证据仍只能来自该实例中的 AfterStory 互动。
+
+### 6.3 关系边
 
 建议新增 `character_relations.jsonl`。每条边至少包含：
 
@@ -233,7 +270,8 @@ P1 当前完成的是逐条画面复核，下一步不能直接生成最终人�
 | K2 | 从 P1 形成第一批人物事实、世界事实和关系边，Agent 完成审核 | 三个视图只包含 accepted 记录，未知项保持未知 |
 | K3 | 生成静态人物地图、世界知识页和关系图审核视图 | 可按 checkpoint 查看，能从节点/边回到证据 |
 | K4 | 使用同一流程逐 P 处理后续剧情 | 每个分 P 独立完成、验证和提交，不一次跑完整合集 |
-| K5 | 从累计证据更新 Trait 与正式角色资料候选 | 单独审核后才建立新 CharacterVersion；旧实例不变 |
+| K5 | 在 Canon 资料进入 Provider 前实现 Instance Canon Role Binding、兼容性校验和上下文消歧 | continuation 不产生“第二个主角”，separate 不继承主角经历；旧实例不自动绑定 |
+| K6 | 从累计证据更新 Trait 与正式角色资料候选 | 单独审核后才建立新 CharacterVersion；旧实例不变 |
 
 ## 12. 集中审核项与建议
 
@@ -249,6 +287,10 @@ P1 当前完成的是逐条画面复核，下一步不能直接生成最终人�
 - 多分 P 时间戳不会冲突，未知说话者和未知实体不会被强制猜测；
 - 同一 checkpoint 可稳定生成三张视图，换 checkpoint 后历史关系不会被后期事实污染；
 - Character Canon 关系与 AfterStory 运行时 Relationship 在模型、文件和调用链上均无交叉写入；
+- continuation 模式只把选中的 Canon 角色关系作为实例起点，Provider 不会同时把原作主角当成第三个人；
+- separate 模式不会继承原作主角的关系或共同经历，缺少绑定时不会自动猜测身份；
+- Canon 更新、关系纠正和运行时关系变化均不能修改已有绑定；切换身份模式必须创建新实例；
+- 不同用户、角色实例和绑定之间保持隔离，Canon 数据中不出现现实 `user_id`；
 - 重复证据追加引用，冲突事实保留版本，不覆盖历史；
 - P1 的正式入库流程可重复验证，失败不会留下半写入数据；
 - 未经审核的数据不能进入 Character Definition 或聊天 Provider 输入。
