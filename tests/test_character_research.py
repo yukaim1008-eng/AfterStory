@@ -2,11 +2,22 @@ import json
 import sqlite3
 from datetime import datetime, timezone
 
+import pytest
+from pydantic import ValidationError
+
 from afterstory.character_research import (
+    CanonCheckpointRecord,
+    CanonEvidenceRecord,
     CharacterCatalogEntry,
+    CharacterFactRecord,
+    CharacterRelationRecord,
     LocalizedNames,
     ProfileIndexRecord,
+    SceneRecord,
+    SourcePartRecord,
     SourceRecord,
+    WorldEntityRecord,
+    WorldFactRecord,
     build_sqlite,
     parse_name_table,
     parse_profile,
@@ -17,6 +28,18 @@ from afterstory.character_research import (
 from afterstory.config import ROOT
 
 CORPUS_ROOT = ROOT / "research/character-corpus"
+EMPTY_CORPUS_FILES = (
+    "profiles.jsonl",
+    "scenes.jsonl",
+    "evidence.jsonl",
+    "traits.jsonl",
+    "canon_checkpoints.jsonl",
+    "canon_evidence.jsonl",
+    "world_entities.jsonl",
+    "character_facts.jsonl",
+    "world_facts.jsonl",
+    "character_relations.jsonl",
+)
 
 
 def sample_wiki():
@@ -74,6 +97,12 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         "scenes": 0,
         "evidence": 0,
         "traits": 0,
+        "canon_checkpoints": 0,
+        "canon_evidence": 0,
+        "world_entities": 0,
+        "character_facts": 0,
+        "world_facts": 0,
+        "character_relations": 0,
     }
     catalog = json.loads((CORPUS_ROOT / "catalog.json").read_text(encoding="utf-8"))
     missing = [item for item in catalog if item["research_status"] == "discovered"]
@@ -139,7 +168,10 @@ def test_sqlite_build_populates_local_profile_content(tmp_path):
     )
     write_jsonl(root / "sources.jsonl", [source])
     write_jsonl(root / "profiles.jsonl", [profile])
-    for name in ("scenes.jsonl", "evidence.jsonl", "traits.jsonl"):
+    (root / "source_parts.jsonl").write_text("", encoding="utf-8")
+    for name in EMPTY_CORPUS_FILES:
+        if name == "profiles.jsonl":
+            continue
         (root / name).write_text("", encoding="utf-8")
 
     database = tmp_path / "corpus.sqlite3"
@@ -154,3 +186,279 @@ def test_sqlite_build_populates_local_profile_content(tmp_path):
         assert connection.execute("SELECT COUNT(*) FROM profile_voice_lines").fetchone()[0] == 2
     finally:
         connection.close()
+
+
+def write_canon_sample(root, *, evidence_status="accepted", relation_target="esper-zero"):
+    root.mkdir()
+    characters = [
+        CharacterCatalogEntry(
+            character_id="nanally",
+            names=LocalizedNames(zh="娜娜莉", en="Nanally"),
+            research_status="evidence_collected",
+        ),
+        CharacterCatalogEntry(
+            character_id="esper-zero",
+            names=LocalizedNames(zh="异能者·零", en="Esper Zero"),
+            research_status="evidence_collected",
+        ),
+    ]
+    write_catalog(root, characters)
+    source = SourceRecord(
+        source_id="story-video",
+        source_type="story_video",
+        provenance="in_game_footage",
+        platform="local-test",
+        title="剧情测试",
+        url="https://example.com/story",
+        retrieved_at=datetime.now(timezone.utc),
+        status="indexed",
+        duration_ms=10_000,
+        part_count=1,
+        subtitle_mode="no_platform_subtitles",
+        visual_subtitle_status="verified_present",
+    )
+    profile_source = SourceRecord(
+        source_id="profile-nanally",
+        source_type="profile_archive_mirror",
+        provenance="in_game_archive_mirror",
+        platform="local-test",
+        title="娜娜莉角色个人档案",
+        url="https://example.com/nanally",
+        retrieved_at=datetime.now(timezone.utc),
+        status="available",
+    )
+    profile = ProfileIndexRecord(
+        profile_id="nanally-profile",
+        character_id="nanally",
+        source_id=profile_source.source_id,
+        source_revision_id=1,
+        content_hash="profile-hash",
+        fields={"所属": "异象管理局"},
+        has_character_introduction=True,
+        has_encounter_profile=False,
+        archive_entry_titles=[],
+        voice_category_counts={},
+    )
+    part = SourcePartRecord(
+        part_id="story-video-p01",
+        source_id=source.source_id,
+        external_part_id="1",
+        position=1,
+        title="序章",
+        duration_ms=10_000,
+        content_type="main_story",
+        subtitle_mode="no_platform_subtitles",
+        visual_subtitle_status="verified_present",
+        processing_status="reviewed",
+    )
+    checkpoint = CanonCheckpointRecord(
+        checkpoint_id="nt-zero-prologue",
+        source_work="异环",
+        display_name="第0话",
+        sequence=0,
+        game_version="1.0",
+        chapter="第0话",
+        spoiler_scope="第0话",
+    )
+    scene = SceneRecord(
+        scene_id="scene-p01-001",
+        source_id=source.source_id,
+        source_part_id=part.part_id,
+        start_ms=1_000,
+        end_ms=5_000,
+        chapter="第0话",
+        summary="娜娜莉与鉴定师共同处理现场情况。",
+        participants=["nanally", "esper-zero"],
+        canon_checkpoint=checkpoint.checkpoint_id,
+        review_status="reviewed",
+    )
+    canon_evidence = CanonEvidenceRecord(
+        canon_evidence_id="canon-evidence-001",
+        origin_type="scene",
+        scene_id=scene.scene_id,
+        source_part_id=part.part_id,
+        start_ms=2_000,
+        end_ms=3_000,
+        evidence_kind="dialogue",
+        actor_character_ids=["nanally", "esper-zero"],
+        speaker_character_id="nanally",
+        observation="娜娜莉明确邀请鉴定师与她共同处理当前事件。",
+        transcript_refs=["utterance-001"],
+        review_status=evidence_status,
+    )
+    profile_evidence = CanonEvidenceRecord(
+        canon_evidence_id="canon-evidence-profile-001",
+        origin_type="profile",
+        profile_id=profile.profile_id,
+        profile_locator="fields.所属",
+        evidence_kind="profile_field",
+        actor_character_ids=["nanally"],
+        observation="个人档案将娜娜莉的所属列为异象管理局。",
+        review_status=evidence_status,
+    )
+    entity = WorldEntityRecord(
+        world_entity_id="bureau",
+        source_work="异环",
+        entity_type="organization",
+        names=LocalizedNames(zh="异象管理局"),
+        aliases=["管理局"],
+        summary="负责处理异象事务的组织。",
+        first_checkpoint=checkpoint.checkpoint_id,
+        review_status="accepted",
+        evidence_ids=[canon_evidence.canon_evidence_id],
+    )
+    character_fact = CharacterFactRecord(
+        fact_id="character-fact-001",
+        character_id="nanally",
+        fact_type="affiliation",
+        value_entity_id=entity.world_entity_id,
+        canon_checkpoint=checkpoint.checkpoint_id,
+        confidence="direct",
+        review_status="accepted",
+        evidence_ids=[profile_evidence.canon_evidence_id],
+    )
+    world_fact = WorldFactRecord(
+        fact_id="world-fact-001",
+        subject_entity_id=entity.world_entity_id,
+        predicate="负责",
+        object_text="处理异象事务",
+        fact_scope="objective",
+        canon_checkpoint=checkpoint.checkpoint_id,
+        confidence="direct",
+        review_status="accepted",
+        evidence_ids=[canon_evidence.canon_evidence_id],
+    )
+    relation = CharacterRelationRecord(
+        relation_id="relation-001",
+        source_character_id="nanally",
+        target_character_id=relation_target,
+        category="cooperative",
+        label="伙伴",
+        directionality="symmetric",
+        summary="双方能够共同处理现场事件。",
+        canon_checkpoint=checkpoint.checkpoint_id,
+        confidence="direct",
+        review_status="accepted",
+        evidence_ids=[canon_evidence.canon_evidence_id],
+    )
+    records = {
+        "sources.jsonl": [source, profile_source],
+        "source_parts.jsonl": [part],
+        "profiles.jsonl": [profile],
+        "canon_checkpoints.jsonl": [checkpoint],
+        "scenes.jsonl": [scene],
+        "canon_evidence.jsonl": [canon_evidence, profile_evidence],
+        "world_entities.jsonl": [entity],
+        "character_facts.jsonl": [character_fact],
+        "world_facts.jsonl": [world_fact],
+        "character_relations.jsonl": [relation],
+    }
+    for filename, rows in records.items():
+        write_jsonl(root / filename, rows)
+    for filename in ("evidence.jsonl", "traits.jsonl"):
+        (root / filename).write_text("", encoding="utf-8")
+
+
+def test_canon_knowledge_schema_validates_and_builds_sqlite(tmp_path):
+    root = tmp_path / "corpus"
+    write_canon_sample(root)
+
+    stats = validate_corpus(root)
+    assert stats["canon_checkpoints"] == 1
+    assert stats["canon_evidence"] == 2
+    assert stats["world_entities"] == 1
+    assert stats["character_facts"] == 1
+    assert stats["world_facts"] == 1
+    assert stats["character_relations"] == 1
+
+    database = tmp_path / "canon.sqlite3"
+    build_sqlite(root, database)
+    connection = sqlite3.connect(database)
+    try:
+        assert connection.execute(
+            "SELECT source_part_id FROM scenes WHERE scene_id = 'scene-p01-001'"
+        ).fetchone() == ("story-video-p01",)
+        assert connection.execute("SELECT COUNT(*) FROM canon_evidence").fetchone()[0] == 2
+        assert connection.execute(
+            "SELECT profile_id FROM canon_evidence WHERE origin_type = 'profile'"
+        ).fetchone() == ("nanally-profile",)
+        assert connection.execute("SELECT COUNT(*) FROM world_entities").fetchone()[0] == 1
+        assert connection.execute("SELECT COUNT(*) FROM character_facts").fetchone()[0] == 1
+        assert connection.execute("SELECT COUNT(*) FROM world_facts").fetchone()[0] == 1
+        assert connection.execute("SELECT COUNT(*) FROM character_relations").fetchone()[0] == 1
+    finally:
+        connection.close()
+
+
+def test_canon_fact_values_and_unknown_fields_are_strict():
+    common = {
+        "fact_id": "fact-1",
+        "character_id": "nanally",
+        "fact_type": "identity",
+        "canon_checkpoint": "checkpoint-1",
+        "confidence": "direct",
+        "evidence_ids": [],
+    }
+    with pytest.raises(ValidationError, match="exactly one"):
+        CharacterFactRecord(**common)
+    with pytest.raises(ValidationError, match="exactly one"):
+        CharacterFactRecord(**common, value_text="角色", value_entity_id="entity")
+    with pytest.raises(ValidationError, match="Extra inputs are not permitted"):
+        CharacterFactRecord(**common, value_text="角色", unexpected=True)
+
+    profile_evidence = CanonEvidenceRecord(
+        canon_evidence_id="profile-evidence-1",
+        origin_type="profile",
+        profile_id="nanally-profile",
+        profile_locator="fields.所属",
+        evidence_kind="profile_field",
+        actor_character_ids=["nanally"],
+        observation="档案将娜娜莉列为某组织成员。",
+    )
+    assert profile_evidence.scene_id == ""
+    with pytest.raises(ValidationError, match="profile evidence cannot include scene locator"):
+        CanonEvidenceRecord(
+            canon_evidence_id="profile-evidence-2",
+            origin_type="profile",
+            profile_id="nanally-profile",
+            profile_locator="fields.所属",
+            scene_id="scene-1",
+            evidence_kind="profile_field",
+            observation="错误地混合了两种来源定位。",
+        )
+
+
+def test_scene_part_and_canon_relation_cannot_cross_namespaces(tmp_path):
+    root = tmp_path / "broken-part"
+    write_canon_sample(root)
+    scene = SceneRecord.model_validate_json((root / "scenes.jsonl").read_text(encoding="utf-8"))
+    scene.source_part_id = "missing-part"
+    write_jsonl(root / "scenes.jsonl", [scene])
+    with pytest.raises(ValueError, match="Broken scene reference"):
+        validate_corpus(root)
+
+    user_root = tmp_path / "user-relation"
+    write_canon_sample(user_root, relation_target="user-123")
+    with pytest.raises(ValueError, match="Broken character relation reference"):
+        validate_corpus(user_root)
+
+
+def test_accepted_knowledge_requires_reviewed_accepted_evidence(tmp_path):
+    root = tmp_path / "candidate-evidence"
+    write_canon_sample(root, evidence_status="candidate")
+    with pytest.raises(ValueError, match="Accepted record requires accepted evidence"):
+        validate_corpus(root)
+
+
+def test_invalid_corpus_does_not_replace_existing_sqlite(tmp_path):
+    root = tmp_path / "invalid-corpus"
+    write_canon_sample(root, relation_target="user-123")
+    database = tmp_path / "existing.sqlite3"
+    original = b"existing database placeholder"
+    database.write_bytes(original)
+
+    with pytest.raises(ValueError, match="Broken character relation reference"):
+        build_sqlite(root, database)
+
+    assert database.read_bytes() == original
+    assert not list(tmp_path.glob(".*.tmp"))

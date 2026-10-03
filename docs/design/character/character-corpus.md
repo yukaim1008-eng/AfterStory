@@ -1,6 +1,6 @@
 # 人物资料研究库：最合理实施顺序
 
-状态：M0、M1 已完成；M2 的本地视频工具 Version `1.0`、完整 P1 抽取和逐条复核已完成，正式场景入库尚未开始。人物地图、世界知识和人物关系图的后续知识层见 [独立设计稿](canon-knowledge-map.md)。
+状态：M0、M1 已完成；M2 的本地视频工具 Version `1.0`、完整 P1 抽取和逐条复核已完成。Canon 知识层 K0 资料库骨架也已完成，正式 P1 场景与知识数据尚未入库。人物地图、世界知识和人物关系图见 [独立设计稿](canon-knowledge-map.md)。
 
 ## 目标与边界
 
@@ -66,7 +66,7 @@
 
 ## M2 之后的 Canon 知识层
 
-人物地图、世界知识和人物关系图共用 Scene 与证据链，但不直接塞入现有 Character Definition 或运行时 Relationship。具体实体、事实、关系、checkpoint 和审核设计统一记录在 [Canon 人物、世界与关系知识层](canon-knowledge-map.md)，当前等待集中审核，尚未实施。
+人物地图、世界知识和人物关系图共用 Scene 与证据链，但不直接塞入现有 Character Definition 或运行时 Relationship。具体实体、事实、关系、checkpoint 和审核设计统一记录在 [Canon 人物、世界与关系知识层](canon-knowledge-map.md)。K0 的严格模型、引用校验、空正式文件和 SQLite 查询表已经实现；P1 入库与三张审核视图仍未开始。
 
 ## 本轮停止点
 

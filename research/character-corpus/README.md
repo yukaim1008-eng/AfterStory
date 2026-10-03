@@ -13,6 +13,12 @@
 | `scenes.jsonl` | 剧情场景、时间范围、参与角色和 Canon checkpoint |
 | `evidence.jsonl` | 某个场景对某个角色提供的人物表现证据 |
 | `traits.jsonl` | 多条证据归纳后的人物特征卡及 Prompt 摘要 |
+| `canon_checkpoints.jsonl` | Canon 剧情节点、顺序、前置节点和剧透范围 |
+| `canon_evidence.jsonl` | 可回溯到剧情 Scene 或个人档案字段的中立 Canon 证据 |
+| `world_entities.jsonl` | 组织、地点、概念、现象、物件、事件和种族目录 |
+| `character_facts.jsonl` | 带 checkpoint、证据和有效区间的标准化人物事实 |
+| `world_facts.jsonl` | 客观事实、人物认知和剧情内转述 |
+| `character_relations.jsonl` | 带方向、checkpoint、证据和有效区间的 Canon 人物关系 |
 
 `.cache/` 保存从来源站点取得的页面快照，`local/corpus.sqlite3` 是查询库。两者均为可重建的本地数据，不提交 Git。Git 中不保存完整游戏档案或整份语音原文，只保存来源定位、事实索引、覆盖统计和后续人工归纳结果。
 
@@ -24,6 +30,7 @@
 - 已登记 B 站剧情合集 `BV1kqoaBiEVZ`：21 个分 P，总长 80,387 秒，覆盖标题标注至 1.4；平台接口未提供 CC 字幕，用户已确认录制的游戏画面内含字幕。
 - P1 `05:00–10:00` 的本地 PP-OCRv5 试跑已通过：清晰正文和中英混合字幕可以抽取，逐字显示合并、短句保护和无姓名过场的说话者归属仍需由单分 P 批处理工具解决。视频、截图与试跑逐字稿只在忽略的 `local/` 中保存。
 - 本地视频工具 Version `1.0` 已完成完整 P1：786 个候选帧生成 382 个有效 OCR 样本、215 段台词候选和 22 个机器场景草稿。全画面逐条复核保留 189 条、剔除 26 条；124 条说话者已确认、40 条为推定、25 条保持未知。静态 HTML 报告可直接浏览画面、原 OCR、修订稿和审核结论。
+- Canon 知识层 K0 骨架已建立；checkpoint、中立证据、世界实体、人物事实、世界事实和人物关系的正式文件当前均为空。
 - `scenes`、`evidence`、`traits` 仍为空；P1 审核稿只在忽略的 `local/video-pipeline/` 暂存，不等于已经正式入库。
 
 异环信息站属于游戏个人档案的搬运来源，因此标记为 `in_game_archive_mirror`。它能确认游戏内档案和语音内容，但同一文本在不同搬运页面出现时不会被当作多份独立证据。
@@ -39,7 +46,7 @@ uv run python -m scripts.character_corpus build
 
 剧情视频处理工具及运行方式见 [`tools/video_pipeline/README.md`](tools/video_pipeline/README.md)。工具只写本地审核暂存区，不直接修改本目录的正式 JSONL 或 SQLite。
 
-`sync-ntestation` 使用 MediaWiki API 读取角色名称表和各角色页面，并记录页面 revision 与内容哈希。`sync-bilibili` 只读取公开视频元数据、分 P 和平台字幕状态，不下载视频或音频。`validate` 检查 Schema、唯一键和跨文件引用。`build` 从索引和本地快照重建 SQLite；没有本地快照时仍可建立目录与来源表，但档案正文和语音表需要重新同步后才会填充。
+`sync-ntestation` 使用 MediaWiki API 读取角色名称表和各角色页面，并记录页面 revision 与内容哈希。`sync-bilibili` 只读取公开视频元数据、分 P 和平台字幕状态，不下载视频或音频。`validate` 检查严格 Schema、唯一键、checkpoint 顺序、时间范围、审核门禁和跨文件引用。`build` 先在隔离临时文件中完成 SQLite 重建，成功后才原子替换目标；校验或构建失败不会覆盖已有查询库。没有本地快照时仍可建立目录与来源表，但档案正文和语音表需要重新同步后才会填充。
 
 ## 内容状态
 
