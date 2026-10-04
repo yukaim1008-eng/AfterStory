@@ -15,7 +15,7 @@ from .core import (
 )
 from .media import normalize_bilibili_cache, probe_media, scan_candidates
 from .ocr_stage import assemble_staging_bundle, rebuild_ocr_samples, run_ocr
-from .review import render_review_report, validate_review_bundle
+from .review import render_review_report, render_review_sheets, validate_review_bundle
 
 TOOL_DIR = Path(__file__).resolve().parent
 CORPUS_ROOT = TOOL_DIR.parents[1]
@@ -133,6 +133,7 @@ def run_pipeline(args: argparse.Namespace) -> dict:
         "height": media.height,
         "fps": round(media.fps, 4),
     }
+    manifest["runtime"] = {"ocr_device": args.device}
 
     candidates_path = output_dir / "candidates.jsonl"
     if not candidates_path.exists():
@@ -158,6 +159,7 @@ def run_pipeline(args: argparse.Namespace) -> dict:
             preset,
             cv2,
             paddle_ocr_class,
+            args.device,
         )
     samples = rebuild_ocr_samples(output_dir, character_names)
     manifest["stages"]["ocr"] = {"status": "completed", "samples": len(samples)}
@@ -193,6 +195,10 @@ def review_report_command(args: argparse.Namespace) -> dict:
     return render_review_report(_safe_output_dir(args.output), _import_cv2())
 
 
+def review_sheets_command(args: argparse.Namespace) -> dict:
+    return render_review_sheets(_safe_output_dir(args.output), _import_cv2())
+
+
 def review_validate_command(args: argparse.Namespace) -> dict:
     return validate_review_bundle(_safe_output_dir(args.output))
 
@@ -216,6 +222,7 @@ def main() -> None:
     run_parser.add_argument("--output", type=Path)
     run_parser.add_argument("--preset", type=Path, default=DEFAULT_PRESET)
     run_parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
+    run_parser.add_argument("--device", choices=("cpu", "gpu"), default="cpu")
     run_parser.set_defaults(handler=run_pipeline)
 
     validate_parser = subparsers.add_parser("validate")
@@ -231,6 +238,10 @@ def main() -> None:
     review_report_parser = subparsers.add_parser("review-report")
     review_report_parser.add_argument("--output", type=Path, required=True)
     review_report_parser.set_defaults(handler=review_report_command)
+
+    review_sheets_parser = subparsers.add_parser("review-sheets")
+    review_sheets_parser.add_argument("--output", type=Path, required=True)
+    review_sheets_parser.set_defaults(handler=review_sheets_command)
 
     review_validate_parser = subparsers.add_parser("review-validate")
     review_validate_parser.add_argument("--output", type=Path, required=True)

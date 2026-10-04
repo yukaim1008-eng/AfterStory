@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import math
 from pathlib import Path
 
 from .core import read_json, read_jsonl, write_json
@@ -53,6 +54,61 @@ def ensure_review_frames(output_dir: Path, cv2_module) -> int:
     finally:
         capture.release()
     return created
+
+
+def render_review_sheets(output_dir: Path, cv2_module) -> dict:
+    """Render compact 3x3 contact sheets for efficient visual review."""
+    import numpy as np
+
+    ensure_review_frames(output_dir, cv2_module)
+    utterances = read_jsonl(output_dir / "utterances.jsonl")
+    frames_dir = output_dir / "review-full-frames"
+    sheets_dir = output_dir / "review-sheets"
+    sheets_dir.mkdir(parents=True, exist_ok=True)
+    per_sheet = 9
+    sheet_count = math.ceil(len(utterances) / per_sheet)
+    for sheet_index in range(sheet_count):
+        target = sheets_dir / f"sheet-{sheet_index + 1:02d}.jpg"
+        if target.exists():
+            continue
+        canvas = np.zeros((1080, 1920, 3), dtype=np.uint8)
+        batch = utterances[
+            sheet_index * per_sheet : (sheet_index + 1) * per_sheet
+        ]
+        for cell_index, utterance in enumerate(batch):
+            row, column = divmod(cell_index, 3)
+            x, y = column * 640, row * 360
+            frame = cv2_module.imdecode(
+                np.frombuffer(
+                    (frames_dir / f"{utterance['utterance_id']}.jpg").read_bytes(),
+                    dtype=np.uint8,
+                ),
+                cv2_module.IMREAD_COLOR,
+            )
+            if frame is None:
+                raise ValueError(
+                    f"cannot read review frame for {utterance['utterance_id']}"
+                )
+            frame = cv2_module.resize(
+                frame,
+                (640, 360),
+                interpolation=cv2_module.INTER_AREA,
+            )
+            canvas[y : y + 360, x : x + 640] = frame
+            cv2_module.rectangle(canvas, (x, y), (x + 640, y + 36), (0, 0, 0), -1)
+            label = f"{utterance['utterance_id']}  {utterance['start_timestamp']}"
+            cv2_module.putText(
+                canvas,
+                label,
+                (x + 10, y + 27),
+                cv2_module.FONT_HERSHEY_SIMPLEX,
+                0.75,
+                (0, 255, 255),
+                2,
+                cv2_module.LINE_AA,
+            )
+        _write_jpeg(target, canvas, cv2_module)
+    return {"sheets_dir": str(sheets_dir), "sheet_count": sheet_count}
 
 
 def validate_review_bundle(output_dir: Path) -> dict:

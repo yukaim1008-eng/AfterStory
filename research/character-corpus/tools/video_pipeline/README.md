@@ -28,6 +28,29 @@ B 站桌面端缓存 / 标准视频
   -CacheDir "$env:USERPROFILE\Videos\bilibili\37739368085"
 ```
 
+## 下载并处理后续分 P
+
+后续分 P 可以从已登记的 B 站合集按 1080p 视频与最高可用音频分轨下载；下载支持断点续传，
+媒体直接写入对应的 Git 忽略 staging 目录：
+
+```powershell
+& research/character-corpus/tools/video_pipeline/download.ps1 -PartNumber 2
+
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command run `
+  -PartId bilibili-BV1kqoaBiEVZ-p02 `
+  -Title "第1话 生意经与招财宝" `
+  -Video "research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p02/media/source.mp4" `
+  -Device gpu
+```
+
+下载脚本要求目标分 P 已登记在 `source_parts.jsonl`，低于 4GiB 可用空间时拒绝开始，已有
+`source.mp4` 时幂等返回。它使用隔离的 `uvx yt-dlp` 和 `imageio-ffmpeg`，不修改项目依赖。
+
+`-Device gpu` 使用官方 CUDA 11.8 Windows wheel，并把推理设备固定为 `gpu:0`；默认仍为
+`cpu`，因此没有 NVIDIA GPU 的机器和既有 P1 流程保持兼容。CPU/GPU 可以复用同一 OCR
+checkpoint，设备信息只记入 manifest，不改变输入配置哈希。
+
 首次运行会在忽略目录中安装独立 Python 3.12，并通过 uv 缓存 FFmpeg、PaddleOCR、PaddlePaddle 和 OpenCV；不会修改项目 `pyproject.toml` 或 `.venv`。阶段文件存在时会从已有规范化视频、候选帧或 OCR checkpoint 继续。
 
 也可以输入普通视频：
@@ -56,6 +79,7 @@ B 站桌面端缓存 / 标准视频
 | `review-decisions.jsonl` | 逐条人工或 Agent 审核决定，不覆盖原始 OCR |
 | `reviewed-transcript.jsonl` | 只包含审核通过并修订后的可读稿 |
 | `review-report.html` | 全画面、原 OCR、修订稿、说话者和结论的浏览器报告 |
+| `review-sheets/` | 每页九帧的视觉审核联络表，便于快速定位说话人和界面误识别 |
 
 校验暂存包：
 
@@ -80,3 +104,11 @@ B 站桌面端缓存 / 标准视频
 ```
 
 `review-report` 是静态 HTML，不需要启动前后端服务。审核决定必须覆盖全部源候选，且审核通过的 ID 必须与 `reviewed-transcript.jsonl` 一致，`review-validate` 才会成功。审核完成仍不等于已经生成正式场景、人物证据或 Character Definition。
+
+大量候选可先生成联络表：
+
+```powershell
+.\research\character-corpus\tools\video_pipeline\run.ps1 `
+  -Command review-sheets `
+  -Output research\character-corpus\local\video-pipeline\bilibili-BV1kqoaBiEVZ-p02
+```

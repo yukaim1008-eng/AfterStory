@@ -24,6 +24,7 @@ def run_ocr(
     settings: dict,
     cv2_module,
     paddle_ocr_class,
+    device: str,
 ) -> list[dict]:
     import numpy as np
 
@@ -38,7 +39,7 @@ def run_ocr(
         use_doc_unwarping=False,
         use_textline_orientation=False,
         enable_mkldnn=False,
-        device="cpu",
+        device="gpu:0" if device == "gpu" else "cpu",
     )
     samples: list[dict] = []
     for index, candidate in enumerate(candidates, start=1):

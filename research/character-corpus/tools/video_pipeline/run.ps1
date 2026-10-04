@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("run", "validate", "assemble", "review-report", "review-validate")]
+    [ValidateSet("run", "validate", "assemble", "review-report", "review-sheets", "review-validate")]
     [string]$Command = "run",
     [string]$PartId,
     [string]$Title = "",
@@ -7,7 +7,9 @@ param(
     [string]$Video,
     [string]$Output,
     [string]$Preset,
-    [string]$Catalog
+    [string]$Catalog,
+    [ValidateSet("cpu", "gpu")]
+    [string]$Device = "cpu"
 )
 
 $ErrorActionPreference = "Stop"
@@ -46,14 +48,27 @@ if ($Output) { $PipelineArgs += @("--output", $Output) }
 if ($Preset) { $PipelineArgs += @("--preset", $Preset) }
 if ($Catalog) { $PipelineArgs += @("--catalog", $Catalog) }
 if ($Command -eq "run" -and $CacheDir) { $PipelineArgs += @("--ffmpeg", $Ffmpeg) }
+if ($Command -eq "run") { $PipelineArgs += @("--device", $Device) }
 
 Push-Location $RepoRoot
 try {
-    & uv run --no-project --python $Python `
-        --with "paddleocr==3.7.0" `
-        --with "paddlepaddle==3.3.1" `
-        --with "opencv-python-headless==4.10.0.84" `
-        python -X utf8 @PipelineArgs
+    $UvArgs = @(
+        "run", "--no-project", "--python", $Python,
+        "--with", "paddleocr==3.7.0",
+        "--with", "opencv-python-headless==4.10.0.84"
+    )
+    if ($Device -eq "gpu") {
+        $UvArgs += @(
+            "--with", "paddlepaddle-gpu==3.3.0",
+            "--index", "https://www.paddlepaddle.org.cn/packages/stable/cu118/"
+            "--index-strategy", "unsafe-best-match"
+        )
+    }
+    else {
+        $UvArgs += @("--with", "paddlepaddle==3.3.1")
+    }
+    $UvArgs += @("python", "-X", "utf8") + $PipelineArgs
+    & uv @UvArgs
     exit $LASTEXITCODE
 }
 finally {
