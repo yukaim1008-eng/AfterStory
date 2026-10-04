@@ -2,6 +2,7 @@ import argparse
 import json
 from pathlib import Path
 
+from afterstory.canon_views import render_canon_views
 from afterstory.character_research import (
     build_sqlite,
     sync_bilibili,
@@ -18,13 +19,22 @@ def main():
     parser = argparse.ArgumentParser(description="Manage the local character research corpus.")
     parser.add_argument(
         "command",
-        choices=("sync-ntestation", "sync-bilibili", "promote-video", "validate", "build"),
+        choices=(
+            "sync-ntestation",
+            "sync-bilibili",
+            "promote-video",
+            "render",
+            "validate",
+            "build",
+        ),
     )
     parser.add_argument("--root", type=Path, default=DEFAULT_ROOT)
     parser.add_argument("--database", type=Path)
     parser.add_argument("--bvid")
     parser.add_argument("--staging", type=Path)
     parser.add_argument("--plan", type=Path)
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--checkpoint", default="")
     args = parser.parse_args()
 
     if args.command == "sync-ntestation":
@@ -39,6 +49,9 @@ def main():
         if not args.staging or not args.plan:
             parser.error("promote-video requires --staging and --plan")
         stats = promote_reviewed_video(args.root, args.staging, args.plan)
+    elif args.command == "render":
+        output = args.output or args.root / "views"
+        stats = render_canon_views(args.root, output, args.checkpoint)
     else:
         database = args.database or args.root / "local/corpus.sqlite3"
         stats = build_sqlite(args.root, database)

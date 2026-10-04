@@ -128,10 +128,10 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         "traits": 0,
         "canon_checkpoints": 1,
         "canon_evidence": 29,
-        "world_entities": 0,
-        "character_facts": 0,
-        "world_facts": 0,
-        "character_relations": 0,
+        "world_entities": 12,
+        "character_facts": 9,
+        "world_facts": 13,
+        "character_relations": 6,
     }
     catalog = json.loads((CORPUS_ROOT / "catalog.json").read_text(encoding="utf-8"))
     missing = [item for item in catalog if item["research_status"] == "discovered"]

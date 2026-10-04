@@ -1,0 +1,36 @@
+from pathlib import Path
+
+import pytest
+
+from afterstory.canon_views import render_canon_views
+from afterstory.config import ROOT
+
+CORPUS_ROOT = ROOT / "research/character-corpus"
+
+
+def test_render_canon_views_uses_accepted_checkpointed_records(tmp_path: Path):
+    result = render_canon_views(
+        CORPUS_ROOT, tmp_path, checkpoint_id="nt-bv1kqoabievz-p01"
+    )
+
+    assert result == {
+        "checkpoint_id": "nt-bv1kqoabievz-p01",
+        "characters": 26,
+        "world_entities": 12,
+        "character_relations": 6,
+        "output": str(tmp_path.resolve()),
+    }
+    character_map = (tmp_path / "character-map.md").read_text(encoding="utf-8")
+    world_knowledge = (tmp_path / "world-knowledge.md").read_text(encoding="utf-8")
+    relations = (tmp_path / "character-relations.md").read_text(encoding="utf-8")
+    assert "薄荷 (`mint`)" in character_map
+    assert "对异象奇点具有敏锐感知力" in character_map
+    assert "（艾尔菲德的认知）" in world_knowledge
+    assert "graph LR" in relations
+    assert "Canon 人物关系不等于现实用户与角色实例" in relations
+    assert "?p=1&t=" in relations
+
+
+def test_render_canon_views_rejects_unknown_checkpoint(tmp_path: Path):
+    with pytest.raises(ValueError, match="unknown canon checkpoint"):
+        render_canon_views(CORPUS_ROOT, tmp_path, checkpoint_id="missing")
