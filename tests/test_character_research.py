@@ -118,16 +118,16 @@ def test_source_catalog_refresh_preserves_curated_aliases_and_review_status():
 def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     stats = validate_corpus(CORPUS_ROOT)
     assert stats == {
-        "characters": 24,
+        "characters": 26,
         "character_aliases": 0,
         "sources": 25,
         "source_parts": 21,
         "profiles": 23,
-        "scenes": 0,
+        "scenes": 29,
         "evidence": 0,
         "traits": 0,
-        "canon_checkpoints": 0,
-        "canon_evidence": 0,
+        "canon_checkpoints": 1,
+        "canon_evidence": 29,
         "world_entities": 0,
         "character_facts": 0,
         "world_facts": 0,
@@ -149,7 +149,10 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     ]
     assert sum(part["duration_ms"] for part in parts) == 80_387_000
     assert {part["subtitle_mode"] for part in parts} == {"no_platform_subtitles"}
-    assert {part["visual_subtitle_status"] for part in parts} == {"user_confirmed_present"}
+    assert parts[0]["visual_subtitle_status"] == "verified_present"
+    assert {part["visual_subtitle_status"] for part in parts[1:]} == {
+        "user_confirmed_present"
+    }
 
 
 def test_sqlite_build_populates_local_profile_content(tmp_path):

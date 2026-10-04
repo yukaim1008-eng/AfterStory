@@ -1,0 +1,1188 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p01",
+  "reviewed_transcript_sha256": "aee365eacefec5b303469b1ebefb19b2f8a775ab8eabe56e9a85d447f66c5e23",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p01",
+    "source_work": "异环",
+    "display_name": "第0话 不虞亦先兆",
+    "sequence": 1,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第0话 不虞亦先兆",
+    "predecessor_id": "",
+    "spoiler_scope": "第0话 不虞亦先兆"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s001",
+      "start_ms": 33867,
+      "end_ms": 57600,
+      "summary": "晚间新闻发布特大暴雨预警，并在播报中插入新西里安市上空疑似异常的紧急消息",
+      "participants": [],
+      "transcript_refs": [
+        "u00004",
+        "u00005",
+        "u00006"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e001",
+          "start_ms": 33867,
+          "end_ms": 57600,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "新闻播报称新西里安市将迎来特大暴雨，随后插播城市上空疑似出现异常的紧急消息。",
+          "transcript_refs": [
+            "u00004",
+            "u00005",
+            "u00006"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s002",
+      "start_ms": 98133,
+      "end_ms": 166667,
+      "summary": "J.T.F.十三队在NH19区域撤离幸存者期间遭遇异象干扰，安魂曲警告众人不要直视极漩",
+      "participants": [
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e002",
+          "start_ms": 98133,
+          "end_ms": 166667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "J.T.F.十三队报告NH19区域异象活动增强；现场人员受声音影响，而安魂曲明确警告不要让任何人直视「极漩」。",
+          "transcript_refs": [
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s003",
+      "start_ms": 201067,
+      "end_ms": 207200,
+      "summary": "紫发女性准备应对威胁，并让安魂曲保护其他人",
+      "participants": [
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00021",
+        "u00022"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e003",
+          "start_ms": 201067,
+          "end_ms": 207200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "一名身份尚未确认的紫发女性称眼前目标为“开胃甜点”，并要求安魂曲保护其他人。",
+          "transcript_refs": [
+            "u00021",
+            "u00022"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s004",
+      "start_ms": 372000,
+      "end_ms": 424800,
+      "summary": "搜索人员观察极漩自然泯除的变化，失忆的异能者·零发现异常位置",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e004",
+          "start_ms": 372000,
+          "end_ms": 424800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "现场人员称「极漩」出现三个半小时后维特海默值开始回升并正在自然泯除；异能者·零随后指出异常所在。",
+          "transcript_refs": [
+            "u00023",
+            "u00024",
+            "u00025",
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s005",
+      "start_ms": 441067,
+      "end_ms": 488267,
+      "summary": "异能者·零直视奇点后听见要求终止干涉的声音，并对自身身份产生疑问",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e005",
+          "start_ms": 441067,
+          "end_ms": 488267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "一名银发女性判断注视核心会加快「极漩」泯除；异能者·零听到“终止干涉”的声音，并询问对方与自己的身份。",
+          "transcript_refs": [
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s006",
+      "start_ms": 505333,
+      "end_ms": 522133,
+      "summary": "新闻报告新西里安市再次出现未知异象，异能者·零再次听见干涉终止的倒计时",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00039",
+        "u00040",
+        "u00041"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e006",
+          "start_ms": 505333,
+          "end_ms": 522133,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "新闻播报称新西里安市再次出现未知异象；异能者·零同时听见要求终止干涉并宣告时间已到的声音。",
+          "transcript_refs": [
+            "u00039",
+            "u00040",
+            "u00041"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s007",
+      "start_ms": 538667,
+      "end_ms": 552000,
+      "summary": "极漩事件结束后，银发女性要求异能者·零随她返回",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00042",
+        "u00043"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e007",
+          "start_ms": 538667,
+          "end_ms": 552000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "异能者·零推测某个伴生存在随「极漩」一同泯除，一名银发女性随即要求他跟自己回去。",
+          "transcript_refs": [
+            "u00042",
+            "u00043"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s008",
+      "start_ms": 556000,
+      "end_ms": 592533,
+      "summary": "异能者·零乘车途中听广播并与负责接送的人交谈",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00044",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e008",
+          "start_ms": 556000,
+          "end_ms": 592533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "异能者·零在乘车途中抱怨广播已经连续播放十几首歌，同行者答应迁就他并表示陪伴时间不长。",
+          "transcript_refs": [
+            "u00044",
+            "u00045",
+            "u00046",
+            "u00047",
+            "u00048"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s009",
+      "start_ms": 596000,
+      "end_ms": 624267,
+      "summary": "节目讨论异能与异象可能同源的学界假说",
+      "participants": [],
+      "transcript_refs": [
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e009",
+          "start_ms": 596000,
+          "end_ms": 624267,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "节目说明“异能并非人类自身机能发源、而像被赋予的力量”属于同源说的一部分，但异能与异象究竟同源还是对抗仍未明晰。",
+          "transcript_refs": [
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s010",
+      "start_ms": 630667,
+      "end_ms": 664533,
+      "summary": "接送司机把异能者·零送到目的地，并表示自己还要赶写报告",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e010",
+          "start_ms": 630667,
+          "end_ms": 664533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "负责接送的人在抵达后让异能者·零下车，并称自己还要赶写报告。",
+          "transcript_refs": [
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00058"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s011",
+      "start_ms": 668800,
+      "end_ms": 681333,
+      "summary": "奈丽在海特洛市异象管理局迎接异能者·零，并带他去见局长",
+      "participants": [
+        "naili",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00059",
+        "u00060",
+        "u00061"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e011",
+          "start_ms": 668800,
+          "end_ms": 681333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "naili",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽自称海特洛市异象管理局秘书室室长，并表示局长正在办公室，随后带异能者·零前往。",
+          "transcript_refs": [
+            "u00059",
+            "u00060",
+            "u00061"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s012",
+      "start_ms": 710400,
+      "end_ms": 759467,
+      "summary": "奈丽解释维特海默值与城市异象监测，管理局人员随后出发处理半港区异常",
+      "participants": [
+        "naili",
+        "esper-zero",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00067",
+        "u00068",
+        "u00069"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e012",
+          "start_ms": 710400,
+          "end_ms": 759467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "naili",
+            "esper-zero",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽说明维特海默值用于衡量目标背离现实的浓度，持续监测各区域数值可帮助管理局快速响应新异象；现场人员随后准备处理半港区异常。",
+          "transcript_refs": [
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066",
+            "u00067",
+            "u00068",
+            "u00069"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s013",
+      "start_ms": 787200,
+      "end_ms": 849600,
+      "summary": "薄荷送来临时收容物并热情招揽异能者·零，得知他是局长客人后改口",
+      "participants": [
+        "mint",
+        "naili",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e013",
+          "start_ms": 787200,
+          "end_ms": 849600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "naili",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷称自己正代前辈送来尚未找到泯除方法的异象，并主动邀请异能者·零加入收容二组；奈丽说明对方是局长的客人后，薄荷改称只是玩笑。",
+          "transcript_refs": [
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s014",
+      "start_ms": 867467,
+      "end_ms": 921333,
+      "summary": "薄荷因打听任务被奈丽提醒保密条例，奈丽解释她用香味给人取称呼",
+      "participants": [
+        "mint",
+        "naili",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e014",
+          "start_ms": 867467,
+          "end_ms": 921333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "naili",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽用保密条例制止薄荷打听无关任务，并解释薄荷会按闻到的香味称呼他人，因此把异能者·零称作“可可”。",
+          "transcript_refs": [
+            "u00081",
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00086",
+            "u00087",
+            "u00088"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s015",
+      "start_ms": 966133,
+      "end_ms": 1107733,
+      "summary": "艾尔菲德向异能者·零说明极漩与零号异象事件，并提出合作契约",
+      "participants": [
+        "aierfeide",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e015",
+          "start_ms": 966133,
+          "end_ms": 1107733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德说明异能者·零与零号异象都无法检测出维特海默值，且前者失去此前记忆；管理局因其感知奇点的能力与特殊联系，要求他参与零号异象收容行动并以追查过去作为交换。",
+          "transcript_refs": [
+            "u00089",
+            "u00090",
+            "u00091",
+            "u00092",
+            "u00093",
+            "u00094",
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s016",
+      "start_ms": 1109333,
+      "end_ms": 1138667,
+      "summary": "管理局安排异能者·零在伊波恩古董店落脚，奈丽说明异象猎人的含义",
+      "participants": [
+        "aierfeide",
+        "naili",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00113",
+        "u00114"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e016",
+          "start_ms": 1109333,
+          "end_ms": 1138667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "naili",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽说明伊波恩表面是古董店、实际是异象猎人团队，并解释民间从事异象收容与泯除的人被称作异象猎人；艾尔菲德安排异能者·零在那里工作落脚。",
+          "transcript_refs": [
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00113",
+            "u00114"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s017",
+      "start_ms": 1149333,
+      "end_ms": 1193867,
+      "summary": "管理局发生R-3707收容物解离，艾尔菲德要求薄荷尽快重新收容",
+      "participants": [
+        "aierfeide",
+        "naili",
+        "mint"
+      ],
+      "transcript_refs": [
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e017",
+          "start_ms": 1149333,
+          "end_ms": 1193867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "naili",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "空间异常触发应对条例，薄荷报告异象R-3707解离；艾尔菲德要求尽快重新收容，并提醒低级异象也不能掉以轻心。",
+          "transcript_refs": [
+            "u00115",
+            "u00116",
+            "u00117",
+            "u00119",
+            "u00120",
+            "u00121",
+            "u00122"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s018",
+      "start_ms": 1220533,
+      "end_ms": 1287200,
+      "summary": "异能者·零主动协助薄荷处理解离异象，并从艾尔菲德和薄荷处了解奇点与歧骸",
+      "participants": [
+        "mint",
+        "esper-zero",
+        "aierfeide"
+      ],
+      "transcript_refs": [
+        "u00123",
+        "u00124",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e018",
+          "start_ms": 1220533,
+          "end_ms": 1287200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero",
+            "aierfeide"
+          ],
+          "speaker_character_id": "",
+          "observation": "异能者·零主动帮助为难的薄荷；艾尔菲德解释奇点是收容或泯除异象的关键，薄荷说明歧骸是常伴随其他异象出现的生物异象。",
+          "transcript_refs": [
+            "u00123",
+            "u00124",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s019",
+      "start_ms": 1360000,
+      "end_ms": 1442400,
+      "summary": "薄荷与异能者·零在变化空间中寻找奇点，异能者·零凭感知排除错误位置",
+      "participants": [
+        "mint",
+        "esper-zero",
+        "aierfeide"
+      ],
+      "transcript_refs": [
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e019",
+          "start_ms": 1360000,
+          "end_ms": 1442400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero",
+            "aierfeide"
+          ],
+          "speaker_character_id": "",
+          "observation": "异能者·零凭气息差异判断当前位置不是奇点；薄荷认可他的直觉并谈起转做异象猎人，随后在黑暗且持续变化的空间中继续搜索。",
+          "transcript_refs": [
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00146",
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s020",
+      "start_ms": 1442933,
+      "end_ms": 1450933,
+      "summary": "现场出现海特洛快讯页面，报道新西里安重建及对管理局掩盖真相的质疑",
+      "participants": [],
+      "transcript_refs": [
+        "u00154",
+        "u00155"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e020",
+          "start_ms": 1442933,
+          "end_ms": 1450933,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "《海特洛快讯》页面同时刊出新西里安重建计划，以及“异象管理局掩盖新西里安事件真相”的质疑性标题。",
+          "transcript_refs": [
+            "u00154",
+            "u00155"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s021",
+      "start_ms": 1480533,
+      "end_ms": 1507733,
+      "summary": "现场可见介绍金边管家与伊波恩古董店优惠的宣传文字",
+      "participants": [],
+      "transcript_refs": [
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e021",
+          "start_ms": 1480533,
+          "end_ms": 1507733,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "刊物把“金边管家”描述为家政能力全面且异象社会化评测得分很高；伊波恩古董店传单宣传古董折扣与指定商品特别福利。",
+          "transcript_refs": [
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s022",
+      "start_ms": 1533867,
+      "end_ms": 1542400,
+      "summary": "薄荷在异常空间中直言环境令她不舒服",
+      "participants": [
+        "mint"
+      ],
+      "transcript_refs": [
+        "u00160"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e022",
+          "start_ms": 1533867,
+          "end_ms": 1542400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷询问异能者·零是否也觉得所在环境令人不舒服。",
+          "transcript_refs": [
+            "u00160"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s023",
+      "start_ms": 1572267,
+      "end_ms": 1612800,
+      "summary": "艾尔菲德远程询问进展，薄荷和异能者·零判断已经接近奇点",
+      "participants": [
+        "aierfeide",
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e023",
+          "start_ms": 1572267,
+          "end_ms": 1612800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷报告歧骸变强且奇怪声音越来越清楚，异能者·零据此判断他们已经接近奇点；艾尔菲德要求无法泯除时改为收容。",
+          "transcript_refs": [
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00165",
+            "u00166",
+            "u00167"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s024",
+      "start_ms": 1654133,
+      "end_ms": 1691200,
+      "summary": "异能者·零锁定画框奇点并答应全力协助薄荷",
+      "participants": [
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00168",
+        "u00169",
+        "u00171",
+        "u00172",
+        "u00173",
+        "u00174",
+        "u00175"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e024",
+          "start_ms": 1654133,
+          "end_ms": 1691200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "异能者·零明确感觉画框与周围不同，薄荷据此确认奇点并希望亲自完成泯除；异能者·零答应全力协助。",
+          "transcript_refs": [
+            "u00168",
+            "u00169",
+            "u00171",
+            "u00172",
+            "u00173",
+            "u00174",
+            "u00175"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s025",
+      "start_ms": 1860533,
+      "end_ms": 1882933,
+      "summary": "画框异象突然发怒，薄荷提醒异能者·零避险并与他配合行动",
+      "participants": [
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e025",
+          "start_ms": 1860533,
+          "end_ms": 1882933,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "交战中的画框异象突然发怒，薄荷提醒异能者·零小心并招呼他到自己这边，异能者·零立即回应。",
+          "transcript_refs": [
+            "u00184",
+            "u00185",
+            "u00186",
+            "u00187"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s026",
+      "start_ms": 1898400,
+      "end_ms": 1961600,
+      "summary": "薄荷发现攻击无法泯除画框异象，真诚赞美却意外使其泯除",
+      "participants": [
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00199",
+        "u00200"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e026",
+          "start_ms": 1898400,
+          "end_ms": 1961600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷判断攻击无法泯除画框异象，随后真诚称赞它好看；异象随即泯除，异能者·零推测它存在的理由只是想得到一句真诚认可。",
+          "transcript_refs": [
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196",
+            "u00197",
+            "u00199",
+            "u00200"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s027",
+      "start_ms": 1968000,
+      "end_ms": 2016800,
+      "summary": "艾尔菲德认可处置结果并命薄荷带异能者·零去伊波恩",
+      "participants": [
+        "aierfeide",
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00208",
+        "u00209"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e027",
+          "start_ms": 1968000,
+          "end_ms": 2016800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德认可本次突发状况处理结果，并要求薄荷带异能者·零前往伊波恩；薄荷在绩效责任压力下接受安排。",
+          "transcript_refs": [
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204",
+            "u00205",
+            "u00206",
+            "u00207",
+            "u00208",
+            "u00209"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s028",
+      "start_ms": 2025867,
+      "end_ms": 2051200,
+      "summary": "异能者·零离开后，艾尔菲德与浔讨论他的异常感知与当前立场",
+      "participants": [
+        "aierfeide",
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00214"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e028",
+          "start_ms": 2025867,
+          "end_ms": 2051200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "hotori",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德认为异能者·零对异象的感知比档案所述更敏锐并担心他成为麻烦；浔认为他虽特殊，但至少当前与管理局站在一起。",
+          "transcript_refs": [
+            "u00210",
+            "u00211",
+            "u00212",
+            "u00213",
+            "u00214"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p01-s029",
+      "start_ms": 2054133,
+      "end_ms": 2060533,
+      "summary": "薄荷在前往伊波恩途中让异能者·零休息，并答应到达后叫醒他",
+      "participants": [
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00215"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p01-e029",
+          "start_ms": 2054133,
+          "end_ms": 2060533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说明从管理局到伊波恩不远，让异能者·零累了可以在车上休息，并答应到达后叫醒他。",
+          "transcript_refs": [
+            "u00215"
+          ]
+        }
+      ]
+    }
+  ]
+}

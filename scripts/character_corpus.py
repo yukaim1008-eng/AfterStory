@@ -9,6 +9,7 @@ from afterstory.character_research import (
     validate_corpus,
 )
 from afterstory.config import ROOT
+from afterstory.video_promotion import promote_reviewed_video
 
 DEFAULT_ROOT = ROOT / "research/character-corpus"
 
@@ -16,11 +17,14 @@ DEFAULT_ROOT = ROOT / "research/character-corpus"
 def main():
     parser = argparse.ArgumentParser(description="Manage the local character research corpus.")
     parser.add_argument(
-        "command", choices=("sync-ntestation", "sync-bilibili", "validate", "build")
+        "command",
+        choices=("sync-ntestation", "sync-bilibili", "promote-video", "validate", "build"),
     )
     parser.add_argument("--root", type=Path, default=DEFAULT_ROOT)
     parser.add_argument("--database", type=Path)
     parser.add_argument("--bvid")
+    parser.add_argument("--staging", type=Path)
+    parser.add_argument("--plan", type=Path)
     args = parser.parse_args()
 
     if args.command == "sync-ntestation":
@@ -31,6 +35,10 @@ def main():
         stats = sync_bilibili(args.root, args.bvid)
     elif args.command == "validate":
         stats = validate_corpus(args.root)
+    elif args.command == "promote-video":
+        if not args.staging or not args.plan:
+            parser.error("promote-video requires --staging and --plan")
+        stats = promote_reviewed_video(args.root, args.staging, args.plan)
     else:
         database = args.database or args.root / "local/corpus.sqlite3"
         stats = build_sqlite(args.root, database)

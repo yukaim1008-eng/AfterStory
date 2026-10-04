@@ -31,7 +31,8 @@
 - 2026-10-01 人物资料研究库 M0 已完成：建立角色、来源、个人档案、剧情场景、人物证据和特征卡的独立 Schema，支持 MediaWiki revision 同步、严格引用校验和本地 SQLite 重建。异环信息站当前登记 24 名角色，23 名已有个人档案；本地库识别 143 个档案条目与 1955 条语音。完整页面快照和 SQLite 不提交 Git，生产 PostgreSQL、现有角色实例和前端均未修改。后续顺序见 [人物资料研究库](design/character/character-corpus.md)。
 - 人物资料研究库 M1 已登记 B 站剧情合集 `BV1kqoaBiEVZ`：21 个分 P、总长 80,387 秒，标题覆盖至 1.4。P1 `05:00–10:00` 的本地画面字幕 OCR 试跑已完成：五分钟精确片段从桌面端缓存生成，PP-OCRv5 在 47 个有效采样帧上得到 21 个去重候选片段，清晰正文与中英混合字幕可用；逐字显示、短句召回和无姓名过场的说话者归属仍需批处理工具处理。媒体与逐字稿只保存在忽略的 `local/`，未开始 22 小时全文分析。详见 [画面字幕 OCR 试跑](implementation/character-corpus-ocr-pilot.md)。
 - 2026-10-02 剧情视频本地处理工具 Version `1.0` 已实现并完整处理 P1：35:14 视频从约 63,430 帧筛出 786 个候选，得到 382 个有效 OCR 样本、215 段台词候选和 22 个机器场景草稿。随后完成全画面逐条复核：189 条通过、26 条菜单/误识别/重复/战斗 UI 被剔除；124 条说话者已确认、40 条为证据支持的推定、25 条保持未知。工具已增加静态 HTML 审核报告和严格覆盖校验；审核稿仍只在本地暂存，没有写入 `scenes/evidence/traits`、SQLite、PostgreSQL 或 Character Definition。详见 [剧情视频本地处理工具与 P1 验证](implementation/character-video-pipeline.md)。
-- 2026-10-03 [Canon 人物、世界与关系知识层](design/character/canon-knowledge-map.md) 的 K0/K0.1 资料库骨架已实现：新增 checkpoint、中立 Canon 证据、世界实体、人物事实、世界事实和人物关系严格模型与空正式文件；Scene 已补分 P 定位，档案与剧情证据严格二选一，accepted 知识必须引用 accepted 证据。K0.1 又补充结构化人物别名、checkpoint 内容轨道、field/archive/voice 三类严格档案定位，并将剧情事实状态命名为 `canon_status`。引用、作品边界、有效区间、替代链和现实用户 ID 混入均有校验，本地 SQLite Schema `1.1` 采用成功后原子替换。Instance Canon Role Binding 仍只完成设计约束，P1、生产 PostgreSQL、Character Definition、CharacterInstance 和 Provider 均未修改。实施记录见 [Canon 知识层 K0](implementation/canon-knowledge-k0.md)。
+- 2026-10-03 [Canon 人物、世界与关系知识层](design/character/canon-knowledge-map.md) 的 K0/K0.1 资料库骨架已实现：新增 checkpoint、中立 Canon 证据、世界实体、人物事实、世界事实和人物关系严格模型；Scene 已补分 P 定位，档案与剧情证据严格二选一，accepted 知识必须引用 accepted 证据。K0.1 又补充结构化人物别名、checkpoint 内容轨道、field/archive/voice 三类严格档案定位，并将剧情事实状态命名为 `canon_status`。引用、作品边界、有效区间、替代链和现实用户 ID 混入均有校验，本地 SQLite Schema `1.1` 采用成功后原子替换。Instance Canon Role Binding 仍只完成设计约束，生产 PostgreSQL、Character Definition、CharacterInstance 和 Provider 均未修改。实施记录见 [Canon 知识层 K0](implementation/canon-knowledge-k0.md)。
+- 2026-10-04 Canon K1 已把 P1 的 189 条逐画面复核台词正式提升为 29 个叙事场景和 29 条 accepted 中立证据，并登记艾尔菲德、奈丽两个剧情人物。提升命令校验源候选全覆盖、复核稿 SHA-256、场景覆盖、时间范围和不可变 ID；重复执行幂等，冲突内容拒绝覆盖。完整逐字稿和原视频仍只在忽略的本地暂存区，正式库只保存摘要、定位和引用。见 [Canon 知识层 K1](implementation/canon-knowledge-k1.md)。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。
@@ -77,7 +78,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库 M0、首个 B 站合集的 M1 索引、本地视频工具 Version `1.0`、完整 P1 抽取及逐条复核、Canon 知识层 K0/K0.1 Schema 与校验均已完成。下一阶段是使用现有 P1 审核稿完成 K1 正式 Scene 与中立证据，再形成 K2 知识记录和 K3 三张审核视图；确认闭环后才处理 P2。当前三位六字段候选继续保持未导入。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未在本阶段启动。
+Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库 M0、首个 B 站合集的 M1 索引、本地视频工具 Version `1.0`、完整 P1 抽取及逐条复核、Canon 知识层 K0/K0.1 与 K1 正式 Scene / Canon Evidence 均已完成。下一阶段是从 P1 accepted 证据形成 K2 人物、世界和关系知识记录与 K3 三张审核视图，再由同一闭环逐 P 处理 P2–P21。当前三位六字段候选继续保持未导入。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未启动。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 

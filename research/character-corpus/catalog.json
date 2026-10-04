@@ -334,5 +334,33 @@
     "source_work": "异环",
     "role_scope": "named_character",
     "research_status": "profile_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "aierfeide",
+    "names": {
+      "zh": "艾尔菲德",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "naili",
+    "names": {
+      "zh": "奈丽",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
   }
 ]
