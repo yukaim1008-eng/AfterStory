@@ -29,7 +29,7 @@
 
 面向所有命名角色的资料结构、采集顺序和当前覆盖见 [人物资料研究库](character-corpus.md)。
 
-人物地图、世界知识与人物关系图的共同证据链、时间版本和数据结构见 [Canon 人物、世界与关系知识层](canon-knowledge-map.md)。K0/K0.1 研究库骨架与严格校验已经建立，但尚未导入 P1，也未接入生产 PostgreSQL 或聊天运行时。
+人物地图、世界知识与人物关系图的共同证据链、时间版本和数据结构见 [Canon 人物、世界与关系知识层](canon-knowledge-map.md)。K0–K4 已完成 P1、P2 的复核、正式入库、结构化知识与审核视图，但尚未接入生产 PostgreSQL、Character Definition 或聊天运行时。
 
 ## 导入边界
 

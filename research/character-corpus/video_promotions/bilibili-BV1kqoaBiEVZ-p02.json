@@ -1,0 +1,1290 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p02",
+  "reviewed_transcript_sha256": "ecac511a2efe9e73c78179ea5830a6733117641e52401af2ea03cf5772f35ad6",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p02",
+    "source_work": "异环",
+    "display_name": "第1话 生意经与招财宝",
+    "sequence": 2,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第1话 生意经与招财宝",
+    "predecessor_id": "nt-bv1kqoabievz-p01",
+    "spoiler_scope": "第1话 生意经与招财宝"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s001",
+      "start_ms": 10500,
+      "end_ms": 31733,
+      "summary": "薄荷带异能者·零进入桥间地并说明这里是老城区",
+      "participants": [
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e001",
+          "start_ms": 10500,
+          "end_ms": 31733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷称桥间地属于老城区，有不少知名老字号，并带异能者·零前往半角街。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s002",
+      "start_ms": 50167,
+      "end_ms": 80967,
+      "summary": "薄荷沿途用气味介绍桥间地的食物与店铺",
+      "participants": [
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e002",
+          "start_ms": 50167,
+          "end_ms": 80967,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷用木头、樱花、青苔、石板路和食物香气描述桥间地，并热情列举自己喜欢的店铺与食物。",
+          "transcript_refs": [
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s003",
+      "start_ms": 108033,
+      "end_ms": 229833,
+      "summary": "薄荷介绍维特海默塔及「环」的直属机关",
+      "participants": [
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e003",
+          "start_ms": 108033,
+          "end_ms": 229833,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说明维特海默塔用于监测维特海默值，并介绍「环」及异象管理局、尤克阿什庭、塞拉伊诺馆、零角实验室和格赫罗斯岛的职责。",
+          "transcript_refs": [
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00022",
+            "u00023",
+            "u00024",
+            "u00025",
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030",
+            "u00031"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s004",
+      "start_ms": 279067,
+      "end_ms": 398067,
+      "summary": "薄荷介绍伊波恩现状并短暂离开异能者·零",
+      "participants": [
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00051",
+        "u00052",
+        "u00053"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e004",
+          "start_ms": 279067,
+          "end_ms": 398067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷称伊波恩靠古董生意与异象委托维持，认为店内成员可靠；她因忘带送给娜娜莉的护理喷雾而短暂折返。",
+          "transcript_refs": [
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043",
+            "u00044",
+            "u00045",
+            "u00046",
+            "u00047",
+            "u00048",
+            "u00049",
+            "u00051",
+            "u00052",
+            "u00053"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s005",
+      "start_ms": 432367,
+      "end_ms": 519400,
+      "summary": "异能者·零独自进入伊波恩并听见好客屋招呼",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e005",
+          "start_ms": 432367,
+          "end_ms": 519400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "异能者·零独自进入伊波恩，循着声音找到会说话并邀请访客按下自己的「好客屋」。",
+          "transcript_refs": [
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00058",
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s006",
+      "start_ms": 535967,
+      "end_ms": 675033,
+      "summary": "异能者·零结识阿德勒与塔吉多并说明鉴定能力",
+      "participants": [
+        "esper-zero",
+        "adler",
+        "mint",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00089"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e006",
+          "start_ms": 535967,
+          "end_ms": 675033,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "adler",
+            "mint",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒与塔吉多接待异能者·零；众人得知他能听懂歧骸语言并感知异象，阿德勒认为这种能力适合鉴定伊波恩的异象古物。",
+          "transcript_refs": [
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066",
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00071",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080",
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00086",
+            "u00087",
+            "u00088",
+            "u00089"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s007",
+      "start_ms": 684833,
+      "end_ms": 798000,
+      "summary": "好客屋将众人缩小并引发塔吉多误会",
+      "participants": [
+        "esper-zero",
+        "adler",
+        "mint",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e007",
+          "start_ms": 684833,
+          "end_ms": 798000,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "esper-zero",
+            "adler",
+            "mint",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "好客屋把打开屋门的在场者缩小七分钟，塔吉多将缩小的众人误认成蟑螂，阿德勒组织大家等待解除。",
+          "transcript_refs": [
+            "u00090",
+            "u00091",
+            "u00092",
+            "u00093",
+            "u00094",
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s008",
+      "start_ms": 927967,
+      "end_ms": 1075667,
+      "summary": "浔醒来后迎接鉴定师并由阿德勒介绍伊波恩成员",
+      "participants": [
+        "esper-zero",
+        "hotori",
+        "nanally",
+        "sakiri",
+        "edgar",
+        "daffodill",
+        "adler",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e008",
+          "start_ms": 927967,
+          "end_ms": 1075667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "hotori",
+            "nanally",
+            "sakiri",
+            "edgar",
+            "daffodill",
+            "adler",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "浔酒后醒来并接纳新鉴定师；阿德勒介绍店内分工，娜娜莉、早雾、埃德嘉和达芙蒂尔依次与异能者·零见面。",
+          "transcript_refs": [
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116",
+            "u00117",
+            "u00123",
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s009",
+      "start_ms": 1099700,
+      "end_ms": 1252533,
+      "summary": "薄荷告别后阿德勒与塔吉多安排异能者·零住处",
+      "participants": [
+        "esper-zero",
+        "mint",
+        "adler",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00144",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e009",
+          "start_ms": 1099700,
+          "end_ms": 1252533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "mint",
+            "adler",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷嘱咐塔吉多照顾异能者·零并告别；阿德勒和塔吉多为新成员整理房间，正式欢迎他加入伊波恩。",
+          "transcript_refs": [
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00145",
+            "u00146",
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s010",
+      "start_ms": 1303633,
+      "end_ms": 1416567,
+      "summary": "阿德勒向异能者·零说明通讯工具并建议熟悉同伴",
+      "participants": [
+        "esper-zero",
+        "adler"
+      ],
+      "transcript_refs": [
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00173"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e010",
+          "start_ms": 1303633,
+          "end_ms": 1416567,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒为异能者·零准备手机，并说明咻啪能在多数异象空间通讯但权限稀少；他随后建议新成员主动与娜娜莉等人熟悉。",
+          "transcript_refs": [
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00173"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s011",
+      "start_ms": 1452733,
+      "end_ms": 1781733,
+      "summary": "伊波恩接到照相馆限时委托并集体出发",
+      "participants": [
+        "esper-zero",
+        "hotori",
+        "nanally",
+        "sakiri",
+        "edgar",
+        "daffodill",
+        "adler",
+        "taygedo",
+        "keda"
+      ],
+      "transcript_refs": [
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179",
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e011",
+          "start_ms": 1452733,
+          "end_ms": 1781733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "hotori",
+            "nanally",
+            "sakiri",
+            "edgar",
+            "daffodill",
+            "adler",
+            "taygedo",
+            "keda"
+          ],
+          "speaker_character_id": "",
+          "observation": "柯达委托伊波恩尽快处理会让物品变成照片的低危险异象；浔为了拍新的全家福决定带所有成员一同前往。",
+          "transcript_refs": [
+            "u00176",
+            "u00177",
+            "u00178",
+            "u00179",
+            "u00180",
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185",
+            "u00186",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196",
+            "u00197",
+            "u00198",
+            "u00199",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204",
+            "u00205",
+            "u00206",
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00211",
+            "u00212",
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216",
+            "u00217",
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s012",
+      "start_ms": 1957667,
+      "end_ms": 2076200,
+      "summary": "浔向柯达了解异常并以合影替代追加报酬",
+      "participants": [
+        "hotori",
+        "keda",
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00229",
+        "u00230",
+        "u00231",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00236",
+        "u00237",
+        "u00238",
+        "u00239",
+        "u00240",
+        "u00241",
+        "u00242",
+        "u00243"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e012",
+          "start_ms": 1957667,
+          "end_ms": 2076200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori",
+            "keda",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "柯达描述桌子突然变成照片的经过；浔借势强调问题棘手，却拒收加倍报酬并改为要求事成后赠送一套合影。",
+          "transcript_refs": [
+            "u00224",
+            "u00225",
+            "u00226",
+            "u00229",
+            "u00230",
+            "u00231",
+            "u00232",
+            "u00233",
+            "u00234",
+            "u00236",
+            "u00237",
+            "u00238",
+            "u00239",
+            "u00240",
+            "u00241",
+            "u00242",
+            "u00243"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s013",
+      "start_ms": 2105134,
+      "end_ms": 2239767,
+      "summary": "众人在照相馆查阅套餐、备忘与顾客档案",
+      "participants": [],
+      "transcript_refs": [
+        "u00245",
+        "u00246",
+        "u00247",
+        "u00248",
+        "u00249",
+        "u00250"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e013",
+          "start_ms": 2105134,
+          "end_ms": 2239767,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "照相馆留存的套餐说明、员工备忘、工作群和顾客档案记录了胶片拍摄、设备损坏、维修与预约信息。",
+          "transcript_refs": [
+            "u00245",
+            "u00246",
+            "u00247",
+            "u00248",
+            "u00249",
+            "u00250"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s014",
+      "start_ms": 2246067,
+      "end_ms": 2450700,
+      "summary": "伊波恩成员调查照相馆并展示塔吉多的重组能力",
+      "participants": [
+        "esper-zero",
+        "hotori",
+        "nanally",
+        "sakiri",
+        "daffodill",
+        "adler",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00251",
+        "u00252",
+        "u00253",
+        "u00254",
+        "u00255",
+        "u00257",
+        "u00258",
+        "u00260",
+        "u00261",
+        "u00262",
+        "u00263",
+        "u00265",
+        "u00266",
+        "u00267",
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00273",
+        "u00274",
+        "u00275",
+        "u00276",
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280",
+        "u00282",
+        "u00283",
+        "u00284",
+        "u00285",
+        "u00286",
+        "u00288",
+        "u00289",
+        "u00290",
+        "u00291",
+        "u00292"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e014",
+          "start_ms": 2246067,
+          "end_ms": 2450700,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "esper-zero",
+            "hotori",
+            "nanally",
+            "sakiri",
+            "daffodill",
+            "adler",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人在照相馆调查周期性异象；塔吉多将旧电视分解重组成电视墙，阿德勒说明他的能力受自身认知范围限制。",
+          "transcript_refs": [
+            "u00251",
+            "u00252",
+            "u00253",
+            "u00254",
+            "u00255",
+            "u00257",
+            "u00258",
+            "u00260",
+            "u00261",
+            "u00262",
+            "u00263",
+            "u00265",
+            "u00266",
+            "u00267",
+            "u00268",
+            "u00269",
+            "u00270",
+            "u00271",
+            "u00272",
+            "u00273",
+            "u00274",
+            "u00275",
+            "u00276",
+            "u00277",
+            "u00278",
+            "u00279",
+            "u00280",
+            "u00282",
+            "u00283",
+            "u00284",
+            "u00285",
+            "u00286",
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00291",
+            "u00292"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s015",
+      "start_ms": 2509267,
+      "end_ms": 2570867,
+      "summary": "众人发现多台相机已损坏且并非奇点",
+      "participants": [
+        "esper-zero",
+        "edgar"
+      ],
+      "transcript_refs": [
+        "u00294",
+        "u00295",
+        "u00296",
+        "u00297"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e015",
+          "start_ms": 2509267,
+          "end_ms": 2570867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "异能者·零与埃德嘉发现多台相机被摔坏，经感知确认奇点不在这些相机上。",
+          "transcript_refs": [
+            "u00294",
+            "u00295",
+            "u00296",
+            "u00297"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s016",
+      "start_ms": 2619634,
+      "end_ms": 2717867,
+      "summary": "调查队应对袭击并发现照相馆进货记录",
+      "participants": [
+        "daffodill",
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00299",
+        "u00301",
+        "u00302"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e016",
+          "start_ms": 2619634,
+          "end_ms": 2717867,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "daffodill",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "调查期间再次出现异象袭击；现场还发现记录相机、胶卷、移动硬盘等设备的进货单。",
+          "transcript_refs": [
+            "u00299",
+            "u00301",
+            "u00302"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s017",
+      "start_ms": 2852734,
+      "end_ms": 3097034,
+      "summary": "阿德勒根据曝光差异推断异象与胶片有关",
+      "participants": [
+        "esper-zero",
+        "hotori",
+        "nanally",
+        "sakiri",
+        "edgar",
+        "adler",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00303",
+        "u00304",
+        "u00306",
+        "u00307",
+        "u00308",
+        "u00310",
+        "u00311",
+        "u00312",
+        "u00313",
+        "u00314",
+        "u00315",
+        "u00316",
+        "u00317",
+        "u00318",
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00325",
+        "u00326",
+        "u00327",
+        "u00328"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e017",
+          "start_ms": 2852734,
+          "end_ms": 3097034,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "hotori",
+            "nanally",
+            "sakiri",
+            "edgar",
+            "adler",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒比较暗房内外照片的曝光差异，推断异象与胶片有关；埃德嘉找到地下室钥匙，众人锁定暗房与负片空间。",
+          "transcript_refs": [
+            "u00303",
+            "u00304",
+            "u00306",
+            "u00307",
+            "u00308",
+            "u00310",
+            "u00311",
+            "u00312",
+            "u00313",
+            "u00314",
+            "u00315",
+            "u00316",
+            "u00317",
+            "u00318",
+            "u00319",
+            "u00320",
+            "u00321",
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00325",
+            "u00326",
+            "u00327",
+            "u00328"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s018",
+      "start_ms": 3283234,
+      "end_ms": 3599867,
+      "summary": "众人离开负片空间并准备拍摄全家福",
+      "participants": [
+        "nanally",
+        "sakiri",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00332",
+        "u00333"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e018",
+          "start_ms": 3283234,
+          "end_ms": 3599867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "sakiri",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多确认安全着陆，浔宣布收工；伊波恩成员随即讨论全家福的拍照姿势。",
+          "transcript_refs": [
+            "u00329",
+            "u00330",
+            "u00331",
+            "u00332",
+            "u00333"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s019",
+      "start_ms": 3677567,
+      "end_ms": 3755734,
+      "summary": "柯达致谢并答应提供胶片全家福",
+      "participants": [
+        "hotori",
+        "sakiri",
+        "adler",
+        "keda"
+      ],
+      "transcript_refs": [
+        "u00334",
+        "u00335",
+        "u00336",
+        "u00337",
+        "u00338",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00344",
+        "u00345",
+        "u00346",
+        "u00347",
+        "u00348",
+        "u00349"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e019",
+          "start_ms": 3677567,
+          "end_ms": 3755734,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori",
+            "sakiri",
+            "adler",
+            "keda"
+          ],
+          "speaker_character_id": "",
+          "observation": "柯达感谢伊波恩并答应免费拍摄胶片全家福；浔以古董店的怀旧路线解释选择胶片，并继续与早雾打趣经营问题。",
+          "transcript_refs": [
+            "u00334",
+            "u00335",
+            "u00336",
+            "u00337",
+            "u00338",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00342",
+            "u00343",
+            "u00344",
+            "u00345",
+            "u00346",
+            "u00347",
+            "u00348",
+            "u00349"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p02-s020",
+      "start_ms": 3773000,
+      "end_ms": 3851634,
+      "summary": "浔把新委托视为转机并称鉴定师是招财宝",
+      "participants": [
+        "esper-zero",
+        "hotori",
+        "nanally",
+        "sakiri",
+        "adler",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00350",
+        "u00352",
+        "u00353",
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00358",
+        "u00359",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363",
+        "u00364",
+        "u00365"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p02-e020",
+          "start_ms": 3773000,
+          "end_ms": 3851634,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "hotori",
+            "nanally",
+            "sakiri",
+            "adler",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "回到伊波恩后，浔预感店里会忙起来并把新鉴定师称作招财宝；阿德勒也认为他的加入会带来新气象。",
+          "transcript_refs": [
+            "u00350",
+            "u00352",
+            "u00353",
+            "u00354",
+            "u00355",
+            "u00356",
+            "u00358",
+            "u00359",
+            "u00360",
+            "u00361",
+            "u00362",
+            "u00363",
+            "u00364",
+            "u00365"
+          ]
+        }
+      ]
+    }
+  ]
+}
