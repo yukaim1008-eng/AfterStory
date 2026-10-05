@@ -13,6 +13,11 @@ from .core import (
     validate_staging_bundle,
     write_json,
 )
+from .low_cost_review import (
+    benchmark_low_cost_review,
+    build_low_cost_review_packet,
+    validate_low_cost_review_response,
+)
 from .media import normalize_bilibili_cache, probe_media, scan_candidates
 from .ocr_stage import assemble_staging_bundle, rebuild_ocr_samples, run_ocr
 from .review import render_review_report, render_review_sheets, validate_review_bundle
@@ -203,6 +208,36 @@ def review_validate_command(args: argparse.Namespace) -> dict:
     return validate_review_bundle(_safe_output_dir(args.output))
 
 
+def low_cost_pack_command(args: argparse.Namespace) -> dict:
+    return build_low_cost_review_packet(
+        _safe_output_dir(args.output),
+        args.catalog.resolve(),
+        args.start_ms,
+        args.end_ms,
+        _safe_output_dir(args.packet_dir) if args.packet_dir else None,
+    )
+
+
+def low_cost_validate_command(args: argparse.Namespace) -> dict:
+    packet = args.packet.resolve()
+    response = args.response.resolve()
+    _safe_output_dir(packet.parent)
+    _safe_output_dir(response.parent)
+    return validate_low_cost_review_response(packet, response)
+
+
+def low_cost_benchmark_command(args: argparse.Namespace) -> dict:
+    packet = args.packet.resolve()
+    response = args.response.resolve()
+    _safe_output_dir(packet.parent)
+    _safe_output_dir(response.parent)
+    return benchmark_low_cost_review(
+        packet,
+        response,
+        args.gold_decisions.resolve(),
+    )
+
+
 def main() -> None:
     os.environ.setdefault("PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK", "True")
     parser = argparse.ArgumentParser(
@@ -246,6 +281,25 @@ def main() -> None:
     review_validate_parser = subparsers.add_parser("review-validate")
     review_validate_parser.add_argument("--output", type=Path, required=True)
     review_validate_parser.set_defaults(handler=review_validate_command)
+
+    low_cost_pack_parser = subparsers.add_parser("low-cost-pack")
+    low_cost_pack_parser.add_argument("--output", type=Path, required=True)
+    low_cost_pack_parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
+    low_cost_pack_parser.add_argument("--start-ms", type=int, required=True)
+    low_cost_pack_parser.add_argument("--end-ms", type=int, required=True)
+    low_cost_pack_parser.add_argument("--packet-dir", type=Path)
+    low_cost_pack_parser.set_defaults(handler=low_cost_pack_command)
+
+    low_cost_validate_parser = subparsers.add_parser("low-cost-validate")
+    low_cost_validate_parser.add_argument("--packet", type=Path, required=True)
+    low_cost_validate_parser.add_argument("--response", type=Path, required=True)
+    low_cost_validate_parser.set_defaults(handler=low_cost_validate_command)
+
+    low_cost_benchmark_parser = subparsers.add_parser("low-cost-benchmark")
+    low_cost_benchmark_parser.add_argument("--packet", type=Path, required=True)
+    low_cost_benchmark_parser.add_argument("--response", type=Path, required=True)
+    low_cost_benchmark_parser.add_argument("--gold-decisions", type=Path, required=True)
+    low_cost_benchmark_parser.set_defaults(handler=low_cost_benchmark_command)
 
     args = parser.parse_args()
     result = args.handler(args)

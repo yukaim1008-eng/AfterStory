@@ -35,6 +35,7 @@
 - 2026-10-04 Canon K1 已把 P1 的 189 条逐画面复核台词正式提升为 29 个叙事场景和 29 条 accepted 中立证据，并登记艾尔菲德、奈丽两个剧情人物。提升命令校验源候选全覆盖、复核稿 SHA-256、场景覆盖、时间范围和不可变 ID；重复执行幂等，冲突内容拒绝覆盖。完整逐字稿和原视频仍只在忽略的本地暂存区，正式库只保存摘要、定位和引用。见 [Canon 知识层 K1](implementation/canon-knowledge-k1.md)。
 - 2026-10-04 Canon K2/K3 已从 P1 accepted 证据形成 12 个世界实体、9 条人物事实、13 条世界事实和 6 条人物关系，并生成按 checkpoint 过滤的 [人物地图](../research/character-corpus/views/character-map.md)、[世界知识页](../research/character-corpus/views/world-knowledge.md) 与 [人物关系图](../research/character-corpus/views/character-relations.md)。所有表项可回到 B 站分 P 时间点；原作关系与现实用户 Runtime Relationship 在视图中再次明确隔离。见 [K2/K3 实施记录](implementation/canon-knowledge-k2-k3.md)。
 - 2026-10-05 Canon K4 已完成 P2《第1话 生意经与招财宝》闭环：365 条台词候选逐项复核后保留 322 条，提升为 20 个场景和 20 条 Canon Evidence；补充 10 个世界实体、15 条人物事实、7 条世界事实、5 条原作关系、17 条人物表现证据和 7 个证据确认 Trait。隔离 SQLite、审核视图、幂等提升、定向测试和 Ruff 均通过；P3 未开始。见 [P2 实施记录](implementation/canon-knowledge-p2.md)。
+- 2026-10-05 剧情视频低成本审核流程已实现：本地规则生成最多 40 条台词、20 张风险图的哈希审核包，轻量模型响应必须经过严格 Schema、说话者边界和自动候选安全门，疑难项再交给高能力模型。P2 `00:00–03:50` 的 31 条盲回放中，22 条安全自动候选的保留/剔除和说话者精度均为 100%，9 条保守升级；正式 P2 数据未修改，P3 未开始。见 [设计](design/character/low-cost-video-review.md) 与 [实施记录](implementation/character-video-low-cost-review.md)。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。

@@ -14,9 +14,17 @@ from video_pipeline.core import (  # noqa: E402
     build_scene_drafts,
     interpret_recognized_lines,
     merge_ocr_samples,
+    read_jsonl,
     validate_staging_bundle,
     write_json,
     write_jsonl,
+)
+from video_pipeline.low_cost_review import (  # noqa: E402
+    LOW_COST_REVIEW_PROMPT_VERSION,
+    LOW_COST_REVIEW_PROTOCOL_VERSION,
+    benchmark_low_cost_review,
+    build_low_cost_review_packet,
+    validate_low_cost_review_response,
 )
 from video_pipeline.media import CACHE_PREFIX, strip_cache_prefix  # noqa: E402
 from video_pipeline.review import REVIEW_SCHEMA_VERSION, validate_review_bundle  # noqa: E402
@@ -323,3 +331,243 @@ def test_review_validation_requires_complete_decisions_and_matching_transcript(
     write_jsonl(tmp_path / "review-decisions.jsonl", decisions[:1])
     with pytest.raises(ValueError, match="coverage mismatch"):
         validate_review_bundle(tmp_path)
+
+
+def _write_low_cost_source(tmp_path: Path) -> tuple[Path, Path]:
+    output_dir = tmp_path / "staging"
+    output_dir.mkdir()
+    write_json(
+        output_dir / "manifest.json",
+        {"part_id": "part-2", "title": "测试剧情"},
+    )
+    write_jsonl(
+        output_dir / "utterances.jsonl",
+        [
+            {
+                "utterance_id": "u00001",
+                "start_ms": 1000,
+                "end_ms": 2500,
+                "start_timestamp": "00:01",
+                "end_timestamp": "00:02",
+                "text": "这是明确姓名框下的完整台词。",
+                "confidence": 0.99,
+                "speaker_label": "薄荷",
+                "speaker_id": "mint",
+                "speaker_status": "confirmed",
+                "attribution_evidence": ["explicit_known_character_label"],
+            },
+            {
+                "utterance_id": "u00002",
+                "start_ms": 3000,
+                "end_ms": 3200,
+                "start_timestamp": "00:03",
+                "end_timestamp": "00:03",
+                "text": "营业",
+                "confidence": 0.82,
+                "speaker_label": None,
+                "speaker_id": None,
+                "speaker_status": "unknown",
+                "attribution_evidence": [],
+            },
+        ],
+    )
+    catalog = tmp_path / "catalog.json"
+    write_json(
+        catalog,
+        [
+            {
+                "character_id": "mint",
+                "names": {"zh": "薄荷", "en": "Mint"},
+            }
+        ],
+    )
+    return output_dir, catalog
+
+
+def _low_cost_response(packet: dict) -> dict:
+    return {
+        "protocol_version": LOW_COST_REVIEW_PROTOCOL_VERSION,
+        "prompt_version": LOW_COST_REVIEW_PROMPT_VERSION,
+        "packet_id": packet["packet_id"],
+        "input_sha256": packet["input_sha256"],
+        "reviewer": {"kind": "low_cost_model", "model": "test-small"},
+        "decisions": [
+            {
+                "utterance_id": "u00001",
+                "decision": "approve",
+                "content_kind": "dialogue",
+                "reviewed_text": "这是明确姓名框下的完整台词。",
+                "speaker_label": "薄荷",
+                "speaker_id": "mint",
+                "speaker_status": "confirmed",
+                "confidence": "high",
+                "reason_codes": ["explicit_speaker_label"],
+                "evidence": ["explicit_known_character_label"],
+            },
+            {
+                "utterance_id": "u00002",
+                "decision": "reject",
+                "content_kind": "background_text",
+                "reviewed_text": None,
+                "speaker_label": None,
+                "speaker_id": None,
+                "speaker_status": "unknown",
+                "confidence": "high",
+                "reason_codes": ["false_positive_background_text"],
+                "evidence": ["frame_inspected"],
+            },
+        ],
+    }
+
+
+def test_low_cost_packet_routes_only_risky_utterances_to_visual_review(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    packet_dir = tmp_path / "packet"
+
+    result = build_low_cost_review_packet(output_dir, catalog, 0, 5000, packet_dir)
+    packet = json.loads((packet_dir / "request.json").read_text(encoding="utf-8"))
+
+    assert result["utterance_count"] == 2
+    assert result["visual_review_count"] == 1
+    assert result["text_only_count"] == 1
+    assert packet["utterances"][0]["frame_path"] is None
+    assert packet["utterances"][1]["frame_path"].endswith(
+        "review-full-frames\\u00002.jpg"
+    )
+    assert (packet_dir / "instructions.md").exists()
+
+
+def test_low_cost_packet_refuses_unbounded_model_context(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    source = read_jsonl(output_dir / "utterances.jsonl")
+    expanded = []
+    for index in range(41):
+        row = {**source[0]}
+        row["utterance_id"] = f"u{index + 1:05d}"
+        row["start_ms"] = index * 1000
+        row["end_ms"] = index * 1000 + 500
+        expanded.append(row)
+    write_jsonl(output_dir / "utterances.jsonl", expanded)
+
+    with pytest.raises(ValueError, match="exceeds 40 utterances"):
+        build_low_cost_review_packet(output_dir, catalog, 0, 50_000, tmp_path / "packet")
+
+
+def test_low_cost_packet_flags_incomplete_and_noisy_ocr_for_visual_review(
+    tmp_path: Path,
+):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    rows = read_jsonl(output_dir / "utterances.jsonl")
+    rows[0]["text"] = "这是一句很长的台词，但是最后只剩，暖"
+    rows[1]["text"] = "专有 名词中间出现了异常空格。"
+    rows[1]["confidence"] = 0.99
+    write_jsonl(output_dir / "utterances.jsonl", rows)
+    packet_dir = tmp_path / "packet"
+
+    build_low_cost_review_packet(output_dir, catalog, 0, 5000, packet_dir)
+    packet = json.loads((packet_dir / "request.json").read_text(encoding="utf-8"))
+
+    assert "possible_incomplete_clause" in packet["utterances"][0]["risk_reasons"]
+    assert "cjk_internal_whitespace" in packet["utterances"][1]["risk_reasons"]
+    assert all(row["visual_required"] for row in packet["utterances"])
+
+
+def test_low_cost_response_is_strict_and_never_overwrites_formal_review(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    packet_dir = tmp_path / "packet"
+    build_low_cost_review_packet(output_dir, catalog, 0, 5000, packet_dir)
+    packet = json.loads((packet_dir / "request.json").read_text(encoding="utf-8"))
+    response_path = packet_dir / "response.json"
+    write_json(response_path, _low_cost_response(packet))
+
+    result = validate_low_cost_review_response(packet_dir / "request.json", response_path)
+
+    assert result["auto_eligible"] == 2
+    assert result["formal_review_files_unchanged"] is True
+    assert not (output_dir / "review-decisions.jsonl").exists()
+    assert len(read_jsonl(packet_dir / "auto-review-candidates.jsonl")) == 2
+    assert read_jsonl(packet_dir / "escalation-queue.jsonl") == []
+
+    invalid = _low_cost_response(packet)
+    invalid["decisions"][0]["unexpected"] = True
+    write_json(response_path, invalid)
+    with pytest.raises(ValueError, match="fields mismatch"):
+        validate_low_cost_review_response(packet_dir / "request.json", response_path)
+
+
+def test_low_cost_reviewer_cannot_upgrade_or_replace_confirmed_speaker(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    packet_dir = tmp_path / "packet"
+    build_low_cost_review_packet(output_dir, catalog, 0, 5000, packet_dir)
+    packet = json.loads((packet_dir / "request.json").read_text(encoding="utf-8"))
+    response = _low_cost_response(packet)
+    response["decisions"][1].update(
+        {
+            "decision": "approve",
+            "content_kind": "dialogue",
+            "reviewed_text": "营业",
+            "speaker_label": "薄荷",
+            "speaker_id": "mint",
+            "speaker_status": "confirmed",
+        }
+    )
+    response_path = packet_dir / "response.json"
+    write_json(response_path, response)
+
+    with pytest.raises(ValueError, match="cannot upgrade speaker to confirmed"):
+        validate_low_cost_review_response(packet_dir / "request.json", response_path)
+
+
+def test_low_cost_packet_hash_covers_character_context(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    packet_dir = tmp_path / "packet"
+    build_low_cost_review_packet(output_dir, catalog, 0, 5000, packet_dir)
+    packet_path = packet_dir / "request.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    response_path = packet_dir / "response.json"
+    write_json(response_path, _low_cost_response(packet))
+    packet["characters"][0]["display_name"] = "被篡改的名字"
+    write_json(packet_path, packet)
+
+    with pytest.raises(ValueError, match="input_sha256 is invalid"):
+        validate_low_cost_review_response(packet_path, response_path)
+
+
+def test_low_cost_benchmark_compares_safe_candidates_with_gold(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    packet_dir = tmp_path / "packet"
+    build_low_cost_review_packet(output_dir, catalog, 0, 5000, packet_dir)
+    packet = json.loads((packet_dir / "request.json").read_text(encoding="utf-8"))
+    response_path = packet_dir / "response.json"
+    write_json(response_path, _low_cost_response(packet))
+    gold_path = tmp_path / "gold.jsonl"
+    write_jsonl(
+        gold_path,
+        [
+            {
+                "utterance_id": "u00001",
+                "decision": "approved",
+                "reviewed_text": "这是明确姓名框下的完整台词。",
+                "speaker_id": "mint",
+                "speaker_status": "confirmed",
+            },
+            {
+                "utterance_id": "u00002",
+                "decision": "rejected",
+                "reviewed_text": None,
+                "speaker_id": None,
+                "speaker_status": "unknown",
+            },
+        ],
+    )
+
+    result = benchmark_low_cost_review(
+        packet_dir / "request.json", response_path, gold_path
+    )
+
+    assert result["resolved_decision_accuracy"] == 1.0
+    assert result["auto_decision_precision"] == 1.0
+    assert result["approved_speaker_accuracy"] == 1.0
+    assert result["approved_text_similarity_at_least_0_9"] == 1.0
+    assert result["auto_approved_speaker_accuracy"] == 1.0
+    assert result["auto_approved_text_similarity_at_least_0_9"] == 1.0

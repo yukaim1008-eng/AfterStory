@@ -80,6 +80,10 @@ checkpoint，设备信息只记入 manifest，不改变输入配置哈希。
 | `reviewed-transcript.jsonl` | 只包含审核通过并修订后的可读稿 |
 | `review-report.html` | 全画面、原 OCR、修订稿、说话者和结论的浏览器报告 |
 | `review-sheets/` | 每页九帧的视觉审核联络表，便于快速定位说话人和界面误识别 |
+| `low-cost-review/<packet-id>/request.json` | 最多 40 条台词、20 张风险图的轻量模型审核包 |
+| `low-cost-review/<packet-id>/response.json` | 轻量模型严格响应，不直接进入正式审核稿 |
+| `low-cost-review/<packet-id>/auto-review-candidates.jsonl` | 通过确定性安全门的候选 |
+| `low-cost-review/<packet-id>/escalation-queue.jsonl` | 需要高能力模型或人工复核的疑难项 |
 
 校验暂存包：
 
@@ -104,6 +108,29 @@ checkpoint，设备信息只记入 manifest，不改变输入配置哈希。
 ```
 
 `review-report` 是静态 HTML，不需要启动前后端服务。审核决定必须覆盖全部源候选，且审核通过的 ID 必须与 `reviewed-transcript.jsonl` 一致，`review-validate` 才会成功。审核完成仍不等于已经生成正式场景、人物证据或 Character Definition。
+
+## 低成本模型审核
+
+先为一个连续小段生成紧凑审核包：
+
+```powershell
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command low-cost-pack `
+  -Output research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p02 `
+  -StartMs 0 `
+  -EndMs 230000
+```
+
+轻量模型只读取生成目录中的 `instructions.md`、`request.json` 及 request 明确列出的风险图片，并把严格响应保存为 `response.json`。随后运行：
+
+```powershell
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command low-cost-validate `
+  -Packet "<packet-dir>/request.json" `
+  -Response "<packet-dir>/response.json"
+```
+
+校准 P1/P2 时可以额外传入人工金标准运行 `low-cost-benchmark`。新分 P 不存在金标准时不得伪造 benchmark；直接审核自动候选和升级队列。低成本输出不会覆盖 `review-decisions.jsonl` 或 `reviewed-transcript.jsonl`，完整安全规则见 [设计文档](../../../../docs/design/character/low-cost-video-review.md)。
 
 大量候选可先生成联络表：
 

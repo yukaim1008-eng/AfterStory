@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("run", "validate", "assemble", "review-report", "review-sheets", "review-validate")]
+    [ValidateSet("run", "validate", "assemble", "review-report", "review-sheets", "review-validate", "low-cost-pack", "low-cost-validate", "low-cost-benchmark")]
     [string]$Command = "run",
     [string]$PartId,
     [string]$Title = "",
@@ -8,6 +8,12 @@ param(
     [string]$Output,
     [string]$Preset,
     [string]$Catalog,
+    [int]$StartMs,
+    [int]$EndMs,
+    [string]$PacketDir,
+    [string]$Packet,
+    [string]$Response,
+    [string]$GoldDecisions,
     [ValidateSet("cpu", "gpu")]
     [string]$Device = "cpu"
 )
@@ -31,10 +37,13 @@ if (-not $Python) {
         Select-Object -First 1 -ExpandProperty FullName
 }
 
-$Ffmpeg = (& uv run --no-project --python $Python --with imageio-ffmpeg python -X utf8 -c `
-    "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())" | Select-Object -Last 1).Trim()
-if (-not (Test-Path -LiteralPath $Ffmpeg)) {
-    throw "FFmpeg bootstrap failed: $Ffmpeg"
+$Ffmpeg = $null
+if ($Command -eq "run" -and $CacheDir) {
+    $Ffmpeg = (& uv run --no-project --python $Python --with imageio-ffmpeg python -X utf8 -c `
+        "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())" | Select-Object -Last 1).Trim()
+    if (-not (Test-Path -LiteralPath $Ffmpeg)) {
+        throw "FFmpeg bootstrap failed: $Ffmpeg"
+    }
 }
 
 $env:PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK = "True"
@@ -47,25 +56,36 @@ if ($Video) { $PipelineArgs += @("--video", $Video) }
 if ($Output) { $PipelineArgs += @("--output", $Output) }
 if ($Preset) { $PipelineArgs += @("--preset", $Preset) }
 if ($Catalog) { $PipelineArgs += @("--catalog", $Catalog) }
+if ($PSBoundParameters.ContainsKey("StartMs")) { $PipelineArgs += @("--start-ms", $StartMs) }
+if ($PSBoundParameters.ContainsKey("EndMs")) { $PipelineArgs += @("--end-ms", $EndMs) }
+if ($PacketDir) { $PipelineArgs += @("--packet-dir", $PacketDir) }
+if ($Packet) { $PipelineArgs += @("--packet", $Packet) }
+if ($Response) { $PipelineArgs += @("--response", $Response) }
+if ($GoldDecisions) { $PipelineArgs += @("--gold-decisions", $GoldDecisions) }
 if ($Command -eq "run" -and $CacheDir) { $PipelineArgs += @("--ffmpeg", $Ffmpeg) }
 if ($Command -eq "run") { $PipelineArgs += @("--device", $Device) }
 
 Push-Location $RepoRoot
 try {
-    $UvArgs = @(
-        "run", "--no-project", "--python", $Python,
-        "--with", "paddleocr==3.7.0",
-        "--with", "opencv-python-headless==4.10.0.84"
-    )
-    if ($Device -eq "gpu") {
+    $UvArgs = @("run", "--no-project", "--python", $Python)
+    if ($Command -eq "run") {
         $UvArgs += @(
-            "--with", "paddlepaddle-gpu==3.3.0",
-            "--index", "https://www.paddlepaddle.org.cn/packages/stable/cu118/"
-            "--index-strategy", "unsafe-best-match"
+            "--with", "paddleocr==3.7.0",
+            "--with", "opencv-python-headless==4.10.0.84"
         )
+        if ($Device -eq "gpu") {
+            $UvArgs += @(
+                "--with", "paddlepaddle-gpu==3.3.0",
+                "--index", "https://www.paddlepaddle.org.cn/packages/stable/cu118/"
+                "--index-strategy", "unsafe-best-match"
+            )
+        }
+        else {
+            $UvArgs += @("--with", "paddlepaddle==3.3.1")
+        }
     }
-    else {
-        $UvArgs += @("--with", "paddlepaddle==3.3.1")
+    elseif ($Command -in @("review-report", "review-sheets")) {
+        $UvArgs += @("--with", "opencv-python-headless==4.10.0.84")
     }
     $UvArgs += @("python", "-X", "utf8") + $PipelineArgs
     & uv @UvArgs
