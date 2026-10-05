@@ -15,7 +15,7 @@ from .core import (
 )
 
 LOW_COST_REVIEW_PROTOCOL_VERSION = "1.0"
-LOW_COST_REVIEW_PROMPT_VERSION = "1.1"
+LOW_COST_REVIEW_PROMPT_VERSION = "1.2"
 MAX_PACKET_UTTERANCES = 40
 MAX_PACKET_VISUALS = 20
 MAX_RESPONSE_BYTES = 1_000_000
@@ -53,6 +53,7 @@ _DECISION_KEYS = {
     "reason_codes",
     "evidence",
 }
+_HIGH_REVIEW_DECISION_KEYS = _DECISION_KEYS | {"reviewed_by"}
 _DECISIONS = {"approve", "reject", "escalate"}
 _CONTENT_KINDS = {
     "dialogue",
@@ -104,6 +105,35 @@ LOW_COST_REVIEW_INSTRUCTIONS = """# 低成本剧情审核协议 1.0
 响应顶层字段：`protocol_version`、`prompt_version`、`packet_id`、`input_sha256`、
 `reviewer`、`decisions`。每条 decision 必须完整包含 request 中规定的字段，并覆盖所有
 utterance_id。复制 request 的版本、packet_id 和 input_sha256。
+
+严格按以下形状输出；不得把字段改名为 action、corrected_text、reason 等近义词：
+
+```json
+{
+  "protocol_version": "1.0",
+  "prompt_version": "1.2",
+  "packet_id": "复制 request.packet_id",
+  "input_sha256": "复制 request.input_sha256",
+  "reviewer": {"kind": "low_cost_model", "model": "实际模型名"},
+  "decisions": [
+    {
+      "utterance_id": "复制 utterance_id",
+      "decision": "approve",
+      "content_kind": "dialogue",
+      "reviewed_text": "审核后的完整文本；reject/escalate 时必须为 null",
+      "speaker_label": null,
+      "speaker_id": null,
+      "speaker_status": "unknown",
+      "confidence": "high",
+      "reason_codes": ["简短英文原因码"],
+      "evidence": ["frame_inspected"]
+    }
+  ]
+}
+```
+
+每条 decision 的键必须恰好是示例中的十个键；`reason_codes` 与 `evidence` 必须是字符串
+数组。不要输出注释、代码围栏或解释。
 """
 
 
@@ -263,7 +293,75 @@ def build_low_cost_review_packet(
     return {"packet_dir": str(target_dir), **packet["metrics"], "packet_id": packet_id}
 
 
-def _validate_decision(decision: dict, source: dict, character_ids: set[str]) -> None:
+def plan_low_cost_review_packets(
+    output_dir: Path,
+    catalog_path: Path,
+    target_root: Path | None = None,
+) -> dict:
+    """Split a full staging transcript into bounded low-cost review packets."""
+    utterances = read_jsonl(output_dir / "utterances.jsonl")
+    if not utterances:
+        raise ValueError("cannot plan low-cost review for an empty transcript")
+
+    batches: list[list[dict]] = []
+    current: list[dict] = []
+    current_visuals = 0
+    for index, utterance in enumerate(utterances):
+        previous = utterances[index - 1] if index else None
+        following = utterances[index + 1] if index + 1 < len(utterances) else None
+        visual_required = bool(_risk_reasons(utterance, previous, following))
+        would_overflow = current and (
+            len(current) + 1 > MAX_PACKET_UTTERANCES
+            or current_visuals + int(visual_required) > MAX_PACKET_VISUALS
+        )
+        if would_overflow:
+            batches.append(current)
+            current = []
+            current_visuals = 0
+        current.append(utterance)
+        current_visuals += int(visual_required)
+    if current:
+        batches.append(current)
+
+    target_root = target_root or output_dir / "low-cost-review"
+    packets = []
+    for index, batch in enumerate(batches):
+        start_ms = batch[0]["start_ms"]
+        if index + 1 < len(batches):
+            end_ms = batches[index + 1][0]["start_ms"]
+        else:
+            end_ms = batch[-1]["end_ms"] + 1
+        packet_dir = target_root / f"packet-{index + 1:03d}"
+        packets.append(
+            build_low_cost_review_packet(
+                output_dir,
+                catalog_path,
+                start_ms,
+                end_ms,
+                packet_dir,
+            )
+        )
+
+    plan = {
+        "protocol_version": LOW_COST_REVIEW_PROTOCOL_VERSION,
+        "prompt_version": LOW_COST_REVIEW_PROMPT_VERSION,
+        "packet_count": len(packets),
+        "utterance_count": sum(row["utterance_count"] for row in packets),
+        "visual_review_count": sum(row["visual_review_count"] for row in packets),
+        "text_only_count": sum(row["text_only_count"] for row in packets),
+        "packets": packets,
+    }
+    write_json(target_root / "plan.json", plan)
+    return plan
+
+
+def _validate_decision(
+    decision: dict,
+    source: dict,
+    character_ids: set[str],
+    *,
+    allow_speaker_upgrade: bool = False,
+) -> None:
     _strict_keys(decision, _DECISION_KEYS, f"decision {decision.get('utterance_id')}")
     if decision["decision"] not in _DECISIONS:
         raise ValueError(f"invalid decision for {decision['utterance_id']}")
@@ -300,7 +398,7 @@ def _validate_decision(decision: dict, source: dict, character_ids: set[str]) ->
         raise ValueError(f"non-approved text must be null for {decision['utterance_id']}")
 
     source_confirmed = source["speaker_status"] == "confirmed" and source.get("speaker_id")
-    if decision["speaker_status"] == "confirmed":
+    if decision["speaker_status"] == "confirmed" and not allow_speaker_upgrade:
         if not source_confirmed:
             raise ValueError(
                 f"low-cost reviewer cannot upgrade speaker to confirmed for "
@@ -328,7 +426,14 @@ def _auto_eligibility(decision: dict, source: dict) -> tuple[bool, list[str]]:
             decision.get("speaker_id") != source.get("speaker_id")
             or decision["speaker_status"] != source["speaker_status"]
         )
-        if speaker_changed and not {
+        conservative_unresolved_downgrade = (
+            source["speaker_status"] == "confirmed"
+            and not source.get("speaker_id")
+            and decision.get("speaker_id") is None
+            and decision.get("speaker_label") == source.get("speaker_label")
+            and decision["speaker_status"] == "unknown"
+        )
+        if speaker_changed and not conservative_unresolved_downgrade and not {
             "frame_inspected",
             "context_sequence",
         }.issubset(decision["evidence"]):
@@ -428,6 +533,142 @@ def validate_low_cost_review_response(packet_path: Path, response_path: Path) ->
     }
     write_json(target_dir / "validation.json", summary)
     return summary
+
+
+def finalize_low_cost_review(
+    output_dir: Path,
+    high_review_paths: list[Path],
+) -> dict:
+    """Combine validated automatic decisions and bounded escalation reviews."""
+    plan = read_json(output_dir / "low-cost-review" / "plan.json")
+    source_rows = read_jsonl(output_dir / "utterances.jsonl")
+    source_by_id = {row["utterance_id"]: row for row in source_rows}
+    auto_by_id: dict[str, dict] = {}
+    escalation_ids: set[str] = set()
+    packet_model_by_id: dict[str, str] = {}
+    character_ids: set[str] = set()
+
+    for packet_summary in plan["packets"]:
+        packet_dir = Path(packet_summary["packet_dir"])
+        packet_path = packet_dir / "request.json"
+        response_path = packet_dir / "response.json"
+        validate_low_cost_review_response(packet_path, response_path)
+        packet = read_json(packet_path)
+        character_ids.update(row["character_id"] for row in packet["characters"])
+        response = read_json(response_path)
+        model = response["reviewer"]["model"]
+        for row in read_jsonl(packet_dir / "auto-review-candidates.jsonl"):
+            auto_by_id[row["utterance_id"]] = row
+            packet_model_by_id[row["utterance_id"]] = model
+        escalation_ids.update(
+            row["utterance_id"]
+            for row in read_jsonl(packet_dir / "escalation-queue.jsonl")
+        )
+
+    high_by_id: dict[str, dict] = {}
+    for path in high_review_paths:
+        document = read_json(path)
+        _strict_keys(document, {"reviewer", "decisions"}, f"high review {path}")
+        _strict_keys(document["reviewer"], _REVIEWER_KEYS, f"high reviewer {path}")
+        if document["reviewer"]["kind"] != "high_capability_model":
+            raise ValueError("high reviewer.kind must be high_capability_model")
+        if not isinstance(document["decisions"], list):
+            raise ValueError("high review decisions must be a list")
+        for row in document["decisions"]:
+            _strict_keys(
+                row,
+                _HIGH_REVIEW_DECISION_KEYS,
+                f"high decision {row.get('utterance_id')}",
+            )
+            utterance_id = row["utterance_id"]
+            if utterance_id in high_by_id:
+                raise ValueError(f"duplicate high review decision {utterance_id}")
+            if utterance_id not in source_by_id:
+                raise ValueError(f"unknown high review utterance {utterance_id}")
+            if row["decision"] not in {"approve", "reject"}:
+                raise ValueError(f"high review must resolve {utterance_id}")
+            if not isinstance(row["reviewed_by"], str) or not row["reviewed_by"].strip():
+                raise ValueError(f"high review reviewed_by is required for {utterance_id}")
+            _validate_decision(
+                {key: row[key] for key in _DECISION_KEYS},
+                source_by_id[utterance_id],
+                character_ids,
+                allow_speaker_upgrade=True,
+            )
+            if row["confidence"] != "high":
+                raise ValueError(f"high review confidence must be high for {utterance_id}")
+            high_by_id[utterance_id] = row
+
+    if set(high_by_id) != escalation_ids:
+        missing = sorted(escalation_ids - set(high_by_id))
+        extra = sorted(set(high_by_id) - escalation_ids)
+        raise ValueError(f"high review coverage mismatch; missing={missing}, extra={extra}")
+
+    formal_decisions = []
+    transcript = []
+    for source in source_rows:
+        utterance_id = source["utterance_id"]
+        is_high_review = utterance_id in high_by_id
+        decision = high_by_id.get(utterance_id) or auto_by_id.get(utterance_id)
+        if decision is None:
+            raise ValueError(f"missing final review decision for {utterance_id}")
+        approved = decision["decision"] == "approve"
+        reviewed_by = (
+            decision["reviewed_by"]
+            if is_high_review
+            else f"{packet_model_by_id[utterance_id]}_low_cost_review"
+        )
+        formal_decisions.append(
+            {
+                "review_schema_version": "1.0",
+                "utterance_id": utterance_id,
+                "decision": "approved" if approved else "rejected",
+                "reason": (
+                    "high_capability_escalation_review"
+                    if is_high_review
+                    else "low_cost_review_auto"
+                ),
+                "content_kind": decision["content_kind"],
+                "original_text": source["text"],
+                "reviewed_text": decision["reviewed_text"],
+                "speaker_label": decision["speaker_label"],
+                "speaker_id": decision["speaker_id"],
+                "speaker_status": decision["speaker_status"],
+                "attribution_evidence": decision["evidence"],
+                "reviewed_by": reviewed_by,
+                "source_candidates": source.get("source_candidates", []),
+            }
+        )
+        if approved:
+            transcript.append(
+                {
+                    "schema_version": "1.0",
+                    "reviewed_utterance_id": utterance_id,
+                    "source_utterance_ids": [utterance_id],
+                    "start_ms": source["start_ms"],
+                    "end_ms": source["end_ms"],
+                    "start_timestamp": source["start_timestamp"],
+                    "end_timestamp": source["end_timestamp"],
+                    "content_kind": decision["content_kind"],
+                    "text": decision["reviewed_text"],
+                    "speaker_label": decision["speaker_label"],
+                    "speaker_id": decision["speaker_id"],
+                    "speaker_status": decision["speaker_status"],
+                    "attribution_evidence": decision["evidence"],
+                    "review_status": "approved",
+                    "source_candidates": source.get("source_candidates", []),
+                }
+            )
+
+    write_jsonl(output_dir / "review-decisions.jsonl", formal_decisions)
+    write_jsonl(output_dir / "reviewed-transcript.jsonl", transcript)
+    return {
+        "source_utterances": len(source_rows),
+        "approved": len(transcript),
+        "rejected": len(source_rows) - len(transcript),
+        "auto_reviewed": len(auto_by_id),
+        "high_reviewed": len(high_by_id),
+    }
 
 
 def _ratio(matches: int, total: int) -> float | None:

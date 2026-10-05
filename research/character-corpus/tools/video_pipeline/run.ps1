@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("run", "validate", "assemble", "review-report", "review-sheets", "review-validate", "low-cost-pack", "low-cost-validate", "low-cost-benchmark")]
+    [ValidateSet("run", "validate", "assemble", "review-report", "review-sheets", "review-validate", "low-cost-plan", "low-cost-pack", "low-cost-validate", "low-cost-benchmark", "low-cost-finalize")]
     [string]$Command = "run",
     [string]$PartId,
     [string]$Title = "",
@@ -14,6 +14,7 @@ param(
     [string]$Packet,
     [string]$Response,
     [string]$GoldDecisions,
+    [string[]]$HighReview,
     [ValidateSet("cpu", "gpu")]
     [string]$Device = "cpu"
 )
@@ -62,6 +63,9 @@ if ($PacketDir) { $PipelineArgs += @("--packet-dir", $PacketDir) }
 if ($Packet) { $PipelineArgs += @("--packet", $Packet) }
 if ($Response) { $PipelineArgs += @("--response", $Response) }
 if ($GoldDecisions) { $PipelineArgs += @("--gold-decisions", $GoldDecisions) }
+foreach ($HighReviewPath in $HighReview) {
+    $PipelineArgs += @("--high-review", $HighReviewPath)
+}
 if ($Command -eq "run" -and $CacheDir) { $PipelineArgs += @("--ffmpeg", $Ffmpeg) }
 if ($Command -eq "run") { $PipelineArgs += @("--device", $Device) }
 

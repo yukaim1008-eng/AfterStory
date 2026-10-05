@@ -34,8 +34,9 @@
 - 2026-10-03 [Canon 人物、世界与关系知识层](design/character/canon-knowledge-map.md) 的 K0/K0.1 资料库骨架已实现：新增 checkpoint、中立 Canon 证据、世界实体、人物事实、世界事实和人物关系严格模型；Scene 已补分 P 定位，档案与剧情证据严格二选一，accepted 知识必须引用 accepted 证据。K0.1 又补充结构化人物别名、checkpoint 内容轨道、field/archive/voice 三类严格档案定位，并将剧情事实状态命名为 `canon_status`。引用、作品边界、有效区间、替代链和现实用户 ID 混入均有校验，本地 SQLite Schema `1.1` 采用成功后原子替换。Instance Canon Role Binding 仍只完成设计约束，生产 PostgreSQL、Character Definition、CharacterInstance 和 Provider 均未修改。实施记录见 [Canon 知识层 K0](implementation/canon-knowledge-k0.md)。
 - 2026-10-04 Canon K1 已把 P1 的 189 条逐画面复核台词正式提升为 29 个叙事场景和 29 条 accepted 中立证据，并登记艾尔菲德、奈丽两个剧情人物。提升命令校验源候选全覆盖、复核稿 SHA-256、场景覆盖、时间范围和不可变 ID；重复执行幂等，冲突内容拒绝覆盖。完整逐字稿和原视频仍只在忽略的本地暂存区，正式库只保存摘要、定位和引用。见 [Canon 知识层 K1](implementation/canon-knowledge-k1.md)。
 - 2026-10-04 Canon K2/K3 已从 P1 accepted 证据形成 12 个世界实体、9 条人物事实、13 条世界事实和 6 条人物关系，并生成按 checkpoint 过滤的 [人物地图](../research/character-corpus/views/character-map.md)、[世界知识页](../research/character-corpus/views/world-knowledge.md) 与 [人物关系图](../research/character-corpus/views/character-relations.md)。所有表项可回到 B 站分 P 时间点；原作关系与现实用户 Runtime Relationship 在视图中再次明确隔离。见 [K2/K3 实施记录](implementation/canon-knowledge-k2-k3.md)。
-- 2026-10-05 Canon K4 已完成 P2《第1话 生意经与招财宝》闭环：365 条台词候选逐项复核后保留 322 条，提升为 20 个场景和 20 条 Canon Evidence；补充 10 个世界实体、15 条人物事实、7 条世界事实、5 条原作关系、17 条人物表现证据和 7 个证据确认 Trait。隔离 SQLite、审核视图、幂等提升、定向测试和 Ruff 均通过；P3 未开始。见 [P2 实施记录](implementation/canon-knowledge-p2.md)。
-- 2026-10-05 剧情视频低成本审核流程已实现：本地规则生成最多 40 条台词、20 张风险图的哈希审核包，轻量模型响应必须经过严格 Schema、说话者边界和自动候选安全门，疑难项再交给高能力模型。P2 `00:00–03:50` 的 31 条盲回放中，22 条安全自动候选的保留/剔除和说话者精度均为 100%，9 条保守升级；正式 P2 数据未修改，P3 未开始。见 [设计](design/character/low-cost-video-review.md) 与 [实施记录](implementation/character-video-low-cost-review.md)。
+- 2026-10-05 Canon K4 已完成 P2《第1话 生意经与招财宝》闭环：365 条台词候选逐项复核后保留 322 条，提升为 20 个场景和 20 条 Canon Evidence；补充 10 个世界实体、15 条人物事实、7 条世界事实、5 条原作关系、17 条人物表现证据和 7 个证据确认 Trait。隔离 SQLite、审核视图、幂等提升、定向测试和 Ruff 均通过。见 [P2 实施记录](implementation/canon-knowledge-p2.md)。
+- 2026-10-05 剧情视频低成本审核流程已实现：本地规则生成最多 40 条台词、20 张风险图的哈希审核包，轻量模型响应必须经过严格 Schema、说话者边界和自动候选安全门。P2 `00:00–03:50` 盲回放验证了精度；P3 又完成整集自动分包、第二轮轻量复核、41 条残余高审和确定性最终合并。见 [设计](design/character/low-cost-video-review.md) 与 [实施记录](implementation/character-video-low-cost-review.md)。
+- 2026-10-05 Canon K4 已完成 P3《番外 月光当铺》闭环：687 条候选经两轮轻量审核与 41 条残余高审后保留 617 条，提升为 25 个场景和 25 条 Canon Evidence；新增 11 名人物、1 个别名、13 个世界实体、17 条人物事实、19 条世界事实、12 条原作关系、19 条人物表现证据与 6 个 Trait。低成本 Prompt 升为 `1.2`，新增整集自动分包和确定性最终合并。隔离 SQLite、三张视图、幂等提升、测试和 Ruff 均通过；P4 未开始。见 [P3 实施记录](implementation/canon-knowledge-p3.md)。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。
@@ -81,7 +82,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库与 Canon K0–K4 已完成 P1、P2 的抽取、复核、正式入库、结构化知识和三张审核视图闭环；P2 还开始按多证据归纳带边界的 Trait，但尚未修改正式 Character Definition。下一阶段按同一门禁处理 P3，当前三位六字段候选继续保持未导入。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未启动。
+Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库与 Canon K0–K4 已完成 P1、P2、P3 的抽取、复核、正式入库、结构化知识和三张审核视图闭环；P2/P3 已按多证据归纳带边界的 Trait，但尚未修改正式 Character Definition。当前停在 P3，P4 未开始，三位六字段候选继续保持未导入。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未启动。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 

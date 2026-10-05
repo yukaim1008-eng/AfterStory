@@ -118,20 +118,20 @@ def test_source_catalog_refresh_preserves_curated_aliases_and_review_status():
 def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     stats = validate_corpus(CORPUS_ROOT)
     assert stats == {
-        "characters": 28,
-        "character_aliases": 0,
+        "characters": 39,
+        "character_aliases": 1,
         "sources": 25,
         "source_parts": 21,
         "profiles": 23,
-        "scenes": 49,
-        "evidence": 17,
-        "traits": 7,
-        "canon_checkpoints": 2,
-        "canon_evidence": 49,
-        "world_entities": 22,
-        "character_facts": 24,
-        "world_facts": 20,
-        "character_relations": 11,
+        "scenes": 74,
+        "evidence": 36,
+        "traits": 13,
+        "canon_checkpoints": 3,
+        "canon_evidence": 74,
+        "world_entities": 35,
+        "character_facts": 41,
+        "world_facts": 39,
+        "character_relations": 23,
     }
     catalog = json.loads((CORPUS_ROOT / "catalog.json").read_text(encoding="utf-8"))
     missing = [item for item in catalog if item["research_status"] == "discovered"]
@@ -149,11 +149,12 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     ]
     assert sum(part["duration_ms"] for part in parts) == 80_387_000
     assert {part["subtitle_mode"] for part in parts} == {"no_platform_subtitles"}
-    assert [part["visual_subtitle_status"] for part in parts[:2]] == [
+    assert [part["visual_subtitle_status"] for part in parts[:3]] == [
+        "verified_present",
         "verified_present",
         "verified_present",
     ]
-    assert {part["visual_subtitle_status"] for part in parts[2:]} == {
+    assert {part["visual_subtitle_status"] for part in parts[3:]} == {
         "user_confirmed_present"
     }
 

@@ -390,5 +390,165 @@
     "source_work": "异环",
     "role_scope": "named_character",
     "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "bianca",
+    "names": {
+      "zh": "比安卡",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "misimo",
+    "names": {
+      "zh": "弥斯墨",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "kainisi",
+    "names": {
+      "zh": "凯尼斯",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "otto",
+    "names": {
+      "zh": "奥托",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "fu",
+    "names": {
+      "zh": "浮",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "dongsi",
+    "names": {
+      "zh": "冬司",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "laila",
+    "names": {
+      "zh": "莱拉",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "guilangwan",
+    "names": {
+      "zh": "鬼郎丸",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "mofeikesi",
+    "names": {
+      "zh": "墨菲克斯",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "蒲公英",
+        "language": "zh",
+        "kind": "nickname"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "pengpeng",
+    "names": {
+      "zh": "嘭嘭",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "danhonggao-saodang",
+    "names": {
+      "zh": "蛋烘糕扫荡",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
   }
 ]

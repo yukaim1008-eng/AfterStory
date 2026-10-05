@@ -148,7 +148,7 @@ def test_structured_definition_reaches_provider_before_runtime_context(database)
 
     provider = RecordingProvider()
     ConversationService(repo, provider).send("alice", conversation_id, "schema", "你好")
-    assert provider.calls[0][0].content == build_character_system_prompt(
+    character_prompt = build_character_system_prompt(
         CharacterDefinition.model_validate(
             {
                 "schema_version": "1.0",
@@ -161,6 +161,7 @@ def test_structured_definition_reaches_provider_before_runtime_context(database)
             }
         )
     )
+    assert provider.calls[0][0].content.startswith(character_prompt)
     assert provider.calls[0][-1].content == "你好"
 
 

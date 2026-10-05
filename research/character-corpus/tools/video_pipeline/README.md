@@ -111,6 +111,16 @@ checkpoint，设备信息只记入 manifest，不改变输入配置哈希。
 
 ## 低成本模型审核
 
+完整分 P 先自动规划审核包：
+
+```powershell
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command low-cost-plan `
+  -Output research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p03
+```
+
+计划会在 `low-cost-review/plan.json` 中列出全部连续包及其文本/图片预算。也可以继续用 `low-cost-pack` 单独生成一个时间范围，适合校准或重跑。
+
 先为一个连续小段生成紧凑审核包：
 
 ```powershell
@@ -131,6 +141,17 @@ checkpoint，设备信息只记入 manifest，不改变输入配置哈希。
 ```
 
 校准 P1/P2 时可以额外传入人工金标准运行 `low-cost-benchmark`。新分 P 不存在金标准时不得伪造 benchmark；直接审核自动候选和升级队列。低成本输出不会覆盖 `review-decisions.jsonl` 或 `reviewed-transcript.jsonl`，完整安全规则见 [设计文档](../../../../docs/design/character/low-cost-video-review.md)。
+
+所有包完成，并对第二轮仍未解决的条目生成高审 JSON 后，使用确定性合并命令：
+
+```powershell
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command low-cost-finalize `
+  -Output research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p03 `
+  -HighReview path/to/high-review-a.json,path/to/high-review-b.json
+```
+
+合并器要求自动路径与高审路径共同完整覆盖候选，拒绝缺失、重复和越界 ID；成功后才写正式审核文件，再运行 `review-validate` 和 `promote-video`。
 
 大量候选可先生成联络表：
 

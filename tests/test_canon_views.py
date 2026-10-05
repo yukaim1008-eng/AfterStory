@@ -15,7 +15,7 @@ def test_render_canon_views_uses_accepted_checkpointed_records(tmp_path: Path):
 
     assert result == {
         "checkpoint_id": "nt-bv1kqoabievz-p01",
-        "characters": 28,
+        "characters": 39,
         "world_entities": 12,
         "character_relations": 6,
         "output": str(tmp_path.resolve()),
@@ -38,7 +38,7 @@ def test_render_canon_views_includes_reviewed_p02_knowledge(tmp_path: Path):
 
     assert result == {
         "checkpoint_id": "nt-bv1kqoabievz-p02",
-        "characters": 28,
+        "characters": 39,
         "world_entities": 22,
         "character_relations": 11,
         "output": str(tmp_path.resolve()),
@@ -52,6 +52,29 @@ def test_render_canon_views_includes_reviewed_p02_knowledge(tmp_path: Path):
     assert "塔吉多 → 异能者·零：主动称为朋友" in relations
     assert "Canon 人物关系不等于现实用户与角色实例" in relations
     assert "?p=2&t=" in relations
+
+
+def test_render_canon_views_includes_reviewed_p03_knowledge(tmp_path: Path):
+    result = render_canon_views(
+        CORPUS_ROOT, tmp_path, checkpoint_id="nt-bv1kqoabievz-p03"
+    )
+
+    assert result == {
+        "checkpoint_id": "nt-bv1kqoabievz-p03",
+        "characters": 39,
+        "world_entities": 35,
+        "character_relations": 23,
+        "output": str(tmp_path.resolve()),
+    }
+    character_map = (tmp_path / "character-map.md").read_text(encoding="utf-8")
+    world_knowledge = (tmp_path / "world-knowledge.md").read_text(encoding="utf-8")
+    relations = (tmp_path / "character-relations.md").read_text(encoding="utf-8")
+    assert "奥托 (`otto`)" in character_map
+    assert "并非该空间真正的主人" in character_map
+    assert "月光当铺 (`moonlight-pawnshop`)" in world_knowledge
+    assert "嘭嘭 ↔ 墨菲克斯：爱犬与照料者" in relations
+    assert "Canon 人物关系不等于现实用户与角色实例" in relations
+    assert "?p=3&t=" in relations
 
 
 def test_render_canon_views_rejects_unknown_checkpoint(tmp_path: Path):

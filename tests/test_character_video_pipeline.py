@@ -24,6 +24,8 @@ from video_pipeline.low_cost_review import (  # noqa: E402
     LOW_COST_REVIEW_PROTOCOL_VERSION,
     benchmark_low_cost_review,
     build_low_cost_review_packet,
+    finalize_low_cost_review,
+    plan_low_cost_review_packets,
     validate_low_cost_review_response,
 )
 from video_pipeline.media import CACHE_PREFIX, strip_cache_prefix  # noqa: E402
@@ -446,11 +448,43 @@ def test_low_cost_packet_refuses_unbounded_model_context(tmp_path: Path):
         row["utterance_id"] = f"u{index + 1:05d}"
         row["start_ms"] = index * 1000
         row["end_ms"] = index * 1000 + 500
+        row["text"] = "".join(
+            chr(0x4E00 + ((index * 97 + offset * 193) % 2000))
+            for offset in range(20)
+        )
         expanded.append(row)
     write_jsonl(output_dir / "utterances.jsonl", expanded)
 
     with pytest.raises(ValueError, match="exceeds 40 utterances"):
         build_low_cost_review_packet(output_dir, catalog, 0, 50_000, tmp_path / "packet")
+
+
+def test_low_cost_plan_splits_full_transcript_at_both_limits(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    source = read_jsonl(output_dir / "utterances.jsonl")
+    expanded = []
+    for index in range(61):
+        row = {**source[0]}
+        row["utterance_id"] = f"u{index + 1:05d}"
+        row["start_ms"] = index * 1000
+        row["end_ms"] = index * 1000 + 500
+        row["text"] = "".join(
+            chr(0x4E00 + ((index * 97 + offset * 193) % 2000))
+            for offset in range(20)
+        )
+        if index < 21:
+            row["confidence"] = 0.8
+        expanded.append(row)
+    write_jsonl(output_dir / "utterances.jsonl", expanded)
+
+    result = plan_low_cost_review_packets(output_dir, catalog)
+
+    assert result["packet_count"] == 3
+    assert result["utterance_count"] == 61
+    assert [row["utterance_count"] for row in result["packets"]] == [20, 40, 1]
+    assert all(row["utterance_count"] <= 40 for row in result["packets"])
+    assert all(row["visual_review_count"] <= 20 for row in result["packets"])
+    assert (output_dir / "low-cost-review" / "plan.json").exists()
 
 
 def test_low_cost_packet_flags_incomplete_and_noisy_ocr_for_visual_review(
@@ -518,6 +552,36 @@ def test_low_cost_reviewer_cannot_upgrade_or_replace_confirmed_speaker(tmp_path:
         validate_low_cost_review_response(packet_dir / "request.json", response_path)
 
 
+def test_low_cost_review_allows_conservative_downgrade_for_unmapped_label(
+    tmp_path: Path,
+):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    rows = read_jsonl(output_dir / "utterances.jsonl")
+    rows[0]["speaker_label"] = "未入库角色"
+    rows[0]["speaker_id"] = None
+    rows[0]["speaker_status"] = "confirmed"
+    write_jsonl(output_dir / "utterances.jsonl", rows)
+    packet_dir = tmp_path / "packet"
+    build_low_cost_review_packet(output_dir, catalog, 0, 5000, packet_dir)
+    packet = json.loads((packet_dir / "request.json").read_text(encoding="utf-8"))
+    response = _low_cost_response(packet)
+    response["decisions"][0].update(
+        {
+            "speaker_label": "未入库角色",
+            "speaker_id": None,
+            "speaker_status": "unknown",
+            "evidence": ["frame_inspected"],
+        }
+    )
+    response_path = packet_dir / "response.json"
+    write_json(response_path, response)
+
+    result = validate_low_cost_review_response(packet_dir / "request.json", response_path)
+
+    assert result["auto_eligible"] == 2
+    assert result["escalated"] == 0
+
+
 def test_low_cost_packet_hash_covers_character_context(tmp_path: Path):
     output_dir, catalog = _write_low_cost_source(tmp_path)
     packet_dir = tmp_path / "packet"
@@ -571,3 +635,47 @@ def test_low_cost_benchmark_compares_safe_candidates_with_gold(tmp_path: Path):
     assert result["approved_text_similarity_at_least_0_9"] == 1.0
     assert result["auto_approved_speaker_accuracy"] == 1.0
     assert result["auto_approved_text_similarity_at_least_0_9"] == 1.0
+
+
+def test_low_cost_finalize_requires_and_merges_escalation_review(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    packet_dir = output_dir / "low-cost-review" / "packet-001"
+    packet_result = build_low_cost_review_packet(
+        output_dir, catalog, 0, 5000, packet_dir
+    )
+    write_json(
+        output_dir / "low-cost-review" / "plan.json",
+        {
+            "packets": [packet_result],
+        },
+    )
+    packet = json.loads((packet_dir / "request.json").read_text(encoding="utf-8"))
+    response = _low_cost_response(packet)
+    response["decisions"][0]["confidence"] = "medium"
+    response_path = packet_dir / "response.json"
+    write_json(response_path, response)
+    validate_low_cost_review_response(packet_dir / "request.json", response_path)
+    high_path = output_dir / "low-cost-review" / "high.json"
+    high_decision = {
+        **response["decisions"][0],
+        "confidence": "high",
+        "reviewed_by": "test-high_escalation_review",
+    }
+    write_json(
+        high_path,
+        {
+            "reviewer": {"kind": "high_capability_model", "model": "test-high"},
+            "decisions": [high_decision],
+        },
+    )
+
+    result = finalize_low_cost_review(output_dir, [high_path])
+
+    assert result == {
+        "source_utterances": 2,
+        "approved": 1,
+        "rejected": 1,
+        "auto_reviewed": 1,
+        "high_reviewed": 1,
+    }
+    assert validate_review_bundle(output_dir)["review_complete"] is True

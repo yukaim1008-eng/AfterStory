@@ -16,6 +16,8 @@ from .core import (
 from .low_cost_review import (
     benchmark_low_cost_review,
     build_low_cost_review_packet,
+    finalize_low_cost_review,
+    plan_low_cost_review_packets,
     validate_low_cost_review_response,
 )
 from .media import normalize_bilibili_cache, probe_media, scan_candidates
@@ -218,6 +220,14 @@ def low_cost_pack_command(args: argparse.Namespace) -> dict:
     )
 
 
+def low_cost_plan_command(args: argparse.Namespace) -> dict:
+    return plan_low_cost_review_packets(
+        _safe_output_dir(args.output),
+        args.catalog.resolve(),
+        _safe_output_dir(args.packet_dir) if args.packet_dir else None,
+    )
+
+
 def low_cost_validate_command(args: argparse.Namespace) -> dict:
     packet = args.packet.resolve()
     response = args.response.resolve()
@@ -235,6 +245,13 @@ def low_cost_benchmark_command(args: argparse.Namespace) -> dict:
         packet,
         response,
         args.gold_decisions.resolve(),
+    )
+
+
+def low_cost_finalize_command(args: argparse.Namespace) -> dict:
+    return finalize_low_cost_review(
+        _safe_output_dir(args.output),
+        [path.resolve() for path in args.high_review],
     )
 
 
@@ -290,6 +307,12 @@ def main() -> None:
     low_cost_pack_parser.add_argument("--packet-dir", type=Path)
     low_cost_pack_parser.set_defaults(handler=low_cost_pack_command)
 
+    low_cost_plan_parser = subparsers.add_parser("low-cost-plan")
+    low_cost_plan_parser.add_argument("--output", type=Path, required=True)
+    low_cost_plan_parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
+    low_cost_plan_parser.add_argument("--packet-dir", type=Path)
+    low_cost_plan_parser.set_defaults(handler=low_cost_plan_command)
+
     low_cost_validate_parser = subparsers.add_parser("low-cost-validate")
     low_cost_validate_parser.add_argument("--packet", type=Path, required=True)
     low_cost_validate_parser.add_argument("--response", type=Path, required=True)
@@ -300,6 +323,13 @@ def main() -> None:
     low_cost_benchmark_parser.add_argument("--response", type=Path, required=True)
     low_cost_benchmark_parser.add_argument("--gold-decisions", type=Path, required=True)
     low_cost_benchmark_parser.set_defaults(handler=low_cost_benchmark_command)
+
+    low_cost_finalize_parser = subparsers.add_parser("low-cost-finalize")
+    low_cost_finalize_parser.add_argument("--output", type=Path, required=True)
+    low_cost_finalize_parser.add_argument(
+        "--high-review", type=Path, action="append", required=True
+    )
+    low_cost_finalize_parser.set_defaults(handler=low_cost_finalize_command)
 
     args = parser.parse_args()
     result = args.handler(args)
