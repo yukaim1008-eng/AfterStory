@@ -103,6 +103,6 @@ P4《第2话 从捏造开始的恋爱大作战》首次使用协议 v2 完整处
 
 P5《第3话 成交？成交！》的视频长度为 106 分 11 秒。下载、GPU OCR 与协议 v2 本地分流后得到 759 条候选；85 条由本地安全规则放行，剩余 674 条拆成 7 个互相独立的无图文本包。request 与审核说明合计 150,972 字符，首轮不传图片。
 
-本地交接目录为 `research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p05/workbuddy-p05-text-review/`，压缩包为同级 `workbuddy-p05-text-review.zip`。每包包含只读的 `instructions.md`、`request.json` 和 `response.template.json`；顶层包含 WorkBuddy 提示词、manifest 与 SHA-256 清单。7 个 request 已重新通过协议结构和输入哈希校验，压缩包 CRC 与全部清单哈希通过。
+本地交接目录为 `research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p05/workbuddy-p05-text-review/`。WorkBuddy 与 Codex 共享项目目录，因此直接在每个 packet 下写回 `response.json`，无需复制或上传压缩包。每包包含只读的 `instructions.md`、`request.json` 和 `response.template.json`；顶层包含 WorkBuddy 提示词、manifest 与 SHA-256 清单。7 个 request 已重新通过协议结构和输入哈希校验，全部输入文件清单哈希通过。
 
 当前状态只表示机械提取和审核交接完成。WorkBuddy 返回的 `response.json` 仍须由本地严格校验器验证字段、输入哈希、target 顺序和说话者权限；随后才会形成视觉升级队列。P5 尚未生成正式审核稿、场景、Canon Evidence、Trait 或数据库变更。
