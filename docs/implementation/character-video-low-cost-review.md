@@ -1,6 +1,6 @@
 # 剧情视频低成本审核工具、P2 实验、P3/P4 运行与 P5 交接
 
-状态：协议 v1 已完成；协议 v2 低 Token 优化已完成 P4 整集实跑，P5 已完成机械提取并交接 WorkBuddy 文本预审。
+状态：协议 v1 已完成；协议 v2 低 Token 优化已完成 P4 整集实跑，P5 已完成机械提取与 WorkBuddy 文本预审，等待视觉复核。
 
 ## 实现
 
@@ -105,4 +105,6 @@ P5《第3话 成交？成交！》的视频长度为 106 分 11 秒。下载、G
 
 本地交接目录为 `research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p05/workbuddy-p05-text-review/`。WorkBuddy 与 Codex 共享项目目录，因此直接在每个 packet 下写回 `response.json`，无需复制或上传压缩包。每包包含只读的 `instructions.md`、`request.json` 和 `response.template.json`；顶层包含 WorkBuddy 提示词、manifest 与 SHA-256 清单。7 个 request 已重新通过协议结构和输入哈希校验，全部输入文件清单哈希通过。
 
-当前状态只表示机械提取和审核交接完成。WorkBuddy 返回的 `response.json` 仍须由本地严格校验器验证字段、输入哈希、target 顺序和说话者权限；随后才会形成视觉升级队列。P5 尚未生成正式审核稿、场景、Canon Evidence、Trait 或数据库变更。
+WorkBuddy 已原地写回 7 个 `response.json`。输入文件 24 项哈希保持不变；响应共包含 138 个稀疏 change。严格门禁发现 19 条 change 沿用了源 OCR 中“`confirmed` 但无人物 ID”的历史状态，保留原响应备份并机械归一为 `unknown` 后，全部 7 包通过字段、输入哈希、target 顺序和说话者权限校验。674 条模型目标中，545 条进入文本自动路径，129 条进入视觉队列；加上 85 条本地安全放行，759 条源候选已完整分流。
+
+视觉交接目录为 `research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p05/workbuddy-p05-visual-review/`，包含 129 张审核帧、15 张九宫格联络表、聚合视觉队列、人物目录、严格输出模板和输入 SHA-256 清单。当前等待 WorkBuddy 生成覆盖全部 129 条的 `high-review.json`。P5 尚未生成正式审核稿、场景、Canon Evidence、Trait 或数据库变更。
