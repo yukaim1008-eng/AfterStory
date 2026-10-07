@@ -38,6 +38,7 @@
 - 2026-10-05 剧情视频低成本审核流程已实现：本地规则生成最多 40 条台词、20 张风险图的哈希审核包，轻量模型响应必须经过严格 Schema、说话者边界和自动候选安全门。P2 `00:00–03:50` 盲回放验证了精度；P3 又完成整集自动分包、第二轮轻量复核、41 条残余高审和确定性最终合并。见 [设计](design/character/low-cost-video-review.md) 与 [实施记录](implementation/character-video-low-cost-review.md)。
 - 2026-10-05 Canon K4 已完成 P3《番外 月光当铺》闭环：687 条候选经两轮轻量审核与 41 条残余高审后保留 617 条，提升为 25 个场景和 25 条 Canon Evidence；新增 11 名人物、1 个别名、13 个世界实体、17 条人物事实、19 条世界事实、12 条原作关系、19 条人物表现证据与 6 个 Trait。低成本 Prompt 升为 `1.2`，新增整集自动分包和确定性最终合并。隔离 SQLite、三张视图、幂等提升、测试和 Ruff 均通过。见 [P3 实施记录](implementation/canon-knowledge-p3.md)。
 - 2026-10-07 剧情审核低 Token 协议 v2 已完成 P4 实跑：65:43 视频产生 563 条候选，本地放行 103 条，其余 460 条组成 5 个无图稀疏文本包；最终只有 74 条进入 9 张视觉联络表，审核保留 500 条、剔除 63 条。P4 已提升为 21 个正式场景和 21 条 Canon Evidence，并新增 3 名人物、7 个世界实体、7 条人物事实、6 条世界事实、4 条原作关系、15 条人物表现证据和 4 个 Trait。核心处理墙钟 32 分 24.9 秒；可复现文本载荷按项目保守算法折算下限约 96,966 Token，图片与 Codex 会话上下文 Token 无法从客户端读取；138 项全量后端测试和 Ruff 全部通过。见 [P4 实施记录](implementation/canon-knowledge-p4.md) 与 [低成本审核实施记录](implementation/character-video-low-cost-review.md)。
+- 2026-10-07 P5《第3话 成交？成交！》已完成下载、GPU OCR、本地安全放行和协议 v2 文本分包：106:11 视频产生 759 条候选，其中 85 条由本地规则放行，674 条拆成 7 个无图稀疏审核包，文本输入共 150,972 字符。已生成带独立说明、响应模板、manifest 和 SHA-256 清单的 WorkBuddy 交接压缩包；当前停在外部文本预审前，尚未生成正式审核稿、视觉队列、场景、Canon Evidence 或结构化知识，也未写入数据库。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。
@@ -83,7 +84,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库与 Canon K0–K4 已完成 P1、P2、P3、P4 的抽取、复核、正式入库、结构化知识和三张审核视图闭环；P2–P4 已按多证据归纳带边界的 Trait，但尚未修改正式 Character Definition。当前停在 P4，P5 未开始，三位六字段候选继续保持未导入。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未启动。
+Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库与 Canon K0–K4 已完成 P1、P2、P3、P4 的抽取、复核、正式入库、结构化知识和三张审核视图闭环；P2–P4 已按多证据归纳带边界的 Trait，但尚未修改正式 Character Definition。P5 已完成机械提取与 WorkBuddy 文本审核交接包，正在等待外部审核结果，尚未进入视觉裁决或 Canon 提升。三位六字段候选继续保持未导入。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未启动。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 

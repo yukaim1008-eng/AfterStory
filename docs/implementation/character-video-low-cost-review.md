@@ -1,6 +1,6 @@
-# 剧情视频低成本审核工具、P2 实验、P3 与 P4 完整运行
+# 剧情视频低成本审核工具、P2 实验、P3/P4 运行与 P5 交接
 
-状态：协议 v1 已完成；协议 v2 低 Token 优化已完成 P4 整集实跑。
+状态：协议 v1 已完成；协议 v2 低 Token 优化已完成 P4 整集实跑，P5 已完成机械提取并交接 WorkBuddy 文本预审。
 
 ## 实现
 
@@ -98,3 +98,11 @@ P4《第2话 从捏造开始的恋爱大作战》首次使用协议 v2 完整处
 按项目 `ConservativeTokenCounter` 的 `ceil(UTF-8 bytes / 3)` 算法，5 个文本包输入约 45,099 Token、稀疏响应约 16,033 Token；加上视觉裁决 JSON、场景提升计划和知识提案的可审计文本产物，合计下限约 96,966 Token。9 张图片的视觉 Token、当前 Codex 会话继承上下文和客户端五小时额度消耗没有可读计量接口，因此不伪造“实际账单 Token”。这些数字用于同一工具版本间比较，而非 OpenAI 计费凭据。 本次文本与视觉审核由当前 Codex 主任务完成，没有调用独立低价模型；统计衡量的是协议载荷削减，不代表低价模型账单。
 
 完整入库结果见 [P4 实施记录](canon-knowledge-p4.md)。
+
+## P5 WorkBuddy 文本预审交接
+
+P5《第3话 成交？成交！》的视频长度为 106 分 11 秒。下载、GPU OCR 与协议 v2 本地分流后得到 759 条候选；85 条由本地安全规则放行，剩余 674 条拆成 7 个互相独立的无图文本包。request 与审核说明合计 150,972 字符，首轮不传图片。
+
+本地交接目录为 `research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p05/workbuddy-p05-text-review/`，压缩包为同级 `workbuddy-p05-text-review.zip`。每包包含只读的 `instructions.md`、`request.json` 和 `response.template.json`；顶层包含 WorkBuddy 提示词、manifest 与 SHA-256 清单。7 个 request 已重新通过协议结构和输入哈希校验，压缩包 CRC 与全部清单哈希通过。
+
+当前状态只表示机械提取和审核交接完成。WorkBuddy 返回的 `response.json` 仍须由本地严格校验器验证字段、输入哈希、target 顺序和说话者权限；随后才会形成视觉升级队列。P5 尚未生成正式审核稿、场景、Canon Evidence、Trait 或数据库变更。
