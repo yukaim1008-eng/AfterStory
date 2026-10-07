@@ -77,7 +77,7 @@
 - P4 checkpoint 三张审核视图生成成功；
 - 视频工具、Canon 研究库、提升和视图定向测试通过；
 - Ruff 通过；
-- 额外全量后端测试在进入数据库用例时因本机 Docker Desktop Linux Engine 命名管道不存在而停止；P4 不改生产数据库链路，本阶段 41 项定向测试已覆盖全部修改。
+- Docker Desktop Linux Engine 恢复后，138 项全量后端测试全部通过；4 条警告为既有的依赖弃用、`public.vector` 类型识别和 pytest 缓存权限警告。
 
 ## 停止点
 
