@@ -1,6 +1,6 @@
 # 剧情视频低成本审核流程
 
-状态：协议 v1 已完成 P3 闭环；低 Token 协议 Version `2.0`、Prompt Version `2.0` 已实现，并用 P1–P3 人工金标准完成离线回放。P4 尚未开始。
+状态：协议 v1 已完成 P3 闭环；低 Token 协议 Version `2.0`、Prompt Version `2.0` 已实现，并完成 P1–P3 金标准离线回放与 P4 完整实跑。
 
 ## 目标
 
@@ -70,4 +70,4 @@
 - 正式审核文件与研究库在低成本阶段保持不变；
 - 正式合并必须覆盖全部候选，并保留自动路径与高审路径的来源标记。
 
-P2 `00:00–03:50` 的实验与 P3 完整运行结果见 [实施记录](../../implementation/character-video-low-cost-review.md)。
+P2 `00:00–03:50` 的实验、P3 完整运行和 P4 协议 v2 实跑结果见 [实施记录](../../implementation/character-video-low-cost-review.md)。

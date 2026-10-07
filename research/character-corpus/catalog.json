@@ -550,5 +550,47 @@
     "source_work": "异环",
     "role_scope": "named_character",
     "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "tako",
+    "names": {
+      "zh": "塔可",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "lilian",
+    "names": {
+      "zh": "莉莲",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "germain",
+    "names": {
+      "zh": "杰梅因",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "evidence_collected"
   }
 ]

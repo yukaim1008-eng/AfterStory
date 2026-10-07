@@ -1,6 +1,6 @@
 # Canon 人物关系图
 
-> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p03`（番外 月光当铺）。Canon 人物关系不等于现实用户与角色实例的 Runtime Relationship。
+> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p04`（第2话 从捏造开始的恋爱大作战）。Canon 人物关系不等于现实用户与角色实例的 Runtime Relationship。
 
 ```mermaid
 graph LR
@@ -21,7 +21,8 @@ graph LR
     c15["奥托"]
     c16["嘭嘭"]
     c17["早雾"]
-    c18["塔吉多"]
+    c18["塔可"]
+    c19["塔吉多"]
     c2 -->|招募并安排任务| c6
     c11 ---|首次共同处理收容事故| c6
     c11 -->|称呼“可可”| c6
@@ -30,7 +31,7 @@ graph LR
     c2 -->|局长与收容组成员| c11
     c1 -->|接纳为伊波恩成员| c6
     c8 -->|接受新鉴定师| c6
-    c18 -->|主动称为朋友| c6
+    c19 -->|主动称为朋友| c6
     c11 -->|约定保持联系| c6
     c14 -->|表示会罩着新成员| c6
     c15 ---|兄弟| c12
@@ -45,6 +46,10 @@ graph LR
     c13 -->|空间收留| c15
     c13 -->|空间收留| c12
     c17 -->|约束随行异象| c7
+    c19 -->|单向爱慕并尝试告白| c18
+    c19 ---|朋友| c18
+    c1 -->|协助约会并保护双方| c19
+    c14 -->|参与并善后约会计划| c19
 ```
 
 | 关系 | 类别 | 说明 | 证据 |
@@ -72,3 +77,7 @@ graph LR
 | 墨菲克斯 → 奥托：空间收留 | cooperative | 奥托说明蒲公英收留他与弥斯墨，允许二人暂时使用自己的空间；奥托感谢这半年多的陪伴。 | [nt-bv1kqoabievz-p03-e022](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=4645)、[nt-bv1kqoabievz-p03-e023](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=5058) |
 | 墨菲克斯 → 弥斯墨：空间收留 | cooperative | 奥托说明蒲公英收留兄弟二人；嘭嘭感谢他们照料蒲公英，弥斯墨在分别时提醒主人看紧它。 | [nt-bv1kqoabievz-p03-e022](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=4645)、[nt-bv1kqoabievz-p03-e023](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=5058) |
 | 早雾 → 鬼郎丸：约束随行异象 | other | 早雾在本次调查中命令鬼郎丸不准乱吃、盯紧门、吐出吞下物件并禁食；后续冲突中鬼郎丸询问吞食对手需其批准。仅支持本次指令关系。 | [nt-bv1kqoabievz-p03-e010](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=1856)、[nt-bv1kqoabievz-p03-e014](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=2476)、[nt-bv1kqoabievz-p03-e020](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=4106) |
+| 塔吉多 → 塔可：单向爱慕并尝试告白 | romantic | 塔吉多对塔可抱有明确爱慕，为她准备约会、礼物和告白表演。告白没有完成，不据此推断塔可接受恋爱关系。 | [nt-bv1kqoabievz-p04-e001](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=19)、[nt-bv1kqoabievz-p04-e004](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=292)、[nt-bv1kqoabievz-p04-e019](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=2983)、[nt-bv1kqoabievz-p04-e020](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=3370) |
+| 塔吉多 ↔ 塔可：朋友 | social | 塔吉多明确接受告白未成功后仍是朋友；塔可搬走后寄来明信片并感谢这次经历。 | [nt-bv1kqoabievz-p04-e022](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=3667) |
+| 阿德勒 → 塔吉多：协助约会并保护双方 | cooperative | 阿德勒帮助塔吉多准备约会，同时提醒公开告白可能给塔可压力，并预留保护双方感受的应变方案。 | [nt-bv1kqoabievz-p04-e004](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=292)、[nt-bv1kqoabievz-p04-e013](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=2245)、[nt-bv1kqoabievz-p04-e019](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=2983) |
+| 娜娜莉 → 塔吉多：参与并善后约会计划 | cooperative | 娜娜莉加入排练、运送材料、参与表演，并在事故后与大家一起清理现场。 | [nt-bv1kqoabievz-p04-e006](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=1411)、[nt-bv1kqoabievz-p04-e016](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=2638)、[nt-bv1kqoabievz-p04-e019](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=2983)、[nt-bv1kqoabievz-p04-e022](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=3667) |

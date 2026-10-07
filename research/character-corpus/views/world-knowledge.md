@@ -1,6 +1,6 @@
 # Canon 世界知识
 
-> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p03`（番外 月光当铺）。
+> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p04`（第2话 从捏造开始的恋爱大作战）。
 
 | 实体 | 类型 | 摘要 | 已接受事实 | 证据 |
 | --- | --- | --- | --- | --- |
@@ -39,3 +39,10 @@
 | 月光当铺典当契约 (`moonlight-pawn-contract`) | concept | 月光当铺将愿望与代价联系起来的典当约定；当票记载生效、绝当与回归规则。 | 生效条件当票说明开始使用作为典当款的物品时，典当契约才正式生效；冬司尚未使用香炉的叙述与之相符。；代价收取顺序漫画作者转述双子说明，契约成立后愿望达成，随后才收取代价；冬司与凯尼斯的经历支持这一顺序，但不证明能实现一切愿望。；绝当规则当票明确记载契约生效后即为绝当，不能赎回既定代价，也不能续当。；交易完成后当票记载交易完成后当票必回到当铺。；埃德嘉对代价用途的推测只记录埃德嘉明确提出的推测，不确认机制本身。埃德嘉结合弥斯墨追查冬司代价与典当记录的数字推测：若数字代表时间，代价可能消耗在奥托身上。用途、消耗机制和奥托具体状况均未确证。（埃德嘉的认知） | [nt-bv1kqoabievz-p03-e012](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=2192)、[nt-bv1kqoabievz-p03-e018](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=3462)、[nt-bv1kqoabievz-p03-e019](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=3905)、[nt-bv1kqoabievz-p03-e021](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=4246)、[nt-bv1kqoabievz-p03-e025](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=5200) |
 | 冬司的典当香炉 (`moonlight-censer`) | object | 冬司从月光当铺带回但未使用的香炉，与其调香愿望的典当契约关联。 | 本次履约情况冬司说明自己始终未使用香炉；鉴定师调查时发现其异象气息仍强，判断愿望未实现。 | [nt-bv1kqoabievz-p03-e006](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=1136)、[nt-bv1kqoabievz-p03-e018](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=3462)、[nt-bv1kqoabievz-p03-e021](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=4246) |
 | 凯尼斯的典当厨刀 (`moonlight-chef-knife`) | object | 凯尼斯从月光当铺取得、用于其餐厅新菜愿望的厨刀；伊波恩在当铺查到相关当票。 | 典当使用结果凯尼斯自述用于研发新菜后失去味觉；冬司说明凯尼斯所在餐厅已升星。只记录叙述及结果，不确定不同当票的具体年限与感官。 | [nt-bv1kqoabievz-p03-e014](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=2476)、[nt-bv1kqoabievz-p03-e018](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=3462)、[nt-bv1kqoabievz-p03-e021](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=3&t=4246) |
+| Q服装店 (`q-clothing-store`) | organization | 火炬木大道上经营人类服饰并可转介歧骸高级定制服务的服装店。 | — | [nt-bv1kqoabievz-p04-e004](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=292) |
+| 集山忘野 (`jishan-wangye-florist`) | organization | 莉莲工作的花店，售卖红玫瑰等花卉。 | — | [nt-bv1kqoabievz-p04-e005](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=884) |
+| DSD潮玩 (`dsd-toys`) | organization | 销售异象玩具「随心泥」的潮玩店。 | — | [nt-bv1kqoabievz-p04-e005](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=884) |
+| 随心泥 (`wish-clay`) | object | DSD推出的可塑异象玩具，能按使用者的了解和想象呈现目标外观。 | 外观表现可按使用者的了解和想象呈现目标的外观、色泽与材质观感。；实体质感触感仍像橡皮泥，不能作为杯子等实用工具使用，受热会软化。；推荐用途店员建议将成品用作装饰品或纪念品，并称上市前通过常态环境稳定性验证。；顾客反馈有顾客称猫形作品隔夜后瘫软并恢复原状；本集没有确认发生频率和厂家结论。；本次失控事件塔吉多制作的大型生物造像突然活动并攻击众人；同伴推测塔吉多能力与异象素材共同促成失控，但机制未确证。；失控后的变化失控造像在对抗过程中仍保持软质触感，并逐渐被打回原形。 | [nt-bv1kqoabievz-p04-e005](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=884)、[nt-bv1kqoabievz-p04-e020](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=3370)、[nt-bv1kqoabievz-p04-e021](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=3576)、[nt-bv1kqoabievz-p04-e022](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=3667) |
+| 噗卡糖果 (`pukka-candy`) | object | 塔可提到喜欢的糖果品牌，其中有限定珍珠贝糖果。 | — | [nt-bv1kqoabievz-p04-e011](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=2106) |
+| 火炬木大道 (`torchwood-avenue`) | location | 海特洛市内Q服装店所在的街道。 | — | [nt-bv1kqoabievz-p04-e004](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=292) |
+| 湛望角 (`zhanwang-cape`) | location | 塔吉多与塔可约会末段拍摄夜景和准备告白的观景地点。 | — | [nt-bv1kqoabievz-p04-e019](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=2983)、[nt-bv1kqoabievz-p04-e020](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=3370) |
