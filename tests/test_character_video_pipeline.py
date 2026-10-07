@@ -19,6 +19,14 @@ from video_pipeline.core import (  # noqa: E402
     write_json,
     write_jsonl,
 )
+from video_pipeline.lean_review import (  # noqa: E402
+    LEAN_REVIEW_PROMPT_VERSION,
+    LEAN_REVIEW_PROTOCOL_VERSION,
+    benchmark_lean_review_plan,
+    finalize_lean_review,
+    plan_lean_review_packets,
+    validate_lean_review_response,
+)
 from video_pipeline.low_cost_review import (  # noqa: E402
     LOW_COST_REVIEW_PROMPT_VERSION,
     LOW_COST_REVIEW_PROTOCOL_VERSION,
@@ -422,6 +430,159 @@ def _low_cost_response(packet: dict) -> dict:
     }
 
 
+def _lean_response(packet: dict, changes: list[dict] | None = None) -> dict:
+    return {
+        "protocol_version": LEAN_REVIEW_PROTOCOL_VERSION,
+        "prompt_version": LEAN_REVIEW_PROMPT_VERSION,
+        "packet_id": packet["packet_id"],
+        "input_sha256": packet["input_sha256"],
+        "reviewer": {"kind": "low_cost_model", "model": "test-small"},
+        "reviewed_ids": packet["targets"],
+        "changes": changes or [],
+    }
+
+
+def test_lean_plan_locally_accepts_safe_lines_and_never_sends_first_pass_images(
+    tmp_path: Path,
+):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+
+    result = plan_lean_review_packets(output_dir, catalog)
+    packet_dir = Path(result["packets"][0]["packet_dir"])
+    packet = json.loads((packet_dir / "request.json").read_text(encoding="utf-8"))
+
+    assert result["local_auto_reviewed"] == 1
+    assert result["model_review_required"] == 1
+    assert result["packet_count"] == 1
+    assert result["first_pass_visual_count"] == 0
+    assert packet["targets"] == ["u00002"]
+    assert all("frame_path" not in row for row in packet["utterances"])
+    assert packet["metrics"]["visual_count"] == 0
+
+
+def test_lean_sparse_response_omits_unchanged_rows_and_rejects_tampered_coverage(
+    tmp_path: Path,
+):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    plan = plan_lean_review_packets(output_dir, catalog)
+    packet_dir = Path(plan["packets"][0]["packet_dir"])
+    packet_path = packet_dir / "request.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    response_path = packet_dir / "response.json"
+    response = _lean_response(packet)
+    write_json(response_path, response)
+
+    result = validate_lean_review_response(packet_path, response_path)
+
+    assert result["sparse_changes"] == 0
+    assert result["auto_reviewed"] == 1
+    assert result["visual_required"] == 0
+    assert read_jsonl(packet_dir / "visual-queue.jsonl") == []
+
+    response["reviewed_ids"] = []
+    write_json(response_path, response)
+    with pytest.raises(ValueError, match="reviewed_ids must exactly match"):
+        validate_lean_review_response(packet_path, response_path)
+
+
+def test_lean_rejection_requires_visual_resolution_before_finalization(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    plan = plan_lean_review_packets(output_dir, catalog)
+    packet_dir = Path(plan["packets"][0]["packet_dir"])
+    packet_path = packet_dir / "request.json"
+    packet = json.loads(packet_path.read_text(encoding="utf-8"))
+    change = {
+        "utterance_id": "u00002",
+        "action": "reject",
+        "reviewed_text": None,
+        "content_kind": "background_text",
+        "speaker_label": None,
+        "speaker_id": None,
+        "speaker_status": "unknown",
+        "reason_codes": ["false_positive_background_text"],
+    }
+    response_path = packet_dir / "response.json"
+    write_json(response_path, _lean_response(packet, [change]))
+    validation = validate_lean_review_response(packet_path, response_path)
+
+    assert validation["visual_required"] == 1
+    visual = read_jsonl(packet_dir / "visual-queue.jsonl")[0]
+    assert visual["frame_path"].endswith("u00002.jpg")
+    with pytest.raises(ValueError, match="high review coverage mismatch"):
+        finalize_lean_review(output_dir, [])
+
+    high_path = output_dir / "lean-review" / "high.json"
+    frame_path = Path(visual["frame_path"])
+    frame_path.parent.mkdir(parents=True, exist_ok=True)
+    frame_path.write_bytes(b"test-frame")
+    write_json(
+        high_path,
+        {
+            "reviewer": {"kind": "high_capability_model", "model": "test-high"},
+            "decisions": [
+                {
+                    "utterance_id": "u00002",
+                    "decision": "reject",
+                    "content_kind": "background_text",
+                    "reviewed_text": None,
+                    "speaker_label": None,
+                    "speaker_id": None,
+                    "speaker_status": "unknown",
+                    "confidence": "high",
+                    "reason_codes": ["false_positive_background_text"],
+                    "evidence": ["frame_inspected", "context_sequence"],
+                    "reviewed_by": "test-high_lean_visual_review",
+                }
+            ],
+        },
+    )
+
+    result = finalize_lean_review(output_dir, [high_path])
+
+    assert result == {
+        "source_utterances": 2,
+        "approved": 1,
+        "rejected": 1,
+        "local_reviewed": 1,
+        "text_model_reviewed": 0,
+        "visual_reviewed": 1,
+    }
+    assert validate_review_bundle(output_dir)["review_complete"] is True
+
+
+def test_lean_benchmark_measures_local_precision_and_attention_queue(tmp_path: Path):
+    output_dir, catalog = _write_low_cost_source(tmp_path)
+    plan_lean_review_packets(output_dir, catalog)
+    gold_path = tmp_path / "gold.jsonl"
+    write_jsonl(
+        gold_path,
+        [
+            {
+                "utterance_id": "u00001",
+                "decision": "approved",
+                "reviewed_text": "这是明确姓名框下的完整台词。",
+                "speaker_id": "mint",
+                "speaker_status": "confirmed",
+            },
+            {
+                "utterance_id": "u00002",
+                "decision": "rejected",
+                "reviewed_text": None,
+                "speaker_id": None,
+                "speaker_status": "unknown",
+            },
+        ],
+    )
+
+    result = benchmark_lean_review_plan(output_dir, gold_path)
+
+    assert result["local_decision_precision"] == 1.0
+    assert result["local_text_accuracy_at_least_0_9"] == 1.0
+    assert result["model_review_required"] == 1
+    assert result["gold_content_or_speaker_id_changes"] == 1
+    assert result["gold_speaker_status_only_changes"] == 0
+
+
 def test_low_cost_packet_routes_only_risky_utterances_to_visual_review(tmp_path: Path):
     output_dir, catalog = _write_low_cost_source(tmp_path)
     packet_dir = tmp_path / "packet"
@@ -433,9 +594,7 @@ def test_low_cost_packet_routes_only_risky_utterances_to_visual_review(tmp_path:
     assert result["visual_review_count"] == 1
     assert result["text_only_count"] == 1
     assert packet["utterances"][0]["frame_path"] is None
-    assert packet["utterances"][1]["frame_path"].endswith(
-        "review-full-frames\\u00002.jpg"
-    )
+    assert packet["utterances"][1]["frame_path"].endswith("review-full-frames\\u00002.jpg")
     assert (packet_dir / "instructions.md").exists()
 
 
@@ -449,8 +608,7 @@ def test_low_cost_packet_refuses_unbounded_model_context(tmp_path: Path):
         row["start_ms"] = index * 1000
         row["end_ms"] = index * 1000 + 500
         row["text"] = "".join(
-            chr(0x4E00 + ((index * 97 + offset * 193) % 2000))
-            for offset in range(20)
+            chr(0x4E00 + ((index * 97 + offset * 193) % 2000)) for offset in range(20)
         )
         expanded.append(row)
     write_jsonl(output_dir / "utterances.jsonl", expanded)
@@ -469,8 +627,7 @@ def test_low_cost_plan_splits_full_transcript_at_both_limits(tmp_path: Path):
         row["start_ms"] = index * 1000
         row["end_ms"] = index * 1000 + 500
         row["text"] = "".join(
-            chr(0x4E00 + ((index * 97 + offset * 193) % 2000))
-            for offset in range(20)
+            chr(0x4E00 + ((index * 97 + offset * 193) % 2000)) for offset in range(20)
         )
         if index < 21:
             row["confidence"] = 0.8
@@ -625,9 +782,7 @@ def test_low_cost_benchmark_compares_safe_candidates_with_gold(tmp_path: Path):
         ],
     )
 
-    result = benchmark_low_cost_review(
-        packet_dir / "request.json", response_path, gold_path
-    )
+    result = benchmark_low_cost_review(packet_dir / "request.json", response_path, gold_path)
 
     assert result["resolved_decision_accuracy"] == 1.0
     assert result["auto_decision_precision"] == 1.0
@@ -640,9 +795,7 @@ def test_low_cost_benchmark_compares_safe_candidates_with_gold(tmp_path: Path):
 def test_low_cost_finalize_requires_and_merges_escalation_review(tmp_path: Path):
     output_dir, catalog = _write_low_cost_source(tmp_path)
     packet_dir = output_dir / "low-cost-review" / "packet-001"
-    packet_result = build_low_cost_review_packet(
-        output_dir, catalog, 0, 5000, packet_dir
-    )
+    packet_result = build_low_cost_review_packet(output_dir, catalog, 0, 5000, packet_dir)
     write_json(
         output_dir / "low-cost-review" / "plan.json",
         {

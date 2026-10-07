@@ -84,6 +84,11 @@ checkpoint，设备信息只记入 manifest，不改变输入配置哈希。
 | `low-cost-review/<packet-id>/response.json` | 轻量模型严格响应，不直接进入正式审核稿 |
 | `low-cost-review/<packet-id>/auto-review-candidates.jsonl` | 通过确定性安全门的候选 |
 | `low-cost-review/<packet-id>/escalation-queue.jsonl` | 需要高能力模型或人工复核的疑难项 |
+| `lean-review/plan.json` | 协议 v2 的本地放行量、无图文本包与字符预算 |
+| `lean-review/local-decisions.jsonl` | confirmed 角色稳定台词的确定性本地决定 |
+| `lean-review/<packet-id>/request.json` | 最多 100 条目标及相邻上下文，不含图片 |
+| `lean-review/<packet-id>/response.json` | 轻量模型 reviewed_ids + 稀疏 changes 响应 |
+| `lean-review/<packet-id>/visual-queue.jsonl` | 文本阶段无法安全确定、需要看图的条目 |
 
 校验暂存包：
 
@@ -110,6 +115,36 @@ checkpoint，设备信息只记入 manifest，不改变输入配置哈希。
 `review-report` 是静态 HTML，不需要启动前后端服务。审核决定必须覆盖全部源候选，且审核通过的 ID 必须与 `reviewed-transcript.jsonl` 一致，`review-validate` 才会成功。审核完成仍不等于已经生成正式场景、人物证据或 Character Definition。
 
 ## 低成本模型审核
+
+后续分 P 默认使用低 Token 协议 v2。先生成本地决定和无图文本包：
+
+```powershell
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command lean-plan `
+  -Output research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p04
+```
+
+每个模型任务必须在干净上下文中启动，只读取对应 `instructions.md` 与 `request.json`。`reviewed_ids` 必须原样覆盖全部 targets；无需修改的条目不写完整决定，只有修正、拒绝或升级项进入 `changes`。响应保存后执行：
+
+```powershell
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command lean-validate `
+  -Packet "<packet-dir>/request.json" `
+  -Response "<packet-dir>/response.json"
+```
+
+校验器只把拒绝、升级和大幅改写写入 `visual-queue.jsonl`。高能力模型按根目录 `visual-review-instructions.md` 查看这些条目的 `frame_path`，所有视觉队列都被最终解决后执行：
+
+```powershell
+& research/character-corpus/tools/video_pipeline/run.ps1 `
+  -Command lean-finalize `
+  -Output research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p04 `
+  -HighReview path/to/high-review.json
+```
+
+如果没有视觉队列，可以不传 `-HighReview`。合并器要求本地、文本和视觉路径完整且无重复覆盖全部源候选，成功后才写正式审核稿。已有最终稿的分 P 可用 `lean-benchmark -GoldDecisions <path>` 做离线回放；新分 P 不得伪造金标准。
+
+以下协议 v1 命令保留用于复现 P3 和历史对照。
 
 完整分 P 先自动规划审核包：
 

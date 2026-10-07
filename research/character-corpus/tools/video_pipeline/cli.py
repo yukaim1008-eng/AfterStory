@@ -13,6 +13,12 @@ from .core import (
     validate_staging_bundle,
     write_json,
 )
+from .lean_review import (
+    benchmark_lean_review_plan,
+    finalize_lean_review,
+    plan_lean_review_packets,
+    validate_lean_review_response,
+)
 from .low_cost_review import (
     benchmark_low_cost_review,
     build_low_cost_review_packet,
@@ -255,6 +261,37 @@ def low_cost_finalize_command(args: argparse.Namespace) -> dict:
     )
 
 
+def lean_plan_command(args: argparse.Namespace) -> dict:
+    return plan_lean_review_packets(
+        _safe_output_dir(args.output),
+        args.catalog.resolve(),
+        _safe_output_dir(args.packet_dir) if args.packet_dir else None,
+    )
+
+
+def lean_validate_command(args: argparse.Namespace) -> dict:
+    packet = args.packet.resolve()
+    response = args.response.resolve()
+    _safe_output_dir(packet.parent)
+    _safe_output_dir(response.parent)
+    return validate_lean_review_response(packet, response)
+
+
+def lean_benchmark_command(args: argparse.Namespace) -> dict:
+    return benchmark_lean_review_plan(
+        _safe_output_dir(args.output),
+        args.gold_decisions.resolve(),
+        _safe_output_dir(args.packet_dir) if args.packet_dir else None,
+    )
+
+
+def lean_finalize_command(args: argparse.Namespace) -> dict:
+    return finalize_lean_review(
+        _safe_output_dir(args.output),
+        [path.resolve() for path in args.high_review or []],
+    )
+
+
 def main() -> None:
     os.environ.setdefault("PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK", "True")
     parser = argparse.ArgumentParser(
@@ -330,6 +367,28 @@ def main() -> None:
         "--high-review", type=Path, action="append", required=True
     )
     low_cost_finalize_parser.set_defaults(handler=low_cost_finalize_command)
+
+    lean_plan_parser = subparsers.add_parser("lean-plan")
+    lean_plan_parser.add_argument("--output", type=Path, required=True)
+    lean_plan_parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
+    lean_plan_parser.add_argument("--packet-dir", type=Path)
+    lean_plan_parser.set_defaults(handler=lean_plan_command)
+
+    lean_validate_parser = subparsers.add_parser("lean-validate")
+    lean_validate_parser.add_argument("--packet", type=Path, required=True)
+    lean_validate_parser.add_argument("--response", type=Path, required=True)
+    lean_validate_parser.set_defaults(handler=lean_validate_command)
+
+    lean_benchmark_parser = subparsers.add_parser("lean-benchmark")
+    lean_benchmark_parser.add_argument("--output", type=Path, required=True)
+    lean_benchmark_parser.add_argument("--gold-decisions", type=Path, required=True)
+    lean_benchmark_parser.add_argument("--packet-dir", type=Path)
+    lean_benchmark_parser.set_defaults(handler=lean_benchmark_command)
+
+    lean_finalize_parser = subparsers.add_parser("lean-finalize")
+    lean_finalize_parser.add_argument("--output", type=Path, required=True)
+    lean_finalize_parser.add_argument("--high-review", type=Path, action="append")
+    lean_finalize_parser.set_defaults(handler=lean_finalize_command)
 
     args = parser.parse_args()
     result = args.handler(args)

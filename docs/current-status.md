@@ -1,6 +1,6 @@
 # AfterStory 当前项目状态
 
-- 更新日期：2026-10-05。
+- 更新日期：2026-10-07。
 - Memory System M1 已实现：记忆不可变版本、多来源、依赖/抑制基础、持久化任务 lease、独立 data revision，以及消息时间和时区来源已落库；旧 PersonalMemory API 与数据继续兼容。
 - Memory System M2 已实现：有界分段摘要、跨会话连续性笔记、原文关键词回读，以及 prepare/reserve/finish 的短事务发送边界。
 - Memory System M3 已实现：成功轮次后台提取任务、严格候选校验、稳定事实/事件身份、跨批次去重，以及显式记住/纠正/忘记操作回执。
@@ -37,6 +37,7 @@
 - 2026-10-05 Canon K4 已完成 P2《第1话 生意经与招财宝》闭环：365 条台词候选逐项复核后保留 322 条，提升为 20 个场景和 20 条 Canon Evidence；补充 10 个世界实体、15 条人物事实、7 条世界事实、5 条原作关系、17 条人物表现证据和 7 个证据确认 Trait。隔离 SQLite、审核视图、幂等提升、定向测试和 Ruff 均通过。见 [P2 实施记录](implementation/canon-knowledge-p2.md)。
 - 2026-10-05 剧情视频低成本审核流程已实现：本地规则生成最多 40 条台词、20 张风险图的哈希审核包，轻量模型响应必须经过严格 Schema、说话者边界和自动候选安全门。P2 `00:00–03:50` 盲回放验证了精度；P3 又完成整集自动分包、第二轮轻量复核、41 条残余高审和确定性最终合并。见 [设计](design/character/low-cost-video-review.md) 与 [实施记录](implementation/character-video-low-cost-review.md)。
 - 2026-10-05 Canon K4 已完成 P3《番外 月光当铺》闭环：687 条候选经两轮轻量审核与 41 条残余高审后保留 617 条，提升为 25 个场景和 25 条 Canon Evidence；新增 11 名人物、1 个别名、13 个世界实体、17 条人物事实、19 条世界事实、12 条原作关系、19 条人物表现证据与 6 个 Trait。低成本 Prompt 升为 `1.2`，新增整集自动分包和确定性最终合并。隔离 SQLite、三张视图、幂等提升、测试和 Ruff 均通过；P4 未开始。见 [P3 实施记录](implementation/canon-knowledge-p3.md)。
+- 2026-10-07 剧情审核低 Token 协议 v2 已实现：confirmed 角色稳定台词由本地规则放行，其余内容按最多 100 条组成无图文本包，模型只返回稀疏修改，拒绝/无法判断/大改项才看图。P1–P3 离线回放中本地放行的决定、文本和说话者均为 100% 一致；P3 首轮从 27 包/522 图/约 401,781 输入字符降为 6 包/0 图/约 135,858 字符。尚未运行 P4 或调用模型，真实额度效果等待下一分 P 单包校准。见 [低成本审核实施记录](implementation/character-video-low-cost-review.md)。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。
