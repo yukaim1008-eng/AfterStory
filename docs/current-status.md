@@ -1,6 +1,6 @@
 # AfterStory 当前项目状态
 
-- 更新日期：2026-10-07。
+- 更新日期：2026-10-08。
 - Memory System M1 已实现：记忆不可变版本、多来源、依赖/抑制基础、持久化任务 lease、独立 data revision，以及消息时间和时区来源已落库；旧 PersonalMemory API 与数据继续兼容。
 - Memory System M2 已实现：有界分段摘要、跨会话连续性笔记、原文关键词回读，以及 prepare/reserve/finish 的短事务发送边界。
 - Memory System M3 已实现：成功轮次后台提取任务、严格候选校验、稳定事实/事件身份、跨批次去重，以及显式记住/纠正/忘记操作回执。
@@ -38,7 +38,7 @@
 - 2026-10-05 剧情视频低成本审核流程已实现：本地规则生成最多 40 条台词、20 张风险图的哈希审核包，轻量模型响应必须经过严格 Schema、说话者边界和自动候选安全门。P2 `00:00–03:50` 盲回放验证了精度；P3 又完成整集自动分包、第二轮轻量复核、41 条残余高审和确定性最终合并。见 [设计](design/character/low-cost-video-review.md) 与 [实施记录](implementation/character-video-low-cost-review.md)。
 - 2026-10-05 Canon K4 已完成 P3《番外 月光当铺》闭环：687 条候选经两轮轻量审核与 41 条残余高审后保留 617 条，提升为 25 个场景和 25 条 Canon Evidence；新增 11 名人物、1 个别名、13 个世界实体、17 条人物事实、19 条世界事实、12 条原作关系、19 条人物表现证据与 6 个 Trait。低成本 Prompt 升为 `1.2`，新增整集自动分包和确定性最终合并。隔离 SQLite、三张视图、幂等提升、测试和 Ruff 均通过。见 [P3 实施记录](implementation/canon-knowledge-p3.md)。
 - 2026-10-07 剧情审核低 Token 协议 v2 已完成 P4 实跑：65:43 视频产生 563 条候选，本地放行 103 条，其余 460 条组成 5 个无图稀疏文本包；最终只有 74 条进入 9 张视觉联络表，审核保留 500 条、剔除 63 条。P4 已提升为 21 个正式场景和 21 条 Canon Evidence，并新增 3 名人物、7 个世界实体、7 条人物事实、6 条世界事实、4 条原作关系、15 条人物表现证据和 4 个 Trait。核心处理墙钟 32 分 24.9 秒；可复现文本载荷按项目保守算法折算下限约 96,966 Token，图片与 Codex 会话上下文 Token 无法从客户端读取；138 项全量后端测试和 Ruff 全部通过。见 [P4 实施记录](implementation/canon-knowledge-p4.md) 与 [低成本审核实施记录](implementation/character-video-low-cost-review.md)。
-- 2026-10-07 P5《第3话 成交？成交！》已完成下载、GPU OCR、本地安全放行和协议 v2 文本分包：106:11 视频产生 759 条候选，其中 85 条由本地规则放行，674 条拆成 7 个无图稀疏审核包，文本输入共 150,972 字符。WorkBuddy 已完成文本预审；严格门禁机械归一 19 条无人物 ID 的历史 `confirmed` 状态后，545 条通过文本路径，129 条进入视觉复核。视觉交接目录已生成 129 张审核帧和 15 张九宫格联络表；当前等待 WorkBuddy 视觉裁决，尚未生成正式审核稿、场景、Canon Evidence 或结构化知识，也未写入数据库。
+- 2026-10-08 P5–P22 已完成协议 v2 全量逐条审核。合集新增 P6《番茄酱暴走现场实录！》后共 22 个分 P，原 P6–P21 顺延为 P7–P22；来源登记已按 B 站分 P ID 重新对齐。P5–P22 共 7,845 条源候选、76 个无图文本包和 590 条视觉复核，最终保留 7,308 条、剔除 537 条。76/76 `lean-validate`、18/18 视觉覆盖与 18/18 `review-validate` 经 WorkBuddy 执行后又由 Codex 独立复验，均无错误。完整 MP4 已在审核证据生成并校验后删除；正式审核稿仍位于本地 staging，尚未提升为 Scene、Canon Evidence、结构化知识或 Character Definition，也未写入产品数据库。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。
@@ -84,7 +84,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库与 Canon K0–K4 已完成 P1、P2、P3、P4 的抽取、复核、正式入库、结构化知识和三张审核视图闭环；P2–P4 已按多证据归纳带边界的 Trait，但尚未修改正式 Character Definition。P5 文本预审已完成并通过严格校验，129 条视觉队列已交接 WorkBuddy，尚未完成视觉裁决或 Canon 提升。三位六字段候选继续保持未导入。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未启动。
+Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库已完成 P1–P22 的机械抽取和逐条审核；Canon K0–K4 仍只完成 P1–P4 的正式入库、结构化知识和三张审核视图闭环，P5–P22 等待后续独立提升。P2–P4 已按多证据归纳带边界的 Trait，但尚未修改正式 Character Definition。三位六字段候选继续保持未导入。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未启动。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 

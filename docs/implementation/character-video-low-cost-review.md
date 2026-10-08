@@ -1,6 +1,6 @@
-# 剧情视频低成本审核工具、P2 实验、P3/P4 运行与 P5 交接
+# 剧情视频低成本审核工具与 P2–P22 运行记录
 
-状态：协议 v1 已完成；协议 v2 低 Token 优化已完成 P4 整集实跑，P5 已完成机械提取与 WorkBuddy 文本预审，等待视觉复核。
+状态：协议 v1 已完成；协议 v2 低 Token 优化已完成 P4 实跑，并完成 P5–P22 的全量文本审核、视觉复核、确定性合并与独立复验。
 
 ## 实现
 
@@ -107,4 +107,26 @@ P5《第3话 成交？成交！》的视频长度为 106 分 11 秒。下载、G
 
 WorkBuddy 已原地写回 7 个 `response.json`。输入文件 24 项哈希保持不变；响应共包含 138 个稀疏 change。严格门禁发现 19 条 change 沿用了源 OCR 中“`confirmed` 但无人物 ID”的历史状态，保留原响应备份并机械归一为 `unknown` 后，全部 7 包通过字段、输入哈希、target 顺序和说话者权限校验。674 条模型目标中，545 条进入文本自动路径，129 条进入视觉队列；加上 85 条本地安全放行，759 条源候选已完整分流。
 
-视觉交接目录为 `research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p05/workbuddy-p05-visual-review/`，包含 129 张审核帧、15 张九宫格联络表、聚合视觉队列、人物目录、严格输出模板和输入 SHA-256 清单。当前等待 WorkBuddy 生成覆盖全部 129 条的 `high-review.json`。P5 尚未生成正式审核稿、场景、Canon Evidence、Trait 或数据库变更。
+视觉交接目录为 `research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p05/workbuddy-p05-visual-review/`，包含 129 张审核帧、15 张九宫格联络表、聚合视觉队列、人物目录、严格输出模板和输入 SHA-256 清单。WorkBuddy 已完成全部 129 条视觉裁决；P5 的 759 条源候选最终保留 636 条、剔除 123 条，并通过确定性合并与 `review-validate`。
+
+## P5–P22 WorkBuddy 统一审核
+
+2026-10-08，B 站合集新增 P6《番茄酱暴走现场实录！》并扩展为 22 个分 P。来源登记按外部分 P ID 重新核对，原 P6–P21 顺延为 P7–P22，避免把剧情标题和本地输出错配。
+
+P6–P22 先在本地完成下载、GPU OCR、本地安全放行和协议 v2 分包，随后由 WorkBuddy 按 packet 独立上下文执行文本稀疏审核、严格校验和逐帧视觉裁决。P5 的既有视觉队列一并闭环。审核完成后，Codex 使用项目原生 validator 独立重跑全部校验，而不是仅采信 WorkBuddy 报告。
+
+| 指标 | P5–P22 结果 |
+| --- | ---: |
+| 分 P | 18 |
+| 源候选 | 7,845 |
+| 协议 v2 文本包 | 76 |
+| 视觉复核 | 590 |
+| 最终保留 | 7,308 |
+| 最终剔除 | 537 |
+| `lean-validate` | 76 / 76 通过 |
+| 视觉队列覆盖 | 590 / 590，顺序及 ID 完全一致 |
+| `review-validate` | 18 / 18 通过 |
+
+每个分 P 都已生成覆盖全部源候选的 `review-decisions.jsonl` 和只含通过项的 `reviewed-transcript.jsonl`；逐分 P 均满足 `approved + rejected == source`。为控制磁盘占用，工具先生成并校验逐台词全画面证据，再删除 P6–P22 的整集 MP4；文本、审核包、视觉证据和最终审核稿均保留在 Git 忽略的本地 staging。
+
+本阶段没有生成正式 Scene、Canon Evidence、人物/世界/关系知识、Trait 或 Character Definition，也没有写入 SQLite 正式研究库、产品 PostgreSQL 或聊天运行时。P5–P22 的 Canon 提升属于下一独立阶段。

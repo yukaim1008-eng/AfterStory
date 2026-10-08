@@ -1,6 +1,6 @@
 # 人物资料研究库：最合理实施顺序
 
-状态：M0、M1 已完成；M2 的本地视频工具 Version `1.0` 与 Canon K0–K4 已打通 P1、P2、P3、P4 的抽取、逐条复核、正式场景/证据、结构化知识及审核视图。P2–P4 已从多条人物表现证据归纳带边界的 Trait；[低成本审核流程](low-cost-video-review.md) 已完成 P2 校准、P3 协议 v1 整集验证和 P4 协议 v2 实跑。当前停在 P4，不自动开始 P5。人物地图、世界知识和人物关系图见 [独立设计稿](canon-knowledge-map.md)。
+状态：M0、M1 已完成；M2 的本地视频工具 Version `1.0` 已完成 P1–P22 的抽取与逐条审核。Canon K0–K4 已打通 P1–P4 的正式场景/证据、结构化知识及审核视图，P5–P22 尚未提升。P2–P4 已从多条人物表现证据归纳带边界的 Trait；[低成本审核流程](low-cost-video-review.md) 已完成 P2 校准、P3 协议 v1 整集验证、P4 协议 v2 实跑和 P5–P22 全量审核。人物地图、世界知识和人物关系图见 [独立设计稿](canon-knowledge-map.md)。
 
 ## 目标与边界
 
@@ -66,8 +66,8 @@
 
 ## M2 之后的 Canon 知识层
 
-人物地图、世界知识和人物关系图共用 Scene 与证据链，但不直接塞入现有 Character Definition 或运行时 Relationship。具体实体、事实、关系、checkpoint 和审核设计统一记录在 [Canon 人物、世界与关系知识层](canon-knowledge-map.md)。K0/K0.1 的严格模型、引用校验、空正式文件和 SQLite 查询表已经实现；P1 入库与三张审核视图仍未开始。
+人物地图、世界知识和人物关系图共用 Scene 与证据链，但不直接塞入现有 Character Definition 或运行时 Relationship。具体实体、事实、关系、checkpoint 和审核设计统一记录在 [Canon 人物、世界与关系知识层](canon-knowledge-map.md)。K0/K0.1 的严格模型与引用校验已经实现；P1–P4 已进入正式 Scene、证据、结构化知识和三张审核视图，P5–P22 当前只有已校验审核稿。
 
 ## 本轮停止点
 
-P1、P2、P3、P4 已分别完成机器抽取、审核、正式提升、结构化知识、人物证据和视图刷新。P4 的 563 条候选最终保留 500 条，形成 21 个正式场景、21 条 Canon Evidence、15 条人物表现证据和 4 个多证据 Trait。当前停在 P4；后续仍按单个分 P 推进，不直接启动整套合集，也不提前把研究 Trait 写入正式 Character Definition。
+P1–P22 已完成机器抽取与逐条审核，其中 P1–P4 已完成正式提升、结构化知识、人物证据和视图刷新。P5–P22 共 7,845 条候选，最终保留 7,308 条、剔除 537 条，仍停留在本地审核 staging；下一阶段从这些审核稿建立 Scene 与 Canon Evidence，再生成结构化人物、世界、原作关系和人物表现证据。未经该提升与归纳门禁，不把研究结论写入正式 Character Definition。
