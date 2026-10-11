@@ -118,20 +118,20 @@ def test_source_catalog_refresh_preserves_curated_aliases_and_review_status():
 def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     stats = validate_corpus(CORPUS_ROOT)
     assert stats == {
-        "characters": 71,
-        "character_aliases": 2,
+        "characters": 89,
+        "character_aliases": 12,
         "sources": 25,
         "source_parts": 22,
         "profiles": 23,
-        "scenes": 469,
-        "evidence": 190,
+        "scenes": 515,
+        "evidence": 217,
         "traits": 17,
-        "canon_checkpoints": 18,
-        "canon_evidence": 1018,
-        "world_entities": 125,
-        "character_facts": 233,
-        "world_facts": 140,
-        "character_relations": 125,
+        "canon_checkpoints": 22,
+        "canon_evidence": 1147,
+        "world_entities": 135,
+        "character_facts": 282,
+        "world_facts": 156,
+        "character_relations": 146,
     }
     catalog = json.loads((CORPUS_ROOT / "catalog.json").read_text(encoding="utf-8"))
     missing = [item for item in catalog if item["research_status"] == "discovered"]
@@ -165,6 +165,24 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         ("jiejiexiong", "桀桀熊"),
         ("nixia", "妮夏"),
         ("xiaozhen", "小贞"),
+        ("tuiyue", "褪月"),
+        ("xiari", "夏莉"),
+        ("feiyi", "费伊"),
+        ("anni", "安妮"),
+        ("weituo", "维克托"),
+        ("luyi", "路易"),
+        ("duote", "多特"),
+        ("abigail", "阿比盖尔"),
+        ("beidi", "贝蒂"),
+        ("feisi", "费思"),
+        ("kedun", "科顿"),
+        ("bili", "比利"),
+        ("mali", "玛丽"),
+        ("liweisi", "里维斯"),
+        ("piketuo", "皮克托"),
+        ("lizi", "丽兹"),
+        ("jiersi", "吉尔斯"),
+        ("meilula", "梅露菈"),
     ]
     parts = [
         json.loads(line)
@@ -177,7 +195,11 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     ]
     assert sum(part["duration_ms"] for part in parts) == 83_323_000
     assert {part["subtitle_mode"] for part in parts} == {"no_platform_subtitles"}
-    assert [part["visual_subtitle_status"] for part in parts[:18]] == [
+    assert [part["visual_subtitle_status"] for part in parts] == [
+        "verified_present",
+        "verified_present",
+        "verified_present",
+        "verified_present",
         "verified_present",
         "verified_present",
         "verified_present",
@@ -198,7 +220,7 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         "verified_present",
     ]
     assert {part["visual_subtitle_status"] for part in parts[18:]} == {
-        "user_confirmed_present"
+        "verified_present"
     }
 
 

@@ -40,5 +40,10 @@ research/character-corpus/local/
 .DS_Store
 Thumbs.db
 /.validate-tmp.out
+/_validate_p22.out
+/_validate_p22_kb.out
+research/character-corpus/_cat_dump.out
+research/character-corpus/_keys_all.out
+research/character-corpus/_keys_entities.out
 
 .workbuddy

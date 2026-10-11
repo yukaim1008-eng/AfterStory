@@ -1004,5 +1004,316 @@
     "source_work": "异环",
     "role_scope": "named_character",
     "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "tuiyue",
+    "names": {
+      "zh": "褪月",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "xiari",
+    "names": {
+      "zh": "夏莉",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "feiyi",
+    "names": {
+      "zh": "费伊",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "anni",
+    "names": {
+      "zh": "安妮",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "weituo",
+    "names": {
+      "zh": "维克托",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "luyi",
+    "names": {
+      "zh": "路易",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "路易·沃尔",
+        "language": "zh",
+        "kind": "other"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "duote",
+    "names": {
+      "zh": "多特",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "abigail",
+    "names": {
+      "zh": "阿比盖尔",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "beidi",
+    "names": {
+      "zh": "贝蒂",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "feisi",
+    "names": {
+      "zh": "费思",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "费思先生",
+        "language": "zh",
+        "kind": "title"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "kedun",
+    "names": {
+      "zh": "科顿",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "科顿·哈桑",
+        "language": "zh",
+        "kind": "other"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "bili",
+    "names": {
+      "zh": "比利",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "比利·帕特南",
+        "language": "zh",
+        "kind": "other"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "mali",
+    "names": {
+      "zh": "玛丽",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "玛丽·沃尔",
+        "language": "zh",
+        "kind": "other"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "liweisi",
+    "names": {
+      "zh": "里维斯",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "维斯",
+        "language": "zh",
+        "kind": "other"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "piketuo",
+    "names": {
+      "zh": "皮克托",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "皮克托·科里",
+        "language": "zh",
+        "kind": "other"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "lizi",
+    "names": {
+      "zh": "丽兹",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "丽兹·科里",
+        "language": "zh",
+        "kind": "other"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "jiersi",
+    "names": {
+      "zh": "吉尔斯",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "meilula",
+    "names": {
+      "zh": "梅露菈",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [
+      {
+        "value": "梅露拉",
+        "language": "zh",
+        "kind": "ocr_variant"
+      },
+      {
+        "value": "梅露",
+        "language": "zh",
+        "kind": "other"
+      }
+    ],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
   }
 ]

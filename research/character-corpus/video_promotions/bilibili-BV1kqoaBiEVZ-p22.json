@@ -1,0 +1,937 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p22",
+  "reviewed_transcript_sha256": "fe5c087fc050a849f226ea3237c6e65c02afbab509efd3686c7c7aae554a08f5",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p22",
+    "source_work": "异环",
+    "display_name": "第8话 魔女 4",
+    "sequence": 22,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第8话 魔女 4",
+    "predecessor_id": "nt-bv1kqoabievz-p21",
+    "spoiler_scope": "第8话 魔女 4"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s001",
+      "start_ms": 3733,
+      "end_ms": 426933,
+      "summary": "审判庭上，比利指控安妮是魔女（拿她的红发绿眼与母亲丽贝卡的接生做文章），安妮反过来指控比利借魔女审判谋夺土地与财富；女孩们与阿比盖尔以「魔宠喵喵」指认比利参加过恶魔的召唤仪式，比利崩溃认罪后被判火刑；科顿却在处刑后陷入「我不会错」的自我说服。",
+      "participants": [
+        "kedun",
+        "bili",
+        "anni",
+        "weituo",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e001a",
+          "start_ms": 3733,
+          "end_ms": 52800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "kedun",
+            "bili",
+            "anni"
+          ],
+          "speaker_character_id": "",
+          "observation": "科顿宣告魔女仍潜藏在众人之中；比利声称昨夜听见报丧般的不寻常鸟叫、有人在诅咒他死于睡梦，并指认这是草药师安妮的诅咒，拿她「那头不寻常的红发」和「猫一样绿色的眼睛」做文章；安妮辩解比利是因为她不愿嫁给他，才故意玷污她的名声、想逼她就范。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e001b",
+          "start_ms": 53333,
+          "end_ms": 122133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "bili",
+            "weituo"
+          ],
+          "speaker_character_id": "",
+          "observation": "比利把矛头指向安妮的母亲丽贝卡——她本是流浪者、嫁给弗兰医生后才成了镇上人，给全镇人接生，可除了她自己的孩子、镇上每户人家都有孩子夭折；维克托附和说自己早夭的长子就是丽贝卡接的，多特生下玛丽前也夭折过两个孩子；比利还把被处死的丽兹·科里、被恶魔诱惑的玛丽都算进「和安妮母亲有关」。",
+          "transcript_refs": [
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e001c",
+          "start_ms": 124533,
+          "end_ms": 185600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮指控真正的恶魔——比利故意引诱吉尔斯大叔酗酒成瘾以抢夺他的土地、故意烧毁能救他兄弟费思的草药以吞并费思的森林；她说自己一直相信魔女存在，但要否认比利对她的指控：他利用魔女审判欺骗审判官、为自己谋取更多土地和财富，甚至可能就是把圣阿尔博镇变成地狱的恶魔帮凶。",
+          "transcript_refs": [
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e001d",
+          "start_ms": 185867,
+          "end_ms": 216800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "kedun",
+            "bili"
+          ],
+          "speaker_character_id": "",
+          "observation": "科顿说这是魔女审判庭、不审判世俗生活，只审判灵魂是否清白，请陪审团的诸位指认庭上是否有恶魔的代行者；比利得意地说自己和恶魔毫无关系、无罪。",
+          "transcript_refs": [
+            "u00019",
+            "u00020"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e001e",
+          "start_ms": 219733,
+          "end_ms": 271200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "bili",
+            "kedun"
+          ],
+          "speaker_character_id": "",
+          "observation": "女孩们与阿比盖尔以「魔宠喵喵」的声音指认比利参加过恶魔的召唤仪式、警告处死比利会招来恶魔对整个镇的报复；比利连喊「阿比盖尔！贝蒂！玛丽！」；科顿问他是否愿意认罪。",
+          "transcript_refs": [
+            "u00023",
+            "u00025",
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e001f",
+          "start_ms": 271733,
+          "end_ms": 324000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "bili",
+            "kedun"
+          ],
+          "speaker_character_id": "",
+          "observation": "比利崩溃认罪、连声求审判官与神明宽恕，说自己愿意认下所有罪行；镇民齐声喊「烧死他」；科顿以陪审团和神明的名义判处比利·帕特南火刑。",
+          "transcript_refs": [
+            "u00030",
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e001g",
+          "start_ms": 397867,
+          "end_ms": 426933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "kedun"
+          ],
+          "speaker_character_id": "",
+          "observation": "处刑后科顿自语「没有人可以质疑我！他们都该死！我的权力，来自神明，来自国王，来自人民！」「我审判一切邪恶，我能判断恶魔，我绝对不会错」；鉴定师察觉他还只是个普通人类、此处也没有异象，可他的状况和被异象侵凌的人差不了太多。",
+          "transcript_refs": [
+            "u00047",
+            "u00048",
+            "u00049"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s002",
+      "start_ms": 454400,
+      "end_ms": 1283467,
+      "summary": "安妮向神明忏悔、决意自认魔女以结束审判；黑羽抢着要替她当魔女，却再次失忆、彻底变成「梅露菈」；梅露菈现身说明真相，并借水晶球里重放的记忆碎片把黑羽唤回，两半灵魂终于合而为一。",
+      "participants": [
+        "anni",
+        "blackbird",
+        "meilula"
+      ],
+      "transcript_refs": [
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00054",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00118",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e002a",
+          "start_ms": 454400,
+          "end_ms": 626667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮向神明坦诚自己的罪行——为傲慢所害、自以为能结束这场血腥的审判，结果只害死了无辜的信众；她说比利做过的事本该由法律与神明审判，自己却出于对死亡的恐惧、自诩正义地假借神明的名义害死了他。",
+          "transcript_refs": [
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054",
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00058",
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e002b",
+          "start_ms": 627200,
+          "end_ms": 748800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮受到启发，说神明派义人救赎罪人、义人勇敢接受不公的审判、牺牲生命便得以前往天国，宣布要主动承认自己就是魔女、亲手结束这一切；黑羽不愿她自杀，提出「那就让我来做这个魔女」。",
+          "transcript_refs": [
+            "u00066",
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e002c",
+          "start_ms": 749333,
+          "end_ms": 792267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说自己那天躲在草丛侥幸活下来、本该和皮克托他们一起死掉，所以现在不害怕死亡；她让安妮和阿比盖尔她们一起指认她，说「我，一个逃跑的奴隶，流浪的梅露菈，就是魔女」——鉴定师发现她又一次忘记了自己是谁。",
+          "transcript_refs": [
+            "u00081",
+            "u00082",
+            "u00084",
+            "u00085",
+            "u00086"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e002d",
+          "start_ms": 792800,
+          "end_ms": 872267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "meilula",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "梅露拉现身，说「你是我和恶魔交易时付给它的代价，你是魔女梅露菈的一半灵魂。你在审判那天离开我，现在我需要你回来」；并承认给黑羽寄信、扮作褪月引诱他们来此、假扮过去的安妮，都是为了让黑羽记起一切、偿还她的罪孽。",
+          "transcript_refs": [
+            "u00087",
+            "u00088",
+            "u00089",
+            "u00090",
+            "u00091",
+            "u00092",
+            "u00093",
+            "u00094"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e002e",
+          "start_ms": 872533,
+          "end_ms": 1041600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "meilula"
+          ],
+          "speaker_character_id": "",
+          "observation": "梅露拉说那天她抢在安妮前面承认自己是魔女、以为这样就能拯救大家，可火烧到身上时她看见了恶魔、因为太害怕而借着身上的疼拼命诅咒它；诅咒成真后她失去一半灵魂、成为魔女，害死了所有人包括安妮。她又说自己力量逐渐消退、恶魔趁机逃了出去，而这层空间既是恶魔的囚笼、也是她自己的牢笼。",
+          "transcript_refs": [
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107",
+            "u00108"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e002f",
+          "start_ms": 1041867,
+          "end_ms": 1283467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "meilula",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师用「黑羽能用水晶球占卜，你也应该可以」的方式，靠水晶球重放的魔女之家画面——带着水晶球的行李、拉维尼娅的吐槽、夏莉与费伊的对话、翳关于猎巫异象的讲解——把黑羽的记忆碎片一点点唤回；梅露拉终于说出「我曾经是圣阿尔博镇的梅露菈，现在，我是魔女之家的黑羽」，两半灵魂合而为一，决心永远囚禁审判官。",
+          "transcript_refs": [
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116",
+            "u00117",
+            "u00118",
+            "u00119",
+            "u00120",
+            "u00121",
+            "u00122",
+            "u00123",
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134",
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s003",
+      "start_ms": 1317333,
+      "end_ms": 1318400,
+      "summary": "一声「帮帮我」的呼救。",
+      "participants": [],
+      "transcript_refs": [
+        "u00143"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e003",
+          "start_ms": 1317333,
+          "end_ms": 1318400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "画面收束处传来一声「帮帮我」。",
+          "transcript_refs": [
+            "u00143"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s004",
+      "start_ms": 1344267,
+      "end_ms": 1391733,
+      "summary": "一段近乎独白的对话：「我会帮你……平息，所有疯狂」「对不起，梅露拉」「一切，都交给我吧」；说出「烧死一个魔女不能让任何事变好」，要用现在的方式实现两人的心愿。",
+      "participants": [],
+      "transcript_refs": [
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e004",
+          "start_ms": 1344267,
+          "end_ms": 1391733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "一段近乎独白的对话——「我会帮你……平息，所有疯狂」「对不起，梅露拉，让你独自煎熬了这么久」「一切，都交给我吧」；并说出「烧死一个魔女不能让任何事变好，更无法平息疯狂」，表示要用现在的方式实现两人的心愿、结束彼此的痛苦。",
+          "transcript_refs": [
+            "u00145",
+            "u00146",
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s005",
+      "start_ms": 1406933,
+      "end_ms": 1413600,
+      "summary": "两半灵魂之间的告别：「对不起，我骗了你」「不用道歉」「这是我们的使命」。",
+      "participants": [],
+      "transcript_refs": [
+        "u00155",
+        "u00156",
+        "u00157"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e005",
+          "start_ms": 1406933,
+          "end_ms": 1413600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "「对不起，我骗了你」「不用道歉」「这是我们的使命」——两半灵魂之间的告别与共识。",
+          "transcript_refs": [
+            "u00155",
+            "u00156",
+            "u00157"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s006",
+      "start_ms": 1431200,
+      "end_ms": 1440267,
+      "summary": "「因为，我们是，烧不死的魔女」。",
+      "participants": [],
+      "transcript_refs": [
+        "u00158"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e006",
+          "start_ms": 1431200,
+          "end_ms": 1440267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "「因为，我们是，烧不死的魔女」。",
+          "transcript_refs": [
+            "u00158"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s007",
+      "start_ms": 1473600,
+      "end_ms": 1513333,
+      "summary": "「审判官」现身宣判火刑，黑羽回击「这世上只有一种恶魔，就是孕育你的疯狂和恶意」。",
+      "participants": [
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e007",
+          "start_ms": 1473600,
+          "end_ms": 1513333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "「审判官」宣告天平衡罪、烈焰裁罚，「魔女，我将代神明，审判你」，并以陪审团和神明的名义判处「恶魔的代行者」火刑；黑羽回击「这世上只有一种恶魔，就是孕育你的疯狂和恶意！你，才是恶魔的代行者！」。",
+          "transcript_refs": [
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s008",
+      "start_ms": 1535467,
+      "end_ms": 1607467,
+      "summary": "「审判官」以「吾乃神明所造之使者」自陈，宣称吾真形既显便当受火之审判。",
+      "participants": [],
+      "transcript_refs": [
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e008a",
+          "start_ms": 1545333,
+          "end_ms": 1607467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "「审判官」宣称神明之火焚尽污秽，「吾乃神明所造之使者，奉其意志而守望此世，凡魔女与恶魔，皆当焚灭」，并说「今汝既见吾真形，便当受火之审判」。",
+          "transcript_refs": [
+            "u00166",
+            "u00167",
+            "u00168"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e008b",
+          "start_ms": 1535467,
+          "end_ms": 1607467,
+          "evidence_kind": "visual",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "判词之间夹有不可读的转写噪点（「20622小23415」），属于字幕/OCR 噪声，不作为角色台词。",
+          "transcript_refs": [
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s009",
+      "start_ms": 1722400,
+      "end_ms": 1761333,
+      "summary": "画面转到海特洛：「海特洛的日出真美啊！」「我们一起逛逛海特洛吧！」以及结尾的「再见」。",
+      "participants": [],
+      "transcript_refs": [
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173",
+        "u00177",
+        "u00178"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e009a",
+          "start_ms": 1722400,
+          "end_ms": 1745333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "画面转到海特洛——「海特洛的日出真美啊！」「我们一起逛逛海特洛吧！」「好啊。」「也谢谢你，相信我会帮你」「谁叫我们是，烧不死的魔女」。",
+          "transcript_refs": [
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172",
+            "u00173"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e009b",
+          "start_ms": 1748267,
+          "end_ms": 1761333,
+          "evidence_kind": "visual",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "结尾出现「再见」与一段不可读的转写噪点（「J川G」），作为收束与字幕噪声。",
+          "transcript_refs": [
+            "u00177",
+            "u00178"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p22-s010",
+      "start_ms": 1799467,
+      "end_ms": 2141600,
+      "summary": "回到海特洛：异象空间彻底消失，黑羽引渡谕石中的灵魂、说这次「好像不疼了」；与法帝娅、翳、拉维尼娅收尾，拉维尼娅又委托鉴定师带黑羽逛遍海特洛。",
+      "participants": [
+        "blackbird",
+        "fadia",
+        "laweiniya",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00179",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00185",
+        "u00186",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00202",
+        "u00203",
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00237",
+        "u00238",
+        "u00239"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e010a",
+          "start_ms": 1799467,
+          "end_ms": 1845333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽感叹海特洛的空气真好闻、谢谢鉴定师，并说这是「只有我才能完成的委托」——请谕石中的灵魂忘却一切苦痛与惊惧、做安宁的梦，恶魔必不复重来、怨懑将永恒平息；她说这次引渡「好像不疼了」，以后再感受不到那份灼热的痛楚。",
+          "transcript_refs": [
+            "u00179",
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00185",
+            "u00186"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e010b",
+          "start_ms": 1845600,
+          "end_ms": 1986667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "fadia",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "法帝娅与翳惊讶两人一晚就泯除了异象；黑羽解释异象空间里只过了一晚，有毒的灰雾确实是「审判官」制造的，但「血肉之笼」其实是梅露菈的异能造物。E.T.D.先去疏散被困市民，红色谕石则拜托黑羽处理。",
+          "transcript_refs": [
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196",
+            "u00198",
+            "u00199",
+            "u00200",
+            "u00202",
+            "u00203",
+            "u00205",
+            "u00206",
+            "u00207",
+            "u00208",
+            "u00209"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e010c",
+          "start_ms": 1982667,
+          "end_ms": 2005333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird",
+            "fadia"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说过些日子回魔女之家后会引渡这些灵魂、还他们自由；法帝娅打趣说报告写完前这事肯定早就在呗果上传遍、民宿老板真的能发财了，并说人类有时就是喜欢感到恐惧和痛苦，只是自己不知道；两人告别。",
+          "transcript_refs": [
+            "u00209",
+            "u00210",
+            "u00211",
+            "u00212",
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e010d",
+          "start_ms": 2013600,
+          "end_ms": 2100000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird",
+            "laweiniya"
+          ],
+          "speaker_character_id": "",
+          "observation": "拉维尼娅说这么短的时间两人似乎就经历了不少事；黑羽说对拉维尼娅而言很短、对两人来说一点都不短，并讲起在星沉湾进入的那处异象空间；她给自己的帽子取名「梅露菈」，说现在才明白海特洛的好、想去更多地方。",
+          "transcript_refs": [
+            "u00217",
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222",
+            "u00223",
+            "u00224",
+            "u00225",
+            "u00226",
+            "u00227",
+            "u00228",
+            "u00229"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p22-e010e",
+          "start_ms": 2103467,
+          "end_ms": 2141600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "laweiniya"
+          ],
+          "speaker_character_id": "",
+          "observation": "拉维尼娅问鉴定师是否愿意再接一个委托——趁伊波恩最近不忙，制定一个满当当的行程、让黑羽一次玩到尽兴；鉴定师答应制定好行程后就来找她们。",
+          "transcript_refs": [
+            "u00230",
+            "u00232",
+            "u00233",
+            "u00234",
+            "u00235",
+            "u00236",
+            "u00237",
+            "u00238",
+            "u00239"
+          ]
+        }
+      ]
+    }
+  ]
+}

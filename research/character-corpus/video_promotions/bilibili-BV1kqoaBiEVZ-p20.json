@@ -1,0 +1,1479 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p20",
+  "reviewed_transcript_sha256": "3f4cafa7d401fec26f8a891cbfe180bf1ad16f74aa9358f9ca3d836d8a3bd3ba",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p20",
+    "source_work": "异环",
+    "display_name": "第8话 魔女 2",
+    "sequence": 20,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第8话 魔女 2",
+    "predecessor_id": "nt-bv1kqoabievz-p19",
+    "spoiler_scope": "第8话 魔女 2"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s001",
+      "start_ms": 12800,
+      "end_ms": 234667,
+      "summary": "两人在另一层异象空间醒来；一个与褪月长得一模一样、自称「安妮，圣阿尔博镇的草药师」的女孩出现，误以为他们是受伤后被丢弃的逃奴，警告他们流浪会被巡查治安官抓走，并收留他们到家中暂住。",
+      "participants": [
+        "blackbird",
+        "anni"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e001a",
+          "start_ms": 12800,
+          "end_ms": 134667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "两人发现身处「另一层异象空间」；黑羽不记得刚刚发生的事，鉴定师复述她像着了魔般朝谕树走去、两人被谕石的叫声迷惑而失去意识。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004",
+            "u00005",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e001b",
+          "start_ms": 135200,
+          "end_ms": 223733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "一个女孩出现，自称「安妮，圣阿尔博镇的草药师」，否认自己是褪月；她误以为两人是受伤后被丢弃的奴隶，警告他们若继续在外流浪、一旦被巡查治安官抓到就会被当成出逃的奴隶，甚至被司铎审判成恶魔的同党。",
+          "transcript_refs": [
+            "u00022",
+            "u00023",
+            "u00024",
+            "u00025",
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030",
+            "u00031",
+            "u00032",
+            "u00033"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e001c",
+          "start_ms": 224267,
+          "end_ms": 234667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮说若实在没地方去就来她家暂住、正好可以处理黑羽腿上的伤口；她问两人的名字，黑羽自称「黑羽」并把鉴定师也介绍了出去；安妮提醒天快黑了、晚上在这片林子里很容易迷路。",
+          "transcript_refs": [
+            "u00034",
+            "u00035"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s002",
+      "start_ms": 329067,
+      "end_ms": 382133,
+      "summary": "遇到一整队巡查治安官，众人绕路；黑羽说接下来的行动要谨慎，安妮安慰他们圣阿尔博镇很太平。",
+      "participants": [
+        "anni",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e002a",
+          "start_ms": 329067,
+          "end_ms": 362133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮发现前面竟有一整队巡查治安官、紧张地说两人绝不能被他们发现；黑羽也说接下来的行动要谨慎点，众人决定绕路。",
+          "transcript_refs": [
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e002b",
+          "start_ms": 364267,
+          "end_ms": 382133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮安慰两人圣阿尔博镇还是很太平的，再坚持坚持很快就到。",
+          "transcript_refs": [
+            "u00043"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s003",
+      "start_ms": 479200,
+      "end_ms": 668000,
+      "summary": "在镇上见到镇长维克托：他起先怀疑两人是异教徒、担心司铎追究，最终看安妮一向虔诚而破例准许收留；安妮随后带两人去看镇子的神树与挂在树上的「驱魔稻草人」。",
+      "participants": [
+        "anni",
+        "weituo",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00054",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00067",
+        "u00068"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e003a",
+          "start_ms": 479200,
+          "end_ms": 515733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "weituo"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮向维克托镇长问起玛莎大婶的身体、说若还不舒服就明天采药前先去看看；维克托说玛莎喝了安妮的汤药已能到门口晒太阳，并警觉地问她身后两人是谁。",
+          "transcript_refs": [
+            "u00047",
+            "u00048",
+            "u00049",
+            "u00050"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e003b",
+          "start_ms": 516267,
+          "end_ms": 555200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "weituo",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮说是受伤迷路、与同伴失散的旅人；维克托斥她糊涂——看装扮说不定是两个异教徒，若让司铎知道镇上藏有异教徒就麻烦了。黑羽解释两人并非异教徒、也信仰唯一的神明。",
+          "transcript_refs": [
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e003c",
+          "start_ms": 555733,
+          "end_ms": 621067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "weituo"
+          ],
+          "speaker_character_id": "",
+          "observation": "维克托说即便如此也该先通知司铎，但司铎现在人在城里；安妮说听说司铎主导了好多场审判、恐怕不会回来了，并保证最多只留他们几天。维克托追问两人的名字、从哪里来、要去哪里。",
+          "transcript_refs": [
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00058",
+            "u00059",
+            "u00060",
+            "u00061"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e003d",
+          "start_ms": 621333,
+          "end_ms": 668000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "weituo"
+          ],
+          "speaker_character_id": "",
+          "observation": "维克托说没听过「海特洛」「伊波恩」这些地方，要两人先养好伤、保持端正品行别留坏名声；他看安妮一向是虔诚的孩子才破例准许收留，叮嘱她管好这两个外乡人。安妮道谢并送上为镇长家的牛配的药。随后安妮向两人介绍镇子的神树——传说圣人阿尔博曾在树下祈雨拯救旱灾中的人们；树上挂的是司铎建议做的驱魔稻草人。",
+          "transcript_refs": [
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066",
+            "u00067",
+            "u00068"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s004",
+      "start_ms": 709333,
+      "end_ms": 1028800,
+      "summary": "在安妮家：她说父母已染病去世；得知黑羽会占卜后立即制止，警告占卜师最容易被怀疑与恶魔勾结；两人追问褪月，推断镇民多为被异象困住的灵魂、而安妮身上同时有人类与谕的气息；遂决定夜里先探查那棵神树。",
+      "participants": [
+        "anni",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00090",
+        "u00091",
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e004a",
+          "start_ms": 709333,
+          "end_ms": 806667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮把更宽敞的房间让给两人、替黑羽包扎伤口，说伤口不深三天就能好；她提到父母已染病去世多年，镇长刚才正是在担心他们可能染了疫病。黑羽说镇长看上去很严肃，多亏安妮帮忙他才松口。",
+          "transcript_refs": [
+            "u00069",
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080",
+            "u00081"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e004b",
+          "start_ms": 807200,
+          "end_ms": 888533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽提出可以用占卜帮镇长推算妻子何时康复，安妮立刻制止——占卜师最容易被怀疑与恶魔勾结、有不少占卜师在法庭上被判为恶魔的代行者；她叮嘱黑羽会占卜的事千万别让任何人知道，尤其是维克托镇长。",
+          "transcript_refs": [
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00086",
+            "u00087",
+            "u00088",
+            "u00090",
+            "u00091",
+            "u00093",
+            "u00094",
+            "u00095"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e004c",
+          "start_ms": 892267,
+          "end_ms": 965067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽问安妮是不是就是褪月、不然两人怎么会长得一模一样；鉴定师推测褪月也受了异象空间影响、失忆比黑羽严重得多。安妮坚持自己是土生土长的圣阿尔博人，父亲是医生、母亲是助产妇，靠熬药汤维生。",
+          "transcript_refs": [
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e004d",
+          "start_ms": 965600,
+          "end_ms": 1028800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说自己在镇民身上都感受到谕的气息，唯独安妮身上同时有人类与谕的气息；两人推测这些镇民其实都是早已化作谕石的灵魂，只是失去记忆、误以为活在圣阿尔博镇，并决定今夜先去仔细探查那棵神树。",
+          "transcript_refs": [
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107",
+            "u00108",
+            "u00109",
+            "u00110"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s005",
+      "start_ms": 1055733,
+      "end_ms": 1106400,
+      "summary": "夜里探查神树：鉴定师判定它没有奇点、并无所谓驱魔效果；黑羽说自己的占卜能力没受影响，请鉴定师提问明确方向，于是占卜「我们该如何泯除『审判官』」。",
+      "participants": [
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00118",
+        "u00120",
+        "u00121"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e005",
+          "start_ms": 1055733,
+          "end_ms": 1106400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说这棵神树在晚上显得更恐怖，鉴定师说它看着吓人、实则没有奇点、估计也没什么驱魔效果。黑羽提议占卜、说能力应该没受影响，让鉴定师提出问题明确方向；鉴定师请她占卜「我们该如何泯除『审判官』」。",
+          "transcript_refs": [
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116",
+            "u00117",
+            "u00118",
+            "u00120",
+            "u00121"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s006",
+      "start_ms": 1124533,
+      "end_ms": 1237600,
+      "summary": "占卜画面里镇民高喊「找到魔女了」「烧不死的魔女」；黑羽剧痛，说这次的痛楚比以往都更烫、就像那个白裙女孩身上的火真的烧在她身上；服药后两人判断异象诞生于这场火刑，决定在镇上找那个金发女孩。",
+      "participants": [
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e006a",
+          "start_ms": 1124533,
+          "end_ms": 1184800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "占卜中镇民高喊「找到魔女了」「烧不死的魔女」；黑羽剧痛难忍，说这次的痛楚和从前的都不一样、就像那个白裙女孩身上的火真的烧在她身上。",
+          "transcript_refs": [
+            "u00122",
+            "u00123",
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e006b",
+          "start_ms": 1185333,
+          "end_ms": 1237600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说吃了药就不疼了、早已习惯，主张先研究占卜画面与泯除异象之间的关系；两人判断异象就是在这场火刑上出现的，决定第二天在镇上多认识些人、尤其留意谁家有金发的女孩。",
+          "transcript_refs": [
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s007",
+      "start_ms": 1340000,
+      "end_ms": 1434133,
+      "summary": "第二天：鉴定师向维克托镇长表达想在镇里定居；随后听到镇长与妻子因女儿贝蒂争执，镇长称贝蒂是「帕里斯家唯一的耻辱」，并斥开来客。",
+      "participants": [
+        "weituo"
+      ],
+      "transcript_refs": [
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00144",
+        "u00145",
+        "u00146"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e007a",
+          "start_ms": 1340000,
+          "end_ms": 1374667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "weituo"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师感谢镇长允许安妮收留他们、表达想在镇里定居；镇长说这是好事、神明会爱护所有信仰他的民，可惜司铎进城了没法主持仪式，等司铎回来会向他说明。",
+          "transcript_refs": [
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e007b",
+          "start_ms": 1374933,
+          "end_ms": 1434133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "weituo"
+          ],
+          "speaker_character_id": "",
+          "observation": "镇长与妻子因女儿贝蒂争执——镇长称「她曾经是我唯一的女儿，现在是帕里斯家唯一的耻辱」，说审判的火没烧到镇上全靠自己谨言慎行；他随即斥在场的两人「看我的笑话吗？快走快走！」。",
+          "transcript_refs": [
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00144",
+            "u00145",
+            "u00146"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s008",
+      "start_ms": 1488533,
+      "end_ms": 1622667,
+      "summary": "面包坊的路易与妻子多特赠面包给两人；安妮来店里接猫汤姆；多特说贝蒂每天跟在比利身后、在帕特南家做女仆，并抱怨小麦歉收、加税与审判传闻；安妮告诉他们贝蒂应在科家的磨坊那边。",
+      "participants": [
+        "luyi",
+        "duote",
+        "anni",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e008a",
+          "start_ms": 1488533,
+          "end_ms": 1509867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "luyi",
+            "duote"
+          ],
+          "speaker_character_id": "",
+          "observation": "面包坊的路易自我介绍，说面包都是他亲手做的、啤酒是妻子多特酿的、全镇都知道她的手艺最好；多特送给两人一块面包当礼物。",
+          "transcript_refs": [
+            "u00147",
+            "u00148",
+            "u00149"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e008b",
+          "start_ms": 1510133,
+          "end_ms": 1542933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "duote",
+            "luyi",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮来店里接猫汤姆；多特说全镇都知道贝蒂每天跟在比利身后、明面上是给帕特南家做女仆、实际想做未来的女主人；安妮劝两人别去找贝蒂，说就算她回家也只会再把玛莎大婶气出病来。",
+          "transcript_refs": [
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e008c",
+          "start_ms": 1543733,
+          "end_ms": 1622667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "duote",
+            "anni",
+            "luyi",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "路易夸汤姆勤奋可靠、店里老鼠少了不少；多特抱怨今年小麦收成不好、面粉贵、行政令还要加税，下月不得不提高面包和啤酒价格，又说听说外面举行审判的地方有不少像她们这样的女人被……；安妮劝大家熬过今年。她告诉两人贝蒂应在科家的磨坊那边，并提醒别和比利说太多话。",
+          "transcript_refs": [
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00165"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s009",
+      "start_ms": 1849600,
+      "end_ms": 1931467,
+      "summary": "在镇上遇到阿比盖尔：她主动认出两人，笑说可以拿一个秘密交换「安妮的秘密」；她说镇上只有一个金发女孩、即镇长女儿贝蒂·帕里斯，不过已经十七岁——并不是两人要找的人。",
+      "participants": [
+        "abigail",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00166",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173",
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e009a",
+          "start_ms": 1849600,
+          "end_ms": 1879733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "abigail",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿比盖尔主动认出两人是安妮收留的外乡人，问是不是有什么事要找他们帮忙，又笑说如果两人说一个秘密给她、她也可以交换一个「安妮的秘密」；黑羽说有点怕她。",
+          "transcript_refs": [
+            "u00166",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e009b",
+          "start_ms": 1880267,
+          "end_ms": 1931467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "abigail"
+          ],
+          "speaker_character_id": "",
+          "observation": "两人说在找一个十四、五岁、中等个子的金发女孩；阿比盖尔说维克托镇长的女儿贝蒂·帕里斯在比利家做女仆，并指出镇上只有一个金发的女孩、不过她已经十七了——贝蒂并不是两人要找的人。",
+          "transcript_refs": [
+            "u00173",
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00178",
+            "u00179"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s010",
+      "start_ms": 2014667,
+      "end_ms": 2403467,
+      "summary": "在安妮家听她讲镇上人物（比利、吉尔斯、阿比盖尔、丽兹）；黑羽再占卜，看到安妮照看一名重病者；清晨维克托来报：森林外围飘来的瘴气围住了整个圣阿尔博，费思因运货吸入瘴气中毒。",
+      "participants": [
+        "anni",
+        "blackbird",
+        "weituo",
+        "feisi"
+      ],
+      "transcript_refs": [
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00231",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00237",
+        "u00238",
+        "u00239",
+        "u00240",
+        "u00241",
+        "u00242"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e010a",
+          "start_ms": 2014667,
+          "end_ms": 2106933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮为黑羽换药、惊讶伤口一天就痊愈；她讲比利纠缠她快两年、买走了吉尔斯大量土地、如今已是镇里土地第二多的人，和土地一起变多的还有他的傲慢。",
+          "transcript_refs": [
+            "u00180",
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e010b",
+          "start_ms": 2107467,
+          "end_ms": 2197333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮讲起被恶魔盯上的吉尔斯先生——他从前是镇长的好朋友、因纵欲和颓废早已决裂；又讲阿比盖尔是牧羊人约翰先生弟弟的女儿、来镇里一周就认识了所有人，还成了女孩们游戏时的组织者。",
+          "transcript_refs": [
+            "u00196",
+            "u00197",
+            "u00198",
+            "u00199",
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204",
+            "u00205",
+            "u00206"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e010c",
+          "start_ms": 2199733,
+          "end_ms": 2244800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮说两个多月前阿比盖尔忽然不去丽兹大婶的磨坊工作了，丽兹反而雇了年纪更轻、又贪玩的玛丽；两人决定再试一次占卜，问「审判官和圣阿尔博镇究竟有什么关系」。",
+          "transcript_refs": [
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00210",
+            "u00211",
+            "u00212",
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e010d",
+          "start_ms": 2250667,
+          "end_ms": 2306133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "占卜看到安妮在圣阿尔博镇照看一个得了重病的人；黑羽凭占卜师的直觉判断这件事很快就会发生、而且一定和审判官有关，两人决定继续留在镇里等这件事发生。",
+          "transcript_refs": [
+            "u00217",
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222",
+            "u00223",
+            "u00224",
+            "u00225",
+            "u00226",
+            "u00228"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e010e",
+          "start_ms": 2312000,
+          "end_ms": 2403467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "weituo",
+            "anni",
+            "feisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "清晨维克托镇长慌张来报：森林外围飘来的瘴气把整个圣阿尔博都围住了，费思因急着把一批绞刑架运进城而钻进了瘴气；维克托怀疑这是恶魔降临的征兆、只能用信鸽联系司铎，安妮让人先把费思抬回家、自己去配药。",
+          "transcript_refs": [
+            "u00229",
+            "u00230",
+            "u00231",
+            "u00232",
+            "u00233",
+            "u00234",
+            "u00235",
+            "u00236",
+            "u00237",
+            "u00238",
+            "u00239",
+            "u00240",
+            "u00241",
+            "u00242"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s011",
+      "start_ms": 2418933,
+      "end_ms": 2522400,
+      "summary": "安妮请两人帮忙熬药；贝蒂来取费思的药并传达「审判官大人来了」，还吹嘘审判官代表神明的意志、参与过上百次审判；安妮感叹圣阿尔博镇「也要开始了」。",
+      "participants": [
+        "anni",
+        "beidi",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00243",
+        "u00244",
+        "u00245",
+        "u00246",
+        "u00248",
+        "u00249",
+        "u00250",
+        "u00251",
+        "u00252",
+        "u00253",
+        "u00254",
+        "u00255",
+        "u00256",
+        "u00257",
+        "u00258",
+        "u00259",
+        "u00260"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e011a",
+          "start_ms": 2418933,
+          "end_ms": 2490400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "beidi",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮请两人帮忙熬药、免得耽误费思的病情；贝蒂来取药，说费思先生是比利先生的弟弟、自然由她来拿，并说爸爸让她转告「审判官大人来了，熬好了药就赶快过去」；贝蒂吹嘘审判官的话代表神明的意志、据说参与过上百次审判。",
+          "transcript_refs": [
+            "u00243",
+            "u00244",
+            "u00245",
+            "u00246",
+            "u00248",
+            "u00249",
+            "u00250",
+            "u00251",
+            "u00252",
+            "u00253",
+            "u00254"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e011b",
+          "start_ms": 2490933,
+          "end_ms": 2522400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "beidi",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮感叹圣阿尔博镇「也要开始了」——凡是被审判官认定与恶魔暗中串通的人，都会像神树上的稻草人一样；她说恶魔当然存在，但不相信被判死刑的人都和恶魔有勾结，反倒是那些把人一个劲推入审判庭的人，更像是恶魔的代行者。",
+          "transcript_refs": [
+            "u00255",
+            "u00256",
+            "u00257",
+            "u00258",
+            "u00259",
+            "u00260"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s012",
+      "start_ms": 2547733,
+      "end_ms": 3037867,
+      "summary": "城中司铎派来的审判官科顿·哈桑登场，宣称圣阿尔博镇被魔女诅咒、需找出「魔女的灵魂」；镇民们开始检举身边「不洁之物」，维克托宣布次日清晨在神树下架火检验。",
+      "participants": [
+        "anni",
+        "blackbird",
+        "weituo",
+        "kedun",
+        "luyi",
+        "bili"
+      ],
+      "transcript_refs": [
+        "u00261",
+        "u00262",
+        "u00263",
+        "u00264",
+        "u00265",
+        "u00266",
+        "u00267",
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00273",
+        "u00274",
+        "u00275",
+        "u00276",
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280",
+        "u00281",
+        "u00282",
+        "u00283",
+        "u00284",
+        "u00285",
+        "u00286",
+        "u00287",
+        "u00288",
+        "u00289",
+        "u00290",
+        "u00291",
+        "u00292",
+        "u00293",
+        "u00294",
+        "u00295",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00299",
+        "u00300",
+        "u00301",
+        "u00302",
+        "u00303",
+        "u00304",
+        "u00305",
+        "u00306",
+        "u00307",
+        "u00308",
+        "u00309",
+        "u00310"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e012a",
+          "start_ms": 2547733,
+          "end_ms": 2560533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮打量来者、说还真的是城里来的审判官；黑羽问鉴定师，他看上去只是个人类审判官，和两人要找的「审判官」会不会有关系——鉴定师说暂时不能排除、先了解情况。",
+          "transcript_refs": [
+            "u00261",
+            "u00262",
+            "u00263"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e012b",
+          "start_ms": 2574400,
+          "end_ms": 2730667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "weituo",
+            "kedun"
+          ],
+          "speaker_character_id": "",
+          "observation": "维克托介绍这位是城中司铎派来的审判官科顿·哈桑先生、专为森林里的毒瘴而来，要大家认真听审判官的每一句话；科顿说自己参与过第一场恶魔审判，称镇民是「被魔女诅咒的可怜人」，宣讲魔女是第一个在恶魔之书上签名的女巫、是众巫之首，降临此地的饥荒、瘟疫和毒瘴都是魔女的诅咒。",
+          "transcript_refs": [
+            "u00266",
+            "u00267",
+            "u00268",
+            "u00269",
+            "u00270",
+            "u00271",
+            "u00272",
+            "u00273",
+            "u00274",
+            "u00275",
+            "u00276",
+            "u00277",
+            "u00278",
+            "u00279"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e012c",
+          "start_ms": 2731200,
+          "end_ms": 2885333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "kedun"
+          ],
+          "speaker_character_id": "",
+          "observation": "科顿说想要破除诅咒就必须找出「魔女的灵魂」——魔女为换取永生切割了自己的灵魂、可能附着在任何事物或生灵之上，而神树之火足以辨别；他让镇民去触碰那些觉得异样的事物，只要感到不适，就说明魔女就在附近。",
+          "transcript_refs": [
+            "u00280",
+            "u00281",
+            "u00282",
+            "u00283",
+            "u00284",
+            "u00285",
+            "u00286",
+            "u00287",
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00291",
+            "u00292",
+            "u00293"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e012d",
+          "start_ms": 2885600,
+          "end_ms": 2946667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "kedun",
+            "weituo",
+            "bili"
+          ],
+          "speaker_character_id": "",
+          "observation": "比利向审判官表忠心，说弟弟不知何时才能醒来、自己愿意贡献更多时间翻遍圣阿尔博每个角落、绝不放过任何征兆；科顿宣布立刻执行宵禁、需要治安官参与、并要镇民戒掉睡眠严防恶魔。维克托让众人回家找出让自己不舒服的事物，明天一早到神树下架起火堆检验。",
+          "transcript_refs": [
+            "u00294",
+            "u00295",
+            "u00296",
+            "u00297",
+            "u00298",
+            "u00299",
+            "u00300",
+            "u00301"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e012e",
+          "start_ms": 2947200,
+          "end_ms": 3037867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮劝两人照做、并说如果找不出古怪的事物，总有些不值钱的能拿出来顶一顶，若和大家做的不一样就先要被怀疑；她推测只要天气变化、毒瘴散开，就说明魔女已离去。黑羽却有不好的预感，说占卜到的画面今天已经发生了一个、另一个恐怕也快要发生，两人意识到圣阿尔博镇的审判恐怕会恶化到烧死活人。",
+          "transcript_refs": [
+            "u00302",
+            "u00303",
+            "u00304",
+            "u00305",
+            "u00306",
+            "u00307",
+            "u00308",
+            "u00309",
+            "u00310"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p20-s013",
+      "start_ms": 3157600,
+      "end_ms": 3681600,
+      "summary": "阿比盖尔与比利密谋借「找魔女」之名谋夺皮克托的磨坊；比利、贝蒂强抢安妮的草药；黑羽与安妮讨论猎巫异象的诞生；黑羽占卜「金发女孩是谁」时再次剧痛呼喊「帮帮我」。",
+      "participants": [
+        "abigail",
+        "bili",
+        "blackbird",
+        "anni",
+        "beidi"
+      ],
+      "transcript_refs": [
+        "u00311",
+        "u00312",
+        "u00313",
+        "u00314",
+        "u00315",
+        "u00316",
+        "u00317",
+        "u00318",
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00325",
+        "u00326",
+        "u00327",
+        "u00328",
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00332",
+        "u00333",
+        "u00334",
+        "u00335",
+        "u00336",
+        "u00337",
+        "u00338",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00344",
+        "u00345",
+        "u00346",
+        "u00347",
+        "u00348",
+        "u00349",
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00353",
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00357",
+        "u00358",
+        "u00359",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363",
+        "u00364",
+        "u00365",
+        "u00366",
+        "u00368",
+        "u00369",
+        "u00370",
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374",
+        "u00375"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e013a",
+          "start_ms": 3157600,
+          "end_ms": 3239200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "abigail",
+            "bili",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿比盖尔向比利提起丽兹大婶喜欢用做衣服的边角料缝布娃娃，又说自己不想再回皮克托的磨坊工作、暗示磨坊旁那片土地在皮克托经营下年年减产；比利提议一起去拜访丽兹「看她是不是藏了些奇怪的布娃娃」。黑羽听出他们是想污蔑丽兹大婶、借机抢磨坊的地。",
+          "transcript_refs": [
+            "u00311",
+            "u00312",
+            "u00313",
+            "u00314",
+            "u00315",
+            "u00316",
+            "u00317",
+            "u00318",
+            "u00319",
+            "u00320",
+            "u00321",
+            "u00322",
+            "u00323"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e013b",
+          "start_ms": 3239467,
+          "end_ms": 3412800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "bili",
+            "anni",
+            "beidi",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "比利与贝蒂闯进安妮家、要把她的草药拿去烧；安妮争辩费思还要靠这些草药治病、烧了再想采摘就难了，比利则说审判官、镇长还有全镇人现在最需要的是心安，并提出若安妮愿意嫁给他、就把草药都搬去他家。",
+          "transcript_refs": [
+            "u00324",
+            "u00325",
+            "u00326",
+            "u00327",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331",
+            "u00332",
+            "u00333",
+            "u00334",
+            "u00335",
+            "u00336",
+            "u00337",
+            "u00338",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00342",
+            "u00343",
+            "u00344",
+            "u00345"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e013c",
+          "start_ms": 3413333,
+          "end_ms": 3506667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "beidi",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝蒂假装一碰到草药手指就像被冰做的针扎了；安妮戳破她这些小女仆的把戏，却只能让他们把草药拿走，并讽刺按继承法费思若出事、木匠工坊和北边的森林就归比利了。她表态宁愿失去草药和住所，也不愿失去自尊和名声；比利撂下狠话、要她改称「治安官大人」。",
+          "transcript_refs": [
+            "u00346",
+            "u00347",
+            "u00348",
+            "u00349",
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00353",
+            "u00354",
+            "u00355",
+            "u00356"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p20-e013d",
+          "start_ms": 3507200,
+          "end_ms": 3681600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮说已备好汤姆玩旧了的玩具、一本诗集和漏了的旧坩埚拿去烧，按书上所教她触碰它们时都觉得不太舒服；两人讨论猎巫异象诞生自人们非凡的恐惧和想象力、陷入疯狂的人越多孕育出的异象就越强大，判断这座镇子正在孕育猎巫异象。黑羽占卜那个金发女孩究竟是谁、在哪里时再次剧痛晕厥、反复呼喊「帮帮我」，吃止痛药也不再管用。",
+          "transcript_refs": [
+            "u00357",
+            "u00358",
+            "u00359",
+            "u00360",
+            "u00361",
+            "u00362",
+            "u00363",
+            "u00364",
+            "u00365",
+            "u00366",
+            "u00368",
+            "u00369",
+            "u00370",
+            "u00371",
+            "u00372",
+            "u00373",
+            "u00374",
+            "u00375"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1421 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p21",
+  "reviewed_transcript_sha256": "a8564cf070680e505580e7bfeac4201796ff342fab4748c2b092c225daf62f7d",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p21",
+    "source_work": "异环",
+    "display_name": "第8话 魔女 3",
+    "sequence": 21,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第8话 魔女 3",
+    "predecessor_id": "nt-bv1kqoabievz-p20",
+    "spoiler_scope": "第8话 魔女 3"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s001",
+      "start_ms": 5867,
+      "end_ms": 286400,
+      "summary": "神树之火没能烧出「魔女」；比利指认玛丽偷藏会说话的布娃娃「莉莉」，科顿据此将玛丽带走禁闭禁食；镇民又把黑山羊、黑猫等「亲近恶魔的生物」列为嫌疑，比利盯上安妮的猫汤姆。",
+      "participants": [
+        "anni",
+        "weituo",
+        "bili",
+        "abigail",
+        "luyi",
+        "kedun",
+        "mali",
+        "duote",
+        "piketuo",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e001a",
+          "start_ms": 5867,
+          "end_ms": 46133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "weituo",
+            "bili"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮懊恼草药被烧光却什么也没找出来；维克托问审判官接下来该怎么办；比利要镇长改称他「治安官大人」，并指认玛丽偷藏了一个由丽兹大婶亲手做的布娃娃、还说她会和布娃娃聊天。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004",
+            "u00005",
+            "u00006"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e001b",
+          "start_ms": 46400,
+          "end_ms": 82933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "abigail",
+            "weituo",
+            "luyi"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿比盖尔接话说那娃娃叫「莉莉」、还给她们讲过故事，暗示是丽兹大婶让魔女附在布娃娃身上诱惑玛丽在恶魔的书上签名；维克托追问玛丽，路易辩称玛丽只是贪玩、布娃娃从来不会说话。",
+          "transcript_refs": [
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010",
+            "u00011"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e001c",
+          "start_ms": 83200,
+          "end_ms": 172800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "kedun",
+            "mali",
+            "duote",
+            "bili"
+          ],
+          "speaker_character_id": "",
+          "observation": "科顿质问路易成为治安官究竟是为了侍奉神明还是包庇自己的孩子与魔女；玛丽哭喊「莉莉不是魔女」，多特劝她交出来；科顿判定「娃娃上并没有魔女的灵魂」，却认定每日与魔女说话、把布娃娃视作朋友的孩子是被魔女蛊惑的帮凶，命人把玛丽带去他的住所禁闭、禁食、禁水，以此作为「考验」。",
+          "transcript_refs": [
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00022"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e001d",
+          "start_ms": 173067,
+          "end_ms": 261333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "kedun",
+            "piketuo"
+          ],
+          "speaker_character_id": "",
+          "observation": "皮克托奉命与比利一起带玛丽去礼拜堂后院；安妮试图说服审判官——东西都烧了、或许魔女已被吓跑、再过一两天毒瘴就会散；镇民又提出黑山羊、黑猫、兔子、乌鸦之类亲近恶魔的生物，科顿让大家把这些「可能被魔女附身的动物」也都找出来，明日用神树的火焰验明一切。",
+          "transcript_refs": [
+            "u00023",
+            "u00024",
+            "u00025",
+            "u00026",
+            "u00027",
+            "u00029",
+            "u00030",
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e001e",
+          "start_ms": 261600,
+          "end_ms": 286400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "bili",
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "比利得意地说那只「邪恶的黑猫」注定要交给他；安妮连说不行；黑羽安慰安妮，说如果他敢抓走汤姆，她就把他的羊也抓走。",
+          "transcript_refs": [
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s002",
+      "start_ms": 316000,
+      "end_ms": 1100533,
+      "summary": "安妮放跑汤姆、黑羽抓走比利的羊；黑羽在祈祷时以为自己就是「梅露菈／梅露」，鉴定师用魔女之家、拉维尼娅与水晶球的记忆把她唤回；白天，维克托呈上两只可疑母鸡，众人推举皮克托主持仪式，科顿宣布明日正式开启魔女审判、第一个受审者是玛丽·沃尔。",
+      "participants": [
+        "anni",
+        "blackbird",
+        "weituo",
+        "kedun",
+        "piketuo",
+        "bili",
+        "abigail",
+        "duote",
+        "luyi"
+      ],
+      "transcript_refs": [
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00054",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00066",
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00118",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00134",
+        "u00135",
+        "u00136"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e002a",
+          "start_ms": 316000,
+          "end_ms": 370133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "bili"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮赶汤姆快走、故意放跑了这只「邪恶的黑猫」，被比利指为给魔女通风报信；比利扬言等他抓到猫、附身在猫上的魔女自然会开口说话。",
+          "transcript_refs": [
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043",
+            "u00044",
+            "u00045",
+            "u00046",
+            "u00047",
+            "u00048"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e002b",
+          "start_ms": 375733,
+          "end_ms": 409867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说自己只是想吓唬比利、已把他家那头羊抓走但不会真害死它；安妮让她把羊放了，又说自己累了、明天不想去看神树之火，若有人问起就说生病了。",
+          "transcript_refs": [
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e002c",
+          "start_ms": 410400,
+          "end_ms": 612000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽祈祷时自称「祢虔诚的子民，梅露菈」，把鉴定师当作陌生人，说自己是被安妮收留、几天前被丢在野外还受了伤的「梅露」；鉴定师用拉维尼娅、魔女之家、水晶球看动画与那封署名「梅露」的来信一步步唤醒她，黑羽终于想起「我是黑羽，我收到的信上署名是梅露菈」。",
+          "transcript_refs": [
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00058",
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00066",
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e002d",
+          "start_ms": 612533,
+          "end_ms": 739733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽意识到自己像褪月一样忘了自己是谁、而且这次忘记的更多，担心再失忆一次会彻底忘记；两人推测异象的目的正是把人卷进来、用他们盛满恐惧的灵魂维持自身存在，并怀疑写信的梅露菈与异象有关、可能就是那个金发女孩。",
+          "transcript_refs": [
+            "u00081",
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00086",
+            "u00087",
+            "u00088",
+            "u00089",
+            "u00090",
+            "u00091",
+            "u00092",
+            "u00093"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e002e",
+          "start_ms": 745600,
+          "end_ms": 818933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "weituo",
+            "kedun",
+            "piketuo"
+          ],
+          "speaker_character_id": "",
+          "observation": "维克托说他按《魔女之锤》的指引找出两只被怀疑寄居了魔女灵魂的母鸡；科顿称赞众人的虔诚；维克托请一向正直的皮克托来主持今天的仪式，皮克托应下并向神明祈祷、帮助辨明是非、找出魔女的灵魂。",
+          "transcript_refs": [
+            "u00094",
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e002f",
+          "start_ms": 819467,
+          "end_ms": 998400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "piketuo",
+            "bili",
+            "kedun",
+            "weituo"
+          ],
+          "speaker_character_id": "",
+          "observation": "皮克托呈上自家农田的兔子、说曾听见它们发出狼叫；比利呈上安妮家的黑猫汤姆、编造它开口求饶并试图化身秃鹫飞走；科顿说在火焰中看见了魔女的影子，又引导镇民回想平日谁的言行最有嫌疑；比利与阿比盖尔把矛头指向未到场的安妮与丽兹；科顿宣布明日正式开启魔女审判，第一个受审者是面包坊路易·沃尔的独生女玛丽·沃尔。",
+          "transcript_refs": [
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107",
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116",
+            "u00118",
+            "u00119",
+            "u00120",
+            "u00121",
+            "u00122",
+            "u00123"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e002g",
+          "start_ms": 1000800,
+          "end_ms": 1100533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说不能让镇民烧死玛丽、这里根本没有魔女，只有一群要么犯了癔症、要么借机牟利的普通镇民，必须阻止他们；鉴定师追问她「现在是谁」，提醒她从踏入异象空间第一次失忆起就一直在被影响；黑羽说虽然刚刚忘了自己是黑羽、但现在记得了，依然想救玛丽。",
+          "transcript_refs": [
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00134",
+            "u00135",
+            "u00136"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s003",
+      "start_ms": 1239467,
+      "end_ms": 1420000,
+      "summary": "深夜，多特、路易与皮克托、里维斯商议夜闯礼拜堂救出玛丽；皮克托定下计划，路易与黑羽都表示要一起去。",
+      "participants": [
+        "luyi",
+        "duote",
+        "piketuo",
+        "liweisi",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00144",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e003a",
+          "start_ms": 1239467,
+          "end_ms": 1341600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "luyi",
+            "duote",
+            "piketuo",
+            "liweisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "路易向皮克托确认玛丽早上是否真的尖叫抽搐；多特哭诉不该让他们把玛丽带走；皮克托描述玛丽像被恶魔扼住了喉咙、身体完全不听使唤，自己和维斯费了好大力才把她控制住；里维斯提醒多特冷静，说这样歇斯底里的样子若被比利看见、肯定会说她是被魔女附身了。",
+          "transcript_refs": [
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00145",
+            "u00146",
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e003b",
+          "start_ms": 1342133,
+          "end_ms": 1420000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "duote",
+            "liweisi",
+            "piketuo",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽提议一起加入劝说；皮克托说费思讲过、还没有任何被怀疑与恶魔勾结的女孩在审判中活下来；里维斯主张直接把孩子抢回来、不能让圣阿尔博镇也背弃神明关于仁爱的教导；皮克托定下计划：路易绝不能去请求审判官和镇长，众人趁夜摸进礼拜堂偷偷把人带出来，路易与黑羽都表示要一起去。",
+          "transcript_refs": [
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s004",
+      "start_ms": 1457867,
+      "end_ms": 1515733,
+      "summary": "夜闯礼拜堂被比利伏击：原来路易感到「异样」后出卖了众人，比利向审判官邀功，科顿让路易做明天的庭审员。",
+      "participants": [
+        "piketuo",
+        "liweisi",
+        "blackbird",
+        "bili",
+        "luyi",
+        "kedun"
+      ],
+      "transcript_refs": [
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e004a",
+          "start_ms": 1457867,
+          "end_ms": 1500267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "piketuo",
+            "liweisi",
+            "blackbird",
+            "bili"
+          ],
+          "speaker_character_id": "",
+          "observation": "皮克托让黑羽跟到这里就够、躲起来替大家放风，说救出孩子后由她先带孩子跑、众人替她断后；比利突然出现，斥责众人竟敢夜闯礼拜堂、眼中没有审判官，皮克托与里维斯极为震惊。",
+          "transcript_refs": [
+            "u00163",
+            "u00164",
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e004b",
+          "start_ms": 1500800,
+          "end_ms": 1515733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "luyi",
+            "bili",
+            "kedun"
+          ],
+          "speaker_character_id": "",
+          "observation": "比利向审判官邀功，说能及时通知全因路易感到异样、心存疑虑，他为了把这几个异端送到审判官面前才混迹其中；科顿让路易做明天的庭审员，并说他们究竟是不是魔女、只有神圣的火焰才能检验。一句「住手！」打断了场面。",
+          "transcript_refs": [
+            "u00172",
+            "u00173"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s005",
+      "start_ms": 1541333,
+      "end_ms": 1653867,
+      "summary": "黑羽出手救下众人；皮克托与里维斯商议公开反抗审判，黑羽与安妮也表示支持。",
+      "participants": [
+        "bili",
+        "piketuo",
+        "blackbird",
+        "liweisi",
+        "luyi"
+      ],
+      "transcript_refs": [
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179",
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e005a",
+          "start_ms": 1541333,
+          "end_ms": 1602933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "bili",
+            "piketuo",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "比利被击倒、骂出手者是「恶魔的牙」，对方说「无法维持了么」；皮克托向救下众人的好心人致谢；黑羽说只是一点举手之劳，让众人先把受了惊的玛丽送回家，也回去和安妮说一声。",
+          "transcript_refs": [
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00178",
+            "u00179",
+            "u00180",
+            "u00181"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e005b",
+          "start_ms": 1603200,
+          "end_ms": 1653867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "liweisi",
+            "luyi",
+            "piketuo"
+          ],
+          "speaker_character_id": "",
+          "observation": "里维斯嘲讽有这样一个不顾自己安危的父亲还回什么家、回去也只会被自己的父亲送上神树；路易辩称那毕竟是城里司铎送来的审判官、还施展了神迹，众人都会背负恶名；皮克托提出若能团结一致、说不定能号召全镇人把审判官和这该死的火刑赶出圣阿尔博镇，里维斯与黑羽都表示支持。",
+          "transcript_refs": [
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185",
+            "u00186",
+            "u00187"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s006",
+      "start_ms": 1691467,
+      "end_ms": 2683733,
+      "summary": "夜里安妮告诉黑羽：皮克托、路易、里维斯去救玛丽后都被烧死；第二天审判庭上，玛丽被驱使指控丽兹·科里，阿比盖尔、比利与女孩们接连「着魔」作证，丽兹百口莫辩。",
+      "participants": [
+        "blackbird",
+        "anni",
+        "weituo",
+        "mali",
+        "lizi",
+        "abigail",
+        "bili",
+        "kedun",
+        "duote",
+        "jiersi"
+      ],
+      "transcript_refs": [
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00231",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00237",
+        "u00238",
+        "u00239",
+        "u00240",
+        "u00241",
+        "u00242",
+        "u00243",
+        "u00244",
+        "u00245",
+        "u00246",
+        "u00247",
+        "u00248",
+        "u00249",
+        "u00250",
+        "u00251",
+        "u00252",
+        "u00253",
+        "u00254",
+        "u00255",
+        "u00256",
+        "u00257",
+        "u00258",
+        "u00259",
+        "u00260",
+        "u00261",
+        "u00262",
+        "u00263",
+        "u00264",
+        "u00265",
+        "u00266",
+        "u00267",
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00273",
+        "u00274",
+        "u00275",
+        "u00276",
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280",
+        "u00281",
+        "u00282",
+        "u00283",
+        "u00284",
+        "u00285",
+        "u00286",
+        "u00287",
+        "u00288",
+        "u00289",
+        "u00290",
+        "u00291",
+        "u00292",
+        "u00293",
+        "u00294"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e006a",
+          "start_ms": 1691467,
+          "end_ms": 1830133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird",
+            "anni"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽深夜来找安妮说玛丽的事；安妮说皮克托、路易和维斯去救玛丽后都被烧死了，据说他们死后留下发着血腥红光的「头」，即与恶魔勾结的证据；玛丽一直胡言乱语、像着了魔，如果明早还不能康复，受审的就将是和玛丽最相关的人。",
+          "transcript_refs": [
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196",
+            "u00197",
+            "u00198",
+            "u00199",
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204",
+            "u00205"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e006b",
+          "start_ms": 1833333,
+          "end_ms": 1897600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird",
+            "anni"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽困惑安妮说的和他们经历的不一样；两人推测变成谕石本来就是这些人的结局、这层异象空间只是在重演一段无法改变的过去、他们救不了这里的任何人；黑羽坚持要再占卜一次、弄清楚当时究竟发生了什么。",
+          "transcript_refs": [
+            "u00206",
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00210",
+            "u00211",
+            "u00212"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e006c",
+          "start_ms": 2347733,
+          "end_ms": 2396267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "weituo"
+          ],
+          "speaker_character_id": "",
+          "observation": "维克托在审判庭上宣布：皮克托·科里、路易·沃尔和里维斯·特里三人昨夜被魔女诱惑、试图去解救早已堕落的玛丽，好在「天降神火」已经处决了他们；并说玛丽蒙神明护佑、经过煎熬的一夜终于摆脱恶魔的蛊惑，现在她将指控藏在众人中的魔女。",
+          "transcript_refs": [
+            "u00257",
+            "u00258",
+            "u00259",
+            "u00260",
+            "u00261"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e006d",
+          "start_ms": 2396533,
+          "end_ms": 2537600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mali",
+            "lizi",
+            "weituo",
+            "bili",
+            "abigail"
+          ],
+          "speaker_character_id": "",
+          "observation": "玛丽指控丽兹·科里先诱惑了自己的丈夫、然后又诱惑了她；丽兹以灵魂向镇长和神明发誓自己完全不了解魔女，反问众人凭什么指认她就是魔女；阿比盖尔作证说玛丽抽搐不停的那天早上，看见丽兹在用荆棘缠绕一个布娃娃的头；比利说已派人去过丽兹家、从一个抽屉里搜出了证物。",
+          "transcript_refs": [
+            "u00262",
+            "u00263",
+            "u00264",
+            "u00265",
+            "u00266",
+            "u00267",
+            "u00268",
+            "u00269",
+            "u00270",
+            "u00271",
+            "u00272",
+            "u00273",
+            "u00274",
+            "u00275",
+            "u00276",
+            "u00277",
+            "u00278"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e006e",
+          "start_ms": 2538133,
+          "end_ms": 2676533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lizi",
+            "abigail",
+            "bili",
+            "jiersi"
+          ],
+          "speaker_character_id": "",
+          "observation": "丽兹说布娃娃早在神树燃起第一簇火苗时就已经烧了、斥众人满口妄语；阿比盖尔与女孩们接连「着魔」、指认看见皮克托的幽灵与地狱的王后；吉尔斯也说自己六年前亲眼看见丽兹是飞行时撞到树；比利催促审判官尽快烧死她。",
+          "transcript_refs": [
+            "u00279",
+            "u00280",
+            "u00281",
+            "u00282",
+            "u00283",
+            "u00284",
+            "u00285",
+            "u00286",
+            "u00287",
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00291",
+            "u00292",
+            "u00293"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s007",
+      "start_ms": 2708533,
+      "end_ms": 2810133,
+      "summary": "丽兹拒不认罪，科顿以陪审团和神明的名义判处丽兹·科里火刑。",
+      "participants": [
+        "lizi",
+        "kedun"
+      ],
+      "transcript_refs": [
+        "u00295",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00299",
+        "u00301",
+        "u00302",
+        "u00303",
+        "u00304",
+        "u00305",
+        "u00306"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e007",
+          "start_ms": 2708533,
+          "end_ms": 2810133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lizi",
+            "kedun"
+          ],
+          "speaker_character_id": "",
+          "observation": "丽兹说科顿是骗子、若他夺走她的命、神明会给他报应；科顿以神明的名义审判她「有罪」、是魔女；镇民齐声喊「烧死她」；丽兹一再否认与恶魔串通勾结、坚称无罪，并呼求皮克托的灵魂来救她；科顿最终以陪审团和神明的名义判处丽兹·科里火刑。",
+          "transcript_refs": [
+            "u00295",
+            "u00296",
+            "u00297",
+            "u00298",
+            "u00299",
+            "u00301",
+            "u00302",
+            "u00303",
+            "u00304",
+            "u00305",
+            "u00306"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s008",
+      "start_ms": 2828000,
+      "end_ms": 2924533,
+      "summary": "丽兹化作谕石，科顿宣称还有更多魔女；安妮与黑羽都忍无可忍，鉴定师提醒黑羽注意到审判官眼中的金色火焰、异象即将诞生。",
+      "participants": [
+        "abigail",
+        "kedun",
+        "weituo",
+        "bili",
+        "anni",
+        "blackbird"
+      ],
+      "transcript_refs": [
+        "u00307",
+        "u00308",
+        "u00309",
+        "u00310",
+        "u00311",
+        "u00312",
+        "u00313",
+        "u00314",
+        "u00315"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e008a",
+          "start_ms": 2828000,
+          "end_ms": 2891200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "abigail",
+            "kedun",
+            "weituo",
+            "bili"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿比盖尔喊「魔女现形了」；科顿说这颗石头是神明囚禁罪恶灵魂的囚笼、神明已做出裁决、丽兹·科里就是魔女；他又称听见石头里有丽兹的声音说其他魔女会为她复仇，周遭毒瘴未解、还有更多魔女藏在众人中；维克托说昨晚那三人死后也出现了这样的「头」，比利则表忠说审判不会停下。",
+          "transcript_refs": [
+            "u00307",
+            "u00308",
+            "u00309",
+            "u00310",
+            "u00311"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e008b",
+          "start_ms": 2891467,
+          "end_ms": 2924533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮说自己真是受够了、这样的审判不能再继续；黑羽也说只能看着无辜的人这样惨死、自己已经受够了。鉴定师提醒她注意科顿审判官的眼神——那是「猎巫异象才会有的金色火焰」，说明镇民已经陷入疯狂、异象马上就要诞生。",
+          "transcript_refs": [
+            "u00312",
+            "u00313",
+            "u00314",
+            "u00315"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s009",
+      "start_ms": 3006400,
+      "end_ms": 3459733,
+      "summary": "安妮决定反过来指控比利，用镇上人家的秘密、把柄争取更多票；黑羽与鉴定师分头去说服多特、维克托镇长与吉尔斯。",
+      "participants": [
+        "blackbird",
+        "anni",
+        "weituo",
+        "jiersi",
+        "duote"
+      ],
+      "transcript_refs": [
+        "u00316",
+        "u00317",
+        "u00318",
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00325",
+        "u00326",
+        "u00327",
+        "u00328",
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00332",
+        "u00334",
+        "u00335",
+        "u00336",
+        "u00337",
+        "u00338",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00344",
+        "u00345",
+        "u00346",
+        "u00348",
+        "u00349",
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00353",
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00357",
+        "u00358",
+        "u00359",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363",
+        "u00364",
+        "u00365",
+        "u00366",
+        "u00367",
+        "u00368",
+        "u00369",
+        "u00370",
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374",
+        "u00375",
+        "u00376"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e009a",
+          "start_ms": 3006400,
+          "end_ms": 3168800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮说比利明天要指控她、她也要反过来指控他；她凭自己是村里唯一的草药师、父母给家家接生看病而掌握镇上许多人家的秘密与把柄，请黑羽去说服最疼爱玛丽的多数大婶、把土地偷偷卖给比利的镇长，以及欠了比利很多钱和土地的吉尔斯，让他们把票都投给比利。她说自己知道这样做卑鄙、神明永远不会宽恕，但没有更好的办法。",
+          "transcript_refs": [
+            "u00316",
+            "u00317",
+            "u00318",
+            "u00319",
+            "u00320",
+            "u00321",
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00325",
+            "u00326",
+            "u00327",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331",
+            "u00332",
+            "u00334",
+            "u00335",
+            "u00336"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e009b",
+          "start_ms": 3169333,
+          "end_ms": 3215467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说因为这是梅露菈曾经做过的事——既然无法改变任何事，就打算重复梅露菈做过的所有事，即便被绑在神树上接受火刑也不怕；她想借此让圣阿尔博不断接近审判官诞生的那天，最终找到打破异象空间的办法。",
+          "transcript_refs": [
+            "u00337",
+            "u00338",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00342"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e009c",
+          "start_ms": 3228267,
+          "end_ms": 3297067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "weituo",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "两人以安妮的话为筹码找上维克托镇长，点出他与比利偷偷交易土地、玛莎大婶并不知情；镇长立刻动摇，说自己是被恶魔诱惑、被比利诱惑，神志不清才会做那些事，最终喊出站在神明对面的正是比利。",
+          "transcript_refs": [
+            "u00343",
+            "u00344",
+            "u00345",
+            "u00346",
+            "u00348",
+            "u00349",
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00353"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e009d",
+          "start_ms": 3309600,
+          "end_ms": 3380267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiersi",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "两人又找上吉尔斯，点明比利助长他的恶习就是为了低价买走他的地，并追问这场审判中究竟谁获利最多、谁才是恶魔的代行者；吉尔斯反过来说比利就是诱惑他沉迷酒壶和骰子、败坏他品格的人。",
+          "transcript_refs": [
+            "u00354",
+            "u00355",
+            "u00356",
+            "u00357",
+            "u00358",
+            "u00359",
+            "u00360",
+            "u00361",
+            "u00362",
+            "u00363",
+            "u00364"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e009e",
+          "start_ms": 3391467,
+          "end_ms": 3459733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "duote",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "两人说服多特——玛丽正是被比利关起来、失去了父亲的保护才会变成那样；多特回想自己梦见比利半夜到酒馆来施咒迷惑她，认定玛丽是被他污蔑的，表示若明天有人指认比利，她也要指认他。",
+          "transcript_refs": [
+            "u00365",
+            "u00366",
+            "u00367",
+            "u00368",
+            "u00369",
+            "u00370",
+            "u00371",
+            "u00372",
+            "u00373",
+            "u00374",
+            "u00375",
+            "u00376"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p21-s010",
+      "start_ms": 3478667,
+      "end_ms": 3699467,
+      "summary": "安妮向黑羽坦白自己的罪与恐惧；黑羽预言明天的结局：比利被判有罪后仍会被绑上树，审判官也将在疯狂中诞生。",
+      "participants": [
+        "blackbird",
+        "anni"
+      ],
+      "transcript_refs": [
+        "u00377",
+        "u00378",
+        "u00379",
+        "u00380",
+        "u00381",
+        "u00382",
+        "u00383",
+        "u00384",
+        "u00385",
+        "u00386",
+        "u00387",
+        "u00388",
+        "u00389",
+        "u00390",
+        "u00391",
+        "u00392",
+        "u00393",
+        "u00394",
+        "u00395",
+        "u00396",
+        "u00398",
+        "u00399",
+        "u00401"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e010a",
+          "start_ms": 3478667,
+          "end_ms": 3563200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮向黑羽倾吐：无论明天结果如何，她都已经是个不折不扣的罪人——违背了神明关于美德的所有教导、用最卑劣的手段栽赃对付自己厌恶的人；她懊悔最初告诉自己要相信镇子被诅咒、始终配合审判官大人的每一句话，其实是在纵容这把火越烧越大。",
+          "transcript_refs": [
+            "u00377",
+            "u00378",
+            "u00379",
+            "u00380",
+            "u00381",
+            "u00382",
+            "u00383",
+            "u00384"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p21-e010b",
+          "start_ms": 3563733,
+          "end_ms": 3699467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "anni",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "安妮担心即便计划成功、若明天被审判的人是她自己，岂不是平白害死了比利，也怀疑「哪怕只为了多活一天」是否值得；黑羽说只要活着就还有希望、要赎罪也得活着。安妮提醒黑羽若自己出事要千万藏好——等最容易被怀疑的人都死了，最先被拖去审判的就会是对大家来说最陌生的外来者。黑羽预言明天的审判：比利会被判有罪、还会认罪以求活命，但镇民不允许他活下来，他会在认罪后依然被绑在树上；而「审判官」也会在这样的疯狂中最终诞生。",
+          "transcript_refs": [
+            "u00385",
+            "u00386",
+            "u00387",
+            "u00388",
+            "u00389",
+            "u00390",
+            "u00391",
+            "u00392",
+            "u00393",
+            "u00394",
+            "u00395",
+            "u00396",
+            "u00398",
+            "u00399",
+            "u00401"
+          ]
+        }
+      ]
+    }
+  ]
+}
