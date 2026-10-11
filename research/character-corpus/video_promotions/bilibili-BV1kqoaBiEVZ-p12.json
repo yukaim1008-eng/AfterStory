@@ -1,0 +1,978 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p12",
+  "reviewed_transcript_sha256": "6cac3f2aeb5a31b79db4f0bb8d35d0274da1bb987de7ba27d908657a07f3f55e",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p12",
+    "source_work": "异环",
+    "display_name": "第6话 雾巢游戏 1",
+    "sequence": 12,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第6话 雾巢游戏 1",
+    "predecessor_id": "nt-bv1kqoabievz-p11",
+    "spoiler_scope": "第6话 雾巢游戏 1"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s001",
+      "start_ms": 33067,
+      "end_ms": 166133,
+      "summary": "鉴定师在店里向阿德勒询问娜娜莉的情况，随后见到塔吉多展示新做的闹钟并与早雾交谈，得知娜娜莉仍在沉睡做梦、埃德嘉总往管理局跑、店长留下纸条外出办事。",
+      "participants": [
+        "adler",
+        "nanally",
+        "taygedo",
+        "sakiri",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00027",
+        "u00029",
+        "u00030"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e001a",
+          "start_ms": 33067,
+          "end_ms": 57867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师向阿德勒问好并询问娜娜莉今天的情况，阿德勒回答「还是和昨天一样」，并同意鉴定师去探望娜娜莉与早雾。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00004",
+            "u00005",
+            "u00006",
+            "u00008"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e001b",
+          "start_ms": 73067,
+          "end_ms": 109333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多兴奋地向鉴定师展示新做的闹钟「娜娜莉快起床」、自称家族第一后勤；娜娜莉则在睡梦中念着「码头交货」「奖杯是脆脆的」「猫头音左勾拳」「电影票·销赃」等梦话。",
+          "transcript_refs": [
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e001c",
+          "start_ms": 109600,
+          "end_ms": 166133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师询问近况，早雾说娜娜莉精神得很、正忙着做大事，自己没人抢就不稀罕吃；她提到埃德嘉这几天总往管理局跑像是被借出去打工，还说起店长留下的纸条。",
+          "transcript_refs": [
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00023",
+            "u00024",
+            "u00025",
+            "u00027",
+            "u00029",
+            "u00030"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s002",
+      "start_ms": 222400,
+      "end_ms": 336000,
+      "summary": "鉴定师循着纸条找到外出办事的店长，众人指出她的嘱托不合作风、怀疑事有蹊跷；阿德勒推测她是不想牵连娜娜莉等人，店长承认小看了娜娜莉的决心，并透露局长授意以「特殊收容」将游梦人转移至安全异象空间。",
+      "participants": [
+        "hotori",
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00045",
+        "u00046"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e002a",
+          "start_ms": 222400,
+          "end_ms": 282667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师等人找到外出办「急事」的店长并追问；众人指出她留下的「好好看店、好好吃东西、好好睡觉」嘱托完全不像她平日的作风，怀疑事情并不简单。",
+          "transcript_refs": [
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e002b",
+          "start_ms": 289067,
+          "end_ms": 310933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒推测店长此前的单独行动是不愿把娜娜莉她们卷进来，并说娜娜莉、达芙蒂尔、鉴定师以及那位年幼家主都终会长大。",
+          "transcript_refs": [
+            "u00042",
+            "u00043"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e002c",
+          "start_ms": 311733,
+          "end_ms": 336000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "店长承认自己小看了娜娜莉想留在身边的决心，透露这是局长授意的「特殊收容」之法：须抢在「红字」动手前把游梦人整体转移进一个安全的异象空间。",
+          "transcript_refs": [
+            "u00044",
+            "u00045",
+            "u00046"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s003",
+      "start_ms": 336533,
+      "end_ms": 456533,
+      "summary": "众人追问「特殊收容」的真相：若由伊南娜亲自出手会泯除洄廊、使游梦人消失，而特殊收容同样让游梦人「消失」以骗过 T 女士；鉴定师自责莽撞，店长则借雏鸟长大作比，承认自己也需要改变。",
+      "participants": [
+        "hotori",
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00054",
+        "u00055",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e003a",
+          "start_ms": 336533,
+          "end_ms": 423200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "众人追问「特殊收容」是否就是泯除，谈到连「洄廊」也能被收容、娜娜莉等人的灵魂已被成功转移；并推测若换作慈善家伊南娜亲手动手，游梦人包括娜娜莉都会彻底消失。",
+          "transcript_refs": [
+            "u00048",
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054",
+            "u00055",
+            "u00057",
+            "u00058",
+            "u00059",
+            "u00060",
+            "u00061"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e003b",
+          "start_ms": 423467,
+          "end_ms": 456533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒出声称呼店长「小姐」；店长回应说自己忽视了娜娜莉、达芙蒂尔与招财宝的成长，以雏鸟学会飞翔、树下大人忘记曾如何掉落与飞上作比，承认「她」也需要改变。",
+          "transcript_refs": [
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s004",
+      "start_ms": 458933,
+      "end_ms": 518667,
+      "summary": "店长转达艾尔菲德传来的密信，指出伊南娜将举办「游戏」，决定带众人不请自来；她答应路上细说地点，并解释「特殊收容」只是临时说法，真正起作用的是某个保密级异象。",
+      "participants": [
+        "hotori",
+        "esper-zero",
+        "adler"
+      ],
+      "transcript_refs": [
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e004a",
+          "start_ms": 458933,
+          "end_ms": 489867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "店长念出「蚂蚁的巢穴锣鼓喧天，游戏即将揭幕，园丁该行动了」，说这是艾尔菲德发来的，打算不请自来赴约；鉴定师追问店长是否愿意带众人同行。",
+          "transcript_refs": [
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00071"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e004b",
+          "start_ms": 491733,
+          "end_ms": 518667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师询问「园丁」还有哪些人、莳小姐这么快就能行动是否恢复得好，并追问「特殊收容」用的是什么道具；店长说那只是临时说法，真正起作用的是某个保密级异象，也不知艾尔菲德从哪里弄来。",
+          "transcript_refs": [
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s005",
+      "start_ms": 548267,
+      "end_ms": 611733,
+      "summary": "众人抵达艾尔菲德告知的那栋荒废大楼，阿德勒认出这里曾是破产企业的员工宿舍；众人谈及 E.T.D 潜入后失联、楼里应有信号屏蔽器，以及两天来进入大楼的身份复杂「访客」。",
+      "participants": [
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e005a",
+          "start_ms": 548267,
+          "end_ms": 583733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人在艾尔菲德告知的地点落脚，阿德勒说这里以前是某破产企业的员工宿舍、已荒废很久；随后又猜测 T 女士是否已察觉达芙蒂尔跟管理局有联系。",
+          "transcript_refs": [
+            "u00078",
+            "u00079",
+            "u00080",
+            "u00081",
+            "u00082"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e005b",
+          "start_ms": 584267,
+          "end_ms": 611733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人提醒 E.T.D 那边潜入大楼后就失联、楼里应有信号屏蔽器，并说明过去两天有几十名身份复杂的「访客」进楼后未再出现，猜测他们究竟是「红字」的帮手还是来参加游戏。",
+          "transcript_refs": [
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00086"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s006",
+      "start_ms": 650400,
+      "end_ms": 831733,
+      "summary": "楼内空无一人，慈善家伊南娜以独白形式现身，号召众人「推开那扇门走进雾巢」；众人循线索找到卡厄斯留下的画，按指示关掉电视机、剪断红线，使巨树松动。",
+      "participants": [
+        "adler",
+        "esper-zero",
+        "yinanna"
+      ],
+      "transcript_refs": [
+        "u00087",
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e006a",
+          "start_ms": 650400,
+          "end_ms": 670933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒报告楼里很安静、没有埋伏；鉴定师疑惑「红字」和访客们去了哪里，并注意到某样东西。",
+          "transcript_refs": [
+            "u00087",
+            "u00089",
+            "u00090"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e006b",
+          "start_ms": 673600,
+          "end_ms": 740533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "慈善家伊南娜以广播般的独白出现，诉说「我听到你数着微光入睡」「你手持真理却换来自由的剥夺与思想的镣铐」，并号召「推开那扇门，走进雾巢」，自称「我，伊南娜，将予你重生」。",
+          "transcript_refs": [
+            "u00091",
+            "u00092",
+            "u00093",
+            "u00094",
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e006c",
+          "start_ms": 741067,
+          "end_ms": 831733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师质疑这些话是慈善家伊南娜还是「红字」的 T 女士所说；众人找到卡厄斯留下的画，按箭头与剪刀剪断红线的指示行动，关掉电视机后红线消失、巨树松动，验证了卡厄斯的方法。",
+          "transcript_refs": [
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107",
+            "u00108",
+            "u00109"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s007",
+      "start_ms": 1675733,
+      "end_ms": 1763467,
+      "summary": "一段电波通讯记录下追踪目标的过程：有人盯着高处的电视机疑心是诱饵，「廷达罗斯」一方确认捕捉到「小夜蛾」的踪迹并下令继续跟踪，随后询问灵可的异样。",
+      "participants": [
+        "linko"
+      ],
+      "transcript_refs": [
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e007a",
+          "start_ms": 1675733,
+          "end_ms": 1747733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人感叹电视机摆得太高、疑似诱饵；随后一段通讯传来「廷达罗斯」「小夜蛾的踪迹，捕捉到了」，确认已追踪到目标。",
+          "transcript_refs": [
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e007b",
+          "start_ms": 1748267,
+          "end_ms": 1763467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人下令「做得好，继续跟踪目标，支援很快就到」，又提到现场好像夹杂着很不好的气味；随后有人唤「灵可」问她怎么了。",
+          "transcript_refs": [
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s008",
+      "start_ms": 1786400,
+      "end_ms": 1841600,
+      "summary": "「游戏规则已递交」的消息传开，受邀的权贵与来访者纷纷入场，有人为此押上全部身家，也有人犹豫着想把机会让给他人。",
+      "participants": [],
+      "transcript_refs": [
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00142",
+        "u00143",
+        "u00144"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e008",
+          "start_ms": 1786400,
+          "end_ms": 1841600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "通讯播报「游戏规则已递交，可以入场了」；入场者中有人说为了这张门票奉上了全部、有人承诺今后相互仰仗，一名女子请「姐姐」先行，还有人犹豫着想把机会让给母亲。",
+          "transcript_refs": [
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00142",
+            "u00143",
+            "u00144"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s009",
+      "start_ms": 1856800,
+      "end_ms": 1954133,
+      "summary": "众人发觉被引到错误的房间、怀疑线人出卖，灵可通过通讯报告正确地点；现场散落着带血渍的打火机、铁盒与沾红墨的钢笔，随后卡厄斯现身催促众人跟他走。",
+      "participants": [
+        "chaos",
+        "linko",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e009a",
+          "start_ms": 1856800,
+          "end_ms": 1864533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人发现被引到了错误的房间、惊呼「这是什么鬼东西」，怀疑线人出卖了他们，但也有人说不确定。",
+          "transcript_refs": [
+            "u00145",
+            "u00146",
+            "u00147",
+            "u00148"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e009b",
+          "start_ms": 1870400,
+          "end_ms": 1878133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人通过通讯询问灵可是否发现了正确地点；灵可回答自己在右边通道尽头的房间、入口快要消失了。",
+          "transcript_refs": [
+            "u00150",
+            "u00151"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e009c",
+          "start_ms": 1889333,
+          "end_ms": 1927200,
+          "evidence_kind": "visual",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "现场遗落的打火机上带着血渍却不见打斗痕迹，一只精美铁盒的主人多半已病入膏肓；还有一支看似贵重却被丢弃的钢笔，笔尖沾着红色墨渍。",
+          "transcript_refs": [
+            "u00152",
+            "u00153",
+            "u00154",
+            "u00155"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e009d",
+          "start_ms": 1949067,
+          "end_ms": 1954133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人唤「卡厄斯先生」；卡厄斯赶来让众人来不及解释、快跟他走，并追问六队另一个小队员去了哪里。",
+          "transcript_refs": [
+            "u00156",
+            "u00157",
+            "u00158"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s010",
+      "start_ms": 2003200,
+      "end_ms": 2069867,
+      "summary": "卡厄斯询问店长是否见过这种异象，得知正是害死她家人的那一件；艾尔菲德劝她别急、提醒彼此约定，并说明分析组正在比对灵可传来的现场图像，判断进去的人都无法再与外界取得联系。",
+      "participants": [
+        "chaos",
+        "aierfeide",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e010a",
+          "start_ms": 2003200,
+          "end_ms": 2018667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯问店长是否见过这种异象；对方说这正是害死自家人的异象、哪怕烧成灰也不会忘，卡厄斯追问能否想起更多细节。",
+          "transcript_refs": [
+            "u00161",
+            "u00162",
+            "u00163"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e010b",
+          "start_ms": 2019200,
+          "end_ms": 2069867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德劝对方别急、再给她一点时间，并提醒「不要忘了我们的约定」；她说明分析组正比对灵可传来的现场图像，判断灵可已进入、咻啪也联系不上她，进去的人恐怕都无法再与外界取得联系。",
+          "transcript_refs": [
+            "u00164",
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s011",
+      "start_ms": 2070400,
+      "end_ms": 2214933,
+      "summary": "众人在房间里翻找，从布袋、麻绳与白帕推断出一起绑架案、约有四名受害者；随后围绕石台上摆着的三件失窃异象展开讨论，卡厄斯感叹异象之间的关联闻所未闻，并提到那场游戏大约在两百多年前。",
+      "participants": [
+        "chaos",
+        "esper-zero",
+        "adler"
+      ],
+      "transcript_refs": [
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179",
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e011a",
+          "start_ms": 2070400,
+          "end_ms": 2110400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "众人翻找房间，发现布袋、麻绳与白帕，推断这是一起绑架案、约有四名受害者，并疑惑有人并非自愿参与游戏、这游戏是否必须有牺牲者。",
+          "transcript_refs": [
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00178",
+            "u00179",
+            "u00180"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e011b",
+          "start_ms": 2121067,
+          "end_ms": 2214933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯说石台上摆着三件失窃异象却「没什么不对劲」才最麻烦，谈到异象之间的关联、公布异象存在不过才四十年，而那位莳小姐目睹的游戏大约在两百多年前；他认为「红字」不只是盗窃团伙，直接抓捕 T 女士只会把游戏推后数年。",
+          "transcript_refs": [
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s012",
+      "start_ms": 2222933,
+      "end_ms": 2331200,
+      "summary": "艾尔菲德汇报两点蹊跷：现场维特海默值波动像某种共鸣、疑似存在能支配吞噬其他异象的未知异象；又破译地上红色文字为「过去、现在、未来」加一组「解开束缚」，并判断 T 女士有恃无恐、很可能设下了陷阱。",
+      "participants": [
+        "aierfeide",
+        "chaos",
+        "adler",
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00207",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e012a",
+          "start_ms": 2222933,
+          "end_ms": 2256000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德说疑团太多、有两点最蹊跷：其一是现场维特海默值波动曲线十分怪异，发生过的并不仅是空间开启，更像某种共鸣；又透露「白蜡树」猜测存在一个能「支配」「吞噬」「复现」其他异象的未知异象。",
+          "transcript_refs": [
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196",
+            "u00197",
+            "u00198",
+            "u00199"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e012b",
+          "start_ms": 2256533,
+          "end_ms": 2331200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "chaos",
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德说地上红色文字是四组词——「过去」「现在」「未来」及待定的一组；卡厄斯追问还有一组是什么，有人解读为「解开束缚」「开启」，艾尔菲德向浔确认含义，并判断 T 女士如此有恃无恐很可能是设下了陷阱，众人则以既定的将计就计回应。",
+          "transcript_refs": [
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204",
+            "u00205",
+            "u00207",
+            "u00209",
+            "u00210",
+            "u00211",
+            "u00212"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p12-s013",
+      "start_ms": 2331467,
+      "end_ms": 2414667,
+      "summary": "艾尔菲德认为风险太高、犹豫是否放行，众人坚持必须进入；她最终将现场决策指挥全权交给卡厄斯并信任伊波恩一方，卡厄斯请店长允许他带上她的本体星盘，众人一同走进雾巢。",
+      "participants": [
+        "aierfeide",
+        "chaos",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224",
+        "u00225",
+        "u00227"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e013a",
+          "start_ms": 2331467,
+          "end_ms": 2346933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德认为风险太高，动了不再放行的念头；有人坚持「我必须进去，你答应过我的」，指出谈论风险不像她的性格；艾尔菲德回应说已走到这一步，不能眼睁睁看着属下和朋友去送死。",
+          "transcript_refs": [
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216",
+            "u00217"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p12-e013b",
+          "start_ms": 2348800,
+          "end_ms": 2414667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人说艾尔菲德这次一定算漏了什么、提醒她把某个人送到了店里；艾尔菲德遂把现场决策指挥全权交给卡厄斯，并信任伊波恩那边的判断。卡厄斯先请店长让他把她的本体星盘带进去，随后招呼伊波恩的各位「在里面见」，众人一同走进雾巢。",
+          "transcript_refs": [
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222",
+            "u00223",
+            "u00224",
+            "u00225",
+            "u00227"
+          ]
+        }
+      ]
+    }
+  ]
+}

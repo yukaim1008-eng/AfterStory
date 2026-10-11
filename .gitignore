@@ -39,5 +39,6 @@ research/character-corpus/local/
 *.log
 .DS_Store
 Thumbs.db
+/.validate-tmp.out
 
 .workbuddy

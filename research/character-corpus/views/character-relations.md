@@ -1,6 +1,6 @@
 # Canon 人物关系图
 
-> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p11`（第5话 游梦洄廊）。Canon 人物关系不等于现实用户与角色实例的 Runtime Relationship。
+> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p15`（第6话 雾巢游戏 4）。Canon 人物关系不等于现实用户与角色实例的 Runtime Relationship。
 
 ```mermaid
 graph LR
@@ -39,21 +39,23 @@ graph LR
     c33["墨菲克斯"]
     c34["奈丽"]
     c35["娜娜莉"]
-    c36["奥托"]
-    c37["嘭嘭"]
-    c38["菲尔"]
-    c39["珀塞特"]
-    c40["清泽"]
-    c41["塞尔温"]
-    c42["早雾"]
-    c43["翳"]
-    c44["塔可"]
-    c45["塔吉多"]
-    c46["炜桦"]
-    c47["西汀"]
-    c48["伊南娜"]
-    c49["伊薇特"]
-    c50["残虹"]
+    c36["妮夏"]
+    c37["奥托"]
+    c38["嘭嘭"]
+    c39["菲尔"]
+    c40["珀塞特"]
+    c41["清泽"]
+    c42["塞尔温"]
+    c43["早雾"]
+    c44["翳"]
+    c45["塔可"]
+    c46["塔吉多"]
+    c47["炜桦"]
+    c48["小贞"]
+    c49["西汀"]
+    c50["伊南娜"]
+    c51["伊薇特"]
+    c52["残虹"]
     c2 -->|招募并安排任务| c13
     c30 ---|首次共同处理收容事故| c13
     c30 -->|称呼“可可”| c13
@@ -62,25 +64,25 @@ graph LR
     c2 -->|局长与收容组成员| c30
     c1 -->|接纳为伊波恩成员| c13
     c18 -->|接受新鉴定师| c13
-    c45 -->|主动称为朋友| c13
+    c46 -->|主动称为朋友| c13
     c30 -->|约定保持联系| c13
     c35 -->|表示会罩着新成员| c13
-    c36 ---|兄弟| c31
+    c37 ---|兄弟| c31
     c24 ---|品牌晚宴相识的朋友| c10
     c24 -->|秘密关押| c10
     c31 -->|救出被关押者| c10
     c23 -->|招揽学习情报生意| c11
-    c42 -->|维护同伴归属| c11
-    c35 -->|冲突时护持同伴| c42
+    c43 -->|维护同伴归属| c11
+    c35 -->|冲突时护持同伴| c43
     c35 -->|称呼师父并向往其实力| c8
-    c37 ---|爱犬与照料者| c33
-    c33 -->|空间收留| c36
+    c38 ---|爱犬与照料者| c33
+    c33 -->|空间收留| c37
     c33 -->|空间收留| c31
-    c42 -->|约束随行异象| c15
-    c45 -->|单向爱慕并尝试告白| c44
-    c45 ---|朋友| c44
-    c1 -->|协助约会并保护双方| c45
-    c35 -->|参与并善后约会计划| c45
+    c43 -->|约束随行异象| c15
+    c46 -->|单向爱慕并尝试告白| c45
+    c46 ---|朋友| c45
+    c1 -->|协助约会并保护双方| c46
+    c35 -->|参与并善后约会计划| c46
     c21 -->|委托鉴定拍品| c13
     c23 -->|店主与店员的上下关系| c21
     c16 ---|互相较劲的同事| c12
@@ -88,20 +90,20 @@ graph LR
     c16 -->|称呼为明音姐| c3
     c17 -->|受命照看浔| c18
     c18 -->|本次拍卖会合作| c21
-    c38 -->|拍卖事故后对峙交涉| c21
-    c23 -->|以对方邀请函为目标| c47
+    c39 -->|拍卖事故后对峙交涉| c21
+    c23 -->|以对方邀请函为目标| c49
     c30 -->|后辈守护前辈| c25
-    c25 -->|称对方为海獭电视机| c45
+    c25 -->|称对方为海獭电视机| c46
     c13 -->|协助澄清并护送| c25
-    c43 -->|副队与队员| c25
+    c44 -->|副队与队员| c25
     c4 -->|教她致谢手势| c25
-    c46 -->|邻居| c29
-    c41 -->|共同认领花坛| c29
+    c47 -->|邻居| c29
+    c42 -->|共同认领花坛| c29
     c27 -->|花店店主与常客| c29
     c4 -->|结伴调查| c13
-    c43 -->|副队与队长| c4
-    c40 -->|店长与店员| c3
-    c40 -->|邀请登台演出| c35
+    c44 -->|副队与队长| c4
+    c41 -->|店长与店员| c3
+    c41 -->|邀请登台演出| c35
     c35 ---|同属乐队「猫头音」| c16
     c3 -->|未答应加入乐队| c35
     c3 -->|在安全问题上严厉管教| c35
@@ -122,10 +124,10 @@ graph LR
     c26 ---|姐妹（重逢于异象空间）| c5
     c26 ---|母女| c9
     c9 ---|母女（贝拉与母亲）| c5
-    c50 -->|旧识·敌对重逢| c8
-    c50 -->|交战中攻击众人| c13
-    c50 -->|战场对峙挑衅| c35
-    c7 -->|追捕红字核心成员| c50
+    c52 -->|旧识·敌对重逢| c8
+    c52 -->|交战中攻击众人| c13
+    c52 -->|战场对峙挑衅| c35
+    c7 -->|追捕红字核心成员| c52
     c7 -->|收尾并要求到管理局交代| c8
     c8 -->|夜谈身世| c13
     c35 -->|师徒（战斗互助）| c8
@@ -135,24 +137,45 @@ graph LR
     c28 -->|送达委托报酬| c13
     c28 -->|顺路同行| c26
     c28 ---|初次见面寒暄| c35
-    c49 ---|母女（伊薇特与母亲）| c9
-    c49 ---|手足（同为木偶孩子）| c26
+    c51 ---|母女（伊薇特与母亲）| c9
+    c51 ---|手足（同为木偶孩子）| c26
     c35 ---|师徒（挂念师父）| c8
     c35 -->|远程担保人| c19
     c22 -->|诱骗与加害| c35
-    c48 -->|设局与利用| c35
+    c50 -->|设局与利用| c35
     c13 -->|解救与托付| c35
     c1 -->|照料与开解| c35
-    c42 ---|同伴（拌嘴与惦记）| c35
-    c45 ---|家族同伴（送上套票）| c35
+    c43 ---|同伴（拌嘴与惦记）| c35
+    c46 ---|家族同伴（送上套票）| c35
     c20 ---|义工与游客| c35
-    c50 ---|姐妹（同族家人）| c8
-    c39 -->|姐姐（同族）| c8
-    c48 -->|召回| c8
-    c48 -->|上下（任命与约束）| c50
-    c42 -->|当面质问| c22
+    c52 ---|姐妹（同族家人）| c8
+    c40 -->|姐姐（同族）| c8
+    c50 -->|召回| c8
+    c50 -->|上下（任命与约束）| c52
+    c43 -->|当面质问| c22
     c11 -->|同伴（担忧其自责）| c35
     c30 -->|协助搜索| c1
+    c2 -->|密信通报| c18
+    c2 -->|授予现场指挥| c7
+    c18 ---|同僚（称呼「小姐」）| c1
+    c18 ---|带路赴约| c13
+    c1 -->|允准探望| c13
+    c28 ---|六队同僚| c7
+    c7 ---|并肩行动| c13
+    c8 ---|合作（核对任务）| c7
+    c52 ---|姐妹（造物者与被播下者）| c8
+    c8 ---|花园重逢| c35
+    c36 ---|队友（前辈与后辈）| c28
+    c28 ---|同伴（拌嘴与寻回）| c48
+    c36 ---|同伴| c48
+    c1 -->|致谢（相救之恩）| c28
+    c40 ---|邀约（创造新的未来）| c13
+    c50 -->|母女（母亲与女儿）| c8
+    c50 ---|母女（母亲与女儿）| c52
+    c7 -->|抓捕| c52
+    c8 ---|同伴（道歉与并肩）| c35
+    c18 ---|家人（站队支持）| c13
+    c11 ---|同伴（建立档案）| c13
 ```
 
 | 关系 | 类别 | 说明 | 证据 |
@@ -256,3 +279,24 @@ graph LR
 | 早雾 → 桀桀熊：当面质问 | adversarial | 早雾喝问桀桀熊把娜娜莉藏哪了，被它回呛「臭小孩，闭嘴」。 | [nt-bv1kqoabievz-p11-e021b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=11&t=3205)、[nt-bv1kqoabievz-p11-e021c](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=11&t=3214) |
 | 埃德嘉 → 娜娜莉：同伴（担忧其自责） | social | 埃德嘉说娜娜莉一定是觉得自己没能保护好家人；她失联后他提出与鉴定师同去魔女之家问黑羽。 | [nt-bv1kqoabievz-p11-e014e](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=11&t=2280)、[nt-bv1kqoabievz-p11-e015e](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=11&t=2502) |
 | 薄荷 → 阿德勒：协助搜索 | cooperative | 阿德勒一直找不到鉴定师，便联络薄荷帮忙搜索；薄荷被突然出现的众人吓了一跳。 | [nt-bv1kqoabievz-p11-e047a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=11&t=8061)、[nt-bv1kqoabievz-p11-e047b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=11&t=8075) |
+| 艾尔菲德 → 浔：密信通报 | organizational | 艾尔菲德以密信「蚂蚁的巢穴锣鼓喧天，游戏即将揭幕，园丁该行动了」通知店长，店长决定不请自来赴约。 | [nt-bv1kqoabievz-p12-e004a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=12&t=458) |
+| 艾尔菲德 → 卡厄斯：授予现场指挥 | organizational | 艾尔菲德把现场决策指挥全权交给卡厄斯，并信任伊波恩一方的判断。 | [nt-bv1kqoabievz-p12-e013b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=12&t=2348) |
+| 浔 ↔ 阿德勒：同僚（称呼「小姐」） | other | 阿德勒称呼店长为「小姐」；店长回应说自己忽视了众人的成长、也需要改变。 | [nt-bv1kqoabievz-p12-e003b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=12&t=423) |
+| 浔 ↔ 异能者·零：带路赴约 | cooperative | 店长答应带众人同行赴约，并解释「特殊收容」只是临时说法、真正起作用的是某个保密级异象。 | [nt-bv1kqoabievz-p12-e004b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=12&t=491) |
+| 阿德勒 → 异能者·零：允准探望 | social | 阿德勒回答娜娜莉「还是和昨天一样」，并同意鉴定师去探望娜娜莉与早雾。 | [nt-bv1kqoabievz-p12-e001a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=12&t=33) |
+| 灵可 ↔ 卡厄斯：六队同僚 | organizational | 卡厄斯在雾巢中寻找小队员，灵可以通讯报告自己所在的位置。 | [nt-bv1kqoabievz-p12-e009b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=12&t=1870)、[nt-bv1kqoabievz-p12-e009d](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=12&t=1949) |
+| 卡厄斯 ↔ 异能者·零：并肩行动 | cooperative | 卡厄斯赶来催促众人跟他走，并在进入雾巢前请店长允许带上本体星盘。 | [nt-bv1kqoabievz-p12-e009d](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=12&t=1949)、[nt-bv1kqoabievz-p12-e013b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=12&t=2348) |
+| 达芙蒂尔 ↔ 卡厄斯：合作（核对任务） | cooperative | 卡厄斯与达芙蒂尔核对任务、约定分头行动；她称与艾尔菲德谈的是合作，就当自己有自己的立场。 | [nt-bv1kqoabievz-p13-e003a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=13&t=406)、[nt-bv1kqoabievz-p13-e005b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=13&t=656) |
+| 残虹 ↔ 达芙蒂尔：姐妹（造物者与被播下者） | other | 残虹以「姐姐」相称、重提达芙蒂尔当年教她面对强敌不可情绪化的教诲，并称自己是其当年播下的「种子」生根发芽所成。 | [nt-bv1kqoabievz-p13-e012b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=13&t=2337) |
+| 达芙蒂尔 ↔ 娜娜莉：花园重逢 | social | 达芙蒂尔在花园遇见娜娜莉，唤出她的名字。 | [nt-bv1kqoabievz-p13-e012a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=13&t=2302) |
+| 妮夏 ↔ 灵可：队友（前辈与后辈） | social | 妮夏称灵可为「前辈」、配合其行动；灵可遇险时连声喊「妮夏」，妮夏则以「若这是前辈的决定，就没有犹豫的必要」表示信任。 | [nt-bv1kqoabievz-p14-e012b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=1762)、[nt-bv1kqoabievz-p14-e005b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=596) |
+| 灵可 ↔ 小贞：同伴（拌嘴与寻回） | social | 灵可先前一直觉得吵、后来恍然大悟噪音来自被关在黑箱子里的小贞，并将她带回。 | [nt-bv1kqoabievz-p14-e013b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=1960) |
+| 妮夏 ↔ 小贞：同伴 | social | 小贞打趣妮夏和「臭小鬼」其实是一路人，两人一路同行。 | [nt-bv1kqoabievz-p14-e009a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=1160) |
+| 阿德勒 → 灵可：致谢（相救之恩） | cooperative | 阿德勒现身感谢三人相救，并邀请日后来伊波恩做客、备菜致谢。 | [nt-bv1kqoabievz-p14-e016b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=2274) |
+| 珀塞特 ↔ 异能者·零：邀约（创造新的未来） | other | 鉴定师提出未来未必既定、岔路或许能自己创造，邀珀塞特同行、成为变数，并与她约定在海特洛道别。 | [nt-bv1kqoabievz-p15-e007b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=710)、[nt-bv1kqoabievz-p15-e008b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=878) |
+| 伊南娜 → 达芙蒂尔：母女（母亲与女儿） | family | 伊南娜以「母亲」自居、称达芙蒂尔等女儿们将化作养分滋养她；达芙蒂尔则指出其目的从一开始就是浔。 | [nt-bv1kqoabievz-p15-e009b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=1062)、[nt-bv1kqoabievz-p15-e009c](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=1131) |
+| 伊南娜 ↔ 残虹：母女（母亲与女儿） | family | 残虹以「母亲」称伊南娜、调侃她「博爱」；行动结束后其被押送格赫罗斯岛。 | [nt-bv1kqoabievz-p15-e010b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=1295)、[nt-bv1kqoabievz-p15-e022b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=3250) |
+| 卡厄斯 → 残虹：抓捕 | adversarial | 卡厄斯点明重点是逃掉的两人、说抓残虹费了不少功夫、还多亏了鉴定师。 | [nt-bv1kqoabievz-p15-e022a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=3207) |
+| 达芙蒂尔 ↔ 娜娜莉：同伴（道歉与并肩） | other | 达芙蒂尔向娜娜莉反省没能与她并肩。 | [nt-bv1kqoabievz-p15-e015b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=2430) |
+| 浔 ↔ 异能者·零：家人（站队支持） | social | 店长说不管发生什么、伊波恩都会站在鉴定师这边。 | [nt-bv1kqoabievz-p15-e018a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=2771) |
+| 埃德嘉 ↔ 异能者·零：同伴（建立档案） | cooperative | 埃德嘉问候鉴定师身体、说自己正在管理局建立雾枢的异象档案。 | [nt-bv1kqoabievz-p15-e017a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=2675) |

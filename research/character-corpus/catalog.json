@@ -976,5 +976,33 @@
     "source_work": "异环",
     "role_scope": "named_character",
     "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "nixia",
+    "names": {
+      "zh": "妮夏",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "xiaozhen",
+    "names": {
+      "zh": "小贞",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
   }
 ]

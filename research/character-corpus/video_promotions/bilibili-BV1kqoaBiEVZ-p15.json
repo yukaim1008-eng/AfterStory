@@ -1,0 +1,1705 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p15",
+  "reviewed_transcript_sha256": "275c8d66a7ea9fde099880c79116d282aecf677f1fdf4b29ac442442b2ff8d77",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p15",
+    "source_work": "异环",
+    "display_name": "第6话 雾巢游戏 4",
+    "sequence": 15,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第6话 雾巢游戏 4",
+    "predecessor_id": "nt-bv1kqoabievz-p14",
+    "spoiler_scope": "第6话 雾巢游戏 4"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s001",
+      "start_ms": 79467,
+      "end_ms": 202400,
+      "summary": "幻象中损毁的伊波恩大厅里，塔吉多以哲学式独白自问，早雾诉说失去同伴后的沉重与怅惘。",
+      "participants": [
+        "taygedo",
+        "sakiri",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e001a",
+          "start_ms": 79467,
+          "end_ms": 104000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "开场旁白点出「未来的分支」，随后有人发觉大厅少了许多东西。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e001b",
+          "start_ms": 153333,
+          "end_ms": 167467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多自问，若足够了解人类与结局，是否能把坏人修成好人、把坏结局修成好结局，并借娜娜莉「人生可不是录像带」的话反问人生是什么。",
+          "transcript_refs": [
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e001c",
+          "start_ms": 176267,
+          "end_ms": 202400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾形容肩上像压了被郎丸吞下的大象般沉重，感叹几人像纸箱里戴项圈的流浪猫，并设想若当初没在伊波恩相遇、没有那些回忆，是否就不用这么难过。",
+          "transcript_refs": [
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s002",
+      "start_ms": 209333,
+      "end_ms": 256267,
+      "summary": "埃德嘉现身与鉴定师对话，说店长的期待已被现实粉碎；鉴定师则誓言绝不让这种未来发生。",
+      "participants": [
+        "edgar",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00026",
+        "u00028",
+        "u00029",
+        "u00030"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e002a",
+          "start_ms": 209333,
+          "end_ms": 227200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉唤住鉴定师、说店长对他抱有特别的期待，而这份期待已被现实轻易粉碎，并问若伊波恩的未来是谜题、他们究竟在哪一步走错了。",
+          "transcript_refs": [
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e002b",
+          "start_ms": 227733,
+          "end_ms": 251200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师追问结局是否已不可挽回，并表明不会让这种事发生、未来的伊波恩绝不是这个样子。",
+          "transcript_refs": [
+            "u00021",
+            "u00022",
+            "u00023",
+            "u00024",
+            "u00026",
+            "u00028"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e002c",
+          "start_ms": 251467,
+          "end_ms": 256267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉反问鉴定师想要的未来是什么样。",
+          "transcript_refs": [
+            "u00029",
+            "u00030"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s003",
+      "start_ms": 290400,
+      "end_ms": 403200,
+      "summary": "「未来的你」幻象：百年后荒凉的伊波恩，独存的店长接洽委托并自述只有自己赢下了那场游戏。",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00044",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00053",
+        "u00054"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e003a",
+          "start_ms": 290400,
+          "end_ms": 364000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "（未来的你）以接听委托的口吻说明这里是伊波恩古董店、约定下午三点，并感叹一百年过去自己仍在期待，坦言那场游戏只有她一人赢下、永远到不了彼岸。",
+          "transcript_refs": [
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e003b",
+          "start_ms": 364533,
+          "end_ms": 403200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师自问百年后为何自己还活着、仍守在店里；对方自报是伊波恩古董店的店长、千万种分支中的自己与不可改写的终局，并反问能看到百年后安然无恙的自己还不算「好结局」吗。",
+          "transcript_refs": [
+            "u00044",
+            "u00046",
+            "u00047",
+            "u00048",
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00053",
+            "u00054"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s004",
+      "start_ms": 435733,
+      "end_ms": 499733,
+      "summary": "日常插曲：娜娜莉、早雾打趣，阿德勒在旁插话；随后店长转告艾尔菲德的好评与管理局的批准。",
+      "participants": [
+        "nanally",
+        "sakiri",
+        "adler",
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e004a",
+          "start_ms": 435733,
+          "end_ms": 458933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "sakiri",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉问是否像这样快速回击，早雾借店员之口吐槽「呆子也有被挑刺的时候」，阿德勒出声提醒「小姐」。",
+          "transcript_refs": [
+            "u00055",
+            "u00056",
+            "u00057"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e004b",
+          "start_ms": 475200,
+          "end_ms": 485600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "（店长）转告艾尔菲德对他近期表现很满意，说他为伊波恩提升了好评率、也替管理局解决了不少棘手案子。",
+          "transcript_refs": [
+            "u00058",
+            "u00059",
+            "u00061"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e004c",
+          "start_ms": 486133,
+          "end_ms": 499733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说还教了她几招实战经验，早雾说还帮浔挣了不少酒钱；店长宣布管理局已批准，从此可以一直待在伊波恩和大家在一起。",
+          "transcript_refs": [
+            "u00062",
+            "u00063",
+            "u00064"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s005",
+      "start_ms": 504267,
+      "end_ms": 565600,
+      "summary": "鉴定师逐渐察觉这个理想未来里没有「我」，众人却纷纷表态留在伊波恩；鉴定师给出要抵达这个未来的决心。",
+      "participants": [
+        "hotori",
+        "nanally",
+        "sakiri",
+        "adler",
+        "taygedo",
+        "edgar",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00065",
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00079",
+        "u00081",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00087"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e005a",
+          "start_ms": 504267,
+          "end_ms": 541067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "sakiri",
+            "taygedo",
+            "edgar",
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒附议「小姐」，早雾让鉴定师别把乱七八糟的事放心上，塔吉多说烦恼有大家一起分担，埃德嘉说今后生意会多起来，娜娜莉保证不再砸坏东西，达芙蒂尔说不会再离开伊波恩。",
+          "transcript_refs": [
+            "u00065",
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e005b",
+          "start_ms": 541600,
+          "end_ms": 565600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "（店长）说当下才是最珍贵的、既然抵达了目的地就不必纠结来路；鉴定师却察觉「这个未来，没有我」。",
+          "transcript_refs": [
+            "u00079",
+            "u00081",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00087"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s006",
+      "start_ms": 568800,
+      "end_ms": 659200,
+      "summary": "鉴定师在幻象中与珀塞特交锋，珀塞特道出「母亲」命她守门、让人看到「第一枝」推演的未来片段。",
+      "participants": [
+        "posaite",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00088",
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00094",
+        "u00095",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e006a",
+          "start_ms": 568800,
+          "end_ms": 605067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "（珀塞特）笑说果然会变成这样、让对方利落动手，说自己不喜欢拖泥带水的死法；鉴定师说没有赶尽杀绝的理由，珀塞特则说伊波恩尽是些奇怪的家伙、不愿接受临终关怀的傻瓜。",
+          "transcript_refs": [
+            "u00088",
+            "u00089",
+            "u00090",
+            "u00091",
+            "u00092",
+            "u00094",
+            "u00095"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e006b",
+          "start_ms": 614933,
+          "end_ms": 659200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师追问是否是她替自己开门、与自己对话；（珀塞特）承认并说是「母亲」让她守在此处，让人看到「第一枝」推演的未来片段，还说她找不到能通往「我幸存下来」的门。",
+          "transcript_refs": [
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s007",
+      "start_ms": 659467,
+      "end_ms": 730667,
+      "summary": "珀塞特揭示「母亲」志在必得、门受规则所限，自己也逃不出掌心；鉴定师邀她同行，说可创造未被见过的未来。",
+      "participants": [
+        "posaite",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00118"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e007a",
+          "start_ms": 659467,
+          "end_ms": 710133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师问 T 女士是否要出卖所有人、为何不能用门离开雾巢；（珀塞特）说母亲志在必得、门在游戏结束前只能去规则允许之处，并说她逃不出母亲掌心。",
+          "transcript_refs": [
+            "u00107",
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e007b",
+          "start_ms": 710400,
+          "end_ms": 730667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师提出未来未必既定、岔路或许能自己创造，邀她一起去前面看看、成为变数；（珀塞特）说到了那里又会是敌人，鉴定师答那就再打一场。",
+          "transcript_refs": [
+            "u00115",
+            "u00116",
+            "u00117",
+            "u00118"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s008",
+      "start_ms": 779467,
+      "end_ms": 934933,
+      "summary": "珀塞特问鉴定师为何愿为非亲非故之人做到这个份上；鉴定师讲起伊波恩的家人，并与她约定在海特洛道别。",
+      "participants": [
+        "posaite",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00119",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e008a",
+          "start_ms": 779467,
+          "end_ms": 871733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师说他从未想过这个问题，讲起伊波恩古董店与店里的故事，说曾定义为「家」的地方如今熙熙攘攘、全是他们的影子，不愿与他们分开或失去任何一个。",
+          "transcript_refs": [
+            "u00119",
+            "u00121",
+            "u00122",
+            "u00123",
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e008b",
+          "start_ms": 878133,
+          "end_ms": 934933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "（珀塞特）问既无必须留下的理由、大家迟早会分开；鉴定师说那种分开是能互道珍重的分别，并约她若找不到人送别就来找自己、地点最好在海特洛。",
+          "transcript_refs": [
+            "u00132",
+            "u00133",
+            "u00134",
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s009",
+      "start_ms": 1033333,
+      "end_ms": 1179733,
+      "summary": "伊南娜以主人口吻揭开「红字」的局：她的目的是夺取雾枢与不老不灭之力，甚至不惜将女儿们化作养分。",
+      "participants": [
+        "yinanna",
+        "chaos",
+        "zankou",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00142",
+        "u00143",
+        "u00144",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e009a",
+          "start_ms": 1033333,
+          "end_ms": 1062400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜迎宾并问女儿们可有怠慢；卡厄斯斥「红字」为这出闹剧下了血本、一步步把伊波恩牵涉其中；残虹反问「逼迫？」。",
+          "transcript_refs": [
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00145",
+            "u00146",
+            "u00147"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e009b",
+          "start_ms": 1062667,
+          "end_ms": 1129867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "（伊南娜）称鉴定师是伊波恩最值钱的宝物、提及「不老」与「不灭」之力，说珍宝若束之高阁也会哭泣，并嘲讽能操控时间流速的魔女在雾巢规则下与虫豸并无区别。",
+          "transcript_refs": [
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00152",
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e009c",
+          "start_ms": 1131467,
+          "end_ms": 1179733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔指出伊南娜的目的从一开始就是浔；伊南娜说贡品越丰盛雾枢的力量越充沛、女儿们将化作养分滋养她，并宣称即将赢得「永生」；有人质问「你管这叫家人」。",
+          "transcript_refs": [
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162",
+            "u00163"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s010",
+      "start_ms": 1216267,
+      "end_ms": 1325867,
+      "summary": "终宴宣告与残虹的挑衅：雾巢规则只留唯一胜者，头筹指向浔。",
+      "participants": [
+        "zankou"
+      ],
+      "transcript_refs": [
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00171",
+        "u00172"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e010a",
+          "start_ms": 1216267,
+          "end_ms": 1278400,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "广播宣布终宴已备，命蒙召者于其注视下刀匕相伐争夺末席，并说明雾巢只留唯一胜者、胜者可挑选雾巢内任何东西（含「异能」）作为奖励，本轮头筹指向「月、退、浔」。",
+          "transcript_refs": [
+            "u00164",
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e010b",
+          "start_ms": 1295200,
+          "end_ms": 1325867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "残虹调侃「您还真是博爱呀，母亲」，并表示若还想打就只好奉陪。",
+          "transcript_refs": [
+            "u00171",
+            "u00172"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s011",
+      "start_ms": 1596000,
+      "end_ms": 1654667,
+      "summary": "诞生自规则的巨像自白：即便被击败众人仍将自相残杀，它会尽快结束一切让他们「重获新生」。",
+      "participants": [],
+      "transcript_refs": [
+        "u00173",
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179",
+        "u00180"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e011",
+          "start_ms": 1596000,
+          "end_ms": 1654667,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "巨像称众人团结令人动容，却指出即便击败它众人仍要自相残杀，自称是「他」最初的觐见者、也定是最后的侍奉者，并说会尽快结束这一切让众人重获新生。",
+          "transcript_refs": [
+            "u00173",
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00178",
+            "u00179",
+            "u00180"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s012",
+      "start_ms": 1672000,
+      "end_ms": 2160800,
+      "summary": "零号异象现身引发混乱，巨像濒临崩溃；「妈妈」对「姐姐」的低语昭示执念。",
+      "participants": [
+        "chaos"
+      ],
+      "transcript_refs": [
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00195",
+        "u00196"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e012a",
+          "start_ms": 1672000,
+          "end_ms": 1738933,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人惊呼「零号异象」、连声说不可能会看见，称母亲像虫子、满地都是讨厌的虫要亲手捏碎。",
+          "transcript_refs": [
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e012b",
+          "start_ms": 1748800,
+          "end_ms": 1966400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯说零号异象竟在此出现、好歹拖住了那个大的；随后有人喊巨像快支撑不住了、反复唤出达芙蒂尔的名字。",
+          "transcript_refs": [
+            "u00186",
+            "u00187",
+            "u00188"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e012c",
+          "start_ms": 2125600,
+          "end_ms": 2160800,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "「妈妈在这里噢」，对方说你的眼睛与生命都属于我，并强调唯独姐姐必须留给我。",
+          "transcript_refs": [
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00195",
+            "u00196"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s013",
+      "start_ms": 2178933,
+      "end_ms": 2212800,
+      "summary": "E.T.D 六队的报告：雾巢正在瓦解，伊南娜（T 女士）确认死亡，伊波恩古董店四人与其同行。",
+      "participants": [
+        "chaos",
+        "linko",
+        "nixia"
+      ],
+      "transcript_refs": [
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e013a",
+          "start_ms": 2178933,
+          "end_ms": 2189600,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "报告称众人在异象空间「雾巢」中遭遇「零号异象」的袭击、整个雾巢正在崩溃。",
+          "transcript_refs": [
+            "u00197",
+            "u00198",
+            "u00199"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e013b",
+          "start_ms": 2190667,
+          "end_ms": 2212800,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "报告称伊南娜（T 女士）确认死亡、伊波恩古董店四人目前与他们在一起，并自报「我们」指 E.T.D 六队的卡厄斯、灵可、妮夏；随后有人说该结束了、该走了。",
+          "transcript_refs": [
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s014",
+      "start_ms": 2229867,
+      "end_ms": 2420533,
+      "summary": "众人回到伊波恩，惊喜迎接苏醒的鉴定师；娜娜莉也康复归来，被大家责备不该单独行动。",
+      "participants": [
+        "sakiri",
+        "mint",
+        "daffodill",
+        "nanally",
+        "edgar",
+        "taygedo",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00223",
+        "u00224",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e014a",
+          "start_ms": 2229867,
+          "end_ms": 2301067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人念出「船舵」，众人问要去哪，回答是「回伊波恩（回家）」。",
+          "transcript_refs": [
+            "u00205",
+            "u00206",
+            "u00207"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e014b",
+          "start_ms": 2337600,
+          "end_ms": 2378933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾惊喜地说还以为他醒不过来了，薄荷哭着说能见到他实在太好了，达芙蒂尔说「鉴定师，你醒了」。",
+          "transcript_refs": [
+            "u00209",
+            "u00210",
+            "u00211",
+            "u00212",
+            "u00214",
+            "u00215",
+            "u00216"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e014c",
+          "start_ms": 2382133,
+          "end_ms": 2420533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "sakiri",
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉兴奋地「嗷呜」、打听说她不在时众人经历了一场不得了的冒险；早雾说他睡了三天、还说「还不都是因为你」，埃德嘉叮嘱以后别再单独行动。",
+          "transcript_refs": [
+            "u00217",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00223",
+            "u00224",
+            "u00226",
+            "u00227",
+            "u00228",
+            "u00229",
+            "u00230"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s015",
+      "start_ms": 2420800,
+      "end_ms": 2558133,
+      "summary": "达芙蒂尔依次向鉴定师、娜娜莉、浔与众人道歉，坦承自己逞强又善表达不足，把大家卷入其中。",
+      "participants": [
+        "nanally",
+        "taygedo",
+        "daffodill",
+        "sakiri",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00231",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00237",
+        "u00238",
+        "u00239",
+        "u00240",
+        "u00241",
+        "u00242",
+        "u00243"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e015a",
+          "start_ms": 2420800,
+          "end_ms": 2425333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉笑应「知道啦」，塔吉多说「娜娜莉，反省了」。",
+          "transcript_refs": [
+            "u00231",
+            "u00232"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e015b",
+          "start_ms": 2430933,
+          "end_ms": 2558133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔先向鉴定师道歉、说自己逞强又不善表达，再向娜娜莉反省没能与她并肩，向浔道歉自己的一意孤行，最后向众人连说对不起。",
+          "transcript_refs": [
+            "u00233",
+            "u00234",
+            "u00235",
+            "u00236",
+            "u00237",
+            "u00238",
+            "u00239",
+            "u00240",
+            "u00241",
+            "u00242",
+            "u00243"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s016",
+      "start_ms": 2558400,
+      "end_ms": 2662933,
+      "summary": "众人哭着向醒来的鉴定师连声道歉；旁白点出这些「对不起」背后未曾说出口的真心。",
+      "participants": [
+        "nanally",
+        "sakiri",
+        "edgar",
+        "mint",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00244",
+        "u00247",
+        "u00248",
+        "u00251",
+        "u00252",
+        "u00253",
+        "u00254",
+        "u00255",
+        "u00256",
+        "u00257",
+        "u00258",
+        "u00259",
+        "u00260",
+        "u00261",
+        "u00262",
+        "u00263"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e016a",
+          "start_ms": 2558400,
+          "end_ms": 2628267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "sakiri",
+            "edgar",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉、早雾、埃德嘉、薄荷接连向鉴定师道歉；薄荷还提到阿德勒先生做的饭菜快凉了。",
+          "transcript_refs": [
+            "u00244",
+            "u00247",
+            "u00248",
+            "u00251",
+            "u00252",
+            "u00253",
+            "u00254",
+            "u00255",
+            "u00256",
+            "u00257",
+            "u00258",
+            "u00259"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e016b",
+          "start_ms": 2628800,
+          "end_ms": 2662933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "旁白说这是伊波恩听到最多声「对不起」的一天，并点明那句没说出口的后半句其实是「我爱你，伊波恩的大家要一直在一起」。",
+          "transcript_refs": [
+            "u00260",
+            "u00261",
+            "u00262",
+            "u00263"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s017",
+      "start_ms": 2675467,
+      "end_ms": 2762933,
+      "summary": "埃德嘉与鉴定师聊起雾枢的异象档案与对「未知」的态度；鉴定师旁白展望未来。",
+      "participants": [
+        "edgar",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00264",
+        "u00265",
+        "u00266",
+        "u00267",
+        "u00268",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00273",
+        "u00274",
+        "u00275",
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e017a",
+          "start_ms": 2675467,
+          "end_ms": 2756800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉问候鉴定师身体，说自己在管理局分析调查、去建立雾枢的异象档案，并讲起「对已知异象采信档案、对未知采信本能」，以及人类历史可看作对「未知」的探索志。",
+          "transcript_refs": [
+            "u00264",
+            "u00265",
+            "u00266",
+            "u00267",
+            "u00268",
+            "u00270",
+            "u00271",
+            "u00272",
+            "u00273",
+            "u00274",
+            "u00275",
+            "u00277",
+            "u00278",
+            "u00279"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e017b",
+          "start_ms": 2757333,
+          "end_ms": 2762933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师旁白设想总有一天，就算是「零号异象」也许也能……",
+          "transcript_refs": [
+            "u00280"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s018",
+      "start_ms": 2771733,
+      "end_ms": 2882133,
+      "summary": "店长与鉴定师闲谈：异能恢复、行动报酬、零号异象、宾客落网与晚饭。",
+      "participants": [
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00281",
+        "u00282",
+        "u00284",
+        "u00285",
+        "u00286",
+        "u00287",
+        "u00288",
+        "u00289",
+        "u00290",
+        "u00292",
+        "u00293",
+        "u00294",
+        "u00295",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00300",
+        "u00301",
+        "u00302",
+        "u00303",
+        "u00305",
+        "u00306",
+        "u00307"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e018a",
+          "start_ms": 2771733,
+          "end_ms": 2814933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "（店长）说自己异能恢复了九成九、还得再歇些日子，感慨多亏鉴定师、这次报酬够歇业一个月，并转告艾尔菲德有事要问他、猜测与零号异象有关；店长又说不管发生什么伊波恩都会站在他这边。",
+          "transcript_refs": [
+            "u00281",
+            "u00282",
+            "u00284",
+            "u00285",
+            "u00286",
+            "u00287",
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00292"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e018b",
+          "start_ms": 2815467,
+          "end_ms": 2882133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师问卡厄斯等人近况；（店长）说灵可代表六队来探望过、卡厄斯在写报告并配合审讯红字宾客，又讲起管理局门口凭空出现一扇门、昏迷的人被推出，复盘那是红字小女孩的异能；随后招呼准备晚饭、要拿出珍藏的好酒。",
+          "transcript_refs": [
+            "u00293",
+            "u00294",
+            "u00295",
+            "u00296",
+            "u00297",
+            "u00298",
+            "u00300",
+            "u00301",
+            "u00302",
+            "u00303",
+            "u00305",
+            "u00306",
+            "u00307"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s019",
+      "start_ms": 2893867,
+      "end_ms": 2935733,
+      "summary": "达芙蒂尔探望鉴定师，谈伤势恢复，并透露莳小姐已在想去的地方、管理局也同意了。",
+      "participants": [
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00308",
+        "u00310",
+        "u00311",
+        "u00312",
+        "u00313",
+        "u00314",
+        "u00315",
+        "u00316",
+        "u00317",
+        "u00318"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e019a",
+          "start_ms": 2893867,
+          "end_ms": 2913600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔确认鉴定师身体无碍、说自己的伤势都是些小擦伤，感觉能畅快呼吸了。",
+          "transcript_refs": [
+            "u00308",
+            "u00310",
+            "u00311",
+            "u00312",
+            "u00313"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e019b",
+          "start_ms": 2914400,
+          "end_ms": 2935733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师问莳小姐的去向、是否会被收容到塞拉伊诺馆；达芙蒂尔说她在一个想待的地方、管理局也同意了，并说与鉴定师说话总让人放松。",
+          "transcript_refs": [
+            "u00314",
+            "u00315",
+            "u00316",
+            "u00317",
+            "u00318"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s020",
+      "start_ms": 2941333,
+      "end_ms": 3018400,
+      "summary": "娜娜莉讲述自己如何在洄廊中被引领苏醒，并与鉴定师约定一起去沙滩看日出。",
+      "participants": [
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00325",
+        "u00326",
+        "u00327",
+        "u00328",
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00332",
+        "u00333",
+        "u00334",
+        "u00335",
+        "u00336",
+        "u00337"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e020a",
+          "start_ms": 2941333,
+          "end_ms": 2973867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说自己浑浑噩噩时有一位闭着眼的姐姐牵着她走过漂亮的浅滩、看到发光的出口，走出去后就醒了。",
+          "transcript_refs": [
+            "u00319",
+            "u00320",
+            "u00321",
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00325"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e020b",
+          "start_ms": 2974133,
+          "end_ms": 3018400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说大家都在、只有鉴定师一直在睡，也自责没帮上忙，随后提议等他休养好一起去沙滩看日出，说某人承诺过、不许食言。",
+          "transcript_refs": [
+            "u00326",
+            "u00327",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331",
+            "u00332",
+            "u00333",
+            "u00334",
+            "u00335",
+            "u00336",
+            "u00337"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s021",
+      "start_ms": 3029333,
+      "end_ms": 3127200,
+      "summary": "鉴定师与莳小姐交谈：她已能坦然提起往事、选择放弃船舵换取自由，并以伊波恩为起点开启旅程。",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00338",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00344",
+        "u00345",
+        "u00346",
+        "u00347",
+        "u00348",
+        "u00349"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e021a",
+          "start_ms": 3029333,
+          "end_ms": 3067733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师说没看到莳小姐的船舵；对方说管理局收回了忒修斯之舵与另两件异象，让她在「保留船舵但受监控」与「放弃船舵换自由」之间二选一，鉴定师说她选了后者。",
+          "transcript_refs": [
+            "u00338",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00342",
+            "u00343"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e021b",
+          "start_ms": 3068000,
+          "end_ms": 3127200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "对方说多亏鉴定师给了她往前迈进一步的勇气、以伊波恩为起点，水手该启程、太阳已升起；鉴定师说需要导游随时奉陪，两人都很期待。",
+          "transcript_refs": [
+            "u00344",
+            "u00345",
+            "u00346",
+            "u00347",
+            "u00348",
+            "u00349"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s022",
+      "start_ms": 3207733,
+      "end_ms": 3325067,
+      "summary": "管理局复盘：行动圆满结束，残虹与珀塞特落网；艾尔菲德说明珀塞特将改送异能者学校受教育。",
+      "participants": [
+        "aierfeide",
+        "chaos",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00353",
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00357",
+        "u00358",
+        "u00359",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363",
+        "u00364",
+        "u00365",
+        "u00366",
+        "u00367",
+        "u00368",
+        "u00369"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e022a",
+          "start_ms": 3207733,
+          "end_ms": 3249867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德说行动因他们的协助已圆满结束；卡厄斯点出重点是逃掉的那两个，艾尔菲德说残虹与珀塞特也已落网，卡厄斯说抓残虹费了不少功夫、还多亏了鉴定师。",
+          "transcript_refs": [
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00353",
+            "u00354",
+            "u00355",
+            "u00356",
+            "u00357",
+            "u00358",
+            "u00359"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e022b",
+          "start_ms": 3250133,
+          "end_ms": 3325067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德说残虹将被押送至格赫罗斯岛；卡厄斯补充珀塞特为救那些人过度使用了异能、被发现后立刻放弃抵抗配合抓捕；艾尔菲德说将让她在监管下接受异能者学校教育、通过考核后可回归社会或加入管理局。",
+          "transcript_refs": [
+            "u00360",
+            "u00361",
+            "u00362",
+            "u00363",
+            "u00364",
+            "u00365",
+            "u00366",
+            "u00367",
+            "u00368",
+            "u00369"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p15-s023",
+      "start_ms": 3325600,
+      "end_ms": 3438133,
+      "summary": "话题转向零号异象：鉴定师判断它的目标并非巨像，艾尔菲德劝阻猜想并提醒他多加当心。",
+      "participants": [
+        "aierfeide",
+        "chaos",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00370",
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374",
+        "u00375",
+        "u00376",
+        "u00377",
+        "u00378",
+        "u00379",
+        "u00380",
+        "u00381",
+        "u00382",
+        "u00383",
+        "u00384",
+        "u00385",
+        "u00386",
+        "u00387",
+        "u00388",
+        "u00389",
+        "u00390"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e023a",
+          "start_ms": 3325600,
+          "end_ms": 3402133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德说「红字」的事到此为止、转入报告中的「零号异象」；卡厄斯说这仍是个摸不着头脑的问题；艾尔菲德说它一如既往伴随高等级异象的活跃而出现，并问鉴定师近距离目击有何值得注意的细节。",
+          "transcript_refs": [
+            "u00370",
+            "u00371",
+            "u00372",
+            "u00373",
+            "u00374",
+            "u00375",
+            "u00376",
+            "u00377",
+            "u00378",
+            "u00379",
+            "u00380",
+            "u00381",
+            "u00382",
+            "u00383"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p15-e023b",
+          "start_ms": 3402667,
+          "end_ms": 3438133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师认为它最初的目标似乎不是雾柩巨像；艾尔菲德分析 T 女士只是雾柩的傀儡、建议不要猜想，并提醒若有人把他与零号异象联系在一起就要当心。",
+          "transcript_refs": [
+            "u00384",
+            "u00385",
+            "u00386",
+            "u00387",
+            "u00388",
+            "u00389",
+            "u00390"
+          ]
+        }
+      ]
+    }
+  ]
+}

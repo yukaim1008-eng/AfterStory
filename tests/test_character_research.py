@@ -118,20 +118,20 @@ def test_source_catalog_refresh_preserves_curated_aliases_and_review_status():
 def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     stats = validate_corpus(CORPUS_ROOT)
     assert stats == {
-        "characters": 69,
+        "characters": 71,
         "character_aliases": 2,
         "sources": 25,
         "source_parts": 22,
         "profiles": 23,
-        "scenes": 374,
-        "evidence": 136,
+        "scenes": 441,
+        "evidence": 177,
         "traits": 17,
-        "canon_checkpoints": 11,
-        "canon_evidence": 773,
-        "world_entities": 107,
-        "character_facts": 168,
-        "world_facts": 98,
-        "character_relations": 99,
+        "canon_checkpoints": 15,
+        "canon_evidence": 915,
+        "world_entities": 116,
+        "character_facts": 217,
+        "world_facts": 131,
+        "character_relations": 120,
     }
     catalog = json.loads((CORPUS_ROOT / "catalog.json").read_text(encoding="utf-8"))
     missing = [item for item in catalog if item["research_status"] == "discovered"]
@@ -163,6 +163,8 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         ("posaite", "珀塞特"),
         ("hulaoda", "虎老大"),
         ("jiejiexiong", "桀桀熊"),
+        ("nixia", "妮夏"),
+        ("xiaozhen", "小贞"),
     ]
     parts = [
         json.loads(line)
@@ -175,7 +177,11 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     ]
     assert sum(part["duration_ms"] for part in parts) == 83_323_000
     assert {part["subtitle_mode"] for part in parts} == {"no_platform_subtitles"}
-    assert [part["visual_subtitle_status"] for part in parts[:11]] == [
+    assert [part["visual_subtitle_status"] for part in parts[:15]] == [
+        "verified_present",
+        "verified_present",
+        "verified_present",
+        "verified_present",
         "verified_present",
         "verified_present",
         "verified_present",
@@ -188,7 +194,7 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         "verified_present",
         "verified_present",
     ]
-    assert {part["visual_subtitle_status"] for part in parts[11:]} == {
+    assert {part["visual_subtitle_status"] for part in parts[15:]} == {
         "user_confirmed_present"
     }
 

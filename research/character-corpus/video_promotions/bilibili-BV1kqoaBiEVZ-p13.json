@@ -1,0 +1,1070 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p13",
+  "reviewed_transcript_sha256": "6edf270d277cc0d7e2dbd56eb56184a9504aeaf874024323decc4f9189cb9ad4",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p13",
+    "source_work": "异环",
+    "display_name": "第6话 雾巢游戏 2",
+    "sequence": 13,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第6话 雾巢游戏 2",
+    "predecessor_id": "nt-bv1kqoabievz-p12",
+    "spoiler_scope": "第6话 雾巢游戏 2"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s001",
+      "start_ms": 28267,
+      "end_ms": 226667,
+      "summary": "雾巢游戏开场：旁白宣告游戏开始并呼唤鉴定师与达芙蒂尔；达芙蒂尔出现在狩猎场，被一名以「清道夫」为职位标签的未具名者认出并出言奚落。",
+      "participants": [
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e001a",
+          "start_ms": 28267,
+          "end_ms": 45867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "开场由未署名者（疑似游戏播报/旁白）喊出「鉴定师！」，称「这里是一场游戏」、催促「一定要赢下来」，最后呼唤「你在哪？达芙蒂尔！」。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e001b",
+          "start_ms": 133333,
+          "end_ms": 226667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔以内心独白自问「这里就是你的狩猎场么，T女士」（第5句，达芙蒂尔）；随后被追杀的异能者呼救，一名以「清道夫」为标签、未具名者认出达芙蒂尔小姐并讥讽她的出现令这片垃圾场蓬荜生辉。",
+          "transcript_refs": [
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s002",
+      "start_ms": 332533,
+      "end_ms": 391733,
+      "summary": "达芙蒂尔与那名「清道夫」交手并对话，对方揭出她曾背叛T女士、脱离「红字」的旧事；达芙蒂尔在心里权衡后，决定不处决对方。",
+      "participants": [
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e002a",
+          "start_ms": 332533,
+          "end_ms": 375733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔以「作为一个杀手，你不会对死亡感到陌生吧」逼问对方，对方却道出自己看到她脸上的恐惧；双方就她背叛T女士、脱离「红字」又回来的原因往复（对方以「清道夫」标签出现，未具名）。",
+          "transcript_refs": [
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e002b",
+          "start_ms": 376267,
+          "end_ms": 391733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "一句未署名的内心质问「该怎么处置她」后，达芙蒂尔内心独白：先认为「这种人，罪无可恕」、动了处决的念头，随即又劝自己「不，别这样做」，并说「你和她不一样，你的还来得及洗干净」。",
+          "transcript_refs": [
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s003",
+      "start_ms": 406667,
+      "end_ms": 481867,
+      "summary": "卡厄斯现身与达芙蒂尔核对任务：他正寻找「小夜蛾」与伊波恩众人，并追问达芙蒂尔是否真站在他们这边、又为何又回到「红字」。",
+      "participants": [
+        "chaos",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e003a",
+          "start_ms": 406667,
+          "end_ms": 435467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯报告发现「红字」目标、念出其代号「小夜蛾」，抱怨此处半点信号也没有、连「咻帕」也用不了，并说小不点与伊波恩那帮人不知在何处；随后追问能否相信达芙蒂尔、她是否真站在他们这边。",
+          "transcript_refs": [
+            "u00022",
+            "u00023",
+            "u00024",
+            "u00025",
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e003b",
+          "start_ms": 436000,
+          "end_ms": 481867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔说与艾尔菲德局长谈的是合作、就当自己有立场；卡厄斯说出合作内容是要她完成「特殊收容」、借机回「红字」收集情报、遇突发不要擅自行动，并称使用「特殊收容」要付代价。达芙蒂尔称自己好得很，卡厄斯则追问她是否已不属于伊波恩。",
+          "transcript_refs": [
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s004",
+      "start_ms": 482400,
+      "end_ms": 579467,
+      "summary": "一位自称「船舵的主人」的意识体现身，表示见过达芙蒂尔的梦、愿助众人一臂之力，并追问她当初是否凭自己的意志走出房间；达芙蒂尔坚称所做之事必须没有「如果」。",
+      "participants": [
+        "chaos",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e004a",
+          "start_ms": 482400,
+          "end_ms": 536800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "未署名的意识体发声（达芙蒂尔认出「这声音……是那位船舵的主人？」），自述身体恢复后察觉意识体没有消失、只是像被藏了起来，称那正是「特殊收容」，并说异象管理局局长已向其解释计划、愿助一臂之力；它又称看到过达芙蒂尔的梦、她没有撒谎，并追问她收容前是否凭自己的意志走出房间。",
+          "transcript_refs": [
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043",
+            "u00044",
+            "u00045"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e004b",
+          "start_ms": 537333,
+          "end_ms": 579467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔坚持「没有『如果』，我所做的一切都必须没有『如果』」，并说风险才能带来利益、她选择赌上性命；卡厄斯则追问她冒险进入会吞噬意志的空间，是为向「红字」展示诚意，还是其实为确保鉴定师等人的安全。",
+          "transcript_refs": [
+            "u00046",
+            "u00047",
+            "u00048",
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s005",
+      "start_ms": 582133,
+      "end_ms": 715200,
+      "summary": "众人谈到T女士杀不死、以及这与游戏的关系，达芙蒂尔解释黑色棺木「雾柩」是规则异象、以T女士递交的规则为开局信号；随后二人约定分头行动。",
+      "participants": [
+        "chaos",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00053",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e005a",
+          "start_ms": 582133,
+          "end_ms": 656000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔被问到关于「红字」与那个杀不死的「母亲」（即T女士），她说T女士作为异象契约者除杀不死外比儿时所见更为年轻、认为这与游戏有关；她解释众人所见的黑色棺木名为「雾柩」，是规则异象，经T女士的晋献甦醒、以她递交的规则作为游戏开启的信号（第53、54句为未署名提问）。",
+          "transcript_refs": [
+            "u00053",
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062",
+            "u00063",
+            "u00064"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e005b",
+          "start_ms": 656533,
+          "end_ms": 715200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔指出胜者能挑选失败者的任意「物品」（含生命、财产乃至异能）为奖赏，未署名者斥那群畜生为所欲为、草菅人命；达芙蒂尔说游戏已开始、首要任务是保证自己不出局、活下去。卡厄斯要去找队员与船舵，达芙蒂尔称自己单独行动；未署名者（疑似船舵的主人）提醒她小心「母亲」的监视、并提到她的左眼，达芙蒂尔应下「在搞清楚关联前不会动」，卡厄斯道别。",
+          "transcript_refs": [
+            "u00065",
+            "u00066",
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s006",
+      "start_ms": 912533,
+      "end_ms": 1115733,
+      "summary": "达芙蒂尔独自碰上两名以异象为武器的契约者对手，对方战败；她旁观他们关于独自狩猎与斗败失手的争执。",
+      "participants": [
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00078",
+        "u00079",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00087",
+        "u00088",
+        "u00089",
+        "u00090",
+        "u00092",
+        "u00093",
+        "u00094"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e006a",
+          "start_ms": 912533,
+          "end_ms": 936533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔被对手视为「一条落单的野犬」，她在内心判断对方武器是异象、其人乃契约者，须先解决眼前对手；未署名者提醒「这人很危险」，另一人称对手爪子虽锋利却短、不会给她近身的机会。",
+          "transcript_refs": [
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00078",
+            "u00079",
+            "u00081"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e006b",
+          "start_ms": 1057867,
+          "end_ms": 1115733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "对手一方承认失手「你太大意了……我们输了」，并质问为何不逃、明明说好至少活一个；达芙蒂尔问「你认为她有能力独自狩猎」，对方称她是顶级异象猎人，达芙蒂尔反问「应该是『曾经顶级』吧」，对方随即承认从中间起若无相助便已无法感知猎物的位置（其间穿插未署名对话）。",
+          "transcript_refs": [
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00087",
+            "u00088",
+            "u00089",
+            "u00090",
+            "u00092",
+            "u00093",
+            "u00094"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s007",
+      "start_ms": 1116267,
+      "end_ms": 1209600,
+      "summary": "对方继续讲述自己成为异象契约者的始末：受「伊南娜」诱骗以眼睛换取异能，如今使用权到期、行将失明；达芙蒂尔借机点破他们被T女士利用，并暗自思量那份代价。",
+      "participants": [
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e007a",
+          "start_ms": 1116267,
+          "end_ms": 1186667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "对手痛骂「那女人……她骗了我们」，承认任务失败被组织驱逐、伊南娜闻味而来让她以另一种方式「看到」；达芙蒂尔追问他们是否在T女士处成为异象契约者、并讥讽「那种人的话你们也信」，对方则反举杀手也高度依赖视力、失明后恐遭仇家上门，还自嘲没钱付报酬、抱怨已看不见却总能听见她的声音。（多句为未署名对话）",
+          "transcript_refs": [
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00105",
+            "u00106"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e007b",
+          "start_ms": 1200000,
+          "end_ms": 1209600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔内心感叹「这代价……是不是过于重了？」，随即意识到对方自以为走投无路、只想换一双眼睛，却不知在T女士这里，一个人的自由、生命，甚至连……都将被夺走。",
+          "transcript_refs": [
+            "u00107",
+            "u00108",
+            "u00109"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s008",
+      "start_ms": 1412800,
+      "end_ms": 1607733,
+      "summary": "达芙蒂尔遇到一个自称「学者」、形似孩童的未具名存在，对方求她帮忙；她怀疑这是「囿巢鸟」的衍生歧骸或异象契约者，并挂念着伊波恩众人的下落。",
+      "participants": [
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00118",
+        "u00120",
+        "u00121",
+        "u00122"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e008a",
+          "start_ms": 1412800,
+          "end_ms": 1434133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "以「学者」为标签、未署名者叫「别过来」，自称「我只是个『学者』、我无意伤害任何人」并求达芙蒂尔帮帮他；达芙蒂尔（内心）疑惑「这里怎么会有小孩子？」并问对方是否T女士邀请来的。",
+          "transcript_refs": [
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e008b",
+          "start_ms": 1449600,
+          "end_ms": 1607733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔辨认出「能够模仿孩童的哭声，这是『囿巢鸟』的衍生歧骸？」（第108句为极短时长），随即追问对方「你是异象……你是异象契约者？」；其后「学者」兴奋大叫「原来如此」，宣称自己全身连意志也被分解干净、只剩岩浆般的热情，达芙蒂尔则惊叹「居然和异象融合到这种地步？」。第113句为她挂念伊波恩众人的内心独白。",
+          "transcript_refs": [
+            "u00115",
+            "u00116",
+            "u00117",
+            "u00118",
+            "u00120",
+            "u00121",
+            "u00122"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s009",
+      "start_ms": 1690400,
+      "end_ms": 1811467,
+      "summary": "达芙蒂尔遇到一位着白裙的少女，少女与她谈起飞蛾，并求她让自己也「睡着」以逃避恐惧；达芙蒂尔拒绝，鼓励她清醒地撑到游戏结束，并答应若赢了就带她们离开。",
+      "participants": [
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00144"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e009a",
+          "start_ms": 1690400,
+          "end_ms": 1756267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔安慰「别怕，我不是坏人」，问那些蝴蝶是否是她放飞的，少女纠正「它们不是蝴蝶，是飞蛾」；达芙蒂尔提醒这样会被别人发现，少女只答「我知道」。少女请她帮忙，说同伴伊艾尔受袭时自己躲了起来、如今伊艾尔「睡着了不会再害怕」，而自己仍清醒着、有些害怕，求「姐姐，能让我也睡着吗」。（少女以「着白裙的少女」为标签，未具名）",
+          "transcript_refs": [
+            "u00123",
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e009b",
+          "start_ms": 1756800,
+          "end_ms": 1811467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔内心权衡：答应她、拿走她的辉环，失去辉环同时也就失去被攻击的理由，或许反而安全；但想到让她们清醒地面对如此残酷的游戏，她最终认定「清醒的痛苦总好过虚假的安宁」「不能任她将自己的命运交给别人，即使我也不行」。她口头上拒绝「如果你也睡过去，就没有人能够保护她了」，劝少女不要提前放弃、先努力看看；少女问「如果你赢了游戏，能带我们离开吗」，她答「我会尽力的」。",
+          "transcript_refs": [
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00144"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s010",
+      "start_ms": 1926667,
+      "end_ms": 2055467,
+      "summary": "以「蒙特」为标签的爵士拦住达芙蒂尔搭话，卡厄斯到场以执法者身份指控对方；二人就「合作」与T女士的真正计划交锋，达芙蒂尔戳穿其假借合作之名行骗的嘴脸。",
+      "participants": [
+        "chaos",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e010a",
+          "start_ms": 1926667,
+          "end_ms": 1976267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "以「蒙特」为标签、未署名者认出达芙蒂尔是「『T』的大女儿」，遭她冷斥「让开」「别挡道」，对方称看在「T」的份上再给她一次机会。卡厄斯到场，反讥「我看惹上麻烦的是您吧，蒙特克里斯托先生？」，并称等离开这里对方将面临多项重罪指控、格赫罗斯岛将是其最终归宿。",
+          "transcript_refs": [
+            "u00145",
+            "u00146",
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e010b",
+          "start_ms": 1976800,
+          "end_ms": 2055467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯追问「什么计划」，对方称自己连6小时后的事都无法掌控、不在意指控与减刑，并提出与众人「合作」以求安全回到海特洛；卡厄斯以执法者身份拒绝，对方以「紧急避险」相劝。达芙蒂尔揭露他们打着「合作」的幌子骗了许多人，称对方不过是一块「俎上肉」、猎人闯进鬣狗的狩猎场后自己也成了猎物，反问「这样的你，还有什么资格谈论『合作』？」；对方叹「『T』啊，真是养了一帮……怪物」。",
+          "transcript_refs": [
+            "u00155",
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00165"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s011",
+      "start_ms": 2156533,
+      "end_ms": 2232800,
+      "summary": "达芙蒂尔与卡厄斯会合，讨论迷雾中寻找「过去」的线索；她推断船舵「忒修斯之舵」很可能作为信标物被藏在迷雾之中。",
+      "participants": [
+        "chaos",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173",
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e011a",
+          "start_ms": 2156533,
+          "end_ms": 2225867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔念出「罪人前行，迷雾之中寻回『过去』……」并推测这与「忒修斯之舵」有关；卡厄斯说此地气味复杂、猎犬搜寻范围有限、没什么收获，转述「那个大家伙」要他去迷雾中找「过去」。达芙蒂尔点明是「忒修斯之舵」，称曾亲眼见「雾柩」将那3件异象当作祭品「吞噬」、如今它们作为游戏的信标物出现很合理；卡厄斯询问莳小姐能否感受到其存在，得到「不能，这雾遮挡了一切」的答复（第166句为未署名者）。",
+          "transcript_refs": [
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172",
+            "u00173",
+            "u00174",
+            "u00175"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e011b",
+          "start_ms": 2226133,
+          "end_ms": 2232800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔说「走吧」，卡厄斯感叹「这鬼地方什么也看不见」。",
+          "transcript_refs": [
+            "u00176",
+            "u00177"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s012",
+      "start_ms": 2302133,
+      "end_ms": 2421867,
+      "summary": "达芙蒂尔在花园遇见娜娜莉与残虹；残虹以「姐姐」相称，质问她当年播下的那颗「种子」，并邀她辨认此刻的自己是什么颜色。",
+      "participants": [
+        "daffodill",
+        "nanally",
+        "zankou"
+      ],
+      "transcript_refs": [
+        "u00178",
+        "u00179",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e012a",
+          "start_ms": 2302133,
+          "end_ms": 2329067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔说「看啊，妈妈的花园里又添了一朵花」，白裙少女应「好想……开花」；有人问「伊艾尔，姐姐呢」，娜娜莉问「你想去见她吗」，达芙蒂尔随即唤出对方名字「娜娜莉？」。",
+          "transcript_refs": [
+            "u00178",
+            "u00179",
+            "u00181",
+            "u00182",
+            "u00183"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e012b",
+          "start_ms": 2337333,
+          "end_ms": 2421867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "残虹以「姐姐」相称，问「你是在找这个吗」，并重提姐姐曾教她面对强敌无论何种情况都不可情绪化，却反问她刺杀「母亲」时为何饱含深情；残虹说自己正是为这一刻才接受「母亲」那些怠慢的差遣，称姐姐当年在她心中播下的种子攫取了全部的她、在无人回应的黑暗中生根发芽开花，渴望被播撒它的造物者看见，并问「在你眼中映出的我，如今是哪一种颜色」，劝她「忘掉那些无趣的旁人」。",
+          "transcript_refs": [
+            "u00184",
+            "u00185",
+            "u00186",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196",
+            "u00197"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s013",
+      "start_ms": 2422400,
+      "end_ms": 2629333,
+      "summary": "残虹继续追问自己的颜色；达芙蒂尔内心笃定正是因为有众人在，她才能走到这里，残虹则断言把彩虹的颜色都涂到一处只会得到一片浑然的污浊。",
+      "participants": [
+        "daffodill",
+        "zankou"
+      ],
+      "transcript_refs": [
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e013",
+          "start_ms": 2422400,
+          "end_ms": 2629333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔内心想「正因为有他们在，我才能走到这里」；残虹说「你的剑比从前更快，那我也该提提速了」，随后有未署名者为「彩虹出来了」「真好看」而欢呼，残虹则断言若把彩虹的颜色都涂抹到一块，得到的只会是一片浑然的污浊，并期待由达芙蒂尔亲手剖开那片污浊后，看见的她是什么颜色。",
+          "transcript_refs": [
+            "u00198",
+            "u00199",
+            "u00200",
+            "u00201",
+            "u00203",
+            "u00204",
+            "u00205",
+            "u00206"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s014",
+      "start_ms": 2655467,
+      "end_ms": 2780533,
+      "summary": "卡厄斯与达芙蒂尔会合，得知残虹化形后逃走；二人谈到「游梦人」与船舵，确认只要带回船舵游梦人就能完整回归现世，并商议借莳小姐的本体星盘带出船舵。",
+      "participants": [
+        "chaos",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00229"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e014a",
+          "start_ms": 2655467,
+          "end_ms": 2704000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯问「你还好吧」，达芙蒂尔答「她跑掉了」；卡厄斯说残虹变成她的样子、近身才被识破，摸了一下船舵便消失。达芙蒂尔判断对方受重伤、不会恋战，并问是否只要把船舵带出去、游梦人就能恢复正常；卡厄斯说差不多是这个意思。未署名者（疑似莳小姐一方）说明游梦人的灵魂是安全的、局长正好好看护，而那位鉴定师已打破规则、让船舵调转方向，只要拿回船舵，游梦人就能走向未来、完整地回到现世。",
+          "transcript_refs": [
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00210",
+            "u00211",
+            "u00212",
+            "u00213",
+            "u00214"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e014b",
+          "start_ms": 2704267,
+          "end_ms": 2780533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔追问所有游梦人、包括娜娜莉是否都会变得完整，得到肯定答复后决意「必须把船舵带出去」。卡厄斯转述局长的办法：让莳小姐以本体星盘的形态被带入雾巢，她果然没见到面具人、手上也没出现辉环，故即便卡厄斯出事，她也能带着船舵出去；二人还提到一旦觉得不对劲，可让莳小姐掌舵、坐上「忒修斯之船」离开。达芙蒂尔说那要尽快找到伊波恩与E.T.D的其他人；未署名者则称船舵不听使唤、被更强大的「支配」力量牵引住了。",
+          "transcript_refs": [
+            "u00215",
+            "u00216",
+            "u00217",
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222",
+            "u00223",
+            "u00224",
+            "u00225",
+            "u00226",
+            "u00227",
+            "u00228",
+            "u00229"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p13-s015",
+      "start_ms": 2780800,
+      "end_ms": 2895200,
+      "summary": "众人认定须杀掉T女士或赢下游戏；达芙蒂尔为当初那一记「收容」向莳小姐致歉，并在内心剖白：T女士把痛苦包装成蜜糖诱她回花园，她必须拔出腐朽的根、烧个干净，好让别的孩子不再成为残虹。",
+      "participants": [
+        "chaos",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00230",
+        "u00231",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00236",
+        "u00237",
+        "u00238",
+        "u00239",
+        "u00240",
+        "u00241"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e015a",
+          "start_ms": 2780800,
+          "end_ms": 2826133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人直言「杀了T女士」（第219句为未署名者），卡厄斯改口「或者是赢下游戏、速捕她」；达芙蒂尔向莳小姐为当初那记「收容」的一刀致歉，未署名者（莳小姐一方）回应「你没有做错什么」，说当时没分辨清楚、反倒是自己误会了达芙蒂尔，并表示当时的疼痛如今已说不清是源自那一刀、还是与过去执念对抗的自己，还说「痛苦……如果能够改变，那么痛苦也算值得」。",
+          "transcript_refs": [
+            "u00230",
+            "u00231",
+            "u00232",
+            "u00233",
+            "u00234",
+            "u00236"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p13-e015b",
+          "start_ms": 2826667,
+          "end_ms": 2895200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔内心独白：T女士曾说痛苦能让人靠近死亡，而那无声的死亡中流淌着她熟悉的面孔、那是她挚爱的双亲；T女士却把痛苦包装成蜜糖，引她回花园成为花朵或花朵的饵。她醒悟自己一直因害怕触碰伤痛而不敢回头看，直到不动时才惊觉花园的荆棘不知何时又缠了上来；她决心抓着满是刺的花茎、把腐朽的根从泥地里拔出来统统烧干净，「这样，也不会有别的孩子成为现在的残虹，或是过去的我了」。",
+          "transcript_refs": [
+            "u00237",
+            "u00238",
+            "u00239",
+            "u00240",
+            "u00241"
+          ]
+        }
+      ]
+    }
+  ]
+}

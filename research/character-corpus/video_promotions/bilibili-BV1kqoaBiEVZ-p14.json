@@ -1,0 +1,1164 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p14",
+  "reviewed_transcript_sha256": "de64b0710951a52a890817737561980c2e314a6eaddac885513f8aeb6c9d45ed",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p14",
+    "source_work": "异环",
+    "display_name": "第6话 雾巢游戏 3",
+    "sequence": 14,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第6话 雾巢游戏 3",
+    "predecessor_id": "nt-bv1kqoabievz-p13",
+    "spoiler_scope": "第6话 雾巢游戏 3"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s001",
+      "start_ms": 7733,
+      "end_ms": 69600,
+      "summary": "雾巢山谷中，妮夏担忧卡厄斯的下落，灵可解释雾巢信号断续、卡厄斯能照顾好自己；小贞讲起红月夜里吸血鬼伯爵的鬼故事，被灵可打断。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e001a",
+          "start_ms": 7733,
+          "end_ms": 30933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nixia",
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "妮夏说月相又变了、询问卡厄斯等人的下落；灵可解释雾巢内声音太吵、大家的信号断断续续，追赶常常扑空，并说卡厄斯出任务时经常走丢却从没出过事。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e001b",
+          "start_ms": 31467,
+          "end_ms": 69600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "xiaozhen",
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "小贞插话问「谁走丢」，随后绘声绘色地讲起满月时月亮上出现黑点、最终化作扑棱大翅膀穿黑斗篷的吸血鬼伯爵的鬼故事；灵可嫌烦，说这种时候没人要听她的鬼故事。",
+          "transcript_refs": [
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s002",
+      "start_ms": 74133,
+      "end_ms": 171467,
+      "summary": "灵可发现沿那排石柱走可走出山谷，妮夏则担心辉环的收集存在时间限制；灵可坚称附近的特殊电波越来越近，小贞与二人斗嘴，随后远处传来塌方。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00025"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e002a",
+          "start_ms": 74133,
+          "end_ms": 96267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可招呼众人看向石柱，确认沿那排石柱走能走出山谷，妮夏表示赞同，并说出自己担心辉环收集是否有时间限制。",
+          "transcript_refs": [
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e002b",
+          "start_ms": 96800,
+          "end_ms": 171467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "xiaozhen",
+            "nixia",
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "小贞说若不是跟着「横冲直撞的某人」掉下来、妮夏说不定早就过关了；灵可解释是这里特别的电波吸引自己才选这条路，坚持那电波越来越近，小贞催问是好东西还是坏东西；末了远处发生塌方，小贞说还好离他们远得很。",
+          "transcript_refs": [
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00022",
+            "u00023",
+            "u00024",
+            "u00025"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s003",
+      "start_ms": 187733,
+      "end_ms": 464533,
+      "summary": "逃脱大蛇般的怪物后，众人跑出险境；小贞惊魂未定，灵可揶揄幽灵竟怕蛇，二人讨论起那只看不清模样的歧骸，妮夏判断它很可能是雾巢的伴生歧骸并提醒其危险。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e003a",
+          "start_ms": 187733,
+          "end_ms": 414933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nixia",
+            "xiaozhen",
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "妮夏说自己还跟得上；小贞被大蛇一样的怪家伙吓得「真是吓死鬼了」，灵可揶揄幽灵竟会怕蛇，小贞辩称蛇比鬼可怕，灵可说有的蛇很可爱、那歧骸并不像蛇，并说自己没见过这种歧骸。",
+          "transcript_refs": [
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030",
+            "u00031",
+            "u00032",
+            "u00033"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e003b",
+          "start_ms": 415200,
+          "end_ms": 464533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nixia",
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "妮夏说连跑遍海特洛市的灵可前辈都没见过，那应该是雾巢的伴生歧骸；灵可提议若「白蜡树」没有记录就由他们来命名，妮夏提醒该歧骸很危险、山谷的塌方正是它追击所致，得先保证自身安全；灵可则设想正面迎战时能否把它定住。",
+          "transcript_refs": [
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s004",
+      "start_ms": 466933,
+      "end_ms": 517333,
+      "summary": "灵可半开玩笑地要小贞像战斗宠物一样「进化」出破局能力，被小贞吐槽；妮夏提出可摸清大蛇的行动轨迹、限制其行动，灵可表示赞同并盯上了大蛇。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e004a",
+          "start_ms": 466933,
+          "end_ms": 492800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "xiaozhen"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可问小贞能否在危急关头像动画里的战斗宠物那样进化出时间暂停等破局能力，小贞反讽不如干脆巨大化喷光让大蛇灰飞烟灭，灵可当真追问「可以吗」，被小贞斥「可以你个头」。",
+          "transcript_refs": [
+            "u00042",
+            "u00043",
+            "u00044",
+            "u00045",
+            "u00046",
+            "u00047"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e004b",
+          "start_ms": 493333,
+          "end_ms": 517333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nixia",
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "妮夏提出摸清大蛇的行动轨迹或许能找机会给它致命一击、限制大蛇行动，认为理论上真的可行；灵可连声附和「妮夏说得对」，并要大蛇好好等着，随后留意到这些洞穴十分规整。",
+          "transcript_refs": [
+            "u00048",
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s005",
+      "start_ms": 575733,
+      "end_ms": 698133,
+      "summary": "大蛇躲进瀑布，灵可发现其腹中有辉环的光芒、决定打倒 Boss 拿奖励，众人沿路靠近瀑布时接连遇险，妮夏提醒小心礁石和树干。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00053",
+        "u00054",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00068"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e005a",
+          "start_ms": 575733,
+          "end_ms": 594667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "xiaozhen",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可发现大蛇躲进瀑布里，并指出大蛇肚子里亮晶晶的是辉环的光；面对小贞的质疑与妮夏的询问，灵可宣布要「打倒 Boss，拿奖励」，并招呼众人沿前面那条路去瀑布边。",
+          "transcript_refs": [
+            "u00053",
+            "u00054",
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00058"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e005b",
+          "start_ms": 596800,
+          "end_ms": 698133,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "linko",
+            "xiaozhen",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "妮夏喊「小心」；随后有人接连喊「前辈」，灵可惊呼躲闪，小贞催促把挡路的锥飞、又担心会不会要起飞，灵可让她别乌鸦嘴，妮夏则提醒前方要小心礁石和树干。",
+          "transcript_refs": [
+            "u00059",
+            "u00061",
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066",
+            "u00068"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s006",
+      "start_ms": 714133,
+      "end_ms": 825067,
+      "summary": "众人沿越陡的坡上行后重逢；灵可问候妮夏，妮夏指认前方是大蛇的骸骨；小贞猜测大蛇卵生、还有一窝同类，灵可坚称大蛇的电波只有独一份，众人决定上前查看。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e006a",
+          "start_ms": 714133,
+          "end_ms": 757600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nixia",
+            "linko",
+            "xiaozhen"
+          ],
+          "speaker_character_id": "",
+          "observation": "妮夏说坡度越来越陡，灵可安慰别怕并说有光了；脱险后灵可询问妮夏是否还好，小贞抢先说「一点都不好」，妮夏答自己很好，并让灵可看那边。",
+          "transcript_refs": [
+            "u00069",
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e006b",
+          "start_ms": 757867,
+          "end_ms": 825067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nixia",
+            "xiaozhen",
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "妮夏指认那是大蛇的骸骨、疑惑是否还有别的；小贞猜测大蛇是卵生、还有一窝子兄弟姐妹，吓得喊着要回家；灵可让她别听小贞满口鬼话、坚持大蛇的电波只有独一份，妮夏追问是否是蜂巢思维，小贞则不解为何只剩一堆骨头，妮夏最后决定先过去看看。",
+          "transcript_refs": [
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080",
+            "u00081",
+            "u00082"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s007",
+      "start_ms": 858933,
+      "end_ms": 933333,
+      "summary": "灵可与妮夏发现雾巢资料与一本日志；灵可嫌字多，妮夏说她稍后翻译，随后脚下突变、众人惊呼快跑。",
+      "participants": [
+        "linko",
+        "nixia"
+      ],
+      "transcript_refs": [
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00090",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00096"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e007a",
+          "start_ms": 858933,
+          "end_ms": 881067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可感叹雾巢可怕、抱怨日志字太多看得头疼；妮夏让她先把日志拿着、等空了自己来看，灵可则主张先调查再分析，感觉快到蛇窝了。",
+          "transcript_refs": [
+            "u00084",
+            "u00085",
+            "u00086",
+            "u00087"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e007b",
+          "start_ms": 906933,
+          "end_ms": 933333,
+          "evidence_kind": "action",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人喊「前辈，脚下不对劲」，紧接着众人连声惊呼「快跑」「前辈」并提醒注意。",
+          "transcript_refs": [
+            "u00088",
+            "u00090",
+            "u00092",
+            "u00093",
+            "u00094",
+            "u00096"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s008",
+      "start_ms": 1038400,
+      "end_ms": 1136800,
+      "summary": "追逐战中众人合力围攻大蛇，辉环被一举集满；随后雾巢回响一段谜题旁白，强调谜底藏在「现在」，有人让妮夏抓紧自己别走散。",
+      "participants": [],
+      "transcript_refs": [
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e008a",
+          "start_ms": 1038400,
+          "end_ms": 1105867,
+          "evidence_kind": "action",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "追逐中传出「别让它跑了」「抓稳了」「前辈」等呼喊，有人喊「吃我一拳」，随后有人发现辉环、惊讶一下子就被集满了。",
+          "transcript_refs": [
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00105",
+            "u00106"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e008b",
+          "start_ms": 1120800,
+          "end_ms": 1136800,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "雾巢中响起一段谜题旁白，向「伟大的冒险者」指引迷雾、强调谜底就在「现在（此刻）」；随后有人提醒妮夏抓紧自己、不要走散。",
+          "transcript_refs": [
+            "u00107",
+            "u00108",
+            "u00109"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s009",
+      "start_ms": 1160000,
+      "end_ms": 1283733,
+      "summary": "众人以蹊跷方式过关后复盘：妮夏称赞灵可的直觉，灵可解释那电波能帮他们脱困；妮夏转述局长方面对现场的分析，指出谜题题眼是「现在」，很可能对应异象「恒今时」。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00118",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e009a",
+          "start_ms": 1160000,
+          "end_ms": 1218933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nixia",
+            "linko",
+            "xiaozhen"
+          ],
+          "speaker_character_id": "",
+          "observation": "妮夏惊叹竟以这种方式过关，夸灵可的直觉很有参考价值、比传闻中还要厉害；灵可解释电波来自大蛇、能帮他们摆脱困境；小贞则说是瞎猫碰上死耗子，并打趣妮夏和「臭小鬼」其实是一路人。",
+          "transcript_refs": [
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116",
+            "u00117",
+            "u00118",
+            "u00119",
+            "u00120"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e009b",
+          "start_ms": 1219467,
+          "end_ms": 1283733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia",
+            "xiaozhen"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可提起大面具这次说的话与自己听到的又不一样；妮夏说意思一样、题眼应是「现在」，并说明灵可抢先进入雾巢、错过了局长她们对现场的分析，只得由妮夏转述破译出的「过去/现在/未来」仪式文字与三件异象在雾巢的推测，灵可总结三者合起来正是「时间」，妮夏说快到出口了。",
+          "transcript_refs": [
+            "u00121",
+            "u00122",
+            "u00123",
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s010",
+      "start_ms": 1304800,
+      "end_ms": 1609867,
+      "summary": "众人眼前出现一座与海特洛市几乎无异的「城市」，灵可惊呼变成巨人、妮夏推测是城市缩小；小贞自称力量回归，灵可指出那是雾巢内的假象，随后四周安静下来。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00144",
+        "u00145",
+        "u00146"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e010a",
+          "start_ms": 1304800,
+          "end_ms": 1346933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia",
+            "xiaozhen"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可惊呼两人变成巨人了，妮夏推测是城市缩小了；小贞宣称恶灵的力量终于回来、要找鬼影出来拜见海特洛第一恶灵，灵可让她别闹、指出这不是真的城市、他们还在雾巢里，妮夏则说这城市和每天生活的地方几乎没区别，小贞追问电波小鬼感应到了什么。",
+          "transcript_refs": [
+            "u00132",
+            "u00133",
+            "u00134",
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e010b",
+          "start_ms": 1350133,
+          "end_ms": 1609867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia",
+            "xiaozhen"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可说那边好吵、像是发现了线索，妮夏追问前辈是否找到了线索，小贞说去看看才知道是坑还是线索；随后四周安静下来，灵可感叹「世界安静了」。",
+          "transcript_refs": [
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00145",
+            "u00146"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s011",
+      "start_ms": 1631200,
+      "end_ms": 1729333,
+      "summary": "灵可打开一扇可进入的门，说门内电波时静时吵；她向妮夏描述自己在「噪音」中如被困小房间、拼命捶门，妮夏比照恒今时「把人孤立于时间之外」的档案确认吻合，小贞担心地想另寻他路。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e011a",
+          "start_ms": 1631200,
+          "end_ms": 1653067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "xiaozhen",
+            "linko",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "小贞惊讶灵可什么时候也会这招；灵可说这是一扇能进去的门，里面的电波时而安静、时而特别吵；妮夏推断灵可先前听到的「噪音」正是来自这里。",
+          "transcript_refs": [
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e011b",
+          "start_ms": 1655467,
+          "end_ms": 1729333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia",
+            "xiaozhen"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可描述「噪音」像自己被困在小房间里、拼命捶打房门，「咚咚咚」盖过心跳、呼吸与墙上钟表的滴答，最后除了敲门声什么都听不到；她感觉有一个人被困在里面。妮夏说这正对得上恒今时「把人孤立于时间之外」的特性；小贞觉得电波不妙、提议另找路，妮夏则认为若规则是要找到恒今时，即便周围布满陷阱也得靠近，并询问灵可直觉的判断，灵可说里面确有想要的东西、但很危险，最好不要进去。",
+          "transcript_refs": [
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s012",
+      "start_ms": 1729867,
+      "end_ms": 1798400,
+      "summary": "灵可坦言这次想主动进门前先与同伴商量，不再一味凭直觉冲，并向妮夏提议一起进去；妮夏以「若这是前辈的决定，就没有犹豫的必要」回应。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173",
+        "u00174"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e012a",
+          "start_ms": 1729867,
+          "end_ms": 1761867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "xiaozhen",
+            "linko",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "小贞说头一次见这种情况；灵可表示这次想进去、但不是因为别无选择，自省平时只要感应到方向就直接冲过去、没能与同伴共享情报，小贞吐槽「你才知道啊」。",
+          "transcript_refs": [
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e012b",
+          "start_ms": 1762133,
+          "end_ms": 1798400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可提出如果这次和妮夏一起进去、会不会不一样；妮夏反问若「一起进去」是前辈的决定、那还有任何犹豫的必要吗，灵可轻唤「妮夏」；末尾旁白提到「冒失的少女」在遗忘中走向停滞。",
+          "transcript_refs": [
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172",
+            "u00173",
+            "u00174"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s013",
+      "start_ms": 1813867,
+      "end_ms": 1991733,
+      "summary": "雾巢中响起几段神秘旁白，追问「你牵着的那个人是谁」；随后小贞重新出现，与灵可斗嘴，原来她一直被关在黑箱子里，灵可才意识到先前的噪音来自她。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179",
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e013a",
+          "start_ms": 1813867,
+          "end_ms": 1832267,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "雾巢中响起几段神秘旁白，一面向「熟悉又陌生的电波」询问牵着的那个人是谁，一面又呼唤「冷静的少女」，最后提示可以继续往前走了。",
+          "transcript_refs": [
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00178"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e013b",
+          "start_ms": 1960267,
+          "end_ms": 1991733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "xiaozhen",
+            "linko",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "小贞调侃自己名讳竟也能算成语；灵可与小贞相认，说不知道她跑哪去了、全靠妮夏，妮夏应了一声；小贞抱怨自己被关在黑箱子里、怎么叫都不理她，灵可恍然大悟「原来是你」，难怪一直觉得很吵。",
+          "transcript_refs": [
+            "u00179",
+            "u00180",
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s014",
+      "start_ms": 2012000,
+      "end_ms": 2109333,
+      "summary": "众人来到只剩一盏路灯的尽头，遇到被困在此的小男孩；灵可自称管理局的人、上前要帮助他，男孩却说要去「月退家」；妮夏指出这说明「月退」并非他的名字。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen"
+      ],
+      "transcript_refs": [
+        "u00186",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e014a",
+          "start_ms": 2012000,
+          "end_ms": 2057867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nixia",
+            "linko",
+            "xiaozhen"
+          ],
+          "speaker_character_id": "",
+          "observation": "妮夏说沿途的灯都熄灭了、只剩前面这一盏；灵可判断那个人就被困在这里，上前向小男孩问好，谎称气球是商店送的、让他别害怕，并自我介绍叫灵可、身边的姐姐叫妮夏，是来帮助他的管理局成员。",
+          "transcript_refs": [
+            "u00186",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e014b",
+          "start_ms": 2058133,
+          "end_ms": 2109333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia",
+            "xiaozhen"
+          ],
+          "speaker_character_id": "",
+          "observation": "小男孩反问能否告诉他「月退家」怎么走，灵可误以为他叫「月退」；小贞通过气球提醒灵可：两人在想起自己名字后立刻摆脱了古怪的影响。灵可由此反问男孩为何记得名字却仍被困，妮夏判断那并非他的名字；男孩只记得有人叫他「去月退家」，妮夏致歉说没有头绪，男孩便说要去做必须做的事、准备离开。",
+          "transcript_refs": [
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196",
+            "u00197",
+            "u00198",
+            "u00199",
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s015",
+      "start_ms": 2112533,
+      "end_ms": 2201333,
+      "summary": "灵可担心男孩很快会连声音都听不到，想在无法求助于同伴的情况下用提问帮他回忆；妮夏怀疑这样行不通，灵可决定由自己来提醒他。",
+      "participants": [
+        "linko",
+        "nixia"
+      ],
+      "transcript_refs": [
+        "u00204",
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e015a",
+          "start_ms": 2112533,
+          "end_ms": 2150133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可说不妙、男孩很快连他们的声音也听不到，急着让妮夏回想 Exe 是否提过相关情报，又惋惜他最近不在局里；妮夏说这里无法呼叫副队长、只能从唯一的线索反推，试着由点及线再及面引出更多信息。",
+          "transcript_refs": [
+            "u00204",
+            "u00205",
+            "u00206",
+            "u00207",
+            "u00208",
+            "u00209"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e015b",
+          "start_ms": 2150667,
+          "end_ms": 2201333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nixia"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可向男孩指出：自己接收到了他的求救信号、他还留下这盏路灯，说明那个非去不可的地方对他很重要，并追问他被叫去「月退家」时的情景、理由与呼唤方式；妮夏怀疑这样做行不行得通、这里恐怕没人能提醒他，灵可答「那就由我来提醒他」。",
+          "transcript_refs": [
+            "u00210",
+            "u00211",
+            "u00212",
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216",
+            "u00217"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p14-s016",
+      "start_ms": 2209067,
+      "end_ms": 2309600,
+      "summary": "灵可引导闭眼的男孩一步步回忆，他终于想起要去找一位疲惫的年轻女家主、把东西在特定时间托付给她，并在提示下说出「去月退家吧，阿洛伊斯」；阿德勒现身道谢，表示须尽快赶到小姐身边，众人遂离开去找卡厄斯。",
+      "participants": [
+        "linko",
+        "nixia",
+        "xiaozhen",
+        "adler"
+      ],
+      "transcript_refs": [
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00231",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00237"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e016a",
+          "start_ms": 2209067,
+          "end_ms": 2274667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可让男孩闭上眼睛一步步回想，问他要去哪里、找谁、做什么；男孩想起要在特定时间把东西托付给一位年纪轻轻就当上家主、虽笑着却很疲惫的女人；灵可提示那位在等他的人开口了，并复述出「去月退家吧，阿洛伊斯」，随即认出那是管家大叔。",
+          "transcript_refs": [
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222",
+            "u00223",
+            "u00224",
+            "u00225",
+            "u00226",
+            "u00227",
+            "u00228",
+            "u00229",
+            "u00230"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p14-e016b",
+          "start_ms": 2274933,
+          "end_ms": 2309600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "xiaozhen",
+            "nixia",
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒现身，感谢三人相救；小贞打趣说「三位」可得好好报答本恶灵，妮夏谦称您客气了，灵可说这都是应该做的；阿德勒邀请三人日后来伊波恩做客、备好菜致谢，但表示现在必须尽快赶到自家小姐身边；灵可说确实该走了，卡厄斯肯定还在等着他们。",
+          "transcript_refs": [
+            "u00231",
+            "u00232",
+            "u00233",
+            "u00234",
+            "u00235",
+            "u00236",
+            "u00237"
+          ]
+        }
+      ]
+    }
+  ]
+}
