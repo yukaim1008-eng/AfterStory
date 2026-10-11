@@ -59,7 +59,7 @@
 
 M1 原路由保留，增加 /api 前缀副本。F1 新增幂等 POST /sessions/open、用户隔离 GET /conversations；用户行锁防止并发重复创建默认会话。GET /health 增加用户与能力标识。契约见 [运行说明](../running-frontend.md)。
 
-前端配置位于 frontend/public/characters.json；提示词为独立 JSON，版本不可变。娜娜莉鉴定师伙伴关系沿用基线；另外两位不套用该关系。正式 Canon 与关系待资料收集后确认。
+前端配置位于 `frontend/public/characters.json`；角色定义由数据库中的不可变 CharacterVersion 提供。三位角色已切换到审核完成的 P22 六字段版本：娜娜莉和伊洛伊保留各自的鉴定师协作起点，薄荷默认称用户为“可可”、只在职业或任务语境称“鉴定师”。旧实例和历史不会随前端版本切换而迁移。
 
 ## 验收与下一步
 

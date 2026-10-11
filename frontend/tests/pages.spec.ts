@@ -340,21 +340,64 @@ test("home is the default destination with four primary routes and continues int
   await expect(page.getByRole("textbox", { name: "消息" })).toBeEnabled();
 });
 
+test("installed character version starts a new chat while preserving cached legacy history", async ({
+  page,
+}) => {
+  const legacy = session("nanally-integration-v1");
+  await page.addInitScript(
+    (saved) => {
+      localStorage.setItem(
+        "afterstory:browser-test:draft:nanally",
+        JSON.stringify(saved),
+      );
+    },
+    {
+      id: legacy.conversation_id,
+      session: legacy,
+      draft: "旧版本草稿",
+    },
+  );
+  await fakeApi(page, false, {
+    sessions: [legacy],
+    turns: {
+      [legacy.conversation_id]: [turn("legacy-switch-turn", 1, "旧版本会话")],
+    },
+  });
+
+  await page.goto(
+    "/#/chat/nanally?conversation=nanally-integration-v1&turn=legacy-switch-turn",
+  );
+  await expect(page).toHaveURL(/#\/chat\/nanally$/);
+  await expect(page.locator(".chat-workspace")).toHaveAttribute(
+    "data-version",
+    "nanally-canon-p22-v1",
+  );
+  await expect(page.getByRole("textbox", { name: "消息" })).toHaveValue("");
+
+  await page.getByRole("button", { name: "回忆", exact: true }).click();
+  await page
+    .locator('.history-row[data-version="nanally-integration-v1"]')
+    .click();
+  await expect(page.locator(".chat-workspace")).toHaveAttribute(
+    "data-version",
+    "nanally-integration-v1",
+  );
+  await expect(page.getByRole("textbox", { name: "消息" })).toHaveValue(
+    "旧版本草稿",
+  );
+});
+
 test("home recent cards use only the current conversation instance", async ({
   page,
 }) => {
-  const current = "nanally-integration-v1";
+  const current = "nanally-canon-p22-v1";
   await fakeApi(page, false, {
     memory: true,
     sessions: [session(current)],
     turns: { [current]: [turn("home-turn", 1, "今天一起看了雨")] },
     memories: [
       memory("current-memory", `instance-${current}`, "当前实例记得夜晚散步"),
-      memory(
-        "other-memory",
-        "instance-iroi-integration-v1",
-        "伊洛伊实例的秘密",
-      ),
+      memory("other-memory", "instance-iroi-canon-p22-v1", "伊洛伊实例的秘密"),
     ],
   });
   await page.goto("/");
@@ -379,7 +422,7 @@ test("home encounter hero follows three characters across desktop viewports and 
     if (message.type() === "error") errors.push(message.text());
   });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  const id = "nanally-integration-v1";
+  const id = "nanally-canon-p22-v1";
   await fakeApi(page, false, {
     memory: true,
     sessions: [session(id)],
@@ -605,7 +648,7 @@ test("home keeps custom cover precedence and safely falls back without a greetin
 test("home clears old memories when a legacy instance or failed character instance is selected", async ({
   page,
 }) => {
-  const current = "nanally-integration-v1";
+  const current = "nanally-canon-p22-v1";
   const legacy = "legacy-chat";
   const legacySession = session(legacy, "nanally-legacy-v0");
   await fakeApi(page, false, {
@@ -620,11 +663,11 @@ test("home clears old memories when a legacy instance or failed character instan
       memory("legacy-memory", legacySession.instance_id, "旧版本实例记忆"),
       memory(
         "iroi-memory",
-        "instance-iroi-integration-v1",
+        "instance-iroi-canon-p22-v1",
         "不应泄露的伊洛伊记忆",
       ),
     ],
-    failMemoryInstance: "instance-iroi-integration-v1",
+    failMemoryInstance: "instance-iroi-canon-p22-v1",
   });
   await page.goto("/");
   await expect(page.getByText("当前实例记忆", { exact: true })).toBeVisible();
@@ -1016,7 +1059,7 @@ test("chat visual density keeps simulated dialogue readable without page scrolli
     ],
   };
   await fakeApi(page, false, {
-    sessions: [session(id, "nanally-integration-v1")],
+    sessions: [session(id, "nanally-canon-p22-v1")],
     turns: { [id]: [visualTurn] },
   });
   await page.goto(`/#/chat/nanally?conversation=${id}`);
@@ -1227,7 +1270,7 @@ test("ongoing matters can be created without pretending an unknown reminder time
 test("legacy versions restore their metadata and keep drafts and outbox in their own conversation", async ({
   page,
 }) => {
-  const current = "nanally-integration-v1";
+  const current = "nanally-canon-p22-v1";
   const legacy = {
     ...session("legacy-chat", "nanally-legacy-v0"),
     checkpoint: "旧剧情第二章",
@@ -1299,7 +1342,7 @@ test("history pagination failure retains loaded rows and retries the same page",
   page,
 }) => {
   const sessions = Array.from({ length: 21 }, (_, i) => ({
-    ...session(`history-${i}`, "nanally-integration-v1"),
+    ...session(`history-${i}`, "nanally-canon-p22-v1"),
     turns: 1,
     preview: `第 ${i + 1} 段历史`,
     last_activity_at: i === 0 ? null : timestamp,
@@ -1356,7 +1399,7 @@ test("conversation and turn links locate the exact source outside the latest mes
 test("late legacy history responses cannot replace the newly selected conversation", async ({
   page,
 }) => {
-  const current = "nanally-integration-v1";
+  const current = "nanally-canon-p22-v1";
   await fakeApi(page, false, {
     sessions: [session(current), session("slow-chat", "nanally-legacy-v0")],
     turns: {
@@ -1391,7 +1434,7 @@ test("pending message reloads failed conversation metadata before retrying", asy
 }) => {
   const id = "pending-chat";
   const requests = await fakeApi(page, false, {
-    sessions: [session(id, "nanally-integration-v1")],
+    sessions: [session(id, "nanally-canon-p22-v1")],
     failConversationOnce: id,
   });
   await page.addInitScript(
@@ -1541,7 +1584,7 @@ test("characters make the current world prominent while keeping the other two vi
 test("immersive chat keeps send preferences, multiline text and older-message reading position", async ({
   page,
 }) => {
-  const id = "nanally-integration-v1";
+  const id = "nanally-canon-p22-v1";
   const requests = await fakeApi(page, false, {
     sessions: [session(id)],
     turns: {
@@ -1552,7 +1595,7 @@ test("immersive chat keeps send preferences, multiline text and older-message re
   });
   await page.goto("/#/chat/nanally");
   const chat = page.locator(".chat-workspace");
-  await expect(chat).not.toContainText("integration-v1");
+  await expect(chat).not.toContainText("canon-p22-v1");
   await expect(chat).not.toContainText("文字交流已连接");
   await expect(chat).not.toContainText("联调");
   const input = page.getByRole("textbox", { name: "消息" });
@@ -1602,7 +1645,7 @@ test("immersive chat keeps send preferences, multiline text and older-message re
 test("memory filters load later pages and keep facts separate from conversation excerpts", async ({
   page,
 }) => {
-  const id = "nanally-integration-v1";
+  const id = "nanally-canon-p22-v1";
   await fakeApi(page, false, {
     memory: true,
     sessions: [session(id)],
@@ -1636,19 +1679,15 @@ test("memory requests that finish after a role switch cannot populate the new ro
 }) => {
   await fakeApi(page, false, {
     memory: true,
-    delayMemoryInstance: "instance-nanally-integration-v1",
+    delayMemoryInstance: "instance-nanally-canon-p22-v1",
     memories: [
-      memory(
-        "slow",
-        "instance-nanally-integration-v1",
-        "不能出现在伊洛伊的内容",
-      ),
-      memory("fast", "instance-iroi-integration-v1", "伊洛伊记得的内容"),
+      memory("slow", "instance-nanally-canon-p22-v1", "不能出现在伊洛伊的内容"),
+      memory("fast", "instance-iroi-canon-p22-v1", "伊洛伊记得的内容"),
     ],
   });
   await page.goto("/#/memory/nanally");
   await page.waitForRequest((request) =>
-    request.url().includes("instance-nanally-integration-v1/memories"),
+    request.url().includes("instance-nanally-canon-p22-v1/memories"),
   );
   await page.evaluate(() => {
     location.hash = "#/memory/iroi";
@@ -1666,7 +1705,7 @@ test("history filters find a matching role on later pages while retaining unknow
   const sessions = Array.from({ length: 21 }, (_, i) => ({
     ...session(
       `filter-${i}`,
-      i === 20 ? "iroi-integration-v1" : "nanally-integration-v1",
+      i === 20 ? "iroi-canon-p22-v1" : "nanally-canon-p22-v1",
     ),
     turns: 1,
     preview: i === 20 ? "伊洛伊的雨天" : "娜娜莉的日常",
@@ -1682,9 +1721,7 @@ test("history filters find a matching role on later pages while retaining unknow
   await expect(page.locator(".history-row")).toHaveCount(1);
   await expect(page.locator(".history-row")).toContainText("伊洛伊的雨天");
   await expect(page.locator(".history-row")).toContainText("未记录时间");
-  await expect(page.locator(".history-row")).not.toContainText(
-    "integration-v1",
-  );
+  await expect(page.locator(".history-row")).not.toContainText("canon-p22-v1");
 });
 
 test("memories page presents compact empty and populated journal states", async ({
@@ -1692,7 +1729,7 @@ test("memories page presents compact empty and populated journal states", async 
 }) => {
   const historySamples: Session[] = [
     {
-      ...session("nanally-visual", "nanally-integration-v1"),
+      ...session("nanally-visual", "nanally-canon-p22-v1"),
       name: "娜娜莉",
       turns: 4,
       last_activity_at: "2026-09-15T23:42:00Z",
@@ -1700,28 +1737,28 @@ test("memories page presents compact empty and populated journal states", async 
         "“最近工作事情有点多，感觉脑子都转不动了。”\n她说：“那先别想工作的事了，陪我待一会儿吧。”",
     },
     {
-      ...session("iroi-visual", "iroi-integration-v1"),
+      ...session("iroi-visual", "iroi-canon-p22-v1"),
       name: "伊洛伊",
       turns: 3,
       last_activity_at: "2026-09-14T12:30:00Z",
       preview: "“最近一直在推进自己的项目。”\n她说：“慢慢来也没关系呀。”",
     },
     {
-      ...session("mint-visual", "mint-integration-v1"),
+      ...session("mint-visual", "mint-canon-p22-v1"),
       name: "薄荷",
       turns: 3,
       last_activity_at: "2026-09-13T12:30:00Z",
       preview: "“今天发生了一件挺有意思的小事。”\n她说：“快说快说，我要听！”",
     },
     {
-      ...session("nanally-rest", "nanally-integration-v1"),
+      ...session("nanally-rest", "nanally-canon-p22-v1"),
       name: "娜娜莉",
       turns: 2,
       last_activity_at: "2026-09-12T12:30:00Z",
       preview: "“今天什么都不想做。”\n她说：“那今天就什么都不做。”",
     },
   ];
-  const id = "nanally-integration-v1";
+  const id = "nanally-canon-p22-v1";
   await fakeApi(page, false, {
     memory: true,
     sessions: historySamples,
@@ -1925,7 +1962,7 @@ test("desktop viewport sizes keep core pages and controls inside the screen", as
     if (message.type() === "error") errors.push(message.text());
   });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  const id = "nanally-integration-v1";
+  const id = "nanally-canon-p22-v1";
   await fakeApi(page, false, {
     memory: true,
     sessions: [

@@ -39,7 +39,7 @@ npm run dev
 
 ## 数据与接口
 
-默认 seed 导入原工程 fixtures 和 `fixtures/companions.integration.json` 的三位联调资料。2026-10-11 已另外导入 `fixtures/companions.canon-p22.json` 中的三个正式六字段版本，但前端 `versionId` 和现有实例仍指向旧联调版本。已导入版本不可覆盖；切换时需要显式修改前端版本或创建新版本实例。历史可继续打开旧版本会话并使用原绑定版本；独立 Canon 运行时接入仍未实现。
+默认 seed 导入原工程 fixtures 和 `fixtures/companions.integration.json` 的三位联调资料；2026-10-11 又导入 `fixtures/companions.canon-p22.json` 中的三个正式六字段版本，前端 `versionId` 已指向正式版本。浏览器若缓存旧联调会话，默认角色入口会保留旧会话及草稿并为正式版本打开新会话；历史入口仍可继续旧版本会话。已导入版本不可覆盖，独立 Canon 运行时接入仍未实现。
 
 默认封面来自 data/character-assets/{id}.png，prepare:media 复制到 public/media。缺失时回退官方宣传参考图。自定义封面存当前浏览器 IndexedDB，以后端用户与角色为键；清除站点数据会移除封面和偏好，不会删除数据库聊天。
 

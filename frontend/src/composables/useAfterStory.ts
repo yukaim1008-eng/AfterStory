@@ -229,12 +229,32 @@ export function createAfterStory() {
       Object.assign(preferences, read("preferences", preferences));
       if (!location.hash) selected.value = read("selected", selected.value);
       for (const c of characters.value) {
-        const saved = read<{
+        let saved = read<{
           id?: string;
           draft: string;
           pending?: Chat["pending"];
           session?: Session;
         }>(`draft:${c.id}`, { draft: "" });
+        if (
+          saved.id &&
+          saved.session &&
+          saved.session.version_id !== c.versionId
+        ) {
+          store(`conversation:${saved.id}`, saved);
+          const [path, query] = location.hash.split("?");
+          const params = new URLSearchParams(query);
+          if (params.get("conversation") === saved.id) {
+            params.delete("conversation");
+            params.delete("turn");
+            const hash = `${path}${params.size ? `?${params}` : ""}`;
+            history.replaceState(
+              null,
+              "",
+              `${location.pathname}${location.search}${hash}`,
+            );
+          }
+          saved = { draft: "" };
+        }
         chats[c.id] = {
           id: saved.id || "",
           turns: [],

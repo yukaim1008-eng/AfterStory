@@ -1,6 +1,6 @@
 # 角色与原作资料
 
-状态：身份/版本/实例基础与 Minimal Character Schema v1 已实现并验证；三位正式角色的 P22 六字段版本已导入，人物资料研究库已完成 P1–P22 整理，现有实例仍保持旧版本引用。
+状态：身份/版本/实例基础与 Minimal Character Schema v1 已实现并验证；三位正式角色的 P22 六字段版本已导入并成为前端默认版本，人物资料研究库已完成 P1–P22 整理，旧实例仍保持原版本引用。
 
 ## 职责与已确认约束
 
@@ -78,7 +78,7 @@ Minimal Character Schema v1 的实现与验证范围见 [实施记录](../implem
 
 `fixtures/companions.profile-v1.candidate.json` 保留娜娜莉、伊洛伊、薄荷的档案基线；完成 P1–P22 剧情证据审核后，正式包保存于 `fixtures/companions.canon-p22.json`。三份数据均通过 `CharacterDefinition` 校验，并由 Prompt Builder v1.0 稳定编译。
 
-2026-10-11 已执行现有 `seed()`，生成 `nanally-canon-p22-v1`、`iroi-canon-p22-v1`、`mint-canon-p22-v1` 三个新的不可变 `CharacterVersion`。没有修改前端 `versionId` 或已有 `CharacterInstance`；实际聊天验收需要显式创建新版本实例或另行切换前端版本。
+2026-10-11 已执行现有 `seed()`，生成 `nanally-canon-p22-v1`、`iroi-canon-p22-v1`、`mint-canon-p22-v1` 三个新的不可变 `CharacterVersion`，并将前端 `versionId` 切换到对应版本。已有 `CharacterInstance` 不修改；默认入口为正式版本打开新会话，历史入口仍可进入旧版本会话。
 
 ## 人物资料研究库
 
