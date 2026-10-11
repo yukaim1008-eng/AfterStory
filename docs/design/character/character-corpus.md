@@ -1,6 +1,6 @@
 # 人物资料研究库：最合理实施顺序
 
-状态：M0、M1 已完成；M2 的本地视频工具 Version `1.0` 已完成 P1–P22 的抽取与逐条审核。Canon K0–K4 已打通 P1–P22 的正式场景/证据、结构化知识及审核视图（按批次推进：批次一 P5–P8、批次二 P9–P11、批次三 P12–P15、批次四 P16–P18、批次五 P19–P22 全部完成）。P2–P4 已从多条人物表现证据归纳带边界的 Trait，P5 起各批次按计划暂不建 Trait，待 P1–P22 全集归纳；[低成本审核流程](low-cost-video-review.md) 已完成 P2 校准、P3 协议 v1 整集验证、P4 协议 v2 实跑和 P5–P22 全量审核。人物地图、世界知识和人物关系图见 [独立设计稿](canon-knowledge-map.md)。
+状态：M0、M1 已完成；M2 的本地视频工具 Version `1.0` 已完成 P1–P22 的抽取与逐条审核。Canon K0–K4 已打通 P1–P22 的正式场景/证据、结构化知识及审核视图（按批次推进：批次一 P5–P8、批次二 P9–P11、批次三 P12–P15、批次四 P16–P18、批次五 P19–P22 全部完成），并完成跨 P 全集 Trait 归纳（P2–P4 旧 Trait 17 条保留，新归纳 34 条，共 51 条）。[低成本审核流程](low-cost-video-review.md) 已完成 P2 校准、P3 协议 v1 整集验证、P4 协议 v2 实跑和 P5–P22 全量审核。人物地图、世界知识和人物关系图见 [独立设计稿](canon-knowledge-map.md)。
 
 ## 目标与边界
 
@@ -70,4 +70,4 @@
 
 ## 本轮停止点
 
-P1–P22 已完成机器抽取、逐条审核与正式提升、结构化知识、人物证据和视图刷新（批次一 P5–P8 见 [实施记录](../../implementation/canon-knowledge-p5-p8.md)，批次二 P9–P11 见 [实施记录](../../implementation/canon-knowledge-p9-p11.md)，批次三 P12–P15 见 [实施记录](../../implementation/canon-knowledge-p12-p15.md)，批次四 P16–P18 见 [实施记录](../../implementation/canon-knowledge-p16-p18.md)，批次五 P19–P22 见 [实施记录](../../implementation/canon-knowledge-p19-p22.md)）。跨 P Trait 归纳在全部批次完成后统一进行，随后产出三角色六字段候选（仅审核）。未经该提升与归纳门禁，不把研究结论写入正式 Character Definition。
+P1–P22 已完成机器抽取、逐条审核与正式提升、结构化知识、人物证据和视图刷新（批次一 P5–P8 见 [实施记录](../../implementation/canon-knowledge-p5-p8.md)，批次二 P9–P11 见 [实施记录](../../implementation/canon-knowledge-p9-p11.md)，批次三 P12–P15 见 [实施记录](../../implementation/canon-knowledge-p12-p15.md)，批次四 P16–P18 见 [实施记录](../../implementation/canon-knowledge-p16-p18.md)，批次五 P19–P22 见 [实施记录](../../implementation/canon-knowledge-p19-p22.md)），并完成 P1–P22 全集 Trait 归纳（新增 34 条，共 51 条；见 [P5–P22 汇总报告](../../implementation/canon-knowledge-p05-p22-summary.md)）。三角色六字段候选已产出（[候选稿](../../implementation/character-definition-candidates-p05-p22.md)，仅审核）。未经该提升与归纳门禁，不把研究结论写入正式 Character Definition。

@@ -125,7 +125,7 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         "profiles": 23,
         "scenes": 515,
         "evidence": 217,
-        "traits": 17,
+        "traits": 51,
         "canon_checkpoints": 22,
         "canon_evidence": 1147,
         "world_entities": 135,

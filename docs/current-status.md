@@ -44,6 +44,7 @@
 - 2026-10-11 Canon K4 批次三完成 P12–P15 正式提升：第6话《雾巢游戏 1–4》的 1,095 条候选经审核保留 1,005 条，提升为 67 个 Scene 与 142 条 Canon Evidence；新增妮夏、小贞 2 名人物，人物目录 69→71。新增 9 个世界实体、49 条人物事实、33 条世界事实、21 条原作关系、41 条人物表现证据；仍不建 Trait。P12–P15 source part 更新为 `verified_present`，视图刷新到 P15。本批次登记雾巢、雾巢游戏、雾柩、雾枢、特殊收容、小夜蛾、囿巢鸟、辉环、雾巢伴生歧骸等新实体；幻象/梦境/广播按 `reported_claim` 保存；「小男孩（阿洛伊斯）」等无法稳定消歧的名字不强行登记。隔离 SQLite、幂等提升、三视图、44 项定向测试与 Ruff 全部通过。见 [批次三实施记录](implementation/canon-knowledge-p12-p15.md)。
 - 2026-10-11 Canon K4 批次四完成 P16–P18 正式提升：第7话《勇者斗赤龙 1–3》的 926 条候选经审核保留 891 条，提升为 28 个 Scene 与 103 条 Canon Evidence；本批次未新增人物，人物目录保持 71。新增 9 个世界实体、16 条人物事实、9 条世界事实、5 条原作关系、13 条人物表现证据；仍不建 Trait。P16–P18 source part 更新为 `verified_present`，视图刷新到 P18。本话为薄荷家中桌游「九百九十九夜」的冒险游戏，游戏世界设定（沃伦大陆、绵绵、赤龙、龙之铠甲、琥珀湖等）一律按 `reported_claim` 保存，游戏内 NPC 不登记为人物。隔离 SQLite、幂等提升、三视图、44 项定向测试与 Ruff 全部通过。见 [批次四实施记录](implementation/canon-knowledge-p16-p18.md)。
 - 2026-10-11 Canon K4 批次五完成 P19–P22 正式提升：第8话《魔女 1–4》的 1,300 条候选经审核保留 1,247 条，提升为 46 个 Scene 与 129 条 Canon Evidence；新增褪月、夏莉、费伊、安妮、维克托、路易、多特、阿比盖尔、贝蒂、费思、科顿、比利、玛丽、里维斯、皮克托、丽兹、吉尔斯、梅露菈 18 名人物，人物目录 71→89。新增 10 个世界实体、49 条人物事实、16 条世界事实、21 条原作关系、27 条人物表现证据；仍不建 Trait。P19–P22 source part 由 `user_confirmed_present` 更新为 `verified_present`，视图刷新到 P22。本话舞台是「圣阿尔博镇」异象空间，「审判官」为未具名敌人不登记人物，褪月/安妮/梅露拉的同一性保持未知、只记录剧情关联；异象空间内的世界事实一律按 `reported_claim` 保存。隔离 SQLite、幂等提升、三视图、41 项定向测试与 Ruff 全部通过。见 [批次五实施记录](implementation/canon-knowledge-p19-p22.md)。五个提升批次全部完成，下一步进行 P1–P22 全集 Trait 归纳与三角色六字段候选。
+- 2026-10-11 Canon K4 全集归纳完成：五个提升批次（P5–P8、P9–P11、P12–P15、P16–P18、P19–P22）全部闭环后，基于 P1–P22 已接受的 Scene / Canon Evidence / 人物表现证据做跨 P Trait 归纳，新增 34 条 Trait，Trait 总数 17→51；规则为「某表现须由 ≥2 个独立 Scene 支持才成 Trait，单章表现标 `conditional`，高解释性标签必配反向边界」。所有拥有 ≥2 条表现证据的 33 名角色均获得 Trait，24 名单条证据角色保持 evidence-only。P5–P22 共 420 Scene / 1,052 Canon Evidence，人物目录 42→89。同时产出 `docs/implementation/character-definition-candidates-p05-p22.md`（nanally/iroi/mint 六字段候选，仅审核未导入）。18 个提升计划哈希/链/覆盖/幂等复查全绿；validate 89/515/1147、build、P22 三视图、42 项定向测试与 Ruff 全部通过。汇总见 [P5–P22 汇总报告](implementation/canon-knowledge-p05-p22-summary.md)。
 - 当前授权：UI / UX 完整改版 Phase 1–8 已完成；用户随后要求按页面分阶段清理旧视觉技术债，ChatPage 布局清理和角色氛围文案精修、Home、Characters、Memories 及 SettingsPage 视觉精修均已完成并通过前端验证。全站最终视觉审查与最小统一修正亦已完成，见 [执行记录](implementation/ui-redesign.md)。本轮未修改后端与角色提示词。
 - 最新授权：全站最终视觉审查只统一 Design System、响应式与状态表现，不重构页面、不新增功能或修改业务逻辑；已完成后停止。
 - 当前阶段：用户授权的 A–E 五阶段方案已全部实现、验证并分别提交。执行结果见 [F2 方案](implementation/f2-foundations.md)。
@@ -89,7 +90,7 @@
 
 ## 下一步
 
-Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库已完成 P1–P22 的机械抽取和逐条审核；Canon K0–K4 已完成 P1–P22 的正式入库、结构化知识和三张审核视图闭环（按批次推进：批次一 P5–P8、批次二 P9–P11、批次三 P12–P15、批次四 P16–P18、批次五 P19–P22 全部完成）。P2–P4 已按多证据归纳带边界的 Trait，P5 起各批次暂不建 Trait，全部批次完成后统一做 P1–P22 全集归纳；正式 Character Definition 仍未被修改。三位六字段候选继续保持未导入。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未启动。
+Minimal Character Schema v1、Memory System M0–M8、Conversation Core v1 和 Conversation Response Policy v1 已完成。人物资料研究库已完成 P1–P22 的机械抽取、逐条审核、正式入库与全集 Trait 归纳；Canon K0–K4 已完成 P1–P22 的正式入库、结构化知识、三张审核视图闭环，并完成跨 P Trait 归纳（Trait 51 条）。三位正式角色（nanally / iroi / mint）的六字段修改候选已产出，**仅供审核、仍未导入**；正式 Character Definition 未被修改。离线通知、Voice、Character Schema v2 和 Canon 运行时接入均未启动。
 
 2026-09-18 最新顺序为：最小 Character Schema（暂按六部分拆分）→ Memory 系统设计 → Memory System 完成后优化角色 Schema 与内容；具体字段和实现范围仍待定稿。此次决定调整下方旧阶段排序的当前起点，不表示 Memory 系统已经开发或验收。
 
