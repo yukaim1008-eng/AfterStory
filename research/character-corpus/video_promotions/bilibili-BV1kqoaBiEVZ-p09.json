@@ -1,0 +1,2081 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p09",
+  "reviewed_transcript_sha256": "76127c0be0f23c5cdd8d116864f3558e86352830e4aa0d48b8ccc1959fefe731",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p09",
+    "source_work": "异环",
+    "display_name": "第4话 红字的研究 1",
+    "sequence": 9,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第4话 红字的研究 1",
+    "predecessor_id": "nt-bv1kqoabievz-p08",
+    "spoiler_scope": "第4话 红字的研究 1"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s001",
+      "start_ms": 9067,
+      "end_ms": 51467,
+      "summary": "清晨伊波恩古董店，娜娜莉把一个无人认领的快递包裹交给鉴定师；众人逐一排除后，达芙蒂尔说明是自己半小时前替送货上门、签收栏只写店名的快递代签的。",
+      "participants": [
+        "nanally",
+        "edgar",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e001a",
+          "start_ms": 9067,
+          "end_ms": 26400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉向鉴定师出示包裹并追问来历；埃德嘉转述塔吉多也否认是自己的，娜娜莉又逐一排除早雾、阿德勒等人。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e001b",
+          "start_ms": 30400,
+          "end_ms": 51467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔说明大概半小时前快递员送货上门、签收栏只写「伊波恩古董店」，她先行代签，并自问是否草率。",
+          "transcript_refs": [
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s002",
+      "start_ms": 51733,
+      "end_ms": 175200,
+      "summary": "埃德嘉引出「呗果」上的木偶新闻：海特洛一夜出现五个相似木偶，起初被当作艺术企划，随后有人称是能夺人性命、把人变成木偶的异象，引发恐慌，异象管理局介入辟谣。",
+      "participants": [
+        "nanally",
+        "edgar",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00026"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e002a",
+          "start_ms": 51733,
+          "end_ms": 77333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉打趣是鬼郎丸网购，又请大家看呗果；她读出「神秘木偶惊现海特洛」的头条，发现与店里木偶相似。",
+          "transcript_refs": [
+            "u00010",
+            "u00011",
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e002b",
+          "start_ms": 77600,
+          "end_ms": 164533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉介绍一夜间海特洛人流密集处共出现五个相似木偶，起初被当作乔望尼或德沃夏克家族的艺术活动，直到有人声称是夺人性命、把人变成木偶的异象所为；异象管理局介入调查并呼吁市民勿信谣言。",
+          "transcript_refs": [
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00022",
+            "u00023",
+            "u00024"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e002c",
+          "start_ms": 165067,
+          "end_ms": 175200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉追问店里收到的木偶是否就是第六个，并怀疑它不久前还是人类。",
+          "transcript_refs": [
+            "u00025",
+            "u00026"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s003",
+      "start_ms": 175733,
+      "end_ms": 325067,
+      "summary": "众人决定把木偶交给 J.T.F 并联系异象管理局；被吵醒的店长浔（大姐头）抱怨木偶晦气，J.T.F 队员到场请众人移步管理局配合调查，浔同意配合并提起因此造成的营业损失。",
+      "participants": [
+        "daffodill",
+        "nanally",
+        "hotori",
+        "edgar",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00046",
+        "u00047"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e003a",
+          "start_ms": 175733,
+          "end_ms": 226667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人提议先交给 J.T.F 处理，达芙蒂尔表示由她联系异象管理局；随后被吵醒的店长（大姐头）抱怨清早不得清净、嫌木偶晦气要求尽快搬走。",
+          "transcript_refs": [
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030",
+            "u00031",
+            "u00032",
+            "u00033"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e003b",
+          "start_ms": 227200,
+          "end_ms": 276800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "J.T.F 队员请众人移步异象管理局配合调查；达芙蒂尔转向浔征询意见，浔表示配合调查优先，并提到店员无法看店造成的损失可要求补偿。",
+          "transcript_refs": [
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e003c",
+          "start_ms": 299467,
+          "end_ms": 325067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "店长催促众人收拾动身，解释自己主动同行是因艾尔菲德一早约她到会客室，并打算向对方索要线索费。",
+          "transcript_refs": [
+            "u00042",
+            "u00043",
+            "u00044",
+            "u00046",
+            "u00047"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s004",
+      "start_ms": 350133,
+      "end_ms": 464800,
+      "summary": "在异象管理局，奈丽说明案件已交由 E.T.D 六队接手，并向伊波恩众人解释「涉异犯罪」的含义，随后带他们去看已转移到临时收容层的木偶。",
+      "participants": [
+        "naili",
+        "daffodill",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e004a",
+          "start_ms": 350133,
+          "end_ms": 386133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "naili"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽问候伊波恩众人，说明案件已由 E.T.D 六队接手，并解释因网上不安情绪扩大，改由更擅长「涉异犯罪」与「迷因异象」的队伍办理；她解释「涉异犯罪」指利用异象特性或涉异能者的人为犯罪。",
+          "transcript_refs": [
+            "u00048",
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00055"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e004b",
+          "start_ms": 392000,
+          "end_ms": 464800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "naili"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽告知从伊波恩古董店收到的木偶已转移至临时收容层，请众人随她前往。",
+          "transcript_refs": [
+            "u00057",
+            "u00058"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s005",
+      "start_ms": 486667,
+      "end_ms": 548800,
+      "summary": "临行前浔（店长）谢绝同行，说自己被艾尔菲德局长留下开「家长会」，并让鉴定师去收容层，叮嘱众人办完事早点回去。",
+      "participants": [
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00068",
+        "u00069",
+        "u00070"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e005a",
+          "start_ms": 486667,
+          "end_ms": 531200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "浔婉拒同行，说自己被艾尔菲德局长留下开「家长会」，并打趣让同伴也去感受会客室的冷气与说教。",
+          "transcript_refs": [
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062",
+            "u00064",
+            "u00065",
+            "u00066"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e005b",
+          "start_ms": 531733,
+          "end_ms": 548800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "浔告诉鉴定师收容层更需要他的眼力，让他们忙完不必等自己、早点回去。",
+          "transcript_refs": [
+            "u00068",
+            "u00069",
+            "u00070"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s006",
+      "start_ms": 650400,
+      "end_ms": 804800,
+      "summary": "会议开始，奈丽介绍 E.T.D 六队的卡厄斯与尤克阿什庭的行动专员拉维尼娅；卡厄斯请达芙蒂尔复述收快递的经过，并追问快递员样貌。",
+      "participants": [
+        "naili",
+        "chaos",
+        "laweiniya",
+        "daffodill",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00087",
+        "u00088"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e006a",
+          "start_ms": 676267,
+          "end_ms": 749333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "naili",
+            "chaos",
+            "laweiniya"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽介绍伊波恩的两位异象猎人，并引出 E.T.D 六队的卡厄斯与尤克阿什庭行动专员拉维尼娅；拉维尼娅代不便出席的黑羽问候众人。",
+          "transcript_refs": [
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080",
+            "u00081"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e006b",
+          "start_ms": 749600,
+          "end_ms": 804800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯请收件者复述经过；达芙蒂尔回忆早上七点半快递员送货、自己代签后取回，并提到包裹标「易碎品」却未做任何减震处理，还描述了快递员的外貌。",
+          "transcript_refs": [
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00087",
+            "u00088"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s007",
+      "start_ms": 805333,
+      "end_ms": 844000,
+      "summary": "奈丽说明调查显示快递员与配送记录均为伪造，卡厄斯断定寄件与送货皆是「假的」；众人讨论寄件人动机，拉维尼娅推测对方想让鉴定师鉴定木偶，鉴定师请求前去检查并获奈丽同意。",
+      "participants": [
+        "chaos",
+        "naili",
+        "laweiniya",
+        "daffodill",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00096",
+        "u00097"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e007a",
+          "start_ms": 805333,
+          "end_ms": 815200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "naili"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯断定从货物到快递员全都是「假的」；奈丽根据调查记录说明负责该片区的快递员与达芙蒂尔描述不符、分拣中心也无对应出库记录。",
+          "transcript_refs": [
+            "u00089",
+            "u00090"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e007b",
+          "start_ms": 822400,
+          "end_ms": 839467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "laweiniya"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人推测有人乔装快递员专程送来木偶；拉维尼娅提出对方或许想让鉴定师鉴定「木偶」、看其中是否残留异象气息；卡厄斯认为即使没有委托人也值得检查。",
+          "transcript_refs": [
+            "u00092",
+            "u00093",
+            "u00094"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e007c",
+          "start_ms": 840000,
+          "end_ms": 844000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师请求前去检查木偶，奈丽应允其自便。",
+          "transcript_refs": [
+            "u00096",
+            "u00097"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s008",
+      "start_ms": 869333,
+      "end_ms": 911467,
+      "summary": "鉴定师检查木偶，发现衣物中藏有黑色卡片；卡片上的红色字母与数字引人注意，鉴定师判断木偶本身普通、只是与异象有过接触，卡片才是异象衍生物。",
+      "participants": [
+        "esper-zero",
+        "laweiniya",
+        "chaos",
+        "naili",
+        "daffodill",
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00105",
+        "u00106",
+        "u00107"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e008a",
+          "start_ms": 869333,
+          "end_ms": 904800,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师注意到木偶口袋里写着「贝拉」等名字与数字的黑色卡片，并感到异象气息来自这些卡片；他判断六个木偶带有相似而微弱的气息、应是同一类异象所留，木偶本身普通、只是与异象接触过。",
+          "transcript_refs": [
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00105"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e008b",
+          "start_ms": 905067,
+          "end_ms": 911467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "laweiniya"
+          ],
+          "speaker_character_id": "",
+          "observation": "拉维尼娅追问是否卡片才是异象衍生物，鉴定师认同可能性很大。",
+          "transcript_refs": [
+            "u00106",
+            "u00107"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s009",
+      "start_ms": 912000,
+      "end_ms": 1014667,
+      "summary": "卡厄斯给出调查结论：有人盗用呗果账号自导自演「市民可能被异象变成木偶」的闹剧以制造恐慌；奈丽与卡厄斯梳理出两条线索——被假快递员送上门的木偶与会写字的异象，并向尤克阿什庭求证记载。",
+      "participants": [
+        "chaos",
+        "naili",
+        "laweiniya",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00118",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e009a",
+          "start_ms": 912000,
+          "end_ms": 964000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯判定有人盗用一批呗果账号，自导自演「普通市民可能被异象变成木偶」的闹剧以制造恐慌，并以邻居因害怕而请他帮忙遛狗的趣事调侃幕后之人。",
+          "transcript_refs": [
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e009b",
+          "start_ms": 964533,
+          "end_ms": 1002933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "naili"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽指出只能在收容或泯除异象后向公众交代真相才能平息谣言；卡厄斯归纳出两条线索：被假快递员送上门的木偶，以及会写字留言的异象，并称后者并不多见。",
+          "transcript_refs": [
+            "u00117",
+            "u00118",
+            "u00119",
+            "u00120",
+            "u00121",
+            "u00122"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e009c",
+          "start_ms": 1003467,
+          "end_ms": 1014667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "naili",
+            "laweiniya"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽询问尤克阿什庭是否有相关异象记载并请其解读，拉维尼娅回答现有资料中暂未找到相符的异象。",
+          "transcript_refs": [
+            "u00123",
+            "u00124"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s010",
+      "start_ms": 1015200,
+      "end_ms": 1085867,
+      "summary": "黑羽主动提出若能确定卡片上姓名的身份或可用占卜帮忙；会议散场后，达芙蒂尔为没留意快递员而自责，并劝鉴定师先回去休息。",
+      "participants": [
+        "blackbird",
+        "laweiniya",
+        "chaos",
+        "naili",
+        "daffodill",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e010a",
+          "start_ms": 1015200,
+          "end_ms": 1041067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird",
+            "laweiniya"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽表示若能确定卡片上姓名的身份，或可借占卜窥见其命运轨迹；拉维尼娅建议卡厄斯带其他收到黑色卡片的人到魔女之家合作占卜，卡厄斯应下。",
+          "transcript_refs": [
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e010b",
+          "start_ms": 1041333,
+          "end_ms": 1053067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "naili",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "奈丽请伊波恩众人有新线索时及时联系异象管理局，达芙蒂尔答应会多加留意，随后奈丽宣布散会。",
+          "transcript_refs": [
+            "u00129",
+            "u00130",
+            "u00131"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e010c",
+          "start_ms": 1060267,
+          "end_ms": 1085867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "散会后达芙蒂尔为当时没更留意快递员而自责，称伊波恩的安全由她负责、这次太大意了，并劝累了的鉴定师先回去休息。",
+          "transcript_refs": [
+            "u00133",
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s011",
+      "start_ms": 1106133,
+      "end_ms": 1180800,
+      "summary": "伊波恩店内，娜娜莉一边扎马步一边浇花，自称把修行融入日常；达芙蒂尔只是寻常地浇花，阿德勒接过修剪枝叶的工作。",
+      "participants": [
+        "nanally",
+        "daffodill",
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00144",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e011a",
+          "start_ms": 1106133,
+          "end_ms": 1160267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉以扎马步的姿势浇花、自称把修行的点滴融入日常；达芙蒂尔说自己只是很普通地在浇花。",
+          "transcript_refs": [
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00144",
+            "u00145",
+            "u00146",
+            "u00147"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e011b",
+          "start_ms": 1163467,
+          "end_ms": 1180800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒称赞花草长得精神、多亏两人帮忙，并接手修剪枝叶；娜娜莉说精细活儿要交给大叔。",
+          "transcript_refs": [
+            "u00148",
+            "u00149",
+            "u00150"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s012",
+      "start_ms": 1181067,
+      "end_ms": 1259733,
+      "summary": "娜娜莉说起昨天的案子：库霸快递那边问不出线索、还停招临时工；她猜测异象特意把木偶送来伊波恩是在挑衅柯林斯家族并传递某种信息，阿德勒来报有客人到访。",
+      "participants": [
+        "nanally",
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e012a",
+          "start_ms": 1181067,
+          "end_ms": 1230667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说库霸快递那边问不出线索、负责人还表示暂不招临时工，抱怨稳定外快少了一个；她猜测异象把木偶送来伊波恩是在挑衅柯林斯家族、传递某种暗号。",
+          "transcript_refs": [
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156",
+            "u00157",
+            "u00158"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e012b",
+          "start_ms": 1231200,
+          "end_ms": 1259733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人指出若针对娜娜莉，签收人应写她的名字；娜娜莉追问暗示是给谁看的，阿德勒前来通报有客人到访。",
+          "transcript_refs": [
+            "u00160",
+            "u00161",
+            "u00162",
+            "u00163"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s013",
+      "start_ms": 1262933,
+      "end_ms": 1426667,
+      "summary": "一位客人蕾妮上门求助；阿德勒接待并请她就座喝茶，蕾妮说明自己是出租车司机，最近每晚九点都会被一个披斗篷的怪人袭击，被打却完全不觉得疼。",
+      "participants": [
+        "leini",
+        "adler",
+        "nanally",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173",
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e013a",
+          "start_ms": 1273867,
+          "end_ms": 1307733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮拘谨地上门询问是否是伊波恩；阿德勒欢迎并判断她想咨询异象委托，请她坐下、为她上茶，并介绍店里的异象猎人。",
+          "transcript_refs": [
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e013b",
+          "start_ms": 1353067,
+          "end_ms": 1412267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮称自己是出租车司机，八点出班、八点收班；她描述最近几天每到晚上九点整就会出现一个披斗篷的怪人打她，虽然看着用力，打在身上却完全不疼。",
+          "transcript_refs": [
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00178"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s014",
+      "start_ms": 1430133,
+      "end_ms": 1506400,
+      "summary": "娜娜莉把「斗篷人」当成上门催债的黑帮标配，扬言要用拳头教训对方；蕾妮澄清自己没欠过钱，对方一言不发地挥着大镰刀，鉴定师推测这可能是幻觉或异象。",
+      "participants": [
+        "nanally",
+        "leini",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e014a",
+          "start_ms": 1430133,
+          "end_ms": 1462933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉把每晚九点准时出现的斗篷人当作黑帮电影里上门催债的标配，扬言要用拳头和他讲道理。",
+          "transcript_refs": [
+            "u00180",
+            "u00181"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e014b",
+          "start_ms": 1463200,
+          "end_ms": 1482667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说自己不记得欠过谁的钱，那人不说话、挥着大镰刀直接招呼过来，十分吓人。",
+          "transcript_refs": [
+            "u00182",
+            "u00183"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e014c",
+          "start_ms": 1483200,
+          "end_ms": 1495200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人指出蕾妮被打却不觉得疼，怀疑那是幻觉或某种异象。",
+          "transcript_refs": [
+            "u00184",
+            "u00185"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s015",
+      "start_ms": 1506933,
+      "end_ms": 1660000,
+      "summary": "蕾妮解释风花是她的朋友兼饭搭子，是风花断定这是异象并让她来伊波恩；她记不清细节，提议去「食为天」找风花；阿德勒留下看店，达芙蒂尔决定一同前往调查。",
+      "participants": [
+        "leini",
+        "nanally",
+        "daffodill",
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e015a",
+          "start_ms": 1506933,
+          "end_ms": 1592267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说风花是她的朋友、饭搭子，风花认定这是异象在作怪、让她来伊波恩古董店求助；但她记性不好、很多事只有模糊印象，建议众人去问风花。",
+          "transcript_refs": [
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e015b",
+          "start_ms": 1616800,
+          "end_ms": 1638667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉为有人专门推荐伊波恩而得意，说这是今天的第一单委托，主张前去确认是不是异象在捣蛋。",
+          "transcript_refs": [
+            "u00200",
+            "u00201",
+            "u00202"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e015c",
+          "start_ms": 1639200,
+          "end_ms": 1653600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说浔今天没有出行计划、由他照看店里，请达芙蒂尔不必顾虑；达芙蒂尔决定一同前往。",
+          "transcript_refs": [
+            "u00203",
+            "u00204"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s016",
+      "start_ms": 1668800,
+      "end_ms": 1746400,
+      "summary": "众人在「食为天」见到蕾妮的朋友风花；风花称达芙蒂尔曾为自家解决过不少麻烦，认出她并招呼众人坐下慢慢谈。",
+      "participants": [
+        "fenghua",
+        "leini",
+        "nanally",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e016a",
+          "start_ms": 1668800,
+          "end_ms": 1683200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "fenghua",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "风花在食为天等蕾妮，蕾妮为迟到道歉；风花说蕾妮的事最要紧，并认出来客是伊波恩的异象猎人。",
+          "transcript_refs": [
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00210"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e016b",
+          "start_ms": 1683733,
+          "end_ms": 1736800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "fenghua",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉自我介绍为柯林斯家族一代目与鉴定师；风花称与达芙蒂尔好久不见，提到达芙蒂尔曾为自家解决过不少麻烦、母亲至今念念不忘，达芙蒂尔表示没有印象。",
+          "transcript_refs": [
+            "u00211",
+            "u00212",
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216",
+            "u00217",
+            "u00218"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e016c",
+          "start_ms": 1737067,
+          "end_ms": 1746400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "fenghua"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔请风花描述委托人蕾妮遇到的怪事，风花答应坐下详谈。",
+          "transcript_refs": [
+            "u00219",
+            "u00220"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s017",
+      "start_ms": 1751467,
+      "end_ms": 1894667,
+      "summary": "风花讲述前天晚上与蕾妮去停车场时，蕾妮突然抱头蹲下、念叨「不要打我」；风花坦言自己并没有看到所谓的「斗篷人」，但认为只有蕾妮看得见、每晚准时出现，应是异象作怪。",
+      "participants": [
+        "fenghua",
+        "leini",
+        "nanally",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00221",
+        "u00223",
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00231",
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00237",
+        "u00238"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e017a",
+          "start_ms": 1751467,
+          "end_ms": 1795200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "fenghua",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "风花讲述前天与蕾妮吃完晚饭去停车场时遭遇「斗篷人」；蕾妮却记不清自己说过什么，风花笑她是小迷糊虫。",
+          "transcript_refs": [
+            "u00221",
+            "u00223",
+            "u00224",
+            "u00225",
+            "u00226",
+            "u00227"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e017b",
+          "start_ms": 1795467,
+          "end_ms": 1862667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "fenghua"
+          ],
+          "speaker_character_id": "",
+          "observation": "风花说自己也不知道「斗篷人」长什么样：当时蕾妮走到半路突然抱头蹲下、浑身发抖、念叨「不要打我」，她并没有看到任何人在打蕾妮，约十分钟后蕾妮又若无其事地起身。",
+          "transcript_refs": [
+            "u00228",
+            "u00229",
+            "u00230",
+            "u00231",
+            "u00233",
+            "u00234",
+            "u00235"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e017c",
+          "start_ms": 1863200,
+          "end_ms": 1894667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "fenghua"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉怀疑这是不是幻觉；风花说自己起初也这么以为，但蕾妮称每晚九点左右都会遇到，且只有她看得见、准时出现，她判断是异象在作怪。",
+          "transcript_refs": [
+            "u00236",
+            "u00237",
+            "u00238"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s018",
+      "start_ms": 1895200,
+      "end_ms": 2050133,
+      "summary": "达芙蒂尔追问风花为何在蕾妮明显不适时没有主动联系医生；风花辩解称当时劝蕾妮去医院、后来想到是异象才推荐伊波恩，并反过来说达芙蒂尔爱揪细节；蕾妮打圆场并请大家点餐。",
+      "participants": [
+        "fenghua",
+        "daffodill",
+        "leini",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00239",
+        "u00240",
+        "u00241",
+        "u00242",
+        "u00243",
+        "u00244",
+        "u00245",
+        "u00246",
+        "u00247",
+        "u00248",
+        "u00249",
+        "u00250",
+        "u00251",
+        "u00252",
+        "u00253",
+        "u00254",
+        "u00256",
+        "u00257",
+        "u00258"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e018a",
+          "start_ms": 1900533,
+          "end_ms": 1974400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "fenghua",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔追问蕾妮明显不适时为何不主动联系医生；风花称当时曾劝蕾妮去医院、但蕾妮坚持没事，后来才想到她可能是被异象缠上，于是推荐她来伊波恩，并说外行操心不如直接找专家。",
+          "transcript_refs": [
+            "u00240",
+            "u00241",
+            "u00242",
+            "u00243",
+            "u00244",
+            "u00245",
+            "u00246",
+            "u00247",
+            "u00248",
+            "u00249"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e018b",
+          "start_ms": 1974667,
+          "end_ms": 2050133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "fenghua",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "风花反过来调侃达芙蒂尔爱揪细枝末节、还是老样子；蕾妮连忙说没关系、是自己说不痛的，并夸风花把事情讲得清楚，随后请大家点餐、说自己请客。",
+          "transcript_refs": [
+            "u00250",
+            "u00251",
+            "u00252",
+            "u00253",
+            "u00254",
+            "u00256",
+            "u00257",
+            "u00258"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s019",
+      "start_ms": 2055467,
+      "end_ms": 2106133,
+      "summary": "达芙蒂尔提醒还有两分钟就到九点、异象会准时在停车场现身；娜娜莉好奇是否每个人都能看见斗篷人，风花说蕾妮记忆模糊、未必真是斗篷怪人，并安抚蕾妮，蕾妮决定走在前面。",
+      "participants": [
+        "daffodill",
+        "nanally",
+        "fenghua",
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00259",
+        "u00260",
+        "u00261",
+        "u00262",
+        "u00263",
+        "u00264",
+        "u00265",
+        "u00266",
+        "u00267"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e019a",
+          "start_ms": 2055467,
+          "end_ms": 2081600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔说还有两分钟九点，据蕾妮所说异象会准时在停车场现身；娜娜莉则好奇大家能否看见那个传说中的斗篷人。",
+          "transcript_refs": [
+            "u00259",
+            "u00260",
+            "u00261",
+            "u00262",
+            "u00263"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e019b",
+          "start_ms": 2082133,
+          "end_ms": 2106133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "fenghua",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "风花说也未必真是披斗篷的怪人，毕竟蕾妮记忆糊涂、可能记错，并说今天有异象猎人保护、不必害怕；蕾妮感谢风花的关心，表示自己走在前面、那家伙马上就要来了。",
+          "transcript_refs": [
+            "u00264",
+            "u00265",
+            "u00266",
+            "u00267"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s020",
+      "start_ms": 2201867,
+      "end_ms": 2496000,
+      "summary": "停车场遭遇战：娜娜莉打跑了「讨债人」，安抚受惊的蕾妮；地上留下印有「蕾妮」与数字「-20088」的卡片，众人认出与管理局追查的是同一种卡片，遂联系卡厄斯。",
+      "participants": [
+        "nanally",
+        "leini",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00273",
+        "u00274",
+        "u00275",
+        "u00276"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e020a",
+          "start_ms": 2201867,
+          "end_ms": 2472800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉懊恼让异象跑了，安抚受惊的蕾妮说「讨债人」已被打跑、现在没事了。",
+          "transcript_refs": [
+            "u00268",
+            "u00269",
+            "u00270",
+            "u00271"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e020b",
+          "start_ms": 2473333,
+          "end_ms": 2496000,
+          "evidence_kind": "document",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "地上留下异象的卡片，达芙蒂尔念出上面写着「蕾妮」与一串数字「-20088」，并注意到背面数字不一样；众人认出这与管理局正追查的是同一种卡片，表示要联系卡厄斯先生。",
+          "transcript_refs": [
+            "u00272",
+            "u00273",
+            "u00274",
+            "u00275",
+            "u00276"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s021",
+      "start_ms": 2499733,
+      "end_ms": 2591467,
+      "summary": "卡厄斯赶来梳理案情，指出他们遭遇的正是自己在追查的「市民木偶化」异象，怀疑有人故意安排伊波恩与异象多次接触；得知推荐人风花已离开后，卡厄斯决定带众人前往魔女之家。",
+      "participants": [
+        "chaos",
+        "leini",
+        "daffodill",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280",
+        "u00281",
+        "u00282",
+        "u00283",
+        "u00284",
+        "u00285",
+        "u00286",
+        "u00287",
+        "u00288",
+        "u00289",
+        "u00290",
+        "u00291",
+        "u00292"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e021a",
+          "start_ms": 2499733,
+          "end_ms": 2529600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯梳理经过：伊波恩接到蕾妮的委托、异象又留下与「市民木偶化」案相同的卡片，怀疑有人故意安排他们与异象多次接触。",
+          "transcript_refs": [
+            "u00277",
+            "u00278",
+            "u00279",
+            "u00280"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e021b",
+          "start_ms": 2556267,
+          "end_ms": 2589600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯追问把蕾妮介绍来伊波恩的人说过什么，得知推荐理由与达芙蒂尔曾处理其母亲的委托有关后，说该去魔女之家一趟并询问众人是否同行。",
+          "transcript_refs": [
+            "u00285",
+            "u00286",
+            "u00287",
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00291"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s022",
+      "start_ms": 2609600,
+      "end_ms": 2721067,
+      "summary": "众人到访魔女之家，黑羽迎接；卡厄斯请娜娜莉复述保护蕾妮的经过，娜娜莉讲述「讨债人」挥镰刀、镰刀似乎穿过蕾妮身体，战斗约十分钟后逃走，并发现异象留下了同样的卡片。",
+      "participants": [
+        "blackbird",
+        "chaos",
+        "nanally",
+        "daffodill",
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00293",
+        "u00294",
+        "u00295",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00299",
+        "u00300",
+        "u00301",
+        "u00302",
+        "u00303",
+        "u00304",
+        "u00305",
+        "u00306",
+        "u00307",
+        "u00308",
+        "u00309",
+        "u00310"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e022a",
+          "start_ms": 2609600,
+          "end_ms": 2650133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽欢迎众人到访魔女之家，蕾妮为深夜打扰致歉；卡厄斯说明蕾妮今晚遭到「市民木偶案」异象袭击，请异象猎人再还原一遍经过。",
+          "transcript_refs": [
+            "u00293",
+            "u00294",
+            "u00295",
+            "u00296",
+            "u00297",
+            "u00298",
+            "u00299"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e022b",
+          "start_ms": 2650400,
+          "end_ms": 2701867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉讲述蕾妮的委托与其护送经过：九点整「讨债人」窜出、挥大镰刀冲向蕾妮，镰刀似乎穿过她的身体，随后被众人架住武器缠斗、她感觉刚热身对方就开溜了。",
+          "transcript_refs": [
+            "u00300",
+            "u00301",
+            "u00302",
+            "u00303",
+            "u00304",
+            "u00305",
+            "u00306"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e022c",
+          "start_ms": 2702133,
+          "end_ms": 2721067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽询问战斗持续多久、是否发现同样的卡片；达芙蒂尔回答战斗十分钟整。",
+          "transcript_refs": [
+            "u00307",
+            "u00308",
+            "u00309",
+            "u00310"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s023",
+      "start_ms": 2724533,
+      "end_ms": 2841600,
+      "summary": "黑羽判定「讨债人」可能是「规则异象」，讲解规则异象遵循规律、需按其规则行事方能收容或泯除；卡厄斯点出关键在规则，并提出蕾妮为何被盯上、卡片数字有何寓意的问题。",
+      "participants": [
+        "blackbird",
+        "chaos",
+        "nanally",
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00311",
+        "u00312",
+        "u00313",
+        "u00314",
+        "u00315",
+        "u00316",
+        "u00318",
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00325",
+        "u00326"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e023a",
+          "start_ms": 2724533,
+          "end_ms": 2782400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽分析「讨债人」准时出现又定时消失、并给受害者留下卡片，可能是「规则异象」，说明这类异象行动有规律、进入其异象空间须按规则行动，有些象征「规则」、有些意图达成某种「使命」，泯除十分困难。",
+          "transcript_refs": [
+            "u00311",
+            "u00312",
+            "u00313",
+            "u00314",
+            "u00315"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e023b",
+          "start_ms": 2796800,
+          "end_ms": 2824533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯说关键是它们遵守的「规则」，掌握后才能泯除或利用，并指出有人抢先找到规则、布置好局面；他提出为何会找上蕾妮、卡片数字有何寓意的问题，黑羽也追问为何唯独给蕾妮的留言与众不同。",
+          "transcript_refs": [
+            "u00320",
+            "u00321",
+            "u00322",
+            "u00323"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e023c",
+          "start_ms": 2824800,
+          "end_ms": 2841600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯感叹又是猜谜时间、提到若妮夏在就好办；黑羽提出可以为蕾妮占卜命运，或许有所发现。",
+          "transcript_refs": [
+            "u00324",
+            "u00325",
+            "u00326"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s024",
+      "start_ms": 2842133,
+      "end_ms": 3063467,
+      "summary": "黑羽为蕾妮占卜，得出其「明天」深陷「空白」的结果；黑羽联想到曾为康斯坦丁家族家主德洛莉丝占卜出同样结果，讲述了德洛莉丝作为「无心」的永生者、无尽寿命亦是诅咒的故事。",
+      "participants": [
+        "leini",
+        "blackbird",
+        "chaos",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00327",
+        "u00328",
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00332",
+        "u00333",
+        "u00334",
+        "u00335",
+        "u00336",
+        "u00337",
+        "u00338",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00345",
+        "u00346",
+        "u00347"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e024a",
+          "start_ms": 2842133,
+          "end_ms": 2887733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮对突然的占卜感到不知所措，黑羽让她放松闭眼，随后说出占卜结果：蕾妮的「明天」已深陷「空白」；蕾妮不解其意。",
+          "transcript_refs": [
+            "u00327",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e024b",
+          "start_ms": 2903733,
+          "end_ms": 3036533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说自己曾为一位女士占卜出同样结果，随后讲述康斯坦丁家族家主德洛莉丝的故事：她是「无心」之人、没有羁绊与牵挂，据说以极大代价换取无限寿命，而无限寿命亦是诅咒，家族因此走向覆灭。",
+          "transcript_refs": [
+            "u00333",
+            "u00334",
+            "u00335",
+            "u00336",
+            "u00337",
+            "u00338",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00342",
+            "u00343"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e024c",
+          "start_ms": 3037067,
+          "end_ms": 3063467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说德洛莉丝渴望永久的陪伴与忠诚才来寻求占卜，而她因未来无穷无尽、看到的只有「空白」，并转述「若想获得些什么，必先主动付出过什么」。",
+          "transcript_refs": [
+            "u00345",
+            "u00346",
+            "u00347"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s025",
+      "start_ms": 3064000,
+      "end_ms": 3108800,
+      "summary": "蕾妮意识到自己与德洛莉丝都是「空白」，黑羽说只可作参考；卡厄斯认为故事有启发但帮助不大，宣布今天到此为止，并护送蕾妮回家，达芙蒂尔也与黑羽道别。",
+      "participants": [
+        "leini",
+        "blackbird",
+        "chaos",
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00348",
+        "u00349",
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00353",
+        "u00354",
+        "u00355"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e025a",
+          "start_ms": 3064000,
+          "end_ms": 3082133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说自己与那位女士都是空白、是否也一样，黑羽说这只是参考、当作奇闻轶事即可。",
+          "transcript_refs": [
+            "u00348",
+            "u00349"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e025b",
+          "start_ms": 3082400,
+          "end_ms": 3108800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "leini",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯说故事很有启发但对眼前的麻烦帮助不大，宣布时间已晚、今天到此为止，并护送蕾妮回家；达芙蒂尔表示也就不多打扰黑羽、先行回去。",
+          "transcript_refs": [
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00353",
+            "u00354",
+            "u00355"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s026",
+      "start_ms": 3124000,
+      "end_ms": 3212000,
+      "summary": "散会后众人感叹线索繁多却暂时无法串联，互道晚安；深夜卡厄斯再度来访，说从蕾妮的信箱翻到一张卡片，蕾妮称讨债人又给她留言了，娜娜莉惊呼异象又来。",
+      "participants": [
+        "nanally",
+        "daffodill",
+        "chaos",
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00356",
+        "u00357",
+        "u00358",
+        "u00359",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363",
+        "u00364",
+        "u00365",
+        "u00366",
+        "u00367",
+        "u00368"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e026a",
+          "start_ms": 3124000,
+          "end_ms": 3169067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人感叹今天先是规则异象、又有莫名其妙的留言卡片和一个很久很久以前的故事，线索暂时无法串联；达芙蒂尔让大家先休息。",
+          "transcript_refs": [
+            "u00356",
+            "u00357",
+            "u00358",
+            "u00359",
+            "u00360"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e026b",
+          "start_ms": 3191733,
+          "end_ms": 3212000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "leini",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "深夜卡厄斯来报说打扰了，称从蕾妮的信箱里翻到一张卡片；蕾妮说「讨债人」又给她留言了，娜娜莉认出那正是昨晚的卡片、惊呼异象又来了。",
+          "transcript_refs": [
+            "u00363",
+            "u00364",
+            "u00365",
+            "u00366",
+            "u00367",
+            "u00368"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p09-s027",
+      "start_ms": 3214933,
+      "end_ms": 3311467,
+      "summary": "鉴定师查看卡片，判断像是有人故意仿制的普通卡片；卡厄斯指出能模仿得如此逼真的人不多，怀疑风花与送木偶者是同伙，并说对方已在康斯坦丁家族旧址等他们；蕾妮茫然否认知情，众人决定一同前往揭秘。",
+      "participants": [
+        "chaos",
+        "leini",
+        "daffodill",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00369",
+        "u00370",
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374",
+        "u00375",
+        "u00376",
+        "u00377",
+        "u00378",
+        "u00379",
+        "u00380",
+        "u00381",
+        "u00382",
+        "u00383"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e027a",
+          "start_ms": 3214933,
+          "end_ms": 3225067,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师查看卡片，认出上面写着蕾妮的名字和一个地址，判断这像是有人故意仿制的普通卡片。",
+          "transcript_refs": [
+            "u00369",
+            "u00370"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e027b",
+          "start_ms": 3225600,
+          "end_ms": 3248533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯说见过这张卡片才能模仿得惟妙惟肖、嫌疑人选不多，怀疑昨晚目睹战斗的风花与送木偶者是同伙，并说对方已正式邀请蕾妮、正在康斯坦丁家族旧址等他们。",
+          "transcript_refs": [
+            "u00371",
+            "u00372",
+            "u00373",
+            "u00374"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p09-e027c",
+          "start_ms": 3254933,
+          "end_ms": 3311467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "nanally",
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉追问蕾妮与康斯坦丁家是否有关系；蕾妮茫然说自己只是普通出租车司机、不记得了；卡厄斯让大家去找知情者问明白并动身，娜娜莉宣布这是伊波恩的委托、要一同揭开「讨债人」之谜。",
+          "transcript_refs": [
+            "u00376",
+            "u00377",
+            "u00378",
+            "u00379",
+            "u00380",
+            "u00381",
+            "u00382",
+            "u00383"
+          ]
+        }
+      ]
+    }
+  ]
+}

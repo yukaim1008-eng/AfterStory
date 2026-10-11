@@ -836,5 +836,145 @@
     "source_work": "异环",
     "role_scope": "named_character",
     "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "leini",
+    "names": {
+      "zh": "蕾妮",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "fenghua",
+    "names": {
+      "zh": "风花",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "laweiniya",
+    "names": {
+      "zh": "拉维尼娅",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "beila",
+    "names": {
+      "zh": "贝拉",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "deluolisi",
+    "names": {
+      "zh": "德洛莉丝",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "yiweite",
+    "names": {
+      "zh": "伊薇特",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "yinanna",
+    "names": {
+      "zh": "伊南娜",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "posaite",
+    "names": {
+      "zh": "珀塞特",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "hulaoda",
+    "names": {
+      "zh": "虎老大",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "jiejiexiong",
+    "names": {
+      "zh": "桀桀熊",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
   }
 ]

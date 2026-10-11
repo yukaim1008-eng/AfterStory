@@ -1,0 +1,4335 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p10",
+  "reviewed_transcript_sha256": "2e141e2c7a3d410c5200ca82e4c56b4f9ae6ecc35cee9ffb1ef05d4d9df45bdb",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p10",
+    "source_work": "异环",
+    "display_name": "第4话 红字的研究 2",
+    "sequence": 10,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第4话 红字的研究 2",
+    "predecessor_id": "nt-bv1kqoabievz-p09",
+    "spoiler_scope": "第4话 红字的研究 2"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s001",
+      "start_ms": 15733,
+      "end_ms": 69867,
+      "summary": "娜娜莉、达芙蒂尔与蕾妮在荒废的旧宅址前，只见一棵光秃秃的歪脖子樱花树；蕾妮回忆起幼时爬树的往事。",
+      "participants": [
+        "nanally",
+        "daffodill",
+        "leini"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e001a",
+          "start_ms": 15733,
+          "end_ms": 24533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉望着荒地上唯一一棵光秃秃的歪脖子树，怀疑这里以前是否真有过大宅子；达芙蒂尔指出那是一棵樱花树。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e001b",
+          "start_ms": 24800,
+          "end_ms": 40533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说自己没留意树已长得这么高，又劝娜娜莉别看枝条细其实很结实、问她是否也想爬树。",
+          "transcript_refs": [
+            "u00004",
+            "u00005",
+            "u00006"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e001c",
+          "start_ms": 41067,
+          "end_ms": 69867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮一边查看树上哪里好落脚，一边回忆自己小时候很轻、随便一蹬就爬到树顶，又慌忙改口说现在最好别随便尝试，并为只顾贪玩道歉。",
+          "transcript_refs": [
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s002",
+      "start_ms": 70133,
+      "end_ms": 123200,
+      "summary": "卡厄斯把话题拉回案件，指出蕾妮小时候爬过这棵树、与这个家族有关；蕾妮进一步回忆自己想把樱花送给姐姐、下不来时被人接住。",
+      "participants": [
+        "chaos",
+        "nanally",
+        "leini"
+      ],
+      "transcript_refs": [
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e002a",
+          "start_ms": 70133,
+          "end_ms": 88000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯提议事情解决后再比爬树，随后把话题拉回案件，指出蕾妮小时候乘过、爬过这棵樱花树，断言她果然和这个家族有关。",
+          "transcript_refs": [
+            "u00011",
+            "u00012",
+            "u00013"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e002b",
+          "start_ms": 88267,
+          "end_ms": 123200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉激动地重复「小时候」追问蕾妮；蕾妮想起当时爬到树梢最高处、想把开得最好的一枝樱花摘下来送给姐姐，因太高不敢原路爬下，只记得有人接住了她，却想不起那人是姐姐还是妈妈。",
+          "transcript_refs": [
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s003",
+      "start_ms": 135467,
+      "end_ms": 204533,
+      "summary": "蕾妮骤然跌入异象空间，与鉴定师一同醒来；两人发现身处陌生门厅、娜娜莉等人不在，推测被分散。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e003a",
+          "start_ms": 135467,
+          "end_ms": 160800,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮呻吟着头疼，检查胳膊还好，反问鉴定师是否无恙，并问他们身在何处、刚才发生了什么。",
+          "transcript_refs": [
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00022"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e003b",
+          "start_ms": 161333,
+          "end_ms": 175733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师推测他们身处异象空间：蕾妮回忆童年爬樱花树的事后，两人被卷了进来，娜娜莉等人不在、可能被分散了。",
+          "transcript_refs": [
+            "u00023",
+            "u00025"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e003c",
+          "start_ms": 176267,
+          "end_ms": 192533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮为把大家卷入异象空间而自责道歉；鉴定师安慰她这不是她的错。",
+          "transcript_refs": [
+            "u00026",
+            "u00027"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e003d",
+          "start_ms": 192800,
+          "end_ms": 204533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师提出要弄清他们为何会到这里来；蕾妮观察四周，说这宽大的门厅肯定是某位大户人家的宅子。",
+          "transcript_refs": [
+            "u00028",
+            "u00029"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s004",
+      "start_ms": 204800,
+      "end_ms": 312000,
+      "summary": "鉴定师推测此处是康斯坦丁家主德洛莉丝女士的住宅；蕾妮疑惑是否回到了过去。两人讨论她与家族的联系、决定一同调查，却推不开那扇门。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00030",
+        "u00031",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e004a",
+          "start_ms": 204800,
+          "end_ms": 219200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师推测这座宅子是「康斯坦丁」家主德洛莉丝女士的住宅，并说也许是异象空间重现了过去的情景；蕾妮怀疑他们回到了过去。",
+          "transcript_refs": [
+            "u00030",
+            "u00031",
+            "u00033"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e004b",
+          "start_ms": 219467,
+          "end_ms": 243467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师问蕾妮能否想起更多小时候的事；蕾妮说脑子里雾蒙蒙的，却觉得这里莫名熟悉又亲切。",
+          "transcript_refs": [
+            "u00034",
+            "u00035",
+            "u00036"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e004c",
+          "start_ms": 243733,
+          "end_ms": 289600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师判断蕾妮与这个家族存在某种联系；蕾妮疑惑康斯坦丁家几十年前就已消失、与自己的年纪对不上，随后表示会努力回忆、与鉴定师一起调查。",
+          "transcript_refs": [
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e004d",
+          "start_ms": 294133,
+          "end_ms": 312000,
+          "evidence_kind": "action",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师发现门推不开；蕾妮惊呼先吃了闭门羹，猜测这门或许无法从他们这侧打开，鉴定师提议先去别处看看。",
+          "transcript_refs": [
+            "u00044",
+            "u00045",
+            "u00046",
+            "u00047",
+            "u00048"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s005",
+      "start_ms": 375467,
+      "end_ms": 517333,
+      "summary": "蕾妮与鉴定师目睹「重映」过去的一家人围坐用餐的景象；蕾妮对点亮烛火的人感到熟悉，鉴定师隐约察觉回忆中的人似在与「现在」的他们对视，随后响起钟声。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00049",
+        "u00050",
+        "u00052",
+        "u00053",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e005a",
+          "start_ms": 425067,
+          "end_ms": 452267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮问刚才是不是过去曾发生的事；鉴定师说这个空间在上演过去发生的事情，即「重映」过去。",
+          "transcript_refs": [
+            "u00050",
+            "u00052",
+            "u00053",
+            "u00055"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e005b",
+          "start_ms": 452533,
+          "end_ms": 468800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮担心自己惹得幻象中的人不快；鉴定师说异象空间里什么都有可能发生、出现有攻击性的异象很常见。",
+          "transcript_refs": [
+            "u00056",
+            "u00057"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e005c",
+          "start_ms": 469333,
+          "end_ms": 498667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮对画面有种不知从哪儿来的熟悉感，尤其是点亮烛火的那位，却具体说不上来；鉴定师暗自疑惑回忆中的人为何会和「现在」的他们对视。",
+          "transcript_refs": [
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e005d",
+          "start_ms": 499200,
+          "end_ms": 517333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮察觉已到一点；随后响起钟声，鉴定师联想到讨债人出现时也有类似声音，猜测这与它遵守的规则有关，提议去玄关看看。",
+          "transcript_refs": [
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s006",
+      "start_ms": 522400,
+      "end_ms": 597867,
+      "summary": "娜娜莉与达芙蒂尔也进入宅邸；娜娜莉赞叹宅子气派又担心推门弄坏文物，达芙蒂尔推测这可能是被假象隐藏的康斯坦丁家族宅邸，两人小心进入。",
+      "participants": [
+        "nanally",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e006a",
+          "start_ms": 522400,
+          "end_ms": 539733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉赞叹宅子气派、有格调、一看就是大家族风格，又说起诅咒的事，并猜测鉴定师和蕾妮是否已经先进去了。",
+          "transcript_refs": [
+            "u00067",
+            "u00068",
+            "u00069"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e006b",
+          "start_ms": 540267,
+          "end_ms": 568267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔建议进去仔细调查、尽快汇合；娜娜莉发现门板老旧、担心一推就散架，达芙蒂尔推测这可能就是被荒凉假象隐藏起来的康斯坦丁家族宅邸。",
+          "transcript_refs": [
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e006c",
+          "start_ms": 568533,
+          "end_ms": 597867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉推测蕾妮既是这个家的一份子、驱散了假象「主人回家」；她提醒手脚放轻别弄坏老房子，达芙蒂尔叮嘱在异象空间要小心，两人轻轻进门。",
+          "transcript_refs": [
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s007",
+      "start_ms": 621067,
+      "end_ms": 734667,
+      "summary": "蕾妮在宴会人群里与一位路过的客人擦肩，发现对方虽说话却听不见回应；她意识到自己像身处可互动的舞台剧，鉴定师建议她找点亮烛火的那位姐姐搭话。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00093",
+        "u00094",
+        "u00095"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e007a",
+          "start_ms": 621067,
+          "end_ms": 640000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮认出刚才那位姐姐并想搭话，一位路过的客人说「借过」，蕾妮道歉后追问对方是否在和自己说话，却发现客人没听见、径自走远。",
+          "transcript_refs": [
+            "u00078",
+            "u00079",
+            "u00080",
+            "u00081"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e007b",
+          "start_ms": 640267,
+          "end_ms": 656267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮被弄糊涂，惊讶他们竟能和过去的人说话，形容这就像可互动的电影、更像舞台剧。",
+          "transcript_refs": [
+            "u00082",
+            "u00083"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e007c",
+          "start_ms": 656533,
+          "end_ms": 673067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师推测他们也融入了这幕「舞台剧」，并暗自思忖他们究竟是「观众」还是不知情的「演员」，随后建议蕾妮试着和点亮烛火的那位聊聊、问问家里的情况。",
+          "transcript_refs": [
+            "u00084",
+            "u00085",
+            "u00086"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e007d",
+          "start_ms": 673600,
+          "end_ms": 690667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮看到那位姐姐的位置，感叹人群拥挤、想挤过去有点费劲；鉴定师猜是在办宴会或沙龙。",
+          "transcript_refs": [
+            "u00087",
+            "u00088",
+            "u00089"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e007e",
+          "start_ms": 690933,
+          "end_ms": 734667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮提出先和这些客人聊聊、弄清家里在做什么，又担心自己平时最多只和两三位客人打交道；鉴定师说可以交给他，蕾妮则表示这是她头一次这么想去了解一些事。",
+          "transcript_refs": [
+            "u00090",
+            "u00091",
+            "u00093",
+            "u00094",
+            "u00095"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s008",
+      "start_ms": 742933,
+      "end_ms": 873867,
+      "summary": "客人们闲聊：感叹沙龙停办、夸赞德洛莉丝慷慨，也议论她的白发大女儿贝拉——告别宴正是贝拉张罗的；还有客人低声提及她身上的诅咒，暗藏觊觎永生之物的图谋。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00112"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e008a",
+          "start_ms": 742933,
+          "end_ms": 828267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "几位客人议论沙龙停办，说是家主精力有限、要专心经营家庭而淡出社交圈，并夸赞德洛莉丝慷慨好客、家藏美酒好菜。",
+          "transcript_refs": [
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e008b",
+          "start_ms": 838667,
+          "end_ms": 873867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有客人低声说那位身上有诅咒的女人终于要退出历史舞台，觊觎宅中的珍藏与「令人永生的宝贝」，并催促本应在沙龙三点结束前动手的人。",
+          "transcript_refs": [
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s009",
+      "start_ms": 876800,
+      "end_ms": 974133,
+      "summary": "蕾妮被众多名字弄晕，觉得「贝拉」这个名字异常耳熟、涌起怀念感；鉴定师提起异象管理局回收的木偶里也有一个叫「贝拉」的木偶，两人推测蕾妮与木偶、与这个家族有联系。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00118",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e009a",
+          "start_ms": 876800,
+          "end_ms": 909867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮被客人们的话和众多名字弄得头晕，觉得「贝拉」非常耳熟，只听到这个名字就涌起怀念的感觉。",
+          "transcript_refs": [
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e009b",
+          "start_ms": 910400,
+          "end_ms": 919467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师说异象管理局回收的木偶里也有一个名叫「贝拉」的木偶，并反问蕾妮是否觉得是巧合。",
+          "transcript_refs": [
+            "u00118",
+            "u00119",
+            "u00120"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e009c",
+          "start_ms": 920000,
+          "end_ms": 945067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说管理局木偶口袋里的卡片和自己收到的一样，据此推断自己与木偶、与德洛莉丝的女儿都有联系，怀疑自己果然和这个家族有关。",
+          "transcript_refs": [
+            "u00121",
+            "u00122",
+            "u00123"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e009d",
+          "start_ms": 945333,
+          "end_ms": 974133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师问蕾妮是否想起什么；蕾妮猜测自己也许是他们的司机，随后在鉴定师建议下决定直接去找「贝拉」确认。",
+          "transcript_refs": [
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s010",
+      "start_ms": 987733,
+      "end_ms": 1097867,
+      "summary": "贝拉现身，责备蕾妮直呼长者之名失礼、要她叫自己「姐」，并回忆蕾妮曾躲在柜中偷看沙龙、睡到撞门大闹、弄砸母亲沙龙的往事。",
+      "participants": [
+        "leini",
+        "beila",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00144"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e010a",
+          "start_ms": 987733,
+          "end_ms": 1021600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉出现，说这里不是小孩子该来的地方；当蕾妮直呼其名时，贝拉责备她不懂礼仪、对长者直呼其名很失礼，要她叫自己「姐」。",
+          "transcript_refs": [
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e010b",
+          "start_ms": 1022133,
+          "end_ms": 1039200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉指责蕾妮糊里糊涂，讲起上次蕾妮事先躲在柜子里偷看沙龙、结果睡昏头的事。",
+          "transcript_refs": [
+            "u00134",
+            "u00135"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e010c",
+          "start_ms": 1039467,
+          "end_ms": 1086667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉描述蕾妮在逼仄的柜中沉睡、醒来后柜缝被关紧、身处漆黑，慌乱中摸黑撞向柜门，闹出大动静、彻底弄砸了母亲的沙龙。",
+          "transcript_refs": [
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e010d",
+          "start_ms": 1087200,
+          "end_ms": 1097867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮哽咽着说自己不是故意的、叫她姐姐；贝拉意味深长地说「原来你真的以为我是你的姐姐」。",
+          "transcript_refs": [
+            "u00143",
+            "u00144"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s011",
+      "start_ms": 1098133,
+      "end_ms": 1208800,
+      "summary": "蕾妮追问贝拉是否是自己姐姐；贝拉说自己是必须存在于此、与她相见的影子，一直等她回家；蕾妮由此确认自己是康斯坦丁家、妈妈的孩子。",
+      "participants": [
+        "leini",
+        "beila",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e011a",
+          "start_ms": 1098133,
+          "end_ms": 1120533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮追问「姐姐难道你不是吗」；贝拉否认，说自己只是必须存在于此、必须与蕾妮相见的一个影子，或者说「背弃」，一直在这里等她，哪怕她已将众人忘却。",
+          "transcript_refs": [
+            "u00145",
+            "u00146",
+            "u00147"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e011b",
+          "start_ms": 1120800,
+          "end_ms": 1134667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说他们仍在等蕾妮回家、等与她共同重温这一切；蕾妮向贝拉确认自己果然是康斯坦丁家的人、是妈妈的孩子。",
+          "transcript_refs": [
+            "u00148",
+            "u00149"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e011c",
+          "start_ms": 1135200,
+          "end_ms": 1154400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说蕾妮的脑瓜里还是留下了些东西，并说若连母亲都不记得、所有深爱她的人会多难过；蕾妮追问妈妈和其他人在哪里、是否还在家里。",
+          "transcript_refs": [
+            "u00150",
+            "u00151"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e011d",
+          "start_ms": 1154933,
+          "end_ms": 1178933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说这里是囿于过去的「康斯坦丁」宅，发生于此的一切会不断重演、周而复始，并邀蕾妮重拾过去、包括她曾犯过的错误。",
+          "transcript_refs": [
+            "u00152",
+            "u00153",
+            "u00154"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e011e",
+          "start_ms": 1179467,
+          "end_ms": 1208800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "面对鉴定师「你究竟是谁」的追问，贝拉说自己呈贝拉模样一事该去问蕾妮身边的小姐、答案一直沉睡在她心中；蕾妮困惑地呼唤姐姐，贝拉说可以再等下去。",
+          "transcript_refs": [
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s012",
+      "start_ms": 1209067,
+      "end_ms": 1276267,
+      "summary": "蕾妮想起贝拉正是当年在树下温柔接住她的姐姐、一直在这里等她回家；她疑惑那个也叫「贝拉」的木偶是怎么回事，并在鉴定师提示下理解眼前之人只是「过去的姐姐」。",
+      "participants": [
+        "leini",
+        "beila",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e012a",
+          "start_ms": 1209067,
+          "end_ms": 1233067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮呼唤贝拉姐，想起她就是当年会在树下温柔接住自己的姐姐，感叹她一直都在这里等自己回家，却又疑惑那个也叫「贝拉」的木偶是怎么回事。",
+          "transcript_refs": [
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e012b",
+          "start_ms": 1233600,
+          "end_ms": 1259733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师提醒蕾妮他们见到的贝拉小姐并非现实之人，这里是异象空间；蕾妮据此理解眼前的贝拉是「过去的姐姐」，并确认自己是家里的一员。",
+          "transcript_refs": [
+            "u00165",
+            "u00166",
+            "u00167"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e012c",
+          "start_ms": 1260000,
+          "end_ms": 1276267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮困惑这个家族五十多年前就已消失、自己怎么会是其中一员；鉴定师建议向德洛莉丝确认，蕾妮迟疑地反问「我的妈妈吗？」。",
+          "transcript_refs": [
+            "u00168",
+            "u00169",
+            "u00170"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s013",
+      "start_ms": 1289333,
+      "end_ms": 1371733,
+      "summary": "蕾妮想挤过人群去见德洛莉丝，却被不满、尖刻、生气的客人们挡回；鉴定师提出等沙龙结束、客人散去再接近德洛莉丝，蕾妮记下要在钟声敲三下时行动。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00171",
+        "u00172",
+        "u00173",
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179",
+        "u00180",
+        "u00181",
+        "u00182"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e013a",
+          "start_ms": 1289333,
+          "end_ms": 1322667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮想请人让一让、挤过去见德洛莉丝，却遭客人以「先来后到」斥责；蕾妮感叹客人们好严格、挤不过去。",
+          "transcript_refs": [
+            "u00171",
+            "u00172",
+            "u00173",
+            "u00174",
+            "u00175",
+            "u00176"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e013b",
+          "start_ms": 1322933,
+          "end_ms": 1345600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师说他们进来时听到一声钟响、沙龙在一点开始；若景象严格重演，沙龙结束后客人就会散去，那时便能接近德洛莉丝女士。",
+          "transcript_refs": [
+            "u00177",
+            "u00178",
+            "u00179"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e013c",
+          "start_ms": 1345867,
+          "end_ms": 1371733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮赞同鉴定师的主意、询问沙龙何时结束；得知印象里是三点，便说那就是等钟声敲响三下的时候。",
+          "transcript_refs": [
+            "u00180",
+            "u00181",
+            "u00182"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s014",
+      "start_ms": 1394133,
+      "end_ms": 1507467,
+      "summary": "娜娜莉与达芙蒂尔发现一座漂亮的大摆钟，娜娜莉手快拨弄了下；达芙蒂尔提醒在异象空间、尤其面对「钟」时要提高警惕，两人又谈及讨债人每晚九点会来找蕾妮麻烦。",
+      "participants": [
+        "nanally",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e014a",
+          "start_ms": 1394133,
+          "end_ms": 1414933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉被漂亮的钟吸引、说有种历史的感觉，又因钟卡住想帮忙拨弄，被达芙蒂尔叫停。",
+          "transcript_refs": [
+            "u00183",
+            "u00184",
+            "u00185",
+            "u00186"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e014b",
+          "start_ms": 1415467,
+          "end_ms": 1424800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔解释只是觉得在异象空间里、尤其面对「钟」时要提高警惕；娜娜莉联想到讨债人那个异象也和钟有关。",
+          "transcript_refs": [
+            "u00187",
+            "u00188"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e014c",
+          "start_ms": 1425333,
+          "end_ms": 1441867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔转述黑羽小姐的话，说规则异象会严格遵守它的规则、在这里要多留意「时间」；娜娜莉领命要去找钟表。",
+          "transcript_refs": [
+            "u00189",
+            "u00190"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e014d",
+          "start_ms": 1442667,
+          "end_ms": 1460800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉庆幸自己刚才手快拨钟没引来讨债人；忽然被声音震到耳朵，达芙蒂尔说有别的东西蹦了出来，娜娜莉准备应战。",
+          "transcript_refs": [
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e014e",
+          "start_ms": 1496533,
+          "end_ms": 1507467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说现在是三点，并提到讨债人每晚九点会准时来找蕾妮麻烦；达芙蒂尔说在那之前要努力找到讨债人遵守的规则。",
+          "transcript_refs": [
+            "u00197",
+            "u00198",
+            "u00199"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s015",
+      "start_ms": 1514400,
+      "end_ms": 1608000,
+      "summary": "忽然到了三点，客人果然散去；蕾妮鼓起勇气去见德洛莉丝，对方柔声唤她「我最可爱的小女儿」，蕾妮为打扰沙龙而道歉，德洛莉丝安慰她不必在意那些贪图永生的人。",
+      "participants": [
+        "leini",
+        "esper-zero",
+        "deluolisi"
+      ],
+      "transcript_refs": [
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e015a",
+          "start_ms": 1514400,
+          "end_ms": 1536533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "时间突然到了三点，德洛莉丝女士那儿客人果然都散去；蕾妮准备去见她，鉴定师让她放轻松、说自己就在她身边。",
+          "transcript_refs": [
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e015b",
+          "start_ms": 1548800,
+          "end_ms": 1561600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师开口呼唤德洛莉丝女士；德洛莉丝亲切地招呼蕾妮「我最可爱的小女儿」到她身边，说讨厌的人已经走了。",
+          "transcript_refs": [
+            "u00205",
+            "u00206"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e015c",
+          "start_ms": 1561867,
+          "end_ms": 1589867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮迟疑地叫「妈妈」，为太调皮、可能打扰了沙龙而道歉；德洛莉丝说不生气，只是不想让她们过早接触那些贪图永生之物的人。",
+          "transcript_refs": [
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00210"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e015d",
+          "start_ms": 1590133,
+          "end_ms": 1608000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮指的就是那些围着妈妈的人；德洛莉丝说蕾妮肯定被他们吓到了、保证不会再发生，并说这可悲的一切就快结束了。",
+          "transcript_refs": [
+            "u00211",
+            "u00212",
+            "u00213"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s016",
+      "start_ms": 1608533,
+      "end_ms": 1779733,
+      "summary": "德洛莉丝讲述自己办沙龙本是为扭转康斯坦丁凋零的命运、如今只觉厌倦，也承认贪婪的还有她自己；她说家人才是最重要的，往后一家人和睦地在一起就好。",
+      "participants": [
+        "leini",
+        "deluolisi"
+      ],
+      "transcript_refs": [
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00231",
+        "u00232"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e016a",
+          "start_ms": 1608533,
+          "end_ms": 1634667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮问妈妈是否原来很讨厌沙龙；德洛莉丝说在起初感受并不重要，她必须借客人们的人际关系扭转康斯坦丁凋零的命运，如今却觉得厌倦、也早记不清那些琐事。",
+          "transcript_refs": [
+            "u00214",
+            "u00215",
+            "u00216"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e016b",
+          "start_ms": 1635200,
+          "end_ms": 1701600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝说即使那个愿望早已实现、沙龙仍一场接一场地办下去，承认贪婪的也包括自己；她回顾当年太年轻，妄想客人们能带来慰藉，最终只见贪婪乞食的野兽与哗众取宠的小丑。",
+          "transcript_refs": [
+            "u00217",
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e016c",
+          "start_ms": 1702133,
+          "end_ms": 1734400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说不明白；德洛莉丝说妈妈保证她永远不需要明白，烦恼不会再困扰她，并说不管自己曾试图从沙龙中得到什么，那都是一个错误。",
+          "transcript_refs": [
+            "u00223",
+            "u00224",
+            "u00225",
+            "u00226"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e016d",
+          "start_ms": 1734667,
+          "end_ms": 1779733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝说必须纠正这个错误的契机就是蕾妮，家人才是最重要的、是她最珍贵的礼物；以后只要一家人和睦地在一起，家人间幸福的一瞬比孤寂的永生更重要。",
+          "transcript_refs": [
+            "u00227",
+            "u00228",
+            "u00229",
+            "u00230",
+            "u00231",
+            "u00232"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s017",
+      "start_ms": 1780000,
+      "end_ms": 1861067,
+      "summary": "贝拉突然现身，抛出「孤寂的永生」与「幸福的一瞬」的选择；蕾妮被吓到，追问妈妈的话是什么意思、是否被「永生」诅咒，并坦言拥有无限时间难道不好。",
+      "participants": [
+        "leini",
+        "beila"
+      ],
+      "transcript_refs": [
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00237",
+        "u00238",
+        "u00239",
+        "u00240",
+        "u00241",
+        "u00242"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e017a",
+          "start_ms": 1780000,
+          "end_ms": 1801600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮想留住妈妈；贝拉现身，问小蕾妮在「孤寂的永生」和「幸福的一瞬」之间会如何选择，把蕾妮吓了一跳。",
+          "transcript_refs": [
+            "u00233",
+            "u00234",
+            "u00235",
+            "u00236"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e017b",
+          "start_ms": 1801867,
+          "end_ms": 1818933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮追问妈妈的话是什么意思、家里的传闻是否是妈妈被「永生」诅咒了，又说永生怎么会是诅咒、时间无穷无尽难道不好。",
+          "transcript_refs": [
+            "u00237",
+            "u00238"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e017c",
+          "start_ms": 1819467,
+          "end_ms": 1861067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说「这就是你的答复」；蕾妮答「有总比没有好」，说拥有无限时间就能做无限多的事，又坦言自己不知道想要什么、能做什么，甚至不记得曾经做过什么。",
+          "transcript_refs": [
+            "u00239",
+            "u00240",
+            "u00241",
+            "u00242"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s018",
+      "start_ms": 1861600,
+      "end_ms": 2029867,
+      "summary": "蕾妮意识到那种无事可做、看不到尽头的日子才是诅咒；贝拉揭示蕾妮曾做出与今天相同的选择、因此才能孤身回到这里，并说母亲、特蕾莎、埃略特等所有人都在等她。",
+      "participants": [
+        "leini",
+        "beila",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00243",
+        "u00244",
+        "u00245",
+        "u00246",
+        "u00247",
+        "u00248",
+        "u00249",
+        "u00251",
+        "u00252",
+        "u00253",
+        "u00254",
+        "u00255",
+        "u00256",
+        "u00257",
+        "u00258",
+        "u00259",
+        "u00260",
+        "u00261"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e018a",
+          "start_ms": 1861600,
+          "end_ms": 1881600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮追问这是否就是自己现在的生活、自己一直以来为何而活着，猜想正是因为无事可做、没有意义的日子看不到尽头，它才成为诅咒。",
+          "transcript_refs": [
+            "u00243",
+            "u00244"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e018b",
+          "start_ms": 1882133,
+          "end_ms": 1903733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说蕾妮将众人忘却后也没得到想要的东西，并问她是否浑浑噩噩、麻木不自知地活着才是渴求的「幸福」；蕾妮否认是故意忘记姐姐等人。",
+          "transcript_refs": [
+            "u00245",
+            "u00246",
+            "u00247"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e018c",
+          "start_ms": 1904267,
+          "end_ms": 1929867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说相信她，但口是心非本就意味着代价；她揭示蕾妮曾像今天这样做出过选择、因此才能孤身再度回到这里。",
+          "transcript_refs": [
+            "u00248",
+            "u00249"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e018d",
+          "start_ms": 1930400,
+          "end_ms": 1958400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师质问是否像德洛莉丝女士一样选择了「永生」；蕾妮惊讶地连声否认，随后追问姐姐、妈妈和哥哥们是否都还活着，说那些木偶原来不是他们、感到庆幸。",
+          "transcript_refs": [
+            "u00251",
+            "u00252",
+            "u00253"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e018e",
+          "start_ms": 1958667,
+          "end_ms": 2029867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉叹息蕾妮连他们的来历都忘得一干二净，讲述母亲深爱蕾妮的种种细节，说母亲、特蕾莎、埃略特等所有人都在等她、问她要不要去见见他们；蕾妮激动地呼唤妈妈与哥哥姐姐。",
+          "transcript_refs": [
+            "u00254",
+            "u00255",
+            "u00256",
+            "u00257",
+            "u00258",
+            "u00259",
+            "u00260",
+            "u00261"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s019",
+      "start_ms": 2061867,
+      "end_ms": 2120000,
+      "summary": "画面回到樱花树下——蕾妮回忆当年想把开得最好的樱花枝送给姐姐、却从树上栽下；娜娜莉与达芙蒂尔也来到这棵歪脖子树前，感叹花谢、命运如德洛莉丝家一样，并察觉还有别人在赏花。",
+      "participants": [
+        "leini",
+        "nanally",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00262",
+        "u00263",
+        "u00264",
+        "u00265",
+        "u00266",
+        "u00267",
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00273"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e019a",
+          "start_ms": 2063733,
+          "end_ms": 2100267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮重临樱花树，感叹樱花开得真好，回忆当年仰头想着要采一枝最好的送给姐姐、让姐姐用它挽起头发，结果努力去够时没抓稳从树上栽下，却想不起后来发生了什么。",
+          "transcript_refs": [
+            "u00263",
+            "u00264",
+            "u00265",
+            "u00266",
+            "u00267",
+            "u00268"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e019b",
+          "start_ms": 2108533,
+          "end_ms": 2120000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉认出这就是来时见到的歪脖子树；达芙蒂尔说花谢了，娜娜莉感叹正如德洛莉丝家的命运，达芙蒂尔提醒小心，娜娜莉则说看来赏花的不止他们。",
+          "transcript_refs": [
+            "u00269",
+            "u00270",
+            "u00271",
+            "u00272",
+            "u00273"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s020",
+      "start_ms": 2220000,
+      "end_ms": 2342667,
+      "summary": "木偶孩子们（以贝拉之口）讲述他们因母亲炽烈的心声而苏醒、立誓让母亲不再孤独；却因未能满足母亲真正的愿望而永远无法停下，直到最后那个孩子带来诅咒、背叛与毁灭，如今她回来了。",
+      "participants": [
+        "beila",
+        "leini"
+      ],
+      "transcript_refs": [
+        "u00274",
+        "u00275",
+        "u00276",
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280",
+        "u00281",
+        "u00282",
+        "u00283",
+        "u00284"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e020",
+          "start_ms": 2220000,
+          "end_ms": 2342667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "木偶孩子们（以贝拉之口）讲述：他们因母亲炽烈的心声而苏醒、立誓让母亲永远不再孤独，一度让母亲得到陪伴与幸福，却因未能满足她内心真正的愿望而永远无法停下；那最后一个苏醒、最受宠爱的孩子为母亲和这个家带来了诅咒、背叛与毁灭，如今她回来了。",
+          "transcript_refs": [
+            "u00274",
+            "u00275",
+            "u00276",
+            "u00277",
+            "u00278",
+            "u00279",
+            "u00280",
+            "u00281",
+            "u00282",
+            "u00283",
+            "u00284"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s021",
+      "start_ms": 2353600,
+      "end_ms": 2490400,
+      "summary": "贝拉讲述木偶孩子们的来历：他们本是母亲匣子里静静沉睡的木偶，为回应母亲的呼唤而睁眼；特蕾莎、埃略特、伊薇特等孩子陆续醒来，共享母亲赐予的「永恒」，而蕾妮是最后一个、也最受偏爱的孩子。",
+      "participants": [
+        "beila",
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00285",
+        "u00286",
+        "u00287",
+        "u00288",
+        "u00289",
+        "u00290",
+        "u00291",
+        "u00292",
+        "u00293",
+        "u00294",
+        "u00295",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00299",
+        "u00300",
+        "u00301"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e021a",
+          "start_ms": 2353600,
+          "end_ms": 2373333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉讲述：一切的开始，他们只是静静睡在母亲匣子里的木偶，为了回应母亲的愿望与呼唤而睁开眼睛。",
+          "transcript_refs": [
+            "u00285",
+            "u00286",
+            "u00287"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e021b",
+          "start_ms": 2373600,
+          "end_ms": 2415200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉列举特蕾莎、埃略特、伊薇特等孩子陆续醒来、为让母亲露出笑颜而倾尽所能；她说这是母亲创造的奇迹，木偶孩子们的木质身躯中流动着母亲赠与的生命，众人共享来自母亲的「永恒」。",
+          "transcript_refs": [
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00291"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e021c",
+          "start_ms": 2415467,
+          "end_ms": 2442400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说母亲依旧感到孤独、仍在渴望些什么，只要愿望尚未实现，「孩子们」就会继续来到母亲身边，而蕾妮是最后一个得到母亲青睐、也最受偏爱的孩子。",
+          "transcript_refs": [
+            "u00292",
+            "u00293"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e021d",
+          "start_ms": 2442933,
+          "end_ms": 2458133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮理解到木偶才是他们本来的样子、自己也是因妈妈的魔法而苏醒；鉴定师暗自判断那正是家主德洛莉丝的异能。",
+          "transcript_refs": [
+            "u00294",
+            "u00295",
+            "u00296"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e021e",
+          "start_ms": 2458667,
+          "end_ms": 2476000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说这就是他们存在的起点与醒来的意义、他们本只因母亲而存在；蕾妮道谢，感谢姐姐让她想起这些。",
+          "transcript_refs": [
+            "u00297",
+            "u00298",
+            "u00299"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s022",
+      "start_ms": 2490933,
+      "end_ms": 2600533,
+      "summary": "贝拉指责蕾妮抛却一切、背弃了家人、犯下无法饶恕的罪行，让她去母亲书房的「名簿」上亲自确认；蕾妮忆起更多往事、追问母亲与兄姐的下落，并对即将进入的书房感到不安。",
+      "participants": [
+        "beila",
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00302",
+        "u00303",
+        "u00305",
+        "u00306",
+        "u00307",
+        "u00308",
+        "u00309",
+        "u00310",
+        "u00311",
+        "u00312",
+        "u00313",
+        "u00314",
+        "u00315",
+        "u00316"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e022a",
+          "start_ms": 2490933,
+          "end_ms": 2516533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说蕾妮连亲手犯下的罪孽都忘得一干二净也不要紧，自己正是为此而存在，并让她去母亲书房「名簿」上亲自确认写着的罪行；鉴定师让对方说得再明白些。",
+          "transcript_refs": [
+            "u00302",
+            "u00303",
+            "u00305"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e022b",
+          "start_ms": 2518933,
+          "end_ms": 2535733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说一切皆因蕾妮而起、称她为无知的妹妹；蕾妮呼喊要姐姐别离开她。",
+          "transcript_refs": [
+            "u00306",
+            "u00307",
+            "u00308"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e022c",
+          "start_ms": 2536000,
+          "end_ms": 2579733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师问蕾妮是否想起了什么；蕾妮说正如贝拉姐所说，他们都是回应妈妈的愿望而醒来的木偶、只为陪伴妈妈而存在，并想起与哥哥姐姐一起喝茶、在家中捉迷藏等许多往事，追问深爱的妈妈与哥哥姐姐如今在哪里、为何只剩她独自活着。",
+          "transcript_refs": [
+            "u00309",
+            "u00310",
+            "u00311",
+            "u00312",
+            "u00313"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e022d",
+          "start_ms": 2580000,
+          "end_ms": 2600533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师说只能去书房确认；蕾妮说自己虽然对那里毫无印象，却忍不住害怕书房里有令她很不安的东西。",
+          "transcript_refs": [
+            "u00314",
+            "u00315",
+            "u00316"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s023",
+      "start_ms": 2659200,
+      "end_ms": 2948533,
+      "summary": "娜娜莉与达芙蒂尔来到上锁的书房前；娜娜莉发现大摆钟，达芙蒂尔认出那是袭击蕾妮的规则异象，两人推断它只在九点活动、只针对蕾妮，必须由它自行泯除，于是急着去找蕾妮；途中达芙蒂尔谈起自己曾在「花园」被「母亲」收集的往事。",
+      "participants": [
+        "nanally",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00317",
+        "u00318",
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00325",
+        "u00326",
+        "u00327",
+        "u00328",
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00336",
+        "u00337",
+        "u00338",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00344",
+        "u00345"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e023a",
+          "start_ms": 2659200,
+          "end_ms": 2682400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说区区破门挡不住一代目和师父的路，发现上锁的房间独此一间、觉得是秘密的味道；达芙蒂尔叮嘱别大意、要谨慎。",
+          "transcript_refs": [
+            "u00317",
+            "u00318",
+            "u00319",
+            "u00320"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e023b",
+          "start_ms": 2682933,
+          "end_ms": 2714400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉又见大摆钟，猜测德洛莉丝是钟表收藏家或这个异象空间与「时间」脱不了干系；达芙蒂尔提醒这正是那天袭击蕾妮小姐的异象，娜娜莉觉得它并无恶意，达芙蒂尔则说他们不是它的目标、蕾妮才是。",
+          "transcript_refs": [
+            "u00321",
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00325",
+            "u00326"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e023c",
+          "start_ms": 2714933,
+          "end_ms": 2751467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉复述规则异象的说法——它只在九点准时活动、目标是蕾妮一人；达芙蒂尔说即使主动攻击它也多半无济于事，黑羽小姐提过需由它完成使命后自行泯除，两人急着尽快找到蕾妮。",
+          "transcript_refs": [
+            "u00327",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e023d",
+          "start_ms": 2860000,
+          "end_ms": 2948533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉感叹家中兄弟姐妹多一定很热闹，问师父是否有兄弟姐妹；达芙蒂尔说自己曾在一个「花园」和很多没有血缘的「姐妹」一起生活，那些都是被「母亲」收集来的漂亮花朵，「母亲」也与大家没有亲缘；娜娜莉觉得这与康斯坦丁家相似，达芙蒂尔则说那位「母亲」只是把活生生的孩子打造成自己喜爱的摆设，娜娜莉庆幸师父离开了那个花园。",
+          "transcript_refs": [
+            "u00336",
+            "u00337",
+            "u00338",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00342",
+            "u00343",
+            "u00344",
+            "u00345"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s024",
+      "start_ms": 2991733,
+      "end_ms": 3128533,
+      "summary": "达芙蒂尔推断德洛莉丝很可能已遭遇不测；她与娜娜莉推理蕾妮的数字对应「寿命」，两万多天约等于五十多年、与家族消亡的时间吻合，从而推测蕾妮被「讨债人」日复一日征讨是因自然法则必须抹杀她的存在。",
+      "participants": [
+        "nanally",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00347",
+        "u00348",
+        "u00349",
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00353",
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00357",
+        "u00358",
+        "u00359",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e024a",
+          "start_ms": 2991733,
+          "end_ms": 3021600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔说德洛莉丝女士很可能已经遭遇不测；娜娜莉说不愿让它变成「0」、只有蕾妮的数字不一样，达芙蒂尔串联起「已覆灭的家族」「空白的明天」「时间」「永生的诅咒」等暗示，猜测它代表的是寿命。",
+          "transcript_refs": [
+            "u00347",
+            "u00348",
+            "u00349",
+            "u00350",
+            "u00351"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e024b",
+          "start_ms": 3022133,
+          "end_ms": 3069333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉算出两万多天差不多五十多年、与黑羽小姐说的家族已消亡半个多世纪吻合，惊觉蕾妮本应五十多年前就……；达芙蒂尔顺着假设推理，说蕾妮的生命本该随家族覆灭一起凋零，却不知何故仍存在于世、一天天倒欠寿命。",
+          "transcript_refs": [
+            "u00352",
+            "u00353",
+            "u00354",
+            "u00355",
+            "u00356"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e024c",
+          "start_ms": 3069867,
+          "end_ms": 3111733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔说倘若「讨债人」恪守的是「自然法则」便应如此，指出违逆者势必要付出代价，并质问蕾妮付出的代价是什么、为何生命停滞在五十多年前那一天，推测被「讨债人」日复一日征讨正是因自然法则必须抹杀她的存在。",
+          "transcript_refs": [
+            "u00357",
+            "u00358",
+            "u00359",
+            "u00360"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e024d",
+          "start_ms": 3112267,
+          "end_ms": 3128533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉指出异象管理局里的木偶就是被讨债人抹杀的、蕾妮的家人，并问接下来该怎么办；达芙蒂尔说伊波恩接下了委托，自然没有失约的道理。",
+          "transcript_refs": [
+            "u00361",
+            "u00362",
+            "u00363"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s025",
+      "start_ms": 3136533,
+      "end_ms": 3455467,
+      "summary": "幻象中，贝拉向德洛莉丝陈述：他们听得见死神迫近的脚步声，陪伴母亲的每一天都在减少；蕾妮诞生之时，镌刻众人名字与余命的「名簿」出现在家中，倒计时终将迎来魔法消散的最后一夜；而母亲的目光只为蕾妮停留，令孩子们不解与不平。",
+      "participants": [
+        "beila",
+        "deluolisi"
+      ],
+      "transcript_refs": [
+        "u00364",
+        "u00365",
+        "u00366",
+        "u00367",
+        "u00368",
+        "u00369",
+        "u00370",
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374",
+        "u00375",
+        "u00376",
+        "u00377",
+        "u00378",
+        "u00379",
+        "u00380",
+        "u00381",
+        "u00382",
+        "u00383",
+        "u00384",
+        "u00385",
+        "u00386",
+        "u00387",
+        "u00388"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e025a",
+          "start_ms": 3136533,
+          "end_ms": 3157867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝问贝拉是否已经知道了；贝拉答是，说即使母亲从不许他们进书房、接触那本「名簿」，她也明白——除了蕾妮，众人都听得见死神迫近的脚步声。",
+          "transcript_refs": [
+            "u00364",
+            "u00365",
+            "u00366"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e025b",
+          "start_ms": 3158133,
+          "end_ms": 3229067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说每与母亲共度一天，就离终结之日更近一天；作为母亲的造物，他们愿永远温暖母亲空乏的内心、带去幸福，然而蕾妮打破了这一切——她诞生之时，那本诅咒般的「名簿」便出现在家中，书页上镌刻着众人的名字与所剩无几的余命。",
+          "transcript_refs": [
+            "u00367",
+            "u00368",
+            "u00369",
+            "u00370",
+            "u00371"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e025c",
+          "start_ms": 3229600,
+          "end_ms": 3253333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说能服侍母亲的日子已不剩多少、必须时刻为她带去幸福，又不解母亲的目光为何只为蕾妮停留。",
+          "transcript_refs": [
+            "u00372",
+            "u00373"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e025d",
+          "start_ms": 3253600,
+          "end_ms": 3314933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉列举特蕾莎栽培的奇异花卉、埃略特烤制的甜点、伊薇特悉心剪裁的服装，说众人为博母亲一笑的努力都被视而不见；而蕾妮是最吵闹、只会索取的那个，她不明白母亲为何偏爱这样任性的孩子，甚至怀疑蕾妮只为毁灭他们而来。",
+          "transcript_refs": [
+            "u00374",
+            "u00375",
+            "u00376",
+            "u00377"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e025e",
+          "start_ms": 3315200,
+          "end_ms": 3347467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi",
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝说「那些都没关系」；贝拉追问即使「名簿」上也出现了母亲的名字、最受垂怜的小女儿宣判了她生命的终结也没关系吗，说「名簿」上属于母亲生命的数字正因他们的存在而飞速消耗。",
+          "transcript_refs": [
+            "u00378",
+            "u00379",
+            "u00380"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e025f",
+          "start_ms": 3347733,
+          "end_ms": 3414133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说好在即便数字归零母亲也不会死去——她早已被「它」放逐现世、从未活在「当下」，只要有「它」庇佑便是超越自然法则的存在，昨日、今日与无数明日对她而言都是「今时」，她永远停驻在「它」生效、光阴不再于面容流转的那一刻；但即便如此，贝拉也绝不会原谅那孩子。",
+          "transcript_refs": [
+            "u00381",
+            "u00382",
+            "u00383",
+            "u00384"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e025g",
+          "start_ms": 3414400,
+          "end_ms": 3455467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi",
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝说打理家业让贝拉太累了、自己也累，提醒她晚些还要陪那孩子玩；贝拉答「便如您所愿」，说会继续维系和睦的假象，直至那孩子带来的诅咒将他们尽数毁去。",
+          "transcript_refs": [
+            "u00385",
+            "u00386",
+            "u00387",
+            "u00388"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s026",
+      "start_ms": 3455733,
+      "end_ms": 3634667,
+      "summary": "蕾妮震惊于自己竟「诅咒」了家人、夺走母亲对哥哥姐姐的爱甚至他们的生命；她质问为何偏偏是自己、坚称自己发自内心爱着众人；贝拉说家中的爱与恨远比她想象复杂，众人确曾为她做过许多。",
+      "participants": [
+        "leini",
+        "beila"
+      ],
+      "transcript_refs": [
+        "u00389",
+        "u00390",
+        "u00391",
+        "u00392",
+        "u00393",
+        "u00394",
+        "u00395",
+        "u00396",
+        "u00397",
+        "u00398",
+        "u00399",
+        "u00400",
+        "u00401",
+        "u00402",
+        "u00403"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e026a",
+          "start_ms": 3455733,
+          "end_ms": 3482667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮不能接受，痛苦地自问是否是自己诅咒了家人、成了这个家的灾星与祸害，夺走了母亲对哥哥姐姐的爱甚至他们的生命。",
+          "transcript_refs": [
+            "u00389",
+            "u00390",
+            "u00391"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e026b",
+          "start_ms": 3483200,
+          "end_ms": 3520533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说蕾妮矢口否认自己弄砸了一切、和过去一模一样；蕾妮说本不该如此，承认姐姐说得对，却追问为何偏偏是自己，坚称自己发自内心爱着众人，反问若众人讨厌她又怎会着急等在树下接住她。",
+          "transcript_refs": [
+            "u00392",
+            "u00393",
+            "u00394",
+            "u00395"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e026c",
+          "start_ms": 3521067,
+          "end_ms": 3597867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说这个家中的爱与恨远比蕾妮想象的要复杂，但事实是大家都曾为她做过许多——特蕾莎特意为她准备园艺用具、带她种母亲最爱的花，埃略特主动管理她的饮食、监督她喝牛奶，每当她摔跤蹭破衣服都有人为她缝补。",
+          "transcript_refs": [
+            "u00396",
+            "u00397",
+            "u00398",
+            "u00399",
+            "u00400",
+            "u00401"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e026d",
+          "start_ms": 3598400,
+          "end_ms": 3634667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说拥有一个完整的家是母亲的愿望，众人都在努力回应、不破坏这个愿望；只要佯装着、像母亲一样宠爱蕾妮便能营造和睦的假象，本已足够，但他们做不到。",
+          "transcript_refs": [
+            "u00402",
+            "u00403"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s027",
+      "start_ms": 3635200,
+      "end_ms": 3792800,
+      "summary": "贝拉说即便蕾妮犯下许多错误，众人仍忍不住像真正的亲人一样爱她，可面对死亡与诅咒，再真挚的爱也会消磨殆尽；她提起孩子们的捉迷藏游戏，讲起那个谁都找不到蕾妮的夜晚，宣布这次要蕾妮一个人当「鬼」、把所有人找回来。",
+      "participants": [
+        "beila",
+        "leini"
+      ],
+      "transcript_refs": [
+        "u00404",
+        "u00405",
+        "u00406",
+        "u00407",
+        "u00408",
+        "u00409",
+        "u00410",
+        "u00411",
+        "u00412",
+        "u00413",
+        "u00414",
+        "u00415",
+        "u00416",
+        "u00417",
+        "u00418",
+        "u00419",
+        "u00420"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e027a",
+          "start_ms": 3635200,
+          "end_ms": 3689333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说即便蕾妮犯下这么多错误，他们仍忍不住像真正的亲人一样爱她、视她为最珍贵的小姑娘，但在死亡与诅咒面前，再真挚的爱也会有消磨殆尽的一天；她指出最无可原谅的是背负这一切恶果的是母亲。",
+          "transcript_refs": [
+            "u00404",
+            "u00405",
+            "u00406",
+            "u00407"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e027b",
+          "start_ms": 3693600,
+          "end_ms": 3717600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说起孩子们的游乐时间、又是蕾妮最喜欢的捉迷藏，说蕾妮总是最藏不住的那个，当鬼更差劲——有一次快把家里翻了个底朝天，谁都没找到。",
+          "transcript_refs": [
+            "u00408",
+            "u00409",
+            "u00410"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e027c",
+          "start_ms": 3718133,
+          "end_ms": 3742400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮回忆起那次天色已晚、家中那么静那么空，想起姐姐讲的鬼故事，觉得挂画里的人都在盯着她、桌椅板凳都在悄悄移动，以为自己被丢下了。",
+          "transcript_refs": [
+            "u00411",
+            "u00412"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e027d",
+          "start_ms": 3742933,
+          "end_ms": 3792800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说蕾妮终于记起来了，但事实恰好相反——是蕾妮丢下了他们；她问蕾妮是否记得那天家人从藏匿处走出来时说了什么，蕾妮答「我们一家人，会永远在一起」，贝拉夸她是乖孩子，宣布捉迷藏时间到了、这次有蕾妮孤零零一个人当「鬼」，要她把所有人都找到。",
+          "transcript_refs": [
+            "u00413",
+            "u00414",
+            "u00415",
+            "u00416",
+            "u00417",
+            "u00418",
+            "u00419",
+            "u00420"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s028",
+      "start_ms": 3945067,
+      "end_ms": 4046667,
+      "summary": "独自「当鬼」的小蕾妮以为自己要赢了、藏进了「蕾妮专属藏身地」；蕾妮与鉴定师发觉小时候的「我」也在场，开始怀疑他们所见的并非单纯的「过去」。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00424",
+        "u00425",
+        "u00426",
+        "u00427",
+        "u00428",
+        "u00429",
+        "u00430",
+        "u00432",
+        "u00433",
+        "u00434",
+        "u00435",
+        "u00436",
+        "u00437",
+        "u00438",
+        "u00439"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e028a",
+          "start_ms": 3945067,
+          "end_ms": 3958400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "小蕾妮以为自己藏得谁也找不到、就要赢了，得意地躲进「蕾妮专属藏身地」。",
+          "transcript_refs": [
+            "u00424",
+            "u00425",
+            "u00426",
+            "u00427",
+            "u00428"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e028b",
+          "start_ms": 3961333,
+          "end_ms": 3981867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说自己原以为他们在扮演小时候的「我」、要找到哥哥姐姐们，却疑惑为何小时候的自己也在这里，回想过去当鬼的究竟是谁、难道是妈妈。",
+          "transcript_refs": [
+            "u00429",
+            "u00430"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e028c",
+          "start_ms": 3982400,
+          "end_ms": 4028000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师让他们先等等，怀疑他们看到的真是「过去」吗；蕾妮说印象中小时候确实发生过类似的事，但自己只知道一小部分、刚刚看到的才是全貌，坚称那些真心话也是真实发生过的。",
+          "transcript_refs": [
+            "u00432",
+            "u00433",
+            "u00434",
+            "u00435",
+            "u00436"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e028d",
+          "start_ms": 4028267,
+          "end_ms": 4046667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师觉得哪里有些说不通；蕾妮请鉴定师跟她走，说要带他去看自己的专属藏身地。",
+          "transcript_refs": [
+            "u00437",
+            "u00438",
+            "u00439"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s029",
+      "start_ms": 4063467,
+      "end_ms": 4132000,
+      "summary": "蕾妮与小蕾妮相遇，小蕾妮念叨着捉迷藏、开饭前要洗手、大哥会捏她的脸；鉴定师惊讶这已是最后一个小木偶，蕾妮却指向自己随身携带、同样被烙印上红字的小木偶。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00440",
+        "u00441",
+        "u00442",
+        "u00443",
+        "u00444",
+        "u00445",
+        "u00446",
+        "u00447"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e029a",
+          "start_ms": 4063467,
+          "end_ms": 4108533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "小蕾妮说蕾妮找到了她、自己离赢就差一点点，念叨着等下要开饭、吃饭前要洗手、大哥会检查，还说要先走了、大哥最爱捏她的脸。",
+          "transcript_refs": [
+            "u00440",
+            "u00441",
+            "u00442",
+            "u00443"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e029b",
+          "start_ms": 4108800,
+          "end_ms": 4118133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师惊讶地问这已经是最后一个小木偶了吗；蕾妮答「不，最后一个，在这里」。",
+          "transcript_refs": [
+            "u00444",
+            "u00445"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e029c",
+          "start_ms": 4118667,
+          "end_ms": 4132000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮展示自己总带在身边的木偶，不解它为何也被烙印上同样的红字与字母，觉得这背后的寓意一定另有含义。",
+          "transcript_refs": [
+            "u00446",
+            "u00447"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s030",
+      "start_ms": 4132267,
+      "end_ms": 4352000,
+      "summary": "贝拉出现，说蕾妮虽来到此处却仍不明白——她只是在旁观被诅咒的家人重演悲剧、矢口否认自己的罪孽；贝拉点破蕾妮的遗忘源于她渴望逃避一切的愿望，并指出母亲把全部的爱连同「恒今时」都给了她，邀蕾妮回到命运的最后一天。",
+      "participants": [
+        "beila",
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00448",
+        "u00449",
+        "u00450",
+        "u00451",
+        "u00452",
+        "u00453",
+        "u00454",
+        "u00455",
+        "u00456",
+        "u00457",
+        "u00458",
+        "u00459",
+        "u00460",
+        "u00461",
+        "u00462",
+        "u00463",
+        "u00464",
+        "u00465",
+        "u00466",
+        "u00467",
+        "u00468",
+        "u00469"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e030a",
+          "start_ms": 4132267,
+          "end_ms": 4166933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说蕾妮终于来到此处；蕾妮回应「我回来了」；贝拉说但蕾妮仍不明白——她只是看着家中凄清的过往重演、欣赏被诅咒的他们日复一日重蹈悲剧，像身在剧中的观众般矢口否认自己的罪孽。",
+          "transcript_refs": [
+            "u00448",
+            "u00449",
+            "u00450",
+            "u00451",
+            "u00452",
+            "u00453"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e030b",
+          "start_ms": 4167200,
+          "end_ms": 4211467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉问蕾妮是否想过自己为何会忘记这个家、忘记他们，究竟是被迫遗忘还是不愿回首；蕾妮反问自己是否为了逃避过去才忘了家里的事，贝拉说蕾妮终于找到了答案——她源于蕾妮渴望逃避一切的愿望。",
+          "transcript_refs": [
+            "u00454",
+            "u00455",
+            "u00456",
+            "u00457",
+            "u00458"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e030c",
+          "start_ms": 4212000,
+          "end_ms": 4279733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说自己会永远呼唤蕾妮回来、让她想起她属于这个家，终有一天她会叩响家中门扉；她质问蕾妮带着怎样的心情回家、是否会因知晓自己施下的诅咒而愧疚，又断言她不会——她一向自私贪婪、背弃了为满足母亲而存在的初衷。",
+          "transcript_refs": [
+            "u00459",
+            "u00460",
+            "u00461",
+            "u00462"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e030d",
+          "start_ms": 4280267,
+          "end_ms": 4324000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮连声道歉；贝拉说蕾妮不该向她道歉，而要想想置身时间流动之外的母亲最终命运如何，提到母亲把全部的爱、全部的生命连同让母亲维系永生的「恒今时」都给了蕾妮。",
+          "transcript_refs": [
+            "u00463",
+            "u00464",
+            "u00465",
+            "u00466"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e030e",
+          "start_ms": 4324267,
+          "end_ms": 4352000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮呼喊姐姐不要走；贝拉说时钟仍在倒转，让她回到过去、去看她永远驻足的命运最后一天，并说会在最后的舞台等着蕾妮，称她为「背叛之子」。",
+          "transcript_refs": [
+            "u00467",
+            "u00468",
+            "u00469"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s031",
+      "start_ms": 4357333,
+      "end_ms": 4431733,
+      "summary": "蕾妮自责背叛了这个家、为逃避愧疚而浑浑噩噩忘记家人，认定这是不可饶恕的罪行；她感到这个家仍在呼唤她、相信还能赎罪，只要回到过去、回到家里的最后一天；鉴定师则意识到只剩最后两小时。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00470",
+        "u00471",
+        "u00472",
+        "u00473",
+        "u00474",
+        "u00475",
+        "u00476",
+        "u00477",
+        "u00478"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e031a",
+          "start_ms": 4357333,
+          "end_ms": 4385867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮承认自己背叛了这个家，说是为了忘记背负的罪孽、从无止境的愧疚中逃开，才浑浑噩噩把家人尽数忘记，认定这是不可饶恕的背叛罪行。",
+          "transcript_refs": [
+            "u00470",
+            "u00471",
+            "u00472"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e031b",
+          "start_ms": 4386400,
+          "end_ms": 4424533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮感叹自己如此漫长、不知为何而活地活着直到今天，看到哥哥姐姐们留下的讯息，意识到自己不仅是「诅咒之子」还背叛了所有人；但她相信这个家仍在呼唤她、自己一定还有赎罪的机会，只要回到过去、回到家里的最后一天。",
+          "transcript_refs": [
+            "u00473",
+            "u00474",
+            "u00475",
+            "u00476"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e031c",
+          "start_ms": 4425067,
+          "end_ms": 4431733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师暗自意识到只剩最后两小时、得快点找到解决办法，决定先和蕾妮商量刚刚的事。",
+          "transcript_refs": [
+            "u00477",
+            "u00478"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s032",
+      "start_ms": 4433867,
+      "end_ms": 4568267,
+      "summary": "蕾妮完全沉浸在过往中，念叨着要吃饭、不能让妈妈等太久伤心；鉴定师怎么唤不回她，只好梳理线索：家中的诅咒或许就是每晚攻击蕾妮的规则异象，但异象为何随蕾妮苏醒才出现、随身小木偶上的红字从何而来，都令他不安。",
+      "participants": [
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00479",
+        "u00480",
+        "u00481",
+        "u00482",
+        "u00483",
+        "u00484",
+        "u00485",
+        "u00486",
+        "u00487",
+        "u00488",
+        "u00490",
+        "u00491",
+        "u00492",
+        "u00493",
+        "u00494",
+        "u00495",
+        "u00496",
+        "u00498",
+        "u00500",
+        "u00501"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e032a",
+          "start_ms": 4433867,
+          "end_ms": 4462667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮念叨着七点该吃饭、催鉴定师快点、怕菜放凉，说不能让妈妈等太久、更不能让妈妈伤心。",
+          "transcript_refs": [
+            "u00479",
+            "u00480",
+            "u00481",
+            "u00482",
+            "u00483",
+            "u00484"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e032b",
+          "start_ms": 4463200,
+          "end_ms": 4493600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师意识到蕾妮已完全沉浸在过往、无法沟通，决定先梳理线索：家中的诅咒是否就是每晚准时出现、攻击蕾妮的规则异象，蕾妮与手足恐怕很难被定义为遵循自然规则的寻常生命。",
+          "transcript_refs": [
+            "u00485",
+            "u00486",
+            "u00487",
+            "u00488",
+            "u00490"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e032c",
+          "start_ms": 4494133,
+          "end_ms": 4528800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师怀疑若如此，为何异象会随蕾妮的苏醒才出现——按推论校正自然准则的异象本应与家中第一个孩子同时现世；他又质疑「贝拉」小姐的话是否可信、为何蕾妮随身的小木偶上也会出现红字。",
+          "transcript_refs": [
+            "u00491",
+            "u00492",
+            "u00493",
+            "u00494",
+            "u00495",
+            "u00496"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e032d",
+          "start_ms": 4529333,
+          "end_ms": 4568267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师追问这些究竟是异象空间的影响还是某人的异能所致、「贝拉」是否真来自过去的幽影，最终决定先追上蕾妮再随机应变。",
+          "transcript_refs": [
+            "u00498",
+            "u00500",
+            "u00501"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s033",
+      "start_ms": 4573600,
+      "end_ms": 4757600,
+      "summary": "幻象中的餐桌上，蕾妮难过得没吃多少，讲起自己最喜欢的蟋蟀「威风大王」似乎死了、问死后会是什么样子；伊薇特插话说死亡是一个只有自己、黑漆漆的世界、和睡在木匣子里没什么两样；蕾妮说活着才比较好、想和妈妈和哥哥姐姐永远在一起。",
+      "participants": [
+        "leini",
+        "deluolisi",
+        "yiweite",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00502",
+        "u00503",
+        "u00504",
+        "u00505",
+        "u00506",
+        "u00507",
+        "u00508",
+        "u00509",
+        "u00510",
+        "u00511",
+        "u00512",
+        "u00513",
+        "u00514",
+        "u00515",
+        "u00516",
+        "u00517",
+        "u00518",
+        "u00519",
+        "u00520",
+        "u00521",
+        "u00522",
+        "u00523",
+        "u00524",
+        "u00525"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e033a",
+          "start_ms": 4573600,
+          "end_ms": 4669600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝注意到蕾妮没吃多少东西；蕾妮说大哥做的菜很好吃、是自己没胃口，因为最喜欢的蟋蟀「威风大王」蔫蔫的一动不动、也不唱歌了，她担心它是不是死掉了，又问死后会是什么样子、他们是不是也会死。",
+          "transcript_refs": [
+            "u00502",
+            "u00503",
+            "u00504",
+            "u00505",
+            "u00506",
+            "u00507",
+            "u00508",
+            "u00509",
+            "u00510",
+            "u00511",
+            "u00512",
+            "u00513",
+            "u00514"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e033b",
+          "start_ms": 4673867,
+          "end_ms": 4702133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yiweite",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊薇特插话说她知道——那是一个只有自己的世界，没有妈妈也没有哥哥姐姐、永远黑漆漆的；当蕾妮说很可怕时，伊薇特觉得奇怪，说死亡和睡在木匣子里的日子没什么两样、死掉也不是什么大不了的事。",
+          "transcript_refs": [
+            "u00515",
+            "u00516",
+            "u00517",
+            "u00518",
+            "u00519"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e033c",
+          "start_ms": 4706667,
+          "end_ms": 4757600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说活着才比较好、想和妈妈和哥哥姐姐永远在一起；她注意到鉴定师也在，感慨小时候的自己太不懂事，想到家人所剩的时间不多、妈妈还要回答这样的问题，觉得深爱他们的妈妈一定也很害怕他们的离去，于是想带鉴定师一起再去看看妈妈。",
+          "transcript_refs": [
+            "u00520",
+            "u00521",
+            "u00522",
+            "u00523",
+            "u00524",
+            "u00525"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s034",
+      "start_ms": 4815733,
+      "end_ms": 4908800,
+      "summary": "睡前，德洛莉丝来到蕾妮床边；蕾妮睡不着、还在为蟋蟀难过，转述贝拉姐说哭出来就好了、羡慕姐姐哭不出来；蕾妮说想快快长大帮上妈妈和姐姐的忙，还挑食不肯吃青豆，德洛莉丝答应讲一个从未有人听过的睡前故事。",
+      "participants": [
+        "leini",
+        "deluolisi"
+      ],
+      "transcript_refs": [
+        "u00526",
+        "u00527",
+        "u00528",
+        "u00529",
+        "u00530",
+        "u00531",
+        "u00532",
+        "u00533",
+        "u00534",
+        "u00535",
+        "u00536",
+        "u00537",
+        "u00538",
+        "u00539"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e034a",
+          "start_ms": 4815733,
+          "end_ms": 4853067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝说蕾妮的睡觉时间已过；蕾妮说睡不着、还在为「威风大王」难过，并转述贝拉姐告诉她哭出来就好了、还说贝拉姐无论多难过都哭不出来所以很羡慕她。",
+          "transcript_refs": [
+            "u00526",
+            "u00527",
+            "u00528",
+            "u00529",
+            "u00530",
+            "u00531"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e034b",
+          "start_ms": 4853333,
+          "end_ms": 4885867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝说妈妈也是这样哭不出来；蕾妮追问是否因为大人更坚强，随后说自己也要快快长大、帮妈妈和姐姐的忙，长到妈妈想让她多高就多高，却不肯吃青豆。",
+          "transcript_refs": [
+            "u00532",
+            "u00533",
+            "u00534",
+            "u00535",
+            "u00536"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e034c",
+          "start_ms": 4886133,
+          "end_ms": 4908800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝答应给蕾妮讲个睡前故事、让她听完乖乖睡觉才能快快长大；蕾妮以为是继续讲昨天的故事，德洛莉丝说今天要讲的是一个从未有人听过的故事。",
+          "transcript_refs": [
+            "u00537",
+            "u00538",
+            "u00539"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s035",
+      "start_ms": 4909067,
+      "end_ms": 5212800,
+      "summary": "德洛莉丝讲述老木匠的故事：她手艺精湛、能赋予木头生机，却因年老力不从心；她一次次雕出坚固、美丽、逗人欢笑的木偶，都摇头说「这不是真正的孩子」；某个寒夜她忽然觉得木偶们也会冷，为它们裹好后雕了一个平平无奇的木偶，吻了每个木偶的额头，宛如母亲的晚安吻，沉沉睡去。",
+      "participants": [
+        "deluolisi",
+        "leini"
+      ],
+      "transcript_refs": [
+        "u00540",
+        "u00541",
+        "u00542",
+        "u00543",
+        "u00544",
+        "u00545",
+        "u00546",
+        "u00547",
+        "u00548",
+        "u00549",
+        "u00550",
+        "u00551",
+        "u00552",
+        "u00553",
+        "u00554",
+        "u00555",
+        "u00556",
+        "u00557",
+        "u00558",
+        "u00559",
+        "u00560",
+        "u00561",
+        "u00562",
+        "u00563",
+        "u00564"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e035a",
+          "start_ms": 4909067,
+          "end_ms": 4967733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝讲述王城里住着一位手艺精湛的老木匠，人们都说她有赋予木头生机的魔力，只要她想，木偶就能拥有真正的生命；但她因年老而力不从心，想起人们的话，决定打造一个「好帮手」的孩子。",
+          "transcript_refs": [
+            "u00540",
+            "u00541",
+            "u00542",
+            "u00543"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e035b",
+          "start_ms": 4968000,
+          "end_ms": 5056000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "老木匠先造出最坚固的躯体、上好发条能绕王城跑两圈的「孩子」，又造出最美丽面容的「孩子」，还有轻松惹孩子大笑的杂耍艺人、手法变幻莫测的魔术大师，可每次都只是摇头说「这不是真正的孩子」。",
+          "transcript_refs": [
+            "u00544",
+            "u00545",
+            "u00546",
+            "u00547",
+            "u00548",
+            "u00549",
+            "u00550"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e035c",
+          "start_ms": 5056533,
+          "end_ms": 5145333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "某个晚上北风灌进屋里，老木匠关窗取暖时心中一动，忽然觉得木偶们也会冷，于是为所有木偶裹得严严实实、暖暖和和；她回到桌前几下打样、执起刻刀，雕出一个平平无奇的木偶，却像完成了最得意的作品般满足。",
+          "transcript_refs": [
+            "u00551",
+            "u00552",
+            "u00553",
+            "u00554",
+            "u00555",
+            "u00556",
+            "u00557"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e035d",
+          "start_ms": 5145867,
+          "end_ms": 5181867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "老木匠俯身轻吻新木偶的额头、又吻了每个木偶的额上，宛如寻常母亲道的晚安吻，随后回到床上安睡；第二天唤醒她的，是额头上的吻——一个真正的小孩子正冲着她笑。",
+          "transcript_refs": [
+            "u00558",
+            "u00559"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e035e",
+          "start_ms": 5185600,
+          "end_ms": 5212800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮追问为什么最后的木偶变成了小孩子、老木匠用了什么魔法；德洛莉丝反问「你觉得呢」，蕾妮说好像有点懂又好像完全没明白，德洛莉丝说那样也没关系，并嘱咐时间不早、好孩子该乖乖睡觉。",
+          "transcript_refs": [
+            "u00560",
+            "u00561",
+            "u00562",
+            "u00563",
+            "u00564"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s036",
+      "start_ms": 5216533,
+      "end_ms": 5333333,
+      "summary": "蕾妮害怕独自睡觉、怕一觉醒来再也看不到妈妈和哥哥姐姐；她说活着比较好，畅想长大后要长得很高、学开车载全家人去野餐；贝拉突然插入，点明蕾妮曾对母亲许下「一直活下去」的贪婪愿望。",
+      "participants": [
+        "leini",
+        "deluolisi",
+        "beila"
+      ],
+      "transcript_refs": [
+        "u00565",
+        "u00566",
+        "u00567",
+        "u00568",
+        "u00569",
+        "u00570",
+        "u00571",
+        "u00572",
+        "u00573",
+        "u00574",
+        "u00575",
+        "u00576",
+        "u00577",
+        "u00578"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e036a",
+          "start_ms": 5216533,
+          "end_ms": 5230400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说还是害怕独自睡觉、怕一觉醒来再也看不到妈妈和哥哥姐姐，说活着比较好。",
+          "transcript_refs": [
+            "u00565",
+            "u00566"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e036b",
+          "start_ms": 5230667,
+          "end_ms": 5268800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "德洛莉丝问活着究竟好在哪里；蕾妮说每天和家人一起吃饭、捉迷藏，睡前还能听妈妈讲故事多好，反问妈妈是否觉得这样的日子很好；德洛莉丝说这就是最好的生活、和全家人在一起的日子是她生命中最宝贵的时光。",
+          "transcript_refs": [
+            "u00567",
+            "u00568",
+            "u00569",
+            "u00570",
+            "u00571"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e036c",
+          "start_ms": 5269333,
+          "end_ms": 5311200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说现在还不算、等自己长大后能为妈妈做更多事才是妈妈最美好的时光，憧憬着长得高高的、够得到妈妈要拿的东西，还要学开车、载全家人去野餐。",
+          "transcript_refs": [
+            "u00572",
+            "u00573",
+            "u00574",
+            "u00575"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e036d",
+          "start_ms": 5311467,
+          "end_ms": 5333333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini",
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉插话点出蕾妮曾对母亲许下的「活下去」、「一直活下去」这个贪婪至极的愿望，问她是否想起来了。",
+          "transcript_refs": [
+            "u00576",
+            "u00577",
+            "u00578"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s037",
+      "start_ms": 5333867,
+      "end_ms": 5604800,
+      "summary": "贝拉揭示：众人本该在五十多年前变回木偶，蕾妮正是靠母亲赋予永生的「恒今时」才逃脱讨债人的制裁；母亲为此付出了把自己放逐于时间之外的代价；贝拉逼问蕾妮最后一晚许下的愿望，蕾妮终于想起自己说要「快点长大」、母亲便把「恒今时」给了她，崩溃自责。",
+      "participants": [
+        "beila",
+        "leini",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00579",
+        "u00580",
+        "u00581",
+        "u00582",
+        "u00583",
+        "u00584",
+        "u00585",
+        "u00586",
+        "u00587",
+        "u00588",
+        "u00589",
+        "u00590",
+        "u00591",
+        "u00593",
+        "u00594",
+        "u00595",
+        "u00596",
+        "u00597",
+        "u00598",
+        "u00599",
+        "u00600",
+        "u00601",
+        "u00602"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e037a",
+          "start_ms": 5333867,
+          "end_ms": 5378667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说被宣告死期的众人本该在五十多年前变回木偶，质问蕾妮为何能逃脱讨债人的制裁直至今日；她揭示那赋予永生、将母亲身心永远停在那一瞬间的秘密，以及母亲为此付出的代价——将自己放逐尘世外，从此无忧无虑、无喜无悲、无念无心。",
+          "transcript_refs": [
+            "u00579",
+            "u00580",
+            "u00581"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e037b",
+          "start_ms": 5379200,
+          "end_ms": 5443733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说母亲本应继续享有不再流动的生命，他们不过是她偶然唤起的木偶、只为扮演母亲的家人角色而存在，只能面对蕾妮带来的诅咒、在短暂的倒计时中履行使命；而蕾妮只是永不知足地向母亲讨取关注、宠爱与一切，并逼问蕾妮最后一晚对母亲许下了什么愿望。",
+          "transcript_refs": [
+            "u00582",
+            "u00583",
+            "u00584",
+            "u00585",
+            "u00586"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e037c",
+          "start_ms": 5444000,
+          "end_ms": 5492533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮终于想起自己当时说「我好想快点长大」，贝拉夸她是诚实的孩子、追问然后呢；蕾妮说所以妈妈把「恒今时」给了她，随即崩溃地说不该是这样的、不知道，质问自己究竟做了什么。",
+          "transcript_refs": [
+            "u00587",
+            "u00588",
+            "u00589",
+            "u00590",
+            "u00591"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e037d",
+          "start_ms": 5493067,
+          "end_ms": 5524533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师试图安慰蕾妮「不是这样的」；贝拉说本应庇佑母亲的「恒今时」此刻正寄宿在蕾妮的眼睛里，追问她背叛了世上最爱她的人作何感想。",
+          "transcript_refs": [
+            "u00593",
+            "u00594",
+            "u00595"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e037e",
+          "start_ms": 5525067,
+          "end_ms": 5582400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "beila",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "贝拉说蕾妮不必道歉、他们会原谅她、妈妈也会依旧爱她，只要她主动放弃「恒今时」、洗脱对生命的贪婪，便原谅她曾犯下的罪孽，并邀她来到众人身边、在彼岸团聚。",
+          "transcript_refs": [
+            "u00596",
+            "u00597",
+            "u00598",
+            "u00599"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e037f",
+          "start_ms": 5582933,
+          "end_ms": 5604800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师喊「别听她的」，蕾妮犹豫不决，话未说完便被一声「你到底是谁」打断。",
+          "transcript_refs": [
+            "u00600",
+            "u00601",
+            "u00602"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s038",
+      "start_ms": 5625067,
+      "end_ms": 5739200,
+      "summary": "两声「小心」之后，母亲的临别话语浮现——要蕾妮早点睡觉、多吃蔬菜、健康快乐地长大，长大后别忘了妈妈，把「生活究竟是什么」的答案交给她去寻找；蕾妮崩溃地发现妈妈消失，痛呼都是因为我，又失控地喊出「我不需要你了」。",
+      "participants": [
+        "leini",
+        "deluolisi",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00603",
+        "u00604",
+        "u00605",
+        "u00606",
+        "u00607",
+        "u00608",
+        "u00609",
+        "u00614",
+        "u00615",
+        "u00616",
+        "u00617",
+        "u00618",
+        "u00619"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e038a",
+          "start_ms": 5625067,
+          "end_ms": 5671467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "deluolisi"
+          ],
+          "speaker_character_id": "",
+          "observation": "两声「小心！」之后，母亲叮嘱蕾妮以后要记得早点睡觉、多吃蔬菜，希望小花瓣健康快乐地长大，长大后别忘了妈妈，并把「生活究竟是什么」这个问题的答案交给她去寻找。",
+          "transcript_refs": [
+            "u00603",
+            "u00604",
+            "u00605",
+            "u00606",
+            "u00607"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e038b",
+          "start_ms": 5672000,
+          "end_ms": 5727467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮惊慌地问妈妈要去哪儿，随后失控地说「我……我不需要你了」，妈妈消失；蕾妮连声呼唤妈妈、痛呼不要、自责「都是因为我，妈妈才会……」，喃喃着不该是这样。",
+          "transcript_refs": [
+            "u00608",
+            "u00609",
+            "u00614",
+            "u00615",
+            "u00616",
+            "u00617"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e038c",
+          "start_ms": 5729600,
+          "end_ms": 5739200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮像是对母亲、又像是对自己宣告「看，现在我能永远活下去了」，紧接着又嘶声喊出「我不需要你了」。",
+          "transcript_refs": [
+            "u00618",
+            "u00619"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s039",
+      "start_ms": 5786133,
+      "end_ms": 6065333,
+      "summary": "残虹登场，感慨「愤怒、憎恨、不甘」等热烈情感如火焰焚身，宣告「该起舞了」；随后是一段激烈交战，双方怒喝挑衅、彼此反击，最后以「屈服于我」收束。",
+      "participants": [
+        "zankou"
+      ],
+      "transcript_refs": [
+        "u00620",
+        "u00621",
+        "u00622",
+        "u00623",
+        "u00624",
+        "u00625",
+        "u00626",
+        "u00627",
+        "u00628",
+        "u00629",
+        "u00630"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e039a",
+          "start_ms": 5786133,
+          "end_ms": 6001333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "残虹登场，感慨「愤怒、憎恨、不甘」这样热烈的情感仿佛火焰焚身，随后宣告「该起舞了」。",
+          "transcript_refs": [
+            "u00620",
+            "u00621"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e039b",
+          "start_ms": 6023733,
+          "end_ms": 6065333,
+          "evidence_kind": "action",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "一段激烈交战中，一方怒喝对方休想得逞、斥其狂妄，彼此以「不过如此」「再来啊」「如你所愿」相互挑衅，最后以「只可惜——到此为止了」「屈服于我」收束。",
+          "transcript_refs": [
+            "u00622",
+            "u00623",
+            "u00624",
+            "u00625",
+            "u00626",
+            "u00627",
+            "u00628",
+            "u00629",
+            "u00630"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s040",
+      "start_ms": 6114933,
+      "end_ms": 6252000,
+      "summary": "战斗继续，残虹以外貌与言语挑衅，提到有人因「小可爱」分心、以对方的「死相」相激；有人急呼「师父」，残虹以「真怀念啊」「姐姐」「母亲大人也很想念你」相向，暗示与达芙蒂尔的过去，最后以「我没事」「还没结束」收尾。",
+      "participants": [
+        "zankou",
+        "daffodill",
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00631",
+        "u00632",
+        "u00633",
+        "u00634",
+        "u00635",
+        "u00636",
+        "u00637",
+        "u00638",
+        "u00639",
+        "u00640",
+        "u00641",
+        "u00642",
+        "u00643",
+        "u00644",
+        "u00645",
+        "u00646"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e040a",
+          "start_ms": 6114933,
+          "end_ms": 6208533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "残虹得意地说很喜欢对方现在的表情，随后被人斥「原来就是你在捣鬼」；残虹以「是你」「一起上？」「再不上就没时间咯」挑衅，又讽刺对方变慢、是否被「这个小可爱」分了心，并以她的「死相」相激。",
+          "transcript_refs": [
+            "u00631",
+            "u00632",
+            "u00633",
+            "u00634",
+            "u00635",
+            "u00636",
+            "u00637",
+            "u00638",
+            "u00639"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e040b",
+          "start_ms": 6217600,
+          "end_ms": 6231200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人急呼「师父」；残虹感叹「真怀念啊」，唤对方「姐姐」，说「我们还会再见的」，并转达「母亲大人」也很想念她。",
+          "transcript_refs": [
+            "u00640",
+            "u00641",
+            "u00642",
+            "u00643",
+            "u00644"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e040c",
+          "start_ms": 6244267,
+          "end_ms": 6252000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人回答「我没事」，并称「还没结束」。",
+          "transcript_refs": [
+            "u00645",
+            "u00646"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s041",
+      "start_ms": 6497067,
+      "end_ms": 6585333,
+      "summary": "战斗结束后，卡厄斯、达芙蒂尔、娜娜莉互相确认无碍；卡厄斯说蕾妮只是脱离异象影响而眩晕，痛惜让「红字」核心成员残虹逃走，并交代后续——管理局会继续跟进讨债人与康斯坦丁家族的恩怨，还请「红字」的知情人士次日到管理局交代，特别点名达芙蒂尔。",
+      "participants": [
+        "chaos",
+        "daffodill",
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00647",
+        "u00648",
+        "u00649",
+        "u00650",
+        "u00651",
+        "u00652",
+        "u00653",
+        "u00654",
+        "u00655",
+        "u00656",
+        "u00657",
+        "u00658",
+        "u00659",
+        "u00660"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e041a",
+          "start_ms": 6497067,
+          "end_ms": 6516267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔问大家是否还好；有人答自己没事、反问达芙蒂尔如何，娜娜莉说师父伤得最重，达芙蒂尔说自己真的没事。",
+          "transcript_refs": [
+            "u00647",
+            "u00648",
+            "u00649",
+            "u00650"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e041b",
+          "start_ms": 6516800,
+          "end_ms": 6534667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯说大家没事就好，蕾妮也没什么大碍、只是脱离异象影响导致的眩晕，但强调重要的是让那个家伙逃走了——犯罪组织「红字」的核心成员残虹。",
+          "transcript_refs": [
+            "u00651",
+            "u00652",
+            "u00653"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e041c",
+          "start_ms": 6537333,
+          "end_ms": 6564533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯提到「市民木偶案」的任务报告，说异象讨债人与康斯坦丁家族恩怨的后续将由异象管理局继续跟进、向伊波恩的众人道谢，并请「红字」的知情人士明早去管理局一趟。",
+          "transcript_refs": [
+            "u00654",
+            "u00655",
+            "u00656"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e041d",
+          "start_ms": 6564800,
+          "end_ms": 6585333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "chaos",
+            "daffodill",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "卡厄斯半带威胁地对达芙蒂尔说她应该不需要自己去店里「接」她，达芙蒂尔答明白；娜娜莉不服、认为师父该好好休养，达芙蒂尔则说回家吧。",
+          "transcript_refs": [
+            "u00657",
+            "u00658",
+            "u00659",
+            "u00660"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s042",
+      "start_ms": 6615467,
+      "end_ms": 6768267,
+      "summary": "夜里，达芙蒂尔向鉴定师解释残虹的异能会影响情绪与精神、造成幻听幻视，众人所见是叠加在讨债人异象空间里的幻境；她又谈到「红字」及其领导者「T女士」，并承认自己出身「红字」、那位「母亲」算是她的养母，甚至说「她当年明明应该被我杀了」。",
+      "participants": [
+        "daffodill",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00661",
+        "u00662",
+        "u00663",
+        "u00664",
+        "u00665",
+        "u00667",
+        "u00668",
+        "u00670",
+        "u00671",
+        "u00672",
+        "u00674",
+        "u00675",
+        "u00676",
+        "u00677",
+        "u00678",
+        "u00679",
+        "u00680",
+        "u00681",
+        "u00683",
+        "u00684",
+        "u00685",
+        "u00686"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e042a",
+          "start_ms": 6615467,
+          "end_ms": 6633333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔说自己很快就好了，反问鉴定师是否有不舒服，并解释残虹的异能会影响情绪和精神、可能导致幻听幻视。",
+          "transcript_refs": [
+            "u00661",
+            "u00662",
+            "u00663"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e042b",
+          "start_ms": 6633867,
+          "end_ms": 6661067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师说他们和蕾妮看到的一切是叠加在讨债人异象空间里的幻象；达芙蒂尔说那或许是残虹洞悉蕾妮心境后、以她的认知量身打造的幻境，众人因此错以为蕾妮害死了母亲与家人。",
+          "transcript_refs": [
+            "u00664",
+            "u00665",
+            "u00667"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e042c",
+          "start_ms": 6661600,
+          "end_ms": 6670400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师推断「恒今时」可能需要得到主人的亲口承诺才能主动脱离，能让宿主享有「永生」，必定是非常珍贵的异象。",
+          "transcript_refs": [
+            "u00668",
+            "u00670"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e042d",
+          "start_ms": 6670933,
+          "end_ms": 6690400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔说「红字」得手的珍贵异象不止这一件、惠比寿拍卖会也是她们的手笔，如此张扬行事就像向所有人宣布「红字」势力已蔓延至海特洛，很符合她们领导者「T女士」优越自豪的心理。",
+          "transcript_refs": [
+            "u00671",
+            "u00672"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e042e",
+          "start_ms": 6690933,
+          "end_ms": 6728267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "面对鉴定师「T女士是否就是残虹口中的母亲大人」的追问，达芙蒂尔说「她当年明明应该被我杀了」，并承认那位「母亲」算得上自己的养母、也是她曾以为的一个家；她坦陈自己出身「红字」、曾是那里的一员。",
+          "transcript_refs": [
+            "u00674",
+            "u00675",
+            "u00676",
+            "u00677",
+            "u00678",
+            "u00679"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e042f",
+          "start_ms": 6728800,
+          "end_ms": 6768267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师暗自明白卡厄斯为何那样说、也已察觉达芙蒂尔的身世；他对达芙蒂尔说现在的她是伊波恩古董店的达芙蒂尔，达芙蒂尔道谢、说他是很好的人，并互道晚安。",
+          "transcript_refs": [
+            "u00680",
+            "u00681",
+            "u00683",
+            "u00684",
+            "u00685",
+            "u00686"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s043",
+      "start_ms": 6780000,
+      "end_ms": 6809333,
+      "summary": "次日，娜娜莉来问鉴定师是否见到师父——达芙蒂尔一大早就不在、一直没回；鉴定师猜她去管理局协助调查了；这时灵可和蕾妮来到伊波恩古董店，蕾妮向两人问好。",
+      "participants": [
+        "nanally",
+        "esper-zero",
+        "linko",
+        "leini"
+      ],
+      "transcript_refs": [
+        "u00687",
+        "u00688",
+        "u00689",
+        "u00690",
+        "u00691",
+        "u00692",
+        "u00693",
+        "u00694"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e043a",
+          "start_ms": 6780000,
+          "end_ms": 6795200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉问鉴定师是否看到师父，说她一大早就不在、现在都没回；鉴定师猜是去异象管理局协助调查了，娜娜莉觉得去得太久。",
+          "transcript_refs": [
+            "u00687",
+            "u00688",
+            "u00689",
+            "u00690",
+            "u00691"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e043b",
+          "start_ms": 6795467,
+          "end_ms": 6809333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "leini",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可报出「到了、伊波恩古董店」，蕾妮向鉴定师、娜娜莉问好；娜娜莉关心蕾妮的身体，并问这位是谁。",
+          "transcript_refs": [
+            "u00692",
+            "u00693",
+            "u00694"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s044",
+      "start_ms": 6809600,
+      "end_ms": 6912800,
+      "summary": "灵可介绍自己是 E.T.D 六队成员；娜娜莉以为卡厄斯把蕾妮交给六队负责，灵可澄清只是顺路。灵可忘了要办的事，在宠物「小贞」提醒下想起是来送东西，随后找到要找的人，把给伊波恩古董店的报酬送到、宣布任务完成。",
+      "participants": [
+        "linko",
+        "leini",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00695",
+        "u00696",
+        "u00697",
+        "u00698",
+        "u00699",
+        "u00700",
+        "u00701",
+        "u00702",
+        "u00703",
+        "u00704",
+        "u00705",
+        "u00706",
+        "u00707",
+        "u00708",
+        "u00709",
+        "u00711",
+        "u00712",
+        "u00713",
+        "u00714",
+        "u00715",
+        "u00716",
+        "u00717",
+        "u00718",
+        "u00719"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e044a",
+          "start_ms": 6809600,
+          "end_ms": 6831200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko",
+            "nanally",
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可自我介绍是 E.T.D 六队的成员；娜娜莉以为卡厄斯把蕾妮交给六队的其他队员负责、热情招呼，灵可疑惑地反问「负责？」，澄清他们只是顺路，蕾妮也解释灵可恰好有事要来伊波恩、便一起过来了。",
+          "transcript_refs": [
+            "u00695",
+            "u00696",
+            "u00697",
+            "u00698",
+            "u00699"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e044b",
+          "start_ms": 6831733,
+          "end_ms": 6878400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师问灵可有什么事，灵可一时忘记；她的宠物「小贞」（自称能吞噬灵魂的恶灵）责怪她把要送的东西忘了，灵可这才想起是来送东西并向小贞道谢，又介绍小贞是她的宠物，小贞威胁要操控她的身体去吃芥末，灵可打趣说现在还不饿。",
+          "transcript_refs": [
+            "u00700",
+            "u00701",
+            "u00702",
+            "u00703",
+            "u00704",
+            "u00705",
+            "u00706",
+            "u00707",
+            "u00708",
+            "u00709",
+            "u00711",
+            "u00712"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e044c",
+          "start_ms": 6878933,
+          "end_ms": 6912800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "linko"
+          ],
+          "speaker_character_id": "",
+          "observation": "灵可说要找的人「找到了」，面对「E.T.D 新人」的招呼，她说「局长说，这个给你」，把给伊波恩古董店的报酬送到、宣布任务完成；收下报酬的人打趣说直接打户头上就行、新钞讨人喜欢。",
+          "transcript_refs": [
+            "u00713",
+            "u00714",
+            "u00715",
+            "u00716",
+            "u00717",
+            "u00718",
+            "u00719"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p10-s045",
+      "start_ms": 6913333,
+      "end_ms": 7110667,
+      "summary": "蕾妮说艾尔菲德局长会把她的委托费与管理局一并支付，但仍想亲自来当面道谢；她讲述失去的「恒今时」曾让她的生命静止、被剥离于时间之外，使她逐渐模糊过去、最终忘记妈妈与哥哥姐姐，怀疑这算不算「活着」；她说这就是母亲与自己拥有的「永生」秘密、或者说诅咒，而如今她终于找回自己、算获得「新生」，并宣布要离开海特洛很久去各地环游旅行。",
+      "participants": [
+        "leini",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00720",
+        "u00721",
+        "u00722",
+        "u00723",
+        "u00725",
+        "u00726",
+        "u00727",
+        "u00728",
+        "u00729",
+        "u00730",
+        "u00731",
+        "u00732",
+        "u00733",
+        "u00734",
+        "u00735",
+        "u00736",
+        "u00737",
+        "u00738",
+        "u00739",
+        "u00740",
+        "u00741",
+        "u00742",
+        "u00743",
+        "u00744",
+        "u00745"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e045a",
+          "start_ms": 6913333,
+          "end_ms": 6945067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说艾尔菲德局长会把她和异象管理局的委托费一起支付，但她还是想亲自来店里当面道谢，感谢鉴定师、娜娜莉，并请转达对达芙蒂尔的谢意，说多亏众人帮助自己收获很多、经历了一场精彩的冒险。",
+          "transcript_refs": [
+            "u00720",
+            "u00721",
+            "u00722",
+            "u00723"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e045b",
+          "start_ms": 6945600,
+          "end_ms": 6959733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师说他们没能阻止残虹夺走「恒今时」；娜娜莉问它是否德洛莉丝女士留给蕾妮的很重要之物，蕾妮答是，说它是妈妈留给她、庇佑她免遭讨债人讨伐的珍贵之物。",
+          "transcript_refs": [
+            "u00725",
+            "u00726",
+            "u00727"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e045c",
+          "start_ms": 6960000,
+          "end_ms": 7024800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮解释「恒今时」让她的生命静止在倒计时结束那天、时间不再流动，永远「活」在死亡到来前的短短间隙中；她被剥离时间与四季仍流转的世界之外，因此逐渐模糊过去、察觉不到身边发生的一切，最终忘记妈妈和哥哥姐姐，怀疑这样是否算得上「活着」。",
+          "transcript_refs": [
+            "u00728",
+            "u00729",
+            "u00730",
+            "u00731",
+            "u00732",
+            "u00733",
+            "u00734"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e045d",
+          "start_ms": 7025067,
+          "end_ms": 7072800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说这就是妈妈与自己拥有的「永生」的秘密、或者说诅咒，妈妈也因它的影响觉得生活毫无趣味、渴望陪伴以排解持续到「永恒」的孤独；她说失去它也许意味着幸运，但更重要的是鉴定师等人让她想起过去、终于找回自己，现在的她应该算获得了「新生」。",
+          "transcript_refs": [
+            "u00735",
+            "u00736",
+            "u00737",
+            "u00738",
+            "u00739"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e045e",
+          "start_ms": 7073333,
+          "end_ms": 7078933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉为蕾妮感到高兴；当被问及讨债人怎么办时，蕾妮说请不必担心、自己找到了办法。",
+          "transcript_refs": [
+            "u00740",
+            "u00741"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p10-e045f",
+          "start_ms": 7079467,
+          "end_ms": 7110667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "leini"
+          ],
+          "speaker_character_id": "",
+          "observation": "蕾妮说为了不辜负来之不易的新生，她决定去各地环游旅行、大概会离开海特洛很久很久，最后祝愿众人早上好、中午好、晚上好。",
+          "transcript_refs": [
+            "u00742",
+            "u00743",
+            "u00744",
+            "u00745"
+          ]
+        }
+      ]
+    }
+  ]
+}

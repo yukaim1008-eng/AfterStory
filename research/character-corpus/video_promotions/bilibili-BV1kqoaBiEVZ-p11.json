@@ -1,0 +1,4646 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p11",
+  "reviewed_transcript_sha256": "6977382343b9a8b19d78fbe9c3431f05da265dff17056791da51b1888b325821",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p11",
+    "source_work": "异环",
+    "display_name": "第5话 游梦洄廊",
+    "sequence": 11,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第5话 游梦洄廊",
+    "predecessor_id": "nt-bv1kqoabievz-p10",
+    "spoiler_scope": "第5话 游梦洄廊"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s001",
+      "start_ms": 17333,
+      "end_ms": 115467,
+      "summary": "伊波恩店内，众人谈论娜娜莉近来心情低落，阿德勒解释她担忧受伤的达芙蒂尔、又受管理局禁令所限。",
+      "participants": [
+        "nanally",
+        "sakiri",
+        "adler",
+        "edgar"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e001a",
+          "start_ms": 17333,
+          "end_ms": 24000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉连声叹气、情绪低落（u00001），旁人关切地问她怎么了（u00002）。",
+          "transcript_refs": [
+            "u00001",
+            "u00002"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e001b",
+          "start_ms": 24267,
+          "end_ms": 36533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾说娜娜莉前几天就不开心、今天愁得没边（u00003）；阿德勒解释考虑到她的情绪，小姐给她放了几天假（u00004、u00005）。",
+          "transcript_refs": [
+            "u00003",
+            "u00004",
+            "u00005"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e001c",
+          "start_ms": 38933,
+          "end_ms": 84267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说明娜娜莉担忧达芙蒂尔的伤势，但艾尔菲德局长下了禁令、近期不许伊波恩插手，伊波恩众人也都能理解（u00007、u00009、u00010、u00011）。",
+          "transcript_refs": [
+            "u00007",
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e001d",
+          "start_ms": 96533,
+          "end_ms": 115467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri",
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾埋怨娜娜莉把家族、老大的事全揽到自己头上、怎么说都不听（u00013、u00014）；埃德嘉说她应该是在自责、不知怎么让她心情好起来（u00015、u00016）。",
+          "transcript_refs": [
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s002",
+      "start_ms": 116000,
+      "end_ms": 235467,
+      "summary": "塔吉多兴奋地宣布抽到「一意向阳」度假村家庭套票，阿德勒与埃德嘉介绍这座福利院与套票详情。",
+      "participants": [
+        "taygedo",
+        "adler",
+        "edgar",
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00017",
+        "u00018",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e002a",
+          "start_ms": 116000,
+          "end_ms": 122133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多兴奋地宣布自己抽到了「一意向阳」度假村家庭套票（u00017、u00018）。",
+          "transcript_refs": [
+            "u00017",
+            "u00018"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e002b",
+          "start_ms": 125867,
+          "end_ms": 165867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒介绍该度假村由海特洛市政府与异象管理局主导开设、独立建在临近岛屿上，以生物异象的救助、收治、颐养为主（u00021、u00022、u00024）。",
+          "transcript_refs": [
+            "u00021",
+            "u00022",
+            "u00023",
+            "u00024"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e002c",
+          "start_ms": 168000,
+          "end_ms": 197600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉说自己在福利院官网查到该活动、抽奖发放有限家庭套票，登记成员一周内可无需预约、不限次数参观，套票似已包含往返船票（u00026、u00027、u00030）。",
+          "transcript_refs": [
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e002d",
+          "start_ms": 198133,
+          "end_ms": 221867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri",
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾惊叹福利好、塔吉多撞了大运（u00029、u00031）；埃德嘉确认票上编号真实有效，套票成员登记了伊波恩所有人（u00032、u00033）。",
+          "transcript_refs": [
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e002e",
+          "start_ms": 228267,
+          "end_ms": 235467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多表示要把这张珍贵的限量套票送给娜娜莉、让她心情好起来（u00036）。",
+          "transcript_refs": [
+            "u00036",
+            "u00037"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s003",
+      "start_ms": 235733,
+      "end_ms": 332533,
+      "summary": "娜娜莉收下套票；阿德勒请鉴定师陪同她前往度假村，众人送别。",
+      "participants": [
+        "nanally",
+        "adler",
+        "taygedo",
+        "edgar",
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00054",
+        "u00056",
+        "u00057"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e003a",
+          "start_ms": 235733,
+          "end_ms": 258133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉意外地收下票、道谢（u00038、u00041）；阿德勒说塔吉多也希望她去散散心、早日恢复活泼的样子（u00039）。",
+          "transcript_refs": [
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e003b",
+          "start_ms": 269600,
+          "end_ms": 296800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒宽慰众人说达芙蒂尔比想象中更强大、定会平安归来（u00046），并建议娜娜莉趁放假即刻动身，请鉴定师陪同前往（u00047、u00048）。",
+          "transcript_refs": [
+            "u00046",
+            "u00047",
+            "u00048"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e003c",
+          "start_ms": 297067,
+          "end_ms": 332533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉说自己有委托在收尾、无法同往（u00049）；早雾嘴上说不想去、实则让大家多担待，还叮嘱娜娜莉玩得开心点、别再唉声叹气（u00050、u00051、u00053）。",
+          "transcript_refs": [
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054",
+            "u00056",
+            "u00057"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s004",
+      "start_ms": 352533,
+      "end_ms": 399733,
+      "summary": "码头检票口，检票员提及本次活动由伊南娜赞助，娜娜莉认出她就是《逗逗趣儿》的赞助人。",
+      "participants": [
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00058",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00067"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e004a",
+          "start_ms": 366933,
+          "end_ms": 383200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "检票员称本次活动由商界慈善家伊南娜女士赞助（u00062）；娜娜莉认出她就是《逗逗趣儿》的赞助人、夸她有眼光（u00063）。",
+          "transcript_refs": [
+            "u00062",
+            "u00063",
+            "u00064"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e004b",
+          "start_ms": 383733,
+          "end_ms": 399733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "检票员检票放行、请游客收好票进入候船区，并交代登岛注意事项写在「向阳岛」宣传页上（u00065、u00066）。",
+          "transcript_refs": [
+            "u00065",
+            "u00066",
+            "u00067"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s005",
+      "start_ms": 454933,
+      "end_ms": 536000,
+      "summary": "登岛，义工伊洛伊迎接众人，介绍由异象伙伴「棉绒绒」担任领路员。",
+      "participants": [
+        "iroi",
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e005a",
+          "start_ms": 462933,
+          "end_ms": 484533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊自报是今天值班接待的临时义工（u00070），介绍步行至度假村约需十分钟，还会有特殊异象伙伴充当领路员（u00071、u00072）。",
+          "transcript_refs": [
+            "u00070",
+            "u00071",
+            "u00072"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e005b",
+          "start_ms": 486933,
+          "end_ms": 523200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊宣布今天的领路员是可爱的「棉绒绒」（u00073、u00074）；娜娜莉觉得岛上的棉绒绒比市区更亲近人、有种治愈感（u00076）。",
+          "transcript_refs": [
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e005c",
+          "start_ms": 524267,
+          "end_ms": 534667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊说能入选领路员的异象都经过严格筛选，太闹腾的家伙不能出来迎客（u00077、u00078）。",
+          "transcript_refs": [
+            "u00077",
+            "u00078"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s006",
+      "start_ms": 674133,
+      "end_ms": 1137067,
+      "summary": "参观农场与花园；异象「解困蜂」在娜娜莉头上采「睡意」，伊洛伊察觉她睡眠不足。",
+      "participants": [
+        "iroi",
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00093"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e006a",
+          "start_ms": 720267,
+          "end_ms": 1088533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊见异象伙伴把娜娜莉逗得好奇（u00084），介绍农场和花园是异象生物劳作的地方、岛上物资多靠自产自足（u00086）。",
+          "transcript_refs": [
+            "u00084",
+            "u00085",
+            "u00086"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e006b",
+          "start_ms": 1089600,
+          "end_ms": 1112800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉觉得脑袋发痒、怀疑要「长脑子」（u00087、u00088，其中 u00087 为零时长句）；伊洛伊说那是解困蜂在她脑瓜上采「睡意」（u00089、u00090）。",
+          "transcript_refs": [
+            "u00087",
+            "u00088",
+            "u00089",
+            "u00090"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e006c",
+          "start_ms": 1113067,
+          "end_ms": 1137067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊问娜娜莉最近是否睡得很少、说睡眠不足者被采蜜时会有不适（u00091、u00092）；娜娜莉承认这几天心里闷得慌、没怎么睡好（u00093）。",
+          "transcript_refs": [
+            "u00091",
+            "u00092",
+            "u00093"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s007",
+      "start_ms": 1137600,
+      "end_ms": 1286933,
+      "summary": "关于「蒜鸟」羽片与安眠药的一番对话后，娜娜莉萌生担保异象的念头，却因未成年被拒。",
+      "participants": [
+        "iroi",
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e007a",
+          "start_ms": 1137600,
+          "end_ms": 1158933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉想买解困蜂产的安眠蜂蜜来吃（u00094），旁人提醒这毕竟是药、最好遵医嘱，并想帮她另找安睡之法（u00095、u00096）。",
+          "transcript_refs": [
+            "u00094",
+            "u00095",
+            "u00096"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e007b",
+          "start_ms": 1159467,
+          "end_ms": 1180000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊介绍一种叫「蒜鸟」的鸟，羽毛是细薄蒜片、吃下可收获平静（u00097、u00098），并说自己偷偷藏了一片、邀她试试（u00099）。",
+          "transcript_refs": [
+            "u00097",
+            "u00098",
+            "u00099"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e007c",
+          "start_ms": 1189600,
+          "end_ms": 1223200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说吃了没什么效果（u00101）；伊洛伊感叹她烦恼不小（u00102），娜娜莉则表示若能带一只异象回伊波恩、和可爱的小家伙待在一起，或许会有怀念的陪伴感、好得快些（u00103、u00104）。",
+          "transcript_refs": [
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e007d",
+          "start_ms": 1245333,
+          "end_ms": 1268533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊说明担保手续并不复杂，但需审查担保人资质、含年龄限制，未成年无法以个人名义担保（u00109、u00110、u00111）；娜娜莉直呼不公平（u00112）。",
+          "transcript_refs": [
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e007e",
+          "start_ms": 1268800,
+          "end_ms": 1286933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊提议由同伴担保、娜娜莉再一起照顾（u00113）；娜娜莉却说这样与异象建立联系的就不是自己，她想要的是唯一、确认、实实在在的羁绊（u00114、u00115）。",
+          "transcript_refs": [
+            "u00113",
+            "u00114",
+            "u00115"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s008",
+      "start_ms": 1287467,
+      "end_ms": 1361600,
+      "summary": "娜娜莉追忆久远以前与谁相伴的感觉；游客提到伊南娜来访，娜娜莉决意去找她。",
+      "participants": [
+        "iroi",
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00116",
+        "u00117",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e008a",
+          "start_ms": 1287467,
+          "end_ms": 1306400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说想要像很久以前那样和谁一起（u00116）；旁人劝她别灰心、可再找别的途径（u00119、u00120），伊洛伊也说这只是本地规定、说不定还有别的办法（u00121）。",
+          "transcript_refs": [
+            "u00116",
+            "u00117",
+            "u00119",
+            "u00120",
+            "u00121"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e008b",
+          "start_ms": 1322933,
+          "end_ms": 1354133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊提到今天伊南娜女士作为投资方来度假村视察（u00126）；娜娜莉因未成年不能担保而异象迁怒于她（u00127），随即又盘算向对方证明自己的能力、询问她在哪里（u00129、u00130）。",
+          "transcript_refs": [
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e008c",
+          "start_ms": 1354400,
+          "end_ms": 1361600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊指向伊南娜所在的方向（u00131）；娜娜莉径自奔去，旁人惊呼着喊住她（u00132）。",
+          "transcript_refs": [
+            "u00131",
+            "u00132"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s009",
+      "start_ms": 1406933,
+      "end_ms": 1548000,
+      "summary": "伊南娜巡视度假村；娜娜莉追上她，当面陈述想与异象担保的愿望与心情。",
+      "participants": [
+        "yinanna",
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00144",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e009a",
+          "start_ms": 1406933,
+          "end_ms": 1430667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜看过报告，说异象担保人申请增多意味着更多小家伙找到归处、是好兆头，并提醒员工留意预约流程过长的问题（u00133、u00134）。",
+          "transcript_refs": [
+            "u00133",
+            "u00134"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e009b",
+          "start_ms": 1433600,
+          "end_ms": 1450400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜表示岛上条件有限、大家工作生活都不易，有需要都可联系她，随后说今天就到这里（u00136、u00138）。",
+          "transcript_refs": [
+            "u00136",
+            "u00137",
+            "u00138"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e009c",
+          "start_ms": 1450933,
+          "end_ms": 1476267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉追上前喊住伊南娜（u00139、u00140）；伊南娜问这孩子是谁，得知是本期「幸运家庭游」的贵宾，便让她慢些说（u00142、u00143）。",
+          "transcript_refs": [
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e009d",
+          "start_ms": 1484800,
+          "end_ms": 1506933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉当面向伊南娜申请担保异象，自陈有绝对的责任心与能力、愿意接受考核，并承诺会做好、不会再搞砸（u00144、u00145、u00146、u00147、u00148）。",
+          "transcript_refs": [
+            "u00144",
+            "u00145",
+            "u00146",
+            "u00147",
+            "u00148"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e009e",
+          "start_ms": 1519467,
+          "end_ms": 1548000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜问她为何如此想与异象建立联系（u00151）；娜娜莉说并非因为它们可爱或有用，而是更想把它们当作最特别的家人（u00152）。",
+          "transcript_refs": [
+            "u00151",
+            "u00152",
+            "u00153"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s010",
+      "start_ms": 1548800,
+      "end_ms": 1693333,
+      "summary": "伊南娜支开旁人，讲明规则并为娜娜莉指出「远程担保」这一途径。",
+      "participants": [
+        "yinanna",
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00171",
+        "u00172",
+        "u00173"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e010a",
+          "start_ms": 1548800,
+          "end_ms": 1568267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说和塔吉多的感觉不太一样，本是随便看看，却越看心里越热，只希望关系能变得更紧密（u00155、u00156）。",
+          "transcript_refs": [
+            "u00155",
+            "u00156"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e010b",
+          "start_ms": 1568800,
+          "end_ms": 1589867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜支开旁人、感谢娜娜莉的信任与期望（u00157、u00158），并询问旁边的鉴定师是不是她的监护人（u00159）。",
+          "transcript_refs": [
+            "u00157",
+            "u00158",
+            "u00159"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e010c",
+          "start_ms": 1590400,
+          "end_ms": 1598133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉介绍鉴定师是同伴、家人、伊波恩的鉴定师（u00160）；伊南娜向鉴定师问好（u00161）。",
+          "transcript_refs": [
+            "u00160",
+            "u00161"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e010d",
+          "start_ms": 1600800,
+          "end_ms": 1626133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜表示欣赏娜娜莉的想法，但流程与规则有其存在的意义，若为她单开不合规的权限便是失职（u00163、u00164）。",
+          "transcript_refs": [
+            "u00163",
+            "u00164"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e010e",
+          "start_ms": 1628533,
+          "end_ms": 1660000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜提出另一种方式——找到一位「合眼缘」的异象、在双方同意下签订「远程担保」协议，虽不能领回家，但登记后每日可前来长时间陪伴照顾（u00167、u00168）；娜娜莉立刻答应（u00169）。",
+          "transcript_refs": [
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e010f",
+          "start_ms": 1670667,
+          "end_ms": 1693333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜解释伊洛伊是这里的义工、并非正式员工、对新规不熟，还请谅解，随后告辞（u00172、u00173）。",
+          "transcript_refs": [
+            "u00172",
+            "u00173"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s011",
+      "start_ms": 1761867,
+      "end_ms": 1832267,
+      "summary": "娜娜莉偶遇一只玩偶熊异象，迅速签下担保协议并为其取名「虎老大」。",
+      "participants": [
+        "nanally",
+        "hulaoda"
+      ],
+      "transcript_refs": [
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179",
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00187",
+        "u00188",
+        "u00189"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e011a",
+          "start_ms": 1761867,
+          "end_ms": 1795200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉看见一只像玩偶熊的异象（u00174、u00176），当即决定就是它、要签协议（u00177）。",
+          "transcript_refs": [
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e011b",
+          "start_ms": 1795467,
+          "end_ms": 1804267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "旁人递上笔、提示在右下角签名（u00178），对娜娜莉签约之快感到错愕（u00179、u00180）。",
+          "transcript_refs": [
+            "u00178",
+            "u00179",
+            "u00180"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e011c",
+          "start_ms": 1804800,
+          "end_ms": 1821067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉把「眼缘」比作蓬蓬头遇到刀疤大胡子，说脑子里咻地冒出「虎老大」这个名字（u00182、u00183、u00185）。",
+          "transcript_refs": [
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e011d",
+          "start_ms": 1824000,
+          "end_ms": 1832267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hulaoda"
+          ],
+          "speaker_character_id": "",
+          "observation": "「虎老大」说这个人很熟悉、很像自己以前遇见的女孩，并说了句「喜欢」（u00188、u00189）。",
+          "transcript_refs": [
+            "u00188",
+            "u00189"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s012",
+      "start_ms": 1832800,
+      "end_ms": 1936800,
+      "summary": "娜娜莉对虎老大有强烈的熟悉感；办好照看志愿登记后与之道别回伊波恩。",
+      "participants": [
+        "nanally",
+        "hulaoda"
+      ],
+      "transcript_refs": [
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e012a",
+          "start_ms": 1832800,
+          "end_ms": 1846133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "旁人猜测它似乎认识娜娜莉（u00190）；娜娜莉说不记得了，却有种特别熟悉的感觉（u00191）。",
+          "transcript_refs": [
+            "u00190",
+            "u00191"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e012b",
+          "start_ms": 1862133,
+          "end_ms": 1877333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hulaoda",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "「虎老大」称已把照看志愿全部登记好、稍后会上交工作人员（u00195、u00197）；娜娜莉说已按格式在册子上签名、写下日期（u00196）。",
+          "transcript_refs": [
+            "u00195",
+            "u00196",
+            "u00197"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e012c",
+          "start_ms": 1890667,
+          "end_ms": 1898400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "hulaoda"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉依依不舍地与虎老大约定明天见（u00201）；虎老大回应「明天见，担保人」（u00202）。",
+          "transcript_refs": [
+            "u00201",
+            "u00202"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e012d",
+          "start_ms": 1905333,
+          "end_ms": 1936800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉盘算回去先把虎老大的事分享给大家、再给师父发消息，还打算等师父回来一起去看虎老大（u00204、u00205、u00206）。",
+          "transcript_refs": [
+            "u00204",
+            "u00205",
+            "u00206"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s013",
+      "start_ms": 1967467,
+      "end_ms": 2147467,
+      "summary": "归途上娜娜莉兴致勃勃议论虎老大；码头重逢达芙蒂尔，她被珀塞特称作「姐姐」后一同传送离开。",
+      "participants": [
+        "nanally",
+        "daffodill",
+        "posaite"
+      ],
+      "transcript_refs": [
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00230",
+        "u00231",
+        "u00232",
+        "u00233"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e013a",
+          "start_ms": 1967467,
+          "end_ms": 1978933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉兴致勃勃地议论虎老大的耳朵，觉得里面的毛软软的、很可爱（u00207、u00208）。",
+          "transcript_refs": [
+            "u00207",
+            "u00208"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e013b",
+          "start_ms": 1992533,
+          "end_ms": 2010133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉突然发现师父达芙蒂尔，追问她这几天在哪、伤势如何，想一起回伊波恩（u00211、u00212）。",
+          "transcript_refs": [
+            "u00211",
+            "u00212"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e013c",
+          "start_ms": 2010400,
+          "end_ms": 2029067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔只回一句「不要再靠近了」（u00213），随后向叫她来码头的人说明来意（u00216）。",
+          "transcript_refs": [
+            "u00213",
+            "u00215",
+            "u00216"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e013d",
+          "start_ms": 2049600,
+          "end_ms": 2082133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "posaite"
+          ],
+          "speaker_character_id": "",
+          "observation": "珀塞特自称是与拍卖会藏品失窃相关之人，向鉴定师打招呼、说又见面了（u00219），并称达芙蒂尔为「姐姐」（u00220、u00222）。",
+          "transcript_refs": [
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e013e",
+          "start_ms": 2082400,
+          "end_ms": 2121067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉疑惑「姐姐」，追问师父为何会跟这陌生人走，怀疑对方是「红字」成员、要救师父，又自责是不是因自己害师父受伤才让她失望（u00223、u00225、u00226、u00227、u00228）。",
+          "transcript_refs": [
+            "u00223",
+            "u00224",
+            "u00225",
+            "u00226",
+            "u00227",
+            "u00228"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s014",
+      "start_ms": 2163733,
+      "end_ms": 2292800,
+      "summary": "回到伊波恩，阿德勒转述达芙蒂尔的下落与管理局的「稍安勿躁」，娜娜莉消沉回房。",
+      "participants": [
+        "adler",
+        "nanally",
+        "sakiri",
+        "taygedo",
+        "edgar"
+      ],
+      "transcript_refs": [
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00239",
+        "u00240",
+        "u00241",
+        "u00242",
+        "u00243",
+        "u00244",
+        "u00245",
+        "u00246",
+        "u00247",
+        "u00248",
+        "u00249",
+        "u00250",
+        "u00251",
+        "u00252",
+        "u00253",
+        "u00254",
+        "u00255",
+        "u00256",
+        "u00257",
+        "u00258"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e014a",
+          "start_ms": 2163733,
+          "end_ms": 2166133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒问候归来的二人、问他们是否玩得尽兴（u00234）。",
+          "transcript_refs": [
+            "u00234"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e014b",
+          "start_ms": 2191200,
+          "end_ms": 2202933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说小姐接到管理局电话后匆匆出门，只让大家「稍安勿躁」（u00240、u00241）。",
+          "transcript_refs": [
+            "u00240",
+            "u00241"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e014c",
+          "start_ms": 2203200,
+          "end_ms": 2225333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉不愿只干等、问还有什么能做的（u00242、u00243、u00244）；早雾反问她是否不相信师父、劝她不要这样想（u00245、u00247）。",
+          "transcript_refs": [
+            "u00242",
+            "u00243",
+            "u00244",
+            "u00245",
+            "u00246",
+            "u00247"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e014d",
+          "start_ms": 2235733,
+          "end_ms": 2279733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒分析「红字」近来针对伊波恩的威胁渐增，说娜娜莉自加入起就崇拜达芙蒂尔，她如今的焦虑源自害怕师父「不便明说」的过去让两人渐行渐远，也一直愧疚自己不够强大（u00250、u00251、u00252、u00253、u00254）。",
+          "transcript_refs": [
+            "u00250",
+            "u00251",
+            "u00252",
+            "u00253",
+            "u00254"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e014e",
+          "start_ms": 2280267,
+          "end_ms": 2287200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多说不习惯娜娜莉近来很少自称家族老大（u00255）；埃德嘉说她一定是觉得自己没能保护好家人（u00256）。",
+          "transcript_refs": [
+            "u00255",
+            "u00256"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s015",
+      "start_ms": 2346933,
+      "end_ms": 2507733,
+      "summary": "次日娜娜莉失联，房间里的套票不见；众人推断她去向后决定分头寻找。",
+      "participants": [
+        "edgar",
+        "sakiri",
+        "adler"
+      ],
+      "transcript_refs": [
+        "u00259",
+        "u00260",
+        "u00261",
+        "u00262",
+        "u00263",
+        "u00266",
+        "u00267",
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00273",
+        "u00274",
+        "u00275",
+        "u00276",
+        "u00277",
+        "u00278"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e015a",
+          "start_ms": 2352800,
+          "end_ms": 2373600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉说早上早雾想找娜娜莉道歉、敲她房门却无人应（u00260）；早雾说打电话也都打不通，打算去房间看有无留言（u00261、u00263）。",
+          "transcript_refs": [
+            "u00260",
+            "u00261",
+            "u00262",
+            "u00263"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e015b",
+          "start_ms": 2425333,
+          "end_ms": 2440267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "众人未找到字条，却发现昨天去「一意向阳」的套票不在，推测娜娜莉可能独自上了岛（u00266、u00267）。",
+          "transcript_refs": [
+            "u00266",
+            "u00267"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e015c",
+          "start_ms": 2440533,
+          "end_ms": 2461600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说一声不吭独自出发不像娜娜莉的作风，担心最坏的状况是她冲动之下独自去找达芙蒂尔，且是不想因禁令牵连大家（u00268、u00269、u00270）。",
+          "transcript_refs": [
+            "u00268",
+            "u00269",
+            "u00270"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e015d",
+          "start_ms": 2461867,
+          "end_ms": 2480800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾怒斥禁令、坚持要行动（u00271）；阿德勒解释局长既为让达芙蒂尔的亲友避嫌，也避免众人卷入「红字」的危险，但承认如今再不行动只会更让人心急（u00272、u00273）。",
+          "transcript_refs": [
+            "u00271",
+            "u00272",
+            "u00273"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e015e",
+          "start_ms": 2502133,
+          "end_ms": 2507733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉提出与鉴定师同去魔女之家问黑羽（u00277）；阿德勒应下、说先告知小姐此事（u00278）。",
+          "transcript_refs": [
+            "u00277",
+            "u00278"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s016",
+      "start_ms": 2508000,
+      "end_ms": 2588533,
+      "summary": "黑羽为鉴定师占卜，看见迷雾、潮声与巨物，并说事情将上演「命定的挑战」。",
+      "participants": [
+        "blackbird",
+        "edgar"
+      ],
+      "transcript_refs": [
+        "u00279",
+        "u00280",
+        "u00281",
+        "u00282",
+        "u00283",
+        "u00284",
+        "u00285",
+        "u00286",
+        "u00287",
+        "u00288"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e016a",
+          "start_ms": 2518667,
+          "end_ms": 2531733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽在「魔女之家」迎客，自述视万物于明镜、能见迷雾（u00280、u00281）。",
+          "transcript_refs": [
+            "u00280",
+            "u00281"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e016b",
+          "start_ms": 2532000,
+          "end_ms": 2550667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽描述漫漫翻涌的迷雾、如呼吸般的潮声，还有一种半封闭的巨物、裂缝横错的景象（u00282、u00283）。",
+          "transcript_refs": [
+            "u00282",
+            "u00283"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e016c",
+          "start_ms": 2551200,
+          "end_ms": 2572000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar",
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉把迷雾、潮声与巨物联想在一起、猜测是否是娜娜莉所在之处（u00284）；黑羽说她非其本意却深陷其中、将上演「命定的挑战」（u00285、u00286）。",
+          "transcript_refs": [
+            "u00284",
+            "u00285",
+            "u00286"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e016d",
+          "start_ms": 2572533,
+          "end_ms": 2588533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人由这些元素联想到四周环水的向阳岛，推断娜娜莉是去了度假村（u00287、u00288）。",
+          "transcript_refs": [
+            "u00287",
+            "u00288"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s017",
+      "start_ms": 2590933,
+      "end_ms": 2697600,
+      "summary": "阿德勒从度假村来电称查无娜娜莉、也查不到担保登记；黑羽进一步提出「转机」与失踪者归来的警告。",
+      "participants": [
+        "adler",
+        "blackbird",
+        "edgar"
+      ],
+      "transcript_refs": [
+        "u00289",
+        "u00290",
+        "u00292",
+        "u00293",
+        "u00294",
+        "u00295",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00299",
+        "u00300",
+        "u00301",
+        "u00302",
+        "u00303",
+        "u00304",
+        "u00305"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e017a",
+          "start_ms": 2590933,
+          "end_ms": 2609600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒来电说自己已在度假村、没找到娜娜莉，工作人员也说今天没见过她（u00289），并质疑二人昨天是否真的「远程担保」了一只异象（u00290）。",
+          "transcript_refs": [
+            "u00289",
+            "u00290"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e017b",
+          "start_ms": 2619200,
+          "end_ms": 2624533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说工作人员查不到任何相关的照看志愿登记信息（u00293）。",
+          "transcript_refs": [
+            "u00293"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e017c",
+          "start_ms": 2642133,
+          "end_ms": 2669333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽叫住鉴定师，说若继续行动、事情一定会发生指向两端的「转机」，意为扭转乾坤的胜利与意想不到的折损，并问他要不要赌一把（u00297、u00298、u00299、u00302）。",
+          "transcript_refs": [
+            "u00297",
+            "u00298",
+            "u00299",
+            "u00300",
+            "u00301",
+            "u00302"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e017d",
+          "start_ms": 2672000,
+          "end_ms": 2697600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "blackbird"
+          ],
+          "speaker_character_id": "",
+          "observation": "黑羽说最近来占卜他人去向的客人变多，还提到有失踪者归来后变得行事异常、如换了一个人，嘱托众人多加小心（u00303、u00304、u00305）。",
+          "transcript_refs": [
+            "u00303",
+            "u00304",
+            "u00305"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s018",
+      "start_ms": 2721067,
+      "end_ms": 2887467,
+      "summary": "众人推断「虎老大」实为异象「桀桀熊」；埃德嘉查证其来历与化形行骗的特性。",
+      "participants": [
+        "adler",
+        "sakiri",
+        "edgar"
+      ],
+      "transcript_refs": [
+        "u00306",
+        "u00307",
+        "u00308",
+        "u00309",
+        "u00310",
+        "u00311",
+        "u00312",
+        "u00313",
+        "u00314",
+        "u00315",
+        "u00316",
+        "u00317",
+        "u00318",
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00325"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e018a",
+          "start_ms": 2721067,
+          "end_ms": 2733600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "众人确认娜娜莉给那只异象取名「虎老大」，且它本应将手册交工作人员、却并未提交（u00306、u00307）。",
+          "transcript_refs": [
+            "u00306",
+            "u00307"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e018b",
+          "start_ms": 2734133,
+          "end_ms": 2745067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾说要先找到「虎老大」问清楚、并问它长什么样（u00308）；得知是布偶熊的样子后诧异它怎会叫「虎」老大（u00310）。",
+          "transcript_refs": [
+            "u00308",
+            "u00309",
+            "u00310"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e018c",
+          "start_ms": 2752267,
+          "end_ms": 2779200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说方才找人时听到有人在讨论一种外形是「熊」的异象，提议去打听（u00312）。",
+          "transcript_refs": [
+            "u00312",
+            "u00313"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e018d",
+          "start_ms": 2767200,
+          "end_ms": 2813067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "度假村员工转述伊南娜的要求：谨防一种长得像熊、会出现在孩子聚集处并对其下手的异象，还说越漂亮可爱的东西越危险（u00313、u00314、u00315、u00316）。",
+          "transcript_refs": [
+            "u00313",
+            "u00314",
+            "u00315",
+            "u00316",
+            "u00317"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e018e",
+          "start_ms": 2829333,
+          "end_ms": 2844000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉检索后推断娜娜莉遇到的是名叫「桀桀熊」的异象，是由童年玩伴异象「抱抱熊」衍生出的分支，另有一支为「伤心英熊」（u00319、u00320）。",
+          "transcript_refs": [
+            "u00319",
+            "u00320"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e018f",
+          "start_ms": 2848533,
+          "end_ms": 2875467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉说「桀桀熊」憎恨因长大而遗忘自己的孩童，会幻化成每个人心里不同的喜爱之物，只有成年人才能看到它玩偶熊的外表（u00322、u00323、u00324）。",
+          "transcript_refs": [
+            "u00322",
+            "u00323",
+            "u00324"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s019",
+      "start_ms": 2888000,
+      "end_ms": 3038933,
+      "summary": "伊洛伊提供今早在浓雾树林见过玩偶熊的目击线索；众人将调查延伸到失踪案。",
+      "participants": [
+        "edgar",
+        "iroi",
+        "sakiri",
+        "adler"
+      ],
+      "transcript_refs": [
+        "u00326",
+        "u00327",
+        "u00328",
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00332",
+        "u00333",
+        "u00334",
+        "u00335",
+        "u00336",
+        "u00337",
+        "u00338",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00344",
+        "u00345"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e019a",
+          "start_ms": 2888000,
+          "end_ms": 2892800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉担心「桀桀熊」是假借亲近之意诱骗孩子（u00326）。",
+          "transcript_refs": [
+            "u00326"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e019b",
+          "start_ms": 2893067,
+          "end_ms": 2906133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊说自己今早上工路上对一只玩偶熊有印象（u00327、u00329）。",
+          "transcript_refs": [
+            "u00327",
+            "u00328",
+            "u00329"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e019c",
+          "start_ms": 2906667,
+          "end_ms": 2914933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说伊洛伊得知众人正在寻人、帮忙去查了这两天的监控（u00330）。",
+          "transcript_refs": [
+            "u00330"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e019d",
+          "start_ms": 2915200,
+          "end_ms": 2960533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊说查遍监控，娜娜莉昨天离开后再没来过（u00331），并讲述今早九点左右在雾特别浓的大片树林旁远远看到一只玩偶熊（u00334、u00335）。",
+          "transcript_refs": [
+            "u00331",
+            "u00332",
+            "u00333",
+            "u00334",
+            "u00335"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e019e",
+          "start_ms": 2960800,
+          "end_ms": 2975467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾吐槽「上班久了脑子雾蒙蒙」只是打工人吐槽、并非真起雾（u00336）；伊洛伊老实记下（u00337）。",
+          "transcript_refs": [
+            "u00336",
+            "u00337"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e019f",
+          "start_ms": 2985600,
+          "end_ms": 3000267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊指引从度假村侧门出去有一条捷径通向那片树林（u00340）；阿德勒转而询问黑羽的占卜结果（u00342）。",
+          "transcript_refs": [
+            "u00340",
+            "u00341",
+            "u00342"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e019g",
+          "start_ms": 3026133,
+          "end_ms": 3038933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒提议在路上打电话问正在管理局办事的小姐、顺便打听失踪案的信息（u00345）。",
+          "transcript_refs": [
+            "u00345"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s020",
+      "start_ms": 3063467,
+      "end_ms": 3154667,
+      "summary": "电话中得知失踪案详情：失踪者归来后丢失记忆、性情大变，管理局推测其被卷入入口随机的异象空间。",
+      "participants": [
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00346",
+        "u00347",
+        "u00348",
+        "u00349",
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00353",
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00357"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e020a",
+          "start_ms": 3063467,
+          "end_ms": 3099200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "电话里转述报案信息：失踪者此前都遇上被裁员、亲属去世、考试失利等糟心事，有些人消失几天又出现、除丢失那几天的记忆外还变得格外积极向上（u00346、u00347、u00348）。",
+          "transcript_refs": [
+            "u00346",
+            "u00347",
+            "u00348"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e020b",
+          "start_ms": 3104267,
+          "end_ms": 3108000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾觉得这么看倒也算一件好事（u00350）。",
+          "transcript_refs": [
+            "u00350"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e020c",
+          "start_ms": 3108533,
+          "end_ms": 3133067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "对方反问性情大变的失踪者是否还算原先的「那个自己」，并说明管理局推测众人是被卷入一处入口随机改变的异象空间（u00351、u00353）。",
+          "transcript_refs": [
+            "u00351",
+            "u00352",
+            "u00353"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e020d",
+          "start_ms": 3142133,
+          "end_ms": 3154667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "对方说还不确定是否与「桀桀熊」有关、怀疑是它化形诱拐了娜娜莉，并拜托店长照看娜娜莉（u00356、u00357）。",
+          "transcript_refs": [
+            "u00356",
+            "u00357"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s021",
+      "start_ms": 3185600,
+      "end_ms": 3320533,
+      "summary": "浓雾树林中「虎老大」现形，自称桀桀熊，炫耀跟踪众人并诱走娜娜莉的经过。",
+      "participants": [
+        "hulaoda",
+        "jiejiexiong",
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00358",
+        "u00359",
+        "u00361",
+        "u00362",
+        "u00363",
+        "u00364",
+        "u00365",
+        "u00366",
+        "u00367",
+        "u00368",
+        "u00369",
+        "u00370",
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e021a",
+          "start_ms": 3185600,
+          "end_ms": 3199733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hulaoda"
+          ],
+          "speaker_character_id": "",
+          "observation": "「虎老大」认出担保人的同行者，问担保人怎么没来、说熊等很久都没等到、很伤心（u00358、u00359）。",
+          "transcript_refs": [
+            "u00358",
+            "u00359"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e021b",
+          "start_ms": 3205867,
+          "end_ms": 3212267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hulaoda",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "被质疑自称熊却不是老虎时，「虎老大」发出「嗷鸣」（u00362）；早雾喝问它把娜娜莉藏哪了（u00363）。",
+          "transcript_refs": [
+            "u00362",
+            "u00363"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e021c",
+          "start_ms": 3214933,
+          "end_ms": 3247200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiejiexiong",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "异象变脸道「臭小孩，闭嘴」，众人惊愕（u00364、u00365）；它承认没能骗过众人，自述昨晚起就一直跟踪，还看到众人遇见那个独眼女人（u00366、u00367）。",
+          "transcript_refs": [
+            "u00364",
+            "u00365",
+            "u00366",
+            "u00367"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e021d",
+          "start_ms": 3249600,
+          "end_ms": 3299733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiejiexiong"
+          ],
+          "speaker_character_id": "",
+          "observation": "桀桀熊炫耀自己一眼看穿担保人与独眼小姐关系不一般、看了一出师徒情深又反目的好戏，并说只是潜入房间说了一句「熊知道你的师父在哪」就把人乖乖带走（u00368、u00370、u00371）。",
+          "transcript_refs": [
+            "u00368",
+            "u00369",
+            "u00370",
+            "u00371"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s022",
+      "start_ms": 3321067,
+      "end_ms": 3438133,
+      "summary": "桀桀熊道出将娜娜莉等人送上船、抛入失踪案频发的异象空间，随后自身异变。",
+      "participants": [
+        "jiejiexiong",
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00375",
+        "u00376",
+        "u00377",
+        "u00378",
+        "u00379",
+        "u00380",
+        "u00381",
+        "u00382",
+        "u00383",
+        "u00384",
+        "u00385",
+        "u00386",
+        "u00387",
+        "u00388"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e022a",
+          "start_ms": 3321067,
+          "end_ms": 3359467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiejiexiong"
+          ],
+          "speaker_character_id": "",
+          "observation": "桀桀熊说有个「好心的女人」告诉它一处宝地，只要把人带到那里、坐上一艘船，活人就会消失，还说除了担保人还有好多大人小孩全都消失、出不来了（u00375、u00376、u00377）。",
+          "transcript_refs": [
+            "u00375",
+            "u00376",
+            "u00377"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e022b",
+          "start_ms": 3366133,
+          "end_ms": 3367467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾惊问「什么」（u00379）。",
+          "transcript_refs": [
+            "u00379"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e022c",
+          "start_ms": 3368000,
+          "end_ms": 3386133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师推断桀桀熊与失踪案是并列关系：它先诱骗娜娜莉，再把她抛进失踪案频发的异象空间，目的是让她永远迷失（u00380、u00381）。",
+          "transcript_refs": [
+            "u00380",
+            "u00381"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e022d",
+          "start_ms": 3386400,
+          "end_ms": 3438133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiejiexiong"
+          ],
+          "speaker_character_id": "",
+          "observation": "桀桀熊以「BINGO」承认（u00382），并警告为小孩子操心的人都会招致不幸（u00385）；众人惊呼这只熊发生异变、露出真面目（u00383、u00384、u00386、u00387、u00388）。",
+          "transcript_refs": [
+            "u00382",
+            "u00383",
+            "u00384",
+            "u00385",
+            "u00386",
+            "u00387",
+            "u00388"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s023",
+      "start_ms": 3487200,
+      "end_ms": 3732800,
+      "summary": "桀桀熊留下诅咒消失；鉴定师独自抵达一处陌生码头，陆地上出现一艘船。",
+      "participants": [
+        "jiejiexiong"
+      ],
+      "transcript_refs": [
+        "u00389",
+        "u00390",
+        "u00391",
+        "u00392",
+        "u00393",
+        "u00394",
+        "u00395",
+        "u00396",
+        "u00397"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e023a",
+          "start_ms": 3487200,
+          "end_ms": 3508000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiejiexiong"
+          ],
+          "speaker_character_id": "",
+          "observation": "桀桀熊留下「来玩捉迷藏吧」与一串狂笑后消失（u00389、u00390）。",
+          "transcript_refs": [
+            "u00389",
+            "u00390"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e023b",
+          "start_ms": 3593600,
+          "end_ms": 3601600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "黑暗中传来「诅咒你们」「所有厌弃熊的……全都」的怨言（u00391、u00392）。",
+          "transcript_refs": [
+            "u00391",
+            "u00392"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e023c",
+          "start_ms": 3614667,
+          "end_ms": 3649867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人呼喊阿德勒等人所在之处（u00393），随后有人注意到陆地上出现了一艘船（u00394）。",
+          "transcript_refs": [
+            "u00393",
+            "u00394"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s024",
+      "start_ms": 3752000,
+      "end_ms": 3814667,
+      "summary": "伴随歌谣登船，渡入一个太阳不升不落的世界；鉴定师确认这就是娜娜莉走失的异象空间。",
+      "participants": [],
+      "transcript_refs": [
+        "u00398",
+        "u00399",
+        "u00400",
+        "u00401",
+        "u00402",
+        "u00404",
+        "u00405",
+        "u00406",
+        "u00407",
+        "u00408",
+        "u00409",
+        "u00410",
+        "u00411"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e024a",
+          "start_ms": 3752000,
+          "end_ms": 3769067,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "画面伴随「渡你渡我，渡世俗」「别再念」等歌谣式念白（u00398、u00399、u00400、u00401、u00402、u00404、u00405，其中 u00398/u00400/u00402/u00405 为零时长句）。",
+          "transcript_refs": [
+            "u00398",
+            "u00399",
+            "u00400",
+            "u00401",
+            "u00402",
+            "u00404",
+            "u00405"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e024b",
+          "start_ms": 3784267,
+          "end_ms": 3793333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人问「那是什么」，旁白描述太阳不升起也不落下、没有黑夜与晨曦的世界（u00406、u00407）。",
+          "transcript_refs": [
+            "u00406",
+            "u00407"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e024c",
+          "start_ms": 3804267,
+          "end_ms": 3814667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师认出迷雾与巨像，说这与黑羽的占卜对上了、这里应该就是娜娜莉走丢的异象空间，并意识到只有自己一个人进来、得先通知大家（u00410、u00411）。",
+          "transcript_refs": [
+            "u00410",
+            "u00411"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s025",
+      "start_ms": 3843733,
+      "end_ms": 3993067,
+      "summary": "鉴定师与自称「莳」的女子交谈，得知此地名为洄廊，困着把逃避与执念留在此处的「游梦人」。",
+      "participants": [],
+      "transcript_refs": [
+        "u00412",
+        "u00413",
+        "u00414",
+        "u00415",
+        "u00417",
+        "u00418",
+        "u00419",
+        "u00420",
+        "u00421",
+        "u00422",
+        "u00423",
+        "u00424",
+        "u00425",
+        "u00426",
+        "u00427",
+        "u00428",
+        "u00429",
+        "u00430",
+        "u00432",
+        "u00433"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e025a",
+          "start_ms": 3843733,
+          "end_ms": 3877600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女子称鉴定师能进入洄廊却不受规则所限、无梦可游，是个奇怪的人，并解释这里的人并非遵守规则而是遵循本能，劝他快些离开（u00412、u00414、u00415）。",
+          "transcript_refs": [
+            "u00412",
+            "u00413",
+            "u00414",
+            "u00415"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e025b",
+          "start_ms": 3882133,
+          "end_ms": 3909333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女子自称「莳」（u00418）；鉴定师向她打听一个红发、戴眼镜的女孩，莳说那人正在那里做梦（u00419、u00420、u00421）。",
+          "transcript_refs": [
+            "u00418",
+            "u00419",
+            "u00420",
+            "u00421"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e025c",
+          "start_ms": 3912000,
+          "end_ms": 3944533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳称那些人为「游梦人」，说他们把逃避与执念抛向天宇、丢进海里，只余忘却与欢愉、在过往的梦里歌舞，直到接受停留才长出前行的双腿（u00424、u00425、u00426）。",
+          "transcript_refs": [
+            "u00424",
+            "u00425",
+            "u00426"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e025d",
+          "start_ms": 3949600,
+          "end_ms": 3991733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳说新来的苦闷者常把自己关在房间里、过些时候便会出来加入游行，并提醒此地外貌任性、需靠直觉辨认朋友，还要小心蠢蠢欲动的食梦者（u00428、u00429、u00430、u00432）。",
+          "transcript_refs": [
+            "u00428",
+            "u00429",
+            "u00430",
+            "u00432"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s026",
+      "start_ms": 4096000,
+      "end_ms": 4201600,
+      "summary": "医院般的房间里，一名「游梦人」病人吐露对死亡的恐惧与不甘。",
+      "participants": [],
+      "transcript_refs": [
+        "u00434",
+        "u00435",
+        "u00436",
+        "u00437",
+        "u00438",
+        "u00439",
+        "u00440",
+        "u00441",
+        "u00442",
+        "u00443"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e026a",
+          "start_ms": 4096000,
+          "end_ms": 4120533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师在病房外听到声音（u00434，零时长句），病房里的「游梦人」说自己看到父母哭了、应该是要死了，但不怕死、只害怕等待死亡的日子（u00435、u00436）。",
+          "transcript_refs": [
+            "u00434",
+            "u00435",
+            "u00436"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e026b",
+          "start_ms": 4121067,
+          "end_ms": 4139733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "病人说消毒液与铁锈的味道混在一起很难闻、憋气时眼前白茫茫，才觉得不甘心（u00437）。",
+          "transcript_refs": [
+            "u00437"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s027",
+      "start_ms": 4217067,
+      "end_ms": 4285600,
+      "summary": "病人谈起临终前任性的愿望；鉴定师四处寻找粉色的小老虎，遇见只有七秒记忆的金鱼卜吉哒。",
+      "participants": [],
+      "transcript_refs": [
+        "u00444",
+        "u00445",
+        "u00446",
+        "u00447",
+        "u00448",
+        "u00449",
+        "u00450",
+        "u00451",
+        "u00452",
+        "u00453"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e027a",
+          "start_ms": 4217067,
+          "end_ms": 4234933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "病人说若能短暂任性一段时间，想向一个人说谎，随后又改口说这是自己的秘密（u00444、u00445、u00446）。",
+          "transcript_refs": [
+            "u00444",
+            "u00445",
+            "u00446"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e027b",
+          "start_ms": 4241333,
+          "end_ms": 4258400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人追着一只粉色小老虎呼喊，并向人打听是否见过（u00447、u00448）。",
+          "transcript_refs": [
+            "u00447",
+            "u00448"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e027c",
+          "start_ms": 4270933,
+          "end_ms": 4285600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师认出这是在「一意向阳」见过的金鱼卜吉哒，可它只有七秒记忆、想不起自己是谁、为何在此（u00449、u00450、u00451、u00452、u00453）。",
+          "transcript_refs": [
+            "u00449",
+            "u00450",
+            "u00451",
+            "u00452",
+            "u00453"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s028",
+      "start_ms": 4350667,
+      "end_ms": 4619467,
+      "summary": "用计将「包包蚊」引出安全屋；随后一段关于任务与娜娜莉的私语，暗示幕后有人操控。",
+      "participants": [],
+      "transcript_refs": [
+        "u00454",
+        "u00455",
+        "u00457",
+        "u00458",
+        "u00459",
+        "u00461",
+        "u00462",
+        "u00463",
+        "u00464",
+        "u00465",
+        "u00466",
+        "u00467",
+        "u00468",
+        "u00469",
+        "u00470"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e028a",
+          "start_ms": 4350667,
+          "end_ms": 4356000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "异象「包包蚊」抱怨此地无敌、又困惑自己吸了这么多却依旧空虚（u00454、u00455）。",
+          "transcript_refs": [
+            "u00454",
+            "u00455"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e028b",
+          "start_ms": 4356800,
+          "end_ms": 4366667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人劝包包蚊出安全屋、去面对挑战以证明自己，包包蚊被说动要出去（u00457、u00458）。",
+          "transcript_refs": [
+            "u00457",
+            "u00458"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e028c",
+          "start_ms": 4544000,
+          "end_ms": 4568533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "一段对话提到伊波恩的鉴定师也进了洄廊、被称为「一石二鸟」，并催促对方快完成任务，否则其两个「伙伴」会永远留在里面（u00461、u00462、u00463、u00464）。",
+          "transcript_refs": [
+            "u00461",
+            "u00462",
+            "u00463",
+            "u00464"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e028d",
+          "start_ms": 4590400,
+          "end_ms": 4619467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "对方说有些花在断过根后才长得更美、要她回应信任；她则坚称必须出来，因为还有必须要做的事（u00467、u00468、u00470）。",
+          "transcript_refs": [
+            "u00467",
+            "u00468",
+            "u00469",
+            "u00470"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s029",
+      "start_ms": 4653333,
+      "end_ms": 4713067,
+      "summary": "花园小屋里，一位女孩答应帮鉴定师寻找粉色小老虎，自称也是被莳称作「游梦人」的人。",
+      "participants": [],
+      "transcript_refs": [
+        "u00471",
+        "u00472",
+        "u00473",
+        "u00474",
+        "u00475",
+        "u00476",
+        "u00477",
+        "u00478",
+        "u00479",
+        "u00480",
+        "u00481"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e029a",
+          "start_ms": 4653333,
+          "end_ms": 4664800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师为一间房间和一只粉色小老虎向屋里的女孩致意、请她帮忙（u00471）；女孩说不介意、让他进来找（u00472）。",
+          "transcript_refs": [
+            "u00471",
+            "u00472"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e029b",
+          "start_ms": 4665333,
+          "end_ms": 4680800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩问那只小老虎是什么样的人，鉴定师形容她爱吃爱闹、总闯祸、要强得让人头疼，但也勇敢热情、重视同伴（u00473、u00474、u00475）。",
+          "transcript_refs": [
+            "u00473",
+            "u00474",
+            "u00475"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e029c",
+          "start_ms": 4685867,
+          "end_ms": 4713067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩说自己被莳称作「游梦人」，不记得从哪里来却知道自己要做的事，并表示能帮助鉴定师和粉老虎（u00477、u00478、u00479、u00481）。",
+          "transcript_refs": [
+            "u00477",
+            "u00478",
+            "u00479",
+            "u00480",
+            "u00481"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s030",
+      "start_ms": 4742133,
+      "end_ms": 4852267,
+      "summary": "女孩讲起父母关于「万花筒」的教诲，随后带鉴定师对准窗户转动万花筒，进入她的「梦」。",
+      "participants": [],
+      "transcript_refs": [
+        "u00482",
+        "u00483",
+        "u00484",
+        "u00485",
+        "u00486",
+        "u00487",
+        "u00488",
+        "u00490",
+        "u00491",
+        "u00492",
+        "u00493",
+        "u00494",
+        "u00495"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e030a",
+          "start_ms": 4742133,
+          "end_ms": 4764000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩转述父母曾是考古学者、小时候告诉她「事物像万花筒般从不同视角展开，才能窥见本质」（u00482、u00483、u00485，u00485 为零时长句）。",
+          "transcript_refs": [
+            "u00482",
+            "u00483",
+            "u00484",
+            "u00485"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e030b",
+          "start_ms": 4785067,
+          "end_ms": 4802667,
+          "evidence_kind": "visual",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "画面出现切换视角与转盘的操作提示，随后有人说从外面看、这房子似乎有些年头（u00487）。",
+          "transcript_refs": [
+            "u00486",
+            "u00487",
+            "u00488"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e030c",
+          "start_ms": 4832267,
+          "end_ms": 4852267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩引导对准窗户转动万花筒（u00491、u00492，均为零时长句）；进入后她说不熟悉这里、只能先找到自己的房间，并称这里是她过往的「梦」（u00493、u00494、u00495）。",
+          "transcript_refs": [
+            "u00490",
+            "u00491",
+            "u00492",
+            "u00493",
+            "u00494",
+            "u00495"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s031",
+      "start_ms": 4924267,
+      "end_ms": 5060533,
+      "summary": "潜入水下又浮出水面；女孩讲起自己亲手杀死「母亲」的往事，称母亲是杀不死的恶魔。",
+      "participants": [],
+      "transcript_refs": [
+        "u00497",
+        "u00498",
+        "u00499",
+        "u00501",
+        "u00502",
+        "u00503",
+        "u00504",
+        "u00505",
+        "u00506",
+        "u00507",
+        "u00508",
+        "u00509",
+        "u00510"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e031a",
+          "start_ms": 4924267,
+          "end_ms": 4990133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人察觉喘不上气、落入水下（u00498、u00499 为零时长句），回到水面后感慨此处毫无逻辑，随后又看到天上有好多眼睛（u00502）。",
+          "transcript_refs": [
+            "u00497",
+            "u00498",
+            "u00499",
+            "u00501",
+            "u00502"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e031b",
+          "start_ms": 4990400,
+          "end_ms": 5012267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩说自诩「母亲」的那个女人一直这样看着她，但那不是她的亲生母亲——亲生母亲早已去世，而这个女人本也该死了（u00503、u00504）。",
+          "transcript_refs": [
+            "u00503",
+            "u00504"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e031c",
+          "start_ms": 5015200,
+          "end_ms": 5042133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩说自己亲手杀了那个女人，明明做足了措施、对方也已倒下，因为对方把她的人生变成谎言、造了一座漂亮牢笼，只有她恨她（u00505、u00507）。",
+          "transcript_refs": [
+            "u00505",
+            "u00506",
+            "u00507"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e031d",
+          "start_ms": 5048000,
+          "end_ms": 5060533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩说那女人是不折不扣、杀不死的恶魔、对她穷追不舍，但她不会重蹈覆辙，也绝不会再让对方从身边带走任何一个人（u00509、u00510）。",
+          "transcript_refs": [
+            "u00509",
+            "u00510"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s032",
+      "start_ms": 5087733,
+      "end_ms": 5220800,
+      "summary": "穿过阁楼与秘密林地，众人在树下找到沉睡的娜娜莉；女孩引导鉴定师去她的房间把人带出。",
+      "participants": [],
+      "transcript_refs": [
+        "u00512",
+        "u00513",
+        "u00514",
+        "u00515",
+        "u00516",
+        "u00517",
+        "u00518",
+        "u00519",
+        "u00520",
+        "u00521",
+        "u00522",
+        "u00523",
+        "u00524",
+        "u00525"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e032a",
+          "start_ms": 5087733,
+          "end_ms": 5153067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩判断小老虎不在这里、提议去阁楼，随后从电梯下去、带路到一片不会被监视的秘密林地（u00512、u00514、u00515）。",
+          "transcript_refs": [
+            "u00512",
+            "u00513",
+            "u00514",
+            "u00515"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e032b",
+          "start_ms": 5171200,
+          "end_ms": 5182667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "众人在树下找到娜娜莉——她先前还蹿得没影、此刻却睡着了，女孩说这或许是觉得安心（u00516、u00517、u00518）。",
+          "transcript_refs": [
+            "u00516",
+            "u00517",
+            "u00518"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e032c",
+          "start_ms": 5183200,
+          "end_ms": 5198133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩回忆自己曾在这棵树下遇到一个奇怪的人、因被对方需要而被带回家，说那个人的气味还留在这里、娜娜莉应该也很喜欢她（u00519、u00520、u00521）。",
+          "transcript_refs": [
+            "u00519",
+            "u00520",
+            "u00521"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e032d",
+          "start_ms": 5200800,
+          "end_ms": 5220800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "女孩说娜娜莉睡得沉、怕已困在梦里，让鉴定师从出口去她的房间把人带出来，并说自己还有要做的事、就此告别（u00523、u00525）。",
+          "transcript_refs": [
+            "u00523",
+            "u00524",
+            "u00525"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s033",
+      "start_ms": 5275200,
+      "end_ms": 5562133,
+      "summary": "娜娜莉梦中的房间与碎片回忆：家人、虎老大口中的「长大」，以及柯林斯家族或会解散的疑虑。",
+      "participants": [],
+      "transcript_refs": [
+        "u00526",
+        "u00527",
+        "u00528",
+        "u00529",
+        "u00530",
+        "u00531",
+        "u00532",
+        "u00533",
+        "u00534",
+        "u00535",
+        "u00536",
+        "u00537"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e033a",
+          "start_ms": 5275200,
+          "end_ms": 5288267,
+          "evidence_kind": "visual",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "房间里合照上的人像抱着娜娜莉的爸爸妈妈；有人醒来时正待在自己的房间（u00526、u00527）。",
+          "transcript_refs": [
+            "u00526",
+            "u00527"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e033b",
+          "start_ms": 5320267,
+          "end_ms": 5328000,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人提起《尼尼历险记》最新集播出、并好奇这次的故事发生在哪里（u00528、u00529）。",
+          "transcript_refs": [
+            "u00528",
+            "u00529"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e033c",
+          "start_ms": 5383733,
+          "end_ms": 5424267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "片段中娜娜莉说要回去告诉家族成员、因为他们看不到虎老大，只能由她转述虎老大的光辉事迹，并提到某个异象猎人（u00531、u00532、u00533、u00534）。",
+          "transcript_refs": [
+            "u00531",
+            "u00532",
+            "u00533",
+            "u00534"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e033d",
+          "start_ms": 5450933,
+          "end_ms": 5562133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人自问柯林斯家族会不会就此解散（u00535）；片段说虎老大管这叫「长大」、并称自己已经完成了使命（u00536、u00537）。",
+          "transcript_refs": [
+            "u00535",
+            "u00536",
+            "u00537"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s034",
+      "start_ms": 5614933,
+      "end_ms": 5778133,
+      "summary": "娜娜莉不愿放弃：柯林斯家族必须存在，她要强大到能庇护家人、不再失去任何人。",
+      "participants": [],
+      "transcript_refs": [
+        "u00538",
+        "u00539",
+        "u00540",
+        "u00541",
+        "u00542",
+        "u00543",
+        "u00544",
+        "u00545",
+        "u00546",
+        "u00547"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e034a",
+          "start_ms": 5614933,
+          "end_ms": 5626667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说还不想放弃，如果虎老大以后还回来；她下决心柯林斯家族必须存在，哪怕只有她一个人（u00538、u00539）。",
+          "transcript_refs": [
+            "u00538",
+            "u00539"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e034b",
+          "start_ms": 5664800,
+          "end_ms": 5681067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "片段里有人闯进自认早就看上的秘密基地、扬言叫管事的人出来（u00540、u00541）。",
+          "transcript_refs": [
+            "u00540",
+            "u00541"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e034c",
+          "start_ms": 5706400,
+          "end_ms": 5721600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "回忆里传来「老大……注意安全」与「娜娜莉，今天的早餐做了你最喜欢的芝士肉塔饼」的声音（u00542、u00543）。",
+          "transcript_refs": [
+            "u00542",
+            "u00543"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e034d",
+          "start_ms": 5736800,
+          "end_ms": 5778133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说在伊波恩就像……她要强大到所有人都认可她的家族、强大到能庇护每一个家人和朋友、强大到不会再失去任何一个人（u00544、u00545、u00546、u00547）。",
+          "transcript_refs": [
+            "u00544",
+            "u00545",
+            "u00546",
+            "u00547"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s035",
+      "start_ms": 5833600,
+      "end_ms": 5896533,
+      "summary": "「虎老大」以真身「抱抱熊」现身，向鉴定师讲述娜娜莉用「保护」换取「连接」的心事。",
+      "participants": [
+        "hulaoda"
+      ],
+      "transcript_refs": [
+        "u00548",
+        "u00549",
+        "u00550",
+        "u00551",
+        "u00552",
+        "u00553",
+        "u00554",
+        "u00555",
+        "u00556",
+        "u00557",
+        "u00558",
+        "u00559"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e035a",
+          "start_ms": 5833600,
+          "end_ms": 5844267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hulaoda"
+          ],
+          "speaker_character_id": "",
+          "observation": "虎老大向「柯林斯一代目最信赖的左右手——鉴定师」致意（u00548），并自报真身是一种名叫「抱抱熊」的童年玩伴异象（u00549）。",
+          "transcript_refs": [
+            "u00548",
+            "u00549"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e035b",
+          "start_ms": 5844533,
+          "end_ms": 5852000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hulaoda"
+          ],
+          "speaker_character_id": "",
+          "observation": "它解释孩子会随长大而逐渐遗忘它、之前没被娜娜莉提起也属正常（u00550、u00551）。",
+          "transcript_refs": [
+            "u00550",
+            "u00551"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e035c",
+          "start_ms": 5858667,
+          "end_ms": 5868267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hulaoda"
+          ],
+          "speaker_character_id": "",
+          "observation": "虎老大说娜娜莉试图用「保护」的方式换取人与人之间永久的「连接」，但还没想清楚「家人」究竟靠什么维系（u00553、u00554）。",
+          "transcript_refs": [
+            "u00553",
+            "u00554"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e035d",
+          "start_ms": 5874400,
+          "end_ms": 5896533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hulaoda"
+          ],
+          "speaker_character_id": "",
+          "observation": "它说娜娜莉的想象里有朋友、壮大的柯林斯家族和伊波恩的家人，只要她还记得它、它就在，并拜托鉴定师把「真正的娜娜莉」带出去（u00556、u00558、u00559）。",
+          "transcript_refs": [
+            "u00556",
+            "u00557",
+            "u00558",
+            "u00559"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s036",
+      "start_ms": 5906667,
+      "end_ms": 6026933,
+      "summary": "小娜娜莉道出迷惘：她别着的蓝色徽章不过是用瓶盖仿做的，「想保护别人」的心也令她怀疑自己只是拙劣模仿。",
+      "participants": [
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00560",
+        "u00561",
+        "u00562",
+        "u00563",
+        "u00564",
+        "u00565",
+        "u00566",
+        "u00567",
+        "u00568",
+        "u00569",
+        "u00570",
+        "u00571",
+        "u00572",
+        "u00573",
+        "u00574"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e036a",
+          "start_ms": 5906667,
+          "end_ms": 5921867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "小娜娜莉说鉴定师找到她了，明知这样自己没有不回去的理由，却在被问是否想留下时答「不想」（u00560、u00562、u00564）。",
+          "transcript_refs": [
+            "u00560",
+            "u00561",
+            "u00562",
+            "u00563",
+            "u00564"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e036b",
+          "start_ms": 5933067,
+          "end_ms": 5953333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "她提起衣上别着的蓝色徽章——真正的家族信物其实早已找不到，如今这枚只是她用瓶盖仿做的、很拙劣（u00567、u00568）。",
+          "transcript_refs": [
+            "u00567",
+            "u00568"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e036c",
+          "start_ms": 5955467,
+          "end_ms": 5985333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "她说自己这颗「想保护别人」的心，究竟是发自肺腑，还是像瓶盖一样拙劣模仿前人表面、以为这样就能捆住珍贵的「家人」，她产生了疑惑（u00570、u00571、u00572）。",
+          "transcript_refs": [
+            "u00570",
+            "u00571",
+            "u00572"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e036d",
+          "start_ms": 5988000,
+          "end_ms": 6026933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "她自认只是嘴上功夫、总把一切搞砸、动不动闯祸，害怕大家因她的弱小而离开，根本不适合当家族老大（u00573、u00574）。",
+          "transcript_refs": [
+            "u00573",
+            "u00574"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s037",
+      "start_ms": 6029333,
+      "end_ms": 6184000,
+      "summary": "鉴定师用「万花筒」的视角讲起一个小女孩与异象、徽章与「长大」的故事，小娜娜莉忍不住插嘴辩解。",
+      "participants": [
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00575",
+        "u00576",
+        "u00577",
+        "u00578",
+        "u00579",
+        "u00580",
+        "u00581",
+        "u00582",
+        "u00583",
+        "u00584",
+        "u00586",
+        "u00587",
+        "u00588",
+        "u00589",
+        "u00590",
+        "u00592",
+        "u00593",
+        "u00594"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e037a",
+          "start_ms": 6029333,
+          "end_ms": 6044800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师引用花园里女孩的话「事物像万花筒般从不同视角展开，才能窥见本质」，请娜娜莉换个视角听听（u00575、u00576、u00577）。",
+          "transcript_refs": [
+            "u00575",
+            "u00576",
+            "u00577"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e037b",
+          "start_ms": 6045333,
+          "end_ms": 6083733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "他讲起一个小女孩自小寄宿别人家、没有朋友却自得其乐，后来遇到一个只有她能看到的了不起的异象，收到一枚蓝色徽章作家族信物、还交到朋友与小弟（u00578、u00579、u00580）。",
+          "transcript_refs": [
+            "u00578",
+            "u00579",
+            "u00580"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e037c",
+          "start_ms": 6084800,
+          "end_ms": 6112800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "讲到女孩被冠上「骗子」名号、徽章飞走、她暴起把那罪魁祸首打得满地找牙时，小娜娜莉忍不住辩解「我打得才不重」（u00582、u00583、u00584）。",
+          "transcript_refs": [
+            "u00581",
+            "u00582",
+            "u00583",
+            "u00584"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e037d",
+          "start_ms": 6137600,
+          "end_ms": 6158667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "故事说女孩最后没找回徽章，却意外觉醒异能、达成「长大」的条件，伴随她的异象就此消失，甚至慢慢抹去她关于它的记忆（u00587、u00588、u00589）。",
+          "transcript_refs": [
+            "u00587",
+            "u00588",
+            "u00589"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e037e",
+          "start_ms": 6168000,
+          "end_ms": 6184000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "故事讲到半角街角落的「伊波恩」古董店、女孩踹门砸店，小娜娜莉急忙打断、辩解自己只是想小小下个马威（u00592、u00593、u00594）。",
+          "transcript_refs": [
+            "u00592",
+            "u00593",
+            "u00594"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s038",
+      "start_ms": 6190667,
+      "end_ms": 6430667,
+      "summary": "故事收束于「以真心换真心」的家人；鉴定师把可照出本质的万花筒交给娜娜莉，她问出对「家族老大」的疑虑。",
+      "participants": [
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00596",
+        "u00597",
+        "u00598",
+        "u00599",
+        "u00600",
+        "u00601",
+        "u00603",
+        "u00604",
+        "u00605",
+        "u00606",
+        "u00607",
+        "u00608",
+        "u00609",
+        "u00610"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e038a",
+          "start_ms": 6190667,
+          "end_ms": 6265067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "故事说踢馆的女孩被迫留下打工抵债，这群人却真成了她的家人；她唯有以真心换真心，用各种笨拙却倔强的方式陪护、守护家人（u00597、u00598、u00599、u00600）。",
+          "transcript_refs": [
+            "u00596",
+            "u00597",
+            "u00598",
+            "u00599",
+            "u00600"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e038b",
+          "start_ms": 6265333,
+          "end_ms": 6283200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "小娜娜莉问那她的拳头又是为了什么（u00601）；鉴定师答：为了正义、为了她纯粹的英雄主义，还说小小英雄还有很长、很长时间可以成长（u00603、u00604）。",
+          "transcript_refs": [
+            "u00601",
+            "u00603",
+            "u00604"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e038c",
+          "start_ms": 6283733,
+          "end_ms": 6315200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师让她看镜中那个迷茫、害怕、怯懦、逃避、质疑自己居心的女孩，并把可照出万物本质的万花筒交给她（u00605、u00606、u00607）。",
+          "transcript_refs": [
+            "u00605",
+            "u00606",
+            "u00607",
+            "u00608"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e038d",
+          "start_ms": 6390400,
+          "end_ms": 6430667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉问鉴定师：就算不够强大、拳头不够有力，她也可以是家族老大吗（u00609）；就算抓不住想抓住的东西、留不住想留住的人，她也可以吗（u00610）。",
+          "transcript_refs": [
+            "u00609",
+            "u00610"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s039",
+      "start_ms": 6560800,
+      "end_ms": 6676000,
+      "summary": "自称洄廊创造者的莳现身阻拦，主张换一个没有负担的娜娜莉出去，并宣称洄廊是她的意识体。",
+      "participants": [],
+      "transcript_refs": [
+        "u00611",
+        "u00612",
+        "u00613",
+        "u00614",
+        "u00615",
+        "u00617",
+        "u00618",
+        "u00619",
+        "u00621",
+        "u00622",
+        "u00623",
+        "u00624",
+        "u00625",
+        "u00626",
+        "u00627"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e039a",
+          "start_ms": 6560800,
+          "end_ms": 6577867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "自称洄廊创造者的莳说娜娜莉不可以离开、这违背规则，并称她支持带走另一个娜娜莉，而非作为真正本体的「她」（u00611、u00613）。",
+          "transcript_refs": [
+            "u00611",
+            "u00612",
+            "u00613"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e039b",
+          "start_ms": 6578400,
+          "end_ms": 6594667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳说本体的「她」被未来的忧虑所困、无法放下保护他人的执念，往后还要经历诸多令人伤心的离别，带走她会太可怜（u00614、u00615）。",
+          "transcript_refs": [
+            "u00614",
+            "u00615"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e039c",
+          "start_ms": 6604800,
+          "end_ms": 6648267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳主张把执念留在这里、换一个没有负担和压力的娜娜莉出去开启新生活，并保证除那些烦恼外其余全数复制、丝毫未变（u00617、u00619、u00621、u00623）。",
+          "transcript_refs": [
+            "u00619",
+            "u00621",
+            "u00622",
+            "u00623",
+            "u00624"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e039d",
+          "start_ms": 6648800,
+          "end_ms": 6676000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳承认对方可以说自己捏造了另一个娜娜莉，并宣称洄廊是她的意识体、她创造了这里的一切，游梦人是因抱着与她相似的观念而被潮水收束进来的（u00624、u00625、u00626）。",
+          "transcript_refs": [
+            "u00625",
+            "u00626",
+            "u00627"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s040",
+      "start_ms": 6676533,
+      "end_ms": 6809600,
+      "summary": "鉴定师反驳莳：剥夺他人意愿并非善意，时间应向前流动；双方就规则与选择僵持。",
+      "participants": [],
+      "transcript_refs": [
+        "u00628",
+        "u00629",
+        "u00630",
+        "u00631",
+        "u00632",
+        "u00633",
+        "u00634",
+        "u00635",
+        "u00636",
+        "u00637",
+        "u00638",
+        "u00639",
+        "u00640",
+        "u00641",
+        "u00642",
+        "u00643"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e040a",
+          "start_ms": 6676533,
+          "end_ms": 6696267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳解释人们逃避当下与不可知的未来，所以在此得到「过去永生的安宁」；其分身回归尘世便既解决了原先逃避之事，又避免家人失去至亲的苦痛（u00627、u00628）。",
+          "transcript_refs": [
+            "u00628",
+            "u00629"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e040b",
+          "start_ms": 6701867,
+          "end_ms": 6729600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师指责莳没有尊重他人意愿、仅凭自认「好」就把人困在这里，并引娜娜莉关于水花「独一无二且一瞬间」的话，说时间应向前流动而非束缚于过往（u00631、u00632、u00633、u00634）。",
+          "transcript_refs": [
+            "u00631",
+            "u00632",
+            "u00633",
+            "u00634"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e040c",
+          "start_ms": 6755467,
+          "end_ms": 6779467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳反问对方是否经历过那些无法直面的痛苦与不幸；鉴定师答「逃避」当然被允许，但要让人自己选，成为什么样的人、面对什么样的不幸都该由他们说了算（u00638、u00639、u00640）。",
+          "transcript_refs": [
+            "u00638",
+            "u00639",
+            "u00640"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e040d",
+          "start_ms": 6788800,
+          "end_ms": 6809600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师说自己答应了老大、定会带她出去，请莳让开；莳道歉，说这片海的水手不会扬帆、天上的船舵只能驶向过去，规则如此她也无能为力（u00642、u00643）。",
+          "transcript_refs": [
+            "u00642",
+            "u00643"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s041",
+      "start_ms": 6895200,
+      "end_ms": 7247733,
+      "summary": "莳称「忒修斯之舵」不允许规则被打破，鉴定师则立志带娜娜莉、花园里的女孩与所有游梦人出去。",
+      "participants": [],
+      "transcript_refs": [
+        "u00644",
+        "u00645",
+        "u00646",
+        "u00647",
+        "u00648",
+        "u00649",
+        "u00650",
+        "u00651",
+        "u00652"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e041a",
+          "start_ms": 7213067,
+          "end_ms": 7222667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳称「忒修斯之舵」不会允许规则被打破，只能驶向过去（u00646、u00647、u00648）。",
+          "transcript_refs": [
+            "u00646",
+            "u00647",
+            "u00648"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e041b",
+          "start_ms": 7230400,
+          "end_ms": 7243467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师反问是船舵不允许、还是莳不敢改变，并宣称能带娜娜莉、花园里的女孩、游梦人们——带所有人出去（u00649、u00650、u00651）。",
+          "transcript_refs": [
+            "u00649",
+            "u00650",
+            "u00651"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s042",
+      "start_ms": 7264800,
+      "end_ms": 7363200,
+      "summary": "鉴定师宣告要打破困住众人的过去与幻象，亲手让船舵调转方向、驶向前方。",
+      "participants": [],
+      "transcript_refs": [
+        "u00653",
+        "u00654",
+        "u00655",
+        "u00656",
+        "u00657",
+        "u00658",
+        "u00659",
+        "u00660",
+        "u00661",
+        "u00662"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e042a",
+          "start_ms": 7264800,
+          "end_ms": 7291200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师提醒莳，自己从一进来就不受规则束缚（u00653），并说自己要打破那些困住众人的过去和幻象（u00654）。",
+          "transcript_refs": [
+            "u00653",
+            "u00654"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e042b",
+          "start_ms": 7309333,
+          "end_ms": 7338133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师形容一个空空如也的「0」正适合兜走一群乱七八糟的家伙（u00655），并提出既然船舵能载人驶向过去，就由他来让它调转方向（u00656、u00657）。",
+          "transcript_refs": [
+            "u00655",
+            "u00656",
+            "u00657"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e042c",
+          "start_ms": 7343467,
+          "end_ms": 7363200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师请莳试试看，说所有人的双腿都该往前走，要像所有人一样抱着愤怒、沮丧、不甘、遗憾，眼里噙满泪水去亲眼看看前方的风景（u00658、u00659、u00660、u00661、u00662）。",
+          "transcript_refs": [
+            "u00658",
+            "u00659",
+            "u00660",
+            "u00661",
+            "u00662"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s043",
+      "start_ms": 7466133,
+      "end_ms": 7525333,
+      "summary": "莳吐露幸存者的痛与对存在意义的困惑，鉴定师以「带着疑问去相遇」作回应。",
+      "participants": [],
+      "transcript_refs": [
+        "u00663",
+        "u00664",
+        "u00665",
+        "u00666",
+        "u00667",
+        "u00669",
+        "u00670",
+        "u00671"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e043a",
+          "start_ms": 7466133,
+          "end_ms": 7498667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳说自己认识的人很久以前就都死了，她一直不解为何只有自己活下来、为何自己和他们不一样、为何心脏会这么痛，也不明白自己存在与生命的意义（u00663、u00664、u00665、u00666、u00667）。",
+          "transcript_refs": [
+            "u00663",
+            "u00664",
+            "u00665",
+            "u00666",
+            "u00667"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e043b",
+          "start_ms": 7501867,
+          "end_ms": 7507467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师说自己或许没资格回答、因为他也还在寻找，但可以带着疑问去和不同的人相遇、参与经历他们不同的人生与故事，总有一天会有答案（u00669、u00670）。",
+          "transcript_refs": [
+            "u00669",
+            "u00670"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e043c",
+          "start_ms": 7510133,
+          "end_ms": 7525333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "旁白提到「在太阳可以升起的地方，离他们最近的地方」（u00671）。",
+          "transcript_refs": [
+            "u00671"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s044",
+      "start_ms": 7552267,
+      "end_ms": 7735200,
+      "summary": "莳的意识体被强行泯除；伊南娜、残虹与达芙蒂尔现身，鉴定师指责对方夺走船舵、胁迫达芙蒂尔。",
+      "participants": [
+        "yinanna",
+        "zankou",
+        "daffodill"
+      ],
+      "transcript_refs": [
+        "u00672",
+        "u00673",
+        "u00676",
+        "u00677",
+        "u00678",
+        "u00679",
+        "u00680",
+        "u00681",
+        "u00682",
+        "u00683",
+        "u00684",
+        "u00685",
+        "u00686",
+        "u00687"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e044a",
+          "start_ms": 7552267,
+          "end_ms": 7563467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "莳的意识体开始转变，似乎无需泯除、她本身就可以出去（u00672、u00673）。",
+          "transcript_refs": [
+            "u00672",
+            "u00673"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e044b",
+          "start_ms": 7593333,
+          "end_ms": 7628533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "随后莳的意识体被强行泯除，有人惊呼（u00676、u00677），并有一句「任务完成得不错，达芙蒂尔」（u00678）。",
+          "transcript_refs": [
+            "u00676",
+            "u00677",
+            "u00678"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e044c",
+          "start_ms": 7667733,
+          "end_ms": 7700800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna",
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜说把所有人困在过去美梦中的船舵被贸然改变航向太浪费（u00679）；残虹出言讥讽里头碍眼的人竟没一起消失、看来是师徒情深手下留情（u00682）。",
+          "transcript_refs": [
+            "u00679",
+            "u00680",
+            "u00681",
+            "u00682"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e044d",
+          "start_ms": 7701067,
+          "end_ms": 7708000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "daffodill",
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "达芙蒂尔自语「不应该，我明明……」（u00683）；伊南娜唤她「回来吧，好孩子」（u00684）。",
+          "transcript_refs": [
+            "u00683",
+            "u00684"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e044e",
+          "start_ms": 7711467,
+          "end_ms": 7735200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人追问达芙蒂尔在做什么、说她一直在找她，并指责众人拿走莳的船舵、胁迫达芙蒂尔（u00685、u00686、u00687）。",
+          "transcript_refs": [
+            "u00685",
+            "u00686",
+            "u00687"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s045",
+      "start_ms": 7735733,
+      "end_ms": 7909867,
+      "summary": "真相揭露：「一意向阳」与桀桀熊皆为伊南娜的安排，达芙蒂尔则被残虹称为自愿回归的「家人」。",
+      "participants": [
+        "nanally",
+        "zankou",
+        "daffodill",
+        "yinanna"
+      ],
+      "transcript_refs": [
+        "u00688",
+        "u00689",
+        "u00690",
+        "u00691",
+        "u00692",
+        "u00694",
+        "u00695",
+        "u00696",
+        "u00698",
+        "u00699",
+        "u00700",
+        "u00701",
+        "u00702",
+        "u00703",
+        "u00704",
+        "u00705",
+        "u00706",
+        "u00707",
+        "u00708",
+        "u00709",
+        "u00710",
+        "u00711"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e045a",
+          "start_ms": 7735733,
+          "end_ms": 7747733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "残虹否认胁迫达芙蒂尔，说她只是厌倦了和众人的过家家游戏、选择回到真正的家人身边（u00688、u00689）。",
+          "transcript_refs": [
+            "u00688",
+            "u00689"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e045b",
+          "start_ms": 7751733,
+          "end_ms": 7798933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉虚弱地唤「师父」（u00690）；有人关切地唤着尚未清醒的娜娜莉（u00691），达芙蒂尔只低声说「你答应过的」（u00696）。",
+          "transcript_refs": [
+            "u00690",
+            "u00691",
+            "u00692",
+            "u00694",
+            "u00695",
+            "u00696"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e045c",
+          "start_ms": 7801333,
+          "end_ms": 7815200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜唤「残虹」，称赞她聪明、有能耐，说这盘棋局差点被她搅乱（u00698、u00699）。",
+          "transcript_refs": [
+            "u00698",
+            "u00699"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e045d",
+          "start_ms": 7815733,
+          "end_ms": 7824000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜指出这个叫娜娜莉的孩子或已被达芙蒂尔宠坏、露出太多破绽（u00700）。",
+          "transcript_refs": [
+            "u00700"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e045e",
+          "start_ms": 7824533,
+          "end_ms": 7846400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师揭穿「一意向阳」从一开始就是他们设法引娜娜莉去的地方（u00701）；伊南娜说她心情不好时同伴正好抽到家庭套票、多值得高兴（u00702），并称桀桀熊也是自己的安排（u00703）。",
+          "transcript_refs": [
+            "u00701",
+            "u00702",
+            "u00703"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e045f",
+          "start_ms": 7846933,
+          "end_ms": 7858133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜承认那只熊很有意思、只是对方对它太不客气，并说自己这叫谋略（u00704、u00706）。",
+          "transcript_refs": [
+            "u00704",
+            "u00705",
+            "u00706"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e045g",
+          "start_ms": 7858667,
+          "end_ms": 7901333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜说自己想要的只是那件东西、处理众人只是顺便，随后盯着鉴定师说这脸好像在某个「游戏」里见过，并提到印象里那整个村落的人都死了（u00707、u00709、u00710）。",
+          "transcript_refs": [
+            "u00707",
+            "u00708",
+            "u00709",
+            "u00710"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s046",
+      "start_ms": 7910400,
+      "end_ms": 8040000,
+      "summary": "残虹讲述与达芙蒂尔同眠共伤的家；伊南娜下令开启「游戏」，鉴定师借扭扭记忆互通的特性趁乱脱身。",
+      "participants": [
+        "zankou",
+        "yinanna"
+      ],
+      "transcript_refs": [
+        "u00712",
+        "u00713",
+        "u00715",
+        "u00716",
+        "u00717",
+        "u00718",
+        "u00719",
+        "u00720",
+        "u00721",
+        "u00722",
+        "u00723",
+        "u00724",
+        "u00726",
+        "u00727",
+        "u00728"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e046a",
+          "start_ms": 7910400,
+          "end_ms": 7920800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师权衡若与达芙蒂尔一起上也许还有胜算，但眼下莳与娜娜莉都需要人照看（u00712）。",
+          "transcript_refs": [
+            "u00712"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e046b",
+          "start_ms": 7921067,
+          "end_ms": 7941067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "残虹警告鉴定师把眼睛从姐姐身上挪开、讥讽姐姐不会回到他们这些累赘身边（u00713、u00716）。",
+          "transcript_refs": [
+            "u00713",
+            "u00715",
+            "u00716"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e046c",
+          "start_ms": 7941333,
+          "end_ms": 7971467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "zankou"
+          ],
+          "speaker_character_id": "",
+          "observation": "残虹说那座花园、那些干净漂亮的房子就是他们的家，小时候两人同睡一张床、每天一起醒来互相梳头，夜里为对方包扎伤口（u00718、u00719）。",
+          "transcript_refs": [
+            "u00717",
+            "u00718",
+            "u00719"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e046d",
+          "start_ms": 7988800,
+          "end_ms": 8013333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "yinanna"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊南娜叫停残虹，说往后有的是时间让姐妹俩叙旧、游戏就要开始，并按约定允许达芙蒂尔放过那只还在梦游的小老虎、要她对其他人照办（u00722、u00723）。",
+          "transcript_refs": [
+            "u00722",
+            "u00723"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e046e",
+          "start_ms": 8021333,
+          "end_ms": 8040000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "异象「扭扭」叫客人们快些出去（u00724）；鉴定师察觉扭扭的记忆互通、决定趁现在快走（u00726、u00727、u00728）。",
+          "transcript_refs": [
+            "u00724",
+            "u00726",
+            "u00727",
+            "u00728"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s047",
+      "start_ms": 8057600,
+      "end_ms": 8124533,
+      "summary": "脱身后回到码头，早雾、阿德勒与薄荷接应；得知娜娜莉只剩半个灵魂。",
+      "participants": [
+        "adler",
+        "mint",
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00729",
+        "u00730",
+        "u00731",
+        "u00732",
+        "u00733",
+        "u00734",
+        "u00735",
+        "u00739",
+        "u00740",
+        "u00741",
+        "u00742",
+        "u00743",
+        "u00744",
+        "u00745",
+        "u00747"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e047a",
+          "start_ms": 8061600,
+          "end_ms": 8074933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "早雾呼喊鉴定师、确认能否听见（u00730）；阿德勒说一直找不到他、就联络了薄荷小姐帮忙搜索（u00732）。",
+          "transcript_refs": [
+            "u00730",
+            "u00731",
+            "u00732"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e047b",
+          "start_ms": 8075467,
+          "end_ms": 8085067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷被突然出现的众人吓了一跳，说先前一直试着用「咻啪」联系却没能成功（u00733、u00734）。",
+          "transcript_refs": [
+            "u00733",
+            "u00734"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e047c",
+          "start_ms": 8109333,
+          "end_ms": 8121600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "得知娜娜莉只剩半个灵魂，早雾难以置信，说早上的歉还没道、不许她不接受，唤她起来（u00743、u00744、u00745）。",
+          "transcript_refs": [
+            "u00743",
+            "u00744",
+            "u00745"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e047d",
+          "start_ms": 8122133,
+          "end_ms": 8124533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "众人决定先回伊波恩、把她们安顿好再说（u00747）。",
+          "transcript_refs": [
+            "u00747"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s048",
+      "start_ms": 8139733,
+      "end_ms": 8238400,
+      "summary": "回伊波恩后众人议论达芙蒂尔的选择与娜娜莉的伤势；鉴定师在独白中困惑自己为何能进入洄廊。",
+      "participants": [
+        "adler",
+        "edgar",
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00748",
+        "u00749",
+        "u00750",
+        "u00751",
+        "u00752",
+        "u00753",
+        "u00754",
+        "u00755",
+        "u00757",
+        "u00758",
+        "u00759",
+        "u00760",
+        "u00762",
+        "u00763",
+        "u00764",
+        "u00765",
+        "u00767"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e048a",
+          "start_ms": 8139733,
+          "end_ms": 8148533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "edgar",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "埃德嘉问达芙蒂尔是否真的回到了「红字」（u00748）；早雾激动地否认（u00749）。",
+          "transcript_refs": [
+            "u00748",
+            "u00749"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e048b",
+          "start_ms": 8149067,
+          "end_ms": 8180267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人劝早雾尊重达芙蒂尔的选择、说每个人都有绝对的自由，也有人认为此事有蹊跷、她一定有考量，并质疑她是否真会不顾莳的意识体连同娜娜莉与无辜者一起泯除（u00750、u00751、u00754）。",
+          "transcript_refs": [
+            "u00750",
+            "u00751",
+            "u00752",
+            "u00753",
+            "u00754"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e048c",
+          "start_ms": 8193333,
+          "end_ms": 8197867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说当务之急是想办法让娜娜莉恢复过来（u00757、u00758）。",
+          "transcript_refs": [
+            "u00757",
+            "u00758"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e048d",
+          "start_ms": 8198133,
+          "end_ms": 8206400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人让众人照顾好娜娜莉、其余由他设法，并说「家人就是要互相照应的」（u00759、u00760）。",
+          "transcript_refs": [
+            "u00759",
+            "u00760"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e048e",
+          "start_ms": 8206933,
+          "end_ms": 8238400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师独白：不知从何时起也把这里当成了港湾，明明没有过去、一片空白，却变得有勇气面对当下和未来，同时又困惑自己为何能进入只对内心有逃避之事的人开放的洄廊（u00762、u00763、u00764、u00765、u00767）。",
+          "transcript_refs": [
+            "u00762",
+            "u00763",
+            "u00764",
+            "u00765",
+            "u00767"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s049",
+      "start_ms": 8238933,
+      "end_ms": 8293333,
+      "summary": "有人唤回走神的鉴定师并劝他休息；艾尔菲德就「小夜蛾」与线索通话。",
+      "participants": [
+        "aierfeide"
+      ],
+      "transcript_refs": [
+        "u00768",
+        "u00769",
+        "u00770",
+        "u00771",
+        "u00772",
+        "u00773",
+        "u00775",
+        "u00776",
+        "u00777",
+        "u00778",
+        "u00779"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e049a",
+          "start_ms": 8238933,
+          "end_ms": 8255200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人唤「招财宝」把走神许久的鉴定师叫回，说他一定累了、劝他夜深了好好休息（u00769、u00770、u00771、u00772）。",
+          "transcript_refs": [
+            "u00768",
+            "u00769",
+            "u00770",
+            "u00771",
+            "u00772"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e049b",
+          "start_ms": 8261067,
+          "end_ms": 8268533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德说「小夜蛾飞走了」；也有人感叹那个人竟真的没死（u00773、u00775）。",
+          "transcript_refs": [
+            "u00773",
+            "u00775"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e049c",
+          "start_ms": 8268800,
+          "end_ms": 8286933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "aierfeide"
+          ],
+          "speaker_character_id": "",
+          "observation": "艾尔菲德说不必过于忧虑、园丁已经出动，并以「蚂蚁把散落的果实搬回缝隙、夜蛾的鳞粉也掉落不少」暗示已有新线索（u00776、u00778）。",
+          "transcript_refs": [
+            "u00776",
+            "u00777",
+            "u00778"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e049d",
+          "start_ms": 8289333,
+          "end_ms": 8293333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "对方应下「静候佳音」（u00779）。",
+          "transcript_refs": [
+            "u00779"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s050",
+      "start_ms": 8327467,
+      "end_ms": 8446400,
+      "summary": "店长与鉴定师复盘：莳的现状与「相位异客」身份，以及伊洛伊从度假村寄来的慰问信与礼物。",
+      "participants": [
+        "iroi"
+      ],
+      "transcript_refs": [
+        "u00780",
+        "u00782",
+        "u00783",
+        "u00784",
+        "u00786",
+        "u00787",
+        "u00788",
+        "u00789",
+        "u00790",
+        "u00791",
+        "u00792",
+        "u00793",
+        "u00795",
+        "u00797",
+        "u00798",
+        "u00799",
+        "u00800",
+        "u00801"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e050a",
+          "start_ms": 8327467,
+          "end_ms": 8350133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "复盘说莳的状态好转，虽然意识体被泯除、对其自身似乎没有太大后续影响；洄廊里的那些「游梦人」正是现世的失踪者（u00782、u00783）。",
+          "transcript_refs": [
+            "u00780",
+            "u00782",
+            "u00783"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e050b",
+          "start_ms": 8352533,
+          "end_ms": 8385867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "说明莳并非人类，而是化形为人的物体异象、俗称「相位异客」；其本体是一种用于寻找不同维度方向的古老航海星盘，而她化形之人正是最后一任契约者「莳」（u00784、u00786、u00787、u00788）。",
+          "transcript_refs": [
+            "u00784",
+            "u00786",
+            "u00787",
+            "u00788"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e050c",
+          "start_ms": 8394400,
+          "end_ms": 8409067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人问起伊南娜似也知情的那个「游戏」；随后提到有一封从「一意向阳」寄来、收件人是鉴定师的信（u00791、u00792、u00793）。",
+          "transcript_refs": [
+            "u00791",
+            "u00792",
+            "u00793"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e050d",
+          "start_ms": 8418667,
+          "end_ms": 8439467,
+          "evidence_kind": "document",
+          "actor_character_ids": [
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "信是伊洛伊写的（u00799）：她后来向阿德勒打听娜娜莉失踪一事的进展、才得知现状，并学着缝了一只娜娜莉身上挂的粉老虎作为慰问礼物。",
+          "transcript_refs": [
+            "u00798",
+            "u00799"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e050e",
+          "start_ms": 8444000,
+          "end_ms": 8446400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师说要去把信件和礼物转交给娜娜莉（u00801）。",
+          "transcript_refs": [
+            "u00801"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p11-s051",
+      "start_ms": 8484800,
+      "end_ms": 8571200,
+      "summary": "众人向昏迷的娜娜莉许下海边之约；娜娜莉在日出中苏醒，太阳升得很高很高。",
+      "participants": [
+        "nanally"
+      ],
+      "transcript_refs": [
+        "u00802",
+        "u00803",
+        "u00804",
+        "u00805",
+        "u00806",
+        "u00807",
+        "u00808",
+        "u00809",
+        "u00810",
+        "u00812"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e051a",
+          "start_ms": 8484800,
+          "end_ms": 8493333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人发现娜娜莉想起了虎老大、确认她果然还留着洄廊里的记忆；娜娜莉轻声唤「大家」（u00802、u00803）。",
+          "transcript_refs": [
+            "u00802",
+            "u00803"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e051b",
+          "start_ms": 8493867,
+          "end_ms": 8529600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "众人向昏迷的娜娜莉描述日后去海角巨蛋旁沙滩玩的场景：踩水花、阿德勒安排露营烧烤、塔吉多和早雾打沙滩排球、埃德嘉堆出最大的沙堡（u00804、u00805、u00806、u00807）。",
+          "transcript_refs": [
+            "u00804",
+            "u00805",
+            "u00806",
+            "u00807"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e051c",
+          "start_ms": 8529867,
+          "end_ms": 8558400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "众人说达芙蒂尔那时一定也回来了、正等着教她最新的沙地拳击，还有虎老大会一直在她身边、坐着陪她一起看日出（u00808、u00809、u00810）。",
+          "transcript_refs": [
+            "u00808",
+            "u00809",
+            "u00810"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p11-e051d",
+          "start_ms": 8561600,
+          "end_ms": 8571200,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "旁白说太阳会升得很高、很高，昭示新的一天（u00812）。",
+          "transcript_refs": [
+            "u00812"
+          ]
+        }
+      ]
+    }
+  ]
+}

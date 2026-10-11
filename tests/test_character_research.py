@@ -118,20 +118,20 @@ def test_source_catalog_refresh_preserves_curated_aliases_and_review_status():
 def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     stats = validate_corpus(CORPUS_ROOT)
     assert stats == {
-        "characters": 59,
+        "characters": 69,
         "character_aliases": 2,
         "sources": 25,
         "source_parts": 22,
         "profiles": 23,
-        "scenes": 251,
-        "evidence": 78,
+        "scenes": 374,
+        "evidence": 136,
         "traits": 17,
-        "canon_checkpoints": 8,
-        "canon_evidence": 327,
-        "world_entities": 73,
-        "character_facts": 93,
-        "world_facts": 61,
-        "character_relations": 52,
+        "canon_checkpoints": 11,
+        "canon_evidence": 773,
+        "world_entities": 107,
+        "character_facts": 168,
+        "world_facts": 98,
+        "character_relations": 99,
     }
     catalog = json.loads((CORPUS_ROOT / "catalog.json").read_text(encoding="utf-8"))
     missing = [item for item in catalog if item["research_status"] == "discovered"]
@@ -153,6 +153,16 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         ("oliver", "奥利弗"),
         ("miaodong", "杪冬"),
         ("qingze", "清泽"),
+        ("leini", "蕾妮"),
+        ("fenghua", "风花"),
+        ("laweiniya", "拉维尼娅"),
+        ("beila", "贝拉"),
+        ("deluolisi", "德洛莉丝"),
+        ("yiweite", "伊薇特"),
+        ("yinanna", "伊南娜"),
+        ("posaite", "珀塞特"),
+        ("hulaoda", "虎老大"),
+        ("jiejiexiong", "桀桀熊"),
     ]
     parts = [
         json.loads(line)
@@ -165,7 +175,10 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     ]
     assert sum(part["duration_ms"] for part in parts) == 83_323_000
     assert {part["subtitle_mode"] for part in parts} == {"no_platform_subtitles"}
-    assert [part["visual_subtitle_status"] for part in parts[:8]] == [
+    assert [part["visual_subtitle_status"] for part in parts[:11]] == [
+        "verified_present",
+        "verified_present",
+        "verified_present",
         "verified_present",
         "verified_present",
         "verified_present",
@@ -175,7 +188,7 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         "verified_present",
         "verified_present",
     ]
-    assert {part["visual_subtitle_status"] for part in parts[8:]} == {
+    assert {part["visual_subtitle_status"] for part in parts[11:]} == {
         "user_confirmed_present"
     }
 
