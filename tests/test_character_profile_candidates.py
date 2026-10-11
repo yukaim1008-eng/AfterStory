@@ -5,17 +5,17 @@ from afterstory.character_prompt import PROMPT_BUILDER_VERSION, build_character_
 from afterstory.config import ROOT
 from afterstory.memory_contracts import ConservativeTokenCounter
 
-CANDIDATE_PATHS = (
+PACKAGE_PATHS = (
     ROOT / "fixtures/companions.profile-v1.candidate.json",
-    ROOT / "fixtures/companions.canon-p22.candidate.json",
+    ROOT / "fixtures/companions.canon-p22.json",
 )
 
 
 def test_official_character_candidates_are_valid_uncompiled_definitions():
     assert PROMPT_BUILDER_VERSION == "1.0"
 
-    for candidate_path in CANDIDATE_PATHS:
-        packages = json.loads(candidate_path.read_text(encoding="utf-8"))
+    for package_path in PACKAGE_PATHS:
+        packages = json.loads(package_path.read_text(encoding="utf-8"))
         assert {package["character_id"] for package in packages} == {
             "nanally",
             "iroi",
@@ -25,7 +25,6 @@ def test_official_character_candidates_are_valid_uncompiled_definitions():
 
         for package in packages:
             assert "system_prompt" not in package
-            assert package["version_id"].endswith("-candidate")
             definition = CharacterDefinition.model_validate(package["definition"])
             prompt = build_character_system_prompt(definition)
 
@@ -48,11 +47,23 @@ def test_official_character_candidates_are_valid_uncompiled_definitions():
             assert ConservativeTokenCounter().count(prompt) + 4 <= 2500
 
 
-def test_p22_mint_candidate_uses_cocoa_as_default_address():
-    packages = json.loads(CANDIDATE_PATHS[1].read_text(encoding="utf-8"))
+def test_p22_mint_definition_uses_cocoa_as_default_address():
+    packages = json.loads(PACKAGE_PATHS[1].read_text(encoding="utf-8"))
     mint = next(package for package in packages if package["character_id"] == "mint")
 
+    assert mint["version_id"] == "mint-canon-p22-v1"
     assert "默认称用户为“可可”" in mint["definition"]["speaking_style"]
     assert "强调用户的职业身份或正在讨论鉴定、任务时才称“鉴定师”" in mint[
         "definition"
     ]["speaking_style"]
+
+
+def test_p22_package_has_final_immutable_version_ids_and_checkpoint():
+    packages = json.loads(PACKAGE_PATHS[1].read_text(encoding="utf-8"))
+
+    assert {package["version_id"] for package in packages} == {
+        "nanally-canon-p22-v1",
+        "iroi-canon-p22-v1",
+        "mint-canon-p22-v1",
+    }
+    assert {package["checkpoint"] for package in packages} == {"nt-bv1kqoabievz-p22"}

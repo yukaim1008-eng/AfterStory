@@ -1,6 +1,6 @@
 # 角色与原作资料
 
-状态：身份/版本/实例基础与 Minimal Character Schema v1 已实现并验证；三位正式角色已有六字段候选，人物资料研究库 M0 已建立并同步游戏个人档案，尚未导入正式角色版本。
+状态：身份/版本/实例基础与 Minimal Character Schema v1 已实现并验证；三位正式角色的 P22 六字段版本已导入，人物资料研究库已完成 P1–P22 整理，现有实例仍保持旧版本引用。
 
 ## 职责与已确认约束
 
@@ -71,14 +71,14 @@ Minimal Character Schema v1 的实现与验证范围见 [实施记录](../implem
 
 - 定义与实例的扩展字段、正式 Canon Checkpoint、已确认的 Instance Canon Role Binding 与更新契约；身份绑定的数据结构需要在任何 Canon 资料进入聊天运行时前实现，不把已有基础模型误记为尚未实现。
 - 娜娜莉的第一版六字段候选已整理；准确剧情节点、完整 Canon 和 Voice Profile 仍待后续阶段。
-- 伊洛伊、薄荷已有各自独立的六字段候选。伊洛伊暂按熟悉的鉴定师协作者起点，薄荷暂按“可可”/鉴定师伙伴起点，需用户集中审核后才能导入。
+- 伊洛伊、薄荷已有各自独立的六字段正式版本。伊洛伊按熟悉的鉴定师协作者起点；薄荷默认称用户为“可可”，只有职业身份或任务语境使用“鉴定师”。
 - 差异化测试角色与素材的公开边界。
 
 ## 2026-10-01 正式角色内容候选
 
-`fixtures/companions.profile-v1.candidate.json` 保存娜娜莉、伊洛伊、薄荷的完整 Schema v1 候选。三份数据已经过现有 `CharacterDefinition` 校验并可由 Prompt Builder v1.0 稳定编译，但文件名、版本 ID 和文档状态均明确标记为 candidate。
+`fixtures/companions.profile-v1.candidate.json` 保留娜娜莉、伊洛伊、薄荷的档案基线；完成 P1–P22 剧情证据审核后，正式包保存于 `fixtures/companions.canon-p22.json`。三份数据均通过 `CharacterDefinition` 校验，并由 Prompt Builder v1.0 稳定编译。
 
-当前没有执行 `seed()`，没有生成数据库中的新 `CharacterVersion`，也没有修改前端 `versionId` 或已有 `CharacterInstance`。用户集中审核并确认角色身份映射、称呼和表达边界后，再单独授权导入与实际聊天验收。
+2026-10-11 已执行现有 `seed()`，生成 `nanally-canon-p22-v1`、`iroi-canon-p22-v1`、`mint-canon-p22-v1` 三个新的不可变 `CharacterVersion`。没有修改前端 `versionId` 或已有 `CharacterInstance`；实际聊天验收需要显式创建新版本实例或另行切换前端版本。
 
 ## 人物资料研究库
 

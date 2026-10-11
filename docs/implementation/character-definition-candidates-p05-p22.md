@@ -1,6 +1,6 @@
 # 三位正式角色六字段修改候选：P05–P22
 
-状态：**用户已完成本轮内容审核，合并候选已生成但未导入**。娜娜莉与伊洛伊的剧情增补按本文边界接受；薄荷默认称用户为“可可”，仅在强调职业身份或任务语境时称“鉴定师”。合并后的完整六字段文件位于 `fixtures/companions.canon-p22.candidate.json`。本文不修改生产 `CharacterVersion.definition`、不导入新版本、不切换 `CharacterInstance`，也不写入用户实例关系。
+状态：**用户已完成本轮内容审核，正式角色包已导入**。娜娜莉与伊洛伊的剧情增补按本文边界接受；薄荷默认称用户为“可可”，仅在强调职业身份或任务语境时称“鉴定师”。合并后的完整六字段文件位于 `fixtures/companions.canon-p22.json`，已导入为三个新的不可变 `CharacterVersion`；没有切换现有 `CharacterInstance`，也没有写入用户实例关系。
 
 ## 说明
 
@@ -183,4 +183,4 @@
 1. **薄荷称呼映射**：用户已确认默认称呼为“可可”；只有强调职业身份或鉴定、任务语境时使用“鉴定师”。
 2. **娜娜莉梦境素材**：洄廊梦境中的自我怀疑属内心投射，只作性格参考，不当清醒时的既定陈述。
 3. **伊洛伊证据量**：其表现证据仅 3 条（P11×2、P16×1），跨章频率偏低；已对其 Trait 标注 `supporting` 并写反向边界，建议在更多章节材料到位后再评估是否提升。
-4. 三位角色的本轮内容已合并为 `fixtures/companions.canon-p22.candidate.json`，但该文件仍是**未导入候选**：不改现有 `CharacterVersion` 与冻结 `system_prompt`，不切换 `CharacterInstance`，不写用户关系。
+4. 三位角色的本轮内容已合并为 `fixtures/companions.canon-p22.json` 并导入为 `nanally-canon-p22-v1`、`iroi-canon-p22-v1`、`mint-canon-p22-v1`；旧版本未覆盖，现有 `CharacterInstance` 未切换，用户关系未改动。

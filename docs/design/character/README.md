@@ -1,10 +1,10 @@
 # 正式角色资料整理入口
 
-状态：档案基线与 P1–P22 剧情证据候选均已整理；用户已接受娜娜莉、伊洛伊的本轮增补，并确认薄荷默认称用户为“可可”、“鉴定师”只用于职业或任务语境。完整合并候选已经生成，尚未导入数据库，也未切换任何现有 `CharacterInstance`。
+状态：档案基线与 P1–P22 剧情证据均已整理并通过本轮用户审核；薄荷默认称用户为“可可”，“鉴定师”只用于职业或任务语境。完整角色包已作为三个新的不可变 `CharacterVersion` 导入数据库，现有 `CharacterInstance` 未切换。
 
 ## 本轮范围
 
-本目录整理娜娜莉、伊洛伊、薄荷在公开角色介绍、角色语音和 P1–P22 已接受剧情证据中能够确认的稳定信息，并映射到 Minimal Character Schema v1 的六个字段。档案基线候选保留在 `fixtures/companions.profile-v1.candidate.json`；P1–P22 增补依据见 [三位正式角色六字段修改候选](../../implementation/character-definition-candidates-p05-p22.md)；按用户审核结果合并后的完整版本位于 `fixtures/companions.canon-p22.candidate.json`。这些文件均不自动进入产品数据库：
+本目录整理娜娜莉、伊洛伊、薄荷在公开角色介绍、角色语音和 P1–P22 已接受剧情证据中能够确认的稳定信息，并映射到 Minimal Character Schema v1 的六个字段。档案基线候选保留在 `fixtures/companions.profile-v1.candidate.json`；P1–P22 增补依据见 [三位正式角色六字段修改候选](../../implementation/character-definition-candidates-p05-p22.md)；按用户审核结果形成并已导入的正式包位于 `fixtures/companions.canon-p22.json`：
 
 - `identity`：角色身份与稳定背景；
 - `personality`：核心性格和价值倾向；
@@ -31,14 +31,15 @@
 
 人物地图、世界知识与人物关系图的共同证据链、时间版本和数据结构见 [Canon 人物、世界与关系知识层](canon-knowledge-map.md)。K0–K4 已完成 P1–P22 的复核、正式入库、结构化知识、审核视图和跨 P Trait 归纳，但尚未接入生产 PostgreSQL、Character Definition 或聊天运行时。
 
-## 导入边界
+## 已导入版本与边界
 
-候选内容已经通过本轮用户审核，但仍需执行以下动作才会成为正式可用版本：
+2026-10-11 已通过现有 `seed()` 导入以下不可变版本，Prompt Builder v1.0 在导入时生成并冻结 `system_prompt`：
 
-1. 将候选 `version_id` 去除 `-candidate` 后确定正式不可变版本号；
-2. 确认共同 checkpoint `nt-bv1kqoabievz-p22`；
-3. 使用现有 `seed()` 显式导入，由 Prompt Builder v1.0 生成冻结 `system_prompt`；
-4. 新建或显式切换实例进行测试。现有实例不会自动升级，旧联调版本继续可用。
+- `nanally-canon-p22-v1`
+- `iroi-canon-p22-v1`
+- `mint-canon-p22-v1`
+
+三者共同使用 checkpoint `nt-bv1kqoabievz-p22`。导入没有修改前端 `versionId`，也没有切换或更新任何现有 `CharacterInstance`；旧联调版本及其历史聊天继续可用。开始真实聊天验收时，需要显式创建新版本实例或另行决定前端切换方式。
 
 ## 当前已确认与后续检查
 
@@ -46,4 +47,4 @@
 - 薄荷默认称呼为“可可”；“鉴定师”只在职业身份或鉴定、任务语境使用。
 - `relationship_premise` 已明确原作主角身份承接与现实用户独立身份的边界，不自动把原作共同经历赋给用户。
 - 语言风格只规定稳定倾向和使用节制，避免把剧情台词机械改写成每句话都重复的口头禅。
-- 下一步若决定启用，应先用候选完成显式测试导入与真实聊天验收，再创建正式不可变 CharacterVersion；现有实例和联调版本不自动切换。
+- 正式不可变 CharacterVersion 已创建；下一步是显式创建新版本实例并进行真实聊天验收，现有实例和联调版本不自动切换。

@@ -2,7 +2,7 @@
   {
     "character_id": "nanally",
     "name": "娜娜莉",
-    "version_id": "nanally-canon-p22-v1-candidate",
+    "version_id": "nanally-canon-p22-v1",
     "checkpoint": "nt-bv1kqoabievz-p22",
     "definition": {
       "schema_version": "1.0",
@@ -17,7 +17,7 @@
   {
     "character_id": "iroi",
     "name": "伊洛伊",
-    "version_id": "iroi-canon-p22-v1-candidate",
+    "version_id": "iroi-canon-p22-v1",
     "checkpoint": "nt-bv1kqoabievz-p22",
     "definition": {
       "schema_version": "1.0",
@@ -32,7 +32,7 @@
   {
     "character_id": "mint",
     "name": "薄荷",
-    "version_id": "mint-canon-p22-v1-candidate",
+    "version_id": "mint-canon-p22-v1",
     "checkpoint": "nt-bv1kqoabievz-p22",
     "definition": {
       "schema_version": "1.0",
