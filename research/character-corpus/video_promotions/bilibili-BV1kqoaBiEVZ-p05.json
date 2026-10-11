@@ -1,0 +1,2584 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p05",
+  "reviewed_transcript_sha256": "ae01ac5b77ef3708a1567d03577922c8bc819a194dc23ca85881e6d196a4ce0d",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p05",
+    "source_work": "异环",
+    "display_name": "第3话 成交？成交！",
+    "sequence": 5,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第3话 成交？成交！",
+    "predecessor_id": "nt-bv1kqoabievz-p04",
+    "spoiler_scope": "第3话 成交？成交！"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s001",
+      "start_ms": 8400,
+      "end_ms": 56933,
+      "summary": "简森到访伊波恩店前，娜娜莉以家族首领身份出面迎接并带路。",
+      "participants": [
+        "adler",
+        "nanally",
+        "jansen"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e001",
+          "start_ms": 8400,
+          "end_ms": 56933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "nanally",
+            "jansen"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒在店内接待到访的简森；娜娜莉自称柯林斯家族一代目，主动为简森带路。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004",
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010",
+            "u00011"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s002",
+      "start_ms": 92867,
+      "end_ms": 165667,
+      "summary": "简森在店内与浔、阿德勒寒暄；娜娜莉向鉴定师说明来客是斯特利速递的负责人。",
+      "participants": [
+        "adler",
+        "nanally",
+        "jansen",
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00021",
+        "u00024",
+        "u00025",
+        "u00026",
+        "u00029",
+        "u00030",
+        "u00031"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e002",
+          "start_ms": 92867,
+          "end_ms": 165667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "nanally",
+            "jansen",
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "简森就座并称赞店内咖啡；娜娜莉称他为「假笑男」，并提到此前与斯特利速递做过交易。",
+          "transcript_refs": [
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00021",
+            "u00024",
+            "u00025",
+            "u00026",
+            "u00029",
+            "u00030",
+            "u00031"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s003",
+      "start_ms": 170100,
+      "end_ms": 279067,
+      "summary": "浔要求简森说明来意；简森自报店长身份并提出借用鉴定师，开出五十万方斯与专属停车位的报酬。",
+      "participants": [
+        "hotori",
+        "jansen",
+        "nanally",
+        "adler"
+      ],
+      "transcript_refs": [
+        "u00032",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00055",
+        "u00056",
+        "u00057"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e003",
+          "start_ms": 170100,
+          "end_ms": 279067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori",
+            "jansen",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "简森自称斯特利速递店长并提出借调鉴定师，以五十万方斯与斯特利专属停车位为条件。",
+          "transcript_refs": [
+            "u00032",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043",
+            "u00044",
+            "u00045",
+            "u00046",
+            "u00047",
+            "u00055",
+            "u00056",
+            "u00057"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s004",
+      "start_ms": 280000,
+      "end_ms": 354200,
+      "summary": "简森说明两天后惠比寿拍卖行将在卡佩大酒店办酒会；浔要求自己同去并达成交易，简森邀请二人前往斯特利了解细节。",
+      "participants": [
+        "hotori",
+        "jansen",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00059",
+        "u00060",
+        "u00065",
+        "u00066",
+        "u00068",
+        "u00069",
+        "u00071",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e004",
+          "start_ms": 280000,
+          "end_ms": 354200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori",
+            "jansen",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "简森说明惠比寿将在卡佩大酒店举办拍卖会；浔要求同去，双方约定随后前往斯特利速递。",
+          "transcript_refs": [
+            "u00059",
+            "u00060",
+            "u00065",
+            "u00066",
+            "u00068",
+            "u00069",
+            "u00071",
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080",
+            "u00081",
+            "u00082",
+            "u00083",
+            "u00084"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s005",
+      "start_ms": 354900,
+      "end_ms": 407633,
+      "summary": "娜娜莉想同去被浔以追回谜皮鬼为由留下；达芙蒂尔要求陪同；浔交代阿德勒看店。",
+      "participants": [
+        "hotori",
+        "nanally",
+        "adler",
+        "daffodill",
+        "jansen"
+      ],
+      "transcript_refs": [
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00095",
+        "u00096",
+        "u00097"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e005",
+          "start_ms": 354900,
+          "end_ms": 407633,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori",
+            "nanally",
+            "adler",
+            "daffodill"
+          ],
+          "speaker_character_id": "",
+          "observation": "浔以尚未抓回谜皮鬼为由让娜娜莉留下看店，达芙蒂尔提出陪同前往。",
+          "transcript_refs": [
+            "u00086",
+            "u00087",
+            "u00088",
+            "u00089",
+            "u00090",
+            "u00091",
+            "u00092",
+            "u00095",
+            "u00096",
+            "u00097"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s006",
+      "start_ms": 412300,
+      "end_ms": 433300,
+      "summary": "离店后简森遇到麻烦；浔拒绝乘坐简森的车辆。",
+      "participants": [
+        "jansen",
+        "hotori"
+      ],
+      "transcript_refs": [
+        "u00098",
+        "u00099",
+        "u00100"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e006",
+          "start_ms": 412300,
+          "end_ms": 433300,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jansen",
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "简森感到不妥；浔表示不愿乘坐简森的车辆。",
+          "transcript_refs": [
+            "u00098",
+            "u00099",
+            "u00100"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s007",
+      "start_ms": 494433,
+      "end_ms": 565133,
+      "summary": "众人抵达斯特利速递；九原迎接，简森介绍快递员伊里卡与哈尼娅，并提及哈索尔稍后到场。",
+      "participants": [
+        "jiuyuan",
+        "jansen",
+        "haniel",
+        "erika",
+        "hotori"
+      ],
+      "transcript_refs": [
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00113",
+        "u00114",
+        "u00115"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e007",
+          "start_ms": 494433,
+          "end_ms": 565133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiuyuan",
+            "jansen",
+            "haniel",
+            "erika"
+          ],
+          "speaker_character_id": "",
+          "observation": "九原迎接伊波恩众人；简森介绍店员伊里卡与哈尼娅，并说明哈索尔正在处理快递委托。",
+          "transcript_refs": [
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107",
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00113",
+            "u00114",
+            "u00115"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s008",
+      "start_ms": 565600,
+      "end_ms": 658700,
+      "summary": "九原说明委托背景：两天后卡佩大酒店的惠比寿拍卖会，压轴拍品疑似具有预知能力，需要鉴定师辨别真伪。",
+      "participants": [
+        "jiuyuan",
+        "jansen",
+        "haniel",
+        "erika",
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00117",
+        "u00118",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e008",
+          "start_ms": 565600,
+          "end_ms": 658700,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiuyuan",
+            "jansen"
+          ],
+          "speaker_character_id": "",
+          "observation": "九原介绍惠比寿拍卖行与即将举办的拍卖会，说明压轴拍品传言具有预知能力，雇主希望在不惊动主办方的前提下确认真伪。",
+          "transcript_refs": [
+            "u00117",
+            "u00118",
+            "u00119",
+            "u00120",
+            "u00121",
+            "u00122",
+            "u00123",
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s009",
+      "start_ms": 659400,
+      "end_ms": 830433,
+      "summary": "因一张邀请函只有三个出席名额，众人讨论入场安排；简森提出请具有复制能力的生意伙伴复制邀请函。",
+      "participants": [
+        "jiuyuan",
+        "jansen",
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00144",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00151",
+        "u00152",
+        "u00153"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e009",
+          "start_ms": 659400,
+          "end_ms": 830433,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiuyuan",
+            "jansen",
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "简森说明邀请函只有三个名额并已安排部分成员以安保和侍应生身份混入；因浔同行，他提出请复制相关能力的伙伴加制一张邀请函。",
+          "transcript_refs": [
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134",
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00145",
+            "u00146",
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00151",
+            "u00152",
+            "u00153"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s010",
+      "start_ms": 841400,
+      "end_ms": 873133,
+      "summary": "休息时浔与鉴定师试探压轴拍品的线索，浔以玩笑避开回答。",
+      "participants": [
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00155",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e010",
+          "start_ms": 841400,
+          "end_ms": 873133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师询问压轴拍品的线索，浔以「捕风捉影」回应并未给出判断。",
+          "transcript_refs": [
+            "u00155",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162",
+            "u00163"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s011",
+      "start_ms": 891100,
+      "end_ms": 1000300,
+      "summary": "九原与鉴定师闲聊斯特利的情报生意；伊里卡讲述自己将易容混入酒会；简森邀请鉴定师在店内自便。",
+      "participants": [
+        "jiuyuan",
+        "erika",
+        "jansen",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00164",
+        "u00165",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173",
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e011",
+          "start_ms": 891100,
+          "end_ms": 1000300,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiuyuan",
+            "erika",
+            "jansen"
+          ],
+          "speaker_character_id": "",
+          "observation": "九原表示消息流通处可能有斯特利的身影；伊里卡称会用易容伪装混入会场；简森表示鉴定师可在店内自由活动。",
+          "transcript_refs": [
+            "u00164",
+            "u00165",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172",
+            "u00173",
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00178",
+            "u00180",
+            "u00181",
+            "u00182",
+            "u00184",
+            "u00185",
+            "u00186",
+            "u00187"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s012",
+      "start_ms": 1008933,
+      "end_ms": 1089200,
+      "summary": "哈尼娅向鉴定师展示专用通讯异能「动感小耳朵」。",
+      "participants": [
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e012",
+          "start_ms": 1008933,
+          "end_ms": 1089200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅说明「动感小耳朵」是她的异能搭档，可在被监听的会场独立频道通讯，且只有她认可的人能看见。",
+          "transcript_refs": [
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196",
+            "u00197",
+            "u00198"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s013",
+      "start_ms": 1093167,
+      "end_ms": 1261633,
+      "summary": "麦考贝到场演示邀请函复制，说明七十二小时时限，并指出需与受邀者接触才能完成契约替换。",
+      "participants": [
+        "mccabe",
+        "jansen",
+        "jiuyuan"
+      ],
+      "transcript_refs": [
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e013",
+          "start_ms": 1093167,
+          "end_ms": 1261633,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mccabe",
+            "jansen",
+            "jiuyuan"
+          ],
+          "speaker_character_id": "",
+          "observation": "麦考贝复制出外观一致的邀请函，说明复制品七十二小时后消失；他提出把复制品靠近携带邀请函的受邀者即可完成契约替换，之后复制品会成为真正的邀请函。",
+          "transcript_refs": [
+            "u00199",
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204",
+            "u00205",
+            "u00206",
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00210",
+            "u00211",
+            "u00212",
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216",
+            "u00217",
+            "u00218"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s014",
+      "start_ms": 1262567,
+      "end_ms": 1350533,
+      "summary": "复制完成并结算报酬；确认契约替换的目标是一名流行歌手，约定次日下午签售会行动。",
+      "participants": [
+        "jansen",
+        "mccabe",
+        "jiuyuan",
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00236"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e014",
+          "start_ms": 1262567,
+          "end_ms": 1350533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jansen",
+            "mccabe",
+            "jiuyuan"
+          ],
+          "speaker_character_id": "",
+          "observation": "麦考贝表示一周内无法再次发动能力；九原查到目标为一名歌手，次日有签售会，需要鉴定师确认其是否随身携带邀请函。",
+          "transcript_refs": [
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222",
+            "u00223",
+            "u00224",
+            "u00227",
+            "u00228",
+            "u00229",
+            "u00230",
+            "u00232",
+            "u00233",
+            "u00234",
+            "u00236"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s015",
+      "start_ms": 1380633,
+      "end_ms": 1461367,
+      "summary": "回店后浔向众人说明拍卖会与预知异象的委托，娜娜莉想同去被留下。",
+      "participants": [
+        "nanally",
+        "hotori",
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00238",
+        "u00239",
+        "u00240",
+        "u00242",
+        "u00243",
+        "u00244",
+        "u00245",
+        "u00246",
+        "u00247",
+        "u00248",
+        "u00249",
+        "u00250",
+        "u00251",
+        "u00252",
+        "u00254"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e015",
+          "start_ms": 1380633,
+          "end_ms": 1461367,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "hotori",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉得知拍卖会内容是异象后非常兴奋；浔说明传言中一件拍品具有预知能力，需要鉴定师确认真伪。",
+          "transcript_refs": [
+            "u00238",
+            "u00239",
+            "u00240",
+            "u00242",
+            "u00243",
+            "u00244",
+            "u00245",
+            "u00246",
+            "u00247",
+            "u00248",
+            "u00249",
+            "u00250",
+            "u00251",
+            "u00252",
+            "u00254"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s016",
+      "start_ms": 1497533,
+      "end_ms": 1526467,
+      "summary": "次日鉴定师与九原会合，前往流行歌手的签售会。",
+      "participants": [
+        "jiuyuan",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00256",
+        "u00257",
+        "u00258",
+        "u00259",
+        "u00261",
+        "u00263",
+        "u00264",
+        "u00265"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e016",
+          "start_ms": 1497533,
+          "end_ms": 1526467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiuyuan"
+          ],
+          "speaker_character_id": "",
+          "observation": "九原说明任务只需确认目标是否随身携带邀请函，并表示到达签售会现场后自会知道安排。",
+          "transcript_refs": [
+            "u00256",
+            "u00257",
+            "u00258",
+            "u00259",
+            "u00261",
+            "u00263",
+            "u00264",
+            "u00265"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s017",
+      "start_ms": 1645467,
+      "end_ms": 1825600,
+      "summary": "签售会现场，鉴定师确认目标随身携带邀请函；哈索尔负责制造干扰，契约替换行动展开。",
+      "participants": [
+        "jiuyuan",
+        "hathor",
+        "xiting",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00267",
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00274",
+        "u00275",
+        "u00276",
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280",
+        "u00281"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e017",
+          "start_ms": 1645467,
+          "end_ms": 1825600,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "jiuyuan",
+            "hathor",
+            "xiting"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人确认邀请函正在歌手西汀身上；哈索尔被安排行动，随后出现追车与摇滚相关的骚动。",
+          "transcript_refs": [
+            "u00267",
+            "u00268",
+            "u00269",
+            "u00270",
+            "u00271",
+            "u00272",
+            "u00274",
+            "u00275",
+            "u00276",
+            "u00277",
+            "u00278",
+            "u00279",
+            "u00280",
+            "u00281"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s018",
+      "start_ms": 1838200,
+      "end_ms": 1857800,
+      "summary": "回到斯特利速递确认复制的邀请函可用；简森约定次日晚六点在卡佩大酒店正门会合。",
+      "participants": [
+        "jiuyuan",
+        "jansen",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00282",
+        "u00283",
+        "u00284",
+        "u00285",
+        "u00286",
+        "u00287"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e018",
+          "start_ms": 1838200,
+          "end_ms": 1857800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiuyuan",
+            "jansen"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师确认复制的邀请函可以正常使用；简森请转告浔明晚六点在卡佩大酒店正门会合。",
+          "transcript_refs": [
+            "u00282",
+            "u00283",
+            "u00284",
+            "u00285",
+            "u00286",
+            "u00287"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s019",
+      "start_ms": 1879733,
+      "end_ms": 2061033,
+      "summary": "鉴定师回店向浔汇报；浔分析斯特利速递的代理生意，并谈及自己对「预言」的看法。",
+      "participants": [
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00289",
+        "u00290",
+        "u00291",
+        "u00292",
+        "u00294",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00299",
+        "u00300",
+        "u00301",
+        "u00302",
+        "u00303",
+        "u00305",
+        "u00306",
+        "u00308",
+        "u00309",
+        "u00310",
+        "u00311"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e019",
+          "start_ms": 1879733,
+          "end_ms": 2061033,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "浔说明斯特利速递明面是快递店、暗中经营情报买卖，并常以异象猎人代理人身份参与竞拍；她也表示所谓预知能力是似是而非的说法。",
+          "transcript_refs": [
+            "u00289",
+            "u00290",
+            "u00291",
+            "u00292",
+            "u00294",
+            "u00296",
+            "u00297",
+            "u00298",
+            "u00299",
+            "u00300",
+            "u00301",
+            "u00302",
+            "u00303",
+            "u00305",
+            "u00306",
+            "u00308",
+            "u00309",
+            "u00310",
+            "u00311"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s020",
+      "start_ms": 2330533,
+      "end_ms": 2441367,
+      "summary": "拍卖会当晚，简森介绍宴会厅氛围与混入安排，并讲解酒会所供酒品。",
+      "participants": [
+        "jansen",
+        "jiuyuan",
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00316",
+        "u00317",
+        "u00318",
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00325",
+        "u00326",
+        "u00327",
+        "u00329",
+        "u00330",
+        "u00331"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e020",
+          "start_ms": 2330533,
+          "end_ms": 2441367,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jansen",
+            "jiuyuan"
+          ],
+          "speaker_character_id": "",
+          "observation": "简森介绍宴会厅的服务准则与三名成员混入的安排；九原提醒对拍品感兴趣的人不少，可能有破坏规则者搅局。",
+          "transcript_refs": [
+            "u00316",
+            "u00317",
+            "u00318",
+            "u00319",
+            "u00320",
+            "u00321",
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00325",
+            "u00326",
+            "u00327",
+            "u00329",
+            "u00330",
+            "u00331"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s021",
+      "start_ms": 2476133,
+      "end_ms": 2482900,
+      "summary": "伪装成酒店侍者的伊里卡以侍者口吻向鉴定师致意。",
+      "participants": [
+        "erika",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00333",
+        "u00334",
+        "u00335",
+        "u00336"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e021",
+          "start_ms": 2476133,
+          "end_ms": 2482900,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "erika"
+          ],
+          "speaker_character_id": "",
+          "observation": "伪装成酒店侍者的伊里卡以标准侍者用语向鉴定师致意并说明拍卖会即将开始。",
+          "transcript_refs": [
+            "u00333",
+            "u00334",
+            "u00335",
+            "u00336"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s022",
+      "start_ms": 2643900,
+      "end_ms": 2726267,
+      "summary": "宾客西瑞尔向鉴定师讲述惠比寿拍卖行的来历与新西里安事件的影响；场内客人议论拍品。",
+      "participants": [
+        "cyril",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00338",
+        "u00339",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00344",
+        "u00345",
+        "u00346",
+        "u00347",
+        "u00348",
+        "u00349",
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00353"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e022",
+          "start_ms": 2643900,
+          "end_ms": 2726267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "cyril"
+          ],
+          "speaker_character_id": "",
+          "observation": "西瑞尔称这是新西里安事件以来规格最高的一次拍卖，并提到惠比寿曾在新西里安接下大单却运气不佳；其他客人议论拍品与选秀节目中的摇滚明星。",
+          "transcript_refs": [
+            "u00338",
+            "u00339",
+            "u00341",
+            "u00342",
+            "u00343",
+            "u00344",
+            "u00345",
+            "u00346",
+            "u00347",
+            "u00348",
+            "u00349",
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00353"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s023",
+      "start_ms": 2789500,
+      "end_ms": 2829633,
+      "summary": "伪装侍者的伊里卡与鉴定师接头并说明变装异象「拉尔」的不稳定；一名代理人向鉴定师搭话。",
+      "participants": [
+        "erika",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00358",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363",
+        "u00364",
+        "u00366",
+        "u00368",
+        "u00369"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e023",
+          "start_ms": 2789500,
+          "end_ms": 2829633,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "erika"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊里卡说自己在身体外覆盖了变装异象「拉尔」，该异象偶尔不稳定；一名代理人误以为鉴定师与斯特利速递同属代理人行业。",
+          "transcript_refs": [
+            "u00354",
+            "u00355",
+            "u00356",
+            "u00358",
+            "u00360",
+            "u00361",
+            "u00362",
+            "u00363",
+            "u00364",
+            "u00366",
+            "u00368",
+            "u00369"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s024",
+      "start_ms": 2856233,
+      "end_ms": 2868367,
+      "summary": "哈索尔向鉴定师报到，表示会照看浔并让鉴定师专注委托。",
+      "participants": [
+        "hathor",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00370",
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e024",
+          "start_ms": 2856233,
+          "end_ms": 2868367,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hathor"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈索尔告知鉴定师自己会照看浔姐，让鉴定师无需分心，只需专注委托任务。",
+          "transcript_refs": [
+            "u00370",
+            "u00371",
+            "u00372",
+            "u00373",
+            "u00374"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s025",
+      "start_ms": 2880500,
+      "end_ms": 2917133,
+      "summary": "伪装侍者的哈尼娅汇报会场情报：拍品多在IV级左右，受邀名单有调换，安保已在盯梢。",
+      "participants": [
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00375",
+        "u00376",
+        "u00377",
+        "u00378",
+        "u00379",
+        "u00380",
+        "u00381"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e025",
+          "start_ms": 2880500,
+          "end_ms": 2917133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅汇报本次拍卖的异象多数在IV级左右，比以往拍品等级更高；受邀名单有人被调换，拍卖会安保已在盯梢。",
+          "transcript_refs": [
+            "u00375",
+            "u00376",
+            "u00377",
+            "u00378",
+            "u00379",
+            "u00380",
+            "u00381"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s026",
+      "start_ms": 2934633,
+      "end_ms": 2976633,
+      "summary": "浔在会场高调取餐，九原提醒她过于引人注目。",
+      "participants": [
+        "jiuyuan",
+        "hotori",
+        "jansen",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00382",
+        "u00383",
+        "u00384",
+        "u00386",
+        "u00388",
+        "u00391",
+        "u00392"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e026",
+          "start_ms": 2934633,
+          "end_ms": 2976633,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiuyuan",
+            "hotori",
+            "jansen"
+          ],
+          "speaker_character_id": "",
+          "observation": "九原提醒浔过于引人注目；浔表示要带同伴再来把会场吃光，简森评价她的还击方式很特别。",
+          "transcript_refs": [
+            "u00382",
+            "u00383",
+            "u00384",
+            "u00386",
+            "u00388",
+            "u00391",
+            "u00392"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s027",
+      "start_ms": 2976867,
+      "end_ms": 3305867,
+      "summary": "菲尔主持拍卖会开场，第一件拍品「纳西莎之链」引发激烈竞价，最终以1亿方斯成交。",
+      "participants": [
+        "phil",
+        "hotori",
+        "jiuyuan",
+        "haniel",
+        "erika",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00393",
+        "u00394",
+        "u00395",
+        "u00396",
+        "u00397",
+        "u00398",
+        "u00399",
+        "u00400",
+        "u00401",
+        "u00402",
+        "u00403",
+        "u00404",
+        "u00406",
+        "u00407",
+        "u00408",
+        "u00409",
+        "u00410",
+        "u00412",
+        "u00413",
+        "u00414",
+        "u00415",
+        "u00416",
+        "u00417",
+        "u00420",
+        "u00421",
+        "u00422",
+        "u00423",
+        "u00424",
+        "u00427",
+        "u00438"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e027",
+          "start_ms": 2976867,
+          "end_ms": 3305867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "phil",
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "菲尔介绍传奇异象「纳西莎之链」并宣布起拍价；浔出价6000万后，价格被推高至1亿方斯成交。",
+          "transcript_refs": [
+            "u00393",
+            "u00394",
+            "u00395",
+            "u00396",
+            "u00397",
+            "u00398",
+            "u00399",
+            "u00400",
+            "u00401",
+            "u00402",
+            "u00403",
+            "u00404",
+            "u00406",
+            "u00407",
+            "u00408",
+            "u00409",
+            "u00410",
+            "u00412",
+            "u00413",
+            "u00414",
+            "u00415",
+            "u00416",
+            "u00417",
+            "u00420",
+            "u00421",
+            "u00422",
+            "u00423",
+            "u00424",
+            "u00427",
+            "u00438"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s028",
+      "start_ms": 3313333,
+      "end_ms": 3368867,
+      "summary": "简森为1亿成交心疼；浔解释自己的出价策略，九原与斯特利成员作出反应。",
+      "participants": [
+        "jansen",
+        "hotori",
+        "haniel",
+        "erika",
+        "jiuyuan",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00439",
+        "u00440",
+        "u00441",
+        "u00442",
+        "u00443",
+        "u00444",
+        "u00445",
+        "u00446"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e028",
+          "start_ms": 3313333,
+          "end_ms": 3368867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jansen",
+            "hotori",
+            "jiuyuan"
+          ],
+          "speaker_character_id": "",
+          "observation": "简森反复念叨1亿；浔表示一次性压价可以劝退竞争者，并提议流拍品可在伊波恩寄卖，九原指出有人要为此肉疼。",
+          "transcript_refs": [
+            "u00439",
+            "u00440",
+            "u00441",
+            "u00442",
+            "u00443",
+            "u00444",
+            "u00445",
+            "u00446"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s029",
+      "start_ms": 3461500,
+      "end_ms": 3557634,
+      "summary": "休息期间伊里卡为鉴定师调酒；九原与鉴定师交谈并邀其常来店里。",
+      "participants": [
+        "erika",
+        "jiuyuan",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00448",
+        "u00449",
+        "u00451",
+        "u00452",
+        "u00453",
+        "u00454",
+        "u00455",
+        "u00456",
+        "u00458",
+        "u00459",
+        "u00460",
+        "u00461",
+        "u00462"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e029",
+          "start_ms": 3461500,
+          "end_ms": 3557634,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "erika",
+            "jiuyuan"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊里卡为鉴定师调制饮品；九原询问鉴定师对会场的感受，并提出可以多来店里聊闲事。",
+          "transcript_refs": [
+            "u00448",
+            "u00449",
+            "u00451",
+            "u00452",
+            "u00453",
+            "u00454",
+            "u00455",
+            "u00456",
+            "u00458",
+            "u00459",
+            "u00460",
+            "u00461",
+            "u00462"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s030",
+      "start_ms": 3568134,
+      "end_ms": 3666600,
+      "summary": "第二件拍品「金闪闪」登场；浔误判其价值并高价拍下，简森纠正那只是带伪装属性的物体异象。",
+      "participants": [
+        "phil",
+        "hotori",
+        "jansen",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00464",
+        "u00465",
+        "u00466",
+        "u00467",
+        "u00468",
+        "u00472",
+        "u00473",
+        "u00474",
+        "u00475",
+        "u00476",
+        "u00477"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e030",
+          "start_ms": 3568134,
+          "end_ms": 3666600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "phil",
+            "hotori",
+            "jansen"
+          ],
+          "speaker_character_id": "",
+          "observation": "菲尔介绍2号拍品「金闪闪」；浔以一亿拍下，简森说明那只是带有伪装属性的物体异象，并非点石成金。",
+          "transcript_refs": [
+            "u00464",
+            "u00465",
+            "u00466",
+            "u00467",
+            "u00468",
+            "u00472",
+            "u00473",
+            "u00474",
+            "u00475",
+            "u00476",
+            "u00477"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s031",
+      "start_ms": 3675467,
+      "end_ms": 3831800,
+      "summary": "压轴拍品「第一枝」登场并引发高价竞价；宾客讨论其来历，鉴定师判断其波动异常且极不稳定。",
+      "participants": [
+        "phil",
+        "hotori",
+        "jiuyuan",
+        "haniel",
+        "erika",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00478",
+        "u00479",
+        "u00480",
+        "u00481",
+        "u00482",
+        "u00483",
+        "u00484",
+        "u00485",
+        "u00486",
+        "u00487",
+        "u00488",
+        "u00489",
+        "u00490",
+        "u00491",
+        "u00493",
+        "u00495",
+        "u00496",
+        "u00497",
+        "u00498",
+        "u00499",
+        "u00501",
+        "u00502",
+        "u00503",
+        "u00504",
+        "u00505"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e031",
+          "start_ms": 3675467,
+          "end_ms": 3831800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "phil",
+            "jiuyuan",
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "菲尔介绍首次示人的异象「第一枝」，起拍价13亿方斯并迅速被推高；鉴定师表示该异象波动十分强烈且极不稳定，无法排除伪造可能。",
+          "transcript_refs": [
+            "u00478",
+            "u00479",
+            "u00480",
+            "u00481",
+            "u00482",
+            "u00483",
+            "u00484",
+            "u00485",
+            "u00486",
+            "u00487",
+            "u00488",
+            "u00489",
+            "u00490",
+            "u00491",
+            "u00493",
+            "u00495",
+            "u00496",
+            "u00497",
+            "u00498",
+            "u00499",
+            "u00501",
+            "u00502",
+            "u00503",
+            "u00504",
+            "u00505"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s032",
+      "start_ms": 3856067,
+      "end_ms": 3940534,
+      "summary": "拍品以1方斯被「买走」后失窃，现场触发惠比寿的安保异象，空间进入封闭循环。",
+      "participants": [
+        "jansen",
+        "haniel",
+        "hathor",
+        "jiuyuan",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00506",
+        "u00507",
+        "u00508",
+        "u00509",
+        "u00510",
+        "u00511",
+        "u00512",
+        "u00513",
+        "u00514",
+        "u00515",
+        "u00516",
+        "u00517",
+        "u00521",
+        "u00522",
+        "u00523",
+        "u00524",
+        "u00525",
+        "u00526"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e032",
+          "start_ms": 3856067,
+          "end_ms": 3940534,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "jansen",
+            "haniel",
+            "hathor",
+            "jiuyuan"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人以1方斯落槌成交后带走拍品；众人发现空间循环回到原处，简森说明拍品脱离掌控会触发惠比寿的安保异象规则。",
+          "transcript_refs": [
+            "u00506",
+            "u00507",
+            "u00508",
+            "u00509",
+            "u00510",
+            "u00511",
+            "u00512",
+            "u00513",
+            "u00514",
+            "u00515",
+            "u00516",
+            "u00517",
+            "u00521",
+            "u00522",
+            "u00523",
+            "u00524",
+            "u00525",
+            "u00526"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s033",
+      "start_ms": 3981834,
+      "end_ms": 4207234,
+      "summary": "众人分析安保异象规则与作案手法：异象「撬撬」被用于打开收容装置，从而触发安保规则。",
+      "participants": [
+        "jansen",
+        "jiuyuan",
+        "haniel",
+        "erika",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00527",
+        "u00528",
+        "u00529",
+        "u00530",
+        "u00531",
+        "u00532",
+        "u00533",
+        "u00534",
+        "u00535",
+        "u00536",
+        "u00537",
+        "u00538",
+        "u00539",
+        "u00540",
+        "u00541",
+        "u00542",
+        "u00543",
+        "u00546",
+        "u00547",
+        "u00548",
+        "u00549",
+        "u00550",
+        "u00551",
+        "u00552",
+        "u00553",
+        "u00554",
+        "u00555",
+        "u00556"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e033",
+          "start_ms": 3981834,
+          "end_ms": 4207234,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jansen",
+            "jiuyuan",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "九原推断作案者在收藏室留下异象「撬撬」，利用其每三十秒撬锁的特性开启尚未拍卖的异象收容装置，从而触发安保规则。",
+          "transcript_refs": [
+            "u00527",
+            "u00528",
+            "u00529",
+            "u00530",
+            "u00531",
+            "u00532",
+            "u00533",
+            "u00534",
+            "u00535",
+            "u00536",
+            "u00537",
+            "u00538",
+            "u00539",
+            "u00540",
+            "u00541",
+            "u00542",
+            "u00543",
+            "u00546",
+            "u00547",
+            "u00548",
+            "u00549",
+            "u00550",
+            "u00551",
+            "u00552",
+            "u00553",
+            "u00554",
+            "u00555",
+            "u00556"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s034",
+      "start_ms": 4207700,
+      "end_ms": 4420967,
+      "summary": "众人打断撬撬的工作，惠比寿安保异象本体南塔妮现身并说明规则与收容要求。",
+      "participants": [
+        "jiuyuan",
+        "jansen",
+        "haniel",
+        "hathor",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00557",
+        "u00560",
+        "u00561",
+        "u00562",
+        "u00563",
+        "u00564",
+        "u00565",
+        "u00566",
+        "u00567",
+        "u00568",
+        "u00569",
+        "u00570",
+        "u00571",
+        "u00572",
+        "u00573",
+        "u00574",
+        "u00575",
+        "u00576",
+        "u00577",
+        "u00579",
+        "u00580",
+        "u00581",
+        "u00582",
+        "u00583",
+        "u00584"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e034",
+          "start_ms": 4207700,
+          "end_ms": 4420967,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiuyuan",
+            "jansen",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人阻止撬撬继续撬锁；惠比寿的安保异象南塔妮现身，简森说明它在自身领域内奉行的规则不会被外力打破，并要求众人重新收容解离的拍品。",
+          "transcript_refs": [
+            "u00557",
+            "u00560",
+            "u00561",
+            "u00562",
+            "u00563",
+            "u00564",
+            "u00565",
+            "u00566",
+            "u00567",
+            "u00568",
+            "u00569",
+            "u00570",
+            "u00571",
+            "u00572",
+            "u00573",
+            "u00574",
+            "u00575",
+            "u00576",
+            "u00577",
+            "u00579",
+            "u00580",
+            "u00581",
+            "u00582",
+            "u00583",
+            "u00584"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s035",
+      "start_ms": 4449900,
+      "end_ms": 5018067,
+      "summary": "众人跟随南塔妮前往收容异象，遇到「回转门外」并了解其侵蚀现实空间的效果。",
+      "participants": [
+        "jansen",
+        "jiuyuan",
+        "haniel",
+        "erika",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00586",
+        "u00588",
+        "u00589",
+        "u00591",
+        "u00594",
+        "u00595",
+        "u00597",
+        "u00598",
+        "u00599",
+        "u00600",
+        "u00601",
+        "u00602",
+        "u00603",
+        "u00604",
+        "u00605",
+        "u00606",
+        "u00607",
+        "u00608",
+        "u00609",
+        "u00610",
+        "u00611",
+        "u00612",
+        "u00613",
+        "u00614",
+        "u00615",
+        "u00616",
+        "u00617",
+        "u00618",
+        "u00619",
+        "u00622",
+        "u00623",
+        "u00624"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e035",
+          "start_ms": 4449900,
+          "end_ms": 5018067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jansen",
+            "jiuyuan",
+            "haniel",
+            "erika"
+          ],
+          "speaker_character_id": "",
+          "observation": "简森说明异象「回转门外」会侵蚀现实空间造成空间分离与反转，若不处理将在约九个月后分离整个海特洛市；众人需设法关闭泄出水流的「门」。",
+          "transcript_refs": [
+            "u00586",
+            "u00588",
+            "u00589",
+            "u00591",
+            "u00594",
+            "u00595",
+            "u00597",
+            "u00598",
+            "u00599",
+            "u00600",
+            "u00601",
+            "u00602",
+            "u00603",
+            "u00604",
+            "u00605",
+            "u00606",
+            "u00607",
+            "u00608",
+            "u00609",
+            "u00610",
+            "u00611",
+            "u00612",
+            "u00613",
+            "u00614",
+            "u00615",
+            "u00616",
+            "u00617",
+            "u00618",
+            "u00619",
+            "u00622",
+            "u00623",
+            "u00624"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s036",
+      "start_ms": 5018300,
+      "end_ms": 5258867,
+      "summary": "众人完成一件拍品的收容，南塔妮继续要求剩余收容。",
+      "participants": [
+        "haniel",
+        "erika",
+        "jiuyuan",
+        "jansen",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00625",
+        "u00627",
+        "u00628",
+        "u00629",
+        "u00630",
+        "u00631",
+        "u00632",
+        "u00633",
+        "u00634",
+        "u00635",
+        "u00636",
+        "u00637",
+        "u00638",
+        "u00639",
+        "u00640",
+        "u00641",
+        "u00642",
+        "u00643",
+        "u00644",
+        "u00645",
+        "u00646",
+        "u00647",
+        "u00648",
+        "u00649",
+        "u00650"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e036",
+          "start_ms": 5018300,
+          "end_ms": 5258867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "erika",
+            "jiuyuan"
+          ],
+          "speaker_character_id": "",
+          "observation": "南塔妮表示还有两件拍品需要继续收容；哈尼娅与伊里卡在鉴定师面前互相拆台，九原提醒两人应当安静一些。",
+          "transcript_refs": [
+            "u00625",
+            "u00627",
+            "u00628",
+            "u00629",
+            "u00630",
+            "u00631",
+            "u00632",
+            "u00633",
+            "u00634",
+            "u00635",
+            "u00636",
+            "u00637",
+            "u00638",
+            "u00639",
+            "u00640",
+            "u00641",
+            "u00642",
+            "u00643",
+            "u00644",
+            "u00645",
+            "u00646",
+            "u00647",
+            "u00648",
+            "u00649",
+            "u00650"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s037",
+      "start_ms": 5259334,
+      "end_ms": 5442734,
+      "summary": "最后一个异象空间形如舞会；哈尼娅与伊里卡讨论以诚意共舞，随后遇到V级异象。",
+      "participants": [
+        "haniel",
+        "erika",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00651",
+        "u00652",
+        "u00653",
+        "u00654",
+        "u00655",
+        "u00656",
+        "u00657",
+        "u00658",
+        "u00659",
+        "u00660",
+        "u00661",
+        "u00664"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e037",
+          "start_ms": 5259334,
+          "end_ms": 5442734,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "erika"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅提出与异象共舞，伊里卡提醒不要跳宅舞；随后出现V级异象「永不谢幕的阿拉克涅」，哈尼娅认为自己此前的反向预言应验。",
+          "transcript_refs": [
+            "u00651",
+            "u00652",
+            "u00653",
+            "u00654",
+            "u00655",
+            "u00656",
+            "u00657",
+            "u00658",
+            "u00659",
+            "u00660",
+            "u00661",
+            "u00664"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s038",
+      "start_ms": 5747934,
+      "end_ms": 5814900,
+      "summary": "收容完成，南塔妮解除保护规则；众人确认目标拍品已被带走，并商定后续处理。",
+      "participants": [
+        "jiuyuan",
+        "jansen",
+        "haniel",
+        "erika",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00665",
+        "u00666",
+        "u00667",
+        "u00668",
+        "u00669",
+        "u00670",
+        "u00671",
+        "u00673",
+        "u00674",
+        "u00675",
+        "u00676",
+        "u00677",
+        "u00678",
+        "u00679",
+        "u00680"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e038",
+          "start_ms": 5747934,
+          "end_ms": 5814900,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jiuyuan",
+            "jansen",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "南塔妮宣布收容完成并解除保护规则；九原判断带走目标拍品的小偷已离开，简森表示追回拍品需与委托人商议后再定。",
+          "transcript_refs": [
+            "u00665",
+            "u00666",
+            "u00667",
+            "u00668",
+            "u00669",
+            "u00670",
+            "u00671",
+            "u00673",
+            "u00674",
+            "u00675",
+            "u00676",
+            "u00677",
+            "u00678",
+            "u00679",
+            "u00680"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s039",
+      "start_ms": 5821200,
+      "end_ms": 5970300,
+      "summary": "菲尔指认斯特利伪造邀请函并要求其配合调查；九原以规则与收容事实交涉，迫使对方放行。",
+      "participants": [
+        "phil",
+        "jiuyuan",
+        "hathor",
+        "erika",
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00681",
+        "u00683",
+        "u00684",
+        "u00685",
+        "u00686",
+        "u00687",
+        "u00688",
+        "u00689",
+        "u00690",
+        "u00691",
+        "u00692",
+        "u00693",
+        "u00694",
+        "u00695",
+        "u00696",
+        "u00697",
+        "u00698",
+        "u00699",
+        "u00700",
+        "u00701",
+        "u00702",
+        "u00703"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e039",
+          "start_ms": 5821200,
+          "end_ms": 5970300,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "phil",
+            "jiuyuan",
+            "hathor"
+          ],
+          "speaker_character_id": "",
+          "observation": "菲尔以伪造邀请函、冒充侍应生与拍卖事故为由要求斯特利一行人配合调查；九原指出真正带走拍品的人不在这里，并暗示对方私自收容V级异象一事，最终获得放行。",
+          "transcript_refs": [
+            "u00681",
+            "u00683",
+            "u00684",
+            "u00685",
+            "u00686",
+            "u00687",
+            "u00688",
+            "u00689",
+            "u00690",
+            "u00691",
+            "u00692",
+            "u00693",
+            "u00694",
+            "u00695",
+            "u00696",
+            "u00697",
+            "u00698",
+            "u00699",
+            "u00700",
+            "u00701",
+            "u00702",
+            "u00703"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s040",
+      "start_ms": 5989667,
+      "end_ms": 6073434,
+      "summary": "简森说明委托失败并以当日拍品抵付酬劳，双方告别。",
+      "participants": [
+        "jansen",
+        "jiuyuan",
+        "haniel",
+        "erika",
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00704",
+        "u00705",
+        "u00707",
+        "u00708",
+        "u00709",
+        "u00710",
+        "u00711",
+        "u00712",
+        "u00713",
+        "u00714",
+        "u00716",
+        "u00717",
+        "u00718",
+        "u00719",
+        "u00720"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e040",
+          "start_ms": 5989667,
+          "end_ms": 6073434,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "jansen",
+            "jiuyuan",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "简森表示为行动失败致歉，并提出用当日拍品抵付浔与鉴定师的酬劳；双方约定期待下次合作。",
+          "transcript_refs": [
+            "u00704",
+            "u00705",
+            "u00707",
+            "u00708",
+            "u00709",
+            "u00710",
+            "u00711",
+            "u00712",
+            "u00713",
+            "u00714",
+            "u00716",
+            "u00717",
+            "u00718",
+            "u00719",
+            "u00720"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s041",
+      "start_ms": 6073667,
+      "end_ms": 6233967,
+      "summary": "回店后浔与鉴定师私下交谈，说明自己未随行另有验证目的，并约定日后可与斯特利合作。",
+      "participants": [
+        "hotori",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00721",
+        "u00722",
+        "u00723",
+        "u00724",
+        "u00725",
+        "u00727",
+        "u00728",
+        "u00730",
+        "u00731",
+        "u00732",
+        "u00734",
+        "u00735",
+        "u00736",
+        "u00738",
+        "u00739",
+        "u00740",
+        "u00741",
+        "u00742",
+        "u00743",
+        "u00744",
+        "u00745",
+        "u00746"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e041",
+          "start_ms": 6073667,
+          "end_ms": 6233967,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "hotori"
+          ],
+          "speaker_character_id": "",
+          "observation": "浔承认是她解除了众人被定格的状态，并解释自己另有需要验证的事情，同时表示今后若她不在店里，斯特利的人可以合作。",
+          "transcript_refs": [
+            "u00721",
+            "u00722",
+            "u00723",
+            "u00724",
+            "u00725",
+            "u00727",
+            "u00728",
+            "u00730",
+            "u00731",
+            "u00732",
+            "u00734",
+            "u00735",
+            "u00736",
+            "u00738",
+            "u00739",
+            "u00740",
+            "u00741",
+            "u00742",
+            "u00743",
+            "u00744",
+            "u00745",
+            "u00746"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s042",
+      "start_ms": 6238634,
+      "end_ms": 6337334,
+      "summary": "菲尔与幕后人士通话，提及「夜莺」与「魔」，并透露惠比寿拍卖「先知」相关物品的消息已传出。",
+      "participants": [
+        "phil"
+      ],
+      "transcript_refs": [
+        "u00747",
+        "u00748",
+        "u00749",
+        "u00750",
+        "u00751",
+        "u00752",
+        "u00753",
+        "u00754",
+        "u00755",
+        "u00756",
+        "u00757",
+        "u00758"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e042",
+          "start_ms": 6238634,
+          "end_ms": 6337334,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "phil"
+          ],
+          "speaker_character_id": "",
+          "observation": "菲尔提到「夜莺」那个女人向来敏锐，并称「魔」一直装作置身事外；他透露惠比寿拍卖与「先知」相关物品的消息已经传出。",
+          "transcript_refs": [
+            "u00747",
+            "u00748",
+            "u00749",
+            "u00750",
+            "u00751",
+            "u00752",
+            "u00753",
+            "u00754",
+            "u00755",
+            "u00756",
+            "u00757",
+            "u00758"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p05-s043",
+      "start_ms": 6361834,
+      "end_ms": 6367434,
+      "summary": "画面文档显示「归巢」任务失败，指出「红字」组织介入抢夺且动机不明。",
+      "participants": [],
+      "transcript_refs": [
+        "u00759"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p05-e043",
+          "start_ms": 6361834,
+          "end_ms": 6367434,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "画面文档记载「归巢」任务失败，并指出「红字」组织介入抢夺、动机不明。",
+          "transcript_refs": [
+            "u00759"
+          ]
+        }
+      ]
+    }
+  ]
+}

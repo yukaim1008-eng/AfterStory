@@ -1,6 +1,6 @@
 # Canon 世界知识
 
-> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p04`（第2话 从捏造开始的恋爱大作战）。
+> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p08`（番外 某传奇乐队（吗？）的第一页）。
 
 | 实体 | 类型 | 摘要 | 已接受事实 | 证据 |
 | --- | --- | --- | --- | --- |
@@ -46,3 +46,34 @@
 | 噗卡糖果 (`pukka-candy`) | object | 塔可提到喜欢的糖果品牌，其中有限定珍珠贝糖果。 | — | [nt-bv1kqoabievz-p04-e011](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=2106) |
 | 火炬木大道 (`torchwood-avenue`) | location | 海特洛市内Q服装店所在的街道。 | — | [nt-bv1kqoabievz-p04-e004](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=292) |
 | 湛望角 (`zhanwang-cape`) | location | 塔吉多与塔可约会末段拍摄夜景和准备告白的观景地点。 | — | [nt-bv1kqoabievz-p04-e019](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=2983)、[nt-bv1kqoabievz-p04-e020](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=4&t=3370) |
+| 惠比寿拍卖行 (`ebisu-auction-house`) | organization | 长期以邀请制举办罕见异象拍卖的组织，本次在卡佩大酒店举办拍卖会。 | 举办邀请制的罕见异象拍卖活动，百年来一直暗中邀请名流政要；邀请函名额一张邀请函只有三个出席名额；邀请函与受邀者存在与契约有关的绑定关系，复制品需与本人接触才能完成替换 | [nt-bv1kqoabievz-p05-e008](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=565)、[nt-bv1kqoabievz-p05-e009](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=659)、[nt-bv1kqoabievz-p05-e013](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=1093)、[nt-bv1kqoabievz-p05-e022](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=2643)、[nt-bv1kqoabievz-p05-e027](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=2976) |
+| 卡佩大酒店 (`cape-hotel`) | location | 本次惠比寿拍卖会举办的酒店。 | — | [nt-bv1kqoabievz-p05-e008](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=565)、[nt-bv1kqoabievz-p05-e020](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=2330) |
+| 纳西莎之链 (`naxisha-chain`) | object | 由九十九枚天然黑珍珠串联的传奇异象，本次拍卖会第一件拍品。 | — | [nt-bv1kqoabievz-p05-e027](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=2976) |
+| 金闪闪 (`jin-shanshan`) | object | 表面在岩石与黄金质地间变化、带伪装属性的物体异象，本次二号拍品。 | — | [nt-bv1kqoabievz-p05-e030](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=3568) |
+| 第一枝 (`first-branch`) | object | 首次示人、传言具有预知能力的高级别异象，本次拍卖会压轴拍品，后被不明者带离。 | 状态波动十分强烈且极不稳定 | [nt-bv1kqoabievz-p05-e031](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=3675)、[nt-bv1kqoabievz-p05-e032](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=3856) |
+| 南塔妮 (`nantani`) | phenomenon | 惠比寿的安保异象本体，在自身领域内奉行惠比寿制定的规则并负责维护拍卖秩序。 | 规则来源惠比寿拥有制定南塔妮所在空间规则的权利，规则被打破即触发它的能力；要求重新收容解离的拍品，直至全部归还才解除封闭 | [nt-bv1kqoabievz-p05-e032](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=3856)、[nt-bv1kqoabievz-p05-e034](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=4207)、[nt-bv1kqoabievz-p05-e038](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=5747) |
+| 撬撬 (`qiaoqiao`) | phenomenon | 只要周围有「锁」便每三十秒将其撬开的异象，本次被用于开启收藏室收容装置。 | 能力只要周围有「锁」，每三十秒必会被它撬开 | [nt-bv1kqoabievz-p05-e033](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=3981) |
+| 回转门外 (`huizhuanmenwai`) | phenomenon | 会侵蚀现实空间、造成空间分离与反转的异象，需要关闭泄出水流的「门」。 | 效果侵蚀现实空间造成空间分离与反转；若放任，约九个月后分离整个海特洛市 | [nt-bv1kqoabievz-p05-e035](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=4449) |
+| 永不谢幕的阿拉克涅 (`alakenie`) | phenomenon | 本次收容过程中出现的V级异象。 | — | [nt-bv1kqoabievz-p05-e037](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=5259) |
+| 拉尔 (`lar-disguise-anomaly`) | object | 斯特利成员用于变装潜入的变装异象，覆盖在身体外，偶尔不稳定。 | — | [nt-bv1kqoabievz-p05-e023](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=2789) |
+| 动感小耳朵 (`donggan-xiaoerduo`) | object | 哈尼娅的异能通讯搭档，可在被监听的环境中于独立频道通讯，只有她认可的人能看见。 | — | [nt-bv1kqoabievz-p05-e012](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=1008) |
+| 起司 (`qisi-freeze-anomaly`) | phenomenon | 能在拍卖会场产生定格效果的异象，本次将部分出席者定格。 | — | [nt-bv1kqoabievz-p05-e041](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=6073) |
+| 白蜡树 (`ba-la-shu`) | organization | 菲尔在通话中提到的势力，被描述为需要选择立场的一方。 | — | [nt-bv1kqoabievz-p05-e042](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=6238) |
+| 红字 (`hongzi`) | organization | 第3话结尾画面文档指出介入抢夺「归巢」任务目标的组织。 | — | [nt-bv1kqoabievz-p05-e043](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=6361) |
+| 归巢 (`guichao-task`) | event | 第3话结尾画面文档记载失败的任务。 | — | [nt-bv1kqoabievz-p05-e043](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=5&t=6361) |
+| 番茄百分百 (`tomato-hundred`) | organization | 番茄果冻品牌，其在桥间地、绘空町附近的自动售卖机因未知异象频频损毁。 | 自动售卖机在桥间地、绘空町附近多台因未知异象频频损毁 | [nt-bv1kqoabievz-p06-e002a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=75) |
+| 番茄酱恶魔 (`tomato-kaiju-anomaly`) | phenomenon | 由针对安魂曲的网络谣言形成的迷因异象，能够以安魂曲的外貌出现。 | 形成原因在针对安魂曲的网络谣言中形成的异象 | [nt-bv1kqoabievz-p06-e013a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=802)、[nt-bv1kqoabievz-p06-e018a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=1334)、[nt-bv1kqoabievz-p06-e032b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=2420) |
+| 迷因异象 (`meme-anomaly`) | concept | 与人们的共识或认知密切相关的异象，武力对其无效，通常以削弱共识并交给时间处理。 | 处理方式与人们的共识或认知密切相关，武力无用，普遍做法是削弱共识并交给时间 | [nt-bv1kqoabievz-p06-e025a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=1689)、[nt-bv1kqoabievz-p06-e025b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=1689) |
+| 呗果 (`beiguo-platform`) | organization | 剧中人物使用的社交平台，可发帖、浏览话题与直播。 | — | [nt-bv1kqoabievz-p06-e031b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=2217)、[nt-bv1kqoabievz-p06-e036b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=2816) |
+| 禁制机动队 (`etd-unit`) | organization | 异象管理局下属的机动队（E.T.D），安魂曲、白藏、翳与法帝娅均属其中。 | — | [nt-bv1kqoabievz-p06-e006a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=347)、[nt-bv1kqoabievz-p06-e009b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=6&t=589) |
+| 白鹦鹉街 (`baiyingwu-street`) | location | 麦月一家居住的街区，鉴定师在此开展失踪人员调查。 | — | [nt-bv1kqoabievz-p07-e002](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=120) |
+| 小布妮 (`xiaobuni`) | phenomenon | 麦月家中被拟人化的花之异象，会与麦月一起养花并与来访者交谈。 | — | [nt-bv1kqoabievz-p07-e003](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=363) |
+| 废弃庄园 (`abandoned-manor`) | location | 桥间地郊外被传为「能传达心意的花」传闻原型的废弃庄园，实际为花之异象的领域。 | — | [nt-bv1kqoabievz-p07-e015](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=1647)、[nt-bv1kqoabievz-p07-e016](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=1877) |
+| 庄园花之异象 (`manor-flower-anomaly`) | phenomenon | 以废庄园玻璃房为中心的异象，以植物作为语言与感知器官，会把人类当作苗床。 | 特性以植物作为语言与感知器官，能听见并理解交流内容；能量以玻璃房为中心扩散；代价被寄生的麦月在与异象分离后失去发声能力 | [nt-bv1kqoabievz-p07-e019b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=2328)、[nt-bv1kqoabievz-p07-e022b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=3006)、[nt-bv1kqoabievz-p07-e023](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=3097)、[nt-bv1kqoabievz-p07-e028](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=4196) |
+| J.T.F. (`jtf`) | organization | 异象管理局相关的行动队伍，本次庄园事件中先行查看异常。 | — | [nt-bv1kqoabievz-p07-e016](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=1877) |
+| 能传达心意的花 (`heart-conveying-flower`) | concept | 园艺部学生提到的传闻：一种以心意为养分、能越过语言隔阂传达心意的花。 | — | [nt-bv1kqoabievz-p07-e015](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=7&t=1647) |
+| StarSign (`starsign-livehouse`) | location | 海特洛市的小型 Livehouse，常邀请小有名气的乐队演出；清泽任店长，明音在吧台工作。 | 演出规则每个在店里演出的乐队都要自行卖出一部分票 | [nt-bv1kqoabievz-p08-e002](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=154)、[nt-bv1kqoabievz-p08-e005a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=432)、[nt-bv1kqoabievz-p08-e021](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=2429) |
+| 月亮狗之夜 (`moonlight-dog-night`) | phenomenon | 不定期出现的地点异象，本体是舞台；报幕与打分由城市里的普通小狗进行，每组演出后评分，直到第一个满分出现便谢幕泯除。 | 评分规则每组演出后由小狗举牌打分，直到第一个满分出现便谢幕泯除；满分条件历届满分组合普遍在演出中与异象产生过「共鸣」，共鸣没有规律可循 | [nt-bv1kqoabievz-p08-e017b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=1959)、[nt-bv1kqoabievz-p08-e034](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=4042)、[nt-bv1kqoabievz-p08-e035](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=4133) |
+| 月亮狗 (`moonlight-dog`) | phenomenon | 「月亮狗之夜」的旁白来源，讲述触月机会与微小星光的话语。 | — | [nt-bv1kqoabievz-p08-e046](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=5447) |
+| 猫头音 (`maotouyin-band`) | organization | 娜娜莉与哈尼娅组成的乐队，以 StarSign 代表队名义参加「月亮狗之夜」。 | — | [nt-bv1kqoabievz-p08-e032a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=3762)、[nt-bv1kqoabievz-p08-e043](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=4997) |
+| 平行线 (`parallel-line-band`) | organization | 明音此前所在的乐队，已经解散。 | — | [nt-bv1kqoabievz-p08-e030](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=3626)、[nt-bv1kqoabievz-p08-e042b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=8&t=4887) |

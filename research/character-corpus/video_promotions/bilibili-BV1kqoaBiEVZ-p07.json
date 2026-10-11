@@ -1,0 +1,1970 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p07",
+  "reviewed_transcript_sha256": "1e805ed6ae8393ae6961536e74cac971bb9d4fc0a287619970edbafa46c0c7f8",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p07",
+    "source_work": "异环",
+    "display_name": "番外 不言不知秋",
+    "sequence": 7,
+    "content_track": "side_story",
+    "game_version": "",
+    "chapter": "番外 不言不知秋",
+    "predecessor_id": "nt-bv1kqoabievz-p06",
+    "spoiler_scope": "番外 不言不知秋"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s001",
+      "start_ms": 19833,
+      "end_ms": 104767,
+      "summary": "伊波恩店内，阿德勒把一宗失踪人员调查委托交给鉴定师，说明其初步判断并交代独自处理。",
+      "participants": [
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e001",
+          "start_ms": 19833,
+          "end_ms": 104767,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒在店内把失踪人员调查委托交给鉴定师，称目前看不到与异象有关的线索，并交代鉴定师独自处理、及时回报。",
+          "transcript_refs": [
+            "u00001",
+            "u00003",
+            "u00004",
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012",
+            "u00013",
+            "u00014"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s002",
+      "start_ms": 120167,
+      "end_ms": 328300,
+      "summary": "鉴定师到「白鹦鹉街」委托人家中，向夫妇了解失踪少年麦月的情况。",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00045",
+        "u00046",
+        "u00048",
+        "u00049"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e002",
+          "start_ms": 120167,
+          "end_ms": 328300,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师在委托人家中询问麦月的行踪；委托人夫妇称其整夜未归、治安所尚无消息、手机一直无法接通，学校监控显示其放学后独自离校。",
+          "transcript_refs": [
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00022",
+            "u00023",
+            "u00024",
+            "u00025",
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030",
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043",
+            "u00045",
+            "u00046",
+            "u00048",
+            "u00049"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s003",
+      "start_ms": 363067,
+      "end_ms": 387333,
+      "summary": "委托人家中的异象「小布妮」向鉴定师打招呼，并提及与麦月一起养花。",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00054",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00060",
+        "u00061"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e003",
+          "start_ms": 363067,
+          "end_ms": 387333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "委托人家中的异象「小布妮」向鉴定师打招呼，提到每天与麦月一起养花、用花装点家里，并表示担心麦月。",
+          "transcript_refs": [
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054",
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00058",
+            "u00059",
+            "u00060",
+            "u00061"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s004",
+      "start_ms": 395733,
+      "end_ms": 486267,
+      "summary": "鉴定师告别委托人，夫妇询问其是否懂手语并说明麦月的发声障碍。",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e004",
+          "start_ms": 395733,
+          "end_ms": 486267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师称将去麦月常去的地方调查后离开；委托人夫妇询问其是否懂手语，并说明麦月患有发声障碍、可能需要手语才能顺畅交流。",
+          "transcript_refs": [
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066",
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s005",
+      "start_ms": 486500,
+      "end_ms": 591033,
+      "summary": "鉴定师向邻居炜桦打听麦月，得知其语言障碍与手语交流的家庭情况。",
+      "participants": [
+        "esper-zero",
+        "weihua"
+      ],
+      "transcript_refs": [
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00088",
+        "u00089",
+        "u00090"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e005",
+          "start_ms": 486500,
+          "end_ms": 591033,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "weihua"
+          ],
+          "speaker_character_id": "",
+          "observation": "邻居炜桦告诉鉴定师，麦月从小有语言障碍、上学后越来越沉默寡言，一家人用手语交流，麦月还曾亲手做花卡致谢。",
+          "transcript_refs": [
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080",
+            "u00081",
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00086",
+            "u00088",
+            "u00089",
+            "u00090"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s006",
+      "start_ms": 606667,
+      "end_ms": 672000,
+      "summary": "鉴定师在街区花坛向塞尔温等人打听麦月。",
+      "participants": [
+        "esper-zero",
+        "saierwen"
+      ],
+      "transcript_refs": [
+        "u00091",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00104",
+        "u00105",
+        "u00106"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e006",
+          "start_ms": 606667,
+          "end_ms": 672000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "saierwen"
+          ],
+          "speaker_character_id": "",
+          "observation": "花坛成员塞尔温告诉鉴定师，麦月是共同认领花坛的一员、负责植物介绍卡，每周都会从花店买东西回来，看不出有离家出走的征兆。",
+          "transcript_refs": [
+            "u00091",
+            "u00092",
+            "u00093",
+            "u00094",
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00104",
+            "u00105",
+            "u00106"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s007",
+      "start_ms": 701167,
+      "end_ms": 884800,
+      "summary": "白藏在街上叫住鉴定师，叙旧并邀请喝下午茶，表示愿以前辈身份提供建议。",
+      "participants": [
+        "esper-zero",
+        "baicang"
+      ],
+      "transcript_refs": [
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00118",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e007",
+          "start_ms": 701167,
+          "end_ms": 884800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "白藏在街上叫住鉴定师，提及此后就没有机会交谈，邀请其喝下午茶，并提出「利用周遭所能利用的一切」。",
+          "transcript_refs": [
+            "u00107",
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116",
+            "u00117",
+            "u00118",
+            "u00119",
+            "u00120",
+            "u00121",
+            "u00122",
+            "u00123",
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134",
+            "u00135",
+            "u00136"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s008",
+      "start_ms": 885267,
+      "end_ms": 1028300,
+      "summary": "鉴定师向白藏说明失踪委托；白藏称自己会手语并提出结伴同行，二人决定先进入花店。",
+      "participants": [
+        "esper-zero",
+        "baicang"
+      ],
+      "transcript_refs": [
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00144",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e008",
+          "start_ms": 885267,
+          "end_ms": 1028300,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师讲述委托内容；白藏称自己会手语、提出结伴帮忙，二人决定先进入麦月常去的花店调查。",
+          "transcript_refs": [
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00145",
+            "u00146",
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s009",
+      "start_ms": 1041133,
+      "end_ms": 1130967,
+      "summary": "花店店主莉莲提供麦月每周来店买花的情报。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "lilian"
+      ],
+      "transcript_refs": [
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00171",
+        "u00172",
+        "u00173"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e009",
+          "start_ms": 1041133,
+          "end_ms": 1130967,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lilian"
+          ],
+          "speaker_character_id": "",
+          "observation": "花店店主莉莲称麦月每周都来、一直一言不发靠比划挑选花种，上一次是8天前来买粉色康乃馨，昨天放学后并未到店。",
+          "transcript_refs": [
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00171",
+            "u00172",
+            "u00173"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s010",
+      "start_ms": 1150333,
+      "end_ms": 1240400,
+      "summary": "白藏借故离开；鉴定师在附近遇到翳，得知其正在寻找翘班的队长。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00174",
+        "u00177",
+        "u00182",
+        "u00183",
+        "u00185",
+        "u00186",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e010",
+          "start_ms": 1150333,
+          "end_ms": 1240400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "skia"
+          ],
+          "speaker_character_id": "",
+          "observation": "白藏称对书的气味过敏而离开；鉴定师在附近遇到 E.T.D. 的翳，得知其正搜寻翘班的白藏队长。",
+          "transcript_refs": [
+            "u00174",
+            "u00177",
+            "u00182",
+            "u00183",
+            "u00185",
+            "u00186",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196",
+            "u00197",
+            "u00198",
+            "u00199"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s011",
+      "start_ms": 1251133,
+      "end_ms": 1279133,
+      "summary": "书店店员表示对失踪少年没有印象。",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00205",
+        "u00206",
+        "u00208",
+        "u00209"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e011",
+          "start_ms": 1251133,
+          "end_ms": 1279133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "书店店员表示对失踪少年没有印象，因为来店里默不作声看书的客人很多，不会个别去记。",
+          "transcript_refs": [
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00205",
+            "u00206",
+            "u00208",
+            "u00209"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s012",
+      "start_ms": 1286600,
+      "end_ms": 1367100,
+      "summary": "白藏现身解释自己在休假；二人前往学校，被门卫拦下。",
+      "participants": [
+        "esper-zero",
+        "baicang"
+      ],
+      "transcript_refs": [
+        "u00211",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e012",
+          "start_ms": 1286600,
+          "end_ms": 1367100,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "白藏称自己的任务在晚上、此前算休假；二人到学校后被门卫以社团活动时间禁止校外人士入内，白藏称有别的办法。",
+          "transcript_refs": [
+            "u00211",
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216",
+            "u00217",
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222",
+            "u00223"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s013",
+      "start_ms": 1421000,
+      "end_ms": 1518067,
+      "summary": "校内学生说明麦月是转学生并参加园艺部；二人前往园艺部。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "lingguo"
+      ],
+      "transcript_refs": [
+        "u00224",
+        "u00225",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00231",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00237",
+        "u00238",
+        "u00239",
+        "u00240"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e013",
+          "start_ms": 1421000,
+          "end_ms": 1518067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lingguo",
+            "baicang"
+          ],
+          "speaker_character_id": "",
+          "observation": "学生玲果告知麦月是上学期转学来的、比较内向并参加园艺部；二人前往园艺部，途中白藏谈及自己学手语的原因。",
+          "transcript_refs": [
+            "u00224",
+            "u00225",
+            "u00226",
+            "u00227",
+            "u00228",
+            "u00229",
+            "u00230",
+            "u00231",
+            "u00232",
+            "u00233",
+            "u00234",
+            "u00235",
+            "u00236",
+            "u00237",
+            "u00238",
+            "u00239",
+            "u00240"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s014",
+      "start_ms": 1541867,
+      "end_ms": 1647100,
+      "summary": "园艺部学生黎兰等人介绍麦月在部里的情况。",
+      "participants": [
+        "esper-zero",
+        "lilan",
+        "baicang"
+      ],
+      "transcript_refs": [
+        "u00241",
+        "u00242",
+        "u00243",
+        "u00244",
+        "u00246",
+        "u00247",
+        "u00248",
+        "u00249",
+        "u00250",
+        "u00251",
+        "u00252",
+        "u00253",
+        "u00254",
+        "u00255",
+        "u00256",
+        "u00257",
+        "u00258"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e014",
+          "start_ms": 1541867,
+          "end_ms": 1647100,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lilan"
+          ],
+          "speaker_character_id": "",
+          "observation": "园艺部学生黎兰等人表示麦月不擅交流但听力和理解没有问题，在部里负责培育花卉，并把花作为礼物送给照顾过他的人。",
+          "transcript_refs": [
+            "u00241",
+            "u00242",
+            "u00243",
+            "u00244",
+            "u00246",
+            "u00247",
+            "u00248",
+            "u00249",
+            "u00250",
+            "u00251",
+            "u00252",
+            "u00253",
+            "u00254",
+            "u00255",
+            "u00256",
+            "u00257",
+            "u00258"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s015",
+      "start_ms": 1647567,
+      "end_ms": 1860600,
+      "summary": "另两名学生提到关于「能传达心意的花」的传闻及其原型庄园；二人决定前往。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "oliver",
+        "miaodong"
+      ],
+      "transcript_refs": [
+        "u00259",
+        "u00260",
+        "u00261",
+        "u00262",
+        "u00263",
+        "u00264",
+        "u00265",
+        "u00266",
+        "u00267",
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00273",
+        "u00274",
+        "u00275",
+        "u00276",
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280",
+        "u00282",
+        "u00283",
+        "u00284",
+        "u00285",
+        "u00286",
+        "u00287"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e015",
+          "start_ms": 1647567,
+          "end_ms": 1860600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "oliver",
+            "miaodong"
+          ],
+          "speaker_character_id": "",
+          "observation": "白藏提议再问另外两名学生；奥利弗与杪冬提到关于一种能以心意为养分、越过语言隔阂的花的传闻，并称其原型是桥间地郊外一座废弃庄园。",
+          "transcript_refs": [
+            "u00259",
+            "u00260",
+            "u00261",
+            "u00262",
+            "u00263",
+            "u00264",
+            "u00265",
+            "u00266",
+            "u00267",
+            "u00268",
+            "u00269",
+            "u00270",
+            "u00271",
+            "u00272",
+            "u00273",
+            "u00274",
+            "u00275",
+            "u00276",
+            "u00277",
+            "u00278",
+            "u00279",
+            "u00280",
+            "u00282",
+            "u00283",
+            "u00284",
+            "u00285",
+            "u00286",
+            "u00287"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s016",
+      "start_ms": 1877167,
+      "end_ms": 2022533,
+      "summary": "抵达废弃庄园，E.T.D. 已在场警戒；翳说明异象情况，双方决定立即进入调查。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00288",
+        "u00289",
+        "u00290",
+        "u00291",
+        "u00292",
+        "u00293",
+        "u00294",
+        "u00295",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00300",
+        "u00301",
+        "u00302",
+        "u00303",
+        "u00305",
+        "u00306",
+        "u00307",
+        "u00308",
+        "u00309",
+        "u00310",
+        "u00311",
+        "u00312",
+        "u00313",
+        "u00314",
+        "u00316",
+        "u00318",
+        "u00319",
+        "u00320"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e016",
+          "start_ms": 1877167,
+          "end_ms": 2022533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "skia"
+          ],
+          "speaker_character_id": "",
+          "observation": "庄园外已拉起警戒；翳说明凌晨该地被报告维特海默值异常、J.T.F. 先行查看后植物在光照下急剧活性化，安排 E.T.D. 四队于黄昏接手，众人决定立即进入。",
+          "transcript_refs": [
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00291",
+            "u00292",
+            "u00293",
+            "u00294",
+            "u00295",
+            "u00296",
+            "u00297",
+            "u00298",
+            "u00300",
+            "u00301",
+            "u00302",
+            "u00303",
+            "u00305",
+            "u00306",
+            "u00307",
+            "u00308",
+            "u00309",
+            "u00310",
+            "u00311",
+            "u00312",
+            "u00313",
+            "u00314",
+            "u00316",
+            "u00318",
+            "u00319",
+            "u00320"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s017",
+      "start_ms": 2032100,
+      "end_ms": 2092067,
+      "summary": "委托人夫妇再次联络，鉴定师表示已有进展并承诺把麦月安全带回来。",
+      "participants": [
+        "esper-zero",
+        "baicang"
+      ],
+      "transcript_refs": [
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00326",
+        "u00328",
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00332",
+        "u00333"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e017",
+          "start_ms": 2032100,
+          "end_ms": 2092067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang"
+          ],
+          "speaker_character_id": "",
+          "observation": "委托人夫妇再次联络并称已在治安所立案；鉴定师称调查有眉目、承诺把麦月安全带回来，白藏随后评论鉴定师没有透露会让委托人不安的信息。",
+          "transcript_refs": [
+            "u00321",
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00326",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331",
+            "u00332",
+            "u00333"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s018",
+      "start_ms": 2095333,
+      "end_ms": 2163700,
+      "summary": "进入庄园后，二人观察异常繁茂的植物并商议对策。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00334",
+        "u00335",
+        "u00336",
+        "u00337",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00343"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e018",
+          "start_ms": 2095333,
+          "end_ms": 2163700,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "白藏称庄园生机盎然、看不出荒废多年；有人指出植物仍保留部分普通植物特征，建议避免惊动它们。",
+          "transcript_refs": [
+            "u00334",
+            "u00335",
+            "u00336",
+            "u00337",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00343"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s019",
+      "start_ms": 2317233,
+      "end_ms": 2446034,
+      "summary": "庄园中出现叙述性话语；二人辨别出异象与「语言／表达」相关。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00345",
+        "u00346",
+        "u00347",
+        "u00348",
+        "u00349",
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00357",
+        "u00358",
+        "u00359",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e019a",
+          "start_ms": 2317233,
+          "end_ms": 2446034,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [
+            "esper-zero",
+            "baicang",
+            "skia"
+          ],
+          "speaker_character_id": "",
+          "observation": "庄园中响起叙述性话语，提到以心意为养分、越过语言隔阂传达心意的「花」，以及曾居住于此的名门望族。",
+          "transcript_refs": [
+            "u00345",
+            "u00346",
+            "u00347",
+            "u00348",
+            "u00349",
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00354",
+            "u00355",
+            "u00356",
+            "u00357",
+            "u00358",
+            "u00359",
+            "u00360",
+            "u00361",
+            "u00362",
+            "u00363"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e019b",
+          "start_ms": 2328667,
+          "end_ms": 2394467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人称能从花香中感到零碎语言片段，白藏称自己只闻到越来越浓的花香。",
+          "transcript_refs": [
+            "u00348",
+            "u00349",
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00354",
+            "u00355",
+            "u00356",
+            "u00357",
+            "u00358"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s020",
+      "start_ms": 2481967,
+      "end_ms": 2581367,
+      "summary": "堂内昏暗，白藏开口后灯光亮起；叙述性话语续述家族往事。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00364",
+        "u00365",
+        "u00366",
+        "u00367",
+        "u00368",
+        "u00369",
+        "u00370",
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374",
+        "u00375",
+        "u00377"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e020a",
+          "start_ms": 2481967,
+          "end_ms": 2511367,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "堂内昏暗，白藏请人开灯；白藏猜测是自己讲话声量触发了反应，遂提议再多试几个关键词，有人提醒谨慎措辞。",
+          "transcript_refs": [
+            "u00364",
+            "u00365",
+            "u00366",
+            "u00367",
+            "u00368",
+            "u00369",
+            "u00370"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e020b",
+          "start_ms": 2522800,
+          "end_ms": 2563867,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [
+            "esper-zero",
+            "baicang",
+            "skia"
+          ],
+          "speaker_character_id": "",
+          "observation": "叙述性话语续述家族以骨肉之情与遗产为重的往事，并提到晚年卧病的主人。",
+          "transcript_refs": [
+            "u00371",
+            "u00372",
+            "u00373",
+            "u00374",
+            "u00375"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s021",
+      "start_ms": 2586034,
+      "end_ms": 2818434,
+      "summary": "鉴定师尝试与形似传声筒的花交流，花作出简短回应；白藏在旁警戒。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00378",
+        "u00379",
+        "u00380",
+        "u00381",
+        "u00382",
+        "u00383",
+        "u00384",
+        "u00385",
+        "u00386",
+        "u00387",
+        "u00388",
+        "u00390",
+        "u00391",
+        "u00392",
+        "u00393",
+        "u00394",
+        "u00395",
+        "u00396",
+        "u00397",
+        "u00398",
+        "u00399",
+        "u00400",
+        "u00401",
+        "u00402",
+        "u00403"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e021",
+          "start_ms": 2586034,
+          "end_ms": 2818434,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师对形似传声筒的花说话，花作出「已经没有了」「不准说不该说」「谢谢你的赞美」等简短回应；白藏在一旁警戒并评论此地「碰不得的高压线」。",
+          "transcript_refs": [
+            "u00378",
+            "u00379",
+            "u00380",
+            "u00381",
+            "u00382",
+            "u00383",
+            "u00384",
+            "u00385",
+            "u00386",
+            "u00387",
+            "u00388",
+            "u00390",
+            "u00391",
+            "u00392",
+            "u00393",
+            "u00394",
+            "u00395",
+            "u00396",
+            "u00397",
+            "u00398",
+            "u00399",
+            "u00400",
+            "u00401",
+            "u00402",
+            "u00403"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s022",
+      "start_ms": 2855067,
+      "end_ms": 3092367,
+      "summary": "叙述性话语续述家族内斗；二人分析异象以植物作为语言与感知器官。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00404",
+        "u00405",
+        "u00406",
+        "u00407",
+        "u00408",
+        "u00409",
+        "u00410",
+        "u00411",
+        "u00412",
+        "u00413",
+        "u00414",
+        "u00415",
+        "u00416",
+        "u00417",
+        "u00418",
+        "u00419",
+        "u00420",
+        "u00421",
+        "u00422",
+        "u00423",
+        "u00424",
+        "u00425",
+        "u00426",
+        "u00427",
+        "u00428",
+        "u00429",
+        "u00430",
+        "u00431",
+        "u00432",
+        "u00433"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e022a",
+          "start_ms": 2855067,
+          "end_ms": 2914800,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [
+            "esper-zero",
+            "baicang",
+            "skia"
+          ],
+          "speaker_character_id": "",
+          "observation": "叙述性话语续述门庭内的暗流与嫡亲间斗争，以及庭园不容失当措辞、忤逆恶语的规训。",
+          "transcript_refs": [
+            "u00404",
+            "u00405",
+            "u00406",
+            "u00407",
+            "u00408",
+            "u00409",
+            "u00410"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e022b",
+          "start_ms": 3006267,
+          "end_ms": 3092367,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "二人称异象能量以玻璃房为中心扩散，植物如同庄园的感知器官、能听见并理解交流内容，并交流了花香吸入与花粉接触带来的不适。",
+          "transcript_refs": [
+            "u00420",
+            "u00421",
+            "u00422",
+            "u00423",
+            "u00424",
+            "u00425",
+            "u00426",
+            "u00427",
+            "u00428",
+            "u00429",
+            "u00430",
+            "u00431",
+            "u00432",
+            "u00433"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s023",
+      "start_ms": 3097734,
+      "end_ms": 3274600,
+      "summary": "叙述性话语描述家族冲突的恶果与毒性；白藏感叹其中情感之多。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00434",
+        "u00435",
+        "u00436",
+        "u00437",
+        "u00438",
+        "u00439",
+        "u00440",
+        "u00441",
+        "u00442",
+        "u00443",
+        "u00444",
+        "u00445",
+        "u00446",
+        "u00447",
+        "u00448",
+        "u00449"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e023",
+          "start_ms": 3097734,
+          "end_ms": 3272734,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [
+            "esper-zero",
+            "baicang",
+            "skia"
+          ],
+          "speaker_character_id": "",
+          "observation": "叙述性话语描述纷争与恶念弥漫、有人喉咙长出花刺、有人耳孔或舌头被寄生，以及主人被剧毒折磨、最终家产被吸收等情形，并伴有大量称颂性词句。",
+          "transcript_refs": [
+            "u00434",
+            "u00435",
+            "u00436",
+            "u00437",
+            "u00438",
+            "u00439",
+            "u00440",
+            "u00441",
+            "u00442",
+            "u00443",
+            "u00444",
+            "u00445",
+            "u00446",
+            "u00447",
+            "u00448"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s024",
+      "start_ms": 3319400,
+      "end_ms": 3514000,
+      "summary": "二人找到被异象寄生的麦月，分析其共生状态并决定寻找花卉唤醒其意识。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia",
+        "maiyue"
+      ],
+      "transcript_refs": [
+        "u00450",
+        "u00451",
+        "u00452",
+        "u00453",
+        "u00454",
+        "u00455",
+        "u00456",
+        "u00457",
+        "u00458",
+        "u00459",
+        "u00461",
+        "u00462",
+        "u00463",
+        "u00464",
+        "u00465",
+        "u00466",
+        "u00467",
+        "u00468",
+        "u00469",
+        "u00470",
+        "u00471",
+        "u00472",
+        "u00474",
+        "u00475",
+        "u00476",
+        "u00477",
+        "u00478",
+        "u00479",
+        "u00480",
+        "u00481",
+        "u00482",
+        "u00483"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e024",
+          "start_ms": 3319400,
+          "end_ms": 3514000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero",
+            "maiyue"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人发现麦月，麦月以「已经成为了全新的我」「与之共生地活下去」等言语发声；白藏指出许多根系以其身体为苗床，众人决定先找能削弱共生程度或能代表心意的花卉来尝试唤醒其本人意识。",
+          "transcript_refs": [
+            "u00450",
+            "u00451",
+            "u00452",
+            "u00453",
+            "u00454",
+            "u00455",
+            "u00456",
+            "u00457",
+            "u00458",
+            "u00459",
+            "u00461",
+            "u00462",
+            "u00463",
+            "u00464",
+            "u00465",
+            "u00466",
+            "u00467",
+            "u00468",
+            "u00469",
+            "u00470",
+            "u00471",
+            "u00472",
+            "u00474",
+            "u00475",
+            "u00476",
+            "u00477",
+            "u00478",
+            "u00479",
+            "u00480",
+            "u00481",
+            "u00482",
+            "u00483"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s025",
+      "start_ms": 3585167,
+      "end_ms": 3733800,
+      "summary": "鉴定师以花卉向麦月传达信息；白藏以言语刺激异象。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia",
+        "maiyue"
+      ],
+      "transcript_refs": [
+        "u00484",
+        "u00486",
+        "u00487",
+        "u00488",
+        "u00489",
+        "u00490",
+        "u00491",
+        "u00492",
+        "u00493",
+        "u00494",
+        "u00495",
+        "u00496",
+        "u00497",
+        "u00498",
+        "u00499"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e025",
+          "start_ms": 3585167,
+          "end_ms": 3733800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "baicang"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师自称受麦月父母委托而来，并带上花；白藏以「如果觉得我说的不对就由你自己来说说看」等言语刺激附身于麦月的异象。",
+          "transcript_refs": [
+            "u00484",
+            "u00486",
+            "u00487",
+            "u00488",
+            "u00489",
+            "u00490",
+            "u00491",
+            "u00492",
+            "u00493",
+            "u00494",
+            "u00495",
+            "u00496",
+            "u00497",
+            "u00498",
+            "u00499"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s026",
+      "start_ms": 3790034,
+      "end_ms": 4053000,
+      "summary": "麦月自报姓名并求救；众人击退无名的花之异象。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia",
+        "maiyue"
+      ],
+      "transcript_refs": [
+        "u00501",
+        "u00502",
+        "u00503",
+        "u00504",
+        "u00505",
+        "u00506",
+        "u00509",
+        "u00510",
+        "u00511",
+        "u00512",
+        "u00513",
+        "u00514",
+        "u00515",
+        "u00516",
+        "u00517",
+        "u00518"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e026a",
+          "start_ms": 3968067,
+          "end_ms": 4005634,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "maiyue"
+          ],
+          "speaker_character_id": "",
+          "observation": "麦月以自己的声音报出姓名并说「请救救我」，有人回应其表达很清楚。",
+          "transcript_refs": [
+            "u00510",
+            "u00511",
+            "u00512",
+            "u00513",
+            "u00514",
+            "u00515"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e026b",
+          "start_ms": 4013100,
+          "end_ms": 4053000,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "esper-zero",
+            "baicang",
+            "skia",
+            "maiyue"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人喝令「凋灭吧，无名之物」，随后异象被清除，白藏称干得不错。",
+          "transcript_refs": [
+            "u00516",
+            "u00517",
+            "u00518"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s027",
+      "start_ms": 4064200,
+      "end_ms": 4188800,
+      "summary": "事件结束，确认麦月伤势与收尾工作，白藏与众人约定改天喝茶。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "skia"
+      ],
+      "transcript_refs": [
+        "u00519",
+        "u00520",
+        "u00521",
+        "u00522",
+        "u00523",
+        "u00524",
+        "u00525",
+        "u00526",
+        "u00527",
+        "u00528",
+        "u00529",
+        "u00530",
+        "u00531",
+        "u00532",
+        "u00533",
+        "u00534",
+        "u00536"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e027",
+          "start_ms": 4064200,
+          "end_ms": 4150767,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "战斗结束后众人来到庄园外；有人称麦月因植物连根扎入体内伤势不轻但无生命危险，还有收尾工作要处理；白藏表示疲惫，并约定改天一起喝茶。",
+          "transcript_refs": [
+            "u00519",
+            "u00520",
+            "u00521",
+            "u00522",
+            "u00523",
+            "u00524",
+            "u00525",
+            "u00526",
+            "u00527",
+            "u00528",
+            "u00529",
+            "u00530",
+            "u00531",
+            "u00532",
+            "u00533",
+            "u00534"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s028",
+      "start_ms": 4196967,
+      "end_ms": 4344667,
+      "summary": "咖啡店中，二人回顾庄园事件与解救麦月的代价。",
+      "participants": [
+        "esper-zero",
+        "baicang"
+      ],
+      "transcript_refs": [
+        "u00537",
+        "u00538",
+        "u00539",
+        "u00540",
+        "u00541",
+        "u00542",
+        "u00543",
+        "u00544",
+        "u00545",
+        "u00546",
+        "u00547",
+        "u00548",
+        "u00549",
+        "u00551",
+        "u00553",
+        "u00554",
+        "u00555",
+        "u00556",
+        "u00557",
+        "u00558",
+        "u00559"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e028",
+          "start_ms": 4196967,
+          "end_ms": 4344667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "二人在咖啡店喝茶并回顾委托；谈到麦月因与异象分离而失去发声能力，以及委托人夫妇反过来安慰鉴定师、称早有孩子可能完全失语的心理准备。",
+          "transcript_refs": [
+            "u00537",
+            "u00538",
+            "u00539",
+            "u00540",
+            "u00541",
+            "u00542",
+            "u00543",
+            "u00544",
+            "u00545",
+            "u00546",
+            "u00547",
+            "u00548",
+            "u00549",
+            "u00551",
+            "u00553",
+            "u00554",
+            "u00555",
+            "u00556",
+            "u00557",
+            "u00558",
+            "u00559"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p07-s029",
+      "start_ms": 4344900,
+      "end_ms": 4508700,
+      "summary": "白藏谈及自己的能力说辞；委托人转交麦月亲手制作的花卡并留言致谢。",
+      "participants": [
+        "esper-zero",
+        "baicang",
+        "maiyue"
+      ],
+      "transcript_refs": [
+        "u00560",
+        "u00561",
+        "u00562",
+        "u00564",
+        "u00565",
+        "u00566",
+        "u00567",
+        "u00568",
+        "u00569",
+        "u00570",
+        "u00571",
+        "u00572",
+        "u00573",
+        "u00577",
+        "u00579",
+        "u00580",
+        "u00581",
+        "u00582",
+        "u00583",
+        "u00584",
+        "u00585",
+        "u00586",
+        "u00587"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p07-e029",
+          "start_ms": 4344900,
+          "end_ms": 4508700,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "baicang",
+            "maiyue"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人问及让花房中植物尽数枯萎一事，白藏以「能与植物对话」作答；随后提到麦月在病房亲手制作的花卡并托父母转交，麦月留言「谢谢你，声音很好听的哥哥」。",
+          "transcript_refs": [
+            "u00560",
+            "u00561",
+            "u00562",
+            "u00564",
+            "u00565",
+            "u00566",
+            "u00567",
+            "u00568",
+            "u00569",
+            "u00570",
+            "u00571",
+            "u00572",
+            "u00573",
+            "u00577",
+            "u00579",
+            "u00580",
+            "u00581",
+            "u00582",
+            "u00583",
+            "u00584",
+            "u00585",
+            "u00586",
+            "u00587"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -15,7 +15,7 @@ def test_render_canon_views_uses_accepted_checkpointed_records(tmp_path: Path):
 
     assert result == {
         "checkpoint_id": "nt-bv1kqoabievz-p01",
-        "characters": 42,
+        "characters": 59,
         "world_entities": 12,
         "character_relations": 6,
         "output": str(tmp_path.resolve()),
@@ -38,7 +38,7 @@ def test_render_canon_views_includes_reviewed_p02_knowledge(tmp_path: Path):
 
     assert result == {
         "checkpoint_id": "nt-bv1kqoabievz-p02",
-        "characters": 42,
+        "characters": 59,
         "world_entities": 22,
         "character_relations": 11,
         "output": str(tmp_path.resolve()),
@@ -61,7 +61,7 @@ def test_render_canon_views_includes_reviewed_p03_knowledge(tmp_path: Path):
 
     assert result == {
         "checkpoint_id": "nt-bv1kqoabievz-p03",
-        "characters": 42,
+        "characters": 59,
         "world_entities": 35,
         "character_relations": 23,
         "output": str(tmp_path.resolve()),
@@ -84,7 +84,7 @@ def test_render_canon_views_includes_reviewed_p04_knowledge(tmp_path: Path):
 
     assert result == {
         "checkpoint_id": "nt-bv1kqoabievz-p04",
-        "characters": 42,
+        "characters": 59,
         "world_entities": 42,
         "character_relations": 27,
         "output": str(tmp_path.resolve()),

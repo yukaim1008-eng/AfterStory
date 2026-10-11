@@ -1,0 +1,3098 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p08",
+  "reviewed_transcript_sha256": "840b93f0fc1e2d59c414e6f60fb0ae159bf7bb312c57f9998610696f1893a731",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p08",
+    "source_work": "异环",
+    "display_name": "番外 某传奇乐队（吗？）的第一页",
+    "sequence": 8,
+    "content_track": "side_story",
+    "game_version": "",
+    "chapter": "番外 某传奇乐队（吗？）的第一页",
+    "predecessor_id": "nt-bv1kqoabievz-p07",
+    "spoiler_scope": "番外 某传奇乐队（吗？）的第一页"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s001",
+      "start_ms": 533,
+      "end_ms": 116267,
+      "summary": "夜晚店外，哈尼娅遇到鉴定师并邀请他一起进 StarSign 看演出。",
+      "participants": [
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00015",
+        "u00016",
+        "u00017"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e001a",
+          "start_ms": 533,
+          "end_ms": 97333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅在店外认出鉴定师并打招呼，邀请他一起看今晚的演出，称由她请客。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004",
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e001b",
+          "start_ms": 97867,
+          "end_ms": 109067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师表示自己只是随意出门、没有委托，随后答应一起看演出。",
+          "transcript_refs": [
+            "u00013",
+            "u00015"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s002",
+      "start_ms": 154933,
+      "end_ms": 196000,
+      "summary": "两人进场，哈尼娅介绍这间 Livehouse 并指向吧台里的明音。",
+      "participants": [
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00023",
+        "u00024",
+        "u00025"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e002",
+          "start_ms": 154933,
+          "end_ms": 196000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅说这间 Livehouse 地方不大但颇有人气、常邀请小有名气的乐队，并指向吧台里的人说去打招呼。",
+          "transcript_refs": [
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00023",
+            "u00024",
+            "u00025"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s003",
+      "start_ms": 208800,
+      "end_ms": 334400,
+      "summary": "鉴定师与吧台的明音相识寒暄，哈尼娅介绍鉴定师身份与收容 V 级异象的经历。",
+      "participants": [
+        "haniel",
+        "esper-zero",
+        "akane-rin"
+      ],
+      "transcript_refs": [
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00045"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e003a",
+          "start_ms": 208800,
+          "end_ms": 334400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "吧台的明音招呼哈尼娅、纠正她的说法，表示请两人喝饮料，并提到今晚有两个乐队演出。",
+          "transcript_refs": [
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030",
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043",
+            "u00044",
+            "u00045"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e003b",
+          "start_ms": 243200,
+          "end_ms": 295200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅说明明音在此工作、对自己慷慨，并介绍鉴定师是伊波恩古董店的鉴定师、此前一起收容过 V 级异象。",
+          "transcript_refs": [
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s004",
+      "start_ms": 334667,
+      "end_ms": 431467,
+      "summary": "演出进行，哈尼娅热情点单与应援致嗓子沙哑，明音递水照看她。",
+      "participants": [
+        "haniel",
+        "esper-zero",
+        "akane-rin"
+      ],
+      "transcript_refs": [
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00053",
+        "u00054",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e004a",
+          "start_ms": 334667,
+          "end_ms": 412800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅点了一杯又一杯饮料，跟着演出起哄应援，结束后嗓子沙哑。",
+          "transcript_refs": [
+            "u00046",
+            "u00047",
+            "u00048",
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00053",
+            "u00054",
+            "u00055"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e004b",
+          "start_ms": 370933,
+          "end_ms": 420267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音收走哈尼娅的饮料并递水，说她研究过 call 表、别用力过猛，并说自己被她拖得晚收工。",
+          "transcript_refs": [
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00053",
+            "u00054",
+            "u00055",
+            "u00056"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s005",
+      "start_ms": 432000,
+      "end_ms": 499733,
+      "summary": "店长清泽现身并为哈尼娅及朋友免单；打烊前哈尼娅主动留下帮忙收拾。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "qingze",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00065",
+        "u00066",
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00072",
+        "u00073"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e005a",
+          "start_ms": 432000,
+          "end_ms": 456533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "qingze"
+          ],
+          "speaker_character_id": "",
+          "observation": "自称店长的清泽称赞哈尼娅今晚气氛带得给劲，宣布给哈尼娅及朋友免单。",
+          "transcript_refs": [
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e005b",
+          "start_ms": 456800,
+          "end_ms": 499733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅与明音回应清泽；明音说该打烊了让客人先走，哈尼娅主动提出留下帮忙收拾。",
+          "transcript_refs": [
+            "u00063",
+            "u00065",
+            "u00066",
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00072",
+            "u00073"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s006",
+      "start_ms": 517333,
+      "end_ms": 600533,
+      "summary": "哈尼娅被发现擅自在舞台上弹奏；清泽鼓励哈尼娅与鉴定师上舞台试弹。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "qingze",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00089"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e006a",
+          "start_ms": 517333,
+          "end_ms": 544533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音叫住哈尼娅；哈尼娅为一时抑制不住对舞台的好奇道歉；清泽表示对乐器和舞台好奇很正常。",
+          "transcript_refs": [
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077",
+            "u00078"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e006b",
+          "start_ms": 578933,
+          "end_ms": 600533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "qingze",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "清泽邀请哈尼娅上舞台弹奏试试，随后也邀请鉴定师一起来试。",
+          "transcript_refs": [
+            "u00085",
+            "u00086",
+            "u00087",
+            "u00088",
+            "u00089"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s007",
+      "start_ms": 724800,
+      "end_ms": 805867,
+      "summary": "弹奏后众人交流；清泽邀她们营业前来练琴，并约定次日再来。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "qingze",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00091",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e007a",
+          "start_ms": 724800,
+          "end_ms": 750133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅说在舞台上演奏感觉很不一样、自称以前自学过一点吉他；明音指出她弹的是生日歌。",
+          "transcript_refs": [
+            "u00091",
+            "u00092",
+            "u00093",
+            "u00094",
+            "u00095"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e007b",
+          "start_ms": 756800,
+          "end_ms": 804800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "qingze",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "清泽说她们营业前随时可以来玩或练习，并与哈尼娅约定明天下午再来。",
+          "transcript_refs": [
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107",
+            "u00108"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s008",
+      "start_ms": 810933,
+      "end_ms": 897867,
+      "summary": "临别时明音给哈尼娅润喉糖叮嘱路上安全；哈尼娅提议吃拉面并发现明音已离开。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00118",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00125"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e008",
+          "start_ms": 810933,
+          "end_ms": 870933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音给哈尼娅润喉糖、叮嘱两人路上注意安全；哈尼娅提议去吃拉面，发现明音已经离开。",
+          "transcript_refs": [
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00115",
+            "u00116",
+            "u00117",
+            "u00118",
+            "u00120",
+            "u00121"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s009",
+      "start_ms": 955200,
+      "end_ms": 972000,
+      "summary": "街上遇到票贩兜售演出票，鉴定师回绝。",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00126",
+        "u00128",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e009",
+          "start_ms": 955200,
+          "end_ms": 972000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人以 350 方斯一张兜售演出票，鉴定师认为倒卖可耻而回绝，双方争执。",
+          "transcript_refs": [
+            "u00126",
+            "u00128",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s010",
+      "start_ms": 986933,
+      "end_ms": 1078133,
+      "summary": "次日下午鉴定师到 StarSign，明音犯困开门；哈尼娅随后到店，开始第一次正式练习。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00144",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e010a",
+          "start_ms": 990400,
+          "end_ms": 1068000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音睡眼惺忪地招呼并询问哈尼娅；哈尼娅随后到店，明音催她抓紧练习、练完就回去。",
+          "transcript_refs": [
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00144",
+            "u00145",
+            "u00146",
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e010b",
+          "start_ms": 1070933,
+          "end_ms": 1078133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅让明音笑一个，说是纪念第一次正式练习。",
+          "transcript_refs": [
+            "u00153",
+            "u00154"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s011",
+      "start_ms": 1150400,
+      "end_ms": 1251467,
+      "summary": "练习后哈尼娅询问进步情况；明音吐槽她的演奏并催她们离开。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e011a",
+          "start_ms": 1150400,
+          "end_ms": 1205333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅询问进步情况；明音说自己刚才在摘耳机，又戏称听她弹琴像「弹棉花」，并承认她有一点进步。",
+          "transcript_refs": [
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e011b",
+          "start_ms": 1205600,
+          "end_ms": 1249600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说要准备营业让她们先回；哈尼娅想留下帮忙，被明音逼着改口说练习完就回去。",
+          "transcript_refs": [
+            "u00165",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s012",
+      "start_ms": 1263467,
+      "end_ms": 1265867,
+      "summary": "娜娜莉以家族首领身份与早雾交谈柯林斯家族的事。",
+      "participants": [
+        "nanally",
+        "sakiri"
+      ],
+      "transcript_refs": [
+        "u00174",
+        "u00175"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e012",
+          "start_ms": 1263467,
+          "end_ms": 1265867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "sakiri"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉自称一代目，对早雾说若有人拿消息威胁她要及时告知；早雾回应不必担心。",
+          "transcript_refs": [
+            "u00174",
+            "u00175"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s013",
+      "start_ms": 1296000,
+      "end_ms": 1393600,
+      "summary": "娜娜莉称鉴定师在店里练习演奏，宣布柯林斯家族进军音乐领域，并决定明天来视察练习。",
+      "participants": [
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00176",
+        "u00177",
+        "u00178",
+        "u00179",
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e013a",
+          "start_ms": 1296000,
+          "end_ms": 1356800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉说鉴定师在店里练习演奏，宣布柯林斯家族将进军音乐领域，并自称是体内深藏「吉他之魂」的选手。",
+          "transcript_refs": [
+            "u00176",
+            "u00177",
+            "u00178",
+            "u00179",
+            "u00180",
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e013b",
+          "start_ms": 1364267,
+          "end_ms": 1387200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉询问明天是否继续练习，表示明天要去现场视察。",
+          "transcript_refs": [
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s014",
+      "start_ms": 1437867,
+      "end_ms": 1458400,
+      "summary": "娜娜莉展示新买的墨镜，称这样看起来很摇滚。",
+      "participants": [
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e014",
+          "start_ms": 1440533,
+          "end_ms": 1456267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉展示新买的墨镜，说这样看起来很摇滚，并称成功后要给众人也各配一副。",
+          "transcript_refs": [
+            "u00194",
+            "u00195"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s015",
+      "start_ms": 1482667,
+      "end_ms": 1607200,
+      "summary": "次日娜娜莉到 StarSign，自称吉他高手却挑错乐器、弹出怪声。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00205",
+        "u00206",
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00223",
+        "u00224"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e015a",
+          "start_ms": 1482667,
+          "end_ms": 1536533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "akane-rin",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅惊讶娜娜莉到店；明音说鉴定师昨晚问过能否带朋友；娜娜莉自报「音浪猛虎」并称吉他之魂苏醒。",
+          "transcript_refs": [
+            "u00197",
+            "u00198",
+            "u00199",
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00205",
+            "u00206",
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00210"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e015b",
+          "start_ms": 1560800,
+          "end_ms": 1602667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉挑了件乐器试弹却发出怪声，明音指出那不是吉他；鉴定师向明音道歉。",
+          "transcript_refs": [
+            "u00217",
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00223"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s016",
+      "start_ms": 1607733,
+      "end_ms": 1772533,
+      "summary": "明音解释贝斯；娜娜莉鼓动哈尼娅组乐队、奔向更高的舞台，哈尼娅被说动。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00225",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00231",
+        "u00232",
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00236",
+        "u00237",
+        "u00238",
+        "u00239",
+        "u00240",
+        "u00243",
+        "u00244",
+        "u00245",
+        "u00246",
+        "u00247",
+        "u00248",
+        "u00249",
+        "u00250",
+        "u00251",
+        "u00252",
+        "u00253",
+        "u00254"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e016a",
+          "start_ms": 1626400,
+          "end_ms": 1638400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音解释那是贝斯，说明贝斯是承载其他乐器的重要角色、相当于乐队的灵魂。",
+          "transcript_refs": [
+            "u00229"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e016b",
+          "start_ms": 1670400,
+          "end_ms": 1759467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉鼓动哈尼娅正视想站的舞台，提出两人组成乐队、背后需要家族或乐队支撑，哈尼娅被说动决定立刻练习。",
+          "transcript_refs": [
+            "u00234",
+            "u00235",
+            "u00236",
+            "u00237",
+            "u00238",
+            "u00239",
+            "u00240",
+            "u00243",
+            "u00244",
+            "u00245",
+            "u00246",
+            "u00247",
+            "u00248",
+            "u00249",
+            "u00250",
+            "u00251"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s017",
+      "start_ms": 1888800,
+      "end_ms": 2024800,
+      "summary": "清泽再次到店与娜娜莉相识；明音说明墙上海报预示「月亮狗之夜」临近并介绍该异象。",
+      "participants": [
+        "qingze",
+        "akane-rin",
+        "nanally",
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00256",
+        "u00257",
+        "u00258",
+        "u00259",
+        "u00260",
+        "u00261",
+        "u00262",
+        "u00263",
+        "u00264",
+        "u00266",
+        "u00267",
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00271",
+        "u00272",
+        "u00273",
+        "u00274",
+        "u00275",
+        "u00276"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e017a",
+          "start_ms": 1888800,
+          "end_ms": 1951733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "qingze",
+            "akane-rin",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "清泽与娜娜莉互相介绍；明音说墙上冒出的海报预示下一届「月亮狗之夜」临近，并说它不是演唱会而是会不定期出现的地点异象。",
+          "transcript_refs": [
+            "u00256",
+            "u00257",
+            "u00258",
+            "u00259",
+            "u00260",
+            "u00261",
+            "u00262",
+            "u00263",
+            "u00264",
+            "u00266",
+            "u00267"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e017b",
+          "start_ms": 1959733,
+          "end_ms": 2020800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说这些海报更接近异象出现前的预兆，并说明「月亮狗之夜」会给每个参加的乐队或成员评分。",
+          "transcript_refs": [
+            "u00269",
+            "u00270",
+            "u00271",
+            "u00272",
+            "u00273",
+            "u00274",
+            "u00275"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s018",
+      "start_ms": 2025333,
+      "end_ms": 2161067,
+      "summary": "「月亮狗之夜」介绍继续；娜娜莉与哈尼娅立志成为海特洛最强，明音与清泽作出反应。",
+      "participants": [
+        "qingze",
+        "akane-rin",
+        "nanally",
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280",
+        "u00281",
+        "u00282",
+        "u00283",
+        "u00284",
+        "u00285",
+        "u00286",
+        "u00287",
+        "u00289",
+        "u00290",
+        "u00291",
+        "u00292",
+        "u00293",
+        "u00294",
+        "u00295",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00299",
+        "u00300"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e018a",
+          "start_ms": 2039733,
+          "end_ms": 2148267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉和哈尼娅争相去撕海报被明音制止；两人立志要成为海特洛最强的贝斯手与吉他手。",
+          "transcript_refs": [
+            "u00278",
+            "u00279",
+            "u00280",
+            "u00281",
+            "u00282",
+            "u00283",
+            "u00284",
+            "u00285",
+            "u00286",
+            "u00287",
+            "u00289",
+            "u00290",
+            "u00291",
+            "u00292",
+            "u00293",
+            "u00294",
+            "u00295"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e018b",
+          "start_ms": 2106667,
+          "end_ms": 2161067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "qingze",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "清泽说以她们现有的演奏水平还远远不够、需加倍努力；明音劝她不要再怂恿，并被两人的口号弄得无奈。",
+          "transcript_refs": [
+            "u00290",
+            "u00291",
+            "u00292",
+            "u00293",
+            "u00294",
+            "u00295",
+            "u00296",
+            "u00297",
+            "u00298",
+            "u00299",
+            "u00300"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s019",
+      "start_ms": 2161600,
+      "end_ms": 2224533,
+      "summary": "清泽录下她们的演奏一起回看；众人互相称赞。",
+      "participants": [
+        "qingze",
+        "akane-rin",
+        "nanally",
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00301",
+        "u00302",
+        "u00303",
+        "u00304",
+        "u00305",
+        "u00306",
+        "u00307",
+        "u00308"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e019",
+          "start_ms": 2161600,
+          "end_ms": 2197067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "qingze",
+            "nanally",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "清泽录下了她们的演奏、提议一起回看找问题；娜娜莉和哈尼娅互相称赞，认为照这样下去会赢。",
+          "transcript_refs": [
+            "u00301",
+            "u00302",
+            "u00303",
+            "u00304",
+            "u00305"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s020",
+      "start_ms": 2225067,
+      "end_ms": 2420000,
+      "summary": "清泽邀请她们为店内演出做暖场；明音讲练习心得并指出节奏毛病与鼓手职责。",
+      "participants": [
+        "qingze",
+        "akane-rin",
+        "nanally",
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00309",
+        "u00311",
+        "u00312",
+        "u00313",
+        "u00314",
+        "u00315",
+        "u00316",
+        "u00317",
+        "u00318",
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00325",
+        "u00326",
+        "u00327",
+        "u00328",
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00332",
+        "u00333",
+        "u00334",
+        "u00335"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e020a",
+          "start_ms": 2225067,
+          "end_ms": 2256267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "qingze",
+            "nanally",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "清泽说店里过两天的演出缺暖场表演，邀请她们登台；哈尼娅和娜娜莉答应下来。",
+          "transcript_refs": [
+            "u00309",
+            "u00311",
+            "u00312",
+            "u00313",
+            "u00314",
+            "u00315"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e020b",
+          "start_ms": 2300267,
+          "end_ms": 2418133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说音乐没有捷径、要练到像抬手臂一样自然，并指出哈尼娅和娜娜莉一起演奏会不自觉加快节奏，提醒鼓手要引导好节奏。",
+          "transcript_refs": [
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00325",
+            "u00326",
+            "u00327",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331",
+            "u00332",
+            "u00333",
+            "u00334"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s021",
+      "start_ms": 2423733,
+      "end_ms": 2504267,
+      "summary": "明音说明店里演出需自行卖票的规矩，清泽定下十张。",
+      "participants": [
+        "qingze",
+        "akane-rin",
+        "nanally",
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00336",
+        "u00337",
+        "u00338",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00344",
+        "u00346"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e021",
+          "start_ms": 2429067,
+          "end_ms": 2488800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "qingze",
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说每个在店里演出的乐队都要自己卖掉一部分票，清泽定下十张、卖不掉可退回；哈尼娅与娜娜莉各自盘算找熟人消化。",
+          "transcript_refs": [
+            "u00337",
+            "u00338",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00342",
+            "u00343",
+            "u00344"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s022",
+      "start_ms": 2538933,
+      "end_ms": 2733600,
+      "summary": "哈尼娅主张不把票卖给店里人、把正式演出留到「月亮狗之夜」，众人约定保密并分头去卖票。",
+      "participants": [
+        "nanally",
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00348",
+        "u00349",
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00353",
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00357",
+        "u00358",
+        "u00359",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363",
+        "u00364",
+        "u00365",
+        "u00366",
+        "u00367",
+        "u00368",
+        "u00369",
+        "u00370",
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374",
+        "u00375",
+        "u00376",
+        "u00377",
+        "u00378",
+        "u00379",
+        "u00380",
+        "u00381"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e022a",
+          "start_ms": 2550667,
+          "end_ms": 2652533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅主张不能把票卖给店里人，要把正式演出留到「月亮狗之夜」一鸣惊人，众人约定对店里保密。",
+          "transcript_refs": [
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00353",
+            "u00354",
+            "u00355",
+            "u00356",
+            "u00357",
+            "u00358",
+            "u00359",
+            "u00360",
+            "u00361",
+            "u00362",
+            "u00363",
+            "u00364",
+            "u00365",
+            "u00366",
+            "u00367"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e022b",
+          "start_ms": 2704000,
+          "end_ms": 2733600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅提出分头去年轻人多的街区卖票，三人分别前往不同地点。",
+          "transcript_refs": [
+            "u00376",
+            "u00377",
+            "u00378",
+            "u00379",
+            "u00380",
+            "u00381"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s023",
+      "start_ms": 2756000,
+      "end_ms": 2809333,
+      "summary": "鉴定师向两名年轻路人推销演出票，其中一人买下一张。",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00382",
+        "u00383",
+        "u00384",
+        "u00385",
+        "u00386",
+        "u00388",
+        "u00389",
+        "u00390",
+        "u00391",
+        "u00393",
+        "u00394",
+        "u00395"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e023",
+          "start_ms": 2756000,
+          "end_ms": 2809333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "两名路人正在聊之前看过的 Livehouse 演出，鉴定师上前推销，一人买下一张票、另一人婉拒。",
+          "transcript_refs": [
+            "u00382",
+            "u00383",
+            "u00384",
+            "u00385",
+            "u00386",
+            "u00388",
+            "u00389",
+            "u00390",
+            "u00391",
+            "u00393",
+            "u00394",
+            "u00395"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s024",
+      "start_ms": 2840800,
+      "end_ms": 2864000,
+      "summary": "鉴定师遇到为西汀巡演苦恼的乐手，决定不去打扰。",
+      "participants": [
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00396",
+        "u00397",
+        "u00398",
+        "u00399",
+        "u00400"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e024",
+          "start_ms": 2840800,
+          "end_ms": 2864000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "一名乐手因刚买下吉他就遇上西汀宣布巡回演唱会而懊恼；鉴定师决定不去打扰他。",
+          "transcript_refs": [
+            "u00396",
+            "u00397",
+            "u00398",
+            "u00399",
+            "u00400"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s025",
+      "start_ms": 2866400,
+      "end_ms": 2926933,
+      "summary": "海月主动询问并买下一张演出票，提及自己与这个舞台的过去。",
+      "participants": [
+        "esper-zero",
+        "mitsuki"
+      ],
+      "transcript_refs": [
+        "u00401",
+        "u00402",
+        "u00403",
+        "u00404",
+        "u00405",
+        "u00406",
+        "u00407",
+        "u00408",
+        "u00409",
+        "u00410",
+        "u00411",
+        "u00412",
+        "u00413"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e025a",
+          "start_ms": 2866400,
+          "end_ms": 2919733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mitsuki"
+          ],
+          "speaker_character_id": "",
+          "observation": "海月主动询问鉴定师是否遇到麻烦，得知在卖 StarSign 的票后买下一张，并说自己很久没去过、第一次演出也在那个舞台。",
+          "transcript_refs": [
+            "u00401",
+            "u00402",
+            "u00403",
+            "u00404",
+            "u00405",
+            "u00406",
+            "u00407",
+            "u00408",
+            "u00409",
+            "u00410",
+            "u00411"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e025b",
+          "start_ms": 2920267,
+          "end_ms": 2926933,
+          "evidence_kind": "visual",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "末尾画面出现「阿德勒」「埃德嘉」字样。",
+          "transcript_refs": [
+            "u00412",
+            "u00413"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s026",
+      "start_ms": 2983467,
+      "end_ms": 3159200,
+      "summary": "演出当天三人到 StarSign；明音宣布她们是第一组暖场演出并安抚紧张的两人。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00415",
+        "u00417",
+        "u00418",
+        "u00419",
+        "u00420",
+        "u00421",
+        "u00422",
+        "u00424",
+        "u00425",
+        "u00430",
+        "u00431",
+        "u00432",
+        "u00433",
+        "u00434",
+        "u00435"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e026a",
+          "start_ms": 2983467,
+          "end_ms": 3124800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "akane-rin",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "演出当天三人到店；明音说她们来得很早、形容像门口蹲着小鸟小猫，并宣布她们是第一组登台的暖场演出、期间会有观众陆续进场。",
+          "transcript_refs": [
+            "u00415",
+            "u00417",
+            "u00418",
+            "u00419",
+            "u00420",
+            "u00421",
+            "u00422",
+            "u00424",
+            "u00425"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e026b",
+          "start_ms": 3134400,
+          "end_ms": 3153600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说第一次面对观众会紧张，让她们相信自己这段时间的努力；哈尼娅道谢。",
+          "transcript_refs": [
+            "u00432",
+            "u00433",
+            "u00434"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s027",
+      "start_ms": 3240000,
+      "end_ms": 3265600,
+      "summary": "暖场演出进行时，画面出现与舞台相关的字样。",
+      "participants": [],
+      "transcript_refs": [
+        "u00439",
+        "u00440"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e027",
+          "start_ms": 3240000,
+          "end_ms": 3265600,
+          "evidence_kind": "visual",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "暖场演出进行时，画面出现与舞台相关的字样。",
+          "transcript_refs": [
+            "u00439",
+            "u00440"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s028",
+      "start_ms": 3277600,
+      "end_ms": 3501867,
+      "summary": "暖场演出后众人交流感受；明音评价并提醒「月亮狗之夜」更难，随后约定散场后聚餐。",
+      "participants": [
+        "haniel",
+        "akane-rin",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00441",
+        "u00442",
+        "u00443",
+        "u00444",
+        "u00445",
+        "u00446",
+        "u00447",
+        "u00448",
+        "u00449",
+        "u00450",
+        "u00452",
+        "u00453",
+        "u00454",
+        "u00455",
+        "u00456",
+        "u00457",
+        "u00458",
+        "u00459",
+        "u00460",
+        "u00461",
+        "u00462",
+        "u00463",
+        "u00464",
+        "u00465",
+        "u00466",
+        "u00467",
+        "u00468",
+        "u00469",
+        "u00470"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e028a",
+          "start_ms": 3277600,
+          "end_ms": 3324000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "下台后哈尼娅和娜娜莉说自己紧张到大脑空白；明音说第一次演出有小状况很正常，之后发挥回归练习时的稳定，完成了暖场任务。",
+          "transcript_refs": [
+            "u00441",
+            "u00442",
+            "u00443",
+            "u00444",
+            "u00445",
+            "u00446"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e028b",
+          "start_ms": 3363733,
+          "end_ms": 3501867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "nanally",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音提醒「月亮狗之夜」观众更多、要求更高，让她们有心理准备；娜娜莉和哈尼娅则畅想未来被写成传奇，明音随后让大家收拾出去继续看演出。",
+          "transcript_refs": [
+            "u00454",
+            "u00455",
+            "u00456",
+            "u00457",
+            "u00458",
+            "u00459",
+            "u00460",
+            "u00461",
+            "u00462",
+            "u00463",
+            "u00464",
+            "u00465",
+            "u00466",
+            "u00467",
+            "u00468",
+            "u00469",
+            "u00470"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s029",
+      "start_ms": 3514400,
+      "end_ms": 3621333,
+      "summary": "散场后众人议论演出、哈尼娅点餐；鉴定师离席向买票的观众海月道谢。",
+      "participants": [
+        "haniel",
+        "nanally",
+        "esper-zero",
+        "mitsuki"
+      ],
+      "transcript_refs": [
+        "u00471",
+        "u00472",
+        "u00473",
+        "u00474",
+        "u00475",
+        "u00476",
+        "u00477",
+        "u00478",
+        "u00479",
+        "u00480",
+        "u00481",
+        "u00482",
+        "u00483",
+        "u00484",
+        "u00485",
+        "u00486",
+        "u00487",
+        "u00489",
+        "u00490",
+        "u00491",
+        "u00492",
+        "u00494",
+        "u00495",
+        "u00496"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e029a",
+          "start_ms": 3514400,
+          "end_ms": 3563733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "散场后众人议论后续演出；哈尼娅说要补充能量点三份汉堡排，鉴定师离席去见买票的观众。",
+          "transcript_refs": [
+            "u00471",
+            "u00472",
+            "u00473",
+            "u00474",
+            "u00475",
+            "u00476",
+            "u00477",
+            "u00478",
+            "u00479",
+            "u00480",
+            "u00481"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e029b",
+          "start_ms": 3573067,
+          "end_ms": 3612533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mitsuki"
+          ],
+          "speaker_character_id": "",
+          "observation": "海月在店外说自己听得很清楚，评价她们前面的小失误后面调整及时，并询问在舞台上演出的感觉、表示以后还会支持。",
+          "transcript_refs": [
+            "u00483",
+            "u00484",
+            "u00485",
+            "u00486",
+            "u00487",
+            "u00489",
+            "u00490",
+            "u00491",
+            "u00492"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s030",
+      "start_ms": 3626933,
+      "end_ms": 3644533,
+      "summary": "清泽问明音「平行线」解散后再登台的打算，明音说没什么打算。",
+      "participants": [
+        "qingze",
+        "akane-rin"
+      ],
+      "transcript_refs": [
+        "u00497",
+        "u00498",
+        "u00499"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e030",
+          "start_ms": 3626933,
+          "end_ms": 3644533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "qingze",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "清泽问明音「平行线」解散之后第一次再踏上舞台的打算，明音回答没什么打算。",
+          "transcript_refs": [
+            "u00497",
+            "u00498",
+            "u00499"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s031",
+      "start_ms": 3671467,
+      "end_ms": 3753600,
+      "summary": "聚餐时哈尼娅请客并提起观众评价，众人商量为「月亮狗之夜」挑新曲与时间。",
+      "participants": [
+        "haniel",
+        "nanally",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00500",
+        "u00501",
+        "u00502",
+        "u00503",
+        "u00504",
+        "u00505",
+        "u00506",
+        "u00508",
+        "u00509",
+        "u00510",
+        "u00511",
+        "u00512",
+        "u00513",
+        "u00514",
+        "u00515",
+        "u00516",
+        "u00517",
+        "u00518",
+        "u00520",
+        "u00521"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e031a",
+          "start_ms": 3671467,
+          "end_ms": 3720000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅说发工资了这顿由她请，转述买票观众的评价，并提议为「月亮狗之夜」挑一首新曲子。",
+          "transcript_refs": [
+            "u00500",
+            "u00501",
+            "u00502",
+            "u00503",
+            "u00504",
+            "u00505",
+            "u00506",
+            "u00508",
+            "u00509",
+            "u00510",
+            "u00511",
+            "u00512"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e031b",
+          "start_ms": 3723200,
+          "end_ms": 3753600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音提醒不要选超出能力范围的曲子；众人问到下次「月亮狗之夜」的时间，明音说海报还没变化、应还有练习时间。",
+          "transcript_refs": [
+            "u00515",
+            "u00516",
+            "u00517",
+            "u00518",
+            "u00520",
+            "u00521"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s032",
+      "start_ms": 3753867,
+      "end_ms": 3921600,
+      "summary": "众人为乐队起名「猫头音」；明音否认加入并先离席。",
+      "participants": [
+        "haniel",
+        "nanally",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00522",
+        "u00523",
+        "u00524",
+        "u00525",
+        "u00526",
+        "u00528",
+        "u00529",
+        "u00530",
+        "u00531",
+        "u00532",
+        "u00533",
+        "u00534",
+        "u00535",
+        "u00536",
+        "u00537",
+        "u00538",
+        "u00539",
+        "u00540",
+        "u00541",
+        "u00542",
+        "u00543",
+        "u00544",
+        "u00545",
+        "u00546",
+        "u00547",
+        "u00548",
+        "u00549",
+        "u00550",
+        "u00551",
+        "u00552",
+        "u00553",
+        "u00554",
+        "u00555",
+        "u00556"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e032a",
+          "start_ms": 3762667,
+          "end_ms": 3835200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉提出先给乐队起名，宣布乐队名为「猫头音」，并说四个叹号代表乐队四个人。",
+          "transcript_refs": [
+            "u00524",
+            "u00525",
+            "u00526",
+            "u00528",
+            "u00529",
+            "u00530",
+            "u00531",
+            "u00532",
+            "u00533",
+            "u00534",
+            "u00535",
+            "u00536"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e032b",
+          "start_ms": 3835733,
+          "end_ms": 3911200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音指出自己没答应加入乐队、只是被拉进群组，随后说自己先走并告别。",
+          "transcript_refs": [
+            "u00537",
+            "u00538",
+            "u00539",
+            "u00540",
+            "u00541",
+            "u00542",
+            "u00543",
+            "u00544",
+            "u00545",
+            "u00546",
+            "u00547",
+            "u00548",
+            "u00549",
+            "u00550",
+            "u00551",
+            "u00552",
+            "u00553"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s033",
+      "start_ms": 3954933,
+      "end_ms": 4011200,
+      "summary": "娜娜莉与哈尼娅继续劝明音加入乐队；海报变化预示「月亮狗之夜」临近。",
+      "participants": [
+        "nanally",
+        "haniel",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00558",
+        "u00559",
+        "u00560",
+        "u00561",
+        "u00562",
+        "u00563",
+        "u00564",
+        "u00565",
+        "u00566",
+        "u00567",
+        "u00568",
+        "u00569"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e033",
+          "start_ms": 3954933,
+          "end_ms": 4011200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "haniel",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉和哈尼娅继续劝明音加入乐队；有人指出「月亮狗之夜」的海报已经变化，哈尼娅与娜娜莉确认演出临近。",
+          "transcript_refs": [
+            "u00558",
+            "u00559",
+            "u00560",
+            "u00561",
+            "u00562",
+            "u00563",
+            "u00564",
+            "u00565",
+            "u00566",
+            "u00567",
+            "u00568",
+            "u00569"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s034",
+      "start_ms": 4011733,
+      "end_ms": 4084800,
+      "summary": "明音讲解「月亮狗之夜」的异象特性与评分规则。",
+      "participants": [
+        "nanally",
+        "haniel",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00570",
+        "u00571",
+        "u00572",
+        "u00573",
+        "u00574",
+        "u00575",
+        "u00576",
+        "u00577",
+        "u00578",
+        "u00579"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e034",
+          "start_ms": 4042400,
+          "end_ms": 4084800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说「月亮狗之夜」是地点异象、本体是那个舞台，报幕和打分举牌的是城市里普通的小狗；每组演出后评分，直到第一个满分出现便谢幕泯除。",
+          "transcript_refs": [
+            "u00574",
+            "u00575",
+            "u00576",
+            "u00577",
+            "u00578",
+            "u00579"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s035",
+      "start_ms": 4085333,
+      "end_ms": 4214400,
+      "summary": "明音说明满分与「共鸣」的关系，劝她们不必钻牛角尖。",
+      "participants": [
+        "nanally",
+        "haniel",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00580",
+        "u00581",
+        "u00582",
+        "u00583",
+        "u00584",
+        "u00585",
+        "u00587",
+        "u00588",
+        "u00589",
+        "u00590",
+        "u00591",
+        "u00592",
+        "u00593",
+        "u00594",
+        "u00595"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e035",
+          "start_ms": 4133600,
+          "end_ms": 4214400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说历届满分组合普遍在演出中与异象产生过「共鸣」，共鸣没有规律可循，劝她们不必为此钻牛角尖。",
+          "transcript_refs": [
+            "u00585",
+            "u00587",
+            "u00588",
+            "u00589",
+            "u00590",
+            "u00591",
+            "u00592",
+            "u00593",
+            "u00594",
+            "u00595"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s036",
+      "start_ms": 4214667,
+      "end_ms": 4331467,
+      "summary": "娜娜莉提议拿异象做实验，明音厉声制止，气氛僵住后众人散去。",
+      "participants": [
+        "nanally",
+        "haniel",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00596",
+        "u00597",
+        "u00598",
+        "u00599",
+        "u00600",
+        "u00601",
+        "u00602",
+        "u00603",
+        "u00604",
+        "u00605",
+        "u00606",
+        "u00607",
+        "u00608",
+        "u00609",
+        "u00611",
+        "u00612",
+        "u00615"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e036a",
+          "start_ms": 4214667,
+          "end_ms": 4236267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉提议去找异象对着演奏来试验规律，哈尼娅附和认为可行。",
+          "transcript_refs": [
+            "u00596",
+            "u00597",
+            "u00598"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e036b",
+          "start_ms": 4236800,
+          "end_ms": 4303200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音厉声制止，质问是否把异象当成家养的小宠物、是否磨灭了异象猎人应有的警惕心；哈尼娅被吓到，众人低声离开。",
+          "transcript_refs": [
+            "u00599",
+            "u00600",
+            "u00601",
+            "u00602",
+            "u00603",
+            "u00604",
+            "u00605",
+            "u00606",
+            "u00607",
+            "u00608",
+            "u00609",
+            "u00611"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s037",
+      "start_ms": 4359733,
+      "end_ms": 4437067,
+      "summary": "次日下午鉴定师到 StarSign，明音发现店门未锁；清泽说哈尼娅两人借器材外出户外练习。",
+      "participants": [
+        "akane-rin",
+        "esper-zero",
+        "qingze"
+      ],
+      "transcript_refs": [
+        "u00616",
+        "u00617",
+        "u00618",
+        "u00619",
+        "u00620",
+        "u00621",
+        "u00622",
+        "u00623",
+        "u00624",
+        "u00625",
+        "u00626",
+        "u00627",
+        "u00628",
+        "u00629",
+        "u00630",
+        "u00631"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e037",
+          "start_ms": 4360800,
+          "end_ms": 4432267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "qingze"
+          ],
+          "speaker_character_id": "",
+          "observation": "次日下午鉴定师与明音碰面；明音发现 StarSign 的门开着。清泽已在店内，说哈尼娅和娜娜莉叫人来提前开门，又借了器材出去户外练习。",
+          "transcript_refs": [
+            "u00617",
+            "u00618",
+            "u00619",
+            "u00620",
+            "u00621",
+            "u00622",
+            "u00623",
+            "u00624",
+            "u00625",
+            "u00626",
+            "u00627",
+            "u00628",
+            "u00629",
+            "u00630"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s038",
+      "start_ms": 4437333,
+      "end_ms": 4470133,
+      "summary": "众人察觉两人跑去用异象做实验；鉴定师动身去找她们。",
+      "participants": [
+        "akane-rin",
+        "esper-zero",
+        "haniel"
+      ],
+      "transcript_refs": [
+        "u00632",
+        "u00634",
+        "u00635",
+        "u00636",
+        "u00637",
+        "u00638",
+        "u00639",
+        "u00640",
+        "u00641",
+        "u00642"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e038",
+          "start_ms": 4438667,
+          "end_ms": 4470133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音判断两人是跑去用异象做实验，打电话给哈尼娅；鉴定师说他听娜娜莉打听过某个异象，准备去找她们。",
+          "transcript_refs": [
+            "u00635",
+            "u00636",
+            "u00637",
+            "u00638",
+            "u00639",
+            "u00640",
+            "u00641",
+            "u00642"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s039",
+      "start_ms": 4558133,
+      "end_ms": 4643467,
+      "summary": "两人身上沾着颜料；明音严厉斥责她们在异象附近做危险的事。",
+      "participants": [
+        "akane-rin",
+        "haniel",
+        "nanally",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00643",
+        "u00644",
+        "u00645",
+        "u00646",
+        "u00647",
+        "u00648",
+        "u00649",
+        "u00650",
+        "u00651",
+        "u00652",
+        "u00653",
+        "u00654",
+        "u00655"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e039a",
+          "start_ms": 4558133,
+          "end_ms": 4627467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "两人身上沾着颜料、说吉他和贝斯没沾到；明音斥责她们在异象附近做危险的事，说哪怕一次失手就会受伤、再也不能演奏，两人道歉。",
+          "transcript_refs": [
+            "u00643",
+            "u00644",
+            "u00645",
+            "u00646",
+            "u00647",
+            "u00648",
+            "u00649",
+            "u00650",
+            "u00651",
+            "u00652",
+            "u00653"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e039b",
+          "start_ms": 4628000,
+          "end_ms": 4643467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音提出自己把器材拿回店里、让哈尼娅和娜娜莉先回。",
+          "transcript_refs": [
+            "u00654",
+            "u00655"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s040",
+      "start_ms": 4656267,
+      "end_ms": 4737333,
+      "summary": "明音向鉴定师坦言刚才太凶并请其安慰两人；鉴定师答应帮忙避免重演。",
+      "participants": [
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00656",
+        "u00657",
+        "u00658",
+        "u00659",
+        "u00660",
+        "u00661",
+        "u00662",
+        "u00663",
+        "u00664",
+        "u00665",
+        "u00666",
+        "u00667",
+        "u00668"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e040a",
+          "start_ms": 4656267,
+          "end_ms": 4684267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说自己刚才对哈尼娅和娜娜莉太凶，请鉴定师帮忙安慰她们，随后表示剩下的由她整理。",
+          "transcript_refs": [
+            "u00656",
+            "u00657",
+            "u00658",
+            "u00659",
+            "u00660",
+            "u00661"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e040b",
+          "start_ms": 4692533,
+          "end_ms": 4713333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "鉴定师表示会帮忙，也会尽全力避免那样的事情再次发生。",
+          "transcript_refs": [
+            "u00663",
+            "u00664",
+            "u00665"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s041",
+      "start_ms": 4775467,
+      "end_ms": 4842400,
+      "summary": "明音把设备搬到街头，为那天太激动道歉，陪两人路演练习。",
+      "participants": [
+        "nanally",
+        "qingze",
+        "akane-rin",
+        "haniel",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00670",
+        "u00671",
+        "u00672",
+        "u00673",
+        "u00674",
+        "u00675",
+        "u00676",
+        "u00677",
+        "u00678",
+        "u00679",
+        "u00680",
+        "u00681",
+        "u00682",
+        "u00683"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e041a",
+          "start_ms": 4775467,
+          "end_ms": 4786667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "qingze"
+          ],
+          "speaker_character_id": "",
+          "observation": "娜娜莉问是不是把店搬来了；清泽说是明音再三请求她把设备拉过来的。",
+          "transcript_refs": [
+            "u00670",
+            "u00671"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e041b",
+          "start_ms": 4787200,
+          "end_ms": 4811467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说自己重新考虑过，街边路演确实能让人更快进步，并为那天太激动道歉；哈尼娅哭着道歉。",
+          "transcript_refs": [
+            "u00672",
+            "u00673",
+            "u00674",
+            "u00675",
+            "u00676",
+            "u00677"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s042",
+      "start_ms": 4853333,
+      "end_ms": 4979467,
+      "summary": "街头路演后众人喊累；清泽称赞并请明音作为吉他主唱再登台。",
+      "participants": [
+        "nanally",
+        "haniel",
+        "akane-rin",
+        "qingze",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00684",
+        "u00685",
+        "u00686",
+        "u00687",
+        "u00688",
+        "u00689",
+        "u00690",
+        "u00691",
+        "u00692",
+        "u00693",
+        "u00694",
+        "u00695",
+        "u00696",
+        "u00697",
+        "u00698",
+        "u00699",
+        "u00700",
+        "u00701"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e042a",
+          "start_ms": 4853333,
+          "end_ms": 4879733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "nanally",
+            "haniel",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "路演后众人喊累；哈尼娅说明音还是忍不住加入进来，明音说自己一时兴起后回过神来就脱不了身。",
+          "transcript_refs": [
+            "u00684",
+            "u00685",
+            "u00686",
+            "u00687",
+            "u00688"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e042b",
+          "start_ms": 4887733,
+          "end_ms": 4958933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "qingze",
+            "haniel",
+            "nanally",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "清泽称赞今天表演的效果，并请明音为「平行线」老粉丝所期待的吉他主唱再登台一次。",
+          "transcript_refs": [
+            "u00690",
+            "u00691",
+            "u00692",
+            "u00693",
+            "u00694",
+            "u00695",
+            "u00696",
+            "u00697",
+            "u00698"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s043",
+      "start_ms": 4997333,
+      "end_ms": 5111467,
+      "summary": "众人前往第 99 次「月亮狗之夜」，以「猫头音」名义出发进场。",
+      "participants": [
+        "haniel",
+        "nanally",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00702",
+        "u00704",
+        "u00705",
+        "u00706",
+        "u00707",
+        "u00708",
+        "u00709",
+        "u00710",
+        "u00711",
+        "u00712",
+        "u00713",
+        "u00714"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e043",
+          "start_ms": 4997333,
+          "end_ms": 5111467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "哈尼娅感叹「月亮狗之夜」的舞台；娜娜莉催鉴定师动身、不要让塔吉多发现，两人以 StarSign 代表队「猫头音」的名义出发。",
+          "transcript_refs": [
+            "u00702",
+            "u00704",
+            "u00705",
+            "u00706",
+            "u00707",
+            "u00708",
+            "u00709",
+            "u00710",
+            "u00711",
+            "u00712",
+            "u00713",
+            "u00714"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s044",
+      "start_ms": 5126133,
+      "end_ms": 5215200,
+      "summary": "众人进入「月亮狗之夜」休息室做准备；明音确认手指的知觉。",
+      "participants": [
+        "haniel",
+        "nanally",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00715",
+        "u00716",
+        "u00717",
+        "u00719",
+        "u00720",
+        "u00721",
+        "u00722",
+        "u00723",
+        "u00724",
+        "u00725",
+        "u00726",
+        "u00727",
+        "u00728",
+        "u00729",
+        "u00730",
+        "u00731",
+        "u00732",
+        "u00733"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e044a",
+          "start_ms": 5138400,
+          "end_ms": 5152267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人进入「月亮狗之夜」的休息室，哈尼娅拍照，娜娜莉提议再做一次脑内练习。",
+          "transcript_refs": [
+            "u00716",
+            "u00717",
+            "u00719",
+            "u00720",
+            "u00721"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e044b",
+          "start_ms": 5163733,
+          "end_ms": 5193067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音说自己只是在确认手指的知觉，形容手感像伸手就能摸到月亮一样。",
+          "transcript_refs": [
+            "u00723",
+            "u00724",
+            "u00725",
+            "u00726",
+            "u00727",
+            "u00728",
+            "u00729",
+            "u00730"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s045",
+      "start_ms": 5388533,
+      "end_ms": 5445333,
+      "summary": "演出后海月与明音交谈，提起解散那天在下一个舞台等她的约定。",
+      "participants": [
+        "mitsuki",
+        "akane-rin"
+      ],
+      "transcript_refs": [
+        "u00734",
+        "u00735",
+        "u00736",
+        "u00737",
+        "u00738",
+        "u00739",
+        "u00740",
+        "u00741"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e045",
+          "start_ms": 5388533,
+          "end_ms": 5445333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mitsuki",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "海月说每次都会来现场看明音登台，并提起解散那天说过「我一定会在下一个舞台等着你」；明音让海月下次直接来店里。",
+          "transcript_refs": [
+            "u00734",
+            "u00735",
+            "u00736",
+            "u00737",
+            "u00738",
+            "u00739",
+            "u00740",
+            "u00741"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s046",
+      "start_ms": 5447467,
+      "end_ms": 5478667,
+      "summary": "「月亮狗」的旁白讲述触及月亮的机会与微小的星光。",
+      "participants": [],
+      "transcript_refs": [
+        "u00742",
+        "u00743",
+        "u00744",
+        "u00745"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e046",
+          "start_ms": 5447467,
+          "end_ms": 5478667,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "「月亮狗」的旁白说触及月亮的机会每轮只有一次，并说为此簇拥而来的不可胜数的微小星光之集合或许比唯一的月亮更闪耀、散落后也不会消失。",
+          "transcript_refs": [
+            "u00742",
+            "u00743",
+            "u00744",
+            "u00745"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p08-s047",
+      "start_ms": 5497867,
+      "end_ms": 5669867,
+      "summary": "庆功：猫头音首次参加「月亮狗之夜」得 60 分；明音转告清泽邀她们正式在店里演出。",
+      "participants": [
+        "haniel",
+        "nanally",
+        "akane-rin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00746",
+        "u00747",
+        "u00748",
+        "u00749",
+        "u00750",
+        "u00751",
+        "u00752",
+        "u00753",
+        "u00754",
+        "u00756",
+        "u00757",
+        "u00758",
+        "u00759",
+        "u00760",
+        "u00761",
+        "u00762",
+        "u00764",
+        "u00765",
+        "u00766",
+        "u00767",
+        "u00768",
+        "u00769",
+        "u00770",
+        "u00771",
+        "u00772",
+        "u00773",
+        "u00774",
+        "u00775",
+        "u00776",
+        "u00777",
+        "u00778",
+        "u00779",
+        "u00780"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e047a",
+          "start_ms": 5497867,
+          "end_ms": 5576533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "haniel",
+            "nanally",
+            "akane-rin"
+          ],
+          "speaker_character_id": "",
+          "observation": "庆功时哈尼娅说首次参加就得了 60 分，娜娜莉说下次要拿满分；明音说自己原本预期只有 20 分左右。",
+          "transcript_refs": [
+            "u00746",
+            "u00747",
+            "u00748",
+            "u00749",
+            "u00750",
+            "u00751",
+            "u00752",
+            "u00753",
+            "u00754",
+            "u00756",
+            "u00757",
+            "u00758",
+            "u00759",
+            "u00760",
+            "u00761",
+            "u00762"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p08-e047b",
+          "start_ms": 5588533,
+          "end_ms": 5638933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "akane-rin",
+            "haniel",
+            "nanally"
+          ],
+          "speaker_character_id": "",
+          "observation": "明音转告清泽以后她们可以正式开始在店里演出（非暖场），并提醒仍要负责卖票；哈尼娅提议把票都推给熟人，被明音驳回。",
+          "transcript_refs": [
+            "u00765",
+            "u00766",
+            "u00767",
+            "u00768",
+            "u00769",
+            "u00770",
+            "u00771",
+            "u00772",
+            "u00773",
+            "u00774"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -8,10 +8,16 @@
       "ko": "아카네 린",
       "en": "Akane Rin"
     },
-    "aliases": [],
+    "aliases": [
+      {
+        "value": "明音",
+        "language": "zh",
+        "kind": "nickname"
+      }
+    ],
     "source_work": "异环",
     "role_scope": "named_character",
-    "research_status": "discovered"
+    "research_status": "evidence_collected"
   },
   {
     "schema_version": "1.0",
@@ -592,5 +598,243 @@
     "source_work": "异环",
     "role_scope": "named_character",
     "research_status": "evidence_collected"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "jansen",
+    "names": {
+      "zh": "简森",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "erika",
+    "names": {
+      "zh": "伊里卡",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "mccabe",
+    "names": {
+      "zh": "麦考贝",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "phil",
+    "names": {
+      "zh": "菲尔",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "xiting",
+    "names": {
+      "zh": "西汀",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "cyril",
+    "names": {
+      "zh": "西瑞尔",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "andrew",
+    "names": {
+      "zh": "安德鲁",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "colin",
+    "names": {
+      "zh": "科林",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "kesia",
+    "names": {
+      "zh": "克西娅",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "maiyue",
+    "names": {
+      "zh": "麦月",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "weihua",
+    "names": {
+      "zh": "炜桦",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "saierwen",
+    "names": {
+      "zh": "塞尔温",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "lingguo",
+    "names": {
+      "zh": "玲果",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "lilan",
+    "names": {
+      "zh": "黎兰",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "oliver",
+    "names": {
+      "zh": "奥利弗",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "miaodong",
+    "names": {
+      "zh": "杪冬",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
+  },
+  {
+    "schema_version": "1.0",
+    "character_id": "qingze",
+    "names": {
+      "zh": "清泽",
+      "ja": "",
+      "ko": "",
+      "en": ""
+    },
+    "aliases": [],
+    "source_work": "异环",
+    "role_scope": "named_character",
+    "research_status": "discovered"
   }
 ]

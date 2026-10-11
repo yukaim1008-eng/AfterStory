@@ -118,25 +118,41 @@ def test_source_catalog_refresh_preserves_curated_aliases_and_review_status():
 def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     stats = validate_corpus(CORPUS_ROOT)
     assert stats == {
-        "characters": 42,
-        "character_aliases": 1,
+        "characters": 59,
+        "character_aliases": 2,
         "sources": 25,
-        "source_parts": 21,
+        "source_parts": 22,
         "profiles": 23,
-        "scenes": 95,
-        "evidence": 51,
+        "scenes": 251,
+        "evidence": 78,
         "traits": 17,
-        "canon_checkpoints": 4,
-        "canon_evidence": 95,
-        "world_entities": 42,
-        "character_facts": 48,
-        "world_facts": 45,
-        "character_relations": 27,
+        "canon_checkpoints": 8,
+        "canon_evidence": 327,
+        "world_entities": 73,
+        "character_facts": 93,
+        "world_facts": 61,
+        "character_relations": 52,
     }
     catalog = json.loads((CORPUS_ROOT / "catalog.json").read_text(encoding="utf-8"))
     missing = [item for item in catalog if item["research_status"] == "discovered"]
     assert [(item["character_id"], item["names"]["zh"]) for item in missing] == [
-        ("akane-rin", "明音凛")
+        ("jansen", "简森"),
+        ("erika", "伊里卡"),
+        ("mccabe", "麦考贝"),
+        ("phil", "菲尔"),
+        ("xiting", "西汀"),
+        ("cyril", "西瑞尔"),
+        ("andrew", "安德鲁"),
+        ("colin", "科林"),
+        ("kesia", "克西娅"),
+        ("maiyue", "麦月"),
+        ("weihua", "炜桦"),
+        ("saierwen", "塞尔温"),
+        ("lingguo", "玲果"),
+        ("lilan", "黎兰"),
+        ("oliver", "奥利弗"),
+        ("miaodong", "杪冬"),
+        ("qingze", "清泽"),
     ]
     parts = [
         json.loads(line)
@@ -147,15 +163,19 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         "第0话 不虞亦先兆",
         "第8话 魔女 4",
     ]
-    assert sum(part["duration_ms"] for part in parts) == 80_387_000
+    assert sum(part["duration_ms"] for part in parts) == 83_323_000
     assert {part["subtitle_mode"] for part in parts} == {"no_platform_subtitles"}
-    assert [part["visual_subtitle_status"] for part in parts[:4]] == [
+    assert [part["visual_subtitle_status"] for part in parts[:8]] == [
+        "verified_present",
+        "verified_present",
+        "verified_present",
+        "verified_present",
         "verified_present",
         "verified_present",
         "verified_present",
         "verified_present",
     ]
-    assert {part["visual_subtitle_status"] for part in parts[4:]} == {
+    assert {part["visual_subtitle_status"] for part in parts[8:]} == {
         "user_confirmed_present"
     }
 

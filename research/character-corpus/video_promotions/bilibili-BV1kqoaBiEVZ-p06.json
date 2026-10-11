@@ -1,0 +1,3129 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p06",
+  "reviewed_transcript_sha256": "f8d2a42537fe112775aa379fbf1377d31d445fedac8804ddcf3e3315b6e3f90a",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p06",
+    "source_work": "异环",
+    "display_name": "番外 番茄酱暴走现场实录！",
+    "sequence": 6,
+    "content_track": "side_story",
+    "game_version": "",
+    "chapter": "番外 番茄酱暴走现场实录！",
+    "predecessor_id": "nt-bv1kqoabievz-p05",
+    "spoiler_scope": "番外 番茄酱暴走现场实录！"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s001",
+      "start_ms": 37333,
+      "end_ms": 74667,
+      "summary": "塔吉多告诉鉴定师自己接下了宝石悬赏委托，内容是处理「番茄酱恶魔」；鉴定师决定同行，但塔吉多不知道其位置。",
+      "participants": [
+        "taygedo",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e001a",
+          "start_ms": 37333,
+          "end_ms": 74667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多称接下了悬赏委托，目标是破解都市传说「番茄酱恶魔」，报酬是一块宝石，并反复念着宝石；他表示不知道番茄酱恶魔的具体位置。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e001b",
+          "start_ms": 37333,
+          "end_ms": 74667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师询问番茄酱是什么恶魔、赏金是否为一块宝石，并问塔吉多是否知道具体位置，随后提出陪他前去处理。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s002",
+      "start_ms": 75733,
+      "end_ms": 137867,
+      "summary": "阿德勒登场，向鉴定师说明「番茄酱恶魔」传闻：桥间地、绘空町附近的「番茄百分百」自动售卖机频遭损毁，建议到售卖机附近寻找线索。",
+      "participants": [
+        "adler",
+        "taygedo",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e002a",
+          "start_ms": 75733,
+          "end_ms": 137867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒转述近期传闻：番茄果冻品牌「番茄百分百」在桥间地、绘空町附近有多台自动售卖机因未知异象频频损毁，目击者称事发时有奇怪光影和低沉异响；他认为售卖机附近可能有线索，并祝两人顺利、多加小心。",
+          "transcript_refs": [
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00022",
+            "u00023",
+            "u00024"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e002b",
+          "start_ms": 75733,
+          "end_ms": 137867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说塔吉多喜欢亮闪闪的东西、很钟意这次报酬；塔吉多称番茄酱恶魔要小心他和鉴定师。",
+          "transcript_refs": [
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00022",
+            "u00023",
+            "u00024"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s003",
+      "start_ms": 158667,
+      "end_ms": 170133,
+      "summary": "两人查勘一台未受损的售卖机；塔吉多称这里是娜娜莉的地盘，提议去远一点的机器查看。",
+      "participants": [
+        "taygedo",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e003",
+          "start_ms": 158667,
+          "end_ms": 170133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师确认该售卖机没有受损痕迹、番茄酱恶魔应该没来过；塔吉多提到娜娜莉的地盘，并提议去更远处查看。",
+          "transcript_refs": [
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s004",
+      "start_ms": 202133,
+      "end_ms": 254667,
+      "summary": "两人在一台损坏的售卖机前遇到接同一委托的异象猎人安德鲁、科林与克西娅；对方起初不愿透露情报。",
+      "participants": [
+        "taygedo",
+        "esper-zero",
+        "andrew",
+        "colin",
+        "kesia"
+      ],
+      "transcript_refs": [
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e004a",
+          "start_ms": 202133,
+          "end_ms": 254667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "andrew"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多称售卖机坏了；安德鲁以为他来做电视导购，塔吉多自称是调查中的大侦探。",
+          "transcript_refs": [
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043",
+            "u00044"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e004b",
+          "start_ms": 202133,
+          "end_ms": 254667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "colin",
+            "kesia"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师说明是来调查被损坏的售卖机并询问情报；科林认出两人是接同一委托的同行，安德鲁要求按规矩交换情报，克西娅称别为难对方。",
+          "transcript_refs": [
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043",
+            "u00044"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s005",
+      "start_ms": 257333,
+      "end_ms": 347200,
+      "summary": "克西娅讲述「番茄酱恶魔」传说的由来：一颗不甘被做成番茄酱的番茄化为异象，以及此后售卖机被频繁破坏、目击者报案的经过。",
+      "participants": [
+        "kesia",
+        "colin",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00054"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e005a",
+          "start_ms": 257333,
+          "end_ms": 347200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "kesia"
+          ],
+          "speaker_character_id": "",
+          "observation": "克西娅讲述关于「番茄酱恶魔」的多种传言版本，包括带大蒜防身可脱身、凌晨游荡者变少、附近番茄酱售卖机被频繁破坏并撒了一地番茄酱的说法。",
+          "transcript_refs": [
+            "u00045",
+            "u00046",
+            "u00047",
+            "u00048",
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e005b",
+          "start_ms": 257333,
+          "end_ms": 347200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "colin",
+            "kesia"
+          ],
+          "speaker_character_id": "",
+          "observation": "科林与克西娅提到当时的报道、呗果论坛上的各种猜测，以及高额悬赏吸引人深夜蹲点拍到照片。",
+          "transcript_refs": [
+            "u00045",
+            "u00046",
+            "u00047",
+            "u00048",
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s006",
+      "start_ms": 347733,
+      "end_ms": 440267,
+      "summary": "猎人同行透露：被拍到的「番茄酱恶魔」并非异象，疑似与异象管理局禁制机动队（E.T.D）的人为破坏有关，并认为该委托无法完成。",
+      "participants": [
+        "esper-zero",
+        "andrew",
+        "colin",
+        "kesia",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e006a",
+          "start_ms": 347733,
+          "end_ms": 440267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "andrew",
+            "colin"
+          ],
+          "speaker_character_id": "",
+          "observation": "安德鲁称拍到的「番茄酱恶魔」根本不是异象；科林称据传是异象管理局禁制机动队的人，并称若是人为破坏则轮不到猎人插手。",
+          "transcript_refs": [
+            "u00056",
+            "u00057",
+            "u00058",
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066",
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e006b",
+          "start_ms": 347733,
+          "end_ms": 440267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "kesia",
+            "colin",
+            "andrew"
+          ],
+          "speaker_character_id": "",
+          "observation": "克西娅与科林提到E.T.D是怪人甚至特赦罪犯、以及管理局未采取行动是否包庇的说法；安德鲁称调查过多处售卖机都有人为破坏痕迹，认为委托没戏、劝两人别浪费时间。",
+          "transcript_refs": [
+            "u00056",
+            "u00057",
+            "u00058",
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066",
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s007",
+      "start_ms": 440533,
+      "end_ms": 471200,
+      "summary": "得到情报后，塔吉多为宝石落空而失落；鉴定师决定继续亲自查勘其他售卖机，并提到受损机器上残留有异象气息。",
+      "participants": [
+        "esper-zero",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00080"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e007",
+          "start_ms": 440533,
+          "end_ms": 471200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多说自己难过、宝石飞走了；鉴定师提出继续调查其他被破坏的售卖机，并称受损机器上残留有一丝异象气息；塔吉多表示相信鉴定师、干劲复活。",
+          "transcript_refs": [
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00080"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s008",
+      "start_ms": 521067,
+      "end_ms": 582667,
+      "summary": "两人遇到一只会说话的蝙蝠，蝙蝠随后变成一名少女（安魂曲）；塔吉多与鉴定师对会说话的蝙蝠作出反应。",
+      "participants": [
+        "taygedo",
+        "esper-zero",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00091",
+        "u00092"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e008a",
+          "start_ms": 521067,
+          "end_ms": 582667,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "taygedo",
+            "esper-zero",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "现场出现一只会说话的蝙蝠，并变成一名少女；塔吉多与鉴定师对蝙蝠说话和变身作出反应。",
+          "transcript_refs": [
+            "u00081",
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00086",
+            "u00087",
+            "u00088",
+            "u00091",
+            "u00092"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e008b",
+          "start_ms": 521067,
+          "end_ms": 582667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "少女自称「安魂曲」，表示还想再睡一下。",
+          "transcript_refs": [
+            "u00081",
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00086",
+            "u00087",
+            "u00088",
+            "u00091",
+            "u00092"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s009",
+      "start_ms": 589333,
+      "end_ms": 628000,
+      "summary": "薄荷赶到找到安魂曲前辈；她与鉴定师确认安魂曲是异象管理局E.T.D四队成员，也是白藏队长与翳副队的同伴。",
+      "participants": [
+        "mint",
+        "lacrimosa",
+        "taygedo",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e009a",
+          "start_ms": 589333,
+          "end_ms": 628000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷称总算找到安魂曲前辈、手机一直打不通；安魂曲叫出薄荷的名字。",
+          "transcript_refs": [
+            "u00094",
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e009b",
+          "start_ms": 589333,
+          "end_ms": 628000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说安魂曲前辈是E.T.D四队的人、很厉害；鉴定师称其为白藏队长和翳副队的同伴。",
+          "transcript_refs": [
+            "u00094",
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099",
+            "u00100",
+            "u00101"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s010",
+      "start_ms": 634400,
+      "end_ms": 703200,
+      "summary": "薄荷催促安魂曲起身，并正式把鉴定师（可可）与塔吉多介绍给安魂曲；安魂曲称塔吉多为「海獭电视机」。",
+      "participants": [
+        "mint",
+        "lacrimosa",
+        "taygedo",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00102",
+        "u00103",
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e010a",
+          "start_ms": 634400,
+          "end_ms": 703200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷催促安魂曲不要再睡；安魂曲称自己没睡过头，薄荷打趣她是不是在这里睡了一天。",
+          "transcript_refs": [
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107",
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116",
+            "u00117"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e010b",
+          "start_ms": 634400,
+          "end_ms": 703200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "lacrimosa",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷介绍鉴定师是伊波恩古董店的鉴定师、塔吉多是伊波恩的维修师；安魂曲向鉴定师问好，并把塔吉多称作「海獭电视机」。",
+          "transcript_refs": [
+            "u00102",
+            "u00103",
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107",
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116",
+            "u00117"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s011",
+      "start_ms": 703733,
+      "end_ms": 727200,
+      "summary": "双方确认各自都在处理「番茄酱恶魔」相关的委托；薄荷表示这并非局里的任务。",
+      "participants": [
+        "esper-zero",
+        "mint",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00118",
+        "u00119",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e011",
+          "start_ms": 703733,
+          "end_ms": 727200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "mint",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师询问薄荷是否也在调查「番茄酱恶魔」；薄荷确认是为处理这起事件而来，但不是局里的任务；塔吉多称薄荷在接私活。",
+          "transcript_refs": [
+            "u00118",
+            "u00119",
+            "u00120",
+            "u00121",
+            "u00122",
+            "u00123"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s012",
+      "start_ms": 727733,
+      "end_ms": 802400,
+      "summary": "众人在碎雪冰淇淋车买冰淇淋，边吃边准备交谈；塔吉多因私房钱告急而苦恼。",
+      "participants": [
+        "mint",
+        "taygedo",
+        "lacrimosa",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e012a",
+          "start_ms": 727733,
+          "end_ms": 802400,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "碎雪冰淇淋车的售卖播报介绍多种口味与甜度的冰淇淋，并提到可挑选不同口味。",
+          "transcript_refs": [
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134",
+            "u00135"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e012b",
+          "start_ms": 727733,
+          "end_ms": 802400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷提到路口的碎雪冰淇淋车；塔吉多付钱后称私房钱告急，薄荷说他吃得太快、提醒小心肚子痛。",
+          "transcript_refs": [
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134",
+            "u00135"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e012c",
+          "start_ms": 727733,
+          "end_ms": 802400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "安魂曲边吃边发出声音，表示肚子不痛但头冰冰的。",
+          "transcript_refs": [
+            "u00124",
+            "u00125",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133",
+            "u00134",
+            "u00135"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s013",
+      "start_ms": 802933,
+      "end_ms": 843733,
+      "summary": "薄荷给鉴定师看攻击安魂曲的恶意帖子，并说明「番茄酱恶魔」是针对安魂曲的谣言所形成的异象。",
+      "participants": [
+        "mint",
+        "esper-zero",
+        "taygedo",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00144",
+        "u00146"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e013a",
+          "start_ms": 802933,
+          "end_ms": 843733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷称又有恶意帖子在攻击安魂曲前辈；她说「番茄酱恶魔」应该是在针对安魂曲的谣言中形成的异象，并提到是翳前辈说的。",
+          "transcript_refs": [
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00146"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e013b",
+          "start_ms": 802933,
+          "end_ms": 843733,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "帖文标题称E.T.D队员安魂曲傲慢、自大、极度破坏癖，并与「番茄酱恶魔真相」相关。",
+          "transcript_refs": [
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00146"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e013c",
+          "start_ms": 802933,
+          "end_ms": 843733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "taygedo",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师称这种说法调查时也略有耳闻；塔吉多问番茄酱恶魔是否真的是安魂曲；安魂曲表示不明白。",
+          "transcript_refs": [
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00146"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s014",
+      "start_ms": 844000,
+      "end_ms": 1012000,
+      "summary": "薄荷讲述事件起因：安魂曲此前举摇售卖机取番茄酱的照片在网上流传，随着其E.T.D身份被扒出，评论转向负面；有人编造罪责、甚至闯入任务现场拍照，局里让安魂曲暂时休假。",
+      "participants": [
+        "mint",
+        "esper-zero",
+        "lacrimosa",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e014a",
+          "start_ms": 844000,
+          "end_ms": 1012000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说安魂曲曾独自购买番茄酱时把售卖机整个举起来摇晃，被说成缺乏常识；事后翳前辈带她郑重道歉，但相关照片开始在网上流传，讨论从友好转向负面。",
+          "transcript_refs": [
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172",
+            "u00173"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e014b",
+          "start_ms": 844000,
+          "end_ms": 1012000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷提到有人扒出安魂曲的E.T.D身份后出现搞特权、管理局纵容等评论，澄清没人看，还有人编造罪责、闯入任务现场拍照当证据，局里因此让安魂曲暂时休假；鉴定师归纳这是社交媒体的恶意流传促成了异象。",
+          "transcript_refs": [
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172",
+            "u00173"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e014c",
+          "start_ms": 844000,
+          "end_ms": 1012000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说这类迷因异象与帖子被转来转去有关、很难懂；塔吉多表示自己也不懂。",
+          "transcript_refs": [
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172",
+            "u00173"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s015",
+      "start_ms": 1012533,
+      "end_ms": 1141333,
+      "summary": "薄荷说明局里倾向「冷处理」的方针，并讲述自己改为守护番茄酱售卖机、约安魂曲开展守护行动的计划；鉴定师与塔吉多答应加入帮忙。",
+      "participants": [
+        "esper-zero",
+        "mint",
+        "lacrimosa",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177",
+        "u00179",
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e015a",
+          "start_ms": 1012533,
+          "end_ms": 1141333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "lacrimosa",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说局里专家主张在谣言风头上采用「冷处理」；安魂曲表示支持冷处理、因为冰的、喜欢；鉴定师问薄荷是否仍打算采取行动。",
+          "transcript_refs": [
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00179",
+            "u00180",
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e015b",
+          "start_ms": 1012533,
+          "end_ms": 1141333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说自己冷静后换了思路，打算守住番茄酱售卖机不被破坏，好让大家更快淡忘此事，并趁休息约出安魂曲开展守护行动。",
+          "transcript_refs": [
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00179",
+            "u00180",
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e015c",
+          "start_ms": 1012533,
+          "end_ms": 1141333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "lacrimosa",
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说安魂曲日常受影响、买番茄酱也要冒被指责的风险；安魂曲说售卖机坏了、买不到番茄酱、会饿肚子；塔吉多与鉴定师表示愿意帮助安魂曲，薄荷道谢。",
+          "transcript_refs": [
+            "u00174",
+            "u00175",
+            "u00176",
+            "u00177",
+            "u00179",
+            "u00180",
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191",
+            "u00192",
+            "u00193",
+            "u00194"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s016",
+      "start_ms": 1173600,
+      "end_ms": 1197067,
+      "summary": "夜晚众人在售卖机附近蹲守；安魂曲径直去取番茄酱，被同伴提醒要先付钱。",
+      "participants": [
+        "mint",
+        "esper-zero",
+        "lacrimosa",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e016",
+          "start_ms": 1173600,
+          "end_ms": 1197067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "mint",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "现场静悄悄的；安魂曲主动走向售卖机取番茄酱，有人喊住她并提醒要付钱、不能直接拿。",
+          "transcript_refs": [
+            "u00195",
+            "u00196",
+            "u00197",
+            "u00198",
+            "u00199"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s017",
+      "start_ms": 1223200,
+      "end_ms": 1263200,
+      "summary": "安魂曲又出了小意外，同伴解释事后会照价赔偿；番茄酱恶魔（异象）现身，安魂曲向它道歉，薄荷指出它才是反派。",
+      "participants": [
+        "mint",
+        "esper-zero",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205",
+        "u00206"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e017a",
+          "start_ms": 1223200,
+          "end_ms": 1263200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人说安魂曲偶尔会出现这种小意外、事后都会照价赔偿；鉴定师称好像能理解民众的误会了，并推测异象是觉得安魂曲抢了它的「工作」。",
+          "transcript_refs": [
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204",
+            "u00205",
+            "u00206"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e017b",
+          "start_ms": 1223200,
+          "end_ms": 1263200,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "安魂曲表示自己不是故意的；薄荷让前辈不用向它道歉，称它是反派。",
+          "transcript_refs": [
+            "u00200",
+            "u00201",
+            "u00202",
+            "u00203",
+            "u00204",
+            "u00205",
+            "u00206"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s018",
+      "start_ms": 1334133,
+      "end_ms": 1361600,
+      "summary": "番茄酱恶魔未被泯除、自行离开；薄荷说明原本想把异象打晕进行物理收容，但对方耍赖逃跑了。",
+      "participants": [
+        "taygedo",
+        "esper-zero",
+        "mint"
+      ],
+      "transcript_refs": [
+        "u00207",
+        "u00208",
+        "u00209",
+        "u00210",
+        "u00211",
+        "u00212"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e018a",
+          "start_ms": 1334133,
+          "end_ms": 1361600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多惊讶异象泯除了；鉴定师说没有泯除的实感，异象是自己离开的，并询问薄荷是否还有其它线索。",
+          "transcript_refs": [
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00210",
+            "u00211",
+            "u00212"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e018b",
+          "start_ms": 1334133,
+          "end_ms": 1361600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说无法泯除异象，但可以把它打晕、物理收容一阵子等谣言平息；结果异象耍赖逃跑，她觉得对方很狡猾。",
+          "transcript_refs": [
+            "u00207",
+            "u00208",
+            "u00209",
+            "u00210",
+            "u00211",
+            "u00212"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s019",
+      "start_ms": 1361867,
+      "end_ms": 1416533,
+      "summary": "两名偷拍者密谋摆拍嫁祸安魂曲：一人假装被安魂曲殴打以拍摄照片；随后倒地者求饶，偷拍者拍完逃走，薄荷上前查看。",
+      "participants": [
+        "mint",
+        "lacrimosa",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00213",
+        "u00214",
+        "u00215",
+        "u00216",
+        "u00217",
+        "u00218",
+        "u00219",
+        "u00220",
+        "u00221",
+        "u00222",
+        "u00223",
+        "u00224"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e019a",
+          "start_ms": 1361867,
+          "end_ms": 1416533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "两名偷拍者商议拍摄售卖机被轰和安魂曲的特写，并计划让一人跑到她面前假装要被打，以制造照片。",
+          "transcript_refs": [
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216",
+            "u00217",
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222",
+            "u00223",
+            "u00224"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e019b",
+          "start_ms": 1361867,
+          "end_ms": 1416533,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "mint",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "一人倒地后称不会把事情说出去、请放过他；薄荷上前询问他怎么突然躺在地上；偷拍者称拍好了便离开；安魂曲说人不见了。",
+          "transcript_refs": [
+            "u00213",
+            "u00214",
+            "u00215",
+            "u00216",
+            "u00217",
+            "u00218",
+            "u00219",
+            "u00220",
+            "u00221",
+            "u00222",
+            "u00223",
+            "u00224"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s020",
+      "start_ms": 1416800,
+      "end_ms": 1469067,
+      "summary": "网上出现E.T.D成员殴打路人的新谣言；薄荷想追责偷拍者，安魂曲与鉴定师劝阻，指出追上去反而会被利用。",
+      "participants": [
+        "esper-zero",
+        "taygedo",
+        "lacrimosa",
+        "mint"
+      ],
+      "transcript_refs": [
+        "u00225",
+        "u00226",
+        "u00227",
+        "u00228",
+        "u00229",
+        "u00230",
+        "u00231",
+        "u00232"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e020a",
+          "start_ms": 1416800,
+          "end_ms": 1469067,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "网上出现E.T.D成员凶残成性、对路人大打出手的说法。",
+          "transcript_refs": [
+            "u00225",
+            "u00226",
+            "u00227",
+            "u00228",
+            "u00229",
+            "u00230",
+            "u00231",
+            "u00232"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e020b",
+          "start_ms": 1416800,
+          "end_ms": 1469067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "taygedo",
+            "mint",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师让塔吉多搜索关于安魂曲的新消息；薄荷称是刚才那两人、要他们物理收容；安魂曲制止，称他们不是异象；鉴定师提醒追上去反而合他们的意、可能被拍下更多照片。",
+          "transcript_refs": [
+            "u00225",
+            "u00226",
+            "u00227",
+            "u00228",
+            "u00229",
+            "u00230",
+            "u00231",
+            "u00232"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s021",
+      "start_ms": 1471467,
+      "end_ms": 1510933,
+      "summary": "薄荷收到紧急任务通知、结束休假离开；她托付鉴定师送安魂曲回家。",
+      "participants": [
+        "mint",
+        "taygedo",
+        "esper-zero",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00233",
+        "u00234",
+        "u00235",
+        "u00237",
+        "u00238",
+        "u00240",
+        "u00241",
+        "u00242",
+        "u00243",
+        "u00244"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e021a",
+          "start_ms": 1471467,
+          "end_ms": 1510933,
+          "evidence_kind": "broadcast",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "C.S.U成员通过通讯传达紧急任务，要求薄荷队员立即赶往指定区域协助收容。",
+          "transcript_refs": [
+            "u00233",
+            "u00234",
+            "u00235",
+            "u00237",
+            "u00238",
+            "u00240",
+            "u00241",
+            "u00242",
+            "u00243",
+            "u00244"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e021b",
+          "start_ms": 1471467,
+          "end_ms": 1510933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷称休假要结束、今天的打晕异象计划只能暂停，请鉴定师送安魂曲前辈回去，并道谢后离开。",
+          "transcript_refs": [
+            "u00233",
+            "u00234",
+            "u00235",
+            "u00237",
+            "u00238",
+            "u00240",
+            "u00241",
+            "u00242",
+            "u00243",
+            "u00244"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s022",
+      "start_ms": 1511467,
+      "end_ms": 1580000,
+      "summary": "护送途中众人想去买番茄酱；民众认出安魂曲，有人害怕、有人指责她是禁制机动队的人。",
+      "participants": [
+        "taygedo",
+        "esper-zero",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00245",
+        "u00246",
+        "u00247",
+        "u00248",
+        "u00249",
+        "u00250",
+        "u00251",
+        "u00252",
+        "u00253"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e022a",
+          "start_ms": 1511467,
+          "end_ms": 1580000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "esper-zero",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多自称保镖；安魂曲说番茄酱没吃到；鉴定师提到附近或许还有完好的售卖机可以购买。",
+          "transcript_refs": [
+            "u00245",
+            "u00246",
+            "u00247",
+            "u00248",
+            "u00249",
+            "u00250",
+            "u00251",
+            "u00252",
+            "u00253"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e022b",
+          "start_ms": 1511467,
+          "end_ms": 1580000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "围观的民众议论来的是异象管理局禁制机动队的人，有人害怕、有人激动指责、有人要求她解释网上的照片。",
+          "transcript_refs": [
+            "u00245",
+            "u00246",
+            "u00247",
+            "u00248",
+            "u00249",
+            "u00250",
+            "u00251",
+            "u00252",
+            "u00253"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e022c",
+          "start_ms": 1511467,
+          "end_ms": 1580000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多表示害怕；鉴定师认为在此辩解可能让事态变得更糟。",
+          "transcript_refs": [
+            "u00245",
+            "u00246",
+            "u00247",
+            "u00248",
+            "u00249",
+            "u00250",
+            "u00251",
+            "u00252",
+            "u00253"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s023",
+      "start_ms": 1584533,
+      "end_ms": 1646933,
+      "summary": "众人将安魂曲送到住处，约定在事态平息前代为购买番茄酱，随后互道晚安分别。",
+      "participants": [
+        "taygedo",
+        "esper-zero",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00254",
+        "u00255",
+        "u00256",
+        "u00257",
+        "u00258",
+        "u00259",
+        "u00260",
+        "u00261",
+        "u00262",
+        "u00263",
+        "u00265",
+        "u00266",
+        "u00267"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e023a",
+          "start_ms": 1584533,
+          "end_ms": 1646933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa",
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "安魂曲说到了；塔吉多称没有人跟来、保镖任务完成；鉴定师表示需要帮助可以联系他们。",
+          "transcript_refs": [
+            "u00254",
+            "u00255",
+            "u00256",
+            "u00257",
+            "u00258",
+            "u00259",
+            "u00260",
+            "u00261",
+            "u00262",
+            "u00263",
+            "u00265",
+            "u00266",
+            "u00267"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e023b",
+          "start_ms": 1584533,
+          "end_ms": 1646933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa",
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "安魂曲说想要番茄酱；塔吉多与鉴定师答应代为购买、让她不用自己去买；双方互道晚安。",
+          "transcript_refs": [
+            "u00254",
+            "u00255",
+            "u00256",
+            "u00257",
+            "u00258",
+            "u00259",
+            "u00260",
+            "u00261",
+            "u00262",
+            "u00263",
+            "u00265",
+            "u00266",
+            "u00267"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s024",
+      "start_ms": 1658667,
+      "end_ms": 1687733,
+      "summary": "回到伊波恩，阿德勒欢迎两人归来并询问委托进展；塔吉多评价安魂曲是好人，并说浔坏。",
+      "participants": [
+        "taygedo",
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00268",
+        "u00269",
+        "u00270",
+        "u00272",
+        "u00273",
+        "u00274",
+        "u00275",
+        "u00276"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e024a",
+          "start_ms": 1658667,
+          "end_ms": 1687733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒欢迎两人回来并询问委托是否顺利；塔吉多只说「宝石」；鉴定师称遇到了一些事情。",
+          "transcript_refs": [
+            "u00268",
+            "u00269",
+            "u00270",
+            "u00272",
+            "u00273",
+            "u00274",
+            "u00275",
+            "u00276"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e024b",
+          "start_ms": 1658667,
+          "end_ms": 1687733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说委托波折不易，但两人因此认识新朋友也是美事；塔吉多称安魂曲是好人、被吵醒也没揍他，并说浔坏。",
+          "transcript_refs": [
+            "u00268",
+            "u00269",
+            "u00270",
+            "u00272",
+            "u00273",
+            "u00274",
+            "u00275",
+            "u00276"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s025",
+      "start_ms": 1689333,
+      "end_ms": 1777600,
+      "summary": "阿德勒讲解「迷因异象」：单纯武力无用，普遍处理方式是削弱共识或认知再交给时间；改变大众认知理论上可将其泯除但较困难。",
+      "participants": [
+        "esper-zero",
+        "adler",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00277",
+        "u00278",
+        "u00279",
+        "u00280",
+        "u00281",
+        "u00282",
+        "u00283",
+        "u00285",
+        "u00286",
+        "u00287",
+        "u00288",
+        "u00289",
+        "u00290",
+        "u00291",
+        "u00292"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e025a",
+          "start_ms": 1689333,
+          "end_ms": 1777600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师询问阿德勒是否了解「迷因异象」；阿德勒称这类异象少见，武力对它没有意义，多数异象猎人拿不出有效方案。",
+          "transcript_refs": [
+            "u00277",
+            "u00278",
+            "u00279",
+            "u00280",
+            "u00281",
+            "u00282",
+            "u00283",
+            "u00285",
+            "u00286",
+            "u00287",
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00291",
+            "u00292"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e025b",
+          "start_ms": 1689333,
+          "end_ms": 1777600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说迷因异象与人们的共识或认知密切相关，普遍处理方法是削弱共识、交给时间，「番茄酱恶魔」可能随话题消退而自然泯除；若大众认知改变也可将其泯除，但短期内很难改变被一致认定的既定事实。",
+          "transcript_refs": [
+            "u00277",
+            "u00278",
+            "u00279",
+            "u00280",
+            "u00281",
+            "u00282",
+            "u00283",
+            "u00285",
+            "u00286",
+            "u00287",
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00291",
+            "u00292"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e025c",
+          "start_ms": 1689333,
+          "end_ms": 1777600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "taygedo",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师向阿德勒道谢并表示会作参考；阿德勒祝两人好梦；双方互道晚安。",
+          "transcript_refs": [
+            "u00277",
+            "u00278",
+            "u00279",
+            "u00280",
+            "u00281",
+            "u00282",
+            "u00283",
+            "u00285",
+            "u00286",
+            "u00287",
+            "u00288",
+            "u00289",
+            "u00290",
+            "u00291",
+            "u00292"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s026",
+      "start_ms": 1794133,
+      "end_ms": 1820533,
+      "summary": "睡前，塔吉多约定次日与鉴定师同行；鉴定师打算把「番茄百分百」留给安魂曲。",
+      "participants": [
+        "esper-zero",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00293",
+        "u00294",
+        "u00295",
+        "u00296",
+        "u00297",
+        "u00298",
+        "u00299"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e026a",
+          "start_ms": 1794133,
+          "end_ms": 1820533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多说明天也想一起，并要当第一个喊鉴定师起床的人；两人互道晚安。",
+          "transcript_refs": [
+            "u00293",
+            "u00294",
+            "u00295",
+            "u00296",
+            "u00297",
+            "u00298",
+            "u00299"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e026b",
+          "start_ms": 1794133,
+          "end_ms": 1820533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师想「番茄百分百」把它留给安魂曲也不错。",
+          "transcript_refs": [
+            "u00293",
+            "u00294",
+            "u00295",
+            "u00296",
+            "u00297",
+            "u00298",
+            "u00299"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s027",
+      "start_ms": 1838400,
+      "end_ms": 1887733,
+      "summary": "次晨，塔吉多因昨晚在呗果为安魂曲发声而被骂；鉴定师提出需要一个办法，并让咻啪帮忙给薄荷留言。",
+      "participants": [
+        "taygedo",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00300",
+        "u00301",
+        "u00302",
+        "u00303",
+        "u00304",
+        "u00305",
+        "u00307",
+        "u00308",
+        "u00310",
+        "u00311",
+        "u00312",
+        "u00313"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e027a",
+          "start_ms": 1838400,
+          "end_ms": 1887733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多说昨晚在呗果夸安魂曲后被骂、很生气，想把评论统统删掉；鉴定师称是因为口说无凭，塔吉多表示没有图没人相信。",
+          "transcript_refs": [
+            "u00300",
+            "u00301",
+            "u00302",
+            "u00303",
+            "u00304",
+            "u00305",
+            "u00307",
+            "u00308",
+            "u00310",
+            "u00311",
+            "u00312",
+            "u00313"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e027b",
+          "start_ms": 1838400,
+          "end_ms": 1887733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师提到擅闯安魂曲工作现场的人与昨天那两人都是为了拍到照片，并表示或许有一个办法，让咻啪帮忙给薄荷留言。",
+          "transcript_refs": [
+            "u00300",
+            "u00301",
+            "u00302",
+            "u00303",
+            "u00304",
+            "u00305",
+            "u00307",
+            "u00308",
+            "u00310",
+            "u00311",
+            "u00312",
+            "u00313"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s028",
+      "start_ms": 1888000,
+      "end_ms": 1974667,
+      "summary": "通过咻啪与薄荷通话；薄荷也在为攻击安魂曲的帖子发愁，双方确认呗果账号除发帖受限外其他功能可用。",
+      "participants": [
+        "mint",
+        "esper-zero",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00314",
+        "u00315",
+        "u00316",
+        "u00317",
+        "u00318",
+        "u00319",
+        "u00320",
+        "u00321",
+        "u00322",
+        "u00323",
+        "u00324",
+        "u00326",
+        "u00327",
+        "u00328",
+        "u00329",
+        "u00330",
+        "u00331",
+        "u00332",
+        "u00333",
+        "u00334"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e028a",
+          "start_ms": 1888000,
+          "end_ms": 1974667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷在咻啪通讯中问候、询问是否需要帮忙；鉴定师说是有关安魂曲的帖子，想和她商量。",
+          "transcript_refs": [
+            "u00314",
+            "u00315",
+            "u00316",
+            "u00317",
+            "u00318",
+            "u00319",
+            "u00320",
+            "u00321",
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00326",
+            "u00327",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331",
+            "u00332",
+            "u00333",
+            "u00334"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e028b",
+          "start_ms": 1888000,
+          "end_ms": 1974667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷称又在攻击安魂曲前辈、塔吉多明明是好心却被举报；塔吉多表示讨厌、生气。",
+          "transcript_refs": [
+            "u00314",
+            "u00315",
+            "u00316",
+            "u00317",
+            "u00318",
+            "u00319",
+            "u00320",
+            "u00321",
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00326",
+            "u00327",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331",
+            "u00332",
+            "u00333",
+            "u00334"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e028c",
+          "start_ms": 1888000,
+          "end_ms": 1974667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师先确认呗果发帖权限被封后其他功能是否可用；薄荷称个人主页、聊天、相册、直播、视频等功能都能正常使用。",
+          "transcript_refs": [
+            "u00314",
+            "u00315",
+            "u00316",
+            "u00317",
+            "u00318",
+            "u00319",
+            "u00320",
+            "u00321",
+            "u00322",
+            "u00323",
+            "u00324",
+            "u00326",
+            "u00327",
+            "u00328",
+            "u00329",
+            "u00330",
+            "u00331",
+            "u00332",
+            "u00333",
+            "u00334"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s029",
+      "start_ms": 1975200,
+      "end_ms": 2052267,
+      "summary": "众人商定对策：让塔吉多开启直播，展示安魂曲与番茄酱恶魔并非同一存在且要与它战斗；薄荷因全天待命无法同行，约定日落行动。",
+      "participants": [
+        "esper-zero",
+        "mint",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00335",
+        "u00336",
+        "u00337",
+        "u00338",
+        "u00339",
+        "u00340",
+        "u00341",
+        "u00342",
+        "u00343",
+        "u00344",
+        "u00345",
+        "u00346",
+        "u00347",
+        "u00349",
+        "u00350",
+        "u00351",
+        "u00352",
+        "u00353"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e029a",
+          "start_ms": 1975200,
+          "end_ms": 2052267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师说塔吉多的账号被举报者盯上，若账号有新活动能吸引他们来看；薄荷抢答提出让塔吉多开启直播，展示安魂曲与番茄酱恶魔完全不是同一号人物。",
+          "transcript_refs": [
+            "u00335",
+            "u00336",
+            "u00337",
+            "u00338",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00342",
+            "u00343",
+            "u00344",
+            "u00345",
+            "u00346",
+            "u00347",
+            "u00349",
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00353"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e029b",
+          "start_ms": 1975200,
+          "end_ms": 2052267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "mint",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师补充若能播出两者战斗的现场效果更好；薄荷称安魂曲前辈在睡觉、晚些转达，并让两人日落后再去找前辈；塔吉多称直播交给它。",
+          "transcript_refs": [
+            "u00335",
+            "u00336",
+            "u00337",
+            "u00338",
+            "u00339",
+            "u00340",
+            "u00341",
+            "u00342",
+            "u00343",
+            "u00344",
+            "u00345",
+            "u00346",
+            "u00347",
+            "u00349",
+            "u00350",
+            "u00351",
+            "u00352",
+            "u00353"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s030",
+      "start_ms": 2069333,
+      "end_ms": 2184267,
+      "summary": "傍晚叫醒安魂曲，说明当晚的直播行动；安魂曲因能获得很多番茄酱而同意。",
+      "participants": [
+        "taygedo",
+        "lacrimosa",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00354",
+        "u00355",
+        "u00356",
+        "u00357",
+        "u00358",
+        "u00359",
+        "u00360",
+        "u00361",
+        "u00362",
+        "u00363",
+        "u00364",
+        "u00365",
+        "u00366",
+        "u00367",
+        "u00368",
+        "u00369"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e030a",
+          "start_ms": 2069333,
+          "end_ms": 2184267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "lacrimosa",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多把安魂曲叫醒；安魂曲向他与鉴定师问早安，并称塔吉多是海獭电视机；鉴定师询问今晚的行动安魂曲是否一起。",
+          "transcript_refs": [
+            "u00354",
+            "u00355",
+            "u00356",
+            "u00357",
+            "u00358",
+            "u00359",
+            "u00360",
+            "u00361",
+            "u00362",
+            "u00363",
+            "u00364",
+            "u00365",
+            "u00366",
+            "u00367",
+            "u00368",
+            "u00369"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e030b",
+          "start_ms": 2069333,
+          "end_ms": 2184267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "安魂曲说薄荷告诉她海獭电视机会直播、会有很多番茄酱，因此同意；塔吉多宣布出发直播；安魂曲说出发、购买。",
+          "transcript_refs": [
+            "u00354",
+            "u00355",
+            "u00356",
+            "u00357",
+            "u00358",
+            "u00359",
+            "u00360",
+            "u00361",
+            "u00362",
+            "u00363",
+            "u00364",
+            "u00365",
+            "u00366",
+            "u00367",
+            "u00368",
+            "u00369"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s031",
+      "start_ms": 2217067,
+      "end_ms": 2344800,
+      "summary": "晚间直播开始，塔吉多预警番茄酱恶魔；直播弹幕出现反应；异象变身逃走，安魂曲也随之变身并追击。",
+      "participants": [
+        "taygedo",
+        "esper-zero",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00371",
+        "u00372",
+        "u00373",
+        "u00374",
+        "u00375",
+        "u00376",
+        "u00377",
+        "u00378",
+        "u00379"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e031a",
+          "start_ms": 2217067,
+          "end_ms": 2344800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多预警「番茄酱恶魔」；鉴定师确认直播已准备就绪。",
+          "transcript_refs": [
+            "u00371",
+            "u00372",
+            "u00373",
+            "u00374",
+            "u00375",
+            "u00376",
+            "u00377",
+            "u00378",
+            "u00379"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e031b",
+          "start_ms": 2217067,
+          "end_ms": 2344800,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "直播弹幕出现「大乱斗」「那个是异象」「安魂曲是被栽赃陷害的」等评论。",
+          "transcript_refs": [
+            "u00371",
+            "u00372",
+            "u00373",
+            "u00374",
+            "u00375",
+            "u00376",
+            "u00377",
+            "u00378",
+            "u00379"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e031c",
+          "start_ms": 2217067,
+          "end_ms": 2344800,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "taygedo",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多说异象变身逃走、耍赖；安魂曲称自己也会变身，并让塔吉多抓紧。",
+          "transcript_refs": [
+            "u00371",
+            "u00372",
+            "u00373",
+            "u00374",
+            "u00375",
+            "u00376",
+            "u00377",
+            "u00378",
+            "u00379"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s032",
+      "start_ms": 2420800,
+      "end_ms": 2618400,
+      "summary": "战斗中番茄酱恶魔被削弱，无法再维持安魂曲的外貌，变成了番茄酱。",
+      "participants": [
+        "esper-zero",
+        "taygedo",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00380",
+        "u00381",
+        "u00382",
+        "u00383",
+        "u00384",
+        "u00385"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e032a",
+          "start_ms": 2420800,
+          "end_ms": 2618400,
+          "evidence_kind": "action",
+          "actor_character_ids": [
+            "esper-zero",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师判断「番茄酱恶魔」虽不像被泯除但显而易见被削弱了，似乎无法再维持安魂曲外貌的形态；塔吉多称它变弱了。",
+          "transcript_refs": [
+            "u00380",
+            "u00381",
+            "u00382",
+            "u00383",
+            "u00384",
+            "u00385"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e032b",
+          "start_ms": 2420800,
+          "end_ms": 2618400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "安魂曲称对方变成了番茄酱。",
+          "transcript_refs": [
+            "u00380",
+            "u00381",
+            "u00382",
+            "u00383",
+            "u00384",
+            "u00385"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s033",
+      "start_ms": 2618667,
+      "end_ms": 2690400,
+      "summary": "直播改变了讨论风向，异象被大幅削弱；翳先生联系说马上来接安魂曲，众人打算陪安魂曲享用番茄酱。",
+      "participants": [
+        "esper-zero",
+        "taygedo",
+        "lacrimosa"
+      ],
+      "transcript_refs": [
+        "u00386",
+        "u00387",
+        "u00388",
+        "u00389",
+        "u00391",
+        "u00392",
+        "u00393",
+        "u00394",
+        "u00395",
+        "u00396",
+        "u00397",
+        "u00398",
+        "u00399",
+        "u00400"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e033a",
+          "start_ms": 2618667,
+          "end_ms": 2690400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师称塔吉多的直播使讨论风向改变、迷因异象的力量被大幅削弱，并说已留下足够证据、对安魂曲的影响会逐渐消除；塔吉多表示自己能干。",
+          "transcript_refs": [
+            "u00386",
+            "u00387",
+            "u00388",
+            "u00389",
+            "u00391",
+            "u00392",
+            "u00393",
+            "u00394",
+            "u00395",
+            "u00396",
+            "u00397",
+            "u00398",
+            "u00399",
+            "u00400"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e033b",
+          "start_ms": 2618667,
+          "end_ms": 2690400,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "呗果上出现新的讨论与总结帖，涉及绘莉新企划等内容。",
+          "transcript_refs": [
+            "u00386",
+            "u00387",
+            "u00388",
+            "u00389",
+            "u00391",
+            "u00392",
+            "u00393",
+            "u00394",
+            "u00395",
+            "u00396",
+            "u00397",
+            "u00398",
+            "u00399",
+            "u00400"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e033c",
+          "start_ms": 2618667,
+          "end_ms": 2690400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "lacrimosa",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "安魂曲说想吃番茄酱、喜欢「番茄百分百」；鉴定师说翳先生联系他、马上来接安魂曲；安魂曲说下班了但又上班。",
+          "transcript_refs": [
+            "u00386",
+            "u00387",
+            "u00388",
+            "u00389",
+            "u00391",
+            "u00392",
+            "u00393",
+            "u00394",
+            "u00395",
+            "u00396",
+            "u00397",
+            "u00398",
+            "u00399",
+            "u00400"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s034",
+      "start_ms": 2694133,
+      "end_ms": 2761867,
+      "summary": "翳先生到场接安魂曲，向众人致谢并表示后续收尾与公共设施修复由其负责；安魂曲向鉴定师与塔吉多道谢。",
+      "participants": [
+        "skia",
+        "lacrimosa",
+        "esper-zero",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00401",
+        "u00402",
+        "u00403",
+        "u00404",
+        "u00405",
+        "u00406",
+        "u00407",
+        "u00408",
+        "u00409",
+        "u00410",
+        "u00412",
+        "u00413",
+        "u00414",
+        "u00415",
+        "u00416",
+        "u00417",
+        "u00418",
+        "u00419",
+        "u00420",
+        "u00421"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e034a",
+          "start_ms": 2694133,
+          "end_ms": 2761867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "skia",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "翳先生到场，说没受伤就好；安魂曲说自己遇到好人帮助、还得到番茄酱；翳说他已从薄荷处得知安魂曲的事、感谢众人帮忙。",
+          "transcript_refs": [
+            "u00401",
+            "u00402",
+            "u00403",
+            "u00404",
+            "u00405",
+            "u00406",
+            "u00407",
+            "u00408",
+            "u00409",
+            "u00410",
+            "u00412",
+            "u00413",
+            "u00414",
+            "u00415",
+            "u00416",
+            "u00417",
+            "u00418",
+            "u00419",
+            "u00420",
+            "u00421"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e034b",
+          "start_ms": 2694133,
+          "end_ms": 2761867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "skia",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "翳说修复因意外损坏的公共设施也是维持居民生活秩序的一部分、剩下的由他们收尾，并让安魂曲不用加班；他替队员致歉致谢后离开；安魂曲说自己下班了但又上班。",
+          "transcript_refs": [
+            "u00401",
+            "u00402",
+            "u00403",
+            "u00404",
+            "u00405",
+            "u00406",
+            "u00407",
+            "u00408",
+            "u00409",
+            "u00410",
+            "u00412",
+            "u00413",
+            "u00414",
+            "u00415",
+            "u00416",
+            "u00417",
+            "u00418",
+            "u00419",
+            "u00420",
+            "u00421"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e034c",
+          "start_ms": 2694133,
+          "end_ms": 2761867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "skia",
+            "lacrimosa",
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "翳提醒安魂曲对帮助她的人表示礼貌感谢；塔吉多称小事一桩；安魂曲向鉴定师与塔吉多道谢。",
+          "transcript_refs": [
+            "u00401",
+            "u00402",
+            "u00403",
+            "u00404",
+            "u00405",
+            "u00406",
+            "u00407",
+            "u00408",
+            "u00409",
+            "u00410",
+            "u00412",
+            "u00413",
+            "u00414",
+            "u00415",
+            "u00416",
+            "u00417",
+            "u00418",
+            "u00419",
+            "u00420",
+            "u00421"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s035",
+      "start_ms": 2764267,
+      "end_ms": 2791733,
+      "summary": "法帝娅与白藏教安魂曲致谢的手势；旁人对他们的做法感到无奈，白藏打了个喷嚏。",
+      "participants": [
+        "fadia",
+        "baicang",
+        "lacrimosa",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00422",
+        "u00423",
+        "u00424",
+        "u00425",
+        "u00426",
+        "u00427"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e035a",
+          "start_ms": 2764267,
+          "end_ms": 2791733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "fadia",
+            "baicang",
+            "lacrimosa"
+          ],
+          "speaker_character_id": "",
+          "observation": "法帝娅说对那只狗说谢谢时要做一个手势、代表最真诚的感谢；白藏大笑附和；安魂曲照做并说谢谢。",
+          "transcript_refs": [
+            "u00422",
+            "u00423",
+            "u00424",
+            "u00425",
+            "u00426",
+            "u00427"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e035b",
+          "start_ms": 2764267,
+          "end_ms": 2791733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "baicang"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人吐槽那两个家伙整天在教些别的东西；白藏打了个喷嚏；鉴定师说他对安魂曲的事也很担心、或许是被太多工作绊住了。",
+          "transcript_refs": [
+            "u00422",
+            "u00423",
+            "u00424",
+            "u00425",
+            "u00426",
+            "u00427"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s036",
+      "start_ms": 2816533,
+      "end_ms": 2861333,
+      "summary": "回店后，塔吉多向阿德勒展示呗果上误会解除、论坛好评；随后绘莉新企划成为新热门话题，旧话题迅速降温。",
+      "participants": [
+        "taygedo",
+        "adler",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00428",
+        "u00429",
+        "u00430",
+        "u00431",
+        "u00432",
+        "u00433",
+        "u00434",
+        "u00435",
+        "u00436",
+        "u00437",
+        "u00438",
+        "u00439"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e036a",
+          "start_ms": 2816533,
+          "end_ms": 2861333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "taygedo",
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "塔吉多让阿德勒看呗果，说误会解除、论坛好评在夸安魂曲，并称自己是直播大师；阿德勒问事情是否已解决，称赞塔吉多和鉴定师、说辛苦了。",
+          "transcript_refs": [
+            "u00428",
+            "u00429",
+            "u00430",
+            "u00431",
+            "u00432",
+            "u00433",
+            "u00434",
+            "u00435",
+            "u00436",
+            "u00437",
+            "u00438",
+            "u00439"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e036b",
+          "start_ms": 2816533,
+          "end_ms": 2861333,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "呗果上出现「安魂曲VS番茄酱恶魔，命运的对决！完整版存档（全实况弹幕）」等讨论帖。",
+          "transcript_refs": [
+            "u00428",
+            "u00429",
+            "u00430",
+            "u00431",
+            "u00432",
+            "u00433",
+            "u00434",
+            "u00435",
+            "u00436",
+            "u00437",
+            "u00438",
+            "u00439"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e036c",
+          "start_ms": 2816533,
+          "end_ms": 2861333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "esper-zero",
+            "taygedo"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人说大家都在讨论绘莉殿下的新人偶企划「千偶千面」；塔吉多惊讶，鉴定师说有了新的热门话题后旧话题迅速失去关注度。",
+          "transcript_refs": [
+            "u00428",
+            "u00429",
+            "u00430",
+            "u00431",
+            "u00432",
+            "u00433",
+            "u00434",
+            "u00435",
+            "u00436",
+            "u00437",
+            "u00438",
+            "u00439"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p06-s037",
+      "start_ms": 2861600,
+      "end_ms": 2929067,
+      "summary": "阿德勒说明行动的意义：谣言结局是被淡忘还是解除误会，对当事人差别很大，并肯定两人帮到了新朋友。",
+      "participants": [
+        "adler",
+        "esper-zero",
+        "taygedo"
+      ],
+      "transcript_refs": [
+        "u00440",
+        "u00441",
+        "u00442",
+        "u00443",
+        "u00444",
+        "u00445",
+        "u00446",
+        "u00447",
+        "u00448",
+        "u00449",
+        "u00450",
+        "u00451",
+        "u00452",
+        "u00453",
+        "u00454",
+        "u00455"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e037a",
+          "start_ms": 2861600,
+          "end_ms": 2929067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒说如今呗果让迷因异象相关信息传播的速度和广度不可同日而语；若没有两人行动，即使异象因热门话题改变被淡忘而自然泯除，大众对安魂曲的误解仍会留存、或许某天会再次伤害她，被淡忘与解除误会两者对当事人差别很大。",
+          "transcript_refs": [
+            "u00440",
+            "u00441",
+            "u00442",
+            "u00443",
+            "u00444",
+            "u00445",
+            "u00446",
+            "u00447",
+            "u00448",
+            "u00449",
+            "u00450",
+            "u00451",
+            "u00452",
+            "u00453",
+            "u00454",
+            "u00455"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p06-e037b",
+          "start_ms": 2861600,
+          "end_ms": 2929067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "adler",
+            "taygedo",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "阿德勒肯定塔吉多和鉴定师帮到了新朋友、值得自豪；他请两人早点休息，并提醒塔吉多今晚别再熬夜刷呗果；鉴定师感慨迷因异象即使知道奇点也很难处理。",
+          "transcript_refs": [
+            "u00440",
+            "u00441",
+            "u00442",
+            "u00443",
+            "u00444",
+            "u00445",
+            "u00446",
+            "u00447",
+            "u00448",
+            "u00449",
+            "u00450",
+            "u00451",
+            "u00452",
+            "u00453",
+            "u00454",
+            "u00455"
+          ]
+        }
+      ]
+    }
+  ]
+}
