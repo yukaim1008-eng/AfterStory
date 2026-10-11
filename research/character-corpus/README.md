@@ -24,14 +24,13 @@
 
 ## 当前覆盖
 
-- 目录以异环信息站的“角色名称表”为基础，并补充已复核剧情中明确出现的人物，当前登记 26 名命名角色。
-- 其中 23 名已有个人档案页面并完成同步；明音凛只有名称记录，来源页尚未建立。
+- 目录以异环信息站的“角色名称表”为基础，并补充 P1–P22 已复核剧情中明确出现的人物，当前登记 89 名命名角色。
+- 其中 23 名已有个人档案页面并完成同步；明音凛来源页仍未建立，但已有可追溯剧情证据，状态为 `evidence_collected`。
 - 本地查询库当前包含 23 份页面快照、143 个档案条目和 1955 条语音索引内容。
-- 已登记 B 站剧情合集 `BV1kqoaBiEVZ`：21 个分 P，总长 80,387 秒，覆盖标题标注至 1.4；平台接口未提供 CC 字幕，用户已确认录制的游戏画面内含字幕。
-- P1 `05:00–10:00` 的本地 PP-OCRv5 试跑已通过：清晰正文和中英混合字幕可以抽取，逐字显示合并、短句保护和无姓名过场的说话者归属仍需由单分 P 批处理工具解决。视频、截图与试跑逐字稿只在忽略的 `local/` 中保存。
-- 本地视频工具 Version `1.0` 已完成完整 P1：786 个候选帧生成 382 个有效 OCR 样本、215 段台词候选和 22 个机器场景草稿。全画面逐条复核保留 189 条、剔除 26 条；124 条说话者已确认、40 条为推定、25 条保持未知。静态 HTML 报告可直接浏览画面、原 OCR、修订稿和审核结论。
-- Canon 知识层 K0–K3 已完成 P1 闭环：189 条复核台词提升为 29 个正式场景和 29 条 accepted 中立证据，并形成 12 个世界实体、9 条人物事实、13 条世界事实和 6 条人物关系；艾尔菲德、奈丽已登记为剧情人物。
-- `evidence` 与 `traits` 仍为空，尚未把单场表现归纳为正式性格；P1 完整逐字稿继续只在忽略的 `local/video-pipeline/` 保存，正式库只保存短摘要、时间定位和引用 ID。
+- 已登记 B 站剧情合集 `BV1kqoaBiEVZ`：22 个分 P，总长 83,323 秒，覆盖标题标注至 1.4；平台接口未提供 CC 字幕，录制画面内字幕已完成本地 OCR、逐条文本审核和必要视觉复核。
+- 本地视频工具 Version `1.0` 已完成 P1–P22 的抽取和审核。完整逐字稿、截图与中间审核包只在忽略的 `local/video-pipeline/` 保存，正式库不复制长字幕。
+- Canon K0–K4 已完成 P1–P22 正式提升：当前包含 22 个 checkpoint、515 个 Scene、1,147 条 accepted Canon Evidence、135 个世界实体、282 条人物事实、156 条世界事实和 146 条原作人物关系。
+- 217 条人物表现证据已跨场景归纳为 51 条 Trait；三位正式角色的六字段修改建议仍只是审核候选，尚未导入生产 `CharacterVersion` 或聊天运行时。
 
 异环信息站属于游戏个人档案的搬运来源，因此标记为 `in_game_archive_mirror`。它能确认游戏内档案和语音内容，但同一文本在不同搬运页面出现时不会被当作多份独立证据。
 
@@ -43,7 +42,7 @@ uv run python -m scripts.character_corpus sync-bilibili --bvid BV1kqoaBiEVZ
 uv run python -m scripts.character_corpus promote-video `
   --staging research/character-corpus/local/video-pipeline/bilibili-BV1kqoaBiEVZ-p01 `
   --plan research/character-corpus/video_promotions/bilibili-BV1kqoaBiEVZ-p01.json
-uv run python -m scripts.character_corpus render --checkpoint nt-bv1kqoabievz-p01
+uv run python -m scripts.character_corpus render --checkpoint nt-bv1kqoabievz-p22
 uv run python -m scripts.character_corpus validate
 uv run python -m scripts.character_corpus build
 ```
@@ -67,4 +66,4 @@ discovered
 → runtime_ready
 ```
 
-当前同步只完成前两级，不自动生成角色性格，也不自动导入 AfterStory。
+档案同步、剧情证据、结构化知识和研究 Trait 已按各自审核门禁完成到 P22，但不会自动导入 AfterStory。正式角色版本仍需用户审核六字段候选，并通过现有不可变 CharacterVersion 导入流程显式发布。

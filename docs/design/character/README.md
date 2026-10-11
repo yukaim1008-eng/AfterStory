@@ -1,10 +1,10 @@
 # 正式角色资料整理入口
 
-状态：第一版候选资料，等待用户集中审核；尚未导入数据库，也未切换任何现有 `CharacterInstance`。
+状态：档案基线与 P1–P22 剧情证据候选均已整理，等待用户集中审核；尚未导入数据库，也未切换任何现有 `CharacterInstance`。
 
 ## 本轮范围
 
-本目录整理娜娜莉、伊洛伊、薄荷在公开角色介绍和角色语音中能够确认的稳定信息，并映射到 Minimal Character Schema v1 的六个字段。候选数据位于 `fixtures/companions.profile-v1.candidate.json`，只作为审核和校验输入：
+本目录整理娜娜莉、伊洛伊、薄荷在公开角色介绍和角色语音中能够确认的稳定信息，并映射到 Minimal Character Schema v1 的六个字段。档案基线候选位于 `fixtures/companions.profile-v1.candidate.json`；P1–P22 剧情证据形成的增补建议见 [三位正式角色六字段修改候选](../../implementation/character-definition-candidates-p05-p22.md)。两者都只作为审核输入：
 
 - `identity`：角色身份与稳定背景；
 - `personality`：核心性格和价值倾向；
@@ -13,7 +13,7 @@
 - `worldview`：海特洛、异象与跨世界通信的稳定前提；
 - `relationship_premise`：用户身份映射和初始关系，不写入后续关系变化。
 
-本轮不整理完整剧情 Canon，不从零散语音推定具体共同事件，不建立 Voice Profile，也不把 Memory、State、Relationship 或 Conversation 写入 Character Definition。
+档案基线本身不从零散语音推定具体共同事件；后续 P1–P22 Canon 已通过独立 Scene、Evidence、知识和 Trait 门禁形成修改候选。当前仍不建立 Voice Profile，也不把 Memory、State、Runtime Relationship 或 Conversation 写入 Character Definition。
 
 ## 来源与证据类型
 
@@ -29,7 +29,7 @@
 
 面向所有命名角色的资料结构、采集顺序和当前覆盖见 [人物资料研究库](character-corpus.md)。
 
-人物地图、世界知识与人物关系图的共同证据链、时间版本和数据结构见 [Canon 人物、世界与关系知识层](canon-knowledge-map.md)。K0–K4 已完成 P1、P2、P3、P4 的复核、正式入库、结构化知识与审核视图，但尚未接入生产 PostgreSQL、Character Definition 或聊天运行时。
+人物地图、世界知识与人物关系图的共同证据链、时间版本和数据结构见 [Canon 人物、世界与关系知识层](canon-knowledge-map.md)。K0–K4 已完成 P1–P22 的复核、正式入库、结构化知识、审核视图和跨 P Trait 归纳，但尚未接入生产 PostgreSQL、Character Definition 或聊天运行时。
 
 ## 导入边界
 
@@ -42,7 +42,7 @@
 
 ## 当前待审重点
 
-- 娜娜莉：鉴定师伙伴关系可以沿用已确认基线，但具体共同剧情仍缺少 Canon 依据。
-- 伊洛伊：暂按“认识并愿意协作的鉴定师”处理，不预设深度关系。
-- 薄荷：公开语音中对玩家使用“可可”，候选稿将其作为默认称呼；是否同时固定“鉴定师”身份映射需用户审核。
-- 三位角色：语言风格仅规定倾向和使用节制，避免每句话机械重复口头禅。
+- 逐项审核 [P1–P22 剧情增补建议](../../implementation/character-definition-candidates-p05-p22.md)，决定哪些证据确认内容进入下一版六字段。
+- `relationship_premise` 必须明确原作主角身份承接与现实用户独立身份的边界，不自动把所有原作共同经历赋给用户。
+- 语言风格只规定稳定倾向和使用节制，避免把剧情台词机械改写成每句话都重复的口头禅。
+- 审核通过后创建新的不可变 CharacterVersion；现有实例和联调版本不自动切换。
