@@ -1,5 +1,7 @@
 :root {
-  font-family: "Noto Sans SC Variable", "Microsoft YaHei UI", sans-serif;
+  --font-ui: "Noto Sans SC Variable", "Microsoft YaHei UI", sans-serif;
+  --font-character: "LXGW WenKai Screen", "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-family: var(--font-ui);
   color: #352733;
   background: #fdf8fb;
   font-synthesis: none;

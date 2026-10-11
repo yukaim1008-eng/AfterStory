@@ -368,7 +368,7 @@ watch(
 .hero-aside strong { color: var(--text); font-size: 14px; }
 .hero-aside span {
   margin-top: 2px;
-  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-family: var(--font-character);
   font-size: 12px;
   transform: rotate(-1deg);
 }

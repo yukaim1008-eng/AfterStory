@@ -55,10 +55,7 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
     opacity: note.opacity,
     color: note.color,
     transform: `rotate(${note.rotate || 0}deg)`,
-    fontFamily:
-      note.fontStyle === "ui"
-        ? undefined
-        : '"Kaiti SC", "STKaiti", "KaiTi", serif',
+    fontFamily: note.fontStyle === "ui" ? undefined : "var(--font-character)",
   };
 }
 </script>
@@ -551,6 +548,11 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   border-radius: 17px 5px 17px 17px;
   background: color-mix(in srgb, var(--soft) 58%, #ffffff82);
   box-shadow: 0 5px 16px color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.message.assistant .bubble {
+  font-family: var(--font-character);
+  letter-spacing: 0.025em;
 }
 
 .message.assistant + .message.assistant {

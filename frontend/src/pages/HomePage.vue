@@ -311,7 +311,7 @@ const recent = computed(() => {
   letter-spacing: 0.35em;
 }
 .home-art-caption p {
-  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-family: var(--font-character);
   font-size: 20px;
   line-height: 1.6;
   margin: 10px 0 0;
@@ -403,7 +403,7 @@ const recent = computed(() => {
 .home-greeting {
   position: relative;
   display: block;
-  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-family: var(--font-character);
   color: color-mix(in srgb, var(--accent) 68%, var(--muted));
   font-size: 17px;
   line-height: 1.6;

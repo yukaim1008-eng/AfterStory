@@ -62,10 +62,7 @@ function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
     opacity: note.opacity,
     color: note.color,
     transform: `rotate(${note.rotate || 0}deg)`,
-    fontFamily:
-      note.fontStyle === "ui"
-        ? undefined
-        : '"Kaiti SC", "STKaiti", "KaiTi", serif',
+    fontFamily: note.fontStyle === "ui" ? undefined : "var(--font-character)",
   };
 }
 </script>

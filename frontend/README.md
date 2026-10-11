@@ -29,6 +29,7 @@ npm run dev
 | 默认封面 | data/character-assets/{id}.png；更改后运行 npm run prepare:media |
 | 当前用户封面 | 浏览器 IndexedDB，按后端用户与角色隔离 |
 | 偏好与草稿 | 浏览器 localStorage，按后端用户隔离 |
+| 字体依赖 | `@fontsource-variable/noto-sans-sc` 用于界面；`lxgw-wenkai-screen-webfont` 用于角色回复、签名与场景批注；字体角色变量在 `src/style.css` |
 | 联调性格提示词 | [companions.integration.json](../fixtures/companions.integration.json)；新增版本后导入，不覆盖旧版本 |
 
 三张默认插画为官方形象的生成式参考，不是正式角色资产。当前介绍和提示词是联调资料，不是完整 Canon。个性化发送按钮待性格补全后再设计。

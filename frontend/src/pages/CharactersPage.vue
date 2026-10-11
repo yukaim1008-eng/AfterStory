@@ -153,7 +153,7 @@ const others = computed(() =>
 .other-characters-heading p {
   margin: 0;
   color: var(--muted);
-  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-family: var(--font-character);
   font-size: 12px;
   opacity: 0.8;
   text-align: right;

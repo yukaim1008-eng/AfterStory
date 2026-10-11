@@ -123,3 +123,5 @@ SettingsPage 外观页细化：不改变 Settings 总布局、左侧导航或其
 Phase 7：统一使用 AppShell、PageBackground、GlassPanel、CharacterSidebar、CharacterAvatar 和语义主题 token。页面进入、角色封面切换、卡片悬停都使用短暂轻动效，并遵从动效偏好和系统减少动效设置。因没有房间、书桌和照片墙资产，背景采用现有角色插画裁切、柔光、渐变、遮罩及低透明玻璃层近似；没有使用参考图作为背景，也没有生成或下载额外素材。
 
 Phase 8：以受控 API 跑完 19 项 Playwright 浏览器回归，覆盖一级页面、角色切换、聊天发送与快捷键、深链、历史/个人记忆分页筛选与隔离、封面/偏好持久化，以及四档桌面宽度。`npm run build` 同时完成媒体准备、`vue-tsc --noEmit` 和生产构建；`npx prettier --check src tests` 通过。项目没有配置 ESLint 或独立 `lint` 脚本，未伪造该结果。验证服务均由测试自行退出，未遗留本轮启动的前后端服务。
+
+2026-10-11 字体依赖补全：保留已经作为依赖加载的 Noto Sans SC Variable 作为界面字体；新增 `lxgw-wenkai-screen-webfont` 正式运行依赖，并只导入简体中文 Screen CSS。角色回复、签名与场景手写批注统一使用 `--font-character`，导航、按钮、输入框和用户消息继续使用 `--font-ui`，避免长界面文本全部手写化。字体资源由 Vite 随构建产物提供，不依赖操作系统预装或运行时 CDN。

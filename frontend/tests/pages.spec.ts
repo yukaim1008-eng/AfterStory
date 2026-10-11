@@ -1064,30 +1064,45 @@ test("chat visual density keeps simulated dialogue readable without page scrolli
   });
   await page.goto(`/#/chat/nanally?conversation=${id}`);
   await expect(page.locator(".message")).toHaveCount(9);
-  const visualCheck = await page.locator(".chat-workspace").evaluate((root) => {
-    const messages = root.querySelector(".messages")!;
-    const assistant = root.querySelector(".message.assistant .bubble")!;
-    const user = root.querySelector(".message.user .bubble")!;
-    const repeatedAuthor = root.querySelector(
-      ".message.assistant + .message.assistant .message-author",
-    )!;
-    const userBox = user.getBoundingClientRect();
-    const messagesBox = messages.getBoundingClientRect();
-    return {
-      viewportLocked:
-        document.documentElement.scrollHeight <= window.innerHeight &&
-        document.body.scrollHeight <= window.innerHeight,
-      userWidthIsRestrained: userBox.width <= messagesBox.width * 0.7 + 1,
-      assistantUsesLightTreatment:
-        getComputedStyle(assistant).borderLeftWidth === "2px",
-      repeatedAssistantMetadataIsQuiet:
-        getComputedStyle(repeatedAuthor).display === "none",
-    };
-  });
+  const visualCheck = await page
+    .locator(".chat-workspace")
+    .evaluate(async (root) => {
+      await document.fonts.ready;
+      const messages = root.querySelector(".messages")!;
+      const assistant = root.querySelector(".message.assistant .bubble")!;
+      const user = root.querySelector(".message.user .bubble")!;
+      const repeatedAuthor = root.querySelector(
+        ".message.assistant + .message.assistant .message-author",
+      )!;
+      const userBox = user.getBoundingClientRect();
+      const messagesBox = messages.getBoundingClientRect();
+      return {
+        viewportLocked:
+          document.documentElement.scrollHeight <= window.innerHeight &&
+          document.body.scrollHeight <= window.innerHeight,
+        userWidthIsRestrained: userBox.width <= messagesBox.width * 0.7 + 1,
+        assistantUsesLightTreatment:
+          getComputedStyle(assistant).borderLeftWidth === "2px",
+        assistantUsesCharacterFont:
+          getComputedStyle(assistant).fontFamily.includes("LXGW WenKai Screen"),
+        characterFontLoaded: document.fonts.check(
+          '16px "LXGW WenKai Screen"',
+          "慢一点也没关系",
+        ),
+        userKeepsUiFont: getComputedStyle(user).fontFamily.includes(
+          "Noto Sans SC Variable",
+        ),
+        repeatedAssistantMetadataIsQuiet:
+          getComputedStyle(repeatedAuthor).display === "none",
+      };
+    });
   expect(visualCheck).toEqual({
     viewportLocked: true,
     userWidthIsRestrained: true,
     assistantUsesLightTreatment: true,
+    assistantUsesCharacterFont: true,
+    characterFontLoaded: true,
+    userKeepsUiFont: true,
     repeatedAssistantMetadataIsQuiet: true,
   });
   const input = page.getByRole("textbox", { name: "消息" });
@@ -1412,16 +1427,17 @@ test("late legacy history responses cannot replace the newly selected conversati
   await page.waitForRequest((request) =>
     request.url().includes("slow-chat/messages"),
   );
+  const slowHistoryResponse = page.waitForResponse(
+    (response) =>
+      response.url().includes("slow-chat/messages") &&
+      response.url().includes("limit=30"),
+  );
   await page.getByRole("button", { name: "回忆", exact: true }).click();
   await page.locator(`.history-row[data-version="${current}"]`).click();
   await expect(
     page.getByText("当前会话保持不变", { exact: true }),
   ).toBeVisible();
-  await page.waitForResponse(
-    (response) =>
-      response.url().includes("slow-chat/messages") &&
-      response.url().includes("limit=30"),
-  );
+  await slowHistoryResponse;
   await expect(page.getByText("较慢的旧会话", { exact: true })).toHaveCount(0);
   await expect(page.locator(".chat-workspace")).toHaveAttribute(
     "data-version",

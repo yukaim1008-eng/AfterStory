@@ -220,7 +220,7 @@ const signature = computed(
   margin: 0;
   overflow: hidden;
   color: color-mix(in srgb, var(--text) 72%, var(--muted));
-  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-family: var(--font-character);
   font-size: 14px;
   line-height: 1.65;
   letter-spacing: 0.02em;
@@ -272,7 +272,7 @@ const signature = computed(
 }
 
 .featured .tagline {
-  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-family: var(--font-character);
   max-width: 26ch;
   color: color-mix(in srgb, var(--accent) 74%, var(--text));
   font-size: 18px;

@@ -412,7 +412,7 @@ const sections = [
   font-size: 12px;
 }
 .settings-companion span {
-  font-family: "Kaiti SC", "STKaiti", "KaiTi", serif;
+  font-family: var(--font-character);
   font-size: 11px;
 }
 .settings-panel {
