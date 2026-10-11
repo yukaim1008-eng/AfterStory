@@ -1,10 +1,10 @@
 # 正式角色资料整理入口
 
-状态：档案基线与 P1–P22 剧情证据候选均已整理，等待用户集中审核；尚未导入数据库，也未切换任何现有 `CharacterInstance`。
+状态：档案基线与 P1–P22 剧情证据候选均已整理；用户已接受娜娜莉、伊洛伊的本轮增补，并确认薄荷默认称用户为“可可”、“鉴定师”只用于职业或任务语境。完整合并候选已经生成，尚未导入数据库，也未切换任何现有 `CharacterInstance`。
 
 ## 本轮范围
 
-本目录整理娜娜莉、伊洛伊、薄荷在公开角色介绍和角色语音中能够确认的稳定信息，并映射到 Minimal Character Schema v1 的六个字段。档案基线候选位于 `fixtures/companions.profile-v1.candidate.json`；P1–P22 剧情证据形成的增补建议见 [三位正式角色六字段修改候选](../../implementation/character-definition-candidates-p05-p22.md)。两者都只作为审核输入：
+本目录整理娜娜莉、伊洛伊、薄荷在公开角色介绍、角色语音和 P1–P22 已接受剧情证据中能够确认的稳定信息，并映射到 Minimal Character Schema v1 的六个字段。档案基线候选保留在 `fixtures/companions.profile-v1.candidate.json`；P1–P22 增补依据见 [三位正式角色六字段修改候选](../../implementation/character-definition-candidates-p05-p22.md)；按用户审核结果合并后的完整版本位于 `fixtures/companions.canon-p22.candidate.json`。这些文件均不自动进入产品数据库：
 
 - `identity`：角色身份与稳定背景；
 - `personality`：核心性格和价值倾向；
@@ -33,16 +33,17 @@
 
 ## 导入边界
 
-审核通过后，仍需执行以下动作才会成为正式可用版本：
+候选内容已经通过本轮用户审核，但仍需执行以下动作才会成为正式可用版本：
 
-1. 根据审核意见修改候选 Definition；
-2. 确认每位角色的 `version_id` 与 `checkpoint`；
+1. 将候选 `version_id` 去除 `-candidate` 后确定正式不可变版本号；
+2. 确认共同 checkpoint `nt-bv1kqoabievz-p22`；
 3. 使用现有 `seed()` 显式导入，由 Prompt Builder v1.0 生成冻结 `system_prompt`；
 4. 新建或显式切换实例进行测试。现有实例不会自动升级，旧联调版本继续可用。
 
-## 当前待审重点
+## 当前已确认与后续检查
 
-- 逐项审核 [P1–P22 剧情增补建议](../../implementation/character-definition-candidates-p05-p22.md)，决定哪些证据确认内容进入下一版六字段。
-- `relationship_premise` 必须明确原作主角身份承接与现实用户独立身份的边界，不自动把所有原作共同经历赋给用户。
+- 娜娜莉与伊洛伊采用当前剧情增补；伊洛伊因跨章证据量较少，相关表现保持 supporting 强度。
+- 薄荷默认称呼为“可可”；“鉴定师”只在职业身份或鉴定、任务语境使用。
+- `relationship_premise` 已明确原作主角身份承接与现实用户独立身份的边界，不自动把原作共同经历赋给用户。
 - 语言风格只规定稳定倾向和使用节制，避免把剧情台词机械改写成每句话都重复的口头禅。
-- 审核通过后创建新的不可变 CharacterVersion；现有实例和联调版本不自动切换。
+- 下一步若决定启用，应先用候选完成显式测试导入与真实聊天验收，再创建正式不可变 CharacterVersion；现有实例和联调版本不自动切换。
