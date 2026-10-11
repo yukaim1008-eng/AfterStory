@@ -123,15 +123,15 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         "sources": 25,
         "source_parts": 22,
         "profiles": 23,
-        "scenes": 441,
-        "evidence": 177,
+        "scenes": 469,
+        "evidence": 190,
         "traits": 17,
-        "canon_checkpoints": 15,
-        "canon_evidence": 915,
-        "world_entities": 116,
-        "character_facts": 217,
-        "world_facts": 131,
-        "character_relations": 120,
+        "canon_checkpoints": 18,
+        "canon_evidence": 1018,
+        "world_entities": 125,
+        "character_facts": 233,
+        "world_facts": 140,
+        "character_relations": 125,
     }
     catalog = json.loads((CORPUS_ROOT / "catalog.json").read_text(encoding="utf-8"))
     missing = [item for item in catalog if item["research_status"] == "discovered"]
@@ -177,7 +177,10 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
     ]
     assert sum(part["duration_ms"] for part in parts) == 83_323_000
     assert {part["subtitle_mode"] for part in parts} == {"no_platform_subtitles"}
-    assert [part["visual_subtitle_status"] for part in parts[:15]] == [
+    assert [part["visual_subtitle_status"] for part in parts[:18]] == [
+        "verified_present",
+        "verified_present",
+        "verified_present",
         "verified_present",
         "verified_present",
         "verified_present",
@@ -194,7 +197,7 @@ def test_committed_character_corpus_is_valid_and_tracks_missing_profile():
         "verified_present",
         "verified_present",
     ]
-    assert {part["visual_subtitle_status"] for part in parts[15:]} == {
+    assert {part["visual_subtitle_status"] for part in parts[18:]} == {
         "user_confirmed_present"
     }
 

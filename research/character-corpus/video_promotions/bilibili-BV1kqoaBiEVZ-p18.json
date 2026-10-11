@@ -1,0 +1,862 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p18",
+  "reviewed_transcript_sha256": "c137cf123bce87967ba2beb6471c0c45ba7149bc4ba84ca4e558502fa8220f54",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p18",
+    "source_work": "异环",
+    "display_name": "第7话 勇者斗赤龙 3",
+    "sequence": 18,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第7话 勇者斗赤龙 3",
+    "predecessor_id": "nt-bv1kqoabievz-p17",
+    "spoiler_scope": "第7话 勇者斗赤龙 3"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p18-s001",
+      "start_ms": 12533,
+      "end_ms": 520000,
+      "summary": "「神秘商绵」在分别前送出三人份新装备，并讲述「龙之铠甲」的来历：铠甲蕴含恶龙之力会侵蚀精神，令大英雄失控伤了最重视的人，她剥离铠甲后独自流浪，碎片散落大陆并被赤龙拾得；众人围绕此事争论，最终真红坦白自己怕的正是失控。",
+      "participants": [
+        "iroi",
+        "mint",
+        "shinku"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00005",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00024",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042",
+        "u00043",
+        "u00044",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00054",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00060",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e001a",
+          "start_ms": 12533,
+          "end_ms": 60533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "mint",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "「神秘商绵」表示只能送到此处，伊洛伊打趣它没被大灰狼吃掉，薄荷说理解并称以后不必再为此担心；商绵拿出两件宝贝，第一件是仅三人份的新装备，真红回应说不用在意自己。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004",
+            "u00005",
+            "u00006",
+            "u00007",
+            "u00008"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e001b",
+          "start_ms": 62933,
+          "end_ms": 205067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "商绵说第二件宝贝是「龙之铠甲」的真相：蕴含各条恶龙力量的铠甲会趁人疲惫脆弱时入侵精神；伊洛伊催其别卖关子，商绵讲述大英雄与伙伴同赤龙的战斗几近尾声、赤龙欲逃时「那件事」发生，真红接过话说大英雄失去理智做了无法原谅自己的事。",
+          "transcript_refs": [
+            "u00009",
+            "u00010",
+            "u00011",
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019",
+            "u00020",
+            "u00021",
+            "u00022",
+            "u00023"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e001c",
+          "start_ms": 207467,
+          "end_ms": 257600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷追问大英雄的伙伴们为何不去找她，真红说发生过那种事肯定不会再去；商绵只说伙伴们应该找过、自己也不太清楚故事的来历，随后向众人告别。",
+          "transcript_refs": [
+            "u00024",
+            "u00025",
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e001d",
+          "start_ms": 258133,
+          "end_ms": 355467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷表示不喜欢这个结局，伊洛伊指出绵绵们水深火热的处境似乎正是大英雄所致，薄荷追问如何破除会让人失控的诅咒；真红反问若无法破除、自己是否也会失控伤害大家，薄荷与伊洛伊则说会帮助她、也能随时让她睡着。",
+          "transcript_refs": [
+            "u00030",
+            "u00031",
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042",
+            "u00043",
+            "u00044"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e001e",
+          "start_ms": 356000,
+          "end_ms": 429333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人继续劝说真红：真红说自己不相信的其实是自己，有人指出她宁可独自承担也不肯说出来，薄荷追问在她心里自己是否绝对帮不上忙，伊洛伊说她若真能独自解决倒该被高看一眼，有人请她也多相信在场每一个人的力量。",
+          "transcript_refs": [
+            "u00046",
+            "u00047",
+            "u00048",
+            "u00049",
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e001f",
+          "start_ms": 432000,
+          "end_ms": 520000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "mint",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红领悟大英雄是怕朋友不再信任才独自逃开、是胆小鬼，薄荷让她别太激动、一起改写结局；真红问若接下来由自己穿上铠甲会怎样，薄荷说那一定很帅、副作用放马过来，伊洛伊打趣铠甲太重只有彪悍龙才穿得动，真红表示会努力不被那种东西摆布。",
+          "transcript_refs": [
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00058",
+            "u00059",
+            "u00060",
+            "u00061",
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p18-s002",
+      "start_ms": 566667,
+      "end_ms": 702400,
+      "summary": "众人正面面对赤龙：赤龙假意求饶诱使薄荷上前摔倒，随即大笑并威胁戴上铠甲者必将失控伤害同伴，众人表示早已知晓此事，真红率先发起攻击。",
+      "participants": [
+        "iroi",
+        "mint",
+        "shinku"
+      ],
+      "transcript_refs": [
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084",
+        "u00085",
+        "u00086",
+        "u00088",
+        "u00089",
+        "u00090"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e002a",
+          "start_ms": 566667,
+          "end_ms": 599733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人兴奋高喊「果果」，赤龙惊讶于竟真有人找齐了碎片，薄荷挑衅说不投降就把它揍得嗷嗷叫，赤龙装作害怕、连声求饶说要投降。",
+          "transcript_refs": [
+            "u00067",
+            "u00068",
+            "u00069",
+            "u00070",
+            "u00072",
+            "u00073"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e002b",
+          "start_ms": 600267,
+          "end_ms": 634133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "iroi",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红出言叫住薄荷，薄荷却以一声「啊哟」摔倒在地，伊洛伊说她这下要摔成猫猫饼并让她快起来，赤龙随即放声大笑、嘲笑她会上这么简单的当，真红警告它马上就笑不出来了。",
+          "transcript_refs": [
+            "u00074",
+            "u00075",
+            "u00076",
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e002c",
+          "start_ms": 634667,
+          "end_ms": 698933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "赤龙威胁说趁对方还神智清醒就赶紧多说几句告别的话，嘲笑他们尚不知道接下来会发生的事，自称早已把那股强劲力量收入囊中，迫不及待想看对方被夺去神智、把最重视的人打得遍体鳞伤后绝望痛哭；对方则回应这件事他们早已知道，被打得遍体鳞伤、绝望痛哭的只会是赤龙。",
+          "transcript_refs": [
+            "u00081",
+            "u00082",
+            "u00083",
+            "u00084",
+            "u00085",
+            "u00086",
+            "u00088",
+            "u00089"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e002d",
+          "start_ms": 700800,
+          "end_ms": 702400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红喊出「接招！」，向赤龙发起攻击。",
+          "transcript_refs": [
+            "u00090"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p18-s003",
+      "start_ms": 848000,
+      "end_ms": 848533,
+      "summary": "战斗中传来一声「不要！」的呼喊。",
+      "participants": [],
+      "transcript_refs": [
+        "u00091"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e003",
+          "start_ms": 848000,
+          "end_ms": 848533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人喊出一声「不要！」。",
+          "transcript_refs": [
+            "u00091"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p18-s004",
+      "start_ms": 872000,
+      "end_ms": 874133,
+      "summary": "有人低声念出「我、我」。",
+      "participants": [],
+      "transcript_refs": [
+        "u00092"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e004",
+          "start_ms": 872000,
+          "end_ms": 874133,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人低声念出「我、我」。",
+          "transcript_refs": [
+            "u00092"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p18-s005",
+      "start_ms": 893600,
+      "end_ms": 917600,
+      "summary": "一个声音接连怂恿对方：既然觉得吵就让她永远闭嘴，压抑本性很痛苦，把一切都释放出来，并质问对方是否还在逃、能不能逃得掉。",
+      "participants": [],
+      "transcript_refs": [
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e005",
+          "start_ms": 893600,
+          "end_ms": 917600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "一个声音接连怂恿对方：觉得吵的话就让她永远闭嘴好了，压抑本性很痛苦，把一切都释放出来；随后又问对方是不是还在逃、逃得掉吗。",
+          "transcript_refs": [
+            "u00093",
+            "u00094",
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00098"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p18-s006",
+      "start_ms": 975467,
+      "end_ms": 1001600,
+      "summary": "一个声音质问对方与自己如今有何分别、是否只有这一种结局；随后有人呼喊「这就放弃了吗？！破坏龙！」以及「果果！你不是一个人！」、「相信我们！」。",
+      "participants": [],
+      "transcript_refs": [
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e006a",
+          "start_ms": 975467,
+          "end_ms": 986667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "一个声音质问对方「现在，你我有什么分别呢？」，对方则低声问「只有……这一种结局么」。",
+          "transcript_refs": [
+            "u00099",
+            "u00100"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e006b",
+          "start_ms": 990667,
+          "end_ms": 1001600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人质问「这就放弃了吗？！破坏龙！」，并呼喊「果果！你不是一个人！」「相信我们！」。",
+          "transcript_refs": [
+            "u00101",
+            "u00102",
+            "u00103"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p18-s007",
+      "start_ms": 1025333,
+      "end_ms": 1069067,
+      "summary": "众人关切地询问对方是否没事、责怪其为磨蹭龙；对方为让大家担心而道歉，并表示虽也许没法打败对方，却愿意试着接纳对方、接纳完整的自己，并与伙伴们在一起。",
+      "participants": [],
+      "transcript_refs": [
+        "u00104",
+        "u00105",
+        "u00106",
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e007a",
+          "start_ms": 1025333,
+          "end_ms": 1042933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "有人询问对方是否没事，并说真让人担心、称其为磨蹭龙；对方回答「对不起」「让你们担心了」。",
+          "transcript_refs": [
+            "u00104",
+            "u00105",
+            "u00106",
+            "u00107"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e007b",
+          "start_ms": 1047733,
+          "end_ms": 1069067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "对方表示自己也许没法打败对方，但可以试着接纳它，接纳完整的自己，并与伙伴们一起。",
+          "transcript_refs": [
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p18-s008",
+      "start_ms": 1180267,
+      "end_ms": 1273333,
+      "summary": "取胜后众人庆祝，真红向众人道谢，众人决定换个地方庆祝；画面转入片尾名单与旁白，讲述沃伦大陆迎来和平、英雄事迹被传唱，并为纪念骑着「火龙果」的龙骑士及其三位伙伴。",
+      "participants": [
+        "iroi",
+        "mint",
+        "shinku"
+      ],
+      "transcript_refs": [
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00117",
+        "u00118",
+        "u00119",
+        "u00120",
+        "u00124",
+        "u00125",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e008a",
+          "start_ms": 1180267,
+          "end_ms": 1208533,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "mint",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红开口说话，薄荷高呼「成功了」，真红向众人道谢并为刚才让大家担心而道歉，伊洛伊与薄荷说不用见外、这时只要高兴地庆祝就好。",
+          "transcript_refs": [
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115",
+            "u00116"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e008b",
+          "start_ms": 1208800,
+          "end_ms": 1217067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人说恐怕得换个地方再庆祝了，薄荷吐槽这龙住的地方太不禁拆，并提议高高兴兴回村把好消息告诉大家。",
+          "transcript_refs": [
+            "u00117",
+            "u00118",
+            "u00119"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e008c",
+          "start_ms": 1219733,
+          "end_ms": 1225333,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "画面出现制作人员与角色名单的字幕文字（如剑士、鉴定师、龙骑士、真红、伊洛伊、薄荷及各色「绵绵」等名目）。",
+          "transcript_refs": [
+            "u00120",
+            "u00124",
+            "u00125",
+            "u00126"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e008d",
+          "start_ms": 1226667,
+          "end_ms": 1242133,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "旁白字幕讲述：就这样，沃伦大陆迎来了真正的和平，绵绵们过上了安宁的生活，再也不用担心恶龙的侵扰，终于能陷入香甜的沉眠、睡个好觉。",
+          "transcript_refs": [
+            "u00127",
+            "u00128",
+            "u00129",
+            "u00130",
+            "u00131",
+            "u00132"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e008e",
+          "start_ms": 1245867,
+          "end_ms": 1273333,
+          "evidence_kind": "document",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "旁白字幕继续讲述：众人将踏上新的冒险之旅，与绵绵们结下的情谊依旧温暖鲜活、永不褪色；英雄的事迹需要被铭记、值得被传唱，有几只绵绵忙个不停，为了纪念伟大的龙骑士「火龙果」骑和她最重要的三位伙伴们。",
+          "transcript_refs": [
+            "u00133",
+            "u00134",
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138",
+            "u00139",
+            "u00140",
+            "u00141"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p18-s009",
+      "start_ms": 1295467,
+      "end_ms": 1471733,
+      "summary": "尾声：薄荷意犹未尽想再玩一局，被提醒已是晚饭时间；真红透露自己早已跟随师父在局里做事，薄荷大为错愕，伊洛伊借烧水打岔；薄荷端出下厨做的食物，众人面对其厨艺暗自警惕，最后薄荷唤「可可」，伊洛伊打趣体质检定未通过。",
+      "participants": [
+        "iroi",
+        "mint",
+        "shinku"
+      ],
+      "transcript_refs": [
+        "u00142",
+        "u00143",
+        "u00144",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165",
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173",
+        "u00174",
+        "u00175",
+        "u00176",
+        "u00177"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e009a",
+          "start_ms": 1295467,
+          "end_ms": 1320000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说怎么就结束了、还有好多事想做，想开庆功宴、去大陆别处冒险；真红纠正说是「沃伦大陆」，薄荷应和后提议立刻再来一局。",
+          "transcript_refs": [
+            "u00142",
+            "u00143",
+            "u00144",
+            "u00145",
+            "u00146"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e009b",
+          "start_ms": 1320533,
+          "end_ms": 1362933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人提醒已经是晚饭时间、明天还要上班，薄荷便改约下次再聚；真红问对方是不是饿了、说自己这里有糖。",
+          "transcript_refs": [
+            "u00147",
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152",
+            "u00153",
+            "u00154"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e009c",
+          "start_ms": 1363200,
+          "end_ms": 1381333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊提醒薄荷她家厨房里水壶烧开了，薄荷由此意识到真红原来并非新人、大大出乎意料。",
+          "transcript_refs": [
+            "u00155",
+            "u00157"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e009d",
+          "start_ms": 1381600,
+          "end_ms": 1400000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "iroi",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "有人问薄荷不是做得很好吗，真红与伊洛伊分别唤薄荷为「薄荷前、辈」、说前辈要继续加油，薄荷结结巴巴地说突然想起厨房里水烧开了、去去就来。",
+          "transcript_refs": [
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e009e",
+          "start_ms": 1400267,
+          "end_ms": 1409867,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊说「真是大笨猫呀」，真红递上糖问要不要吃。",
+          "transcript_refs": [
+            "u00163",
+            "u00164",
+            "u00165"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e009f",
+          "start_ms": 1413600,
+          "end_ms": 1425600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说回来了、下厨准备了点吃的让大家别客气，招呼「吃点吗~吃点吗~」，又问「可可」是不是饿了。",
+          "transcript_refs": [
+            "u00166",
+            "u00167",
+            "u00168"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e009g",
+          "start_ms": 1425867,
+          "end_ms": 1456000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [],
+          "speaker_character_id": "",
+          "observation": "内心独白呈现：眼前的食物看起来很正常，但对薄荷的了解仍令人警铃大作，并回忆起薄荷的厨艺水平；薄荷正满脸期待地看着对方，对方说不出拒绝的话，只好说「那我就不客气了」。",
+          "transcript_refs": [
+            "u00169",
+            "u00170",
+            "u00171",
+            "u00172",
+            "u00173",
+            "u00174",
+            "u00175"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p18-e009h",
+          "start_ms": 1462133,
+          "end_ms": 1471733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷唤了一声「可可？」，伊洛伊打趣说「没有通过体质检定呢」。",
+          "transcript_refs": [
+            "u00176",
+            "u00177"
+          ]
+        }
+      ]
+    }
+  ]
+}

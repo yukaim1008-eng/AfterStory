@@ -1,6 +1,6 @@
 # Canon 世界知识
 
-> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p15`（第6话 雾巢游戏 4）。
+> 派生审核视图；checkpoint：`nt-bv1kqoabievz-p18`（第7话 勇者斗赤龙 3）。
 
 | 实体 | 类型 | 摘要 | 已接受事实 | 证据 |
 | --- | --- | --- | --- | --- |
@@ -120,3 +120,12 @@
 | 辉环 (`huihuan`) | object | 雾巢游戏中散落于各处的发光环，可被收集；集满后可过关，收集可能存在时间限制，失去辉环也就失去被攻击的理由。 | 机制散落于雾巢、可被收集的发光环；集满后可过关，且收集可能存在时间限制；作用失去辉环的同时也就失去被攻击的理由（达芙蒂尔的认知） | [nt-bv1kqoabievz-p13-e009b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=13&t=1756)、[nt-bv1kqoabievz-p14-e002a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=74)、[nt-bv1kqoabievz-p14-e008a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=1038) |
 | 雾巢伴生歧骸 (`wuchao-companion-distorted-remnant`) | phenomenon | 雾巢中体型巨大、形如大蛇的伴生歧骸；追击闯入者并引发山谷塌方，腹中藏有辉环之光，被击倒后只剩下一堆骸骨。 | 行为体型巨大、形如大蛇，追击闯入者并引发山谷塌方；腹中藏有辉环之光，被击倒后只剩下一堆骸骨 | [nt-bv1kqoabievz-p14-e003b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=415)、[nt-bv1kqoabievz-p14-e005a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=575)、[nt-bv1kqoabievz-p14-e006b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=14&t=757) |
 | 雾枢 (`wushu`) | object | 雾巢的核心；贡品越丰盛其力量越充沛，无论规则如何书写都只留唯一胜者，胜者可挑选雾巢内任何东西（含「异能」）作为奖励。 | 特性贡品越是丰盛甘美，雾枢的力量就越充沛；女儿们将化作养分滋养 T 女士；规则无论规则如何书写，雾枢最终只会留下唯一的胜者；奖励雾巢游戏的胜者可挑选雾巢内任何东西（含「异能」）作为奖励 | [nt-bv1kqoabievz-p15-e009c](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=1131)、[nt-bv1kqoabievz-p15-e010a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=15&t=1216) |
+| 九百九十九夜 (`jiubai-jiushijiu-ye`) | object | 薄荷家中用来张罗同伴一起玩的桌游式冒险游戏：用骰子选题材、分配点数形成职业，再围绕「城主骰子」展开随机故事；本次抽到冒险题材。 | 玩法用骰子选题材、分配点数形成职业，再围绕「城主骰子」展开随机故事 | [nt-bv1kqoabievz-p16-e001e](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=240)、[nt-bv1kqoabievz-p16-e004b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=733) |
+| 城主骰子 (`chengzhu-shaizi`) | object | 「九百九十九夜」的核心道具；像说书人或旁白，会借众人的声音进行解说、能编排专属故事，并会点破玩家的心事。 | 特性像说书人或旁白，会借众人的声音解说，并能编排专属故事、点破玩家的心事 | [nt-bv1kqoabievz-p16-e001e](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=240)、[nt-bv1kqoabievz-p16-e004c](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=831) |
+| 沃伦大陆 (`wolun-continent`) | location | 游戏内的世界，绵绵们定居于此并建起绵绵城。 | 居民绵绵们定居于此并建起绵绵城 | [nt-bv1kqoabievz-p16-e005d](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=1368)、[nt-bv1kqoabievz-p18-e008d](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=18&t=1226) |
+| 绵绵 (`mianmian`) | species | 游戏内由棉花糖组成的生物，按毛色分辨口味，会说人话（需具「动物交谈」能力才能听懂）；也有堵路绵、好斗绵、失主绵、艺术绵、维修绵、神秘商绵等各色个体。 | 特性由棉花糖组成，按毛色分辨口味，会说人话（需具「动物交谈」能力才能听懂） | [nt-bv1kqoabievz-p16-e005a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=1044)、[nt-bv1kqoabievz-p16-e005b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=1124)、[nt-bv1kqoabievz-p16-e005d](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=1368) |
+| 绵绵村 (`mianmian-village`) | location | 赤龙霸占绵绵城后，村长绵带一小群绵绵在附近建起的村子。 | — | [nt-bv1kqoabievz-p16-e005d](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=1368) |
+| 绵绵城 (`mianmian-city`) | location | 绵绵们定居沃伦大陆后建起的城；后被恶龙之首赤龙霸占、驱使绵绵工匠为其打造高塔。 | 状态被恶龙之首赤龙霸占，赤龙驱使绵绵工匠为其打造高塔、以带火喷嚏折磨绵绵 | [nt-bv1kqoabievz-p16-e005d](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=1368) |
+| 赤龙 (`scarlet-dragon`) | phenomenon | 游戏中的恶龙之首；霸占绵绵城、以带火喷嚏折磨绵绵，并在大英雄失踪后夺得「龙之铠甲的金龙的残尾」，卷土重来。 | 行为在大英雄失踪后夺得「龙之铠甲」的金龙的残尾，卷土重来，其余碎片散落各处 | [nt-bv1kqoabievz-p16-e005d](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=1368)、[nt-bv1kqoabievz-p16-e007b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=1889) |
+| 龙之铠甲 (`dragon-armor`) | object | 游戏中由讨伐各色恶龙所得战利品打造的铠甲；蕴含恶龙之力、会趁人疲惫脆弱时侵蚀精神，使穿戴者失控伤害最重视的人。 | 性质蕴含各条恶龙的力量，会趁人疲惫脆弱时入侵精神，令穿戴者失控、伤害最重视的人；碎片所在碎片分别在滚烫的巧克力火山、冰封的牛奶雪冰山和会致幻的琥珀湖 | [nt-bv1kqoabievz-p16-e007a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=1801)、[nt-bv1kqoabievz-p16-e013a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=3278)、[nt-bv1kqoabievz-p18-e001b](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=18&t=62) |
+| 会致幻的琥珀湖 (`amber-lake`) | location | 游戏中藏有铠甲碎片的地点之一；湖泊的致幻作用会让身处其中的人纷纷做噩梦，噩梦里映出每个人最为恐惧之物。 | 特性湖泊的致幻作用会让身处其中的人纷纷做噩梦，噩梦里映出每个人最为恐惧的东西 | [nt-bv1kqoabievz-p16-e013a](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=16&t=3278)、[nt-bv1kqoabievz-p17-e004f](https://www.bilibili.com/video/BV1kqoaBiEVZ/?p=17&t=1184) |

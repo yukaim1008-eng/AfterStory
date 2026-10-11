@@ -1,0 +1,896 @@
+{
+  "schema_version": "1.0",
+  "source_id": "bilibili-BV1kqoaBiEVZ",
+  "source_part_id": "bilibili-BV1kqoaBiEVZ-p17",
+  "reviewed_transcript_sha256": "9e1c108455bb4d8a51844d47eab9425c5ae5804e88ec443d659817f2c373b70a",
+  "checkpoint": {
+    "schema_version": "1.0",
+    "checkpoint_id": "nt-bv1kqoabievz-p17",
+    "source_work": "异环",
+    "display_name": "第7话 勇者斗赤龙 2",
+    "sequence": 17,
+    "content_track": "main_story",
+    "game_version": "",
+    "chapter": "第7话 勇者斗赤龙 2",
+    "predecessor_id": "nt-bv1kqoabievz-p16",
+    "spoiler_scope": "第7话 勇者斗赤龙 2"
+  },
+  "scenes": [
+    {
+      "scene_id": "nt-bv1kqoabievz-p17-s001",
+      "start_ms": 80000,
+      "end_ms": 298400,
+      "summary": "薄荷搭好帐篷点燃篝火，众人围火闲聊烤棉花糖；自称循火光而来的神秘商绵现身，薄荷收留她过夜，她以新装备答谢众人；真红接受商绵的拥抱难得放松，伊洛伊则与商绵围绕「友情价」打趣。",
+      "participants": [
+        "iroi",
+        "mint",
+        "shinku"
+      ],
+      "transcript_refs": [
+        "u00001",
+        "u00002",
+        "u00003",
+        "u00004",
+        "u00006",
+        "u00007",
+        "u00008",
+        "u00009",
+        "u00010",
+        "u00011",
+        "u00012",
+        "u00013",
+        "u00014",
+        "u00015",
+        "u00016",
+        "u00017",
+        "u00018",
+        "u00019",
+        "u00020",
+        "u00021",
+        "u00022",
+        "u00023",
+        "u00025",
+        "u00026",
+        "u00027",
+        "u00028",
+        "u00029",
+        "u00030",
+        "u00031",
+        "u00032",
+        "u00033",
+        "u00034",
+        "u00035",
+        "u00036",
+        "u00037",
+        "u00038",
+        "u00039",
+        "u00040",
+        "u00041",
+        "u00042"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e001a",
+          "start_ms": 80000,
+          "end_ms": 104800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷搭好帐篷、点燃篝火感叹很有露营的感觉，伊洛伊道谢说这下能好好休息，薄荷说体力活交给她、现在正是发挥职业特长的时候。",
+          "transcript_refs": [
+            "u00001",
+            "u00002",
+            "u00003",
+            "u00004"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e001b",
+          "start_ms": 108800,
+          "end_ms": 128000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说好想烤棉花糖、要撒上跳跳糖以及番茄酱蛋黄酱黑椒酱芥末酱，真红在旁说千万别拿给她吃。",
+          "transcript_refs": [
+            "u00007",
+            "u00008",
+            "u00009",
+            "u00010",
+            "u00011"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e001c",
+          "start_ms": 128267,
+          "end_ms": 180267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说真闻到了又香又甜的烤棉花糖味，伊洛伊嫌又凑上来的商绵烦人；商绵自称响应贵客需求、循着火光千里迢迢跟来，薄荷让她放心在营地休息。",
+          "transcript_refs": [
+            "u00012",
+            "u00013",
+            "u00014",
+            "u00015",
+            "u00016",
+            "u00017",
+            "u00018",
+            "u00019"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e001d",
+          "start_ms": 180800,
+          "end_ms": 211467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "商绵拿出珍藏的宝贝答谢众人，薄荷惊呼新装备让各项属性提升好多，并有人发现少了一件，商绵解释说只有与「职业」对应的装备。",
+          "transcript_refs": [
+            "u00020",
+            "u00021",
+            "u00022",
+            "u00023"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e001e",
+          "start_ms": 215733,
+          "end_ms": 251467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红说没关系，商绵提议用一个充满爱的拥抱补偿、请她不要拒绝，真红答「你随意」并未拒绝，随后感慨这种放松的感觉好难得，并让旁边的人当作什么都没听见。",
+          "transcript_refs": [
+            "u00025",
+            "u00026",
+            "u00027",
+            "u00028",
+            "u00029",
+            "u00030",
+            "u00031"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e001f",
+          "start_ms": 251733,
+          "end_ms": 298400,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷也想要商绵当枕头，商绵推销配套的毯子和被子，伊洛伊说全都要了，商绵正要报价时伊洛伊称已用「友情价」付过，双方就「友情」两清一事打趣。",
+          "transcript_refs": [
+            "u00032",
+            "u00033",
+            "u00034",
+            "u00035",
+            "u00036",
+            "u00037",
+            "u00038",
+            "u00039",
+            "u00040",
+            "u00041",
+            "u00042"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p17-s002",
+      "start_ms": 557067,
+      "end_ms": 765600,
+      "summary": "真红为先前失误向同伴道歉，薄荷与伊洛伊宽慰她、并借机强调小队需要多磨合；薄荷点名真红总独自行动、曾暗中跟踪保护她，两人约定切磋，随后薄荷追问真红的异能，真红称绝不会主动使用它。",
+      "participants": [
+        "iroi",
+        "mint",
+        "shinku"
+      ],
+      "transcript_refs": [
+        "u00043",
+        "u00044",
+        "u00045",
+        "u00046",
+        "u00047",
+        "u00048",
+        "u00049",
+        "u00050",
+        "u00051",
+        "u00052",
+        "u00053",
+        "u00054",
+        "u00055",
+        "u00056",
+        "u00057",
+        "u00058",
+        "u00059",
+        "u00061",
+        "u00062",
+        "u00063",
+        "u00064",
+        "u00065",
+        "u00066",
+        "u00067",
+        "u00068",
+        "u00069",
+        "u00070",
+        "u00071",
+        "u00072",
+        "u00073",
+        "u00074",
+        "u00075",
+        "u00076",
+        "u00077",
+        "u00078",
+        "u00079",
+        "u00080",
+        "u00081",
+        "u00082",
+        "u00083",
+        "u00084"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e002a",
+          "start_ms": 557067,
+          "end_ms": 585600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红为刚才战斗中的失误向大家道歉，薄荷说这没什么大不了、专门道歉反而显得生分，并说果果当初不知没有职业这么不方便、选了就当作提高一点游戏难度。",
+          "transcript_refs": [
+            "u00043",
+            "u00044",
+            "u00045",
+            "u00046",
+            "u00047"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e002b",
+          "start_ms": 590933,
+          "end_ms": 635467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷指出小队默契不够、接下来要多磨合多熟悉每个人的作战方式；伊洛伊考薄荷能否读懂自己的眼神，薄荷猜是「薄荷前辈说得太对了」，真红说是「薄荷前辈完全就是个热血笨蛋」，伊洛伊笑称「聪明龙」，薄荷打岔后言归正传。",
+          "transcript_refs": [
+            "u00050",
+            "u00051",
+            "u00052",
+            "u00053",
+            "u00054",
+            "u00055",
+            "u00056",
+            "u00057",
+            "u00058"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e002c",
+          "start_ms": 635733,
+          "end_ms": 682933,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "shinku",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷点名果果总单打独斗、提到上次「无首铁驭」的任务，并说自己有好几次躲在暗处观察保护她；真红说难怪好像有东西盯着自己，伊洛伊说薄荷是跟踪狂，薄荷辩解只是路过恰好发现。",
+          "transcript_refs": [
+            "u00059",
+            "u00061",
+            "u00062",
+            "u00063",
+            "u00064",
+            "u00065",
+            "u00066",
+            "u00067"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e002d",
+          "start_ms": 683733,
+          "end_ms": 728267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷夸果果战斗的样子特别帅气、约改天切磋并叮嘱她不要因自己是前辈就放水，真红答「好啊」与「全力」。",
+          "transcript_refs": [
+            "u00070",
+            "u00071",
+            "u00072",
+            "u00073",
+            "u00074",
+            "u00075",
+            "u00076"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e002e",
+          "start_ms": 728800,
+          "end_ms": 765600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "shinku",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷问果果的异能是什么，真红说那东西不重要、自己绝不会主动使用，只当它强化体能再用体术制服任务目标；薄荷觉得不去使用自己的一部分很可惜，真红说变成飞龙把大笨猫一口吞掉时薄荷就更想看了。",
+          "transcript_refs": [
+            "u00077",
+            "u00078",
+            "u00079",
+            "u00080",
+            "u00081",
+            "u00082",
+            "u00083",
+            "u00084"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p17-s003",
+      "start_ms": 800000,
+      "end_ms": 927733,
+      "summary": "真红独自置身空无一人的村庄，意识到这是独属于她一人的梦境；「城主骰子」指出她并非真的讨厌伙伴，真红承认自己以抗拒他人为习惯、担心伙伴无法接受全部的自己，那个声音则宣称失去理智、只剩破坏欲的一面才是真正的她。",
+      "participants": [
+        "shinku"
+      ],
+      "transcript_refs": [
+        "u00085",
+        "u00086",
+        "u00087",
+        "u00088",
+        "u00089",
+        "u00090",
+        "u00091",
+        "u00092",
+        "u00093",
+        "u00094",
+        "u00095",
+        "u00096",
+        "u00097",
+        "u00098",
+        "u00099",
+        "u00100",
+        "u00101",
+        "u00102",
+        "u00103",
+        "u00105",
+        "u00106"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e003a",
+          "start_ms": 800000,
+          "end_ms": 815733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红觉得村里让人放松、好久没这样惬意，注意到迎面吹来的风里有甜甜的味道，自嘲怎么也开始关注空气里的气味、说被薄荷传染了。",
+          "transcript_refs": [
+            "u00085",
+            "u00086",
+            "u00087",
+            "u00088"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e003b",
+          "start_ms": 818400,
+          "end_ms": 833600,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红察觉一个人都没有、羊和偷吃零食的泡泡存钱罐也不在，疑惑为什么只有自己；「城主骰子」的声音说这是独属于她一个人的梦境，真红意识到是梦、觉得太冷清。",
+          "transcript_refs": [
+            "u00089",
+            "u00090",
+            "u00091",
+            "u00092",
+            "u00093"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e003c",
+          "start_ms": 834133,
+          "end_ms": 879733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "「城主」说想不到真红还怪想念伙伴们；真红承认不可能不喜欢他们、只是自己态度不够好，解释说因为抗拒他人已成习惯、只有这样才对所有人都好，并评价薄荷是热心肠、觉得伊洛伊和自己有点像。",
+          "transcript_refs": [
+            "u00094",
+            "u00095",
+            "u00096",
+            "u00097",
+            "u00098",
+            "u00099"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e003d",
+          "start_ms": 894933,
+          "end_ms": 927733,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "「城主」追问真红也在压着什么、掩盖什么，说那才是全部而真实的她；真红自问伙伴们会不会接受全部的自己，那声音说她连自己都不敢承认、又怎能指望别人接受，并宣称失去理智、只想把面前一切撕碎的那一面才是真正的她。",
+          "transcript_refs": [
+            "u00101",
+            "u00102",
+            "u00103",
+            "u00105",
+            "u00106"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p17-s004",
+      "start_ms": 948000,
+      "end_ms": 1276000,
+      "summary": "梦境中的声音指责真红懦弱、宣称自己才是真正的她，真红愤怒否认后从噩梦中惊醒；薄荷与伊洛伊先后讲述各自可怕的梦，真红点出此地是「会致幻的琥珀湖」、噩梦映出各人最恐惧之物；众人互相打气后，真红催促众人启程去取下一个碎片。",
+      "participants": [
+        "iroi",
+        "mint",
+        "shinku"
+      ],
+      "transcript_refs": [
+        "u00107",
+        "u00108",
+        "u00109",
+        "u00110",
+        "u00111",
+        "u00112",
+        "u00113",
+        "u00114",
+        "u00115",
+        "u00116",
+        "u00118",
+        "u00120",
+        "u00121",
+        "u00122",
+        "u00123",
+        "u00124",
+        "u00126",
+        "u00127",
+        "u00128",
+        "u00129",
+        "u00130",
+        "u00131",
+        "u00132",
+        "u00133",
+        "u00134",
+        "u00135",
+        "u00136",
+        "u00137",
+        "u00138",
+        "u00139",
+        "u00140",
+        "u00141",
+        "u00142",
+        "u00143",
+        "u00145",
+        "u00146",
+        "u00147",
+        "u00148",
+        "u00149",
+        "u00150",
+        "u00151",
+        "u00152",
+        "u00153",
+        "u00154",
+        "u00155",
+        "u00156",
+        "u00157",
+        "u00158",
+        "u00159",
+        "u00160",
+        "u00161",
+        "u00162",
+        "u00163",
+        "u00164",
+        "u00165"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e004a",
+          "start_ms": 948000,
+          "end_ms": 1004800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "那个声音继续嘲笑真红是个不受控、随时可能伤害周围人的家伙、不配拥有朋友，并说她一直忍耐已接近极限；真红回怼「休想支配我」、叫她闭嘴。",
+          "transcript_refs": [
+            "u00107",
+            "u00108",
+            "u00109",
+            "u00110",
+            "u00111",
+            "u00112",
+            "u00113",
+            "u00114",
+            "u00115"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e004b",
+          "start_ms": 1005333,
+          "end_ms": 1084800,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "那个声音说真红总是想逃、逼问她是否想要眼前这个结局，指责她懦弱无力、只会给了同伴希望又让它落空，并宣称自己才是真正的她；真红大声否认，声音则说她越恐惧自己就越强大。",
+          "transcript_refs": [
+            "u00116",
+            "u00118",
+            "u00120",
+            "u00121",
+            "u00122",
+            "u00123",
+            "u00124",
+            "u00126",
+            "u00127",
+            "u00128",
+            "u00129"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e004c",
+          "start_ms": 1086933,
+          "end_ms": 1103467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷唤醒满头是汗的真红、问她是不是也梦到了很恐怖的东西，真红说没事、原来只是梦，并反问大家都还好吗。",
+          "transcript_refs": [
+            "u00130",
+            "u00131",
+            "u00132",
+            "u00133"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e004d",
+          "start_ms": 1103733,
+          "end_ms": 1137067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷讲自己梦见管理局里有一台源源不断打印考卷的打印机、天花板都快被卷子撑破，伊洛伊说要为了不被试卷山淹没、回去好好帮薄荷前辈补习功课。",
+          "transcript_refs": [
+            "u00134",
+            "u00135",
+            "u00136",
+            "u00137",
+            "u00138"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e004e",
+          "start_ms": 1137600,
+          "end_ms": 1184267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊讲自己梦见山呼海啸、村里的绵绵们被冲走也有人被压成棉花糖饼，薄荷直呼这个更吓人、又说现在觉得茶茶更可怕；有人提起曾听村里的绵说过「只要睡着就会做噩梦」，伊洛伊提到梦里有人嘀咕「我不好吃」，薄荷猜那就是绵绵们最害怕的事。",
+          "transcript_refs": [
+            "u00139",
+            "u00140",
+            "u00141",
+            "u00142",
+            "u00143",
+            "u00145",
+            "u00146",
+            "u00147"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e004f",
+          "start_ms": 1184800,
+          "end_ms": 1214667,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "iroi",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红说这里好像叫「会致幻的琥珀湖」、是湖泊的致幻作用让众人纷纷做噩梦，噩梦里是每个人最为恐惧的东西；伊洛伊追问如何确定已经醒来、是否其实身处另一层噩梦，还说好像听到绵绵饼的哭喊声，薄荷喊不要吓她。",
+          "transcript_refs": [
+            "u00148",
+            "u00149",
+            "u00150",
+            "u00151",
+            "u00152"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e004g",
+          "start_ms": 1215200,
+          "end_ms": 1276000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "众人互相打气，薄荷说无论遇到什么、有同伴一起面对就一定能克服，让果果和茶茶不安时可以躲在她身后，又说自己其实要躲在可可身后；伊洛伊也要加入，真红说别吓自己、称呼她「大笨猫」，并说该走了、接下来还要拿一个碎片。",
+          "transcript_refs": [
+            "u00153",
+            "u00154",
+            "u00155",
+            "u00156",
+            "u00157",
+            "u00158",
+            "u00159",
+            "u00160",
+            "u00161",
+            "u00162",
+            "u00163",
+            "u00164",
+            "u00165"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p17-s005",
+      "start_ms": 1465333,
+      "end_ms": 1507467,
+      "summary": "深夜里众人准备休息，薄荷困得眼皮打架，伊洛伊打算去找安神药草煮茶并叮嘱薄荷要把苦茶喝光，真红自告奋勇为众人守夜。",
+      "participants": [
+        "iroi",
+        "mint",
+        "shinku"
+      ],
+      "transcript_refs": [
+        "u00166",
+        "u00167",
+        "u00168",
+        "u00169",
+        "u00170",
+        "u00171",
+        "u00172",
+        "u00173"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e005a",
+          "start_ms": 1465333,
+          "end_ms": 1489067,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "mint",
+            "iroi",
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "薄荷说自己很困、眼皮已经在打架，伊洛伊猜是做噩梦让薄荷前辈的神经太紧张，真红说早点休息、由她来为众人守夜，薄荷打着哈欠应下。",
+          "transcript_refs": [
+            "u00166",
+            "u00167",
+            "u00168",
+            "u00169"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e005b",
+          "start_ms": 1489600,
+          "end_ms": 1507467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "iroi",
+            "mint"
+          ],
+          "speaker_character_id": "",
+          "observation": "伊洛伊说去找些安神的药草煮茶喝、让薄荷在帐篷里等她一下，并提醒茶会很苦但薄荷前辈要全部喝掉，薄荷连声答应。",
+          "transcript_refs": [
+            "u00170",
+            "u00171",
+            "u00172",
+            "u00173"
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "nt-bv1kqoabievz-p17-s006",
+      "start_ms": 1523733,
+      "end_ms": 1743467,
+      "summary": "夜里真红向鉴定师问起她的异能，由此谈起异能者背负的「代价」与责任，真红坦言自己也想用好力量保护同伴、却又为身为「普通人」的局限而困扰；鉴定师问她向往怎样的生活，真红说不知道，只觉得认识大家很开心并向她道谢，随后催促众人启程、剑指赤龙。",
+      "participants": [
+        "shinku",
+        "esper-zero"
+      ],
+      "transcript_refs": [
+        "u00174",
+        "u00175",
+        "u00177",
+        "u00178",
+        "u00179",
+        "u00180",
+        "u00181",
+        "u00182",
+        "u00183",
+        "u00184",
+        "u00185",
+        "u00186",
+        "u00187",
+        "u00188",
+        "u00189",
+        "u00190",
+        "u00191",
+        "u00192",
+        "u00193",
+        "u00194",
+        "u00195",
+        "u00196",
+        "u00197",
+        "u00198",
+        "u00199",
+        "u00200",
+        "u00201",
+        "u00202",
+        "u00203",
+        "u00204",
+        "u00205"
+      ],
+      "evidence": [
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e006a",
+          "start_ms": 1523733,
+          "end_ms": 1544000,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红问起鉴定师的异能是什么、提到听薄荷说过类似更容易看穿异象的奇点，鉴定师答这对处理异象委托很有帮助，真红感叹既派得上用场又很安全，鉴定师对「安全」反问。",
+          "transcript_refs": [
+            "u00174",
+            "u00175",
+            "u00177",
+            "u00178",
+            "u00179"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e006b",
+          "start_ms": 1544267,
+          "end_ms": 1655467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku"
+          ],
+          "speaker_character_id": "",
+          "observation": "真红说自己指的不一定是安全，而是有些人为异能付出的「代价」、或异能本身就是一种麻烦，并举自己有条大尾巴买衣服不便、幼时长角疼得睡不着、脑海里吵闹只想把东西拆成碎片为例；她又说世人想象里异能者强大特别、必须肩负更重责任，而自己也这么想。",
+          "transcript_refs": [
+            "u00180",
+            "u00181",
+            "u00182",
+            "u00183",
+            "u00184",
+            "u00185",
+            "u00186",
+            "u00187",
+            "u00188",
+            "u00189",
+            "u00190",
+            "u00191"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e006c",
+          "start_ms": 1655733,
+          "end_ms": 1688267,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师问真红觉得什么样的生活适合自己，并列举从未有过异能、拥有另一种异能以及现在的生活三种可能；真红说不知道，若有其他可能大家也不会像这样聚在这里，并说自己不觉得那会比现在更好、认识大家很开心。",
+          "transcript_refs": [
+            "u00192",
+            "u00193",
+            "u00194",
+            "u00195",
+            "u00196"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e006d",
+          "start_ms": 1688533,
+          "end_ms": 1729333,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师说「我也一样」；真红说在今天之前也反复问过自己同样的问题、那时是另一种答案却不知为何，随后笑着向鉴定师道谢，并说时候不早了、让对方也早点休息。",
+          "transcript_refs": [
+            "u00197",
+            "u00198",
+            "u00199",
+            "u00200",
+            "u00201"
+          ]
+        },
+        {
+          "canon_evidence_id": "nt-bv1kqoabievz-p17-e006e",
+          "start_ms": 1731733,
+          "end_ms": 1743467,
+          "evidence_kind": "dialogue",
+          "actor_character_ids": [
+            "shinku",
+            "esper-zero"
+          ],
+          "speaker_character_id": "",
+          "observation": "鉴定师应了声「唔，好」、暗自疑惑自己做了什么值得被感谢的事；真红说该出发了吧、接下来就是剑指赤龙，鉴定师应「嗯，我们走吧」。",
+          "transcript_refs": [
+            "u00202",
+            "u00203",
+            "u00204",
+            "u00205"
+          ]
+        }
+      ]
+    }
+  ]
+}
