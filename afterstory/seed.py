@@ -10,6 +10,11 @@ from afterstory.config import ROOT, Settings
 from afterstory.database import make_sessions
 from afterstory.models import Character, CharacterVersion, User
 
+DEFAULT_COMPANION_FILES = (
+    ROOT / "fixtures/companions.integration.json",
+    ROOT / "fixtures/companions.canon-p22.json",
+)
+
 
 def seed(sessions, user_id: str, companion_file=None):
     fixtures = json.loads((ROOT / "fixtures/characters.json").read_text(encoding="utf-8"))
@@ -49,11 +54,16 @@ def seed(sessions, user_id: str, companion_file=None):
             session.execute(insert(CharacterVersion).values(**values).on_conflict_do_nothing())
 
 
+def seed_defaults(sessions, user_id: str):
+    for companion_file in DEFAULT_COMPANION_FILES:
+        seed(sessions, user_id, companion_file)
+
+
 if __name__ == "__main__":
     cfg = Settings()
     engine, sessions = make_sessions(cfg)
     try:
-        seed(sessions, cfg.dev_user_id, ROOT / "fixtures/companions.integration.json")
-        print("Engineering characters and local user seeded.")
+        seed_defaults(sessions, cfg.dev_user_id)
+        print("Engineering characters, local user, and official companions seeded.")
     finally:
         engine.dispose()

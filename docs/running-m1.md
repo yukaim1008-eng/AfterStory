@@ -1,10 +1,12 @@
 # 运行 M1 后端
 
-本阶段提供本机文字 API，保留两个原创工程测试角色。F1 已补充三位联调角色与可运行前端，F2 已补充个人记忆、受限上下文与内部状态存储边界，见 [前端运行说明](running-frontend.md)。自动记忆/状态策略和语音尚未实现。接口契约可在服务启动后的 `/docs` 查看。
+本阶段提供本机文字 API，保留两个原创工程测试角色。F1 前端、Memory System、Conversation Core v1 和三位角色的 P22 正式版本已接入，见[前端运行说明](running-frontend.md)。语音与 Canon 运行时接入尚未实现。接口契约可在服务启动后的 `/docs` 查看。
 
 ## 安装与启动（仓库根目录）
 
 前置依赖：Docker Desktop（需先启动）、`uv`。macOS 用 `brew install uv`；Windows 见 [uv 安装说明](https://docs.astral.sh/uv/getting-started/installation/)。`uv sync` 会自行下载所需的 Python 版本，不需要本机预装。前端另需 Node 24。
+
+Windows 推荐使用根目录的本地开发启动器：首次运行 `.\afterstory setup`，日常运行 `.\afterstory start`，查看状态运行 `.\afterstory status`，停止前后端运行 `.\afterstory stop`。它会保留 PostgreSQL 与持久化数据，并且只停止自己记录的进程；完整命令见[前端运行说明](running-frontend.md#windows-本地启动器)。下列命令保留为手动启动方式。
 
 macOS 与 Windows 通用。命令统一使用 `uv run`，它自动使用项目 `.venv`，不需要写 `.venv/bin` 或 `.venv\Scripts`。仅有的几处平台差异见[平台差异](#平台差异)。
 

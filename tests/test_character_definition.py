@@ -15,7 +15,7 @@ from afterstory.conversation import ConversationService
 from afterstory.memory import MemoryService
 from afterstory.models import CharacterInstance, CharacterVersion, Conversation, Message
 from afterstory.repository import Repository
-from afterstory.seed import seed
+from afterstory.seed import seed, seed_defaults
 from afterstory.state import StateService
 
 
@@ -131,6 +131,27 @@ def test_seed_rejects_two_sources_of_system_prompt(database, tmp_path):
     invalid["system_prompt"] = "manually supplied"
     with pytest.raises(ValueError, match="cannot provide system_prompt"):
         seed(sessions, "alice", write_package(tmp_path, "invalid.json", [invalid]))
+
+
+def test_default_seed_includes_official_p22_versions(database):
+    _, sessions = database
+    seed_defaults(sessions, "alice")
+    seed_defaults(sessions, "alice")
+
+    expected = {
+        "nanally-canon-p22-v1",
+        "iroi-canon-p22-v1",
+        "mint-canon-p22-v1",
+    }
+    with sessions() as session:
+        versions = {
+            version.id: version
+            for version in session.scalars(
+                select(CharacterVersion).where(CharacterVersion.id.in_(expected))
+            )
+        }
+    assert versions.keys() == expected
+    assert all(version.definition for version in versions.values())
 
 
 def test_structured_definition_reaches_provider_before_runtime_context(database):

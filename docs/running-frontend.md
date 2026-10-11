@@ -1,8 +1,33 @@
 # 运行 F1 前端与文字链路
 
-当前为本地联调版：页面、真实文字链路和用户主动管理的个人记忆可测试；自动记忆/状态策略、语音、剧情更新及正式角色资料仍未完成。
+当前为本地联调版：页面、真实文字链路、Memory System、Conversation Core v1 与三位角色的 P22 正式版本均可测试；语音和 Canon 运行时接入尚未完成。
 
-## 启动
+## Windows 本地启动器
+
+先启动 Docker Desktop。在仓库根目录执行：
+
+```powershell
+# 首次设置：安装依赖、升级数据库并幂等导入基础数据
+.\afterstory setup
+
+# 日常启动：检查数据库与 migration，后台启动前后端并打开网页
+.\afterstory start
+```
+
+常用管理命令：
+
+```powershell
+.\afterstory status           # 查看数据库、后端和前端状态
+.\afterstory logs             # 查看前后端最近日志
+.\afterstory restart          # 重启启动器管理的前后端
+.\afterstory stop             # 只停止启动器管理的前后端
+.\afterstory stop -All        # 另行停止 PostgreSQL，仍保留数据卷
+.\afterstory start -NoOpen    # 启动后不自动打开浏览器
+```
+
+启动器把 PID 和日志保存在未跟踪的 `.local-run/`。停止时会核对 PID、启动时间和项目目录，只关闭它自己创建的进程；手动启动的服务会被复用且不会被它关闭。`stop -All` 使用 `docker compose stop postgres`，不会删除容器卷或持久化数据。
+
+## 手动启动
 
 macOS 与 Windows 命令相同，平台差异见 [平台差异](running-m1.md#平台差异)。启动 Docker Desktop，在仓库根目录执行：
 
@@ -39,7 +64,7 @@ npm run dev
 
 ## 数据与接口
 
-默认 seed 导入原工程 fixtures 和 `fixtures/companions.integration.json` 的三位联调资料；2026-10-11 又导入 `fixtures/companions.canon-p22.json` 中的三个正式六字段版本，前端 `versionId` 已指向正式版本。浏览器若缓存旧联调会话，默认角色入口会保留旧会话及草稿并为正式版本打开新会话；历史入口仍可继续旧版本会话。已导入版本不可覆盖，独立 Canon 运行时接入仍未实现。
+默认 seed 幂等导入原工程 fixtures、`fixtures/companions.integration.json` 的三位联调资料和 `fixtures/companions.canon-p22.json` 的三个正式六字段版本；前端 `versionId` 已指向正式版本。浏览器若缓存旧联调会话，默认角色入口会保留旧会话及草稿并为正式版本打开新会话；历史入口仍可继续旧版本会话。已导入版本不可覆盖，独立 Canon 运行时接入仍未实现。
 
 默认封面来自 data/character-assets/{id}.png，prepare:media 复制到 public/media。缺失时回退官方宣传参考图。自定义封面存当前浏览器 IndexedDB，以后端用户与角色为键；清除站点数据会移除封面和偏好，不会删除数据库聊天。
 
