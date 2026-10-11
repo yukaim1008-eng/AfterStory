@@ -71,8 +71,8 @@ P1–P4 另有 95 个 Scene / 95 条 Canon Evidence。正式库合计 515 个 Sc
 - **构建**：隔离 SQLite Schema `1.1` 重建成功。
 - **视图**：P22 checkpoint 生成人物地图、世界知识与 Mermaid 人物关系图三张 views 成功（89 人物 / 135 实体 / 146 关系）。
 - **定向测试**：character corpus / Canon view / video promotion / character video pipeline / character profile candidates 共 **42 项通过**。
+- **后端测试（补跑）**：Docker 可用后，`pytest tests/` 全套 **138 项全部通过**；其中 `tests/test_character_definition.py`（依赖 Postgres `database` fixture）7 项通过——此前因本机无 Docker 未运行，现已在 pgvector/pg17 隔离 schema 下补齐。未调用任何真实聊天模型。
 - **Ruff**：整个仓库 `ruff check .` 通过。
-- **后端测试**：本机无 Docker，后端数据库相关测试未运行（含 `tests/test_character_definition.py`，其 `database` fixture 在本环境不可用）；未调用任何真实聊天模型。
 - **Git diff 检查**：仅 `research/character-corpus/traits.jsonl`、`tests/test_character_research.py` 与新增的 `docs/implementation/character-definition-candidates-p05-p22.md` 变化；无产品数据库、Memory、Provider、前端或正式角色版本变更。
 
 ## 七、发现的矛盾、未知项与保守处理
@@ -84,4 +84,4 @@ P1–P4 另有 95 个 Scene / 95 条 Canon Evidence。正式库合计 515 个 Sc
 
 ## 八、阻塞项
 
-无真实阻塞。仅「后端数据库测试因本机无 Docker 而跳过」属环境限制，不影响正式研究资料的完整性。
+无阻塞项。原「后端数据库测试因本机无 Docker 而跳过」的环境限制已消除：Docker 启动后，`pytest tests/` 全套 138 项（含依赖 Postgres 的 `tests/test_character_definition.py`）全部通过，不影响正式研究资料的完整性。
