@@ -1,6 +1,7 @@
 # AfterStory 当前项目状态
 
-- 更新日期：2026-10-11。
+- 更新日期：2026-10-16。
+- 2026-10-16 部署前登录系统进入设计：现有业务身份统一经过 `current_user`，但运行时仍固定使用 `DEV_USER_ID`，缺少账号凭据、会话、登录页和生产 Host/TLS 配置。已整理[登录系统 v1 草案](design/platform/01-authentication.md)；账号开放、凭据方式与旧 `local-user` 数据归属待用户集中确认，尚未改动业务代码或真实数据库。
 - Memory System M1 已实现：记忆不可变版本、多来源、依赖/抑制基础、持久化任务 lease、独立 data revision，以及消息时间和时区来源已落库；旧 PersonalMemory API 与数据继续兼容。
 - Memory System M2 已实现：有界分段摘要、跨会话连续性笔记、原文关键词回读，以及 prepare/reserve/finish 的短事务发送边界。
 - Memory System M3 已实现：成功轮次后台提取任务、严格候选校验、稳定事实/事件身份、跨批次去重，以及显式记住/纠正/忘记操作回执。
