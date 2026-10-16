@@ -32,6 +32,8 @@ class Settings(BaseSettings):
         env_file=ROOT / ".env", extra="ignore", hide_input_in_errors=True
     )
     app_name: str = "AfterStory"
+    app_env: Literal["development", "production"] = "development"
+    allowed_hosts: str = "localhost,127.0.0.1,testserver"
     database_url: SecretStr = SecretStr(
         "postgresql+psycopg://afterstory:afterstory_local@127.0.0.1:54329/afterstory"
     )
@@ -115,6 +117,11 @@ class Settings(BaseSettings):
 
     @model_validator(mode="after")
     def validate_runtime(self):
+        hosts = [host.strip() for host in self.allowed_hosts.split(",") if host.strip()]
+        if not hosts or "*" in hosts:
+            raise ValueError("ALLOWED_HOSTS must list explicit hosts")
+        if self.app_env == "production" and set(hosts) == {"localhost", "127.0.0.1", "testserver"}:
+            raise ValueError("Production ALLOWED_HOSTS must include the deployment hostname")
         if not self.database_url.get_secret_value().startswith("postgresql+psycopg://"):
             raise ValueError("DATABASE_URL must use postgresql+psycopg")
         if self.llm_active_model not in self.llm_models:

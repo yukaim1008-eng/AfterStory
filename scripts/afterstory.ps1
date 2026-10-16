@@ -340,7 +340,7 @@ function Setup-AfterStory {
     Apply-Migrations
     Write-Info "正在导入幂等基础数据与正式角色版本..."
     Invoke-Checked $uv @("run", "python", "-m", "afterstory.seed")
-    Write-Ok "首次设置完成。现在可以运行 '.\afterstory start'。"
+    Write-Ok "首次设置完成。先运行 'uv run python -m afterstory.accounts create 你的用户名' 创建账号，再运行 '.\afterstory start'。"
 }
 
 function Show-Help {

@@ -16,12 +16,13 @@ DEFAULT_COMPANION_FILES = (
 )
 
 
-def seed(sessions, user_id: str, companion_file=None):
+def seed(sessions, user_id: str | None, companion_file=None):
     fixtures = json.loads((ROOT / "fixtures/characters.json").read_text(encoding="utf-8"))
     if companion_file:
         fixtures.extend(json.loads(companion_file.read_text(encoding="utf-8")))
     with sessions.begin() as session:
-        session.execute(insert(User).values(id=user_id).on_conflict_do_nothing())
+        if user_id is not None:
+            session.execute(insert(User).values(id=user_id).on_conflict_do_nothing())
         for item in fixtures:
             session.execute(
                 insert(Character)
@@ -54,7 +55,7 @@ def seed(sessions, user_id: str, companion_file=None):
             session.execute(insert(CharacterVersion).values(**values).on_conflict_do_nothing())
 
 
-def seed_defaults(sessions, user_id: str):
+def seed_defaults(sessions, user_id: str | None = None):
     for companion_file in DEFAULT_COMPANION_FILES:
         seed(sessions, user_id, companion_file)
 
@@ -63,7 +64,7 @@ if __name__ == "__main__":
     cfg = Settings()
     engine, sessions = make_sessions(cfg)
     try:
-        seed_defaults(sessions, cfg.dev_user_id)
-        print("Engineering characters, local user, and official companions seeded.")
+        seed_defaults(sessions)
+        print("Engineering characters and official companions seeded.")
     finally:
         engine.dispose()

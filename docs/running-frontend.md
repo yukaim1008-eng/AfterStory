@@ -1,6 +1,6 @@
 # 运行 F1 前端与文字链路
 
-当前为本地联调版：页面、真实文字链路、Memory System、Conversation Core v1 与三位角色的 P22 正式版本均可测试；语音和 Canon 运行时接入尚未完成。
+当前为本地联调版：页面、真实文字链路、登录系统 v1、Memory System、Conversation Core v1 与三位角色的 P22 正式版本均可测试；语音和 Canon 运行时接入尚未完成。
 
 ## Windows 本地启动器
 
@@ -9,6 +9,7 @@
 ```powershell
 # 首次设置：安装依赖、升级数据库并幂等导入基础数据
 .\afterstory setup
+uv run python -m afterstory.accounts create 你的用户名
 
 # 日常启动：检查数据库与 migration，后台启动前后端并打开网页
 .\afterstory start
@@ -37,6 +38,7 @@ cp -n .env.example .env          # 仅在没有 .env 时执行；已有文件不
 docker compose up -d --wait postgres
 uv run alembic upgrade head
 uv run python -m afterstory.seed
+uv run python -m afterstory.accounts create 你的用户名
 uv run python -m uvicorn afterstory.api:create_app --factory --host 127.0.0.1 --port 8000
 ```
 
@@ -48,7 +50,7 @@ npm ci
 npm run dev
 ```
 
-打开 http://127.0.0.1:5173 ，接口文档 http://127.0.0.1:8000/docs 。Vite 将 /api 代理到8000，可用 AFTERSTORY_API_URL 环境变量修改目标。仅监听本机，无正式账号登录。验证环境为 Node 24.15.0。
+打开 http://127.0.0.1:5173 ，使用刚创建的用户名和密码登录；接口文档 http://127.0.0.1:8000/docs 。Vite 将 /api 代理到 8000，可用 AFTERSTORY_API_URL 环境变量修改目标。管理员可用 `uv run python -m afterstory.accounts reset-password 你的用户名` 重设密码。仅监听本机；服务器部署另行配置。验证环境为 Node 24.15.0。
 
 生产构建：npm run build；npm run preview 打开 http://127.0.0.1:4173 ，仍需后端。尚未部署公网。
 
@@ -72,7 +74,10 @@ npm run dev
 
 | 接口 | 契约 |
 | --- | --- |
-| GET /api/health | 健康信息、user_id、capabilities；memory 表示手动管理可用，memory_extraction/voice/canon_update 为 false |
+| GET /api/health | 公开健康检查，只返回 `status`，不包含用户或模型信息 |
+| POST /api/auth/login | 用户名和密码换取 HttpOnly 会话 Cookie；无公开注册接口 |
+| GET /api/auth/me | 当前用户 ID、用户名、CSRF 令牌及 capabilities；匿名返回 401 |
+| POST /api/auth/logout、/api/auth/password | 退出或修改密码并撤销会话；需要 CSRF 令牌 |
 | POST /api/sessions/open | 输入 version_id，返回 conversation_id、instance_id；当前用户该版本存在则复用，无则创建；用户行锁防并发重复 |
 | GET /api/conversations | 兼容旧列表调用，返回当前用户非空会话 |
 | GET /api/history | offset/limit 分页，返回 items、total、offset、limit；条目包含角色/实例/版本/剧情节点、预览、轮数和时间 |
@@ -99,6 +104,6 @@ npm run test:e2e
 
 自动浏览器测试模拟 API；后端测试使用独立临时 schema，不清空用户数据库。
 
-真实检查需单独终端把 `DEV_USER_ID` 设为 `frontend-smoke`（macOS `export DEV_USER_ID=frontend-smoke`，Windows `$env:DEV_USER_ID='frontend-smoke'`），执行 seed，再将后端启动于8001。前端目录执行 node scripts/smoke-real.mjs。它手动调用一次当前模型，产生少量费用，使用独立身份，不写入默认用户。
+真实检查需先由管理员创建独立测试账号，再将后端启动于 8001。前端目录运行脚本前，通过 `AFTERSTORY_SMOKE_USERNAME` 和 `AFTERSTORY_SMOKE_PASSWORD` 环境变量提供该测试账号凭据，然后执行 `node scripts/smoke-real.mjs`。它手动调用一次当前模型，产生少量费用，不写入其他用户的数据。
 
 测试结束后，Agent 停止自己启动的测试后端、前端及项目依赖，不继续后台运行供预览；用户需要查看效果时自行启动。仅关闭能确认由 Agent 启动的服务，不关闭用户自行启动的服务，不删除数据库或卷。该规则也适用于自动测试复用的服务：复用了用户服务不代表可以将其停止。

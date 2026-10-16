@@ -1,18 +1,20 @@
 import asyncio
 import logging
 import re
+import secrets
 from contextlib import asynccontextmanager
 from datetime import datetime
 from time import perf_counter
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, FastAPI, Query, Request
+from fastapi import APIRouter, Depends, FastAPI, Query, Request, Response
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
+from afterstory.auth import AuthService, csrf_token
 from afterstory.config import Settings
 from afterstory.context import ContextAssembler
 from afterstory.conversation import ConversationService
@@ -94,14 +96,64 @@ class DeliveryAckInput(Input):
     error_code: str | None = Field(default=None, max_length=80)
 
 
+class LoginInput(Input):
+    username: str = Field(min_length=1, max_length=64)
+    password: str = Field(min_length=1, max_length=128)
+
+
+class PasswordChangeInput(Input):
+    current_password: str = Field(min_length=1, max_length=128)
+    new_password: str = Field(min_length=12, max_length=128)
+
+
+def session_cookie_name(settings):
+    return "__Host-afterstory_session" if settings.app_env == "production" else "afterstory_session"
+
+
+def browser_session(request: Request):
+    return request.cookies.get(session_cookie_name(request.app.state.settings))
+
+
+def check_csrf(request: Request, token: str | None):
+    supplied = request.headers.get("x-csrf-token", "")
+    if not token or not secrets.compare_digest(supplied, csrf_token(token)):
+        raise DomainError(403, "csrf_invalid")
+
+
+def check_login_origin(request: Request):
+    origin = request.headers.get("origin")
+    if origin:
+        from urllib.parse import urlparse
+
+        parsed = urlparse(origin)
+        host = request.headers.get("host", "")
+        allowed = {f"https://{host}"}
+        if request.app.state.settings.app_env == "development":
+            allowed.update(
+                {
+                    f"http://{host}",
+                    "http://127.0.0.1:5173",
+                    "http://localhost:5173",
+                }
+            )
+        if parsed.scheme + "://" + parsed.netloc not in allowed or parsed.path not in {"", "/"}:
+            raise DomainError(403, "origin_invalid")
+    if request.headers.get("sec-fetch-site") == "cross-site":
+        raise DomainError(403, "origin_invalid")
+
+
 def current_user(request: Request):
-    # Local-only M1 identity, never a user-controlled header or JSON field.
-    return request.app.state.settings.dev_user_id
+    token = browser_session(request)
+    identity = request.app.state.auth.resolve(token)
+    if request.method not in {"GET", "HEAD", "OPTIONS"}:
+        check_csrf(request, token)
+    return identity["user_id"]
 
 
 def create_app(settings=None, provider=None):
     settings = settings or Settings()
     engine, sessions = make_sessions(settings)
+    auth = AuthService(sessions)
     context = ContextAssembler(
         settings.history_turns,
         settings.memory_context_items,
@@ -187,10 +239,12 @@ def create_app(settings=None, provider=None):
 
     app = FastAPI(title=settings.app_name, lifespan=lifespan)
     app.add_middleware(
-        TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1", "testserver"]
+        TrustedHostMiddleware,
+        allowed_hosts=[host.strip() for host in settings.allowed_hosts.split(",") if host.strip()],
     )
     app.state.settings = settings
     app.state.repository = repository
+    app.state.auth = auth
     router = APIRouter()
 
     @app.middleware("http")
@@ -239,12 +293,32 @@ def create_app(settings=None, provider=None):
     def health():
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
+        return {"status": "ok"}
+
+    @router.post("/auth/login")
+    def login(body: LoginInput, request: Request, response: Response):
+        check_login_origin(request)
+        user, token = auth.login(
+            body.username, body.password, request.client.host if request.client else ""
+        )
+        response.set_cookie(
+            session_cookie_name(settings),
+            token,
+            max_age=30 * 24 * 60 * 60,
+            secure=settings.app_env == "production",
+            httponly=True,
+            samesite="strict",
+            path="/",
+        )
+        return {"user_id": user.id, "username": user.username, "csrf_token": csrf_token(token)}
+
+    @router.get("/auth/me")
+    def me(request: Request):
+        token = browser_session(request)
+        identity = auth.resolve(token)
         return {
-            "status": "ok",
-            "model_profile": settings.llm_active_model,
-            "provider": settings.active_model.provider,
-            "model": settings.active_model.model,
-            "user_id": settings.dev_user_id,
+            **identity,
+            "csrf_token": csrf_token(token),
             "capabilities": {
                 "voice": False,
                 "memory": True,
@@ -253,6 +327,24 @@ def create_app(settings=None, provider=None):
                 "canon_update": False,
             },
         }
+
+    @router.post("/auth/logout")
+    def logout(request: Request, response: Response):
+        token = browser_session(request)
+        auth.resolve(token)
+        check_csrf(request, token)
+        auth.revoke(token)
+        response.delete_cookie(session_cookie_name(settings), path="/")
+        return {"status": "ok"}
+
+    @router.post("/auth/password")
+    def change_password(body: PasswordChangeInput, request: Request, response: Response):
+        token = browser_session(request)
+        identity = auth.resolve(token)
+        check_csrf(request, token)
+        auth.change_password(identity["user_id"], body.current_password, body.new_password)
+        response.delete_cookie(session_cookie_name(settings), path="/")
+        return {"status": "ok"}
 
     @router.get("/characters")
     def characters():

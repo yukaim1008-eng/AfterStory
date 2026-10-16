@@ -1,12 +1,11 @@
 import json
 import logging
 
-from fastapi.testclient import TestClient
-
 from afterstory.api import create_app
 from afterstory.config import Settings
 from afterstory.diagnostics import diagnose
 from afterstory.domain import ProviderError
+from tests.auth_client import TestClient
 
 
 def test_diagnostics_are_useful_and_redacted(database):

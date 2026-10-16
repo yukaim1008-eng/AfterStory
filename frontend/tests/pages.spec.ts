@@ -12,6 +12,7 @@ type ApiOptions = {
   delayMemoryInstance?: string;
   failMemoryInstance?: string;
   memory?: boolean;
+  authenticated?: boolean;
 };
 const timestamp = "2026-09-12T12:30:00Z";
 function session(id: string, version = id): Session {
@@ -57,16 +58,44 @@ async function fakeApi(
   const memories: Memory[] = [...(options.memories || [])];
   const matters: any[] = [];
   const requests: any[] = [];
+  let authenticated = options.authenticated !== false;
+  let accountId = "browser-test";
   await page.route("**/api/**", async (route) => {
     const url = new URL(route.request().url());
     const path = url.pathname.replace("/api", "");
     let body: unknown = {};
-    if (path === "/health")
+    if (path === "/auth/me") {
+      if (!authenticated) {
+        await route.fulfill({ status: 401, json: { error: "authentication_required" } });
+        return;
+      }
       body = {
-        user_id: "browser-test",
+        user_id: accountId,
+        username: accountId,
+        csrf_token: "browser-csrf",
         capabilities: { voice: false, memory: !!options.memory },
       };
-    else if (path === "/sessions/open") {
+    } else if (path === "/auth/login") {
+      const input = route.request().postDataJSON();
+      if (!["browser-test", "second-test"].includes(input.username) || input.password !== "test-password") {
+        await route.fulfill({ status: 401, json: { error: "invalid_credentials" } });
+        return;
+      }
+      authenticated = true;
+      accountId = input.username;
+      body = { user_id: accountId, username: accountId, csrf_token: "browser-csrf" };
+    } else if (path === "/auth/logout") {
+      authenticated = false;
+      body = { status: "ok" };
+    } else if (path === "/auth/password") {
+      const input = route.request().postDataJSON();
+      if (input.current_password !== "test-password") {
+        await route.fulfill({ status: 401, json: { error: "invalid_credentials" } });
+        return;
+      }
+      authenticated = false;
+      body = { status: "ok" };
+    } else if (path === "/sessions/open") {
       const id = route.request().postDataJSON().version_id;
       turns[id] ||= [];
       if (!sessions.has(id)) sessions.set(id, session(id));
@@ -302,6 +331,61 @@ async function fakeApi(
   return requests;
 }
 
+test("anonymous visitor logs in and can leave the account", async ({ page }) => {
+  await fakeApi(page, false, { authenticated: false });
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: "回到故事里" })).toBeVisible();
+  await page.getByLabel("用户名").fill("browser-test");
+  await page.getByLabel("密码", { exact: true }).fill("wrong");
+  await page.getByRole("button", { name: "登录", exact: true }).click();
+  await expect(page.getByRole("alert")).toContainText("用户名或密码不正确");
+  await page.getByLabel("密码", { exact: true }).fill("test-password");
+  await page.getByRole("button", { name: "登录", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "今天，想和你相见。" })).toBeVisible();
+  await page.getByRole("button", { name: "设置", exact: true }).click();
+  await page.getByRole("button", { name: "数据管理", exact: true }).click();
+  await expect(page.locator(".settings-panel")).toContainText("browser-test");
+  await page.getByRole("button", { name: "退出登录" }).click();
+  await expect(page.getByRole("heading", { name: "回到故事里" })).toBeVisible();
+});
+
+test("switching accounts does not show another account's chat draft", async ({ page }) => {
+  await fakeApi(page, false, { authenticated: false });
+  await page.goto("/");
+  await page.getByLabel("用户名").fill("browser-test");
+  await page.getByLabel("密码", { exact: true }).fill("test-password");
+  await page.getByRole("button", { name: "登录", exact: true }).click();
+  await page.getByRole("button", { name: "继续和 娜娜莉 聊天" }).click();
+  await page.getByRole("textbox", { name: "消息" }).fill("第一个账号的草稿");
+  await page.getByRole("button", { name: "设置", exact: true }).click();
+  await page.getByRole("button", { name: "数据管理", exact: true }).click();
+  await page.getByRole("button", { name: "退出登录" }).click();
+  await expect(page.getByRole("heading", { name: "回到故事里" })).toBeVisible();
+  await page.getByLabel("用户名").fill("second-test");
+  await page.getByLabel("密码", { exact: true }).fill("test-password");
+  await page.getByRole("button", { name: "登录", exact: true }).click();
+  await page.getByRole("button", { name: "继续和 娜娜莉 聊天" }).click();
+  await expect(page.getByRole("textbox", { name: "消息" })).toHaveValue("");
+});
+
+test("wrong current password leaves the session intact", async ({ page }) => {
+  await fakeApi(page, false, { authenticated: false });
+  await page.goto("/");
+  await page.getByLabel("用户名").fill("browser-test");
+  await page.getByLabel("密码", { exact: true }).fill("test-password");
+  await page.getByRole("button", { name: "登录", exact: true }).click();
+  await page.getByRole("button", { name: "设置", exact: true }).click();
+  await page.getByRole("button", { name: "数据管理", exact: true }).click();
+  await page.getByPlaceholder("当前密码").fill("wrong-password");
+  await page.getByPlaceholder("新密码（至少 12 个字符）").fill("new-password-123");
+  await page.getByRole("button", { name: "修改密码并重新登录" }).click();
+  await expect(page.getByRole("alert")).toContainText("当前密码不正确");
+  await expect(page.locator(".settings-panel")).toContainText("browser-test");
+  await page.getByPlaceholder("当前密码").fill("test-password");
+  await page.getByRole("button", { name: "修改密码并重新登录" }).click();
+  await expect(page.getByRole("heading", { name: "回到故事里" })).toBeVisible();
+});
+
 function memory(
   id: string,
   instanceId: string,
@@ -364,9 +448,7 @@ test("installed character version starts a new chat while preserving cached lega
     },
   });
 
-  await page.goto(
-    "/#/chat/nanally?conversation=nanally-integration-v1&turn=legacy-switch-turn",
-  );
+  await page.goto("/#/chat/nanally");
   await expect(page).toHaveURL(/#\/chat\/nanally$/);
   await expect(page.locator(".chat-workspace")).toHaveAttribute(
     "data-version",
@@ -1701,10 +1783,11 @@ test("memory requests that finish after a role switch cannot populate the new ro
       memory("fast", "instance-iroi-canon-p22-v1", "伊洛伊记得的内容"),
     ],
   });
-  await page.goto("/#/memory/nanally");
-  await page.waitForRequest((request) =>
+  const memoryRequest = page.waitForRequest((request) =>
     request.url().includes("instance-nanally-canon-p22-v1/memories"),
   );
+  await page.goto("/#/memory/nanally");
+  await memoryRequest;
   await page.evaluate(() => {
     location.hash = "#/memory/iroi";
   });

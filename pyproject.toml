@@ -12,6 +12,7 @@ dependencies = [
   "httpx>=0.28,<1",
   "pydantic-settings>=2.7,<3",
   "pgvector>=0.4,<1",
+  "argon2-cffi>=23,<26",
 ]
 
 [dependency-groups]

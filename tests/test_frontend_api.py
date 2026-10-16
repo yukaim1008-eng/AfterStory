@@ -1,9 +1,8 @@
 from concurrent.futures import ThreadPoolExecutor
 
-from fastapi.testclient import TestClient
-
 from afterstory.api import create_app, current_user
 from afterstory.repository import Repository
+from tests.auth_client import TestClient
 
 
 def test_resume_is_atomic_and_user_scoped(database):
@@ -20,7 +19,7 @@ def test_resume_is_atomic_and_user_scoped(database):
     with TestClient(app) as client:
         result = client.post("/api/sessions/open", json={"version_id": "test-lan-v1"})
         assert result.json() == results[0]
-        capabilities = client.get("/api/health").json()["capabilities"]
+        capabilities = client.get("/api/auth/me").json()["capabilities"]
         assert capabilities["memory"] is True
         assert capabilities["memory_extraction"] is False
         path = f"/api/conversations/{result.json()['conversation_id']}/messages"

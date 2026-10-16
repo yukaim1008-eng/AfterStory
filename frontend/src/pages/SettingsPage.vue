@@ -13,6 +13,7 @@ import {
   Volume2,
 } from "lucide-vue-next";
 import { useAfterStory } from "../composables/useAfterStory";
+import { ref } from "vue";
 import CharacterAvatar from "../components/CharacterAvatar.vue";
 import Portrait from "../Portrait.vue";
 
@@ -20,12 +21,40 @@ const {
   character,
   cover,
   connected,
+  username,
+  logout,
+  changePassword,
   editing,
   preferences,
   resetConfirm,
   route,
   section,
 } = useAfterStory();
+const oldPassword = ref("");
+const nextPassword = ref("");
+const accountError = ref("");
+const accountBusy = ref(false);
+async function submitPassword() {
+  if (accountBusy.value) return;
+  accountBusy.value = true;
+  accountError.value = "";
+  try {
+    await changePassword(oldPassword.value, nextPassword.value);
+  } catch (error) {
+    accountError.value = error instanceof Error && error.message === "invalid_credentials"
+      ? "当前密码不正确。" : "修改失败，请检查新密码长度并重试。";
+  } finally {
+    accountBusy.value = false;
+  }
+}
+async function submitLogout() {
+  accountError.value = "";
+  try {
+    await logout();
+  } catch {
+    accountError.value = "退出失败，请检查网络后重试。";
+  }
+}
 
 const sections = [
   { id: "general", label: "通用", icon: Settings2 },
@@ -273,9 +302,15 @@ const sections = [
               </div>
               <span>→</span>
             </button>
-            <p class="fine-print">
-              当前为本地开发身份，暂不提供账号登录与跨设备同步。
-            </p>
+            <p class="fine-print">当前账号：{{ username }}</p>
+            <form class="account-password" @submit.prevent="submitPassword">
+              <h3>修改密码</h3>
+              <input v-model="oldPassword" type="password" autocomplete="current-password" placeholder="当前密码" required />
+              <input v-model="nextPassword" type="password" autocomplete="new-password" placeholder="新密码（至少 12 个字符）" minlength="12" required />
+              <p v-if="accountError" role="alert">{{ accountError }}</p>
+              <button type="submit" :disabled="accountBusy">修改密码并重新登录</button>
+            </form>
+            <button class="account-logout" @click="submitLogout">退出登录</button>
           </template>
         </div>
       </div>
@@ -284,6 +319,11 @@ const sections = [
 </template>
 
 <style scoped>
+.account-password { display: grid; gap: 10px; max-width: 360px; margin-top: 20px; }
+.account-password input { padding: 10px 12px; border: 1px solid #d6cbd3; border-radius: 9px; font: inherit; }
+.account-password button, .account-logout { padding: 10px 16px; border: 1px solid #b7809b; border-radius: 9px; background: #fff8fb; color: #8a426b; cursor: pointer; }
+.account-password p { color: #b43850; }
+.account-logout { margin-top: 20px; }
 .workspace.settings-workspace {
   display: block;
   width: 100%;

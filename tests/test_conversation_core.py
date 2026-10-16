@@ -2,7 +2,6 @@ import json
 from datetime import datetime, timedelta, timezone
 
 import pytest
-from fastapi.testclient import TestClient
 from pydantic import ValidationError
 from sqlalchemy import func, select
 
@@ -28,6 +27,7 @@ from afterstory.models import (
     Reminder,
 )
 from afterstory.repository import Repository
+from tests.auth_client import TestClient
 
 
 def decision(**overrides):

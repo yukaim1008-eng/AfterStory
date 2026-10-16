@@ -1,3 +1,8 @@
+let csrfToken = "";
+export function setCsrfToken(token: string) {
+  csrfToken = token;
+}
+
 export async function api<T>(
   path: string,
   body?: unknown,
@@ -6,12 +11,20 @@ export async function api<T>(
   const verb = method || (body === undefined ? "GET" : "POST");
   const response = await fetch("/api" + path, {
     method: verb,
-    headers: body === undefined ? {} : { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    headers: {
+      ...(body === undefined ? {} : { "Content-Type": "application/json" }),
+      ...(verb === "GET" || !csrfToken ? {} : { "X-CSRF-Token": csrfToken }),
+    },
     body: body === undefined ? undefined : JSON.stringify(body),
     signal: AbortSignal.timeout(180000),
   });
   if (!response.ok) {
     const data = await response.json().catch(() => ({}));
+    if (response.status === 401 && data.error === "authentication_required") {
+      setCsrfToken("");
+      window.dispatchEvent(new Event("afterstory:unauthorized"));
+    }
     throw new Error(data.error || "connection_failed");
   }
   return response.json();
@@ -37,6 +50,8 @@ export function errorText(error: unknown) {
         memory_revision_conflict: "这条记忆已在别处更新，请刷新后再修改。",
         memory_deleted: "这条记忆已经删除。",
         memory_source_not_found: "找不到可保存的原始消息。",
+        login_rate_limited: "尝试次数过多，请 15 分钟后再试。",
+        csrf_invalid: "登录状态已失效，请重新登录。",
       } as Record<string, string>
     )[code] || "连接暂时中断，内容已保留，请稍后重试。"
   );

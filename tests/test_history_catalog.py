@@ -2,12 +2,13 @@ from datetime import datetime, timezone
 
 from alembic import command
 from alembic.config import Config
-from fastapi.testclient import TestClient
 from sqlalchemy import select, text
 
 from afterstory.api import create_app, current_user
+from afterstory.auth import PASSWORDS
 from afterstory.domain import ProviderError
-from afterstory.models import Conversation, Turn
+from afterstory.models import Conversation, Turn, User
+from tests.auth_client import TestClient
 
 
 def make_chat(client, version="test-lan-v1"):
@@ -82,6 +83,12 @@ def test_history_timestamp_migration_preserves_legacy_data(database):
         assert session.get(Conversation, conversation).created_at is None
         assert session.scalar(select(Turn)).created_at is None
         assert session.scalar(text("SELECT count(*) FROM messages")) == 2
+    # This test rolls the database back before credentials existed, so restore
+    # only the test account before exercising the new authenticated API.
+    with sessions.begin() as session:
+        alice = session.get(User, "alice")
+        alice.username = "alice"
+        alice.password_hash = PASSWORDS.hash("alice-test-password-123")
     with TestClient(create_app(cfg)) as client:
         info = client.get(f"/api/conversations/{conversation}").json()
         assert info["last_activity_at"] is None

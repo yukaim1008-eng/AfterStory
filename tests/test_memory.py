@@ -1,7 +1,6 @@
 from concurrent.futures import ThreadPoolExecutor
 
 import pytest
-from fastapi.testclient import TestClient
 from sqlalchemy import select
 
 from afterstory.api import create_app, current_user
@@ -9,6 +8,7 @@ from afterstory.domain import DomainError
 from afterstory.memory import MemoryService
 from afterstory.models import CharacterInstance, PersonalMemory
 from afterstory.repository import Repository
+from tests.auth_client import TestClient
 
 
 def make_chat(client, version="test-lan-v1"):

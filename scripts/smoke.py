@@ -4,6 +4,7 @@ Creates engineering conversations in the configured local database; retains them
 """
 
 import argparse
+import getpass
 import os
 import socket
 import subprocess
@@ -75,10 +76,17 @@ def post(client, path, body):
     return result.json()
 
 
+def authenticate(client, username, password):
+    credentials = post(client, "/api/auth/login", {"username": username, "password": password})
+    client.headers["X-CSRF-Token"] = credentials["csrf_token"]
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--profile", required=True)
+    parser.add_argument("--username", required=True)
     args = parser.parse_args()
+    password = getpass.getpass("Smoke 账号密码：")
     if (
         args.profile != "fake"
         and not Settings(llm_active_model=args.profile).active_model.api_key.get_secret_value()
@@ -88,6 +96,7 @@ def main():
         )
     paths = []
     with server(args.profile) as client:
+        authenticate(client, args.username, password)
         for version in ("test-lan-v1", "test-xiao-v1"):
             instance = post(client, "/instances", {"version_id": version})
             conversation = post(client, "/conversations", {"instance_id": instance["instance_id"]})
@@ -100,6 +109,7 @@ def main():
                 assert reply["text"] and reply["audio_status"] == "not_requested"
             assert client.get(path).json()["total"] == 3
     with server(args.profile) as client:
+        authenticate(client, args.username, password)
         for path in paths:
             assert client.get(path).json()["total"] == 3
             post(client, path, {"request_id": "smoke-restart", "text": "我们接着聊。"})

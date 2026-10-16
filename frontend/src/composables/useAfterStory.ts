@@ -10,7 +10,7 @@ import {
   provide,
 } from "vue";
 import type { InjectionKey } from "vue";
-import { api, errorText } from "../api";
+import { api, errorText, setCsrfToken } from "../api";
 import { coverStorage } from "../storage";
 import type {
   Character,
@@ -33,6 +33,9 @@ export function createAfterStory() {
   const section = ref("general");
   const hovered = ref("nanally");
   const user = ref("");
+  const username = ref("");
+  const authRequired = ref(false);
+  const authReady = ref(false);
   const connected = ref(false);
   const capabilities = reactive({ voice: false, memory: false });
   const busy = ref(false);
@@ -222,9 +225,15 @@ export function createAfterStory() {
     try {
       const result = await api<{
         user_id: string;
+        username: string;
+        csrf_token: string;
         capabilities?: { voice?: boolean; memory?: boolean };
-      }>("/health");
+      }>("/auth/me");
+      if (user.value && user.value !== result.user_id) clearAccountState();
       user.value = result.user_id;
+      username.value = result.username;
+      setCsrfToken(result.csrf_token);
+      authRequired.value = false;
       Object.assign(capabilities, result.capabilities || {});
       Object.assign(preferences, read("preferences", preferences));
       if (!location.hash) selected.value = read("selected", selected.value);
@@ -241,18 +250,6 @@ export function createAfterStory() {
           saved.session.version_id !== c.versionId
         ) {
           store(`conversation:${saved.id}`, saved);
-          const [path, query] = location.hash.split("?");
-          const params = new URLSearchParams(query);
-          if (params.get("conversation") === saved.id) {
-            params.delete("conversation");
-            params.delete("turn");
-            const hash = `${path}${params.size ? `?${params}` : ""}`;
-            history.replaceState(
-              null,
-              "",
-              `${location.pathname}${location.search}${hash}`,
-            );
-          }
           saved = { draft: "" };
         }
         chats[c.id] = {
@@ -280,10 +277,68 @@ export function createAfterStory() {
       routeChanged();
     } catch (error) {
       connected.value = false;
-      fatal.value = errorText(error);
+      if (error instanceof Error && error.message === "authentication_required") {
+        clearAccountState();
+        authRequired.value = true;
+      } else fatal.value = errorText(error);
     } finally {
       busy.value = false;
+      authReady.value = true;
     }
+  }
+
+  function clearAccountState() {
+    user.value = "";
+    username.value = "";
+    connected.value = false;
+    setCsrfToken("");
+    for (const id of Object.keys(chats)) delete chats[id];
+    for (const id of Object.keys(conversations)) delete conversations[id];
+    for (const id of Object.keys(covers)) delete covers[id];
+    sessions.value = [];
+    memories.value = [];
+    matters.value = [];
+    dueReminder.value = undefined;
+    Object.assign(preferences, { font: "standard", send: "enter", motion: true, voice: "manual" });
+    history.replaceState(null, "", location.pathname + location.search);
+    page.value = "home";
+    selected.value = characters.value.find((c) => c.default)?.id || characters.value[0]?.id || "nanally";
+    ++historyRequest;
+    ++memoryRequest;
+  }
+
+  async function login(loginName: string, password: string) {
+    const result = await api<{ csrf_token: string }>(
+      "/auth/login", { username: loginName, password }, "POST",
+    );
+    setCsrfToken(result.csrf_token);
+    await connect();
+  }
+
+  async function logout() {
+    try {
+      await api("/auth/logout", {}, "POST");
+    } catch (error) {
+      if (!(error instanceof Error) || error.message !== "authentication_required")
+        throw error;
+    }
+    clearAccountState();
+    authRequired.value = true;
+    location.reload();
+  }
+
+  async function changePassword(currentPassword: string, newPassword: string) {
+    await api("/auth/password", {
+      current_password: currentPassword, new_password: newPassword,
+    }, "POST");
+    clearAccountState();
+    authRequired.value = true;
+    location.reload();
+  }
+
+  function unauthorized() {
+    clearAccountState();
+    authRequired.value = true;
   }
   async function refresh(
     id: string,
@@ -868,6 +923,7 @@ export function createAfterStory() {
     }
   }
   onMounted(async () => {
+    window.addEventListener("afterstory:unauthorized", unauthorized);
     window.addEventListener("hashchange", routeChanged);
     window.addEventListener("keydown", modalKeys);
     try {
@@ -883,6 +939,7 @@ export function createAfterStory() {
     }
   });
   onUnmounted(() => {
+    window.removeEventListener("afterstory:unauthorized", unauthorized);
     window.removeEventListener("hashchange", routeChanged);
     window.removeEventListener("keydown", modalKeys);
   });
@@ -894,6 +951,9 @@ export function createAfterStory() {
     section,
     hovered,
     user,
+    username,
+    authRequired,
+    authReady,
     connected,
     capabilities,
     busy,
@@ -949,6 +1009,9 @@ export function createAfterStory() {
     routeChanged,
     choose,
     connect,
+    login,
+    logout,
+    changePassword,
     refresh,
     openChat,
     send,

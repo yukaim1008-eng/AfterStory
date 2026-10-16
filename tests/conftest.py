@@ -6,8 +6,10 @@ from alembic import command
 from alembic.config import Config
 from sqlalchemy import create_engine, text
 
+from afterstory.auth import PASSWORDS
 from afterstory.config import Settings
 from afterstory.database import make_sessions
+from afterstory.models import User
 from afterstory.seed import seed
 
 
@@ -29,6 +31,10 @@ def database(monkeypatch):
         engine, sessions = make_sessions(cfg)
         seed(sessions, "alice")
         seed(sessions, "bob")
+        with sessions.begin() as session:
+            alice = session.get(User, "alice")
+            alice.username = "alice"
+            alice.password_hash = PASSWORDS.hash("alice-test-password-123")
         yield cfg, sessions
         engine.dispose()
     finally:

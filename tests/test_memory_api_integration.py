@@ -1,8 +1,7 @@
 from datetime import datetime, timedelta, timezone
 
-from fastapi.testclient import TestClient
-
 from afterstory.api import create_app
+from tests.auth_client import TestClient
 
 
 def test_memory_and_online_reminder_public_flow_uses_fake_provider(database):

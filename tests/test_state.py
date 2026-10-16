@@ -1,7 +1,6 @@
 from concurrent.futures import ThreadPoolExecutor
 
 import pytest
-from fastapi.testclient import TestClient
 from sqlalchemy import select
 
 from afterstory.api import create_app
@@ -11,6 +10,7 @@ from afterstory.memory import MemoryService
 from afterstory.models import CharacterState, Relationship, StateEvent
 from afterstory.repository import Repository
 from afterstory.state import StateService
+from tests.auth_client import TestClient
 
 
 class RecordingProvider:

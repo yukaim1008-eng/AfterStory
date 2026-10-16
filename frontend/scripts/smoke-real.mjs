@@ -1,9 +1,14 @@
-// Requires a separate backend at 8001 seeded with DEV_USER_ID=frontend-smoke.
+// Requires a separate backend at 8001 and an administrator-created test account.
 // This sends one real model request; it is deliberately outside the automatic test suite.
 import { chromium } from "@playwright/test";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 const browser = await chromium.launch();
+const username = process.env.AFTERSTORY_SMOKE_USERNAME;
+const password = process.env.AFTERSTORY_SMOKE_PASSWORD;
+if (!username || !password) {
+  throw new Error("Set AFTERSTORY_SMOKE_USERNAME and AFTERSTORY_SMOKE_PASSWORD first.");
+}
 try {
   const page = await browser.newPage({
     viewport: { width: 1440, height: 1000 },
@@ -17,6 +22,9 @@ try {
     await route.fulfill({ response });
   });
   await page.goto("http://127.0.0.1:5173");
+  await page.getByLabel("用户名").fill(username);
+  await page.getByLabel("密码", { exact: true }).fill(password);
+  await page.getByRole("button", { name: "登录", exact: true }).click();
   await page.getByText("文字交流已连接").waitFor();
   const text = "这是页面联调测试。今天想和你聊一会儿，用一句简短的话回应我吧。";
   await page.getByRole("textbox", { name: "消息" }).fill(text);

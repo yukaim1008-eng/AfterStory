@@ -25,6 +25,7 @@ import CharactersPage from "./pages/CharactersPage.vue";
 import HomePage from "./pages/HomePage.vue";
 import MemoriesPage from "./pages/MemoriesPage.vue";
 import SettingsPage from "./pages/SettingsPage.vue";
+import LoginPage from "./pages/LoginPage.vue";
 import AppShell from "./components/AppShell.vue";
 import {
   createAfterStory,
@@ -39,6 +40,8 @@ const {
   section,
   hovered,
   user,
+  authRequired,
+  authReady,
   connected,
   capabilities,
   busy,
@@ -109,7 +112,9 @@ const {
 </script>
 
 <template>
-  <AppShell
+  <LoginPage v-if="authReady && authRequired" />
+  <div v-else-if="!authReady" class="app-loading" role="status">正在连接 AfterStory…</div>
+  <AppShell v-else
     :character="character"
     :source="character ? cover(character).source : undefined"
     :page="page"
