@@ -14,7 +14,7 @@ AfterStory 的 `User → CharacterInstance → Conversation / Memory / State / R
 | --- | --- | --- |
 | 账号开放 | 仅管理员在服务器上创建账号；网站不提供公开注册 | 限制公网产生模型费用的入口。 |
 | 登录凭据 | 用户名＋密码；忘记密码由服务器命令重设 | 不需要邮件服务。 |
-| 旧 `local-user` 数据 | 首个账号使用新的用户 ID，不绑定旧用户 | 旧个人数据保留在数据库但无法通过新账号访问；公共角色及版本继续可用。 |
+| 旧 `local-user` 数据 | 首个账号使用新的用户 ID，不绑定旧用户 | 最初实施时保留旧个人数据；2026-10-16 用户随后明确要求删除 4 个旧用户，已单独清理。公共角色及版本继续可用。 |
 
 ## 已实现边界
 
@@ -32,10 +32,12 @@ AfterStory 的 `User → CharacterInstance → Conversation / Memory / State / R
 
 - 匿名用户无法读取或修改会话、记忆、状态、关系和提醒；登录后只能访问本人数据，伪造用户 ID 无效。
 - 登录、刷新、过期、退出、改密失效和换账号均正确；Cookie 属性、CSRF、限速和错误信息经过测试。
-- 老 `local-user` 数据不绑定新账号且不删除；迁移升级/回滚在隔离 schema 中验证。
+- 老 `local-user` 数据不绑定新账号；登录系统实施时未自动删除，后来按用户单独指示清理。迁移升级/回滚在隔离 schema 中验证。
 - 前端登录态切换不显示其他账号的草稿和封面；后端、前端与浏览器测试使用 fake Provider，不调用真实模型。
 - Ruff、类型检查、构建和相关测试通过；测试后只停止本轮启动的服务。
 
 2026-10-16 验收：隔离 PostgreSQL schema 的升级/回滚、147 项后端测试、36 项 Playwright、Ruff、前端类型检查/构建与 Alembic 一致性均通过；没有调用真实模型。开发库已升级到 `a1_authentication`，原有角色、版本和实例数量未因本次迁移改变。部署时需核对反向代理传递的真实客户端 IP，避免多用户共享一个登录限速来源。
+
+2026-10-16 后续数据清理：按用户明确指示，在单个数据库事务内删除 `alice`、`bob`、`frontend-smoke`、`local-user` 这 4 个无登录凭据的旧用户及其用户归属数据（含 15 个角色实例、15 段会话、29 个轮次、58 条消息和 1 条个人记忆）。检查外键归属范围后清理 25 张依赖表；清理前后对公共 `characters` 与 `character_versions` 做整行校验，分别保持 6 条和 9 条且内容不变。此操作不属于登录 migration，也不影响后续新账号创建。
 
 安全方案参考：[OWASP Password Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)、[OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)。

@@ -64,7 +64,7 @@ M1 对 DeepSeek 默认关闭 thinking；其他 Chat Completions 兼容模型组�
 
 默认上下文包含角色定义、当前实例最多 20 条/6000 字符的有效个人记忆、可选内部状态、当前会话最近 12 个成功轮次和当前消息。`HISTORY_TURNS`、`MEMORY_CONTEXT_ITEMS`、`MEMORY_CONTEXT_CHARS` 可调整容量。每条输入最多 8000 字符，输出上限由 `DEEPSEEK_MAX_TOKENS` 设置。个人记忆由用户主动保存，不自动从聊天提取。
 
-当前用户身份由服务端登录会话提供，请求不能指定 `user_id`。本地联调也须先由管理员命令创建账号并在前端登录；`DEV_USER_ID` 只为旧脚本兼容保留，不再绕过登录。旧 `local-user` 数据不会自动绑定新账号。完整说明见[登录系统 v1](design/platform/01-authentication.md)。
+当前用户身份由服务端登录会话提供，请求不能指定 `user_id`。本地联调也须先由管理员命令创建账号并在前端登录；`DEV_USER_ID` 只为旧脚本兼容保留，不再绕过登录。旧 `local-user` 数据不会自动绑定新账号，开发库中的旧用户及个人数据已按用户指示清理。完整说明见[登录系统 v1](design/platform/01-authentication.md)。
 
 ## 平台差异
 
