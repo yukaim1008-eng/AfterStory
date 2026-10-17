@@ -5,7 +5,7 @@ from hashlib import sha256
 from sqlalchemy import select
 
 from afterstory.domain import DomainError
-from afterstory.memory_contracts import StateProposal
+from afterstory.memory.contracts import StateProposal
 from afterstory.models import (
     CharacterInstance,
     CharacterState,

@@ -1,7 +1,7 @@
 import json
 
 from afterstory.domain import ChatMessage, ProviderError
-from afterstory.memory_contracts import (
+from afterstory.memory.contracts import (
     ConservativeTokenCounter,
     MemoryExtractionResult,
     SummaryCandidate,

@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from afterstory.character_research import (
+from afterstory.character.research import (
     CanonCheckpointRecord,
     CanonEvidenceRecord,
     CharacterAlias,

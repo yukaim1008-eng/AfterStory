@@ -4,7 +4,8 @@ from hashlib import sha256
 from sqlalchemy import func, select
 
 from afterstory.domain import DomainError
-from afterstory.lifecycle import MemoryLifecycleService
+from afterstory.memory.lifecycle import MemoryLifecycleService
+from afterstory.memory.state import StateService
 from afterstory.models import (
     CharacterInstance,
     Conversation,
@@ -17,7 +18,6 @@ from afterstory.models import (
     PersonalMemoryVersion,
     Turn,
 )
-from afterstory.state import StateService
 
 
 class MemoryService:

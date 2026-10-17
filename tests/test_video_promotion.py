@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from afterstory.character_research import (
+from afterstory.character.research import (
     CharacterCatalogEntry,
     LocalizedNames,
     SourcePartRecord,
@@ -15,7 +15,7 @@ from afterstory.character_research import (
     write_catalog,
     write_jsonl,
 )
-from afterstory.video_promotion import promote_reviewed_video
+from afterstory.character.video_promotion import promote_reviewed_video
 
 
 def write_jsonl_dicts(path: Path, rows: list[dict]) -> None:

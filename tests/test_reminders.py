@@ -3,10 +3,10 @@ from datetime import datetime, timedelta, timezone
 import pytest
 from sqlalchemy import func, select
 
+from afterstory.conversation.repository import Repository
 from afterstory.domain import DomainError
+from afterstory.memory.reminders import MatterService
 from afterstory.models import MatterRevision, Reminder, ReminderDelivery
-from afterstory.reminders import MatterService
-from afterstory.repository import Repository
 
 
 def test_due_reminder_is_claimed_once_and_acknowledged(database):

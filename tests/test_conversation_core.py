@@ -6,14 +6,15 @@ from pydantic import ValidationError
 from sqlalchemy import func, select
 
 from afterstory.api import create_app
-from afterstory.context import ContextAssembler
 from afterstory.conversation import ConversationService
-from afterstory.conversation_contracts import ConversationDecision
-from afterstory.conversation_effects import ConversationEffectService
-from afterstory.conversation_provider import ConversationDecisionProvider
+from afterstory.conversation.context import ContextAssembler
+from afterstory.conversation.contracts import ConversationDecision
+from afterstory.conversation.effects import ConversationEffectService
+from afterstory.conversation.provider import ConversationDecisionProvider
+from afterstory.conversation.repository import Repository
 from afterstory.domain import ChatMessage, ProviderError
 from afterstory.memory import MemoryService
-from afterstory.memory_contracts import ConservativeTokenCounter
+from afterstory.memory.contracts import ConservativeTokenCounter
 from afterstory.models import (
     CharacterState,
     MemoryJob,
@@ -26,7 +27,6 @@ from afterstory.models import (
     RelationshipRevision,
     Reminder,
 )
-from afterstory.repository import Repository
 from tests.auth_client import TestClient
 
 

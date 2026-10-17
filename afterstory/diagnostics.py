@@ -8,7 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.engine import make_url
 
 from afterstory.config import Settings
-from afterstory.memory_provider import (
+from afterstory.memory.provider import (
     MEMORY_EXTRACTION_OUTPUT_TOKENS,
     SUMMARY_OUTPUT_TOKENS,
 )

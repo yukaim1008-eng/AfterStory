@@ -7,11 +7,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from afterstory.config import ROOT, Settings
-from afterstory.context import ContextAssembler
-from afterstory.conversation_provider import ConversationDecisionProvider
+from afterstory.conversation.context import ContextAssembler
+from afterstory.conversation.provider import ConversationDecisionProvider
+from afterstory.conversation.response_policy import RESPONSE_POLICY_VERSION
 from afterstory.domain import ChatMessage
 from afterstory.providers import ChatCompletionsProvider
-from afterstory.response_policy import RESPONSE_POLICY_VERSION
 
 
 class MeasuredProvider:

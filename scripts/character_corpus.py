@@ -2,15 +2,15 @@ import argparse
 import json
 from pathlib import Path
 
-from afterstory.canon_views import render_canon_views
-from afterstory.character_research import (
+from afterstory.character.canon_views import render_canon_views
+from afterstory.character.research import (
     build_sqlite,
     sync_bilibili,
     sync_ntestation,
     validate_corpus,
 )
+from afterstory.character.video_promotion import promote_reviewed_video
 from afterstory.config import ROOT
-from afterstory.video_promotion import promote_reviewed_video
 
 DEFAULT_ROOT = ROOT / "research/character-corpus"
 

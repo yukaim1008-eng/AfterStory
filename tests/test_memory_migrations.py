@@ -3,9 +3,9 @@ from alembic.config import Config
 from sqlalchemy import select, text
 
 from afterstory.conversation import ConversationService
+from afterstory.conversation.repository import Repository
 from afterstory.memory import MemoryService
 from afterstory.models import CharacterInstance, CharacterVersion, Message, PersonalMemory
-from afterstory.repository import Repository
 
 
 def test_memory_migrations_round_trip_preserve_legacy_authoritative_data(database):

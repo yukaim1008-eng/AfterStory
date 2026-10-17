@@ -7,10 +7,10 @@ from alembic.config import Config
 from sqlalchemy import create_engine, text
 
 from afterstory.auth import PASSWORDS
+from afterstory.character.importer import seed
 from afterstory.config import Settings
 from afterstory.database import make_sessions
 from afterstory.models import User
-from afterstory.seed import seed
 
 
 @pytest.fixture

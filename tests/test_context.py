@@ -4,12 +4,12 @@ from threading import Event
 import pytest
 from sqlalchemy import select
 
-from afterstory.context import ContextAssembler
 from afterstory.conversation import ConversationService
+from afterstory.conversation.context import ContextAssembler
+from afterstory.conversation.repository import Repository
 from afterstory.domain import DomainError
 from afterstory.memory import MemoryService
 from afterstory.models import CharacterInstance, Message, Turn
-from afterstory.repository import Repository
 
 
 class RecordingProvider:

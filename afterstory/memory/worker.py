@@ -2,10 +2,10 @@ import logging
 
 from sqlalchemy import select
 
-from afterstory.continuity import ContinuityService
-from afterstory.lifecycle import MemoryLifecycleService
-from afterstory.memory_automation import MemoryAutomationService
-from afterstory.memory_jobs import MemoryJobService
+from afterstory.memory.automation import MemoryAutomationService
+from afterstory.memory.continuity import ContinuityService
+from afterstory.memory.jobs import MemoryJobService
+from afterstory.memory.lifecycle import MemoryLifecycleService
 from afterstory.models import MemoryJob
 
 log = logging.getLogger("afterstory.memory_worker")

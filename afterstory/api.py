@@ -1,153 +1,40 @@
 import asyncio
 import logging
 import re
-import secrets
 from contextlib import asynccontextmanager
-from datetime import datetime
 from time import perf_counter
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, FastAPI, Query, Request, Response
+from fastapi import APIRouter, FastAPI
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
-from afterstory.auth import AuthService, csrf_token
+from afterstory.auth.http import current_user as current_user
+from afterstory.auth.routes import build_router as build_auth_router
+from afterstory.auth.service import AuthService
+from afterstory.character.routes import build_router as build_character_router
 from afterstory.config import Settings
-from afterstory.context import ContextAssembler
-from afterstory.conversation import ConversationService
-from afterstory.conversation_effects import ConversationEffectService
-from afterstory.conversation_provider import ConversationDecisionProvider
+from afterstory.conversation.context import ContextAssembler
+from afterstory.conversation.effects import ConversationEffectService
+from afterstory.conversation.provider import ConversationDecisionProvider
+from afterstory.conversation.repository import Repository
+from afterstory.conversation.routes import build_router as build_conversation_router
+from afterstory.conversation.service import ConversationService
 from afterstory.database import make_sessions
 from afterstory.domain import DomainError
-from afterstory.memory import MemoryService
-from afterstory.memory_automation import ExplicitMemoryOperationService
-from afterstory.memory_provider import StructuredMemoryProvider
-from afterstory.memory_worker import MemoryRuntimeWorker
+from afterstory.memory.automation import ExplicitMemoryOperationService
+from afterstory.memory.provider import StructuredMemoryProvider
+from afterstory.memory.reminders import MatterService
+from afterstory.memory.retrieval import RetrievalService
+from afterstory.memory.routes import build_router as build_memory_router
+from afterstory.memory.service import MemoryService
+from afterstory.memory.worker import MemoryRuntimeWorker
 from afterstory.providers import ChatCompletionsProvider, FakeProvider
-from afterstory.reminders import MatterService
-from afterstory.repository import Repository
-from afterstory.retrieval import RetrievalService
 
 http_log = logging.getLogger("afterstory.http")
 request_id_pattern = re.compile(r"[A-Za-z0-9._-]{1,64}")
-
-
-class Input(BaseModel):
-    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
-
-
-class InstanceInput(Input):
-    version_id: str = Field(min_length=1, max_length=64)
-
-
-class ConversationInput(Input):
-    instance_id: str = Field(min_length=1, max_length=36)
-
-
-class MessageInput(Input):
-    request_id: str = Field(min_length=1, max_length=100)
-    text: str = Field(min_length=1, max_length=8000)
-    timezone: str | None = Field(default=None, min_length=1, max_length=64)
-
-
-class MemoryCreateInput(Input):
-    request_id: str = Field(min_length=1, max_length=100)
-    content: str = Field(min_length=1, max_length=2000)
-    source_message_id: str | None = Field(default=None, min_length=1, max_length=36)
-
-
-class MemoryUpdateInput(Input):
-    expected_revision: int = Field(ge=1)
-    content: str = Field(min_length=1, max_length=2000)
-
-
-class MemoryOperationInput(Input):
-    operation_id: str = Field(min_length=1, max_length=100)
-    action: str = Field(pattern="^(remember|correct|forget)$")
-    content: str | None = Field(default=None, min_length=1, max_length=2000)
-    memory_id: str | None = Field(default=None, min_length=1, max_length=36)
-    expected_revision: int | None = Field(default=None, ge=1)
-
-
-class MatterCreateInput(Input):
-    request_id: str = Field(min_length=1, max_length=100)
-    content: str = Field(min_length=1, max_length=2000)
-    matter_type: str = Field(default="reminder", pattern="^(reminder|commitment|follow_up)$")
-    next_step: str | None = Field(default=None, max_length=2000)
-    time_precision: str = Field(default="unknown", pattern="^(instant|day|month|unknown)$")
-    scheduled_at: datetime | None = None
-    timezone_name: str | None = Field(default=None, max_length=64)
-    mention_policy: str = Field(default="when_relevant", pattern="^(when_relevant|on_due|never)$")
-
-
-class MatterReviseInput(Input):
-    expected_revision: int = Field(ge=1)
-    operation: str = Field(pattern="^(reschedule|complete|cancel)$")
-    scheduled_at: datetime | None = None
-    timezone_name: str | None = Field(default=None, max_length=64)
-
-
-class DeliveryAckInput(Input):
-    lease_token: str = Field(min_length=1, max_length=36)
-    delivered: bool
-    error_code: str | None = Field(default=None, max_length=80)
-
-
-class LoginInput(Input):
-    username: str = Field(min_length=1, max_length=64)
-    password: str = Field(min_length=1, max_length=128)
-
-
-class PasswordChangeInput(Input):
-    current_password: str = Field(min_length=1, max_length=128)
-    new_password: str = Field(min_length=12, max_length=128)
-
-
-def session_cookie_name(settings):
-    return "__Host-afterstory_session" if settings.app_env == "production" else "afterstory_session"
-
-
-def browser_session(request: Request):
-    return request.cookies.get(session_cookie_name(request.app.state.settings))
-
-
-def check_csrf(request: Request, token: str | None):
-    supplied = request.headers.get("x-csrf-token", "")
-    if not token or not secrets.compare_digest(supplied, csrf_token(token)):
-        raise DomainError(403, "csrf_invalid")
-
-
-def check_login_origin(request: Request):
-    origin = request.headers.get("origin")
-    if origin:
-        from urllib.parse import urlparse
-
-        parsed = urlparse(origin)
-        host = request.headers.get("host", "")
-        allowed = {f"https://{host}"}
-        if request.app.state.settings.app_env == "development":
-            allowed.update(
-                {
-                    f"http://{host}",
-                    "http://127.0.0.1:5173",
-                    "http://localhost:5173",
-                }
-            )
-        if parsed.scheme + "://" + parsed.netloc not in allowed or parsed.path not in {"", "/"}:
-            raise DomainError(403, "origin_invalid")
-    if request.headers.get("sec-fetch-site") == "cross-site":
-        raise DomainError(403, "origin_invalid")
-
-
-def current_user(request: Request):
-    token = browser_session(request)
-    identity = request.app.state.auth.resolve(token)
-    if request.method not in {"GET", "HEAD", "OPTIONS"}:
-        check_csrf(request, token)
-    return identity["user_id"]
 
 
 def create_app(settings=None, provider=None):
@@ -295,222 +182,10 @@ def create_app(settings=None, provider=None):
             connection.execute(text("SELECT 1"))
         return {"status": "ok"}
 
-    @router.post("/auth/login")
-    def login(body: LoginInput, request: Request, response: Response):
-        check_login_origin(request)
-        user, token = auth.login(
-            body.username, body.password, request.client.host if request.client else ""
-        )
-        response.set_cookie(
-            session_cookie_name(settings),
-            token,
-            max_age=30 * 24 * 60 * 60,
-            secure=settings.app_env == "production",
-            httponly=True,
-            samesite="strict",
-            path="/",
-        )
-        return {"user_id": user.id, "username": user.username, "csrf_token": csrf_token(token)}
-
-    @router.get("/auth/me")
-    def me(request: Request):
-        token = browser_session(request)
-        identity = auth.resolve(token)
-        return {
-            **identity,
-            "csrf_token": csrf_token(token),
-            "capabilities": {
-                "voice": False,
-                "memory": True,
-                "memory_extraction": memory_worker is not None,
-                "online_reminders": True,
-                "canon_update": False,
-            },
-        }
-
-    @router.post("/auth/logout")
-    def logout(request: Request, response: Response):
-        token = browser_session(request)
-        auth.resolve(token)
-        check_csrf(request, token)
-        auth.revoke(token)
-        response.delete_cookie(session_cookie_name(settings), path="/")
-        return {"status": "ok"}
-
-    @router.post("/auth/password")
-    def change_password(body: PasswordChangeInput, request: Request, response: Response):
-        token = browser_session(request)
-        identity = auth.resolve(token)
-        check_csrf(request, token)
-        auth.change_password(identity["user_id"], body.current_password, body.new_password)
-        response.delete_cookie(session_cookie_name(settings), path="/")
-        return {"status": "ok"}
-
-    @router.get("/characters")
-    def characters():
-        return repository.characters()
-
-    @router.post("/instances", status_code=201)
-    def instances(body: InstanceInput, user=Depends(current_user)):
-        return repository.create_instance(user, body.version_id)
-
-    @router.post("/conversations", status_code=201)
-    def conversations(body: ConversationInput, user=Depends(current_user)):
-        return repository.create_conversation(user, body.instance_id)
-
-    @router.post("/sessions/open")
-    def open_session(body: InstanceInput, user=Depends(current_user)):
-        return repository.open_session(user, body.version_id)
-
-    @router.get("/conversations")
-    def list_conversations(user=Depends(current_user)):
-        return repository.conversations(user)
-
-    @router.get("/history")
-    def conversation_catalog(
-        offset: int = Query(0, ge=0),
-        limit: int = Query(20, ge=1, le=100),
-        user=Depends(current_user),
-    ):
-        return repository.conversation_catalog(user, offset, limit)
-
-    @router.get("/conversations/{conversation_id}")
-    def conversation_info(conversation_id: str, user=Depends(current_user)):
-        return repository.conversation_info(user, conversation_id)
-
-    @router.post("/conversations/{conversation_id}/messages")
-    def send(conversation_id: str, body: MessageInput, user=Depends(current_user)):
-        return service.send(
-            user,
-            conversation_id,
-            body.request_id,
-            body.text,
-            timezone_name=body.timezone or settings.user_timezone,
-            timezone_source="client_reported" if body.timezone else "server_default",
-        )
-
-    @router.get("/conversations/{conversation_id}/messages")
-    def history(
-        conversation_id: str,
-        offset: int = Query(0, ge=0),
-        limit: int = Query(20, ge=1, le=100),
-        around_turn_id: str | None = Query(None, min_length=1, max_length=36),
-        user=Depends(current_user),
-    ):
-        return repository.history(user, conversation_id, offset, limit, around_turn_id)
-
-    @router.get("/instances/{instance_id}/memories")
-    def memories(
-        instance_id: str,
-        offset: int = Query(0, ge=0),
-        limit: int = Query(50, ge=1, le=100),
-        user=Depends(current_user),
-    ):
-        return memory_service.list(user, instance_id, offset, limit)
-
-    @router.post("/instances/{instance_id}/memories", status_code=201)
-    def create_memory(
-        instance_id: str,
-        body: MemoryCreateInput,
-        user=Depends(current_user),
-    ):
-        return memory_service.create(
-            user,
-            instance_id,
-            body.request_id,
-            body.content,
-            body.source_message_id,
-        )
-
-    @router.patch("/memories/{memory_id}")
-    def update_memory(
-        memory_id: str,
-        body: MemoryUpdateInput,
-        user=Depends(current_user),
-    ):
-        return memory_service.update(user, memory_id, body.expected_revision, body.content)
-
-    @router.delete("/memories/{memory_id}")
-    def delete_memory(
-        memory_id: str,
-        expected_revision: int = Query(ge=1),
-        user=Depends(current_user),
-    ):
-        return memory_service.delete(user, memory_id, expected_revision)
-
-    @router.post("/instances/{instance_id}/memory-operations")
-    def memory_operation(
-        instance_id: str,
-        body: MemoryOperationInput,
-        user=Depends(current_user),
-    ):
-        if body.action == "remember" and not body.content:
-            raise DomainError(422, "memory_content_required")
-        if body.action in {"correct", "forget"} and (
-            not body.memory_id or body.expected_revision is None
-        ):
-            raise DomainError(422, "memory_target_required")
-        return operation_service.execute(
-            user,
-            instance_id,
-            body.operation_id,
-            body.action,
-            body.content,
-            body.memory_id,
-            body.expected_revision,
-        )
-
-    @router.get("/instances/{instance_id}/matters")
-    def matters(instance_id: str, user=Depends(current_user)):
-        return matter_service.list(user, instance_id)
-
-    @router.post("/instances/{instance_id}/matters", status_code=201)
-    def create_matter(
-        instance_id: str,
-        body: MatterCreateInput,
-        user=Depends(current_user),
-    ):
-        return matter_service.create(
-            user,
-            instance_id,
-            body.request_id,
-            body.content,
-            body.matter_type,
-            body.next_step,
-            body.time_precision,
-            body.scheduled_at,
-            body.timezone_name,
-            body.mention_policy,
-        )
-
-    @router.patch("/matters/{matter_id}")
-    def revise_matter(
-        matter_id: str,
-        body: MatterReviseInput,
-        user=Depends(current_user),
-    ):
-        return matter_service.revise(
-            user,
-            matter_id,
-            body.expected_revision,
-            body.operation,
-            body.scheduled_at,
-            body.timezone_name,
-        )
-
-    @router.get("/instances/{instance_id}/reminder-deliveries/due")
-    def due_reminder(instance_id: str, user=Depends(current_user)):
-        return {"delivery": matter_service.claim_due(user, instance_id)}
-
-    @router.post("/reminder-deliveries/{delivery_id}/ack")
-    def acknowledge_reminder(
-        delivery_id: str,
-        body: DeliveryAckInput,
-        user=Depends(current_user),
-    ):
-        return matter_service.acknowledge(
-            user, delivery_id, body.lease_token, body.delivered, body.error_code
-        )
+    router.include_router(build_auth_router(auth, settings, memory_worker is not None))
+    router.include_router(build_character_router(repository))
+    router.include_router(build_conversation_router(repository, service, settings))
+    router.include_router(build_memory_router(memory_service, operation_service, matter_service))
 
     app.include_router(router)
     app.include_router(router, prefix="/api")

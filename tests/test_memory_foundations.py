@@ -3,8 +3,9 @@ from datetime import datetime, timedelta, timezone
 from sqlalchemy import select
 
 from afterstory.conversation import ConversationService
+from afterstory.conversation.repository import Repository
 from afterstory.memory import MemoryService
-from afterstory.memory_jobs import MemoryJobService
+from afterstory.memory.jobs import MemoryJobService
 from afterstory.models import (
     CharacterInstance,
     MemoryJob,
@@ -13,7 +14,6 @@ from afterstory.models import (
     PersonalMemory,
     PersonalMemoryVersion,
 )
-from afterstory.repository import Repository
 
 
 def test_manual_memory_writes_immutable_versions_and_separate_revisions(database):

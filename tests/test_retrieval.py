@@ -1,7 +1,7 @@
 from afterstory.conversation import ConversationService
+from afterstory.conversation.repository import Repository
 from afterstory.memory import MemoryService
-from afterstory.repository import Repository
-from afterstory.retrieval import MemoryIndexService, RetrievalService
+from afterstory.memory.retrieval import MemoryIndexService, RetrievalService
 
 
 class Embeddings:

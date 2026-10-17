@@ -5,7 +5,7 @@ from typing import Literal
 
 from pydantic import Field, StrictStr, field_validator, model_validator
 
-from afterstory.memory_contracts import StrictContract
+from afterstory.memory.contracts import StrictContract
 
 CONVERSATION_DECISION_SCHEMA_VERSION = "1.0"
 CONVERSATION_ORCHESTRATOR_VERSION = "1.0"

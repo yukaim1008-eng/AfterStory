@@ -6,8 +6,9 @@ from uuid import uuid4
 
 from sqlalchemy import func, select
 
-from afterstory.context import ContextAssembler
+from afterstory.conversation.context import ContextAssembler
 from afterstory.domain import CharacterResponse, DomainError
+from afterstory.memory.retrieval import RetrievalService
 from afterstory.models import (
     Character,
     CharacterInstance,
@@ -18,7 +19,6 @@ from afterstory.models import (
     Turn,
     User,
 )
-from afterstory.retrieval import RetrievalService
 
 context_log = logging.getLogger("afterstory.context")
 

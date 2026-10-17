@@ -5,11 +5,11 @@ from sqlalchemy import select
 
 from afterstory.api import create_app
 from afterstory.conversation import ConversationService
+from afterstory.conversation.repository import Repository
 from afterstory.domain import DomainError
 from afterstory.memory import MemoryService
+from afterstory.memory.state import StateService
 from afterstory.models import CharacterState, Relationship, StateEvent
-from afterstory.repository import Repository
-from afterstory.state import StateService
 from tests.auth_client import TestClient
 
 

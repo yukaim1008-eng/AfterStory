@@ -12,13 +12,16 @@ from alembic import command
 from alembic.config import Config
 from sqlalchemy import create_engine, select, text
 
+from afterstory.character.importer import seed
 from afterstory.config import ROOT, Settings
-from afterstory.continuity import ContinuityService
-from afterstory.conversation import ConversationService
-from afterstory.conversation_effects import ConversationEffectService
+from afterstory.conversation.effects import ConversationEffectService
+from afterstory.conversation.repository import Repository
+from afterstory.conversation.service import ConversationService
 from afterstory.database import make_sessions
-from afterstory.memory_provider import StructuredMemoryProvider
-from afterstory.memory_worker import MemoryRuntimeWorker
+from afterstory.memory.continuity import ContinuityService
+from afterstory.memory.provider import StructuredMemoryProvider
+from afterstory.memory.reminders import MatterService
+from afterstory.memory.worker import MemoryRuntimeWorker
 from afterstory.models import (
     MemoryJob,
     MemorySourceLink,
@@ -31,9 +34,6 @@ from afterstory.models import (
     Turn,
 )
 from afterstory.providers import ChatCompletionsProvider
-from afterstory.reminders import MatterService
-from afterstory.repository import Repository
-from afterstory.seed import seed
 
 
 class MeasuredProvider:

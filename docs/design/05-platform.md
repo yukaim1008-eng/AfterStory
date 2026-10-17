@@ -6,6 +6,10 @@
 
 FastAPI、PostgreSQL、普通 Python 工作流；Provider、Repository 和接口模型保持清晰边界。遵循基线第 5 至 8 节。实现位于 `afterstory/`，数据库迁移位于 `migrations/`，运行入口见 [M1 运行说明](../running-m1.md)。
 
+2026-10-17 后端代码按业务领域分包：`afterstory/api.py` 只创建应用、组装领域路由与公共中间件；`auth/` 管理登录、会话、账号命令及认证路由；`character/` 管理角色定义、Prompt Builder、导入与 Canon 研究；`conversation/` 管理对话编排、上下文、回复策略和 Repository；`memory/` 管理记忆、召回、摘要、状态、关系、持续事项与后台任务。共享 ORM 模型暂保留在 `afterstory/models.py`，配置、数据库连接、Provider 基础适配也维持现有位置。`afterstory.accounts` 与 `afterstory.seed` 保留为原命令兼容入口；这次分包不改变路由、数据库结构或用户数据。
+
+本轮验证：43 项无需 PostgreSQL 的后端测试、Ruff、编译检查和 `git diff --check` 通过；原有 24 个 HTTP 方法/路径组合及其 `/api` 别名与重构后 OpenAPI 一致，除 `/auth/me` 把 worker 存在性改为等价布尔参数外，拆出的端点函数体与原版一致。147 项完整测试可以收集，但本机 Docker Desktop 启动时因临时 `dockerInference` socket 报错，PostgreSQL 引擎未启动，因此本轮没有完成数据库依赖测试；未运行迁移，也未修改持久化数据。测试尝试启动的 Docker 进程已关闭。
+
 ## 已完成的工程基础
 
 已整理为 [M1 最小后端文字链路](07-first-text-milestone.md)，包含模块契约、数据归属、请求重试与验收条件；用户已整批采纳前四项取舍，并选定 DeepSeek V4 Flash。

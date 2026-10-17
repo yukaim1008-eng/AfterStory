@@ -1,9 +1,9 @@
 from sqlalchemy import select
 
 from afterstory.conversation import ConversationService
-from afterstory.memory_worker import MemoryRuntimeWorker
+from afterstory.conversation.repository import Repository
+from afterstory.memory.worker import MemoryRuntimeWorker
 from afterstory.models import MemoryJob, PersonalMemory
-from afterstory.repository import Repository
 
 
 class StructuredFake:

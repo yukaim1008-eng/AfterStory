@@ -4,6 +4,8 @@
 
 系统现已支持长期持续聊天、上下文压缩、版本化长期记忆、持续事项、站内提醒、混合召回、生命周期重建及状态/关系演进。关闭应用后的系统通知继续留到 Tools/通知编排。
 
+当前实现归入 `afterstory/memory/`：`routes.py` 保留记忆与提醒接口，`service.py`、`retrieval.py`、`continuity.py`、`worker.py` 等分别承担写入、召回、摘要续聊和后台任务；State、Relationship 与持续事项仍属于实例运行数据。共享 ORM 模型留在 `afterstory/models.py`，本轮分包没有修改数据结构或记忆规则。
+
 [长会话连续性与上下文压缩](memory/01-conversation-continuity.md) 及 [摘要组织、原文选择与离开后续聊](memory/02-summary-and-resumption.md) 已形成完整待审稿。2026-09-21 用户确认连续性的三项方向共同采用，规则引用基线 5.3；数值预算和阈值在实施回放中确定。
 
 长期事实、经历与写入更新规则已经形成 [完整待审稿](memory/03-long-term-memory-writing.md)：推荐明确且有长期价值的信息自动保存，V1 不自动固化人格推测，事件使用稳定身份并保留来源支持的最高时间精度；尚未授权实现。

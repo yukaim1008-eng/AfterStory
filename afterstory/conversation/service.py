@@ -1,9 +1,9 @@
 from dataclasses import replace
 from datetime import datetime, timezone
 
-from afterstory.conversation_provider import ConversationDecisionProvider
+from afterstory.conversation.provider import ConversationDecisionProvider
+from afterstory.conversation.repository import Repository
 from afterstory.domain import CharacterResponse, DomainError, ProviderError, TextProvider
-from afterstory.repository import Repository
 
 
 class ConversationService:

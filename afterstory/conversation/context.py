@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 from sqlalchemy import case, select
 
 from afterstory.domain import ChatMessage, DomainError
-from afterstory.memory_contracts import ConservativeTokenCounter
+from afterstory.memory.contracts import ConservativeTokenCounter
 from afterstory.models import (
     CharacterState,
     ContinuityNote,

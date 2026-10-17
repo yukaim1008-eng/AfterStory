@@ -4,9 +4,9 @@ from hashlib import sha256
 from sqlalchemy import select
 
 from afterstory.domain import DomainError
-from afterstory.lifecycle import MemoryLifecycleService
-from afterstory.memory import MemoryService
-from afterstory.memory_contracts import EventPayload, MemoryOperationCandidate
+from afterstory.memory.contracts import EventPayload, MemoryOperationCandidate
+from afterstory.memory.lifecycle import MemoryLifecycleService
+from afterstory.memory.service import MemoryService
 from afterstory.models import (
     CharacterInstance,
     Conversation,

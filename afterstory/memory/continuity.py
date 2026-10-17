@@ -3,7 +3,7 @@ from hashlib import sha256
 
 from sqlalchemy import case, func, select
 
-from afterstory.memory_contracts import (
+from afterstory.memory.contracts import (
     SUMMARY_BUILDER_VERSION,
     ConservativeTokenCounter,
     SummaryCandidate,

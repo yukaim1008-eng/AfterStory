@@ -8,7 +8,7 @@
 
 ## 已实现与本轮边界
 
-`afterstory/models.py` 已有 Character、CharacterVersion、CharacterInstance；`seed.py` 校验已导入版本不可变，实例引用明确版本。前端的主题、素材和发送按钮使用独立配置。
+`afterstory/models.py` 已有 Character、CharacterVersion、CharacterInstance；`afterstory/character/importer.py` 校验已导入版本不可变，实例引用明确版本。`afterstory/character/definition.py` 与 `prompt.py` 分别负责定义校验和冻结提示词编译；`afterstory.seed` 保留原导入命令入口。前端的主题、素材和发送按钮使用独立配置。
 
 现有三位联调版本保持不变。第一版正式资料只整理公开角色介绍与角色语音可以支持的稳定身份、性格、表达和关系起点，不建设完整角色资料库，也不补写剧情 Canon。来源和候选边界见 [正式角色资料整理入口](character/README.md)。
 

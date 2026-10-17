@@ -7,8 +7,8 @@ from sqlalchemy import select
 from afterstory.api import create_app
 from afterstory.auth import AuthService, token_digest, utcnow
 from afterstory.config import Settings
+from afterstory.conversation.repository import Repository
 from afterstory.models import AuthSession, CharacterInstance, User
-from afterstory.repository import Repository
 
 
 def login(client, username="alice", password="alice-test-password-123"):

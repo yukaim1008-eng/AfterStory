@@ -18,6 +18,8 @@ AfterStory 的 `User → CharacterInstance → Conversation / Memory / State / R
 
 ## 已实现边界
 
+代码现位于 `afterstory/auth/`：`service.py` 负责凭据与会话，`http.py` 负责 Cookie、CSRF 和当前用户依赖，`routes.py` 暴露登录接口，`cli.py` 实现管理员账号命令。`afterstory.accounts` 保留原命令入口。邀请码注册仍是后续独立设计与实施范围，本轮没有开放注册。
+
 1. `users` 保留稳定 ID，新增唯一用户名、Argon2id 密码哈希、启用状态。`auth_sessions` 只保存随机 Cookie 令牌的 SHA-256 摘要、用户、创建/最近使用/绝对到期/撤销时间；`auth_login_attempts` 保存按用户名/IP 摘要计数的失败尝试，15 分钟窗口内每个维度最多 8 次。
 2. 管理员在仓库根目录运行 `uv run python -m afterstory.accounts create <用户名>` 或 `uv run python -m afterstory.accounts reset-password <用户名>`；密码由隐藏输入提示读取，不进入 shell 参数。账号名会规范为小写，密码长度为 12–128 字符；重置会撤销该用户全部登录会话。无公开注册 API，也无旧用户认领命令。
 3. `POST /api/auth/login` 设置 `HttpOnly; SameSite=Strict; Path=/` Cookie；生产模式使用 `Secure` 和 `__Host-` 前缀。会话绝对有效期 30 天、空闲有效期 7 天；退出或改密立即撤销。所有业务写请求及退出/改密必须携带 `/api/auth/me` 返回的 CSRF 令牌。令牌仅在前端内存中，不写入 `localStorage`、URL 或日志。

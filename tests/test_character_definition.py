@@ -6,17 +6,17 @@ from alembic.config import Config
 from pydantic import ValidationError
 from sqlalchemy import select
 
-from afterstory.character_definition import (
+from afterstory.character.definition import (
     SUPPORTED_CHARACTER_DEFINITION_SCHEMA_VERSION,
     CharacterDefinition,
 )
-from afterstory.character_prompt import PROMPT_BUILDER_VERSION, build_character_system_prompt
+from afterstory.character.importer import seed, seed_defaults
+from afterstory.character.prompt import PROMPT_BUILDER_VERSION, build_character_system_prompt
 from afterstory.conversation import ConversationService
+from afterstory.conversation.repository import Repository
 from afterstory.memory import MemoryService
+from afterstory.memory.state import StateService
 from afterstory.models import CharacterInstance, CharacterVersion, Conversation, Message
-from afterstory.repository import Repository
-from afterstory.seed import seed, seed_defaults
-from afterstory.state import StateService
 
 
 def definition(**changes):

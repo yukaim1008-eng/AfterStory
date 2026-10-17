@@ -7,9 +7,9 @@ from sqlalchemy import select
 
 from afterstory.api import create_app, current_user
 from afterstory.conversation import ConversationService
+from afterstory.conversation.repository import Repository
 from afterstory.domain import DomainError, ProviderError
 from afterstory.models import Turn
-from afterstory.repository import Repository
 from tests.auth_client import TestClient
 
 

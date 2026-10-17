@@ -1,7 +1,8 @@
 from sqlalchemy import select
 
-from afterstory.continuity import ContinuityService
 from afterstory.conversation import ConversationService
+from afterstory.conversation.repository import Repository
+from afterstory.memory.continuity import ContinuityService
 from afterstory.models import (
     ContinuityNote,
     ConversationSegment,
@@ -9,7 +10,6 @@ from afterstory.models import (
     SegmentSummary,
     Turn,
 )
-from afterstory.repository import Repository
 
 
 class SummaryProvider:

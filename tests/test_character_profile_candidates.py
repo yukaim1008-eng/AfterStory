@@ -1,9 +1,9 @@
 import json
 
-from afterstory.character_definition import CharacterDefinition
-from afterstory.character_prompt import PROMPT_BUILDER_VERSION, build_character_system_prompt
+from afterstory.character.definition import CharacterDefinition
+from afterstory.character.prompt import PROMPT_BUILDER_VERSION, build_character_system_prompt
 from afterstory.config import ROOT
-from afterstory.memory_contracts import ConservativeTokenCounter
+from afterstory.memory.contracts import ConservativeTokenCounter
 
 PACKAGE_PATHS = (
     ROOT / "fixtures/companions.profile-v1.candidate.json",

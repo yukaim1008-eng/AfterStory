@@ -3,9 +3,9 @@ from datetime import datetime
 from sqlalchemy import func, select
 
 from afterstory.conversation import ConversationService
-from afterstory.memory_automation import ExplicitMemoryOperationService, MemoryAutomationService
+from afterstory.conversation.repository import Repository
+from afterstory.memory.automation import ExplicitMemoryOperationService, MemoryAutomationService
 from afterstory.models import CharacterInstance, MemoryJob, PersonalMemory, PersonalMemoryVersion
-from afterstory.repository import Repository
 
 
 class ExtractionProvider:

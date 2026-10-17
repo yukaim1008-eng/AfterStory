@@ -3,9 +3,9 @@ from datetime import datetime, timedelta, timezone
 from sqlalchemy import select
 
 from afterstory.conversation import ConversationService
-from afterstory.evolution import RelationshipEvolutionService, StateEvolutionService
+from afterstory.conversation.repository import Repository
+from afterstory.memory.evolution import RelationshipEvolutionService, StateEvolutionService
 from afterstory.models import CharacterState, Relationship, RelationshipRevision
-from afterstory.repository import Repository
 
 
 def setup(database):

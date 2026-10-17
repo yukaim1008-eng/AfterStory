@@ -1,4 +1,4 @@
-from afterstory.character_definition import CharacterDefinition
+from afterstory.character.definition import CharacterDefinition
 
 PROMPT_BUILDER_VERSION = "1.0"
 

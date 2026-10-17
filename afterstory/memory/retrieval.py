@@ -3,7 +3,7 @@ from math import sqrt
 
 from sqlalchemy import func, literal, or_, select
 
-from afterstory.memory_contracts import ConservativeTokenCounter
+from afterstory.memory.contracts import ConservativeTokenCounter
 from afterstory.models import MemoryIndexDocument, PersonalMemory
 
 

@@ -4,7 +4,7 @@ import pytest
 from pydantic import ValidationError
 
 from afterstory.domain import ProviderError
-from afterstory.memory_provider import StructuredMemoryProvider
+from afterstory.memory.provider import StructuredMemoryProvider
 
 
 class JsonTextProvider:

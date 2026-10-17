@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from afterstory.memory_contracts import (
+from afterstory.memory.contracts import (
     ConservativeTokenCounter,
     EventPayload,
     FactPayload,

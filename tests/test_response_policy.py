@@ -1,10 +1,10 @@
 from datetime import datetime, timezone
 
 from afterstory.config import Settings
-from afterstory.conversation_provider import ConversationDecisionProvider
+from afterstory.conversation.provider import ConversationDecisionProvider
+from afterstory.conversation.response_policy import RESPONSE_POLICY_VERSION, build_response_policy
 from afterstory.domain import ChatMessage
-from afterstory.memory_contracts import ConservativeTokenCounter
-from afterstory.response_policy import RESPONSE_POLICY_VERSION, build_response_policy
+from afterstory.memory.contracts import ConservativeTokenCounter
 
 
 def test_response_policy_is_versioned_stable_and_contains_no_runtime_data():

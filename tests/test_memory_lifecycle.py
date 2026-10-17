@@ -1,12 +1,12 @@
 from sqlalchemy import func, select
 
 from afterstory.conversation import ConversationService
-from afterstory.lifecycle import MemoryLifecycleService
+from afterstory.conversation.repository import Repository
 from afterstory.memory import MemoryService
-from afterstory.memory_automation import MemoryAutomationService
+from afterstory.memory.automation import MemoryAutomationService
+from afterstory.memory.lifecycle import MemoryLifecycleService
+from afterstory.memory.retrieval import RetrievalService
 from afterstory.models import MemoryDependency, MemoryJob, PersonalMemory
-from afterstory.repository import Repository
-from afterstory.retrieval import RetrievalService
 
 
 def candidate(messages, action="create", target=None, value="喜欢无糖茶"):

@@ -4,12 +4,13 @@ import logging
 from pydantic import ValidationError
 from sqlalchemy import select
 
-from afterstory.conversation_contracts import ConversationEffects
+from afterstory.conversation.contracts import ConversationEffects
 from afterstory.domain import DomainError
-from afterstory.evolution import RelationshipEvolutionService, StateEvolutionService
-from afterstory.memory_automation import ExplicitMemoryOperationService
-from afterstory.memory_contracts import StateProposal
-from afterstory.memory_jobs import MemoryJobService
+from afterstory.memory.automation import ExplicitMemoryOperationService
+from afterstory.memory.contracts import StateProposal
+from afterstory.memory.evolution import RelationshipEvolutionService, StateEvolutionService
+from afterstory.memory.jobs import MemoryJobService
+from afterstory.memory.reminders import MatterService
 from afterstory.models import (
     CharacterInstance,
     Conversation,
@@ -18,7 +19,6 @@ from afterstory.models import (
     RelationshipEvidence,
     Turn,
 )
-from afterstory.reminders import MatterService
 
 log = logging.getLogger("afterstory.conversation_effects")
 

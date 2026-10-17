@@ -1,7 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
 
 from afterstory.api import create_app, current_user
-from afterstory.repository import Repository
+from afterstory.conversation.repository import Repository
 from tests.auth_client import TestClient
 
 

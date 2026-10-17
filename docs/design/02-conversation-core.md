@@ -6,6 +6,8 @@
 
 本模块负责组织 Character Definition 的冻结提示词、Runtime Context 和当前消息，生成框架无关的 Character Response。它不保存或暴露模型思维链，也不把 Memory、State、Relationship 写回 CharacterVersion。
 
+当前实现位于 `afterstory/conversation/`：`routes.py` 暴露原有对话与历史接口，`service.py` 编排发送，`context.py` 组装上下文，`provider.py` 与 `response_policy.py` 处理模型决策；`repository.py` 仍承担对话数据访问。`afterstory/api.py` 只装配这些能力，不改变原有聊天链路。
+
 运行时上下文继续由 `ContextAssembler` 按既有顺序提供：
 
 1. CharacterVersion.system_prompt

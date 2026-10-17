@@ -4,12 +4,12 @@ from datetime import datetime
 
 from pydantic import ValidationError
 
-from afterstory.conversation_contracts import (
+from afterstory.conversation.contracts import (
     CONVERSATION_ORCHESTRATOR_VERSION,
     ConversationDecision,
 )
+from afterstory.conversation.response_policy import build_response_policy
 from afterstory.domain import ChatMessage, ProviderError
-from afterstory.response_policy import build_response_policy
 
 log = logging.getLogger("afterstory.conversation_provider")
 

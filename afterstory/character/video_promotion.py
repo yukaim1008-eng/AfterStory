@@ -9,7 +9,7 @@ from typing import Literal
 
 from pydantic import Field, model_validator
 
-from afterstory.character_research import (
+from afterstory.character.research import (
     CanonCheckpointRecord,
     CanonEvidenceRecord,
     SceneRecord,

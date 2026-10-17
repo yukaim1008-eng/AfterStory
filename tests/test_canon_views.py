@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from afterstory.canon_views import render_canon_views
+from afterstory.character.canon_views import render_canon_views
 from afterstory.config import ROOT
 
 CORPUS_ROOT = ROOT / "research/character-corpus"

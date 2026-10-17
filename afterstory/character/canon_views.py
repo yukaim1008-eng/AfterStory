@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from pathlib import Path
 
-from afterstory.character_research import (
+from afterstory.character.research import (
     CanonCheckpointRecord,
     CanonEvidenceRecord,
     CharacterFactRecord,
