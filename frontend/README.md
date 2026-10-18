@@ -13,6 +13,10 @@ npm run dev
 
 打开 http://127.0.0.1:5173 。默认代理后端 http://127.0.0.1:8000 ，均仅监听本机。
 
+## 前端 Docker 镜像（本地构建）
+
+在仓库根目录运行 `docker build -f docker/frontend.Dockerfile -t afterstory-web:local .`。构建阶段使用 Node 执行现有 `npm run build`，最终镜像由 Nginx 提供静态页面；它不会包含本机 `node_modules`、测试结果或 `.env`。`docker/web.conf` 的 `/api/` 代理通过 `compose.production.yaml` 连接内部 API，已在独立的本地三服务项目中验证；尚未部署服务器。
+
 ## 当前可测试
 
 - 三位主角色主题、角色化首页、可扩展角色选择、沉浸式聊天、资料、回忆和四类设置。
