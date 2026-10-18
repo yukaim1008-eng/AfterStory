@@ -55,6 +55,18 @@ class AuthLoginAttempt(Base):
     )
 
 
+class RegistrationInvite(Base):
+    __tablename__ = "registration_invites"
+    token_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    consumed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    consumed_by_user_id: Mapped[str | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL")
+    )
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
 class Character(Base):
     __tablename__ = "characters"
     id: Mapped[str] = mapped_column(String(64), primary_key=True)

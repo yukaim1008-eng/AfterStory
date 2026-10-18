@@ -84,6 +84,15 @@ async function fakeApi(
       authenticated = true;
       accountId = input.username;
       body = { user_id: accountId, username: accountId, csrf_token: "browser-csrf" };
+    } else if (path === "/auth/register") {
+      const input = route.request().postDataJSON();
+      if (input.invite_code !== "A".repeat(43)) {
+        await route.fulfill({ status: 400, json: { error: "invalid_invite" } });
+        return;
+      }
+      authenticated = true;
+      accountId = input.username;
+      body = { user_id: accountId, username: accountId, csrf_token: "browser-csrf" };
     } else if (path === "/auth/logout") {
       authenticated = false;
       body = { status: "ok" };
@@ -347,6 +356,24 @@ test("anonymous visitor logs in and can leave the account", async ({ page }) => 
   await expect(page.locator(".settings-panel")).toContainText("browser-test");
   await page.getByRole("button", { name: "退出登录" }).click();
   await expect(page.getByRole("heading", { name: "回到故事里" })).toBeVisible();
+});
+
+test("visitor registers with an invite and enters a fresh account", async ({ page }) => {
+  await fakeApi(page, false, { authenticated: false });
+  await page.goto("/");
+  await page.getByRole("button", { name: "使用邀请码注册" }).click();
+  await expect(page.getByRole("heading", { name: "开启你的故事" })).toBeVisible();
+  await page.getByLabel("用户名").fill("new-member");
+  await page.getByLabel("密码", { exact: true }).fill("new-member-password-123");
+  await page.getByLabel("邀请码").fill("B".repeat(43));
+  await page.getByRole("button", { name: "注册并进入" }).click();
+  await expect(page.getByRole("alert")).toContainText("邀请码无效");
+  await page.getByLabel("邀请码").fill("A".repeat(43));
+  await page.getByRole("button", { name: "注册并进入" }).click();
+  await expect(page.getByRole("heading", { name: "今天，想和你相见。" })).toBeVisible();
+  await page.getByRole("button", { name: "设置", exact: true }).click();
+  await page.getByRole("button", { name: "数据管理", exact: true }).click();
+  await expect(page.locator(".settings-panel")).toContainText("new-member");
 });
 
 test("switching accounts does not show another account's chat draft", async ({ page }) => {

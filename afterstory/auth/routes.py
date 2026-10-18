@@ -18,9 +18,27 @@ class LoginInput(Input):
     password: str = Field(min_length=1, max_length=128)
 
 
+class RegistrationInput(Input):
+    username: str = Field(min_length=3, max_length=32, pattern=r"^[A-Za-z][A-Za-z0-9_.-]{2,31}$")
+    password: str = Field(min_length=12, max_length=128)
+    invite_code: str = Field(min_length=43, max_length=43, pattern=r"^[A-Za-z0-9_-]{43}$")
+
+
 class PasswordChangeInput(Input):
     current_password: str = Field(min_length=1, max_length=128)
     new_password: str = Field(min_length=12, max_length=128)
+
+
+def set_session_cookie(response: Response, settings, token: str):
+    response.set_cookie(
+        session_cookie_name(settings),
+        token,
+        max_age=30 * 24 * 60 * 60,
+        secure=settings.app_env == "production",
+        httponly=True,
+        samesite="strict",
+        path="/",
+    )
 
 
 def build_router(auth, settings, memory_worker_enabled):
@@ -32,15 +50,19 @@ def build_router(auth, settings, memory_worker_enabled):
         user, token = auth.login(
             body.username, body.password, request.client.host if request.client else ""
         )
-        response.set_cookie(
-            session_cookie_name(settings),
-            token,
-            max_age=30 * 24 * 60 * 60,
-            secure=settings.app_env == "production",
-            httponly=True,
-            samesite="strict",
-            path="/",
+        set_session_cookie(response, settings, token)
+        return {"user_id": user.id, "username": user.username, "csrf_token": csrf_token(token)}
+
+    @router.post("/auth/register", status_code=201)
+    def register(body: RegistrationInput, request: Request, response: Response):
+        check_login_origin(request, require_origin=True)
+        user, token = auth.register(
+            body.username,
+            body.password,
+            body.invite_code,
+            request.client.host if request.client else "",
         )
+        set_session_cookie(response, settings, token)
         return {"user_id": user.id, "username": user.username, "csrf_token": csrf_token(token)}
 
     @router.get("/auth/me")

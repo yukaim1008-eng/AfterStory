@@ -1,6 +1,8 @@
 # AfterStory 当前项目状态
 
-- 更新日期：2026-10-17。
+- 更新日期：2026-10-18。
+- 2026-10-18 用户选定单机 Docker Compose 部署方向；本地部署封装已按用户要求撤回，等待逐步讲解和操作。现有 `compose.yaml` 仍只用于本地数据库开发，服务器尚未部署。
+- 2026-10-17 邀请码注册已实现并验收：管理员命令发放/撤销一次性邀请码，注册成功建立独立账号和登录会话；无邀请码仍不能注册。隔离 PostgreSQL schema 的邀请码、并发和迁移升降级测试通过；全量后端 155 项、浏览器 37 项、Ruff、前端构建与 Alembic 一致性检查通过。开发库已升级到 `a2_invite_registration`，只新增空的 `registration_invites` 表；原有 30 张表行数不变，账号、角色版本、实例、聊天和记忆等关键表的内容校验值不变。没有创建真实邀请码或新账号；见[鉴权文档](design/platform/01-authentication.md)。
 - 2026-10-17 后端已按业务领域整理为 `auth/`、`character/`、`conversation/`、`memory/` 四个子包；`api.py` 负责应用组装，`models.py` 继续承载共享 ORM 模型。原有 `/api` 与无前缀路由、`afterstory.accounts` 和 `afterstory.seed` 命令入口保留。本轮只调整代码组织与导入路径，不新增鉴权功能、迁移或前端改动；验证结果见[后端与数据边界](design/05-platform.md)。
 - 2026-10-16 登录系统 v1 已实现：仅管理员命令创建/重设用户名密码账号，服务端 Argon2id 凭据与哈希会话，Cookie/CSRF/限速、匿名业务接口保护、前端登录/退出/改密和生产 Host/Secure Cookie 配置。首个账号使用新用户 ID；开发库中 4 个无登录凭据的旧用户及其个人实例、聊天和记忆数据已按用户后续要求清理，公共角色保留。隔离 schema 的 migration 升降级、147 项后端测试、36 项浏览器测试、Ruff、前端构建和 Alembic 一致性全部通过；开发库已升级到 `a1_authentication`。见[登录系统文档](design/platform/01-authentication.md)；尚未部署服务器。
 - Memory System M1 已实现：记忆不可变版本、多来源、依赖/抑制基础、持久化任务 lease、独立 data revision，以及消息时间和时区来源已落库；旧 PersonalMemory API 与数据继续兼容。

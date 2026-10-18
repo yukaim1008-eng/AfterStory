@@ -315,6 +315,16 @@ export function createAfterStory() {
     await connect();
   }
 
+  async function register(loginName: string, password: string, inviteCode: string) {
+    const result = await api<{ csrf_token: string }>(
+      "/auth/register",
+      { username: loginName, password, invite_code: inviteCode },
+      "POST",
+    );
+    setCsrfToken(result.csrf_token);
+    await connect();
+  }
+
   async function logout() {
     try {
       await api("/auth/logout", {}, "POST");
@@ -1010,6 +1020,7 @@ export function createAfterStory() {
     choose,
     connect,
     login,
+    register,
     logout,
     changePassword,
     refresh,

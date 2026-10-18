@@ -52,6 +52,8 @@ npm run dev
 
 打开 http://127.0.0.1:5173 ，使用刚创建的用户名和密码登录；接口文档 http://127.0.0.1:8000/docs 。Vite 将 /api 代理到 8000，可用 AFTERSTORY_API_URL 环境变量修改目标。管理员可用 `uv run python -m afterstory.accounts reset-password 你的用户名` 重设密码。仅监听本机；服务器部署另行配置。验证环境为 Node 24.15.0。
 
+若要邀请其他人注册，先确认数据库已执行 `uv run alembic upgrade head`，然后在仓库根目录运行 `uv run python -m afterstory.accounts invite-create --days 7`。将终端仅显示一次的邀请码私下交给对方；对方在登录页选“使用邀请码注册”。每个邀请码只能注册一个账号，默认 7 天过期；尚未使用的码可用 `uv run python -m afterstory.accounts invite-revoke` 撤销。现有管理员直接建号方式仍可用。
+
 生产构建：npm run build；npm run preview 打开 http://127.0.0.1:4173 ，仍需后端。尚未部署公网。
 
 ## 试用顺序

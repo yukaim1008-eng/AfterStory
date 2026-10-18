@@ -51,6 +51,10 @@ export function errorText(error: unknown) {
         memory_deleted: "这条记忆已经删除。",
         memory_source_not_found: "找不到可保存的原始消息。",
         login_rate_limited: "尝试次数过多，请 15 分钟后再试。",
+        registration_rate_limited: "注册尝试次数过多，请 15 分钟后再试。",
+        invalid_invite: "邀请码无效、已使用或已过期，请向管理员索取新邀请码。",
+        username_taken: "这个用户名已被使用，请换一个。",
+        origin_invalid: "请求来源未通过验证，请从当前网站重新打开注册页。",
         csrf_invalid: "登录状态已失效，请重新登录。",
       } as Record<string, string>
     )[code] || "连接暂时中断，内容已保留，请稍后重试。"

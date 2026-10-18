@@ -22,8 +22,10 @@ def check_csrf(request: Request, token: str | None):
         raise DomainError(403, "csrf_invalid")
 
 
-def check_login_origin(request: Request):
+def check_login_origin(request: Request, *, require_origin: bool = False):
     origin = request.headers.get("origin")
+    if require_origin and not origin:
+        raise DomainError(403, "origin_invalid")
     if origin:
         from urllib.parse import urlparse
 

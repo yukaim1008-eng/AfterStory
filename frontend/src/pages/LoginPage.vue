@@ -3,9 +3,11 @@ import { ref } from "vue";
 import { errorText } from "../api";
 import { useAfterStory } from "../composables/useAfterStory";
 
-const { login } = useAfterStory();
+const { login, register } = useAfterStory();
+const mode = ref<"login" | "register">("login");
 const username = ref("");
 const password = ref("");
+const inviteCode = ref("");
 const busy = ref(false);
 const error = ref("");
 
@@ -14,14 +16,26 @@ async function submit() {
   busy.value = true;
   error.value = "";
   try {
-    await login(username.value, password.value);
+    if (mode.value === "register") {
+      await register(username.value, password.value, inviteCode.value);
+      inviteCode.value = "";
+    } else {
+      await login(username.value, password.value);
+    }
     password.value = "";
   } catch (cause) {
-    error.value = cause instanceof Error && cause.message === "invalid_credentials"
+    error.value = mode.value === "login" && cause instanceof Error && cause.message === "invalid_credentials"
       ? "用户名或密码不正确。" : errorText(cause);
   } finally {
     busy.value = false;
   }
+}
+
+function switchMode() {
+  mode.value = mode.value === "login" ? "register" : "login";
+  password.value = "";
+  inviteCode.value = "";
+  error.value = "";
 }
 </script>
 
@@ -29,18 +43,23 @@ async function submit() {
   <main class="login-page">
     <section class="login-card" aria-labelledby="login-title">
       <span class="login-brand">AfterStory ♡</span>
-      <p class="login-eyebrow">WELCOME BACK</p>
-      <h1 id="login-title">回到故事里</h1>
-      <p class="login-description">登录后，继续你和角色之间的对话。</p>
+      <p class="login-eyebrow">{{ mode === "login" ? "WELCOME BACK" : "JOIN THE STORY" }}</p>
+      <h1 id="login-title">{{ mode === "login" ? "回到故事里" : "开启你的故事" }}</h1>
+      <p class="login-description">{{ mode === "login" ? "登录后，继续你和角色之间的对话。" : "填写管理员给你的邀请码，创建自己的账号。" }}</p>
       <form @submit.prevent="submit">
         <label for="login-username">用户名</label>
-        <input id="login-username" v-model="username" autocomplete="username" required maxlength="64" />
+        <input id="login-username" v-model="username" autocomplete="username" required :maxlength="mode === 'register' ? 32 : 64" :pattern="mode === 'register' ? '[A-Za-z][A-Za-z0-9_.-]{2,31}' : undefined" :title="mode === 'register' ? '3–32 位，以字母开头，可使用字母、数字、点、下划线和连字符' : undefined" />
         <label for="login-password">密码</label>
-        <input id="login-password" v-model="password" type="password" autocomplete="current-password" required />
+        <input id="login-password" v-model="password" type="password" :autocomplete="mode === 'register' ? 'new-password' : 'current-password'" required :minlength="mode === 'register' ? 12 : 1" maxlength="128" />
+        <template v-if="mode === 'register'">
+          <label for="login-invite">邀请码</label>
+          <input id="login-invite" v-model="inviteCode" autocomplete="off" required maxlength="43" />
+        </template>
         <p v-if="error" class="login-error" role="alert">{{ error }}</p>
-        <button type="submit" :disabled="busy">{{ busy ? "正在登录…" : "登录" }}</button>
+        <button type="submit" :disabled="busy">{{ busy ? "请稍候…" : mode === "login" ? "登录" : "注册并进入" }}</button>
       </form>
-      <p class="login-note">账号由管理员创建。如忘记密码，请联系管理员重设。</p>
+      <p class="login-note">{{ mode === "login" ? "已有邀请码？" : "已有账号？" }}<button type="button" class="login-switch" :disabled="busy" @click="switchMode">{{ mode === "login" ? "使用邀请码注册" : "返回登录" }}</button></p>
+      <p v-if="mode === 'login'" class="login-note login-help">如忘记密码，请联系管理员重设。</p>
     </section>
   </main>
 </template>
@@ -60,4 +79,7 @@ button { margin-top: 17px; border: 0; border-radius: 13px; padding: 13px; backgr
 button:disabled { opacity: .65; cursor: wait; }
 .login-error { margin: 3px 0 0; color: #b43850; font-size: 13px; }
 .login-note { margin: 24px 0 0; color: #8b8490; font-size: 12px; line-height: 1.6; }
+.login-help { margin-top: 8px; }
+.login-switch { display: inline; margin: 0 0 0 7px; padding: 0; background: none; color: #a94c81; font-size: 12px; font-weight: 700; }
+.login-switch:disabled { opacity: .65; }
 </style>

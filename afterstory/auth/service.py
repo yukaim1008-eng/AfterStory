@@ -9,9 +9,10 @@ from datetime import datetime, timedelta, timezone
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
 from sqlalchemy import delete, func, select, update
+from sqlalchemy.exc import IntegrityError
 
 from afterstory.domain import DomainError
-from afterstory.models import AuthLoginAttempt, AuthSession, User
+from afterstory.models import AuthLoginAttempt, AuthSession, RegistrationInvite, User
 
 PASSWORDS = PasswordHasher(time_cost=2, memory_cost=19456, parallelism=1)
 DUMMY_HASH = PASSWORDS.hash("unusable-dummy-password")
@@ -20,6 +21,8 @@ SESSION_LIFETIME = timedelta(days=30)
 SESSION_IDLE = timedelta(days=7)
 LOGIN_WINDOW = timedelta(minutes=15)
 LOGIN_LIMIT = 8
+INVITE_DEFAULT_DAYS = 7
+INVITE_MAX_DAYS = 90
 
 
 def utcnow():
@@ -61,6 +64,98 @@ class AuthService:
             session.add(user)
             session.flush()
             return user.id
+
+    def issue_invite(self, days: int = INVITE_DEFAULT_DAYS):
+        if not 1 <= days <= INVITE_MAX_DAYS:
+            raise ValueError(f"邀请码有效期须为 1–{INVITE_MAX_DAYS} 天")
+        code = secrets.token_urlsafe(32)
+        expires_at = utcnow() + timedelta(days=days)
+        with self.sessions.begin() as session:
+            session.add(
+                RegistrationInvite(
+                    token_hash=token_digest("invite:" + code),
+                    expires_at=expires_at,
+                )
+            )
+        return code, expires_at
+
+    def revoke_invite(self, code: str):
+        with self.sessions.begin() as session:
+            invite = session.get(
+                RegistrationInvite, token_digest("invite:" + code), with_for_update=True
+            )
+            if invite is None or invite.consumed_at is not None or invite.revoked_at is not None:
+                raise ValueError("邀请码不存在或已失效")
+            invite.revoked_at = utcnow()
+
+    def register(self, username_input: str, password: str, code: str, remote_ip: str):
+        username = normalize_username(username_input)
+        validate_password(password)
+        if len(code) != 43 or not re.fullmatch(r"[A-Za-z0-9_-]{43}", code):
+            raise DomainError(400, "invalid_invite")
+        scope = token_digest("register-ip:" + remote_ip)
+        error = None
+        try:
+            with self.sessions.begin() as session:
+                # Serialize failed attempts by IP, then lock the invite for single-use redemption.
+                session.execute(select(func.pg_advisory_xact_lock(int(scope[:15], 16))))
+                now = utcnow()
+                session.execute(
+                    delete(AuthLoginAttempt).where(
+                        AuthLoginAttempt.occurred_at < now - LOGIN_WINDOW
+                    )
+                )
+                failures = session.scalar(
+                    select(func.count())
+                    .select_from(AuthLoginAttempt)
+                    .where(
+                        AuthLoginAttempt.scope_hash == scope,
+                        AuthLoginAttempt.occurred_at >= now - LOGIN_WINDOW,
+                    )
+                )
+                if failures >= LOGIN_LIMIT:
+                    error = DomainError(429, "registration_rate_limited")
+                else:
+                    invite = session.get(
+                        RegistrationInvite, token_digest("invite:" + code), with_for_update=True
+                    )
+                    if (
+                        invite is None
+                        or invite.expires_at <= now
+                        or invite.consumed_at is not None
+                        or invite.revoked_at is not None
+                    ):
+                        error = DomainError(400, "invalid_invite")
+                    elif session.scalar(select(User.id).where(User.username == username)):
+                        error = DomainError(409, "username_taken")
+                    if error:
+                        session.add(AuthLoginAttempt(scope_hash=scope))
+                    else:
+                        user = User(
+                            id=secrets.token_hex(16),
+                            username=username,
+                            password_hash=PASSWORDS.hash(password),
+                        )
+                        session.add(user)
+                        session.flush()
+                        token = secrets.token_urlsafe(32)
+                        session.add(
+                            AuthSession(
+                                token_hash=token_digest(token),
+                                user_id=user.id,
+                                expires_at=now + SESSION_LIFETIME,
+                            )
+                        )
+                        invite.consumed_at = now
+                        invite.consumed_by_user_id = user.id
+                        return user, token
+        except IntegrityError as exc:
+            if getattr(getattr(exc.orig, "diag", None), "constraint_name", None) == (
+                "uq_users_username"
+            ):
+                raise DomainError(409, "username_taken") from exc
+            raise
+        raise error
 
     def reset_password(self, username: str, password: str):
         username = normalize_username(username)
