@@ -137,6 +137,7 @@ def test_runtime_evaluation_fixture_has_bounded_virtual_users_and_long_history()
         "hypothetical-identity",
         "explicit-correction",
         "event-continuation",
+        "explicit-forget",
     }
     assert len({item["user_id"] for item in scenarios}) == len(scenarios)
     assert len(payload["long_conversation"]["turns"]) == 20

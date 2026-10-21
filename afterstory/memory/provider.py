@@ -79,6 +79,8 @@ class StructuredMemoryProvider:
             "同一事件出现后续进展时使用 action=supplement，保留原事件的 occurred_at，"
             "把新进展及其日期写进 summary、outcome 或 open_question；"
             "重复表达使用 no_change，含糊冲突使用 defer。"
+            "用户要求忘记、删除或撤回已有资料是操作指令，不是新的稳定事实或偏好；"
+            "不要把‘已撤回’‘不再保留’等元描述另存为有效记忆。"
             "不要把助手说的话当成用户事实。"
             "时间应以来源消息的 recorded_at、timezone_name 和 timezone_source 为基准解释；"
             "仍不能可靠确定时，precision 使用 unknown 且 start/end 为 null。"

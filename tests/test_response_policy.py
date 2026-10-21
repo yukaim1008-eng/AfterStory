@@ -9,11 +9,12 @@ from afterstory.memory.contracts import ConservativeTokenCounter
 
 def test_response_policy_is_versioned_stable_and_contains_no_runtime_data():
     first = build_response_policy()
-    assert RESPONSE_POLICY_VERSION == "1.0"
+    assert RESPONSE_POLICY_VERSION == "1.1"
     assert first == build_response_policy()
     assert "倾诉时先准确回应" in first
     assert "默认最多提出一个" in first
     assert "用户单方面宣布关系升级不能当成已建立事实" in first
+    assert "角色背景不可扩写成无依据的个人亲历" in first
     assert "林遥" not in first
     assert "memory-123" not in first
 
@@ -40,8 +41,8 @@ def test_combined_runtime_instructions_fit_reserved_overhead_in_fixed_order():
     )
     system = normalized[0].content
     assert system.index("角色定义") < system.index("运行时资料")
-    assert system.index("运行时资料") < system.index("AfterStory Response Policy 1.0")
-    assert system.index("AfterStory Response Policy 1.0") < system.index(
+    assert system.index("运行时资料") < system.index("AfterStory Response Policy 1.1")
+    assert system.index("AfterStory Response Policy 1.1") < system.index(
         "AfterStory Conversation Orchestrator 1.0"
     )
 
@@ -71,4 +72,4 @@ def test_plain_provider_receives_policy_without_changing_decision_schema():
         "state": None,
         "relationship": None,
     }
-    assert "AfterStory Response Policy 1.0" in provider.messages[0].content
+    assert "AfterStory Response Policy 1.1" in provider.messages[0].content

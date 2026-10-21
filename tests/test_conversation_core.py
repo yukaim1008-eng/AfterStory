@@ -95,6 +95,7 @@ def test_orchestrator_instruction_fits_reserved_overhead_and_invalid_effects_fal
     now = datetime(2026, 9, 27, tzinfo=timezone.utc)
     instruction = ConversationDecisionProvider._instruction(now, "Asia/Shanghai")
     assert ConservativeTokenCounter().count(instruction) <= 1000
+    assert "forget 的 content 必须为 null" in instruction
 
     provider = DecisionProvider(decision(reply="保留这句回复", unexpected=True))
     result = ConversationDecisionProvider(provider).generate_turn(

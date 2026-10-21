@@ -4,7 +4,11 @@ from sqlalchemy import func, select
 
 from afterstory.conversation import ConversationService
 from afterstory.conversation.repository import Repository
-from afterstory.memory.automation import ExplicitMemoryOperationService, MemoryAutomationService
+from afterstory.memory.automation import (
+    ExplicitMemoryOperationService,
+    MemoryAutomationService,
+    is_explicit_forget_request,
+)
 from afterstory.models import CharacterInstance, MemoryJob, PersonalMemory, PersonalMemoryVersion
 
 
@@ -161,6 +165,26 @@ def test_completed_turn_enqueues_jobs_and_automatic_extraction_deduplicates(data
         instance = session.get(CharacterInstance, instance_id)
         assert instance.data_revision == 1
         assert instance.context_revision == 0
+
+
+def test_forget_request_is_not_extracted_as_a_new_memory(database):
+    _, sessions = database
+    repo = Repository(sessions)
+    instance_id = repo.create_instance("alice", "test-lan-v1")["instance_id"]
+    conversation_id = repo.create_conversation("alice", instance_id)["conversation_id"]
+    chat = ConversationService(repo, type("Provider", (), {"generate": lambda _, __: "未完成"})())
+    turn = chat.send("alice", conversation_id, "forget-request", "请忘记我喝咖啡不加糖这个习惯。")
+
+    class MustNotExtract:
+        def extract(self, messages, existing_memories=None):
+            raise AssertionError("forget requests must not become memories")
+
+    assert MemoryAutomationService(sessions, MustNotExtract()).process_turn(turn.turn_id) == [
+        {"status": "skipped_explicit_forget"}
+    ]
+    assert is_explicit_forget_request("我忘记带钥匙了") is False
+    with sessions() as session:
+        assert session.scalar(select(func.count()).select_from(PersonalMemory)) == 0
 
 
 def test_automatic_correction_receives_existing_candidate_and_versions_it(database):

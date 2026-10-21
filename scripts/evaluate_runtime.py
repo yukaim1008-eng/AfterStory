@@ -7,12 +7,13 @@ import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from uuid import uuid4
+from zoneinfo import ZoneInfo
 
 from alembic import command
 from alembic.config import Config
 from sqlalchemy import create_engine, select, text
 
-from afterstory.character.importer import seed
+from afterstory.character.importer import seed_defaults as seed
 from afterstory.config import ROOT, Settings
 from afterstory.conversation.effects import ConversationEffectService
 from afterstory.conversation.repository import Repository
@@ -203,6 +204,14 @@ def run_memory_scenario(data, sessions, measured, report):
             ).selected_ids
         },
     )
+    context_forbidden = data.get("context_forbidden", [])
+    if context_forbidden:
+        add_check(
+            report,
+            f"{data['id']}:context-forbidden",
+            not any(item in context_text for item in context_forbidden),
+            {"forbidden_found": [item for item in context_forbidden if item in context_text]},
+        )
     recall = service.send(
         user,
         recalled,
@@ -211,12 +220,14 @@ def run_memory_scenario(data, sessions, measured, report):
         timezone_name=data["timezone"],
         timezone_source="client_reported",
     ).text
+    response_any = data.get("response_contains_any", [])
     add_check(
         report,
         f"{data['id']}:response",
         contains_all(recall, data["response_contains"])
+        and (not response_any or any(item in recall for item in response_any))
         and not any(item in recall for item in data.get("response_forbidden", [])),
-        {"required": data["response_contains"], "reply": recall},
+        {"required": data["response_contains"], "required_any": response_any, "reply": recall},
     )
     report["scenarios"].append(
         {
@@ -266,6 +277,30 @@ def run_isolation(data, sessions, measured, report):
             ).selected_ids
         },
     )
+    other_character_version = data.get("other_character_version_id")
+    if other_character_version:
+        other_character = repo.create_instance(data["source_user_id"], other_character_version)[
+            "instance_id"
+        ]
+        other_character_conversation = repo.create_conversation(
+            data["source_user_id"], other_character
+        )["conversation_id"]
+        other_character_context = repo.prepare_context(
+            data["source_user_id"], other_character_conversation, data["probe_question"]
+        )
+        other_character_text = "\n".join(
+            item.content for item in other_character_context.messages
+        )
+        add_check(
+            report,
+            "cross-character-isolation",
+            data["forbidden_context"] not in other_character_text,
+            {
+                "other_selected_memory_ids": repo.retrieval.prepare(
+                    other_character, data["probe_question"]
+                ).selected_ids
+            },
+        )
 
 
 def insert_long_conversation(sessions, conversation_id, turns):
@@ -350,11 +385,11 @@ def run_long_conversation(data, sessions, measured, report):
     )
 
 
-def run_reminder(sessions, report):
+def run_reminder(sessions, report, version_id="test-schema-v1"):
     user = "eval-reminder"
     seed(sessions, user)
     repo = Repository(sessions)
-    instance_id = repo.create_instance(user, "test-schema-v1")["instance_id"]
+    instance_id = repo.create_instance(user, version_id)["instance_id"]
     reminders = MatterService(sessions)
     due = datetime.now(timezone.utc) - timedelta(minutes=1)
     matter = reminders.create(
@@ -378,6 +413,21 @@ def run_reminder(sessions, report):
     )
 
 
+def resolve_reminder_request(data, now=None):
+    if "reminder_days_from_now" not in data:
+        return data["reminder_text"], datetime.fromisoformat(data["expected_due_at"])
+    zone = ZoneInfo(data["timezone"])
+    local_today = (now or datetime.now(timezone.utc)).astimezone(zone).date()
+    day = local_today + timedelta(days=data["reminder_days_from_now"])
+    hour = data["reminder_local_hour"]
+    local_due = datetime(day.year, day.month, day.day, hour, tzinfo=zone)
+    text_value = (
+        f"请在{day.year}年{day.month}月{day.day}日{hour:02d}:00（上海时间）"
+        f"提醒我带上{data['reminder_token']}。"
+    )
+    return text_value, local_due.astimezone(timezone.utc)
+
+
 def run_conversation_commands(data, sessions, measured, report):
     user = data["user_id"]
     seed(sessions, user)
@@ -399,11 +449,12 @@ def run_conversation_commands(data, sessions, measured, report):
         timezone_name=data["timezone"],
         timezone_source="client_reported",
     )
+    reminder_text, expected_due = resolve_reminder_request(data)
     reminded = service.send(
         user,
         conversation_id,
         "command-reminder",
-        data["reminder_text"],
+        reminder_text,
         timezone_name=data["timezone"],
         timezone_source="client_reported",
     )
@@ -461,7 +512,6 @@ def run_conversation_commands(data, sessions, measured, report):
         },
     )
     actual_due = reminder.due_at.isoformat() if reminder else None
-    expected_due = datetime.fromisoformat(data["expected_due_at"])
     add_check(
         report,
         "conversation-commands:reminder",
@@ -473,6 +523,7 @@ def run_conversation_commands(data, sessions, measured, report):
         {
             "effects": list(reminded.effects),
             "scheduled_at": actual_due,
+            "requested_at": reminder_text,
             "timezone": matter.timezone_name if matter else None,
         },
     )
@@ -506,6 +557,10 @@ def main():
         ),
     )
     parser.add_argument("--keep-schema", action="store_true")
+    parser.add_argument(
+        "--version-id",
+        help="Evaluate the same memory scenarios with an imported CharacterVersion",
+    )
     args = parser.parse_args()
     fixture = json.loads(args.fixture.read_text(encoding="utf-8"))
     base = Settings()
@@ -523,6 +578,7 @@ def main():
         "started_at": datetime.now(timezone.utc).isoformat(),
         "profile": args.profile,
         "model": profile.model,
+        "character_version_id": args.version_id or "fixture defaults",
         "checks": [],
         "scenarios": [],
     }
@@ -540,17 +596,34 @@ def main():
         selected = set(args.only or [])
         for scenario in fixture["memory_scenarios"]:
             if not selected or scenario["id"] in selected:
-                run_memory_scenario(scenario, sessions, measured, report)
+                data = {**scenario, "version_id": args.version_id or scenario["version_id"]}
+                run_memory_scenario(data, sessions, measured, report)
         if not selected or "isolation" in selected:
-            run_isolation(fixture["isolation"], sessions, measured, report)
+            data = fixture["isolation"]
+            run_isolation(
+                {**data, "version_id": args.version_id or data["version_id"]},
+                sessions,
+                measured,
+                report,
+            )
         if not selected or "commands" in selected:
+            data = fixture["conversation_commands"]
             run_conversation_commands(
-                fixture["conversation_commands"], sessions, measured, report
+                {**data, "version_id": args.version_id or data["version_id"]},
+                sessions,
+                measured,
+                report,
             )
         if not selected or "long" in selected:
-            run_long_conversation(fixture["long_conversation"], sessions, measured, report)
+            data = fixture["long_conversation"]
+            run_long_conversation(
+                {**data, "version_id": args.version_id or data["version_id"]},
+                sessions,
+                measured,
+                report,
+            )
         if not selected or "reminder" in selected:
-            run_reminder(sessions, report)
+            run_reminder(sessions, report, args.version_id or "test-schema-v1")
         report["provider_calls"] = measured.calls
         report["finished_at"] = datetime.now(timezone.utc).isoformat()
         report["passed"] = all(item["passed"] for item in report["checks"])

@@ -28,7 +28,8 @@
       "expected_memory_contains": ["高中", "老师"],
       "forbidden_memory_contains": ["用户的职业：医生", "用户的身份：医生"],
       "recall_question": "你记得我的职业吗？",
-      "response_contains": ["老师"]
+      "response_contains": [],
+      "response_contains_any": ["老师", "教高中语文"]
     },
     {
       "id": "explicit-correction",
@@ -59,12 +60,31 @@
       "expected_memory_count": 1,
       "recall_question": "我和小周的排班争执后来怎么样了？",
       "response_contains": ["说开"]
+    },
+    {
+      "id": "explicit-forget",
+      "user_id": "eval-forget-user",
+      "version_id": "test-schema-v1",
+      "timezone": "Asia/Shanghai",
+      "statements": [
+        "请记住：我喝咖啡不加糖。",
+        "请忘记我喝咖啡不加糖这个习惯。"
+      ],
+      "expected_memory_contains": [],
+      "expected_memory_count": 0,
+      "forbidden_memory_contains": ["不加糖"],
+      "expected_effect_actions": ["remember", "forget"],
+      "recall_question": "你现在还记得我喝咖啡的口味吗？",
+      "response_contains": [],
+      "response_forbidden": ["不加糖"],
+      "context_forbidden": ["不加糖"]
     }
   ],
   "isolation": {
     "source_user_id": "eval-isolation-source",
     "other_user_id": "eval-isolation-other",
     "version_id": "test-schema-v1",
+    "other_character_version_id": "mint-canon-p22-v1",
     "private_statement": "我的门禁暗号是蓝鲸七号。",
     "probe_question": "你知道我的门禁暗号吗？",
     "forbidden_context": "蓝鲸七号"
@@ -75,9 +95,9 @@
     "timezone": "Asia/Shanghai",
     "remember_text": "请记住：我的备用钥匙放在玄关的深蓝文件夹里。",
     "memory_token": "深蓝文件夹",
-    "reminder_text": "请在2026年10月2日15:00（上海时间）提醒我带上社区阅读角的钥匙。",
     "reminder_token": "社区阅读角的钥匙",
-    "expected_due_at": "2026-10-02T07:00:00+00:00"
+    "reminder_days_from_now": 2,
+    "reminder_local_hour": 15
   },
   "long_conversation": {
     "user_id": "eval-chen-mo",

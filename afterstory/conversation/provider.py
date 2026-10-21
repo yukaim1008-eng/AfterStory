@@ -146,6 +146,9 @@ class ConversationDecisionProvider:
             "memory_commands 的 action 仅 remember/correct/forget；只有用户明确要求记住、"
             "纠正或忘记时才生成。correct/forget 的 memory_id 与 expected_revision 必须逐字复制"
             "上下文个人资料数据，找不到唯一目标就不要生成命令并在 reply 中询问。"
+            "forget 的 content 必须为 null，不能填被删除文字；"
+            "{\"action\":\"forget\",\"content\":null,\"memory_id\":\"原ID\","
+            "\"expected_revision\":1}。"
             "reminder_commands 只在用户明确要求提醒或持续跟进时生成；精确时刻使用 instant、"
             "带时区 ISO scheduled_at 和 timezone_name，日期不完整时保存 day/month/unknown 且"
             "scheduled_at=null，不虚构时间。"
@@ -230,7 +233,7 @@ class ConversationDecisionProvider:
                 decision.relationship is not None,
             )
             return decision
-        except (ValidationError, ValueError, TypeError):
+        except (ValidationError, ValueError, TypeError) as exc:
             try:
                 payload = json.loads(raw)
                 reply = payload.get("reply") if isinstance(payload, dict) else None
@@ -238,5 +241,13 @@ class ConversationDecisionProvider:
                 reply = None
             if not isinstance(reply, str) or not reply.strip():
                 reply = None
-            log.warning("conversation_decision valid=false fallback=plain_reply")
+            fields = (
+                [".".join(map(str, error["loc"])) for error in exc.errors()]
+                if isinstance(exc, ValidationError)
+                else []
+            )
+            log.warning(
+                "conversation_decision valid=false fields=%s fallback=plain_reply",
+                fields,
+            )
             return self._reply_only_fallback(messages, reply)

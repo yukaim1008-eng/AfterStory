@@ -282,3 +282,5 @@ Response Policy 作为独立、可测试的固定提示片段，由 Conversation
 4. **Token 调整**：总输入仍为 24000，把 Recent History 从 9000 调到 8200，Runtime/Policy Overhead 从 1000 调到 1800。影响是少保留约 800 token 的近期原文，换取完整且可版本化的回复规则；长期摘要和记忆预算不变。
 
 实施范围已按此固定为：独立 Response Policy v1、接入现有单次结构化调用、场景 fixture、真实模型验收与文档同步。实现结果见 [Conversation Response Policy v1 实施记录](../../implementation/response-policy-v1.md)。本阶段完成后停止，由用户开始实际聊天测试。
+
+2026-10-21 的后续定向修复将运行时 `RESPONSE_POLICY_VERSION` 更新到 `1.1`：概括角色背景不能扩写为未经证实的个人亲历、任务或见闻。其余 v1 范围、单次调用和 Conversation Decision Schema 1.0 不变；冻结的 CharacterVersion 提示词不回写。见[本机评测记录](../../implementation/local-experience-evaluation-v1.md)。

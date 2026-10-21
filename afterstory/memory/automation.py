@@ -1,4 +1,5 @@
 import json
+import re
 from hashlib import sha256
 
 from sqlalchemy import select
@@ -61,6 +62,18 @@ def memory_content(payload):
     return f"{payload.title}{time_suffix}：" + "；".join(details)
 
 
+_FORGET_REQUEST = re.compile(
+    r"^\s*(?:(?:请|麻烦你|拜托|能不能|可以|帮我)\s*)*"
+    r"(?:忘记|别记|不要记|删除|删掉|清除)"
+)
+
+
+def is_explicit_forget_request(text):
+    """An instruction to discard data is not a new fact to extract."""
+
+    return bool(_FORGET_REQUEST.match(text))
+
+
 class MemoryAutomationService:
     """Commits validated extraction candidates without invalidating in-flight replies."""
 
@@ -89,6 +102,11 @@ class MemoryAutomationService:
                 }
                 for item in messages
             ]
+            if any(
+                item["role"] == "user" and is_explicit_forget_request(item["text"])
+                for item in provider_input
+            ):
+                return [{"status": "skipped_explicit_forget"}]
             allowed_sources = {item["message_id"] for item in provider_input}
             instance_id = conversation.instance_id
             existing_memories = []

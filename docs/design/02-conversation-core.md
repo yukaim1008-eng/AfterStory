@@ -2,6 +2,8 @@
 
 状态：Conversation Core v1 已于 2026-09-27 实现。[Conversation Response Policy v1](conversation/01-response-policy-v1.md) 已于 2026-09-30 确认并实现，用于把现有结构化理解收敛为可长期试聊的回复行为。
 
+2026-10-21 本机评测后，运行时 Response Policy 更新至 1.1，禁止把概括的角色背景扩写为无依据的具体亲历；正式 CharacterVersion 的冻结 `system_prompt` 未修改。`forget` 命令输出说明补足 `content=null` 的严格形状，真实模型删除回执已复验。见[本机评测记录](../implementation/local-experience-evaluation-v1.md)。
+
 ## 职责与边界
 
 本模块负责组织 Character Definition 的冻结提示词、Runtime Context 和当前消息，生成框架无关的 Character Response。它不保存或暴露模型思维链，也不把 Memory、State、Relationship 写回 CharacterVersion。
