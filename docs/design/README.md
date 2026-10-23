@@ -12,7 +12,7 @@
 | 语音层 | [语音与音频](04-voice.md) | Voice Profile、TTS、失败重试与音频生命周期 |
 | 工程基础 | [后端与数据边界](05-platform.md) | API、持久化、隔离、配置、Provider 和运行验证 |
 | 前端体验 | [前端](06-frontend.md) | F1 页面与现有文字链路已实现，进入用户试用和集中反馈 |
-| 移动端适配 | [手机最小适配 v1](frontend/01-mobile-minimum.md) | 待审方案与效果图；导航、键盘、页面与验收，尚未实施 |
+| 移动端适配 | [手机最小适配 v1](frontend/01-mobile-minimum.md) | 响应式页面已实现并通过浏览器回归，实机键盘待复核 |
 
 记忆与关系属于 Conversation Core 的配套能力；工程基础与前端是支撑分区，不改变三个核心领域。
 

@@ -52,6 +52,7 @@ const query = ref("");
 const timeFilter = ref("all");
 const typeFilter = ref("all");
 const view = ref<"memory" | "matters">("memory");
+const filtersOpen = ref(false);
 const openMenu = ref<string>();
 const selectedCharacter = computed(() =>
   characters.value.find((item) => item.id === selected.value),
@@ -135,7 +136,11 @@ watch(selected, () => {
           持续事项
         </button>
       </div>
-      <div v-if="view === 'memory'" class="collection-filters">
+      <button v-if="view === 'memory'" class="mobile-filter-toggle" type="button" :aria-expanded="filtersOpen" @click="filtersOpen = !filtersOpen">
+        筛选记忆{{ query.trim() || timeFilter !== 'all' || typeFilter !== 'all' ? " · 已启用" : "" }}
+        <span aria-hidden="true">{{ filtersOpen ? "收起" : "展开" }}</span>
+      </button>
+      <div v-if="view === 'memory'" class="collection-filters" :class="{ open: filtersOpen }">
         <select
           :value="selected"
           aria-label="筛选角色"
@@ -175,6 +180,7 @@ watch(selected, () => {
         <Plus :size="16" />添加一条记忆
       </button>
     </div>
+    <p v-if="view === 'memory' && filtersOpen" class="mobile-filter-note">关键词、时间和类型仅筛选已加载的记忆；可继续加载更多。</p>
 
     <div class="collection-scroll">
       <aside v-if="dueReminder" class="due-reminder" role="status">
@@ -728,5 +734,76 @@ watch(selected, () => {
   .collection-filters {
     flex-direction: column;
   }
+}
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
+  .memory-collection,
+  .collection-scroll {
+    display: block;
+    flex: none;
+    overflow: visible;
+  }
+  .collection-toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+  }
+  .collection-switch {
+    grid-column: 1 / -1;
+    width: fit-content;
+    max-width: 100%;
+  }
+  .collection-switch button {
+    min-height: 44px;
+  }
+  .mobile-filter-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 44px;
+    min-width: 0;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid var(--soft);
+    border-radius: 12px;
+    background: #ffffffb8;
+    color: var(--accent);
+    font-size: 12px;
+  }
+  .mobile-filter-toggle span,
+  .mobile-filter-note { color: var(--muted); font-size: 11px; }
+  .mobile-filter-note { display: block; margin: -4px 0 12px; line-height: 1.5; }
+  .collection-filters {
+    grid-column: 1 / -1;
+    display: grid;
+    width: 100%;
+  }
+  .collection-filters:not(.open) { display: none; }
+  .collection-filters select,
+  .memory-search { width: 100%; max-width: none; min-height: 44px; }
+  .add-memory { min-width: 0; min-height: 44px; padding-inline: 10px; }
+  .memory-form { padding: 14px; }
+  .memory-form textarea,
+  .memory-list textarea { font-size: 16px; }
+  .memory-form footer,
+  .memory-list footer { flex-wrap: wrap; }
+  .memory-form footer button,
+  .memory-list footer button,
+  .memory-more,
+  .due-reminder button,
+  .add-matter,
+  .load-more { min-height: 44px; }
+  .memory-more { min-width: 44px; }
+  .due-reminder { align-items: stretch; flex-direction: column; }
+  .memory-list article { padding-inline: 2px; }
+  .memory-list article > p { overflow-wrap: anywhere; }
+}
+.mobile-filter-toggle,
+.mobile-filter-note { display: none; }
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
+  .mobile-filter-toggle { display: flex; }
+  .mobile-filter-note { display: block; }
 }
 </style>

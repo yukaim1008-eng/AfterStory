@@ -2261,3 +2261,219 @@ test("desktop viewport sizes keep core pages and controls inside the screen", as
   }
   expect(errors).toEqual([]);
 });
+
+test("mobile primary pages, profile and chat keep navigation and actions reachable", async ({ page }) => {
+  await fakeApi(page, false, { memory: true });
+  for (const [width, height] of [[320, 700], [360, 800], [390, 844], [430, 932]] as const) {
+    await page.setViewportSize({ width, height });
+    for (const destination of ["home", "characters", "history", "memory", "settings", "profile", "chat"]) {
+      await page.goto(`/#/${destination}/nanally`);
+      await expect(page.locator("#main-content")).toBeVisible();
+      await expect(page.locator(".application")).toHaveClass(new RegExp(`page-${destination}(?:\\s|$)`));
+      const bottomNav = page.getByRole("navigation", { name: "手机主导航" });
+      if (destination === "chat") {
+        await expect(bottomNav).toHaveCount(0);
+        await expect(page.locator(".topbar")).toBeHidden();
+        await expect(page.getByRole("button", { name: "返回上一页" })).toBeVisible();
+        await expect(page.getByRole("textbox", { name: "消息" })).toBeVisible();
+        const positions = await page.evaluate(() => {
+          const header = document.querySelector(".chat-header")!.getBoundingClientRect();
+          const composer = document.querySelector(".composer")!.getBoundingClientRect();
+          return { headerTop: header.top, composerBottom: composer.bottom };
+        });
+        expect(positions.headerTop).toBeGreaterThanOrEqual(0);
+        expect(positions.composerBottom).toBeLessThanOrEqual(height + 1);
+      } else {
+        await expect(bottomNav).toBeVisible();
+        await expect(bottomNav.getByRole("button")).toHaveCount(4);
+        const selectedDestination = destination === "profile" ? "角色" : destination === "memory" || destination === "history" ? "回忆" : { home: "首页", characters: "角色", settings: "设置" }[destination];
+        await expect(bottomNav.getByRole("button", { name: selectedDestination! })).toHaveAttribute("aria-current", "page");
+        const navBottom = await bottomNav.evaluate((node) => node.getBoundingClientRect().bottom);
+        expect(navBottom).toBeLessThanOrEqual(height + 1);
+      }
+      const horizontal = await page.evaluate(() => document.documentElement.scrollWidth);
+      expect(horizontal, `${width}x${height} ${destination} horizontal overflow`).toBeLessThanOrEqual(width);
+      if (width === 390)
+        await page.waitForTimeout(350);
+      if (width === 390)
+        await page.screenshot({ path: `test-results/mobile-390x844-${destination}.png` });
+    }
+  }
+});
+
+test("mobile chat uses button send, preserves draft and returns to its entry page", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const requests = await fakeApi(page);
+  await page.goto("/");
+  const mobileNav = page.getByRole("navigation", { name: "手机主导航" });
+  await mobileNav.getByRole("button", { name: "角色" }).click();
+  await page.getByRole("button", { name: /娜娜莉/ }).first().click();
+  await expect(page.getByRole("textbox", { name: "消息" })).toBeVisible();
+  const input = page.getByRole("textbox", { name: "消息" });
+  await input.fill("第一行");
+  await input.press("Enter");
+  await expect(input).toHaveValue("第一行\n");
+  expect(requests).toHaveLength(0);
+  await page.setViewportSize({ width: 390, height: 480 });
+  await expect.poll(async () => page.locator(".composer").evaluate((node) => node.getBoundingClientRect().bottom)).toBeLessThanOrEqual(481);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await input.fill("手机发送测试");
+  await page.getByRole("button", { name: "发送", exact: true }).click();
+  await expect(page.locator(".message.assistant .bubble")).toContainText("收到：手机发送测试");
+  expect(requests).toHaveLength(1);
+  await input.fill("保留的手机草稿");
+  await page.getByRole("button", { name: "更多聊天操作" }).click();
+  await expect(page.getByRole("group", { name: "聊天操作" })).toBeVisible();
+  await page.getByRole("button", { name: "关闭更多操作" }).click();
+  await page.getByRole("button", { name: "返回上一页" }).click();
+  await expect(page).toHaveURL(/#\/characters/);
+  await page.reload();
+  await page.getByRole("navigation", { name: "手机主导航" }).getByRole("button", { name: "角色" }).click();
+  await page.getByRole("button", { name: /娜娜莉/ }).first().click();
+  await expect(page.getByRole("textbox", { name: "消息" })).toHaveValue("保留的手机草稿");
+});
+
+test("mobile login and registration errors remain usable at short keyboard height", async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 500 });
+  await fakeApi(page, false, { authenticated: false });
+  await page.goto("/");
+  await page.getByRole("button", { name: "使用邀请码注册" }).click();
+  await page.getByLabel("用户名").fill("mobile-member");
+  await page.getByLabel("密码", { exact: true }).fill("mobile-password-123");
+  await page.getByLabel("邀请码").fill("B".repeat(43));
+  await page.getByRole("button", { name: "注册并进入" }).click();
+  await expect(page.getByRole("alert")).toContainText("邀请码无效");
+  const documentWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+  expect(documentWidth).toBeLessThanOrEqual(360);
+  await page.getByLabel("邀请码").fill("A".repeat(43));
+  await page.getByRole("button", { name: "注册并进入" }).click();
+  await expect(page.getByRole("navigation", { name: "手机主导航" })).toBeVisible();
+});
+
+test("mobile memory and cover edits keep every action reachable", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await fakeApi(page, false, { memory: true });
+  await page.goto("/#/settings/nanally");
+  await page.getByRole("navigation", { name: "设置类别" }).getByRole("button", { name: "外观" }).click();
+  await page.getByRole("button", { name: "更换封面", exact: true }).last().click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  const navCovered = await page.evaluate(() => {
+    const nav = document.querySelector<HTMLElement>(".mobile-navigation")!;
+    const bounds = nav.getBoundingClientRect();
+    const topmost = document.elementFromPoint(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
+    return !!topmost?.closest(".modal-shade");
+  });
+  expect(navCovered).toBe(true);
+  await dialog.getByRole("button", { name: "角色选择" }).click();
+  await expect(dialog.locator(".active-mobile-preview")).toContainText("选择页");
+  await dialog.getByLabel("左右位置").fill("80");
+  await dialog.getByRole("button", { name: "关闭" }).focus();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("alertdialog", { name: "放弃封面修改" })).toBeVisible();
+  await expect(dialog).toBeVisible();
+  await page.getByRole("button", { name: "继续编辑" }).click();
+  await dialog.getByRole("button", { name: "取消", exact: true }).click();
+  await expect(page.getByRole("alertdialog", { name: "放弃封面修改" })).toBeVisible();
+  await page.getByRole("button", { name: "继续编辑" }).click();
+  await expect(dialog).toBeVisible();
+  await dialog.getByRole("button", { name: "取消", exact: true }).click();
+  await page.getByRole("button", { name: "放弃修改" }).click();
+  await expect(dialog).toHaveCount(0);
+
+  await page.getByRole("navigation", { name: "手机主导航" }).getByRole("button", { name: "回忆" }).click();
+  await page.getByRole("tab", { name: "她记得的事" }).click();
+  await page.getByRole("button", { name: "添加第一条记忆" }).click();
+  await page.getByLabel("希望她记住什么？").fill("手机记录的一件事");
+  await page.getByRole("button", { name: "保存", exact: true }).click();
+  await expect(page.getByText("手机记录的一件事", { exact: true })).toBeVisible();
+  await page.getByLabel("更多操作").click();
+  await page.getByRole("button", { name: "删除" }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "确认删除" }).click();
+  await expect(page.getByRole("heading", { name: "她还没有留下特别的记忆" })).toBeVisible();
+});
+
+test("mobile chat keeps older reading position when a reply arrives", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const id = "nanally-canon-p22-v1";
+  await fakeApi(page, false, {
+    sessions: [session(id)],
+    turns: { [id]: Array.from({ length: 50 }, (_, i) => turn(`mobile-old-${i}`, i + 1, `旧消息 ${i}：${"慢慢说。".repeat(12)}`)) },
+  });
+  await page.route("**/api/conversations/*/messages", async (route) => {
+    if (route.request().method() === "POST") await new Promise((resolve) => setTimeout(resolve, 500));
+    await route.fallback();
+  });
+  await page.goto("/#/chat/nanally");
+  const messages = page.locator(".messages");
+  await expect(page.getByText("旧消息 49：", { exact: false }).first()).toBeAttached();
+  await messages.evaluate((node) => { node.scrollTop = 0; });
+  await page.getByRole("button", { name: "查看更早的对话" }).click();
+  await expect(page.getByText("旧消息 0：", { exact: false }).first()).toBeAttached();
+  expect(await messages.evaluate((node) => node.scrollTop)).toBeGreaterThan(0);
+  const input = page.getByRole("textbox", { name: "消息" });
+  await input.fill("新回复时我在读旧消息");
+  await page.getByRole("button", { name: "发送", exact: true }).click();
+  await messages.evaluate((node) => { node.scrollTop = 0; });
+  await expect(page.locator(".message.assistant .bubble").last()).toContainText("收到：新回复时我在读旧消息");
+  await expect.poll(() => messages.evaluate((node) => node.scrollTop)).toBeLessThan(80);
+  await page.getByRole("button", { name: "回到最新" }).click();
+  await expect.poll(() => messages.evaluate((node) => node.scrollHeight - node.clientHeight - node.scrollTop)).toBeLessThan(30);
+});
+
+test("mobile chat keeps older reading position when the latest turn status changes", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const id = "nanally-canon-p22-v1";
+  const turns = Array.from({ length: 50 }, (_, i) => turn(`mobile-status-${i}`, i + 1, `旧消息 ${i}：${"慢慢说。".repeat(12)}`));
+  const latest = turns.at(-1)!;
+  const reply = latest.messages[1]!;
+  latest.status = "processing";
+  latest.messages = [latest.messages[0]!];
+  await fakeApi(page, false, { sessions: [session(id)], turns: { [id]: turns } });
+  let delayRefresh = false;
+  await page.route("**/api/conversations/*/messages?*", async (route) => {
+    if (delayRefresh) await new Promise((resolve) => setTimeout(resolve, 500));
+    await route.fallback();
+  });
+  await page.goto("/#/chat/nanally");
+  const messages = page.locator(".messages");
+  await expect(page.getByText("回复处理中，可刷新确认结果")).toBeVisible();
+  await messages.evaluate((node) => { node.scrollTop = 0; });
+  latest.status = "completed";
+  latest.messages.push(reply);
+  delayRefresh = true;
+  await page.getByRole("button", { name: "刷新" }).click();
+  await messages.evaluate((node) => { node.scrollTop = 0; });
+  await expect(page.locator(".message.assistant .bubble").last()).toContainText("旧消息 49：");
+  await expect.poll(() => messages.evaluate((node) => node.scrollTop)).toBeLessThan(80);
+  await expect(page.getByRole("button", { name: "回到最新" })).toBeVisible();
+});
+
+test("short landscape touch view keeps pages and composer reachable", async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 844, height: 390 }, isMobile: true, hasTouch: true });
+  const page = await context.newPage();
+  try {
+    await fakeApi(page, false, { memory: true });
+    for (const destination of ["home", "characters", "history", "memory", "settings", "profile", "chat"]) {
+      await page.goto(`/#/${destination}/nanally`);
+      await expect(page.locator(".application")).toHaveClass(new RegExp(`page-${destination}(?:\\s|$)`));
+      expect(await page.evaluate(() => document.documentElement.scrollWidth), destination).toBeLessThanOrEqual(844);
+      if (destination === "chat") {
+        await expect(page.getByRole("textbox", { name: "消息" })).toBeVisible();
+        const composerBottom = await page.locator(".composer").evaluate((node) => node.getBoundingClientRect().bottom);
+        expect(composerBottom).toBeLessThanOrEqual(391);
+      } else {
+        await expect(page.getByRole("navigation", { name: "手机主导航" })).toBeVisible();
+        expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBeGreaterThanOrEqual(390);
+      }
+    }
+    await page.setViewportSize({ width: 768, height: 820 });
+    for (const destination of ["home", "characters", "history", "memory", "settings", "profile", "chat"]) {
+      await page.goto(`/#/${destination}/nanally`);
+      await expect(page.locator(".application")).toHaveClass(new RegExp(`page-${destination}(?:\\s|$)`));
+      expect(await page.evaluate(() => document.documentElement.scrollWidth), `768px ${destination}`).toBeLessThanOrEqual(768);
+    }
+  } finally {
+    await context.close();
+  }
+});

@@ -7,6 +7,7 @@ const { login, register } = useAfterStory();
 const mode = ref<"login" | "register">("login");
 const username = ref("");
 const password = ref("");
+const showPassword = ref(false);
 const inviteCode = ref("");
 const busy = ref(false);
 const error = ref("");
@@ -50,7 +51,10 @@ function switchMode() {
         <label for="login-username">用户名</label>
         <input id="login-username" v-model="username" autocomplete="username" required :maxlength="mode === 'register' ? 32 : 64" :pattern="mode === 'register' ? '[A-Za-z][A-Za-z0-9_.-]{2,31}' : undefined" :title="mode === 'register' ? '3–32 位，以字母开头，可使用字母、数字、点、下划线和连字符' : undefined" />
         <label for="login-password">密码</label>
-        <input id="login-password" v-model="password" type="password" :autocomplete="mode === 'register' ? 'new-password' : 'current-password'" required :minlength="mode === 'register' ? 12 : 1" maxlength="128" />
+        <div class="password-field">
+          <input id="login-password" v-model="password" :type="showPassword ? 'text' : 'password'" :autocomplete="mode === 'register' ? 'new-password' : 'current-password'" required :minlength="mode === 'register' ? 12 : 1" maxlength="128" />
+          <button type="button" class="password-visibility" :aria-label="showPassword ? '隐藏密码' : '显示密码'" :aria-pressed="showPassword" @click="showPassword = !showPassword">{{ showPassword ? "隐藏" : "显示" }}</button>
+        </div>
         <template v-if="mode === 'register'">
           <label for="login-invite">邀请码</label>
           <input id="login-invite" v-model="inviteCode" autocomplete="off" required maxlength="43" />
@@ -82,4 +86,18 @@ button:disabled { opacity: .65; cursor: wait; }
 .login-help { margin-top: 8px; }
 .login-switch { display: inline; margin: 0 0 0 7px; padding: 0; background: none; color: #a94c81; font-size: 12px; font-weight: 700; }
 .login-switch:disabled { opacity: .65; }
+.password-field { position: relative; min-width: 0; }
+.password-field input { padding-right: 68px; }
+.password-visibility { position: absolute; inset: 0 0 0 auto; min-width: 58px; min-height: 44px; margin: 0; padding: 0 10px; border-radius: 0 12px 12px 0; background: transparent; color: #a94c81; font-size: 13px; }
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
+  .login-page { display: block; min-height: 100dvh; min-height: 100svh; padding: max(18px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom)); overflow: visible; }
+  .login-card { box-sizing: border-box; margin: min(7vh, 48px) auto 0; padding: 24px 20px; }
+  .login-eyebrow { margin-top: 20px; }
+  h1 { font-size: 27px; }
+  .login-description { margin-bottom: 19px; }
+  input { min-height: 48px; font-size: 16px; }
+  form > button { min-height: 48px; }
+  .login-switch { min-height: 44px; padding: 10px 0; }
+}
 </style>

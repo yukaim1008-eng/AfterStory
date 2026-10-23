@@ -737,20 +737,60 @@ const recent = computed(() => {
     display: none;
   }
 }
-@media (max-width: 760px) {
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
+  .home-page {
+    width: 100%;
+    padding-bottom: 12px;
+  }
   .home-hero {
     grid-template-columns: 1fr;
     height: auto;
-    padding-top: 240px;
+    padding-top: clamp(205px, 34vh, 250px);
   }
   .home-art {
     inset: 0 0 auto;
-    height: 320px;
+    height: clamp(250px, 43vh, 315px);
     mask-image: linear-gradient(#000 60%, transparent);
   }
   .home-welcome {
     grid-column: 1;
-    padding: 24px;
+    max-height: none;
+    padding: 12px 18px 18px;
+    background: linear-gradient(0deg, #fffdf9 54%, #fffdf9d9 80%, transparent);
+    backdrop-filter: none;
+  }
+  .home-welcome .eyebrow,
+  .home-welcome > .muted,
+  .home-greeting {
+    display: none;
+  }
+  .home-welcome h1 {
+    margin: 0 0 6px;
+    font-size: clamp(23px, 7vw, 28px);
+    line-height: 1.3;
+  }
+  .heading-heart {
+    width: 25px;
+  }
+  .last-meeting {
+    margin: 8px 0 12px;
+  }
+  .last-meeting span {
+    display: block;
+    overflow-wrap: anywhere;
+  }
+  .hero-action {
+    min-height: 44px;
+    margin-bottom: 6px;
+  }
+  .home-middle {
+    margin-top: 14px;
+  }
+  .recent-panel,
+  .quick-panel,
+  .other-companions {
+    min-width: 0;
   }
   .home-art-caption {
     display: none;

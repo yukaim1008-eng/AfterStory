@@ -30,6 +30,7 @@ const {
 const characterFilter = ref("all");
 const timeFilter = ref("all");
 const query = ref("");
+const filtersOpen = ref(false);
 let filterToken = 0;
 
 const filtersActive = computed(
@@ -154,7 +155,11 @@ watch(
 
       <MemoryCollection v-if="page === 'memory'" />
       <section v-else class="history-collection" aria-label="聊天片段">
-        <div class="history-controls">
+        <button class="mobile-filter-toggle" type="button" :aria-expanded="filtersOpen" @click="filtersOpen = !filtersOpen">
+          筛选聊天片段{{ filtersActive ? " · 已启用" : "" }}
+          <span aria-hidden="true">{{ filtersOpen ? "收起" : "展开" }}</span>
+        </button>
+        <div class="history-controls" :class="{ open: filtersOpen }">
           <div class="character-chips" aria-label="筛选角色">
             <button
               :class="{ active: characterFilter === 'all' }"
@@ -190,6 +195,7 @@ watch(
           </label>
           <span>匹配 {{ filteredSessions.length }} 段</span>
         </div>
+        <p v-if="filtersOpen" class="mobile-filter-note">关键词与时间作用于已加载的聊天记录；使用筛选时会继续读取剩余记录。</p>
 
         <div class="history-scroll">
           <div v-if="historyLoading && !sessions.length" class="empty">
@@ -623,27 +629,95 @@ watch(
     grid-template-columns: 1fr;
   }
 }
-@media (max-width: 700px) {
-  .workspace.memories-workspace {
-    grid-template-columns: 1fr;
-    height: calc(100dvh - 78px);
-    min-height: 500px;
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
+  .memories-workspace {
+    height: auto;
+    min-height: 0;
+    margin: 0 auto;
+    overflow: visible;
+    border-radius: 18px;
   }
   .memories-content {
-    padding-inline: 18px;
+    overflow: visible;
+    padding: 0 16px 18px;
   }
   .memories-hero {
-    margin-inline: -18px;
-    padding-inline: 18px;
+    min-height: 0;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-inline: -16px;
+    padding: 14px 16px;
   }
-  .memories-hero .character-avatar {
+  .memories-hero h1 {
+    font-size: 26px;
+  }
+  .memories-hero p,
+  .hero-aside span {
     display: none;
   }
-  .hero-aside { min-width: 0; }
+  .memories-hero .character-avatar {
+    width: 34px;
+    height: 34px;
+  }
+  .hero-aside {
+    min-width: 0;
+    gap: 7px;
+  }
+  .memory-tabs {
+    width: 100%;
+    max-width: none;
+  }
+  .memory-tabs button {
+    min-height: 44px;
+    padding-inline: 5px;
+  }
+  .history-collection,
+  .history-scroll {
+    flex: none;
+    overflow: visible;
+  }
+  .mobile-filter-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 1px solid var(--soft);
+    border-radius: 12px;
+    background: #ffffffb8;
+    color: var(--accent);
+  }
+  .mobile-filter-toggle span,
+  .mobile-filter-note {
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .mobile-filter-note {
+    margin: 0 0 12px;
+    line-height: 1.5;
+  }
   .history-controls {
     flex-direction: column;
     align-items: stretch;
+    margin: 10px 0;
   }
+  .history-controls:not(.open) { display: none; }
+  .history-controls select,
+  .search-control { width: 100%; min-height: 44px; max-width: none; }
+  .search-control { flex-basis: auto; }
+  .character-chips { width: 100%; }
+  .character-chips button { min-height: 44px; }
   .history-controls > span { margin-left: 0; }
+  .history-row { min-height: 66px; }
+  .load-older { min-height: 44px; }
+}
+.mobile-filter-toggle,
+.mobile-filter-note { display: none; }
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
+  .mobile-filter-toggle { display: flex; }
+  .mobile-filter-note { display: block; }
 }
 </style>

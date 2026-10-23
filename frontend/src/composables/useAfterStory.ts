@@ -373,6 +373,21 @@ export function createAfterStory() {
       `/conversations/${encodeURIComponent(conversationId)}/messages?${params}`,
     );
     if (revision !== state.revision || conversationId !== state.id) return;
+    const readingArea = scrollArea.value;
+    const preserveReadingPosition =
+      !older &&
+      !aroundTurnId &&
+      id === selected.value &&
+      page.value === "chat" &&
+      chats[id] === state &&
+      !!state.turns.length &&
+      state.offset + state.turns.length >= state.total &&
+      !!readingArea &&
+      readingArea.scrollHeight - readingArea.clientHeight - readingArea.scrollTop > 56 &&
+      window.matchMedia(
+        "(max-width: 760px), (pointer: coarse) and (max-height: 500px) and (max-width: 1023px)",
+      ).matches;
+    const readingTop = readingArea?.scrollTop;
     state.turns = older
       ? [
           ...result.turns.filter(
@@ -407,7 +422,9 @@ export function createAfterStory() {
           document
             .getElementById(`turn-${aroundTurnId}`)
             ?.scrollIntoView({ block: "center" });
-        } else
+        } else if (preserveReadingPosition && scrollArea.value === readingArea)
+          scrollArea.value.scrollTo({ top: readingTop });
+        else
           scrollArea.value?.scrollTo({ top: scrollArea.value.scrollHeight });
       }
     }

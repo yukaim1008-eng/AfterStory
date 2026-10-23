@@ -305,17 +305,46 @@ const signature = computed(
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
+  .character-panel.character-card.featured {
+    min-height: 0;
+  }
+  .character-panel.character-card:hover {
+    transform: none;
+  }
   .card-art::after {
-    background: linear-gradient(0deg, var(--card-tint), transparent 60%);
+    background: linear-gradient(0deg, var(--card-tint), #ffffff9e 42%, transparent 76%);
   }
 
   .card-content,
   .featured .card-content {
     inset: auto 0 0;
-    min-height: 48%;
-    padding: 20px 22px 22px;
-    background: linear-gradient(0deg, #ffffffc9, #ffffff4f 72%, transparent);
+    min-height: 52%;
+    padding: 12px 18px 14px;
+    background: linear-gradient(0deg, #fffffff0, #ffffffcf 75%, transparent);
+    backdrop-filter: none;
+  }
+  .card-content h2 {
+    margin: 3px 0;
+    font-size: 24px;
+  }
+  .tagline,
+  .featured .tagline {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .tag-list {
+    margin-top: 5px;
+  }
+  .visit-action,
+  .featured .visit-action {
+    min-height: 44px;
+    margin-top: 4px;
+    padding: 8px 12px;
+  }
+  .current-badge {
+    margin-bottom: 3px;
   }
 }
 </style>

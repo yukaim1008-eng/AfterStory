@@ -486,7 +486,8 @@ function signatureStyle(note?: SceneDecorationNote & { indent?: number }) {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 700px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
   .scene-portrait {
     width: 100%;
     opacity: 0.78;

@@ -248,4 +248,40 @@ const others = computed(() =>
     flex-wrap: wrap;
   }
 }
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
+  .selection-page {
+    margin-top: 0;
+    padding-bottom: 12px;
+  }
+  .characters-heading {
+    padding: 6px 0 14px;
+  }
+  .characters-heading h1 {
+    font-size: clamp(24px, 7vw, 30px);
+  }
+  .characters-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .current-character,
+  .other-characters > .character-card {
+    height: clamp(215px, 29vh, 270px);
+  }
+  .other-characters {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: visible;
+    padding: 0;
+  }
+  .other-characters-heading {
+    min-height: 0;
+    padding: 4px 2px 0;
+  }
+  .characters-footer {
+    margin-top: 16px;
+  }
+}
 </style>

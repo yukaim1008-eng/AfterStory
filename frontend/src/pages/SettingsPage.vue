@@ -132,7 +132,7 @@ const sections = [
                 </button>
               </div>
             </div>
-            <div class="setting-row">
+            <div class="setting-row desktop-send-setting">
               <div>
                 <strong>发送方式</strong>
                 <p>Shift + Enter 始终可以换行。</p>
@@ -146,6 +146,12 @@ const sections = [
                   <option value="ctrl">Ctrl / ⌘ + Enter</option>
                 </select></label
               >
+            </div>
+            <div class="setting-row mobile-send-setting">
+              <div>
+                <strong>发送方式</strong>
+                <p>手机上按 Enter 换行，点击发送按钮发送。</p>
+              </div>
             </div>
             <div class="setting-row">
               <div>
@@ -319,6 +325,7 @@ const sections = [
 </template>
 
 <style scoped>
+.mobile-send-setting { display: none; }
 .account-password { display: grid; gap: 10px; max-width: 360px; margin-top: 20px; }
 .account-password input { padding: 10px 12px; border: 1px solid #d6cbd3; border-radius: 9px; font: inherit; }
 .account-password button, .account-logout { padding: 10px 16px; border: 1px solid #b7809b; border-radius: 9px; background: #fff8fb; color: #8a426b; cursor: pointer; }
@@ -686,18 +693,29 @@ const sections = [
     flex-direction: column;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
   .workspace.settings-workspace {
-    grid-template-columns: 1fr;
-    height: calc(100dvh - 78px);
-    min-height: 500px;
+    height: auto;
+    min-height: 0;
+    margin: 0 auto;
+    overflow: visible;
   }
   .settings-content {
-    padding: 26px 18px;
+    height: auto;
+    overflow: visible;
+    padding: 16px;
   }
+  .back-to-chat { min-height: 44px; }
+  .settings-hero h1 { font-size: 26px; }
+  .settings-hero h1 svg { width: 25px; }
+  .settings-hero p { line-height: 1.5; }
   .settings-layout {
     grid-template-columns: 1fr;
-    margin-top: 25px;
+    flex: none;
+    overflow: visible;
+    margin-top: 14px;
+    gap: 14px;
   }
   .settings-nav {
     border-right: 0;
@@ -705,13 +723,47 @@ const sections = [
   }
   .settings-nav-list {
     grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .settings-nav button {
+    min-height: 48px;
+    border: 1px solid color-mix(in srgb, var(--soft) 80%, white);
+    background: #ffffff80;
+  }
+  .settings-panel {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    padding: 16px;
+  }
+  .setting-row { gap: 12px; }
+  .setting-row button,
+  .setting-row select,
+  .appearance-actions button,
+  .account-password button,
+  .account-logout,
+  .data-link { min-height: 44px; }
+  .desktop-send-setting { display: none; }
+  .mobile-send-setting { display: flex; }
+  .segmented { max-width: 100%; }
+  .segmented button { min-height: 44px; }
+  .appearance-character-value,
+  .theme-color-value { max-width: 100%; overflow-wrap: anywhere; }
+  .account-password { max-width: 100%; }
+  .account-password input { width: 100%; min-width: 0; box-sizing: border-box; font-size: 16px; }
+  .data-link { grid-template-columns: 42px minmax(0, 1fr) 18px; }
+  .data-link > div { min-width: 0; }
+  .cover-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .cover-layout > .portrait {
+    width: min(100%, 260px);
+    max-height: 300px;
+    justify-self: center;
   }
   .settings-companion {
     display: none;
-  }
-  .cover-layout {
-    grid-template-columns: minmax(210px, 280px) minmax(0, 1fr);
-    gap: 22px;
   }
 }
 </style>

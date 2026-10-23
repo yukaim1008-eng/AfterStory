@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, watch } from "vue";
 import type { Character } from "../types";
 import { themeStyle } from "../theme";
+import { rememberChatOrigin } from "../composables/mobileChatNavigation";
 import TopNavigation from "./TopNavigation.vue";
 import PageBackground from "./PageBackground.vue";
 const props = defineProps<{
@@ -13,6 +14,11 @@ const props = defineProps<{
 }>();
 const emit = defineEmits<{ navigate: [page: string] }>();
 const theme = computed(() => themeStyle(props.character));
+watch(
+  () => props.page,
+  (next, previous) => rememberChatOrigin(next, previous),
+  { immediate: true },
+);
 </script>
 <template>
   <div
@@ -29,5 +35,11 @@ const theme = computed(() => themeStyle(props.character));
     >
     <TopNavigation :page="page" @navigate="emit('navigate', $event)" />
     <slot />
+    <TopNavigation
+      v-if="page !== 'chat'"
+      :page="page"
+      mobile
+      @navigate="emit('navigate', $event)"
+    />
   </div>
 </template>

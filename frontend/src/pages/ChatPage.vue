@@ -1,7 +1,23 @@
 <script setup lang="ts">
-import { computed, type CSSProperties } from "vue";
-import { ArrowUp, BookOpen, LoaderCircle, Plus } from "lucide-vue-next";
+import {
+  computed,
+  nextTick,
+  onMounted,
+  onUnmounted,
+  ref,
+  watch,
+  type CSSProperties,
+} from "vue";
+import {
+  ArrowLeft,
+  ArrowUp,
+  BookOpen,
+  LoaderCircle,
+  MoreHorizontal,
+  Plus,
+} from "lucide-vue-next";
 import { useAfterStory } from "../composables/useAfterStory";
+import { returnFromChat } from "../composables/mobileChatNavigation";
 import CharacterAvatar from "../components/CharacterAvatar.vue";
 import ChatCharacterScene from "../components/ChatCharacterScene.vue";
 import {
@@ -17,6 +33,7 @@ const {
   selected,
   connected,
   capabilities,
+  editing,
   targetTurn,
   scrollArea,
   displayTime,
@@ -30,6 +47,129 @@ const {
   beginMemory,
   saveChat,
 } = useAfterStory();
+
+const mobileMenuOpen = ref(false);
+const showLatest = ref(false);
+const composerInput = ref<HTMLTextAreaElement>();
+const chatViewportHeight = ref<number>();
+const chatViewportTop = ref(0);
+const keyboardOpen = ref(false);
+let forceFollow = false;
+const mobileQuery =
+  "(max-width: 760px), (pointer: coarse) and (max-height: 500px) and (max-width: 1023px)";
+const isMobileLayout = () => window.matchMedia(mobileQuery).matches;
+const viewportStyle = computed<CSSProperties>(
+  () =>
+    ({
+      "--chat-viewport-height": chatViewportHeight.value
+        ? `${chatViewportHeight.value}px`
+        : undefined,
+      "--chat-viewport-top": `${chatViewportTop.value}px`,
+      "--chat-safe-bottom": keyboardOpen.value ? "0px" : undefined,
+    }) as CSSProperties,
+);
+
+function updateLatest() {
+  const area = scrollArea.value;
+  showLatest.value =
+    !!area && area.scrollHeight - area.clientHeight - area.scrollTop > 56;
+}
+
+function scrollToLatest() {
+  const area = scrollArea.value;
+  area?.scrollTo({ top: area.scrollHeight, behavior: "smooth" });
+  showLatest.value = false;
+}
+
+function updateViewport() {
+  const area = scrollArea.value;
+  const nearBottom =
+    !!area && area.scrollHeight - area.clientHeight - area.scrollTop <= 56;
+  const previousTop = area?.scrollTop || 0;
+  const viewport = window.visualViewport;
+  chatViewportHeight.value = viewport?.height || window.innerHeight;
+  chatViewportTop.value = viewport?.offsetTop || 0;
+  keyboardOpen.value =
+    !!viewport &&
+    window.innerHeight - viewport.height - viewport.offsetTop > 120;
+  resizeComposer();
+  requestAnimationFrame(() => {
+    if (!area || area !== scrollArea.value) return;
+    if (nearBottom) area.scrollTop = area.scrollHeight;
+    else area.scrollTop = previousTop;
+    updateLatest();
+  });
+}
+
+function resizeComposer() {
+  const input = composerInput.value;
+  if (!input) return;
+  if (!isMobileLayout()) {
+    input.style.height = "";
+    return;
+  }
+  input.style.height = "auto";
+  input.style.height = `${Math.min(input.scrollHeight, 104)}px`;
+}
+
+function handleInput() {
+  saveChat(selected.value);
+  resizeComposer();
+}
+
+function handleInputKey(event: KeyboardEvent) {
+  if (isMobileLayout()) return;
+  inputKey(event);
+}
+
+async function sendFromComposer() {
+  forceFollow = true;
+  try {
+    const sending = send();
+    await nextTick();
+    const area = scrollArea.value;
+    if (area) area.scrollTop = area.scrollHeight;
+    forceFollow = false;
+    await sending;
+  } finally {
+    forceFollow = false;
+    await nextTick();
+    resizeComposer();
+  }
+}
+
+function selectMobileDestination(page: "profile" | "history" | "edit") {
+  mobileMenuOpen.value = false;
+  if (page === "edit") editing.value = true;
+  else route(page);
+}
+
+function closeMobileMenu(event: KeyboardEvent) {
+  if (event.key === "Escape") mobileMenuOpen.value = false;
+}
+
+watch(
+  () => chat.value?.draft,
+  async () => {
+    await nextTick();
+    resizeComposer();
+  },
+);
+
+onMounted(() => {
+  updateViewport();
+  resizeComposer();
+  window.visualViewport?.addEventListener("resize", updateViewport);
+  window.visualViewport?.addEventListener("scroll", updateViewport);
+  window.addEventListener("resize", updateViewport);
+  window.addEventListener("keydown", closeMobileMenu);
+});
+onUnmounted(() => {
+  window.visualViewport?.removeEventListener("resize", updateViewport);
+  window.visualViewport?.removeEventListener("scroll", updateViewport);
+  window.removeEventListener("resize", updateViewport);
+  window.removeEventListener("keydown", closeMobileMenu);
+});
 
 const presence = computed(() => {
   if (!connected.value) return "稍等片刻";
@@ -66,6 +206,7 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
     id="main-content"
     tabindex="-1"
     class="chat-workspace"
+    :style="viewportStyle"
     :data-version="chat?.session?.version_id"
   >
     <ChatCharacterScene />
@@ -90,6 +231,14 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
         {{ decorationText(decorations.bottomNote.text) }}
       </p>
       <header class="chat-header">
+        <button
+          class="mobile-chat-back"
+          type="button"
+          aria-label="返回上一页"
+          @click="returnFromChat(route)"
+        >
+          <ArrowLeft :size="23" aria-hidden="true" />
+        </button>
         <CharacterAvatar :character="character" :cover="cover(character)" />
         <div class="chat-identity">
           <h2>{{ character.name }}</h2>
@@ -117,13 +266,51 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
             角色资料<BookOpen :size="15" />
           </button>
         </nav>
+        <div class="mobile-chat-actions">
+          <button
+            class="mobile-chat-more"
+            type="button"
+            aria-label="更多聊天操作"
+            :aria-expanded="mobileMenuOpen"
+            aria-controls="mobile-chat-menu"
+            @click="mobileMenuOpen = !mobileMenuOpen"
+          >
+            <MoreHorizontal :size="23" aria-hidden="true" />
+          </button>
+        </div>
       </header>
+
+      <template v-if="mobileMenuOpen">
+        <button
+          class="mobile-chat-menu-backdrop"
+          type="button"
+          aria-label="关闭更多操作"
+          @click="mobileMenuOpen = false"
+        ></button>
+        <div
+          id="mobile-chat-menu"
+          class="mobile-chat-menu"
+          role="group"
+          aria-label="聊天操作"
+        >
+          <button type="button" @click="selectMobileDestination('profile')">
+            角色资料
+          </button>
+          <button type="button" @click="selectMobileDestination('history')">
+            查看回忆
+          </button>
+          <button type="button" @click="selectMobileDestination('edit')">
+            调整场景
+          </button>
+        </div>
+      </template>
 
       <div
         ref="scrollArea"
         class="messages"
         aria-live="polite"
         :aria-busy="chat?.loading"
+        @scroll.passive="updateLatest"
       >
         <button
           v-if="chat?.offset"
@@ -230,7 +417,16 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
         </div>
       </div>
 
-      <form class="composer" @submit.prevent="send()">
+      <button
+        v-if="showLatest"
+        class="back-to-latest"
+        type="button"
+        @click="scrollToLatest"
+      >
+        <ArrowUp :size="16" aria-hidden="true" />回到最新
+      </button>
+
+      <form class="composer" @submit.prevent="sendFromComposer">
         <div v-if="chat?.error" class="chat-error" role="alert">
           {{ chat.error }}
           <button type="button" :disabled="chat.sending" @click="retryChat">
@@ -247,14 +443,15 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
         <div class="input-shell">
           <textarea
             v-if="chat"
+            ref="composerInput"
             v-model="chat.draft"
             aria-label="消息"
             :placeholder="`想和${character.name}说些什么……`"
             maxlength="8000"
             rows="2"
             :disabled="!connected"
-            @input="saveChat(selected)"
-            @keydown="inputKey"
+            @input="handleInput"
+            @keydown="handleInputKey"
           ></textarea>
           <textarea
             v-else
@@ -765,6 +962,14 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   object-fit: contain;
 }
 
+.mobile-chat-back,
+.mobile-chat-actions,
+.mobile-chat-menu,
+.mobile-chat-menu-backdrop,
+.back-to-latest {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .chat-glass {
     right: 18px;
@@ -826,6 +1031,192 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   .atmosphere-copy,
   .avatar-note {
     animation: none;
+  }
+}
+@media (max-width: 760px),
+  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
+  .chat-workspace {
+    position: fixed;
+    top: var(--chat-viewport-top, 0px);
+    right: 0;
+    bottom: auto;
+    left: 0;
+    height: var(--chat-viewport-height, 100dvh);
+    max-height: var(--chat-viewport-height, 100dvh);
+    overflow: hidden;
+  }
+
+  .chat-glass {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+    background: color-mix(in srgb, var(--background) 74%, transparent);
+  }
+
+  .chat-glass::before {
+    z-index: 4;
+    border: 0;
+    border-radius: 0;
+    background: rgba(255, 252, 253, 0.68);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .chat-glass::after,
+  .atmosphere-copy {
+    display: none;
+  }
+
+  .chat-header {
+    z-index: 12;
+    min-height: calc(56px + env(safe-area-inset-top));
+    height: calc(56px + env(safe-area-inset-top));
+    margin: 0;
+    padding: env(safe-area-inset-top) 12px 0;
+    gap: 8px;
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 11%, white);
+    background: color-mix(in srgb, var(--background) 88%, white);
+  }
+
+  .mobile-chat-back,
+  .mobile-chat-more {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    padding: 0;
+    border-radius: 50%;
+    color: var(--text);
+  }
+
+  .chat-header .character-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  .chat-identity {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .chat-header h2 {
+    overflow: hidden;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .avatar-note,
+  .chat-header > nav {
+    display: none;
+  }
+
+  .mobile-chat-actions {
+    position: relative;
+    display: block;
+    flex: none;
+  }
+
+  .mobile-chat-menu {
+    position: absolute;
+    right: 12px;
+    bottom: calc(12px + var(--chat-safe-bottom, env(safe-area-inset-bottom)));
+    left: 12px;
+    z-index: 30;
+    display: block;
+    width: auto;
+    padding: 7px;
+    border: 1px solid color-mix(in srgb, var(--accent) 15%, white);
+    border-radius: 20px;
+    background: var(--background);
+    box-shadow: 0 12px 35px #39263427;
+  }
+
+  .mobile-chat-menu-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 29;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background: #2518202a;
+  }
+
+  .mobile-chat-menu button {
+    display: flex;
+    width: 100%;
+    min-height: 44px;
+    justify-content: flex-start;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .messages {
+    padding: 16px 16px 12px;
+    background: rgba(255, 252, 253, 0.32);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .bubble,
+  .message.user .bubble {
+    max-width: min(88%, 620px);
+    font-size: max(16px, var(--type-body-size));
+    overflow-wrap: anywhere;
+  }
+
+  .remember-message,
+  .turn-status button,
+  .chat-error button,
+  .load-older {
+    min-height: 44px;
+  }
+
+  .back-to-latest {
+    position: relative;
+    align-self: flex-end;
+    margin: -50px 16px 6px 0;
+    z-index: 8;
+    display: inline-flex;
+    min-height: 44px;
+    padding: 8px 14px;
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, white);
+    border-radius: 99px;
+    background: var(--background);
+    box-shadow: 0 5px 18px #39263420;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  .composer {
+    padding: 8px 12px
+      calc(8px + var(--chat-safe-bottom, env(safe-area-inset-bottom)));
+    border-top: 1px solid color-mix(in srgb, var(--accent) 10%, white);
+    background: color-mix(in srgb, var(--background) 92%, white);
+  }
+
+  .input-shell {
+    min-height: 52px;
+    padding: 4px 4px 4px 14px;
+    border-radius: 19px;
+    backdrop-filter: none;
+  }
+
+  .input-shell textarea {
+    height: 28px;
+    max-height: 104px;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-y: auto;
+  }
+
+  .send-button {
+    width: 44px;
+    height: 44px;
   }
 }
 </style>
