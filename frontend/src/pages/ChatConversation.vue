@@ -2,11 +2,13 @@
 import { nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { ArrowUp, LoaderCircle, Plus } from "lucide-vue-next";
 import { useAfterStory } from "../composables/useAfterStory";
+import CharacterAvatar from "../components/CharacterAvatar.vue";
 import type { Character } from "../types";
 
 const props = defineProps<{ character: Character; mobile: boolean }>();
 const {
   chat,
+  cover,
   connected,
   capabilities,
   targetTurn,
@@ -87,6 +89,7 @@ onUnmounted(() => {
   <div
     ref="scrollArea"
     class="messages"
+    :class="{ 'desktop-messages': !mobile }"
     aria-live="polite"
     :aria-busy="chat?.loading"
     @scroll.passive="updateLatest"
@@ -139,7 +142,14 @@ onUnmounted(() => {
         <span class="message-author">{{
           message.role === "user" ? "你" : character.name
         }}</span>
-        <div class="bubble">{{ message.text }}</div>
+        <div class="message-body">
+          <CharacterAvatar
+            v-if="message.role === 'assistant'"
+            :character="character"
+            :cover="cover(character)"
+          />
+          <div class="bubble">{{ message.text }}</div>
+        </div>
         <button
           v-if="
             message.role === 'user' &&
@@ -299,6 +309,56 @@ onUnmounted(() => {
   font-size: 9px;
   font-weight: 560;
   letter-spacing: 0.08em;
+}
+
+.message-body {
+  display: contents;
+}
+
+.desktop-messages .message.assistant .message-author {
+  margin-left: 52px;
+}
+
+.desktop-messages .message.assistant .message-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+}
+
+.desktop-messages .message.assistant .message-body :deep(.character-avatar) {
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 17%, transparent);
+}
+
+.desktop-messages .message.assistant .message-body .bubble {
+  min-width: 0;
+  max-width: min(calc(100% - 46px), 640px);
+  padding: 11px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-left: 2px solid color-mix(in srgb, var(--accent) 52%, white);
+  border-radius: 6px 17px 17px 17px;
+  background: rgba(255, 253, 252, 0.84);
+  box-shadow: 0 6px 22px color-mix(in srgb, var(--text) 10%, transparent);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.68;
+  letter-spacing: 0;
+}
+
+:global(.font-small) .desktop-messages .message.assistant .message-body .bubble {
+  font-size: 13px;
+}
+
+:global(.font-large) .desktop-messages .message.assistant .message-body .bubble {
+  font-size: 18px;
+}
+
+.desktop-messages .message.assistant + .message.assistant .character-avatar {
+  visibility: hidden;
 }
 
 .bubble {

@@ -1163,7 +1163,7 @@ test("chat visual density keeps simulated dialogue readable without page scrolli
       {
         message_id: "visual-9",
         role: "assistant",
-        text: "慢一点也没关系，我在这里。",
+        text: "慢一点也没关系，我在这里。今天先把最着急的事情放一边，去窗边坐一会儿，喝点水。想说什么就说什么，不用急着整理成完整的答案。".repeat(3),
       },
     ],
   };
@@ -1179,12 +1179,20 @@ test("chat visual density keeps simulated dialogue readable without page scrolli
       await document.fonts.ready;
       const messages = root.querySelector(".messages")!;
       const assistant = root.querySelector(".message.assistant .bubble")!;
+      const assistantAvatar = root.querySelector<HTMLImageElement>(
+        ".message.assistant .character-avatar img",
+      )!;
+      const longAssistant = Array.from(
+        root.querySelectorAll(".message.assistant .bubble"),
+      ).at(-1)!;
       const user = root.querySelector(".message.user .bubble")!;
       const repeatedAuthor = root.querySelector(
         ".message.assistant + .message.assistant .message-author",
       )!;
       const userBox = user.getBoundingClientRect();
       const messagesBox = messages.getBoundingClientRect();
+      const avatarBox = assistantAvatar.getBoundingClientRect();
+      const assistantBox = assistant.getBoundingClientRect();
       return {
         viewportLocked:
           document.documentElement.scrollHeight <= window.innerHeight &&
@@ -1192,12 +1200,16 @@ test("chat visual density keeps simulated dialogue readable without page scrolli
         userWidthIsRestrained: userBox.width <= messagesBox.width * 0.7 + 1,
         assistantUsesLightTreatment:
           getComputedStyle(assistant).borderLeftWidth === "2px",
-        assistantUsesCharacterFont:
-          getComputedStyle(assistant).fontFamily.includes("LXGW WenKai Screen"),
-        characterFontLoaded: document.fonts.check(
-          '16px "LXGW WenKai Screen"',
-          "慢一点也没关系",
-        ),
+        assistantHasReadableSurface:
+          getComputedStyle(assistant).backgroundColor !== "rgba(0, 0, 0, 0)",
+        assistantUsesUiFont:
+          getComputedStyle(assistant).fontFamily.includes("Noto Sans SC Variable"),
+        assistantAvatarIsBesideBubble:
+          assistantAvatar.complete &&
+          assistantAvatar.naturalWidth > 0 &&
+          avatarBox.right < assistantBox.left,
+        longAssistantFits:
+          longAssistant.getBoundingClientRect().right <= messagesBox.right,
         userKeepsUiFont: getComputedStyle(user).fontFamily.includes(
           "Noto Sans SC Variable",
         ),
@@ -1209,8 +1221,10 @@ test("chat visual density keeps simulated dialogue readable without page scrolli
     viewportLocked: true,
     userWidthIsRestrained: true,
     assistantUsesLightTreatment: true,
-    assistantUsesCharacterFont: true,
-    characterFontLoaded: true,
+    assistantHasReadableSurface: true,
+    assistantUsesUiFont: true,
+    assistantAvatarIsBesideBubble: true,
+    longAssistantFits: true,
     userKeepsUiFont: true,
     repeatedAssistantMetadataIsQuiet: true,
   });
@@ -2344,10 +2358,18 @@ test("mobile chat uses portrait scenes and a readable compact conversation", asy
     await expect(page.locator(".welcome h2")).toHaveText(`今天想和${name}聊些什么？`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
   }
+  await page.goto("/#/chat/nanally");
   await page.getByRole("textbox", { name: "消息" }).fill("今天想和你聊一件小事");
   await page.getByRole("button", { name: "发送", exact: true }).click();
   const reply = page.locator(".message.assistant .bubble").last();
   await expect(reply).toContainText("收到：今天想和你聊一件小事");
+  const replyAvatar = page.locator(".message.assistant .message-body .character-avatar img").last();
+  await expect(replyAvatar).toBeVisible();
+  await expect(replyAvatar).toHaveAttribute("alt", "娜娜莉");
+  await expect.poll(() => replyAvatar.evaluate((image: HTMLImageElement) => image.naturalWidth > 0)).toBe(true);
+  const avatarBox = await replyAvatar.boundingBox();
+  const bubbleBox = await reply.boundingBox();
+  expect(avatarBox && bubbleBox && avatarBox.x + avatarBox.width < bubbleBox.x).toBeTruthy();
   const typography = await reply.evaluate((node) => {
     const style = getComputedStyle(node);
     return { family: style.fontFamily, size: parseFloat(style.fontSize), lineHeight: parseFloat(style.lineHeight) };
@@ -2372,9 +2394,11 @@ test("desktop and mobile chat views share the same draft and conversation", asyn
   await expect(input).toHaveValue("换到手机视图也保留的草稿");
   await page.getByRole("button", { name: "发送", exact: true }).click();
   await expect(page.locator(".message.assistant .bubble")).toContainText("收到：换到手机视图也保留的草稿");
+  await expect(page.locator(".message.assistant .character-avatar")).toBeVisible();
   await page.setViewportSize({ width: 900, height: 700 });
   await expect(page.locator(".mobile-chat-workspace")).toHaveCount(0);
   await expect(page.locator(".message.assistant .bubble")).toContainText("收到：换到手机视图也保留的草稿");
+  await expect(page.locator(".messages .character-avatar")).toBeVisible();
   expect(requests).toHaveLength(1);
 });
 
