@@ -5,19 +5,10 @@ import {
   onMounted,
   onUnmounted,
   ref,
-  watch,
   type CSSProperties,
 } from "vue";
-import {
-  ArrowLeft,
-  ArrowUp,
-  BookOpen,
-  LoaderCircle,
-  MoreHorizontal,
-  Plus,
-} from "lucide-vue-next";
+import { BookOpen } from "lucide-vue-next";
 import { useAfterStory } from "../composables/useAfterStory";
-import { returnFromChat } from "../composables/mobileChatNavigation";
 import CharacterAvatar from "../components/CharacterAvatar.vue";
 import ChatCharacterScene from "../components/ChatCharacterScene.vue";
 import {
@@ -25,151 +16,31 @@ import {
   resolveSceneDecorations,
 } from "../sceneDecorations";
 import type { SceneDecorationNote } from "../types";
+import ChatConversation from "./ChatConversation.vue";
+import MobileChatView from "./MobileChatView.vue";
 
-const {
-  character,
-  chat,
-  cover,
-  selected,
-  connected,
-  capabilities,
-  editing,
-  targetTurn,
-  scrollArea,
-  displayTime,
-  route,
-  openChat,
-  send,
-  retryChat,
-  inputKey,
-  recoverDraft,
-  loadOlder,
-  beginMemory,
-  saveChat,
-} = useAfterStory();
-
-const mobileMenuOpen = ref(false);
-const showLatest = ref(false);
-const composerInput = ref<HTMLTextAreaElement>();
-const chatViewportHeight = ref<number>();
-const chatViewportTop = ref(0);
-const keyboardOpen = ref(false);
-let forceFollow = false;
-const mobileQuery =
-  "(max-width: 760px), (pointer: coarse) and (max-height: 500px) and (max-width: 1023px)";
-const isMobileLayout = () => window.matchMedia(mobileQuery).matches;
-const viewportStyle = computed<CSSProperties>(
-  () =>
-    ({
-      "--chat-viewport-height": chatViewportHeight.value
-        ? `${chatViewportHeight.value}px`
-        : undefined,
-      "--chat-viewport-top": `${chatViewportTop.value}px`,
-      "--chat-safe-bottom": keyboardOpen.value ? "0px" : undefined,
-    }) as CSSProperties,
+const { character, chat, cover, connected, route, scrollArea } =
+  useAfterStory();
+const mobileQuery = window.matchMedia(
+  "(max-width: 760px), (pointer: coarse) and (max-height: 500px) and (max-width: 1023px)",
 );
-
-function updateLatest() {
-  const area = scrollArea.value;
-  showLatest.value =
-    !!area && area.scrollHeight - area.clientHeight - area.scrollTop > 56;
-}
-
-function scrollToLatest() {
-  const area = scrollArea.value;
-  area?.scrollTo({ top: area.scrollHeight, behavior: "smooth" });
-  showLatest.value = false;
-}
-
-function updateViewport() {
-  const area = scrollArea.value;
+const mobile = ref(mobileQuery.matches);
+function switchLayout(event: MediaQueryListEvent) {
+  const current = scrollArea.value;
   const nearBottom =
-    !!area && area.scrollHeight - area.clientHeight - area.scrollTop <= 56;
-  const previousTop = area?.scrollTop || 0;
-  const viewport = window.visualViewport;
-  chatViewportHeight.value = viewport?.height || window.innerHeight;
-  chatViewportTop.value = viewport?.offsetTop || 0;
-  keyboardOpen.value =
-    !!viewport &&
-    window.innerHeight - viewport.height - viewport.offsetTop > 120;
-  resizeComposer();
-  requestAnimationFrame(() => {
-    if (!area || area !== scrollArea.value) return;
-    if (nearBottom) area.scrollTop = area.scrollHeight;
-    else area.scrollTop = previousTop;
-    updateLatest();
-  });
+    !!current &&
+    current.scrollHeight - current.clientHeight - current.scrollTop <= 56;
+  const readingTop = current?.scrollTop || 0;
+  mobile.value = event.matches;
+  void nextTick().then(() =>
+    requestAnimationFrame(() => {
+      const next = scrollArea.value;
+      if (next) next.scrollTop = nearBottom ? next.scrollHeight : readingTop;
+    }),
+  );
 }
-
-function resizeComposer() {
-  const input = composerInput.value;
-  if (!input) return;
-  if (!isMobileLayout()) {
-    input.style.height = "";
-    return;
-  }
-  input.style.height = "auto";
-  input.style.height = `${Math.min(input.scrollHeight, 104)}px`;
-}
-
-function handleInput() {
-  saveChat(selected.value);
-  resizeComposer();
-}
-
-function handleInputKey(event: KeyboardEvent) {
-  if (isMobileLayout()) return;
-  inputKey(event);
-}
-
-async function sendFromComposer() {
-  forceFollow = true;
-  try {
-    const sending = send();
-    await nextTick();
-    const area = scrollArea.value;
-    if (area) area.scrollTop = area.scrollHeight;
-    forceFollow = false;
-    await sending;
-  } finally {
-    forceFollow = false;
-    await nextTick();
-    resizeComposer();
-  }
-}
-
-function selectMobileDestination(page: "profile" | "history" | "edit") {
-  mobileMenuOpen.value = false;
-  if (page === "edit") editing.value = true;
-  else route(page);
-}
-
-function closeMobileMenu(event: KeyboardEvent) {
-  if (event.key === "Escape") mobileMenuOpen.value = false;
-}
-
-watch(
-  () => chat.value?.draft,
-  async () => {
-    await nextTick();
-    resizeComposer();
-  },
-);
-
-onMounted(() => {
-  updateViewport();
-  resizeComposer();
-  window.visualViewport?.addEventListener("resize", updateViewport);
-  window.visualViewport?.addEventListener("scroll", updateViewport);
-  window.addEventListener("resize", updateViewport);
-  window.addEventListener("keydown", closeMobileMenu);
-});
-onUnmounted(() => {
-  window.visualViewport?.removeEventListener("resize", updateViewport);
-  window.visualViewport?.removeEventListener("scroll", updateViewport);
-  window.removeEventListener("resize", updateViewport);
-  window.removeEventListener("keydown", closeMobileMenu);
-});
+onMounted(() => mobileQuery.addEventListener("change", switchLayout));
+onUnmounted(() => mobileQuery.removeEventListener("change", switchLayout));
 
 const presence = computed(() => {
   if (!connected.value) return "稍等片刻";
@@ -180,13 +51,11 @@ const presence = computed(() => {
 const decorations = computed(() =>
   character.value ? resolveSceneDecorations(character.value) : undefined,
 );
-
 function decorationText(text: string) {
   return character.value
     ? formatSceneDecorationText(text, character.value)
     : text;
 }
-
 function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   if (!note) return undefined;
   return {
@@ -201,16 +70,15 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
 </script>
 
 <template>
+  <MobileChatView v-if="mobile" />
   <main
-    v-if="character"
+    v-else-if="character"
     id="main-content"
     tabindex="-1"
     class="chat-workspace"
-    :style="viewportStyle"
     :data-version="chat?.session?.version_id"
   >
     <ChatCharacterScene />
-
     <section class="chat-glass">
       <p
         v-if="decorations?.topNote"
@@ -231,14 +99,6 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
         {{ decorationText(decorations.bottomNote.text) }}
       </p>
       <header class="chat-header">
-        <button
-          class="mobile-chat-back"
-          type="button"
-          aria-label="返回上一页"
-          @click="returnFromChat(route)"
-        >
-          <ArrowLeft :size="23" aria-hidden="true" />
-        </button>
         <CharacterAvatar :character="character" :cover="cover(character)" />
         <div class="chat-identity">
           <h2>{{ character.name }}</h2>
@@ -254,8 +114,9 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
                 opacity: decorations.avatarNote.opacity,
                 color: decorations.avatarNote.color,
               }"
-              >{{ decorationText(decorations.avatarNote.text) }}</small
             >
+              {{ decorationText(decorations.avatarNote.text) }}
+            </small>
           </div>
         </div>
         <nav aria-label="当前角色快捷入口">
@@ -266,222 +127,8 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
             角色资料<BookOpen :size="15" />
           </button>
         </nav>
-        <div class="mobile-chat-actions">
-          <button
-            class="mobile-chat-more"
-            type="button"
-            aria-label="更多聊天操作"
-            :aria-expanded="mobileMenuOpen"
-            aria-controls="mobile-chat-menu"
-            @click="mobileMenuOpen = !mobileMenuOpen"
-          >
-            <MoreHorizontal :size="23" aria-hidden="true" />
-          </button>
-        </div>
       </header>
-
-      <template v-if="mobileMenuOpen">
-        <button
-          class="mobile-chat-menu-backdrop"
-          type="button"
-          aria-label="关闭更多操作"
-          @click="mobileMenuOpen = false"
-        ></button>
-        <div
-          id="mobile-chat-menu"
-          class="mobile-chat-menu"
-          role="group"
-          aria-label="聊天操作"
-        >
-          <button type="button" @click="selectMobileDestination('profile')">
-            角色资料
-          </button>
-          <button type="button" @click="selectMobileDestination('history')">
-            查看回忆
-          </button>
-          <button type="button" @click="selectMobileDestination('edit')">
-            调整场景
-          </button>
-        </div>
-      </template>
-
-      <div
-        ref="scrollArea"
-        class="messages"
-        aria-live="polite"
-        :aria-busy="chat?.loading"
-        @scroll.passive="updateLatest"
-      >
-        <button
-          v-if="chat?.offset"
-          class="load-older"
-          :disabled="chat.loading"
-          @click="loadOlder"
-        >
-          查看更早的对话
-        </button>
-        <div v-if="chat?.loading && !chat.turns.length" class="empty">
-          <LoaderCircle class="spin" :size="24" />
-          <p>正在找回你们的对话…</p>
-        </div>
-        <div
-          v-else-if="!chat?.turns.length && !chat?.pending"
-          class="empty welcome"
-        >
-          <span class="welcome-mark">✳</span>
-          <small>ANOTHER DAY, ANOTHER STORY</small>
-          <h2>故事之外，<br />还有话想对你说。</h2>
-          <p>从今天的一件小事开始吧。</p>
-        </div>
-        <div
-          v-for="turn in chat?.turns"
-          :id="`turn-${turn.turn_id}`"
-          :key="turn.turn_id"
-          class="turn"
-          :class="{ 'source-turn': targetTurn === turn.turn_id }"
-          :data-turn-id="turn.turn_id"
-        >
-          <time class="turn-time" :datetime="turn.created_at || undefined">{{
-            displayTime(turn.created_at)
-          }}</time>
-          <div
-            v-for="message in turn.messages"
-            :key="message.message_id"
-            class="message"
-            :class="message.role"
-          >
-            <span class="message-author">{{
-              message.role === "user" ? "你" : character.name
-            }}</span>
-            <div class="bubble">{{ message.text }}</div>
-            <button
-              v-if="
-                message.role === 'user' &&
-                turn.status === 'completed' &&
-                capabilities.memory
-              "
-              class="remember-message"
-              @click="beginMemory(message.text, message.message_id)"
-            >
-              <Plus :size="13" />记住这件事
-            </button>
-          </div>
-          <div v-if="turn.status !== 'completed'" class="turn-status">
-            {{
-              turn.status === "processing"
-                ? "回复处理中，可刷新确认结果"
-                : "这次回复未完成"
-            }}
-            <button
-              v-if="turn.status === 'failed' && turn.sequence === chat?.total"
-              :disabled="chat?.sending"
-              @click="
-                send({
-                  request_id: turn.request_id,
-                  text: turn.messages.find((m) => m.role === 'user')!.text,
-                })
-              "
-            >
-              重试
-            </button>
-            <button
-              v-else-if="turn.status === 'processing'"
-              @click="openChat(selected)"
-            >
-              刷新
-            </button>
-          </div>
-        </div>
-        <button
-          v-if="chat?.turns.length && chat.turns.at(-1)!.sequence < chat.total"
-          class="load-older"
-          :disabled="chat.loading"
-          @click="route('chat')"
-        >
-          返回最新对话
-        </button>
-        <div
-          v-if="
-            chat?.pending &&
-            !chat.turns.some(
-              (turn) => turn.request_id === chat.pending?.request_id,
-            )
-          "
-          class="message user"
-        >
-          <span class="message-author">你</span>
-          <div class="bubble">{{ chat.pending.text }}</div>
-        </div>
-        <div v-if="chat?.sending" class="reply-wait">
-          <span></span><span></span><span></span><small>正在等待回复</small>
-        </div>
-      </div>
-
-      <button
-        v-if="showLatest"
-        class="back-to-latest"
-        type="button"
-        @click="scrollToLatest"
-      >
-        <ArrowUp :size="16" aria-hidden="true" />回到最新
-      </button>
-
-      <form class="composer" @submit.prevent="sendFromComposer">
-        <div v-if="chat?.error" class="chat-error" role="alert">
-          {{ chat.error }}
-          <button type="button" :disabled="chat.sending" @click="retryChat">
-            重试
-          </button>
-          <button
-            v-if="chat.pending && !chat.sending"
-            type="button"
-            @click="recoverDraft"
-          >
-            取回输入框
-          </button>
-        </div>
-        <div class="input-shell">
-          <textarea
-            v-if="chat"
-            ref="composerInput"
-            v-model="chat.draft"
-            aria-label="消息"
-            :placeholder="`想和${character.name}说些什么……`"
-            maxlength="8000"
-            rows="2"
-            :disabled="!connected"
-            @input="handleInput"
-            @keydown="handleInputKey"
-          ></textarea>
-          <textarea
-            v-else
-            aria-label="消息"
-            :placeholder="`想和${character.name}说些什么……`"
-            disabled
-          ></textarea>
-          <button
-            class="send-button"
-            :aria-label="character.sendControl.label"
-            :disabled="
-              !connected ||
-              !chat?.id ||
-              !chat?.session ||
-              chat.sending ||
-              chat.loading ||
-              !chat.draft.trim() ||
-              !!chat.pending
-            "
-          >
-            <LoaderCircle v-if="chat?.sending" class="spin" :size="20" />
-            <img
-              v-else-if="character.sendControl.image"
-              :src="character.sendControl.image"
-              alt=""
-            />
-            <ArrowUp v-else :size="21" />
-          </button>
-        </div>
-      </form>
+      <ChatConversation :character="character" :mobile="false" />
     </section>
   </main>
 </template>
@@ -559,9 +206,7 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   pointer-events: none;
 }
 
-.chat-header,
-.messages,
-.composer {
+.chat-header {
   position: relative;
   z-index: 7;
 }
@@ -692,531 +337,24 @@ function noteStyle(note?: SceneDecorationNote): CSSProperties | undefined {
   color: var(--accent);
 }
 
-.messages {
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-  overscroll-behavior: contain;
-  padding: 20px clamp(24px, 3vw, 40px) 14px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--soft) transparent;
-}
-
-.message {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  margin: 0 0 18px;
-}
-
-.message.user {
-  align-items: flex-end;
-}
-
-.message-author {
-  margin: 0 6px;
-  color: color-mix(in srgb, var(--muted) 82%, transparent);
-  font-size: 9px;
-  font-weight: 560;
-  letter-spacing: 0.08em;
-}
-
-.bubble {
-  max-width: min(76%, 560px);
-  padding: 2px 4px 3px 13px;
-  border: 0;
-  border-left: 2px solid color-mix(in srgb, var(--accent) 44%, transparent);
-  border-radius: 0 10px 10px 0;
-  background: linear-gradient(90deg, #ffffff3d, #ffffff08);
-  box-shadow: none;
-  color: var(--text);
-  font-size: var(--type-body-size);
-  font-weight: 420;
-  line-height: 1.78;
-  overflow-wrap: anywhere;
-  white-space: pre-wrap;
-}
-
-.message.user .bubble {
-  max-width: min(70%, 500px);
-  padding: 9px 13px;
-  border: 1px solid color-mix(in srgb, var(--accent) 14%, transparent);
-  border-radius: 17px 5px 17px 17px;
-  background: color-mix(in srgb, var(--soft) 58%, #ffffff82);
-  box-shadow: 0 5px 16px color-mix(in srgb, var(--accent) 6%, transparent);
-}
-
-.message.assistant .bubble {
-  font-family: var(--font-character);
-  letter-spacing: 0.025em;
-}
-
-.message.assistant + .message.assistant {
-  margin-top: -8px;
-}
-
-.message.assistant + .message.assistant .message-author {
-  display: none;
-}
-
-.remember-message {
-  gap: 4px;
-  padding: 0 6px;
-  color: var(--muted);
-  font-size: 10px;
-}
-
-.remember-message:hover {
-  color: var(--accent);
-}
-
-:global(.font-small) .bubble {
-  font-size: 13px;
-}
-
-:global(.font-large) .bubble {
-  font-size: 18px;
-}
-
-.empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 160px;
-  padding: 24px;
-  color: var(--muted);
-  text-align: center;
-}
-
-.empty h2,
-.empty p {
-  margin: 0;
-}
-
-.welcome {
-  min-height: 100%;
-  gap: 8px;
-  opacity: 0.72;
-}
-
-.welcome-mark {
-  color: var(--accent);
-  font-size: 17px;
-  line-height: 1;
-}
-
-.welcome small {
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: var(--type-eyebrow-tracking);
-}
-
-.welcome h2 {
-  color: var(--text);
-  font-size: 18px;
-  font-weight: 540;
-  line-height: 1.65;
-  letter-spacing: 0.05em;
-}
-
-.welcome p {
-  font-size: 12px;
-}
-
-.turn-time {
-  display: block;
-  margin: 10px 0 13px;
-  color: color-mix(in srgb, var(--muted) 70%, transparent);
-  font-size: 9px;
-  letter-spacing: 0.03em;
-  text-align: center;
-}
-
-.source-turn {
-  border-radius: 12px;
-  outline: 1px solid var(--accent);
-  outline-offset: 8px;
-  scroll-margin: 20px;
-}
-
-.load-older {
-  display: flex;
-  margin: 0 auto 20px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.turn-status,
-.chat-error {
-  color: var(--accent);
-  font-size: 12px;
-  line-height: 1.8;
-}
-
-.turn-status {
-  margin-bottom: 20px;
-}
-
-.reply-wait {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--muted);
-}
-
-.reply-wait > span {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--accent);
-  animation: pulse 1s infinite alternate;
-}
-
-.reply-wait > span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.reply-wait > span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.reply-wait small {
-  margin-left: 6px;
-}
-
-.composer {
-  flex-shrink: 0;
-  padding: 10px clamp(22px, 3vw, 38px) 18px;
-}
-
-.chat-error {
-  padding-bottom: 9px;
-}
-
-.input-shell {
-  display: flex;
-  align-items: flex-end;
-  gap: 9px;
-  min-height: 58px;
-  padding: 9px 9px 9px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.56);
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0.68);
-  box-shadow: 0 10px 28px color-mix(in srgb, var(--text) 8%, transparent);
-  backdrop-filter: blur(8px) saturate(1.06);
-  transition:
-    border-color 0.2s,
-    background 0.2s,
-    box-shadow 0.2s;
-}
-
-.input-shell:focus-within {
-  border-color: color-mix(in srgb, var(--accent) 36%, #fff);
-  background: #ffffff8f;
-  box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 14%, transparent);
-}
-
-.input-shell textarea {
-  flex: 1;
-  min-width: 0;
-  max-height: 150px;
-  padding: 0;
-  border: 0;
-  outline: none;
-  resize: none;
-  background: none;
-  color: var(--text);
-  line-height: 1.7;
-  font-size: var(--type-body-size);
-}
-
-.input-shell textarea::placeholder {
-  color: color-mix(in srgb, var(--muted) 78%, transparent);
-}
-
-.send-button {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--primary) 88%, #fff),
-    color-mix(in srgb, var(--accent) 82%, #fff)
-  );
-  color: white;
-  box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 22%, transparent);
-}
-
-.send-button:disabled {
-  background: var(--soft);
-  color: var(--muted);
-  box-shadow: none;
-}
-
-.send-button img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.mobile-chat-back,
-.mobile-chat-actions,
-.mobile-chat-menu,
-.mobile-chat-menu-backdrop,
-.back-to-latest {
-  display: none;
-}
-
 @media (max-width: 900px) {
   .chat-glass {
     right: 18px;
     width: min(64%, 620px);
   }
-
   .chat-header {
     margin-inline: 22px;
   }
-
-  .messages {
-    padding-inline: 24px;
-  }
-
-  .composer {
-    padding-inline: 22px;
-  }
-
   .avatar-note {
     max-width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 }
-
-@media (max-width: 700px) {
-  .chat-glass {
-    top: calc(var(--chat-header-height) + 6px);
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
-    width: auto;
-    border-radius: 18px;
-  }
-
-  .chat-header {
-    height: 72px;
-    margin-inline: 18px;
-  }
-
-  .chat-header nav button:first-child {
-    display: none;
-  }
-
-  .messages {
-    padding: 20px 18px 12px;
-  }
-
-  .composer {
-    padding: 10px 14px 16px;
-  }
-
-  .atmosphere-copy {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .atmosphere-copy,
   .avatar-note {
     animation: none;
-  }
-}
-@media (max-width: 760px),
-  (pointer: coarse) and (max-height: 500px) and (max-width: 1023px) {
-  .chat-workspace {
-    position: fixed;
-    top: var(--chat-viewport-top, 0px);
-    right: 0;
-    bottom: auto;
-    left: 0;
-    height: var(--chat-viewport-height, 100dvh);
-    max-height: var(--chat-viewport-height, 100dvh);
-    overflow: hidden;
-  }
-
-  .chat-glass {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    border-radius: 0;
-    background: color-mix(in srgb, var(--background) 74%, transparent);
-  }
-
-  .chat-glass::before {
-    z-index: 4;
-    border: 0;
-    border-radius: 0;
-    background: rgba(255, 252, 253, 0.68);
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-
-  .chat-glass::after,
-  .atmosphere-copy {
-    display: none;
-  }
-
-  .chat-header {
-    z-index: 12;
-    min-height: calc(56px + env(safe-area-inset-top));
-    height: calc(56px + env(safe-area-inset-top));
-    margin: 0;
-    padding: env(safe-area-inset-top) 12px 0;
-    gap: 8px;
-    border-bottom: 1px solid color-mix(in srgb, var(--accent) 11%, white);
-    background: color-mix(in srgb, var(--background) 88%, white);
-  }
-
-  .mobile-chat-back,
-  .mobile-chat-more {
-    display: inline-flex;
-    width: 44px;
-    height: 44px;
-    flex: none;
-    padding: 0;
-    border-radius: 50%;
-    color: var(--text);
-  }
-
-  .chat-header .character-avatar {
-    width: 38px;
-    height: 38px;
-  }
-
-  .chat-identity {
-    min-width: 0;
-    flex: 1;
-  }
-
-  .chat-header h2 {
-    overflow: hidden;
-    font-size: 16px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .avatar-note,
-  .chat-header > nav {
-    display: none;
-  }
-
-  .mobile-chat-actions {
-    position: relative;
-    display: block;
-    flex: none;
-  }
-
-  .mobile-chat-menu {
-    position: absolute;
-    right: 12px;
-    bottom: calc(12px + var(--chat-safe-bottom, env(safe-area-inset-bottom)));
-    left: 12px;
-    z-index: 30;
-    display: block;
-    width: auto;
-    padding: 7px;
-    border: 1px solid color-mix(in srgb, var(--accent) 15%, white);
-    border-radius: 20px;
-    background: var(--background);
-    box-shadow: 0 12px 35px #39263427;
-  }
-
-  .mobile-chat-menu-backdrop {
-    position: absolute;
-    inset: 0;
-    z-index: 29;
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-    background: #2518202a;
-  }
-
-  .mobile-chat-menu button {
-    display: flex;
-    width: 100%;
-    min-height: 44px;
-    justify-content: flex-start;
-    padding: 8px 12px;
-    font-size: 14px;
-  }
-
-  .messages {
-    padding: 16px 16px 12px;
-    background: rgba(255, 252, 253, 0.32);
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .bubble,
-  .message.user .bubble {
-    max-width: min(88%, 620px);
-    font-size: max(16px, var(--type-body-size));
-    overflow-wrap: anywhere;
-  }
-
-  .remember-message,
-  .turn-status button,
-  .chat-error button,
-  .load-older {
-    min-height: 44px;
-  }
-
-  .back-to-latest {
-    position: relative;
-    align-self: flex-end;
-    margin: -50px 16px 6px 0;
-    z-index: 8;
-    display: inline-flex;
-    min-height: 44px;
-    padding: 8px 14px;
-    border: 1px solid color-mix(in srgb, var(--accent) 20%, white);
-    border-radius: 99px;
-    background: var(--background);
-    box-shadow: 0 5px 18px #39263420;
-    color: var(--accent);
-    font-size: 12px;
-  }
-
-  .composer {
-    padding: 8px 12px
-      calc(8px + var(--chat-safe-bottom, env(safe-area-inset-bottom)));
-    border-top: 1px solid color-mix(in srgb, var(--accent) 10%, white);
-    background: color-mix(in srgb, var(--background) 92%, white);
-  }
-
-  .input-shell {
-    min-height: 52px;
-    padding: 4px 4px 4px 14px;
-    border-radius: 19px;
-    backdrop-filter: none;
-  }
-
-  .input-shell textarea {
-    height: 28px;
-    max-height: 104px;
-    font-size: 16px;
-    line-height: 1.5;
-    overflow-y: auto;
-  }
-
-  .send-button {
-    width: 44px;
-    height: 44px;
   }
 }
 </style>

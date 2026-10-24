@@ -2333,6 +2333,51 @@ test("mobile chat uses button send, preserves draft and returns to its entry pag
   await expect(page.getByRole("textbox", { name: "消息" })).toHaveValue("保留的手机草稿");
 });
 
+test("mobile chat uses portrait scenes and a readable compact conversation", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await fakeApi(page);
+  for (const [id, name] of [["nanally", "娜娜莉"], ["iroi", "伊洛伊"], ["mint", "薄荷"]]) {
+    await page.goto(`/#/chat/${id}`);
+    const image = page.locator(".mobile-scene-background");
+    await expect(image).toBeVisible();
+    await expect.poll(() => image.evaluate((node: HTMLImageElement) => node.naturalHeight > node.naturalWidth)).toBe(true);
+    await expect(page.locator(".welcome h2")).toHaveText(`今天想和${name}聊些什么？`);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+  }
+  await page.getByRole("textbox", { name: "消息" }).fill("今天想和你聊一件小事");
+  await page.getByRole("button", { name: "发送", exact: true }).click();
+  const reply = page.locator(".message.assistant .bubble").last();
+  await expect(reply).toContainText("收到：今天想和你聊一件小事");
+  const typography = await reply.evaluate((node) => {
+    const style = getComputedStyle(node);
+    return { family: style.fontFamily, size: parseFloat(style.fontSize), lineHeight: parseFloat(style.lineHeight) };
+  });
+  expect(typography.family).toContain("Noto Sans SC");
+  expect(typography.size).toBeGreaterThanOrEqual(14);
+  expect(typography.size).toBeLessThanOrEqual(17);
+  expect(typography.lineHeight).toBeLessThan(28);
+  await page.screenshot({ path: "test-results/mobile-chat-with-messages.png" });
+});
+
+test("desktop and mobile chat views share the same draft and conversation", async ({ page }) => {
+  await page.setViewportSize({ width: 900, height: 700 });
+  const requests = await fakeApi(page);
+  await page.goto("/#/chat/nanally");
+  const input = page.getByRole("textbox", { name: "消息" });
+  await expect(input).toBeVisible();
+  expect(await page.locator(".messages").evaluate((node) => getComputedStyle(node).zIndex)).toBe("7");
+  await input.fill("换到手机视图也保留的草稿");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator(".mobile-chat-workspace")).toBeVisible();
+  await expect(input).toHaveValue("换到手机视图也保留的草稿");
+  await page.getByRole("button", { name: "发送", exact: true }).click();
+  await expect(page.locator(".message.assistant .bubble")).toContainText("收到：换到手机视图也保留的草稿");
+  await page.setViewportSize({ width: 900, height: 700 });
+  await expect(page.locator(".mobile-chat-workspace")).toHaveCount(0);
+  await expect(page.locator(".message.assistant .bubble")).toContainText("收到：换到手机视图也保留的草稿");
+  expect(requests).toHaveLength(1);
+});
+
 test("mobile login and registration errors remain usable at short keyboard height", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 500 });
   await fakeApi(page, false, { authenticated: false });

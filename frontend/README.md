@@ -4,6 +4,8 @@
 
 2026-10-23 完成[移动端最小适配 v1](../docs/design/frontend/01-mobile-minimum.md)：手机普通页使用底部四项导航，聊天单屏显示并处理键盘/安全区；现有首页、角色、回忆、设置、登录注册、资料和封面编辑均可在窄屏使用。构建与 Playwright 44 项通过；真实手机键盘仍需设备复核。
 
+2026-10-24 手机聊天改为独立 `MobileChatView.vue` 和 `mobile-chat.css`；`ChatConversation.vue` 承载桌面与手机共用的消息、输入和记忆入口。三位角色竖屏场景位于 `public/mobile-scenes/`，用户自定义封面仍优先。构建和 Playwright 46 项通过，服务器尚未更新。
+
 ## 启动
 
 按 [运行说明](../docs/running-frontend.md) 启动数据库和后端，再在本目录执行：
